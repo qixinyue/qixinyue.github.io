@@ -317,7 +317,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  2,248 字
                 </span>
               
 
@@ -333,7 +333,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  10 分钟
                 </span>
               
             </div>
@@ -356,7 +356,190 @@
       
         
           
-            
+            <h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><p>python数据结构之图的实现，官方有一篇文章介绍，<br><a href="https://www.python.org/doc/essays/graphs/" target="_blank" rel="noopener">https://www.python.org/doc/essays/graphs/</a></p>
+<p><strong>图</strong>是由边或弧连接的节点组成的网络。<br>在<strong>有向图</strong>中，节点之间的连接有一个方向，称为弧;在<strong>无向图</strong>中，连接没有方向，称为边。<br>我们主要讨论<strong>有向图</strong>。图中的算法包括找到两个节点之间的路径，找到两个节点之间的最短路径，确定图中的周期（周期是从节点到自身的非空路径），找到到达所有节点的路径（着名的“旅行商问题”），等等。有时图形的节点或弧具有与它们相关的权重或成本，我们有兴趣找到最便宜的路径。<br>关于图算法的文献很多，它们是离散数学的重要组成部分。图形在计算机算法中也有很多实际用途。在网络管理中可以找到明显的例子，但许多其他领域的例子比比皆是。例如，计算机程序中的调用者 - 被调用者关系可以被视为图形（其中周期指示递归，并且不可达的节点表示死节点）。</p>
+<h2 id="列表和词典构建法"><a href="#列表和词典构建法" class="headerlink" title="列表和词典构建法"></a>列表和词典构建法</h2><p>很少有编程语言直接支持图形作为数据类型，Python也不例外。但是，图表很容易从列表和词典中构建。例如，这是一个简单的图形（我不能在这些列中使用图纸，所以我写下图形的弧形）：</p>
+<pre><code>A -&gt; B
+A -&gt; C
+B -&gt; C
+B -&gt; D
+C -&gt; D
+D -&gt; C
+E -&gt; F
+F -&gt; C
+</code></pre><p>该图有六个节点（A-F）和八个弧。它可以由以下Python数据结构表示：</p>
+<pre><code>graph = {&apos;A&apos;: [&apos;B&apos;, &apos;C&apos;],
+         &apos;B&apos;: [&apos;C&apos;, &apos;D&apos;],
+         &apos;C&apos;: [&apos;D&apos;],
+         &apos;D&apos;: [&apos;C&apos;],
+         &apos;E&apos;: [&apos;F&apos;],
+         &apos;F&apos;: [&apos;C&apos;]}
+</code></pre><p>这是一个字典，其键是图的节点。对于每个键，相应的值是一个列表，其中包含通过此节点的直接弧连接的节点。这很简单（更简单的是，节点可以用数字而不是名字来表示，但名称更方便，可以很容易地携带更多信息，例如城市名称）。<br>让我们编写一个简单的函数来确定两个节点之间的路径。它需要一个图形，并将起始和结束节点作为参数。它将返回包含路径的节点列表（包括开始和结束节点）。如果找不到路径，则返回None。同一节点在返回的路径上不会出现多次（即它不包含循环）。该算法使用一种称为回溯的重要技术：它依次尝试每种可能性，直到找到解决方案。</p>
+<pre><code>def find_path(graph, start, end, path=[]):
+    path = path + [start]
+    if start == end:
+        return path
+    if not graph.has_key(start):
+        return None
+    for node in graph[start]:
+        if node not in path:
+            newpath = find_path(graph, node, end, path)
+            if newpath: return newpath
+    return None
+</code></pre><p>A sample run (using the graph above):<br>    &gt;&gt;&gt; find_path(graph, ‘A’, ‘D’)<br>    [‘A’, ‘B’, ‘C’, ‘D’]<br>    &gt;&gt;&gt;<br>第二个“if”语句仅在存在被列为弧的终点但没有外部弧的节点的情况下才是必需的，并且根本没有在图中列出。这样的节点也可以包含在图中，带有一个空的传出弧列表，但有时候更方便的是不要求它。<br>请注意，当用户使用三个参数调用find_graph（）时，它会使用第四个参数调用自身：已遍历的路径。此参数的默认值是空列表’[]’，表示尚未遍历任何节点。该参数用于避免循环（’for’循环内的第一个’if’）。 ‘path’参数未被修改：赋值“path = path + [start]”创建一个新列表。如果我们改写了“path.append（start）”，我们就会在调用者中修改变量’path’，结果是灾难性的。 （使用元组，我们可以肯定这不会发生，代价是必须编写“path = path +（start，）”，因为“（start）”不是单例元组 - 它只是一个括号表达。）</p>
+<p>我们能轻易的更改此函数以返回所有路径（没有循环）的列表，而不是它找到的第一个路径：</p>
+<pre><code>def find_all_paths(graph, start, end, path=[]):
+    path = path + [start]
+    if start == end:
+        return [path]
+    if not graph.has_key(start):
+        return []
+    paths = []
+    for node in graph[start]:
+        if node not in path:
+            newpaths = find_all_paths(graph, node, end, path)
+            for newpath in newpaths:
+                paths.append(newpath)
+    return paths
+</code></pre><p>运行示例:</p>
+<pre><code>&gt;&gt;&gt; find_all_paths(graph, &apos;A&apos;, &apos;D&apos;)
+[[&apos;A&apos;, &apos;B&apos;, &apos;C&apos;, &apos;D&apos;], [&apos;A&apos;, &apos;B&apos;, &apos;D&apos;], [&apos;A&apos;, &apos;C&apos;, &apos;D&apos;]]
+&gt;&gt;&gt; 
+</code></pre><p>另一个方法找到最短路径：</p>
+<pre><code>def find_shortest_path(graph, start, end, path=[]):
+    path = path + [start]
+    if start == end:
+        return path
+    if not graph.has_key(start):
+        return None
+    shortest = None
+    for node in graph[start]:
+        if node not in path:
+            newpath = find_shortest_path(graph, node, end, path)
+            if newpath:
+                if not shortest or len(newpath) &lt; len(shortest):
+                    shortest = newpath
+    return shortest
+</code></pre><p>运行示例:<br>    &gt;&gt;&gt; find_shortest_path(graph, ‘A’, ‘D’)<br>    [‘A’, ‘C’, ‘D’]<br>    &gt;&gt;&gt; </p>
+<p>这些功能非常简单。 然而，它们几乎是最优的（对于用Python编写的代码）。 在另一个Python Patterns专栏中，我将尝试分析其运行速度并提高其性能，代价是更多代码。<br>另一种变化是添加更多数据抽象：创建一个表示图的类，其方法实现各种算法。 虽然这吸引了对结构化编程的渴望，但它并没有使代码更有效（相反）。 它确实可以更容易地向节点或弧添加各种标签，并添加将这些标签考虑在内的算法（例如，找到地图上两个城市之间的最短路径）。 这也是另一个专栏的主题。</p>
+<h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><p>会将每个结点可能的邻居位置排成一行（也就是一个数组，用于对应图中每一个结点），然后用某种值（如True或False）来表示相关结点是否为当前结点的邻居。为了让矩阵具有更好的可读性，我们将会用1和0来充当所谓的真值（也可用True和False）。</p>
+<pre><code>v0,v1,v2,v3,v4,v5=range(6)
+N=[[0,1,0,0,0,1],#v0
+   [0,0,1,0,0,0],#v1
+   [0,0,0,1,0,0],#v2
+   [0,0,0,0,1,1],#v3
+   [1,0,0,0,0,0],#v4 
+   [0,0,1,0,1,0]]#v5 
+
+   &gt;&gt;&gt; N[v0][v1]
+1
+&gt;&gt;&gt; sum(N[v0])
+2
+</code></pre><p>将邻接矩阵扩展成允许对边进行加权处理：在原来存储真值的地方直接存储相关的权值即可。例如，对于边（u,v）来说，我们只需要将N[u][v]处的True替换成w(u,v)即可，我们通常会将一些不存在的边的权值设置为无穷大。<br>对角线上的值依旧应该全为0，任何节点到自身的距离都应该始终为0。</p>
+<p>把上面的代码改为：</p>
+<pre><code>v0,v1,v2,v3,v4,v5=range(6)  
+inf=float(&apos;inf&apos;)  
+w=N=[[0,5,inf,inf,inf,2],#v0  
+   [inf,0,4,inf,inf,inf],#v1
+   [inf,inf,0,9,inf,inf],#v2
+   [inf,inf,inf,0,7,3],#v3
+   [1,inf,inf,inf,0,inf],#v4
+   [inf,inf,1,inf,8,0]]#v5 
+&gt;&gt;&gt;w[v0][v1]
+Out[6]: 
+5
+&gt;&gt;&gt;w[v2][v1]
+Out[7]: 
+inf
+</code></pre><h2 id="图的创建和广度深度遍历"><a href="#图的创建和广度深度遍历" class="headerlink" title="图的创建和广度深度遍历"></a>图的创建和广度深度遍历</h2><pre><code>class Graph(object):
+    def __init__(self, maps):
+        self.maps = maps
+        self.nodenum = self.get_nodenum()
+        self.edgenum = self.get_edgenum()
+
+    def get_nodenum(self):
+        return len(self.maps)
+
+    def get_edgenum(self):
+        count = 0
+        for i in range(self.nodenum):
+            for j in range(i):
+                if self.maps[i][j] &gt; 0:
+                    count += 1
+        return count
+
+    def insert_node(self):
+        for i in range(len(self.maps)):
+            self.maps[i].append(-1)
+        self.maps.append([-1]*(self.nodenum) + [0])
+        self.nodenum += 1
+
+    def insert_edge(self, x, y, weight):
+        if x &lt; 0 or x &gt;= self.nodenum or y &lt; 0 or y &gt; self.nodenum or weight &lt;= 0 or x == y:
+            return
+        else:
+            self.maps[x][y] = self.maps[y][x] = weight
+            self.edgenum += 1
+
+    def breath_first_search(self):
+        queue = []
+        visited = [False]*self.nodenum
+        res = []
+        def bfs():
+            while len(queue) &gt; 0:
+                i = queue.pop(0)
+                for j in range(self.nodenum):
+                    if self.maps[i][j] &gt; 0 and visited[j] == False:
+                        res.append(j)
+                        visited[j] = True
+                        queue.append(j)
+
+        if self.nodenum &lt;= 0:
+            return res
+        else:
+            queue.append(0)#index, value
+            visited[0] = True
+            res.append(0)
+            bfs()
+
+        for i in range(self.nodenum):
+            if visited[i] == False:
+                res.append(i)
+                visited[i] = True
+                queue.append(i)
+                bfs()
+
+        return res
+
+    def depth_first_search(self):
+        res = []
+        visited = [False]*self.nodenum
+        def dfs(i):
+            res.append(i)
+            visited[i] = True
+            for j in range(self.nodenum):
+                if self.maps[i][j] &gt; 0 and visited[j] == False:
+                    dfs(j)
+        if self.nodenum &gt; 0:
+            dfs(0)
+        for i in range(self.nodenum):
+            if visited[i] == False:
+                dfs(i)
+</code></pre><p><strong>测试用例</strong><br>    maps = [[0,3,9,-1], [3,0,-1,5], [9,-1,0,-1], [-1,5,-1,0]]<br>    graph = Graph(maps)<br>    print(‘邻接矩阵为\n%s’%graph.maps)<br>    print(‘节点数据为%d，边数为%d\n’%(graph.nodenum, graph.edgenum))<br>    graph.insert_node()<br>    print(‘——-插入一个节点——–’)<br>    print(‘邻接矩阵为%s’%graph.maps)<br>    print(‘节点数据为%d，边数为%d\n’%(graph.nodenum, graph.edgenum))<br>    graph.insert_edge(0, 4, 7)<br>    print(‘——-插入一个边——–’)<br>    print(‘邻接矩阵为%s’%graph.maps)<br>    print(‘节点数据为%d，边数为%d\n’%(graph.nodenum, graph.edgenum))<br>    print(‘——-广度优先遍历——–’)<br>    print(graph.breath_first_search())<br>    print(‘——-深度优先遍历——–’)<br>    print(graph.depth_first_search())</p>
+<p><strong>测试结果</strong><br>    邻接矩阵为<br>    [[0, 3, 9, -1], [3, 0, -1, 5], [9, -1, 0, -1], [-1, 5, -1, 0]]<br>    节点数据为4，边数为3</p>
+<pre><code>-------插入一个节点--------
+邻接矩阵为[[0, 3, 9, -1, -1], [3, 0, -1, 5, -1], [9, -1, 0, -1, -1], [-1, 5, -1, 0, -1], [-1, -1, -1, -1, 0]]
+节点数据为5，边数为3
+
+-------插入一个边--------
+邻接矩阵为[[0, 3, 9, -1, 7], [3, 0, -1, 5, -1], [9, -1, 0, -1, -1], [-1, 5, -1, 0, -1], [7, -1, -1, -1, 0]]
+节点数据为5，边数为4
+
+-------广度优先遍历--------
+[0, 1, 2, 4, 3]
+-------深度优先遍历--------
+[0, 1, 3, 2, 4]
+</code></pre>
           
         
       
@@ -644,7 +827,7 @@
 <p>构造方法： 将最小的2个数，小的放左边，合并在一起，然后得到一个新数，将所有数再取最小的2个，左小右大，再次合并，以此类推直到最后一个数的时候结束 </p>
 <p>构建哈夫曼树<br>假设有n个权值，则构造出的哈夫曼树有n个叶子结点。 n个权值分别设为 w1、w2、…、wn，则哈夫曼树的构造规则为：</p>
 <p>将w1、w2、…，wn看成是有n 棵树的森林(每棵树仅有一个结点)；<br>在森林中选出两个根结点的权值最小的树合并，作为一棵新树的左、右子树，且新树的根结点权值为其左、右子树根结点权值之和；<br>从森林中删除选取的两棵树，并将新树加入森林；<br>重复(2)、(3)步，直到森林中只剩一棵树为止，该树即为所求得的哈夫曼树。</p>
-<img src="/2018/08/09/树的实现/2018/08/09/树的实现/20171226212037253.png" title="这是一个新的博客的图片的说明">
+<img src="/2018/08/09/树的实现/2018/08/09/树的实现/aa.jpg" title="这是一个新的博客的图片的说明">
 <p>注意：</p>
 <p>为了使得到的哈夫曼树的结构尽量唯一，通常规定生成的哈夫曼树中每个结点的左子树根结点的权小于等于右子树根结点的权。<br>如果还是不清楚过程，可以参考<br><a href="https://jingyan.baidu.com/article/a501d80c16dfa0ec620f5e70.html，过程介绍的更清晰。" target="_blank" rel="noopener">https://jingyan.baidu.com/article/a501d80c16dfa0ec620f5e70.html，过程介绍的更清晰。</a></p>
 <p>哈夫曼编码<br>等长编码：这种编码方式的特点是每个字符的编码长度相同（编码长度就是每个编码所含的二进制位数）。假设字符集只含有4个字符A，B，C，D，用二进制两位表示的编码分别为00，01，10，11。若现在有一段电文为：ABACCDA，则应发送二进制序列：00010010101100，总长度为14位。当接收方接收到这段电文后，将按两位一段进行译码。这种编码的特点是译码简单且具有唯一性，但编码长度并不是最短的。</p>
@@ -5254,6 +5437,15 @@ update_one()</code></p>
   </span>
   <span class="author" itemprop="copyrightHolder">Godshion</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">38.8k</span>
   
 </div>
 
