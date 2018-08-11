@@ -232,6 +232,3235 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/11/web前端/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/11/web前端/" itemprop="url">html</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-11T11:11:31+08:00">
+                2018-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8,356 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  33 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="前端学习体系"><a href="#前端学习体系" class="headerlink" title="前端学习体系"></a>前端学习体系</h2><pre><code>1.HTML-用来勾勒出网页的结构和内容-骨架
+2.CSS-用来美化网页-皮肤-化妆
+3.JavaScript-让网页呈现出动态的数据和效果
+4.jQuery-js框架，提高JavaScript开发效率
+</code></pre><h2 id="浏览器介绍"><a href="#浏览器介绍" class="headerlink" title="浏览器介绍"></a>浏览器介绍</h2><pre><code>chrome safari  ---&gt; webkit
+firefox ---&gt; mozilla
+</code></pre><h2 id="HTML-1"><a href="#HTML-1" class="headerlink" title="HTML"></a>HTML</h2><pre><code>html保存在服务器，html运行在浏览器
+html--超文本标记语言
+</code></pre><h2 id="HTMl-语法"><a href="#HTMl-语法" class="headerlink" title="HTMl 语法"></a>HTMl 语法</h2><h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><pre><code>&lt;标签&gt;&lt;/标签&gt;
+ex:&lt;div&gt;&lt;/div&gt;
+</code></pre><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><pre><code>&lt;标签 属性1=&quot;值1&quot; 属性2=&quot;值2&quot; ..&gt;&lt;/标签&gt;
+ex:&lt;span id=&quot;s1&quot; style=&quot;..&quot;&gt;&lt;/span&gt;
+</code></pre><h3 id="标签与标签之间的嵌套关系"><a href="#标签与标签之间的嵌套关系" class="headerlink" title="标签与标签之间的嵌套关系"></a>标签与标签之间的嵌套关系</h3><pre><code>&lt;div&gt;
+    &lt;span id=&quot;s1&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;
+</code></pre><h3 id="标签的分类"><a href="#标签的分类" class="headerlink" title="标签的分类"></a>标签的分类</h3><pre><code>    1.闭合标签/双标签
+        &lt;body&gt;内容&lt;/body&gt;
+    2.非闭合标签/单标签
+        &lt;标签&gt;
+        &lt;标签/&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        单标签没有内容这个概念
+
+总结：学习html，就是学习固定标签，固定属性
+            以及标签间的嵌套关系
+</code></pre><h2 id="HTML用法"><a href="#HTML用法" class="headerlink" title="HTML用法"></a>HTML用法</h2><pre><code>HTML  经历了5个版本
+HTML4 之前版本很宽泛，宽松
+HTML4 非常严谨
+HTML5 是最新也是最流行的版本。比HTML4宽泛
+
+&lt;!doctype html&gt;&lt;!--文档定义标签--&gt;
+&lt;html&gt;&lt;!--根元素--&gt;
+    &lt;head&gt;
+        &lt;!--本网页相关信息--&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--网页的主体，
+        在页面中显示的所有内容
+        都写在body里面--&gt;
+        hello world!My first page!!
+    &lt;/body&gt;
+&lt;/html&gt;
+
+总结：doctype用于约束HTML文档内部的
+      标签，属性和嵌套关系
+            不写doctype,同一篇代码，会在不同浏览器
+            中，有巨大显示差异。
+</code></pre><h2 id="HTML常见标签"><a href="#HTML常见标签" class="headerlink" title="HTML常见标签"></a>HTML常见标签</h2><h3 id="文本标签–跟论文格式非常相似"><a href="#文本标签–跟论文格式非常相似" class="headerlink" title="文本标签–跟论文格式非常相似"></a>文本标签–跟论文格式非常相似</h3><pre><code>标题  &lt;hn&gt;&lt;/hn&gt;  n=1~6
+ex:   &lt;h1&gt;&lt;/h1&gt;
+            ...
+            &lt;h6&gt;&lt;/h6&gt;
+总结：h1最大，h6最小
+            字体加粗
+            垂直方向，上下都有空间
+
+段落 paragraph
+    &lt;p&gt;&lt;/p&gt;
+            垂直方向，上下都有空间
+</code></pre><h3 id="课堂案例："><a href="#课堂案例：" class="headerlink" title="课堂案例："></a>课堂案例：</h3><pre><code>使用hn标签和p标签，写自己的简易的简历
+属性 align=&quot;center&quot; 可以使用在标题标签中
+</code></pre><h3 id="列表标签-显得有条理"><a href="#列表标签-显得有条理" class="headerlink" title="列表标签 显得有条理"></a>列表标签 显得有条理</h3><pre><code>3.1无序列表    
+    u--unordered
+    l--list
+    i--item
+&lt;ul&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    ...
+&lt;/ul&gt;
+3.2有序列表
+&lt;ol&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    ...
+&lt;/ol&gt;
+</code></pre><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><pre><code>&lt;div&gt;&lt;/div&gt;
+div看不见，功能是为了逻辑分区
+&lt;div id=&quot;header&quot;&gt;&lt;/div&gt; 头
+&lt;div id=&quot;nav&quot;&gt;&lt;/div&gt; 导航栏
+&lt;div id=&quot;contents&quot;&gt;&lt;/div&gt; 内容
+&lt;div id=&quot;footer&quot;&gt;&lt;/div&gt; 脚
+
+H5添加了很多和div一样，
+但是更容易读容易理解的标签
+&lt;header&gt;&lt;/header&gt;
+&lt;nav&gt;&lt;/nav&gt;
+&lt;footer&gt;&lt;/footer&gt;
+
+块级分区    div在这个区域独占一行
+
+行级(行内)分区
+    &lt;span&gt;&lt;/span&gt;
+    如果只是一行文字内部的区域
+    进行分区设置属性、修改样式
+    这种时候使用行内分区
+
+    行内分区不会换行，会和其他文字混合
+    在同一行上span
+</code></pre><h3 id="元素-标签-的显示方式"><a href="#元素-标签-的显示方式" class="headerlink" title="元素(标签)的显示方式"></a>元素(标签)的显示方式</h3><pre><code>1.行级元素(行内)
+    可以和其他行级元素位于同一行显示
+    span
+2.块级元素
+    自己独占一行
+    hn p div ul li ol
+</code></pre><h3 id="其他的行内元素"><a href="#其他的行内元素" class="headerlink" title="其他的行内元素"></a>其他的行内元素</h3><pre><code>i/em      斜体
+b/strong  粗体
+u         下划线
+del/s            删除线
+</code></pre><h3 id="实体引用，实体替换符号"><a href="#实体引用，实体替换符号" class="headerlink" title="实体引用，实体替换符号"></a>实体引用，实体替换符号</h3><pre><code>行内元素的空格折叠现象
+写代码的时候，不管连写多少个空格和
+回车，显示成一个空格
+
+&lt;br&gt;
+&lt;br/&gt;回车
+
+&amp;nbsp; 空格
+&amp;lt;  &lt;  
+&amp;gt;  &gt;
+</code></pre><p>复习：</p>
+<p>1.网站运行的流程<br>    .html存储在服务器，运行在浏览器<br>2.h5 html的标准框架</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>3.文本标签<br>    hn p ul li ol<br>4.分区标签<br>    块级分区 div  header footer nav<br>    行级分区 span i em s del u strong b<br>5.块级元素与行级元素的区别<br>    块级元素，自己独占一行<br>    行级元素，可以与其他行级元素位于同一行<br>6.实体替代符号<br>    &nbsp;&lt;&gt;</p>
+<p>作业：<br>1.网站的运行流程<br>2.行级元素与块级元素的区别<br>3.今天所有的demo重新敲一遍<br>4.详细的完善个人简历要使用div分区<br>    建议使用i b u等标签给关键内容修改样式</p>
+<h2 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h2><p>是一个单标签，最重要的属性src<br><img src="/2018/08/11/web前端/图片路径"></p>
+<p>图片路径的写法<br>主机、路径、文件名都写清晰了<br>绝对路径<br>在一个显示其他网站中的图片，<br>这种行为图片盗链<br>通常使用绝对路径，称提供网页图片的网站为图床</p>
+<p>好处就是，节省了自己服务器的存储空间<br>坏处，图床网站把图片路径改变，<br>            自己的网站就显示不出来了</p>
+<p>相对路径–参照物–&gt;当前.html文件</p>
+<pre><code>&lt;img src=&quot;08.png&quot;&gt;
+&lt;img src=&quot;img/07.png&quot;&gt;
+&lt;img src=&quot;../img/06.png&quot;&gt;
+</code></pre><p>img的其他属性<br>img行级元素，自带了width和height<br>图片的失真<br>为了解决图片失真的问题<br>通常width和height只写一个<br>让另外一个去自适应</p>
+<p>alt：找不到图片时，显示的文本<br>title：鼠标悬停在元素上，弹出的文本</p>
+<p>img标签支持下面几种图片格式<br>png 支持透明色<br>jpg 不支持透明色<br>gif 支持动态图   256色</p>
+<h2 id="超链接-用于跳转页面"><a href="#超链接-用于跳转页面" class="headerlink" title="超链接 用于跳转页面"></a>超链接 用于跳转页面</h2><p>作用：链接到网页，图片，下载<br>    <a href="http://www.baidu.cn/" target="_blank" rel="noopener">文本链接</a><br>    <a href="img/08.png">点我出图片</a><br>    <a href="01_img.html">跳转到01_img.html</a></p>
+<p>a标签的属性<br>target    _self 链接页面在当前选项卡打开 默认值<br>                    _blank 链接页面在新的选项卡打开</p>
+<p>两个页面之间的跳转，是超链接<br>一个页面内部的位置跳转，是锚点</p>
+<p>H5锚点的用法:<br>在需要跳转的位置<br>标签内添加id属性<br>比如id=”abc”<br>在a标签中的href属性中<br>添加值 href=”#abc”<br>这样点击a标签，页面就会跳转到锚点的位置<br>另：href=”#”会让页面直接跳转到顶部</p>
+<pre><code>&lt;h3 id=&quot;a&quot;&gt;charAt&lt;/h3&gt;
+&lt;a href=&quot;#a&quot;&gt;charAt()方法&lt;/a&gt;
+</code></pre><h2 id="网页中表格标签"><a href="#网页中表格标签" class="headerlink" title="网页中表格标签"></a>网页中表格标签</h2><pre><code>&lt;table border=&quot;2px&quot;&gt;
+    &lt;tr&gt;
+        &lt;td&gt;aaaa&lt;/td&gt;
+        &lt;td&gt;bbbb&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;cccc&lt;/td&gt;
+        &lt;td&gt;dddd&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre><p>table是表格<br>tr  table row 行<br>td  table data 列</p>
+<p>table的常用属性<br>width     宽<br>height    高<br>border    边框宽度<br>align     表格对其<br>cellpadding  边框与内容的距离<br>cellspacing  边框之间的距离</p>
+<p>跨列，一个单元格占据多列</p>
+<td colspan="n"></td><br>从左向右跨n列<br><br>跨行，一个单元格占据多行<br><br>    <td rowspan="n"></td>
+
+<p>从上到下占n行<br>由于占据了下面几个单元格的位置<br>下面n-1行，都减少一个td</p>
+<p>表分组<br>    <thead></thead><br>    <tbody></tbody><br>    <tfoot></tfoot></p>
+<h2 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h2><p>用于在页面中显示一个可以收集用户<br>填写的数据的控件</p>
+<p>总结：<br>想通过网页把用户填入的信息发送给服务器处理<br>1.所有的标签必须在form表单中<br>2.form表单中的标签，必须有name属性<br>3.使用submit把数据提交给服务器</p>
+<p>form表单的主要属性，以下了解即可<br>action:表单提交的url<br>method:表单提交数据的方法<br>enctype:表单数据的编码格式</p>
+<p><strong>input 9种类型</strong></p>
+<h3 id="文本框和密码框"><a href="#文本框和密码框" class="headerlink" title="文本框和密码框"></a>文本框和密码框</h3><pre><code>&lt;input type=&quot;text&quot; name=&quot;...&quot;&gt;
+&lt;input type=&quot;password&quot; name=&quot;...&quot;&gt;
+</code></pre><p>value属性 值<br>placeholder 文本提示<br>maxlength:限制输入的字符数<br>readonly:只读。自能看，不能改</p>
+<h3 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a>label标签</h3><p>我们学习过span，span可用在任何地方<br>lable的作用跟span类似，但是只用在表单中</p>
+<h3 id="radio-单选框"><a href="#radio-单选框" class="headerlink" title="radio 单选框"></a>radio 单选框</h3><pre><code>&lt;input type=&quot;radio&quot; name=&quot;gender&quot;&gt;
+&lt;input type=&quot;radio&quot; name=&quot;gender&quot;&gt;
+</code></pre><p>name属性，决定了一组单选<br>value属性，才能提交值！<br>checked=”checked” 默认选中</p>
+<h3 id="checkbox-多选框"><a href="#checkbox-多选框" class="headerlink" title="checkbox 多选框"></a>checkbox 多选框</h3><p>name属性，决定了一组多选<br>value属性，才能提交值！<br>checked=”checked” 默认选中</p>
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><p>submit 提交</p>
+<pre><code>&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
+</code></pre><h3 id="button-按钮"><a href="#button-按钮" class="headerlink" title="button 按钮"></a>button 按钮</h3><pre><code>&lt;input type=&quot;button&quot; value=&quot;点点我&quot;
+onclick=&quot;alert(&apos;111111111111&apos;)&quot;&gt;
+</code></pre><h3 id="reset-重置-基本不用"><a href="#reset-重置-基本不用" class="headerlink" title="reset 重置 基本不用"></a>reset 重置 基本不用</h3><h3 id="隐藏域-hidden"><a href="#隐藏域-hidden" class="headerlink" title="隐藏域 hidden"></a>隐藏域 hidden</h3><p>在form中存在，但是用户看不到<br>隐藏域包含着不给用户看的信息<br>隐藏域的信息，可以提交给服务器</p>
+<p><strong>其他类型</strong><br>文件选择器-上传文件用的</p>
+<h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><p>有name属性才能提交</p>
+<h3 id="multiple"><a href="#multiple" class="headerlink" title="multiple"></a>multiple</h3><p>多重的，可以选择多个文件</p>
+<h3 id="文本域"><a href="#文本域" class="headerlink" title="文本域"></a>文本域</h3><pre><code>&lt;textarea&gt;大量的文本&lt;/textarea&gt;    
+</code></pre><p>rows cols描述的是文本区域内<br>可见的宽度和高度<br>原本的意思，每一行显示多少个字符，<br>显示多少行字符。<br>但是由于系统编码不同，浏览器解析不同<br>导致显示字符数差异很大。</p>
+<h3 id="下拉列表-下拉选"><a href="#下拉列表-下拉选" class="headerlink" title="下拉列表(下拉选)"></a>下拉列表(下拉选)</h3><pre><code>&lt;select&gt;
+    &lt;option&gt;&lt;/option&gt;
+    ...
+    &lt;option&gt;&lt;/option&gt;
+&lt;/select&gt;
+</code></pre><p>总结：<br>1.当option没有value属性<br>    select标签的value值是<br>    选中的那个option标签的内容<br>2.当option有value属性<br>    select标签的value值是<br>    选中的那个option标签的value值</p>
+<p>表单标签总结:</p>
+<ul>
+<li>1.只有含有name属性的表单标签才可以提交数据</li>
+<li>2.radio和checkbox必须<br>设置value属性才可以提交数据</li>
+<li>3.text的value是直接设置值<br>placeholder是设置提示</li>
+<li>4.radio和checkbox默认选中checked</li>
+<li>5.select默认选中是selected</li>
+</ul>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="CSS层叠样式表"><a href="#CSS层叠样式表" class="headerlink" title="CSS层叠样式表"></a>CSS层叠样式表</h2><h3 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h3><pre><code>&lt;span style=&quot;color:#f00;font-size:30px&quot;&gt;内联样式的使用&lt;/span&gt;
+在标签的style属性中写样式
+特点
+内联样式使用不多
+1.不能重用
+2.内联样式优先级最高
+项目代码完全不使用内联
+只有在学习和调试过程中
+</code></pre><h3 id="内部样式"><a href="#内部样式" class="headerlink" title="内部样式"></a>内部样式</h3><pre><code>在head标签中，写style标签
+在style标签内部写样式
+选择器{
+    属性：值;
+}
+样式代码可以重用,但只能在本html中重用
+在项目使用不多
+</code></pre><h3 id="外部样式"><a href="#外部样式" class="headerlink" title="外部样式"></a>外部样式</h3><pre><code>创建一个.css文件
+在html文件中，head标签中引用这个css文件
+&lt;link href=&quot;03.css&quot; rel=&quot;stylesheet&quot;&gt;
+</code></pre><h2 id="层叠样式表的规则特性"><a href="#层叠样式表的规则特性" class="headerlink" title="层叠样式表的规则特性"></a>层叠样式表的规则特性</h2><pre><code>1.层叠效果
+    多个样式作用在同一个标签上
+    如果样式属性不重复
+    那么这些样式都会产生效果
+2.继承
+    父级元素的样式会继承给子元素
+    子元素可以重新写样式，
+    不使用父级元素的样式
+3.优先级
+    优先级最低的 浏览器默认样式
+    优先级最高的 内联样式
+
+    内部样式和外部样式--就近优先
+    以被影响标签为基准，哪个样式离这个标签近
+    就使用哪个样式的效果
+</code></pre><h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><pre><code>选择器的作用，为了选出当前页面中
+符合要求的一个或者多个标签
+
+样式属性的作用，给选出来的标签设置样式
+
+选择器{样式属性:值;}
+</code></pre><h3 id="通用选择器"><a href="#通用选择器" class="headerlink" title="通用选择器"></a>通用选择器</h3><pre><code>*{color:#f00;}
+少用，写通用样式的时候使用
+</code></pre><h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><pre><code>选出当前页面中，标签名称符合要求的标签
+ex:div{} span{} p{} body{}
+使用范围：设置某个标签的通用样式
+
+body{
+    maring:0px;
+    padding:0px;
+}
+</code></pre><h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><pre><code>唯一不重复
+&lt;p id=&quot;p1&quot;&gt;id选择器1&lt;/p&gt;
+#p1{
+    color:#f00;
+    font-size:25px;
+    width:150px;        
+}
+
+id选择器 #id值
+注意，同一个html中，ID值是唯一不可重复
+在同一个html，使用id选择器，
+只能找到一个标签
+</code></pre><h3 id="类选择器-class选择器"><a href="#类选择器-class选择器" class="headerlink" title="类选择器 class选择器"></a>类选择器 class选择器</h3><pre><code>如果编写html标签时，需要让某些标签应用一类样式，就使用类选择器标签的属性,class为类名
+
+&lt;div class=&quot;d1&quot;&gt;&lt;/div&gt;
+.d1{
+        width:200px;
+        height:100px;
+        background-color:#006699;
+        border:1px solid #f00;
+}
+
+多类选择器
+
+    .w200{
+        width:200px;
+    }
+    .h50{
+        height:50px;
+    }
+    .bgc_red{
+        background-color:#f00;
+    }        
+    &lt;div class=&quot;w200 h50 bgc_red&quot;&gt;&lt;/div&gt;
+
+    当一个标签，想匹配多个样式的时候，使用多类选择器
+</code></pre><h3 id="分组选择器"><a href="#分组选择器" class="headerlink" title="分组选择器"></a>分组选择器</h3><pre><code>把一系列选择器当成一组，设置共有样式。
+#p1,.d1,h1,ul,li{
+        border:2px solid #000;
+}
+逗号分隔，可以使用标签选择器，
+id选择器，class选择器，混合编写
+一般用于设置公共样式
+一般项目中分组选择器，写在最开始的部分
+</code></pre><h3 id="后代选择器-派生"><a href="#后代选择器-派生" class="headerlink" title="后代选择器(派生)"></a>后代选择器(派生)</h3><pre><code>div h1{
+        color:#f00;
+}
+
+div内部只要存在h1，就可以定位h1
+</code></pre><h3 id="子代选择器"><a href="#子代选择器" class="headerlink" title="子代选择器"></a>子代选择器</h3><pre><code>div&gt;h1{
+    background-color:pink;
+}
+h1必须是div的儿子才可以被匹配
+</code></pre><h2 id="css常用样式属性"><a href="#css常用样式属性" class="headerlink" title="css常用样式属性"></a>css常用样式属性</h2><h3 id="布局-相关属性"><a href="#布局-相关属性" class="headerlink" title="布局 相关属性"></a>布局 相关属性</h3><pre><code>width: 宽
+height:高
+单位：px cm 100%
+</code></pre><h4 id="外边距"><a href="#外边距" class="headerlink" title="外边距"></a>外边距</h4><pre><code>margin:设置外边距
+margin:10px;   同时设置4个方向的外边距
+margin:10px 20px; 上下为10 左右为20
+margin:0px auto;  块级元素水平居中
+margin:10px 20px 30px 40px;
+                上   右   下   左
+margin-top:10px;  上边距
+margin-right:
+margin-bottom:
+margin-left:
+
+设置外边距，视觉效果，块级元素在位移
+</code></pre><h4 id="内边距padding"><a href="#内边距padding" class="headerlink" title="内边距padding"></a>内边距padding</h4><pre><code>padding:10px;    设置4个方向的内边距
+padding:10px 20px; 上下10px  左右20px
+padding:10px 20px 30px 40px
+                上    右   下   左
+padding-top
+padding-right
+padding-bottom
+padding-left
+
+改变内边距，视觉效果，元素大小改变
+</code></pre><h4 id="盒子模型-框结构"><a href="#盒子模型-框结构" class="headerlink" title="盒子模型(框结构)"></a><strong>盒子模型(框结构)</strong></h4><pre><code>css渲染页面时，使用盒子模型
+元素之间的留白，元素背景填充范围，
+元素大小。对这些属性的控制规则，
+就是盒子模型
+
+我们写的元素，
+在浏览器中占据的空间是多少(宽度)
+
+左外边距+左边框+左内边距
++内容区域(我们设置的宽高)
++右内边距+右边框+右外边距
+
+总结：
+div默认占据宽度，
+是父容器的内容区域宽度的100%
+div默认的高，是内部内容的高
+如果内部没有内容或者没有高
+高度为0
+</code></pre><h3 id="背景属性background"><a href="#背景属性background" class="headerlink" title="背景属性background"></a>背景属性background</h3><pre><code>1.背景颜色
+    background-color:合法的颜色值
+    background:合法的颜色值
+
+    合法的颜色值：
+    1.颜色的单词 red pink
+    2.#ffffff 6位16进制字符串
+    3.#aabbcc ---&gt; #abc  #f00 #ff0000
+    4.rgb(255,255,255);
+    5.rgba(255,255,255,0~1)
+
+2.背景图片 
+    background-image:url(&quot;图片路径&quot;)
+    background-repeat:no-repeat;平铺方式        
+                    repeat
+                    repeat-x;
+                    repeat-y;
+    background-position:center center;背景图片定位
+                        center top bottom left right
+                        可以直接写数值100px 200px
+    background-size:500px 500px;设置背景图片的大小
+</code></pre><p><strong>注意点：</strong></p>
+<pre><code>块级元素和行级元素区别
+块级元素可以设置宽高
+行级元素，除了自代宽高属性的标签，
+其他行级元素，设置宽高无效
+margin-top,margin-bottom对行级元素无效
+</code></pre><p><strong><br>选择器补充</strong></p>
+<pre><code>伪类选择器
+:hover
+当鼠标悬浮在标签上，使用此样式
+</code></pre><h1 id="JavaScript基础"><a href="#JavaScript基础" class="headerlink" title="JavaScript基础"></a>JavaScript基础</h1><h2 id="什么是JavaScript"><a href="#什么是JavaScript" class="headerlink" title="什么是JavaScript?"></a>什么是JavaScript?</h2><p>JavaScript是运行的客户端的解释性脚本语言。</p>
+<p>客户端是浏览器(包括:IE、Firefox、Chrome、Safari、Opera)</p>
+<p>解释性脚本是指程序语言的一种执行方式;</p>
+<p>JavaScript与Java之间不存在任何关系;</p>
+<p>JavaScript最早由网景公司在 1995 年发行的 Netscape Navigator 2.0 即将正式发布前，Netscape 将其更名为 JavaScript.</p>
+<p>Microsoft在其IE浏览器推出JScript与其抗衡.</p>
+<p>欧洲计算机制造商协会(ECMA)在借鉴JavaScript1.5的基础上推出</p>
+<p>ECMAScript,从而成为所有脚本语言的标准.</p>
+<p>ECMAScript(ES)最新的版本为ECMAScript-6(简称ES6)</p>
+<h2 id="JavaScript的语法结构"><a href="#JavaScript的语法结构" class="headerlink" title="JavaScript的语法结构"></a>JavaScript的语法结构</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+   ...
+   ...
+&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;JS文件路径及名称&quot;&gt;&lt;/script&gt;
+</code></pre><p>第一步:创建JS文件并且写入相关的代码;</p>
+<p>第二步:在网页文件内调用相关的JS文件;</p>
+<p>说明:</p>
+<pre><code>A.JS严格区分大小写;
+
+B.每行JS代码必须以分号结尾;
+
+C.JavaScript文件的扩展名为.js
+</code></pre><h2 id="变量-Varaible"><a href="#变量-Varaible" class="headerlink" title="变量(Varaible)"></a>变量(Varaible)</h2><p>变量是指存储在计算机内存中有名称的信息,其值在程序运行期间可以发生变化;</p>
+<p>声明变量</p>
+<p>var 变量名称;</p>
+<p>var 变量名称 = 值;</p>
+<h3 id="变量名称的命名规范"><a href="#变量名称的命名规范" class="headerlink" title="变量名称的命名规范"></a>变量名称的命名规范</h3><pre><code>A.变量名称必须以字母或下划线开头,包含字母、数字及下划线;
+
+B.变量名称禁止与系统关键字相同;
+
+C.变量名称必须遵守&quot;驼峰标记法&quot;;
+
+D.变量名称必须含义明确;
+</code></pre><h3 id="JavaScript关键字"><a href="#JavaScript关键字" class="headerlink" title="JavaScript关键字:"></a>JavaScript关键字:</h3><p>var、if、else、switch、case、break、default、for、while、function</p>
+<p>ECMAScript关键字:</p>
+<p>class、float、boolean、object、extends、public、protected、private、interface、abstract、implements</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="字符型-string"><a href="#字符型-string" class="headerlink" title="字符型(string):"></a>字符型(string):</h3><p>必须括在双引号或单引号之间;</p>
+<pre><code>转义符:
+\n,换行
+\r,回车
+\t,水平制表符
+\v,垂直制表符
+\f,换页(走纸)
+\\,反斜线
+\&apos;,单引号
+\&quot;,双引号
+</code></pre><h3 id="数值型-number"><a href="#数值型-number" class="headerlink" title="数值型(number)"></a>数值型(number)</h3><p>包括整型和浮点型,可以带有符号位,可存储八进制、十进制、十六进制的数字;</p>
+<p>八进制的表示方法为0[0-7]+</p>
+<p>十六进制的表示方法0[x|X][0-9a-fA-F]+</p>
+<h3 id="布尔型-boolean"><a href="#布尔型-boolean" class="headerlink" title="布尔型(boolean)"></a>布尔型(boolean)</h3><p>只能存储true或false</p>
+<h3 id="未定义-undefined"><a href="#未定义-undefined" class="headerlink" title="未定义(undefined)"></a>未定义(undefined)</h3><p>值只能为undefined</p>
+<pre><code>以下变量的值为undefined
+
+A.声明但没有赋值的变量;
+
+B.声明但赋值为undefined的变量;
+
+C.引用对象不存在的属性;
+</code></pre><h3 id="对象-object"><a href="#对象-object" class="headerlink" title="对象(object)"></a>对象(object)</h3><p>属性与方法的集合体;</p>
+<pre><code>{
+    propert:value,
+    ....,
+    method:function([parameter,...]){
+        ...
+        ...
+    }
+}
+</code></pre><h3 id="null-空对象"><a href="#null-空对象" class="headerlink" title="null(空对象)"></a>null(空对象)</h3><p>其作用是为断开继承链(原型链);</p>
+<h3 id="function-自定义函数"><a href="#function-自定义函数" class="headerlink" title="function(自定义函数)"></a>function(自定义函数)</h3><p>可以重复执行的代码段;</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="按作用划分"><a href="#按作用划分" class="headerlink" title="按作用划分"></a>按作用划分</h3><p>1 字符运算符: + </p>
+<p>2 数学运算符:+(正号)、-(负号)、*、/、%、+、-</p>
+<p>3 比较运算符:&gt;、&gt;=、==(等于)、!=(不等于)、===、!==(不全等)、&lt;=、&lt;</p>
+<p>  全等:(1)值相同(2)数据类型相同</p>
+<p>4 逻辑运算符:!、&amp;&amp;、||  </p>
+<p>  短路现象:在进行&amp;&amp;或||运算时,只有第一个表达式的值可以</p>
+<p>  确定整个表达式结果时,后续表达式将忽略执行;</p>
+<p>5 自增/自减运算符</p>
+<p>  i++、i–,后缀形式:先使用,后加减</p>
+<p>  ++i、–i,前缀形式:先加减,后使用</p>
+<p>6 赋值运算符:=、+=、-=、*=、/=、%=</p>
+<h3 id="按参加运算的操作数的数量"><a href="#按参加运算的操作数的数量" class="headerlink" title="按参加运算的操作数的数量"></a>按参加运算的操作数的数量</h3><ul>
+<li><p>单目运算符:只有一个操作数,如负数(-)、逻辑非(!)</p>
+</li>
+<li><p>双目运算符:有两个操作数,如加号(+)、大于(&gt;)等</p>
+</li>
+<li><p>三目运算符:expression ? value1 : value2</p>
+</li>
+</ul>
+<p><strong>运算符优先级</strong></p>
+<p>一、二、三、赋值</p>
+<p>算术、比较、逻辑</p>
+<p>案例:</p>
+<pre><code>var p = !true || 3 + 2 - 5 &lt;= 7
+        false || 3 + 2 - 5 &lt;= 7
+        false || 0 &lt;= 7
+        false || true
+        true
+</code></pre><h2 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h2><h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><pre><code>if(condition){
+   ...
+   ...
+}
+
+if(condition){
+    ...
+    ...
+} else {
+    ...
+    ...
+}
+
+if(condition){
+    ...
+} else if(condition){
+    ... 
+} else if(condition){
+    ...
+} ... else{
+    ...
+}
+</code></pre><h3 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h3><pre><code>switch(expression){
+    case 值1:
+       ...
+       break;
+    case 值2:
+       ...
+       break;
+    case N
+       break;
+    default:
+       ...
+       break;
+}
+</code></pre><p>说明:</p>
+<p>A. if语句的条件表达式只能为布尔型(可能存在数据类型的自动转换)</p>
+<p>   switch语句的表达式可以为任意数据类型(布尔除外)</p>
+<p>B. if语句每次执行时都将对变量进行取值操作;而switch只进行一次取值操作;</p>
+<p>C. switch语句进行全等运算;</p>
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>1 for语句</p>
+<pre><code>for(expr1;expr2;expr3){
+    ...
+}
+</code></pre><p>  说明:</p>
+<p>  expr1,在循环之前无条件执行一次,一般于变量初始化;</p>
+<p>  expr2,在循环前执行一次,以判断能否进入循环体;</p>
+<p>  expr3,在循环后执行一次,一般用于步长的计算;</p>
+<p>  for语句的表达式可以省略其中任何一个或全部;</p>
+<p>2 while语句</p>
+<pre><code>while(条件表达式){
+   ...
+   ...
+}
+</code></pre><p>  说明:</p>
+<p>  A.死循环:指条件永远为真的循环语句.</p>
+<p>  B.for语句和while语句同属”当型循环(先判断,后执行)”,所以可以互换;</p>
+<p>3 do…while循环</p>
+<pre><code>do{
+  ...
+  ...
+} while(条件表达式);
+</code></pre><p>  说明:</p>
+<p>  A.do…while是先执行,后判断;</p>
+<p>  B.do…while语句至少执行一次;而当型循环(for、while)至少执行零次;</p>
+<p>4 for…in语句</p>
+<pre><code>for(key in array){
+    ...
+    ...
+}
+</code></pre><p>5 break语句:结束switch及循环语句 </p>
+<p>6 continue语句:跳过当前的循环而进行下一次的循环</p>
+<h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><h3 id="String对象"><a href="#String对象" class="headerlink" title="String对象"></a>String对象</h3><h4 id="构建String对象"><a href="#构建String对象" class="headerlink" title="构建String对象"></a>构建String对象</h4><p>   直接量方式 </p>
+<p>   ‘string’或”string”</p>
+<p>   构造函数方式</p>
+<pre><code>new String(&apos;string&apos;)
+</code></pre><h4 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h4><p>   length</p>
+<p>   描述:返回字符串的长度</p>
+<p>   语法:int object.length</p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>   toLowerCase()</p>
+<p>   描述:将字符转换小写字母</p>
+<p>   语法:</p>
+<pre><code>string object.toLowerCase(void)
+</code></pre><hr>
+<p>   toUpperCase()</p>
+<p>   描述:将字符转换大写字母</p>
+<p>   语法：</p>
+<pre><code>string object.toUpperCase(void)
+</code></pre><hr>
+<p>   substr()</p>
+<p>   描述:截取字符串</p>
+<p>   语法:</p>
+<pre><code>string object.substr(int start[,int length])
+</code></pre><p>   说明:</p>
+<p>   A.字符串从0开始编号;</p>
+<p>   B.如果省略length参数,则返回到字符串结尾之间的字符</p>
+<p>   C.如果start参数为负数,则倒数;</p>
+<hr>
+<p>   substring</p>
+<p>   描述:截取字符串</p>
+<p>   语法:string object.substring(int start[,int end])</p>
+<p>   说明:</p>
+<p>   A.返回的字符串包含起始位,不包含结束位;</p>
+<p>   B.如果省略end参数,则返回到字符串结尾之间的字符;</p>
+<hr>
+<p>   indexOf()</p>
+<p>   描述:返回字符串第一次出现的位置,如果没有出现,则返回-1</p>
+<p>   语法:int object.indexOf(string)</p>
+<hr>
+<p>   lastIndexOf()</p>
+<p>   描述:返回字符串最后一次出现的位置,如果没有出现,则返回-1</p>
+<p>   语法:int object.lastIndexOf(string)</p>
+<hr>
+<p>   replace()方法</p>
+<p>   描述:字符串替换</p>
+<p>   语法:</p>
+<p>   string object.replace(string search,string replacement)</p>
+<p>   string object.replace(object RegExp,string replacement)</p>
+<hr>
+<p>   split()</p>
+<p>   描述:使用分隔符拆分字符串</p>
+<p>   语法:</p>
+<p>   array object.split(delimiter)</p>
+<p>   array object.split(RegExp)   </p>
+<h4 id="ES6新增方法"><a href="#ES6新增方法" class="headerlink" title="ES6新增方法"></a>ES6新增方法</h4><p>   trim()</p>
+<p>   描述:删除第一个之前及最后一个字符之后的空白</p>
+<p>   语法:string object.trim(void)</p>
+<hr>
+<p>   startsWith()</p>
+<p>   描述:检测字符是否以指字符开头</p>
+<p>   语法:bool object.startsWith(string)</p>
+<hr>
+<p>   endsWith()</p>
+<p>   描述:检测字符是否以指字符结尾</p>
+<p>   语法:bool object.endsWith(string)</p>
+<h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3><p>  Math对象是一个静态对象.</p>
+<h4 id="属性-2"><a href="#属性-2" class="headerlink" title="属性"></a>属性</h4><p>  Math.PI,圆周率</p>
+<p>  Math.SQRT2,2的平方根</p>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><p>  Math.ceil()</p>
+<p>  描述:进一取整</p>
+<p>  语法:number Math.ceil(number)</p>
+<hr>
+<p>  Math.floor()</p>
+<p>  描述:舍一取整</p>
+<p>  语法:number Math.floor(number)</p>
+<hr>
+<p>  Math.pow()</p>
+<p>  描述:幂运算</p>
+<p>  语法:number Math.pow(base,exp)</p>
+<hr>
+<p>  Math.sqrt()</p>
+<p>  描述:平方根</p>
+<p>  语法:number Math.sqrt(number)</p>
+<hr>
+<p>  Math.min()</p>
+<p>  描述:最小值</p>
+<p>  语法:number Math.min(num1,num2,…)</p>
+<hr>
+<p>  Math.max()</p>
+<p>  描述:最大值</p>
+<p>  语法:number Math.max(num1,num2,…)</p>
+<hr>
+<p>  Math.random()</p>
+<p>  描述:产生介于0~1之间的随机数(0&lt;=X&lt;1)</p>
+<p>  语法:number Math.random(void)</p>
+<hr>
+<p>  Math.round()</p>
+<p>  描述:四舍五入(仅保留到整数位置)</p>
+<p>  语法:number Math.round(number)</p>
+<h3 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h3><h4 id="构建Date对象"><a href="#构建Date对象" class="headerlink" title="构建Date对象"></a>构建Date对象</h4><p>   new Date()</p>
+<h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><p>   getYear()</p>
+<p>   描述:获取年份(从公元1900到现在经历的年份)</p>
+<p>   语法:int object.getYear(void)</p>
+<hr>
+<p>   getFullYear()</p>
+<p>   描述:获取年份</p>
+<p>   语法:int object.getFullYear(void)</p>
+<hr>
+<p>   getMonth()</p>
+<p>   描述:获取月份(取值范围为0~11)</p>
+<p>   语法:int object.getMonth(void)</p>
+<hr>
+<p>   getDate()</p>
+<p>   描述:获取日期(xx号)</p>
+<p>   语法:int object.getDate(void)</p>
+<hr>
+<p>   getDay()</p>
+<p>   描述:获取星期的第几天(0为星期日,依次类推)</p>
+<p>   语法:int object.getDay(void)</p>
+<hr>
+<p>   getHours()</p>
+<p>   描述:获取小数</p>
+<p>   语法:int object.getHours(void)</p>
+<hr>
+<p>   getMinutes()</p>
+<p>   描述:获取分钟数</p>
+<p>   语法:int object.getMinutes(void)</p>
+<hr>
+<p>   getSeconds()</p>
+<p>   描述:获取秒数</p>
+<p>   语法:int object.getSeconds(void)</p>
+<hr>
+<p>   getMilliseconds()</p>
+<p>   描述:获取毫秒</p>
+<p>   语法:int object.getMilliseconds(void)</p>
+<hr>
+<p>   getTime()</p>
+<p>   描述:返回从公元1970年到现在的毫秒数</p>
+<p>   语法:int object.getTime(void)</p>
+<hr>
+<p>   toUTCString()/toGMTString()</p>
+<p>   描述:将日期转换成UTC/GMT格式</p>
+<p>   语法:string object.toUTCString(void)</p>
+<pre><code>string object.toGMTString(void)
+</code></pre><h4 id="ES6新增的方法"><a href="#ES6新增的方法" class="headerlink" title="ES6新增的方法"></a>ES6新增的方法</h4><pre><code>Date.now() 静态方法
+
+描述:返回从公元1970年到现在的毫秒数
+
+语法:int Date.now(void)
+
+说明:该方法为静态方法
+</code></pre><h3 id="Array对象"><a href="#Array对象" class="headerlink" title="Array对象"></a>Array对象</h3><h4 id="构建Array对象"><a href="#构建Array对象" class="headerlink" title="构建Array对象"></a>构建Array对象</h4><p>   直接量方式</p>
+<p>   [value,…]</p>
+<p>   构造函数方式</p>
+<p>   new Array(length)</p>
+<p>   new Array(value,…)</p>
+<h4 id="属性-3"><a href="#属性-3" class="headerlink" title="属性"></a>属性</h4><p>   length</p>
+<p>   描述:获取数组成员的数量</p>
+<p>   语法:int object.length</p>
+<h4 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h4><p>   unshift()</p>
+<p>   描述:在数组的开头添加一个或多个成员,并返回数组的新长度</p>
+<p>   语法:int object.unshift(value,…)</p>
+<hr>
+<p>   push()</p>
+<p>   描述:在数组的未尾添加一个或多个成员,并返回数组的新长度</p>
+<p>   语法:int object.push(value,…)</p>
+<hr>
+<p>   shift() </p>
+<p>   描述:删除数组的第一个成员,并且返回该成员</p>
+<p>   语法:mixed object.shift(void)  </p>
+<hr>
+<p>   pop()</p>
+<p>   描述:删除数组的最后一个成员,并且返回该成员</p>
+<p>   语法:mixed object.pop(void)     </p>
+<hr>
+<p>   join()</p>
+<p>   描述:    将数组成员使用指定分隔符连接成字符串</p>
+<p>   语法:string object.join(delimiter)</p>
+<hr>
+<p>   isArray()</p>
+<p>   描述:判断是否为数组(静态方法) </p>
+<p>   语法:bool Array.isArray(obj)</p>
+<h4 id="数组遍历-–-forEach-语句"><a href="#数组遍历-–-forEach-语句" class="headerlink" title="数组遍历 – forEach()语句"></a>数组遍历 – forEach()语句</h4><pre><code>object.forEach(function(value[,index]){
+        ...
+        ...
+});
+</code></pre><h3 id="Regular-Expression对象-正则表达式对象"><a href="#Regular-Expression对象-正则表达式对象" class="headerlink" title="Regular Expression对象(正则表达式对象)"></a>Regular Expression对象(正则表达式对象)</h3><p>构建正则表达式对象</p>
+<p>  直接量方式</p>
+<p>  /正则表达式/修正符</p>
+<p>  构造函数方式</p>
+<p>  new RegExp(‘正则表达式’,’修正符’)</p>
+<p>正则表达式</p>
+<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p>   \d,匹配数字,等价于[0-9]</p>
+<p>   \D,匹配非数字,等价于[^0-9]</p>
+<p>   \s,匹配任意的空白字符,等价于[\n\r\t\v\f]</p>
+<p>   \S,匹配任意的非空白字符,等价于[^\n\r\t\v\f]</p>
+<p>   \w,匹配任意的字母、数字及下划线,等价于[0-9a-zA-Z_]</p>
+<p>   \W,匹配任意的非字母、数字及下划线,等价于[^0-9a-zA-Z_]</p>
+<p>   ., 匹配除换行外的任意字符</p>
+<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><p>   ?,出现零次或一次,等价于{0,1}</p>
+<p>   *,至少出现零次,等价于{0,}</p>
+<p>   +,至少出现一次,等价于{1,}</p>
+<p>   {m},出现m次</p>
+<p>   {m,},至少出现m次</p>
+<p>   {m,n},至少出现m次,至多n次(m&lt;=x&lt;=n)</p>
+<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p>   |,或者</p>
+<p>   ^,以指定字符开头</p>
+<p>   $,以指定字符结尾</p>
+<p>   […],表示在范围之内,如[0-9]</p>
+<p>   [^…],表示不在范围之内,如[^3-5]</p>
+<h4 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h4><p>   \n,换行</p>
+<p>   \r,回车</p>
+<p>   \t,水平制表符</p>
+<p>   \v,垂直制表符</p>
+<p>   \f,换页(走纸)</p>
+<p>   \,反斜线</p>
+<p>   .,点</p>
+<p>   |,竖线</p>
+<p>   *,星号</p>
+<p>   \?,问号</p>
+<h4 id="捕获组与非捕获组"><a href="#捕获组与非捕获组" class="headerlink" title="捕获组与非捕获组"></a>捕获组与非捕获组</h4><p>   (…)</p>
+<p>   (?:…)</p>
+<h4 id="修正符"><a href="#修正符" class="headerlink" title="修正符"></a>修正符</h4><p>   g(global),全局</p>
+<p>   i(ignore),忽略大小写</p>
+<p><strong>方法</strong></p>
+<p>  test()</p>
+<p>  描述:检测字符串是否符合正则表达式规范</p>
+<p>  语法:bool object.test(string)</p>
+<h1 id="前端编程"><a href="#前端编程" class="headerlink" title="前端编程"></a>前端编程</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><pre><code>DOM(Document Object Model),文档对象模型
+
+JavaScript由ECMAScript(简称ES)、DOM和BOM组成;
+
+ECMAScript:关键字、保留关键字、流程语句、数据类型、内置对象;
+
+DOM:提供操作HTML/XML文档相关的API;
+
+DOM由DOM Core、HTML DOM和XML DOM组成;
+
+DOM Core:提供处理HTML和XML文档的API;
+
+HTML DOM:提供处理HTML文档的API;
+
+XML DOM:提供处理XML文档的API;
+</code></pre><p><strong>在DOM树中一切皆节点;</strong></p>
+<h2 id="DOM节点"><a href="#DOM节点" class="headerlink" title="DOM节点"></a>DOM节点</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><pre><code>1,代表元素节点(指HTML标记)
+
+2,代表属性节点(指HTML标记的属性)
+
+3,代表文本节点(指纯文本)
+
+8,代表注释节点(指HTML注释)
+
+9,代表文档节点(指整个HTML文档)
+</code></pre><h3 id="节点的关系"><a href="#节点的关系" class="headerlink" title="节点的关系"></a>节点的关系</h3><p>子节点:一个节点是另一个节点的直接下一级节点;</p>
+<p>如</p>
+<pre><code>&lt;i&gt;&lt;b&gt;...&lt;/b&gt;&lt;/i&gt;
+</code></pre><p>父节点:一个节点是另一个节点的直接上一级节点;</p>
+<p>兄弟节点:同一个父节点的所有子节点</p>
+<h3 id="属性-4"><a href="#属性-4" class="headerlink" title="属性"></a>属性</h3><p>  <strong>nodeName</strong></p>
+<p>  描述:获取节点的名称</p>
+<p>  语法:string node.nodeName<br><strong><br>  nodeValue</strong></p>
+<p>  描述:获取节点值</p>
+<p>  语法:string node.nodeValue</p>
+<p>  <strong>nodeType</strong></p>
+<p>  描述:获取节点的类型</p>
+<p>  语法:int node.nodeType</p>
+<p>  <strong>childNodes</strong></p>
+<p>  描述:返回节点内所有的子节点形成的集合(数组)</p>
+<p>  语法:NodeList node.childNodes</p>
+<h3 id="方法-4"><a href="#方法-4" class="headerlink" title="方法"></a>方法</h3><p>  appendChild()</p>
+<p>  描述:追加子节点</p>
+<p>  语法:Node node.appendChild(node)                </p>
+<p>  说明:返回的是新插入的子节点</p>
+<hr>
+<p>  removeChild()</p>
+<p>  描述:删除子节点</p>
+<p>  语法:Node node.removeChild(node)</p>
+<h2 id="document对象-继承自Node"><a href="#document对象-继承自Node" class="headerlink" title="document对象(继承自Node)"></a>document对象(继承自Node)</h2><h3 id="属性-5"><a href="#属性-5" class="headerlink" title="属性"></a>属性</h3><p>  documentElement</p>
+<p>  描述:返回文档的根元素</p>
+<p>  语法:Element document.documentElement</p>
+<h3 id="方法-5"><a href="#方法-5" class="headerlink" title="方法"></a>方法</h3><p>  getElementById()</p>
+<p>  描述:根据对象ID来获取元素</p>
+<p>  语法:Element document.getElementById(string id)</p>
+<hr>
+<p>  createElement()</p>
+<p>  描述:创建元素节点</p>
+<p>  语法:Element document.createElement(string tagName)</p>
+<h2 id="Element对象-继承自Node"><a href="#Element对象-继承自Node" class="headerlink" title="Element对象(继承自Node)"></a>Element对象(继承自Node)</h2><h3 id="方法-6"><a href="#方法-6" class="headerlink" title="方法"></a>方法</h3><p>  getAttribute()</p>
+<p>  描述:获取属性值</p>
+<p>  语法:string Element.getAttribute(string name)</p>
+<hr>
+<p>  setAttribute()</p>
+<p>  描述:设置属性</p>
+<p>  语法:void Element.setAttribute(string name,string value)</p>
+<hr>
+<p>  removeAttribute()</p>
+<p>  描述:删除属性</p>
+<p>  语法:void Element.removeAttribute(string name)</p>
+<hr>
+<p>  hasAttribute()</p>
+<p>  描述:返回是否存在指定属性</p>
+<p>  语法:bool Element.hasAttribute(string name)</p>
+<h2 id="HTML-与-DOM"><a href="#HTML-与-DOM" class="headerlink" title="HTML 与 DOM"></a>HTML 与 DOM</h2><p> HTML DOM提供针对处理HTML文档的API.</p>
+<p><strong>1 选取对象</strong></p>
+<pre><code>Element document.getElementById(string id)
+
+NodeList document.getElementsByTagName(string tagName)
+
+NodeList Element.getElementsByTagName(string tagName)
+</code></pre><p><strong>2 属性控制</strong></p>
+<pre><code>A.对于单个单词的HTML标记属性即HTML DOM对象属性;
+
+B.对于合成词的HTML标记属性(如table标记的cellpading、cellspacing属性)在HTML DOM编程时,采用&quot;驼峰标记法&quot;命名(如cellPadding、cellSpacing)
+
+C.对于HTML标记的class属性,在HTML DOM编程时使用className取代;
+  (因为class是ECMAScript中的关键字)
+
+D.对于HTML标记的布尔属性(如单/复选框的checked、列表项的selected属性)在HTML DOM编程时采用boolean类型表示;
+
+E.在HTML DOM编程时,某些HTMLDOM对象有自己特有的属性/方法;
+
+F.HTML标记的style属性在HTML DOM编程时形成CSSStyleDeclaration/CSS2Properties对象;
+</code></pre><p><strong>3 HTMLDocument对象</strong></p>
+<p>  getElementsByName()方法</p>
+<p>  描述:获取文档中name属性相同的对象的组成的集合(数组)</p>
+<p>  语法:NodeList document.getElementsByName(string name)</p>
+<h3 id="Document对象"><a href="#Document对象" class="headerlink" title="Document对象"></a>Document对象</h3><h4 id="属性-6"><a href="#属性-6" class="headerlink" title="属性"></a>属性</h4><p><strong>title</strong></p>
+<p>描述:获取/设置标题栏信息</p>
+<p>语法: document.title = value 或 var 变量名称 = document.title</p>
+<p><strong>head</strong></p>
+<p>描述:获取文档的head对象</p>
+<p>语法:Element document.head</p>
+<p><strong>body</strong></p>
+<p>描述:获取文档的body对象</p>
+<p>语法:Element document.body</p>
+<p><strong>images</strong></p>
+<p>描述:返回文档中所有的图像组成的集合(数组)</p>
+<p>语法:NodeList document.images</p>
+<p><strong>forms</strong></p>
+<p>描述:返回文档中所有的表单组成的集合(数组)</p>
+<p>语法:NodeList document.forms</p>
+<p><strong>links</strong></p>
+<p>描述:返回文档中所有的<link>标记组成的集合(数组)</p>
+<p>语法:NodeList document.links</p>
+<p><strong>anchors</strong></p>
+<pre><code>描述:返回文档中所有的&lt;a&gt;标记组成的集合(数组)
+
+语法:NodeList document.anchors
+</code></pre><hr>
+<h4 id="方法-7"><a href="#方法-7" class="headerlink" title="方法"></a>方法</h4><p><strong>querySelectorAll()</strong></p>
+<p>描述:返回由使用指定的CSS选择器的对象组成的集合(数组)</p>
+<p>语法:NodeList document.querySelectorAll(selector)</p>
+<p>说明:该方法支持所有CSS3选择器</p>
+<p><strong>querySelector()</strong></p>
+<p>描述:返回由使用指定的CSS选择器的对象的第一个元素</p>
+<p>语法:Element document.querySelector(selector)</p>
+<h3 id="Element对象"><a href="#Element对象" class="headerlink" title="Element对象"></a>Element对象</h3><p><strong>属性</strong></p>
+<p>tagName</p>
+<p>描述:获取元素的标记名称</p>
+<p>语法:string Element.tagName</p>
+<p><strong>方法</strong></p>
+<p>querySelector()</p>
+<p>描述:返回由使用指定的CSS选择器的对象的第一个元素</p>
+<p>语法:Element  Element.querySelector(selector)</p>
+<p>querySelectorAll()</p>
+<p>描述:返回由使用指定的CSS选择器的对象组成的集合(数组)</p>
+<p>语法:NodeList Element.querySelectorAll(selector)</p>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><h3 id="BOM定义"><a href="#BOM定义" class="headerlink" title="BOM定义"></a>BOM定义</h3><p>BOM(Browser Object Model),浏览器对象模型,提供与浏览器相关的API.</p>
+<p>  window对象是BOM的顶级对象,代表浏览器窗口或iframe或frame.</p>
+<h3 id="属性-7"><a href="#属性-7" class="headerlink" title="属性"></a>属性</h3><p>  document 描述:返回HTMLDocument对象</p>
+<p>  history  描述:返回History对象</p>
+<p>  screen 描述:返回Screen对象</p>
+<p>  navigator 描述:返回Navigator对象</p>
+<p>  location 描述:返回Location对象</p>
+<p>  Math 描述:返回Math对象</p>
+<h3 id="方法-8"><a href="#方法-8" class="headerlink" title="方法"></a>方法</h3><p>  alert()方法</p>
+<p>  描述:弹出警示对话框(只有一个确定按钮)</p>
+<p>  语法:window.alert(string)</p>
+<hr>
+<p>  confirm()方法</p>
+<p>  描述:弹出询问对话框(有确定和取消两个按钮)</p>
+<p>  语法:bool window.confirm(string)</p>
+<hr>
+<p>  setInterval()</p>
+<p>  描述:每间隔指定的时间执行相关的代码(重复执行)</p>
+<p>  语法:int window.setInterval(function,milliseconds)</p>
+<hr>
+<p>  clearInterval()</p>
+<p>  描述:清除由setInterval()设置的timeId</p>
+<p>  语法:window.clearInterval(int timeId)</p>
+<hr>
+<p>  setTimeout()  </p>
+<p>  描述:间隔指定的时间后执行相关的代码(执行一次)</p>
+<p>  语法:int window.setTimeout(function,milliseconds)</p>
+<hr>
+<p>  clearTimeout()</p>
+<p>  描述:清除由setTimeout()设置的timeId</p>
+<p>  语法:window.clearTimeout(int timeId)</p>
+<hr>
+<p>  parseInt()</p>
+<p>  描述:转换成整数</p>
+<p>  语法:int parseInt(value)</p>
+<hr>
+<p>  parseFloat()</p>
+<p>  描述:转换成浮点数</p>
+<p>  语法:int parseFloat(value)</p>
+<hr>
+<p>  isNaN()</p>
+<p>  描述:检测值是否为NaN(Not a Number)</p>
+<p>  语法:bool isNaN(value)</p>
+<h3 id="Location对象"><a href="#Location对象" class="headerlink" title="Location对象"></a>Location对象</h3><p>  href属性</p>
+<p>  描述:获取/设置地址栏中的地址信息</p>
+<p>  语法:</p>
+<p>  location.href = string</p>
+<p>  var 变量名称 = location.href</p>
+<p>  search属性</p>
+<p>  描述:获取地址栏”?”以后所有的参数</p>
+<p>  语法:string location.search</p>
+<p>  reload()</p>
+<p>  描述:重新加载文档</p>
+<p>  语法:location.reload(void)</p>
+<h3 id="Screen对象"><a href="#Screen对象" class="headerlink" title="Screen对象"></a>Screen对象</h3><p>  width属性</p>
+<p>  描述:获取显示分辨率宽度</p>
+<p>  语法:number screen.width</p>
+<p>  height</p>
+<p>  描述:获取显示分辨率高度</p>
+<p>  语法:number screen.height</p>
+<h3 id="History对象"><a href="#History对象" class="headerlink" title="History对象"></a>History对象</h3><p>  back()</p>
+<p>  描述:后退一步</p>
+<p>  语法:history.back(void)</p>
+<p>  forward()</p>
+<p>  描述:前进一步</p>
+<p>  语法:history.forward(void)</p>
+<p>  go()</p>
+<p>  描述:前进/后退</p>
+<p>  语法:history.go(number)</p>
+<p>  说明:如果为负数,则后退;否则前进;</p>
+<p>  history.back() 等价于 history.go(-1)</p>
+<p>  history.forward() 等价于 history.go(1)  </p>
+<h3 id="Navigator对象"><a href="#Navigator对象" class="headerlink" title="Navigator对象"></a>Navigator对象</h3><p>  userAgent属性(简称UA)</p>
+<p>  描述:返回代理器信息</p>
+<p>  语法:string navigator.userAgent</p>
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>JSON基础</p>
+<p>  JSON(JavaScript Object Notation),是一种轻量级的数据交换格式;</p>
+<p>  JSON的官网  <a href="http://www.json.org" target="_blank" rel="noopener">http://www.json.org</a></p>
+<p>JSON支持的数据格式</p>
+<p>  数组:[value,….]</p>
+<p>  对象:{property:value,….}</p>
+<h2 id="jQuery操作DOM"><a href="#jQuery操作DOM" class="headerlink" title="jQuery操作DOM"></a>jQuery操作DOM</h2><h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><pre><code>语法：$(&quot;创建的完整标记&quot;);
+ex:
+    1、创建一对div元素
+        var $div = $(&quot;&lt;div&gt;&lt;/div&gt;&quot;);
+        $div.html(&quot;&lt;h1&gt;...&lt;/h1&gt;&quot;);
+        $div.attr(&quot;id&quot;,&quot;container&quot;);
+    2、创建一个图像标记
+        var $img = $(&quot;&lt;img&gt;&quot;);
+        $img.attr(&quot;src&quot;,&quot;img/a.jpg&quot;);
+</code></pre><h3 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h3><pre><code>1、内部插入
+    作为子元素插入到网页中
+    1、$obj.append($new);
+        将$new元素追加到$obj元素的尾部(最后一个子元素)
+    2、$obj.prepend($new);
+        将$new元素添加到$obj元素的头部(第一个子元素)
+2、外部插入
+    作为兄弟元素插入到网页中
+    1、$obj.before($new)
+        将$new作为$obj的上一个兄弟元素插入进来
+    2、$obj.after($new)
+        将$new作为$obj的下一个兄弟元素插入进来
+</code></pre><h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><pre><code>1、remove()
+    语法：$obj.remove();
+    作用：删除 $obj 元素
+2、remove(&quot;selector&quot;)
+    语法：$obj.remove(&quot;selector&quot;);
+    作用：将满足 selector 选择器的元素删除出去
+3、empty()
+    语法：$obj.empty()
+    作用：清空$obj内的内容
+</code></pre><h3 id="遍历节点"><a href="#遍历节点" class="headerlink" title="遍历节点"></a>遍历节点</h3><pre><code>1、children() / children(selector)
+    作用：获取某对象中的子元素(只考虑元素节点)或满足selector选择器的子元素(只考虑元素节点)。
+    注意：只能获取子元素，不能获取后代元素
+2、next() / next(selector)
+    作用：获取某对象的下一个兄弟元素 / 满足selector的下一个兄弟元素
+3、prev() / prev(selector)
+    作用：获取某对象的上一个兄弟元素 / 满足selector的上一个兄弟元素
+4、siblings() / siblings(selector)
+    作用：获取某对象的所有兄弟元素 / 满足selector的兄弟元素
+5、find(selector)
+    查找满足selector选择器的所有后代元素
+6、parent()
+    作用：获取某对象的父元素
+</code></pre><h3 id="jQuery事件处理"><a href="#jQuery事件处理" class="headerlink" title="jQuery事件处理"></a>jQuery事件处理</h3><h4 id="页面加载后的执行"><a href="#页面加载后的执行" class="headerlink" title="页面加载后的执行"></a>页面加载后的执行</h4><pre><code>在DOM树加载完成后就要执行的操作
+1、
+    $(document).ready( function(){
+        //页面的初始化操作
+        //DOM树加载完毕后就开始运行
+    } );
+
+2、
+    $().ready( function(){
+
+    } );
+3、
+    $( function(){
+
+    });
+</code></pre><h4 id="jQuery的事件绑定"><a href="#jQuery的事件绑定" class="headerlink" title="jQuery的事件绑定"></a>jQuery的事件绑定</h4><pre><code>1、方式1
+    $obj.bind(&quot;事件名称&quot;,事件处理函数);
+
+    ex:
+        $obj.bind(&quot;click&quot;,function(){
+            alert(&quot;单击事件&quot;);
+        });
+
+2、方式2
+    $obj.事件名称(事件处理函数);
+
+    ex:
+        $obj.click(function(){
+
+        });
+
+注意：
+    在事件处理函数中，允许使用 this 来表示触发当前事件的DOM对象
+</code></pre><h4 id="事件参数对象-事件对象"><a href="#事件参数对象-事件对象" class="headerlink" title="事件参数对象(事件对象):"></a>事件参数对象(事件对象):</h4><pre><code>1、获取事件对象
+    1、
+        &lt;button onclick=&quot;btnClick(event)&quot;&gt;&lt;/button&gt;
+
+        function btnClick(event){
+
+        }
+    2、
+        &lt;button id=&quot;btnTest&quot;&gt;&lt;/button&gt;
+
+        var btn = document.getElementById(&quot;btnTest&quot;);
+        btn.onclick = function(event){
+            event : 表示当前事件的事件对象
+        }
+
+
+2、事件对象的属性
+    1、offsetX
+        获取鼠标所操作的点的 横坐标值
+    2、offsetY
+        获取鼠标所操作的点的 纵坐标值
+    3、target
+        获取事件源(事件所在的元素)
+</code></pre><p><strong>this:</strong><br>1、this 在全局函数中，永远都表示的是 window 对象<br>2、this 在局部函数中，表示都是函数的所有者<br>    btn.onclick = function(){<br>        this:表示的就是函数的所有者 -&gt; btn </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/10/网络通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/10/网络通信/" itemprop="url">网络通信</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T18:53:02+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  17,530 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  71 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><p>网络起源 （了解）</p>
+<p>网络目的 ： 数据的传输</p>
+<p>ISO ： 国际标准化组织</p>
+<h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p>—-》 网络通信的标准化流程</p>
+<p><strong>应用层 ： 提供用户服务，具体的内容由特定程序规定<br>表示层 ： 数据的压缩优化加密<br>会话层 ： 建立应用连接，选择传输层服务<br>传输层 ： 提供数据传输服务，流量控制<br>网络层 ： 路由选择，网络互连<br>链路层 ： 提供链路交换，具体的消息的发送<br>物理层 ： 物理硬件，接口 网卡的规定 </strong></p>
+<p><strong>osi模型优点</strong> ：<br> 将功能分开，降低网络传输中的耦合度每一部分完成自己的功能，开发更加清晰专一</p>
+<p><strong>四层模型</strong></p>
+<ul>
+<li>应用层 ：  应用层 表示层  会话层</li>
+<li>传输层 ：  传输层</li>
+<li>网络层 ：  网络层</li>
+<li>物理链路层：   链路层  物理层</li>
+</ul>
+<p><strong>五层模型（tcp/ip模型）</strong></p>
+<ul>
+<li>应用层 ：  应用层 表示层  会话层</li>
+<li>传输层 ：  传输层</li>
+<li>网络层 ：  网络层</li>
+<li>链路层 ：  链路层  </li>
+<li>物理层 ：  物理层</li>
+</ul>
+<p><strong>要求 ： </strong></p>
+<p>能够按顺序说出七层模型 五层和四层模型<br>知道每一层是什么作用<br>对网络消息传输流程有基本了解</p>
+<p><strong>协议 ：</strong><br>网络通信中，各方必须遵守的规定。包括建立什么样的连接，消息结构等。</p>
+<ul>
+<li>应用层 ： TFTP  HTTP  DNS  SMTP</li>
+<li>传输层 ： TCP  UDP</li>
+<li>网络层 ： IP</li>
+<li>物理层 ： IEEE</li>
+</ul>
+<p>网络相关概念</p>
+<p><strong>主机 ：</strong> host  表示一台计算机</p>
+<p>本地使用 ：  ‘localhost’<br> ‘’<br> ‘127.0.0.1’<br>网络使用 ： ‘0.0.0.0’<br> ‘172.60.50.60’  本机ip地址，自己的电脑可以ipconfig或者ifconfig查看</p>
+<p><strong>获取计算机名：</strong><br>In [2]: socket.gethostname()<br>Out[2]: ‘godshion’</p>
+<p>通过计算机名获取地址：<br>In [3]: socket.gethostbyname(‘godshion’)<br>Out[3]: ‘127.0.1.1’</p>
+<p><strong>IP地址</strong></p>
+<p>在网络上确定一台主机的地址<br>IPv4 ：点分十进制 比如 192.168.1.72  0–255<br>   32位二级制表示</p>
+<p>IPv6 ： 128位二进制</p>
+<p>查看本机Ip方法<br>windows    cmd.exe 窗口 –&gt; ipconfig<br>linux      查看本机地址 ifconfig</p>
+<p><strong>网络连接测试</strong><br>ping  172.60.50.60</p>
+<p>特殊IP<br>127.0.0.1   本地测试IP<br>0.0.0.0    使用局域网内可用的IP<br>192.168.1.0  表示当前网段<br>192.168.1.1  通常是网络节点设备的IP （网关）<br>192.168.1.255  广播地址</p>
+<p>通过域名获取服务器信息<br> socket.gethostbyaddr(‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">www.baidu.com&#39;</a>)<br>(‘127.0.0.1’, [],    [‘119.75.213.61’])<br>   主机     主机别名   主机IP</p>
+<p>将点分十进制IP转换为二进制<br>In [11]: socket.inet_aton(‘192.168.1.2’)<br>Out[11]: b’\xc0\xa8\x01\x02’<br>将二进制转换为点分十进制IP<br>In [12]: socket.inet_ntoa(b’\xc0\xa8\x01\x02’)<br>Out[12]: ‘192.168.1.2’</p>
+<p>功能 ： 同上面两个完全相同。只是可以选择地址类型<br>inet_pton（socket.AF_INET,’192.168.1.2’）<br>inet_ntop（）</p>
+<p>域名： 网络服务器地址的网络名称</p>
+<p>端口号 ： 端口号是网络地址的一部分，在一个系统中 每个网络应用都会有一个端口号相对应。用来在接收消息时确定由谁来接收</p>
+<p>范围 ： 1–65535<br>1–255 一些通用的众所周知程序占用<br>256-1023  系统应用端口<br>1024 — 65535   自用   &gt;10000 </p>
+<p><strong>获取应用端口：</strong><br>In [16]: socket.getservbyname(‘mysql’)<br>Out[16]: 3306</p>
+<p>字节序<br>数据在内存中的存储解析方式，不同操作系统可能不同</p>
+<p>网络字节序 ： 不同的操作系统在消息收发时均按照该标准操作。</p>
+<p>传输层服务</p>
+<p>面向连接的传输服务  —-&gt; </p>
+<h2 id="tcp协议-面向连接的传输服务"><a href="#tcp协议-面向连接的传输服务" class="headerlink" title="tcp协议   面向连接的传输服务"></a>tcp协议   面向连接的传输服务</h2><p><strong>传输特征：</strong></p>
+<ul>
+<li>可靠的数据传输</li>
+<li>可靠性指数据传输中 无失序 无差错 无丢失  无重复</li>
+<li>所有消息传输前一定会建立连接，传输后一定会断开连接</li>
+</ul>
+<p><strong>三次握手：</strong><br>在进行面向连接的数据传输前进行传输连接的过程</p>
+<ol>
+<li>客户端向服务器发送连接请求（问是否可以连接）</li>
+<li>服务器接收到连接请求进行确认，返回报文</li>
+<li>客户端收到回复，进行连接建立</li>
+</ol>
+<p><strong>四次挥手：</strong><br>在进行面向连接的数据传输时，断开连接的过程</p>
+<ol>
+<li>主动方发送报文 告知被动方要断开连接</li>
+<li>被动方返回报文，告知收到请求，准备断开</li>
+<li>被动方再次发送报文给主动方，告知准备完毕可以断开</li>
+<li>主动方发送报文进行断开</li>
+</ol>
+<p>应用情况 ：适用于传输较大的内容或文件，网络情况良好，需要保证传输可靠性的情况<br>比如 ： 聊天信息，文件的上传下载，邮件传输 网页获取</p>
+<h2 id="udp协议-面向无连接的传输服务"><a href="#udp协议-面向无连接的传输服务" class="headerlink" title="udp协议  面向无连接的传输服务"></a>udp协议  面向无连接的传输服务</h2><p><strong>传输特点：</strong></p>
+<ul>
+<li>不保证可靠的数据传输</li>
+<li>没有连接过程</li>
+<li>数据的收发都比较自由，不会受另一端制约</li>
+</ul>
+<p>适用情况： 网络情况较差，对传输可靠情形要求不高。需要提升传输效率的情况<br>比如 ： 网络视频，群聊，发送广播</p>
+<p><strong>问题总结：</strong></p>
+<ol>
+<li>osi模型问题</li>
+<li>三次握手四次挥手问题</li>
+<li>tcp和udp的区别</li>
+</ol>
+<h2 id="socket套接字编程"><a href="#socket套接字编程" class="headerlink" title="socket套接字编程"></a>socket套接字编程</h2><p>目的 : 通过编程语言提供的函数接口进行组合，更简单的完成基于 tcp 或者udp通信的网路编程</p>
+<p>套接字 ： 完成上述目标的一种编程方法</p>
+<p>套接字分类</p>
+<p>流式套接字（SOCK_STREAM）: 传输层基于tcp的协议进行通信</p>
+<p>数据报套接字 （SOCK_DGRAM）：传输层基于udp协议进行通信</p>
+<p>底层套接字 （SOCK_RAM）:访问底层协议的套接字</p>
+<h2 id="TCP服务端"><a href="#TCP服务端" class="headerlink" title="TCP服务端"></a>TCP服务端</h2><h3 id="1-创建套接字"><a href="#1-创建套接字" class="headerlink" title="1. 创建套接字"></a>1. 创建套接字</h3><pre><code>import  socket
+socket.socket(socket_family = AF_INET，
+              socket_type = SOCK_STREAM,
+                            proto = 0)
+</code></pre><p>功能 ： 创建一个套接字<br>参数 ： socket_family  : 选择地址族类型 AF_INET<br>socket_type ：套接字类型 SOCK_STREAM 流式 SOCK_DGRAM 数据报<br>proto ：子协议类型，没有子协议选择 0<br>返回值 ： 套接字对象</p>
+<h3 id="2-绑定地址（IP-端口号）"><a href="#2-绑定地址（IP-端口号）" class="headerlink" title="2. 绑定地址（IP 端口号）"></a>2. 绑定地址（IP 端口号）</h3><pre><code>sockfd.bind()
+</code></pre><p>功能 ： 绑定地址<br>参数 ：<br>一个元组包含两项<br>第一项为IP<br>第二项为端口号（’172.60.50.50’,8888）</p>
+<h3 id="3-将套接字设置可监听"><a href="#3-将套接字设置可监听" class="headerlink" title="3. 将套接字设置可监听"></a>3. 将套接字设置可监听</h3><pre><code>sockfd.listen(n)
+</code></pre><p>功能 ： 将套接字设置为监听套接字<br>参数 ： n是一个正整数 表示监听等待队列的大小</p>
+<h3 id="4-等待接收连接请求"><a href="#4-等待接收连接请求" class="headerlink" title="4. 等待接收连接请求"></a>4. 等待接收连接请求</h3><pre><code>connfd,addr = sockfd.accept()
+</code></pre><p>功能： 阻塞等待处理客户端连接<br>返回值 ：<br>第一个 ： 一个新的套接字用来和客户端通信<br>第二个 ： 连接的客户端的地址</p>
+<p><strong>阻塞函数：</strong>程序运行到阻塞函数的位置，如果某种期待条件没有达成则暂停继续运行。当条件达成后会结束阻塞继续运行。</p>
+<h3 id="5-收发消息"><a href="#5-收发消息" class="headerlink" title="5. 收发消息"></a>5. 收发消息</h3><pre><code>data = connfd.recv(buffersize)
+</code></pre><p>功能 ： 流式套接字接收消息<br>参数 ： 一次最多接收多大的消息  字节<br>返回值 ： 返回接收到的内容</p>
+<pre><code>n = connfd.send(data)
+</code></pre><p>功能 ： 流式套接字发送消息<br>参数 ： 要发送的内容  要求bytes格式<br>返回值 ： 返回实际发送的字节数</p>
+<h3 id="6-关闭套接字"><a href="#6-关闭套接字" class="headerlink" title="6. 关闭套接字"></a>6. 关闭套接字</h3><pre><code>close（）
+</code></pre><p>功能：关闭套接字 tcp套接字连接断开</p>
+<h2 id="tcp-客户端"><a href="#tcp-客户端" class="headerlink" title="tcp 客户端"></a>tcp 客户端</h2><h3 id="1-创建套接字-1"><a href="#1-创建套接字-1" class="headerlink" title="1. 创建套接字"></a>1. 创建套接字</h3><pre><code>socket()
+</code></pre><h3 id="2-请求连接"><a href="#2-请求连接" class="headerlink" title="2. 请求连接"></a>2. 请求连接</h3><pre><code>connect()
+</code></pre><p>功能： 发起连接请求<br>参数： 是一个元组，表示服务器的地址</p>
+<h3 id="3-消息收发"><a href="#3-消息收发" class="headerlink" title="3. 消息收发"></a>3. 消息收发</h3><pre><code>recv()  send()
+</code></pre><h3 id="4-关闭套接字"><a href="#4-关闭套接字" class="headerlink" title="4. 关闭套接字"></a>4. 关闭套接字</h3><pre><code>close()
+</code></pre><p>服务器端示例代码<br>        import socket</p>
+<pre><code># from select_word import *
+
+HOST  = &apos;127.0.0.1&apos;
+PORT = 10889
+
+# 创建套接字
+s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)#param3: proto = 0
+#这里设置端口重用，不然每次按ctrl+c取消程序的时候会出现端口被占用的错误
+s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+# socket_family = socket.AF_INET 选择地址族类型，AF_INET 是选择的ipv4
+# socket_type = socket.SOCK_STREAM　套接字类型　　SOCK_STREAM是tcp协议
+# proto 通常为０　子协议类型
+# 返回一个套接字对象
+
+# 绑定地址
+s.bind((HOST,PORT))
+# 参数只有一个，是二个元素的元组，分别为ip port
+
+# 将套接字设置可监听
+s.listen(1)
+# 参数ｎ表示将听扽该队列的大小
+
+# 等待接收请求
+conn,addr = s.accept()
+# 阻塞等待处理客户端连接，如果某种期待条件没有达成则暂停运行，条件达成继续运行
+# 返回一个新的套接字用来和客户端通讯
+# 连接的客户端的地址
+print(&quot;client&apos;s Address:&quot;,addr)
+# 收发消息
+# while True:
+    # 流式套接字接收消息，依次最多接收多大字节的消息，返回接收到的内容
+while True:
+    data = conn.recv(1024).decode(&quot;utf-8&quot;) 
+    #recv函数在一方断开连接的情况下，会立即结束阻塞状态，并返回一个空字符串
+    if not data :
+        break
+    print(&quot;Receive data: &quot;,data)
+    # 流式套接字发送消息，参数是发送的内容，要求是bytes格式，返回发送的字节数量
+
+    # result = searchword(data)
+    # print(result)
+    # conn.send(str(result).encode(&quot;utf-8&quot;)) 
+    conn.send(data.encode(&quot;utf-8&quot;)) 
+    #broken pipe　管道破裂．　
+    #1,如果一端不存在，另一方还在企图发送消息时产生brokenpipeerrot
+# 关闭套接字，连接断开
+conn.close()
+</code></pre><p>客户端代码：<br>        import socket<br>        HOST = “127.0.0.1”<br>        PORT = 10889</p>
+<pre><code># 创建套接字
+s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+#这里设置端口重用，不然每次按ctrl+c取消程序的时候会出现端口被占用的错误
+s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+
+# 创建连接
+s.connect((HOST,PORT))
+# 发起连接请求，参数是一个元组，表示服务器的地址　
+
+data = &quot;hello&quot;
+# s.send(&apos;aaa&apos;.encode(&quot;utf-8&quot;))
+while data:
+    # 消息收发
+    s.send(data.encode(&quot;utf-8&quot;))
+    data = s.recv(512)
+    print(&apos;recv data is: &apos;,data)
+    data = input(&apos;please input:  &apos;)
+
+
+# 关闭套接字
+s.close()
+</code></pre><p>运行结果<br>        ~/桌面/web/tcp$ python3 server.py<br>        client’s Address: (‘127.0.0.1’, 52826)<br>        Receive data:  hello<br>        Receive data:  aaa<br>        Receive data:  bbb<br>        Receive data:  ccc<br>        Receive data:  ddd</p>
+<pre><code>~/桌面/web/tcp$ python3 client.py 
+recv data is:  b&apos;hello&apos;
+please input:  aaa
+recv data is:  b&apos;aaa&apos;
+please input:  bbb
+recv data is:  b&apos;bbb&apos;
+please input:  ccc
+recv data is:  b&apos;ccc&apos;
+please input:  ddd
+recv data is:  b&apos;ddd&apos;
+please input:
+</code></pre><p>作业 ： </p>
+<ol>
+<li>口述 什么是七层模型，tcp/ip模型<br>三次握手和四次挥手的过程<br>tcp协议的传输和udp协议的传输有何区别</li>
+<li>将tcp程序改写为一个通过循环可连续收发消息的程序</li>
+</ol>
+<h3 id="recv-特性"><a href="#recv-特性" class="headerlink" title="recv() 特性"></a>recv() 特性</h3><ol>
+<li>如果连接双方断开连接，则recv会立即结束阻塞返回空字符串</li>
+<li>当接收缓冲区为空的时候会阻塞</li>
+<li>如果recv一次接收不完缓存去内容，下一次会继续接收</li>
+</ol>
+<h3 id="send（）特性"><a href="#send（）特性" class="headerlink" title="send（）特性"></a>send（）特性</h3><ol>
+<li>如果一段不存在，另一端还在试图send操作时会产生BrokenPipeError异常</li>
+<li>当发送缓冲区慢的时候会阻塞</li>
+</ol>
+<h3 id="网络收发缓冲区"><a href="#网络收发缓冲区" class="headerlink" title="网络收发缓冲区"></a>网络收发缓冲区</h3><p>发送和接收消息均先放到缓冲区中，在进行处理<br>即 recv和send实际是从缓冲区接收内容，向缓冲区发送消息</p>
+<h3 id="tcp粘包"><a href="#tcp粘包" class="headerlink" title="tcp粘包"></a>tcp粘包</h3><p><strong>产生原因：</strong><br>tcp传输中以字节流的方式发送内容，发送的消息之间没有明显的边界，此时如果发送和接收速度不匹配就会产生粘包</p>
+<p>影响 ： 如果每次发送的内容表示一个独立的意思此时可能需要处理粘包。如果发送的内容本身就是连续的整体，此时不需要处理粘包</p>
+<p><strong>如何处理：</strong></p>
+<ol>
+<li>每次发送后加一个结尾标志</li>
+<li>发送一个数据结构</li>
+<li>每次发送中间有一个短暂的延迟</li>
+</ol>
+<h2 id="基于udp的服务端"><a href="#基于udp的服务端" class="headerlink" title="基于udp的服务端"></a>基于udp的服务端</h2><ol>
+<li>创建套接字 —》 数据报套接字<br> sockfd = socket(AF_INET,SOCK_DGRAM)</li>
+<li>绑定服务端地址<br> sockfd.bind()</li>
+<li><p>消息的收发<br> data，addr = recvfrom(buffersize)<br> 功能 ： 接收UDP消息<br> 参数 ： 每次最多接收消息的大小<br> 返回值 ： 接收到的内容 </p>
+<pre><code>接收到的消息的发送者
+</code></pre><p> recvfrom 一次接收一个数据包，如果数据包超出了一次能够接收的大小则会丢失没有收到的内容</p>
+<p> sendto(data，addr)<br> 功能 ： udp发送消息<br> 参数 ： data  要发送的内容  bytes</p>
+<pre><code>addr  消息要发送给谁
+</code></pre><p> 返回值 ： 发送的字节</p>
+</li>
+<li><p>关闭套接字<br> sockfd.close()</p>
+</li>
+</ol>
+<p><em>小贴士： </em><br><em>sys.argv<br>功能 ： 获取来自命令行的参数，形成一个列表<br>argv[0]是命令本身 其他内容默认以空格分割放到列表中</em></p>
+<h3 id="tcp流式套接字和udp数据报套接字使用区别"><a href="#tcp流式套接字和udp数据报套接字使用区别" class="headerlink" title="tcp流式套接字和udp数据报套接字使用区别"></a>tcp流式套接字和udp数据报套接字使用区别</h3><ol>
+<li>流式套接字采用字节流的方式传输，而数据报套接字以数据包形式传输</li>
+<li>tcp会产生粘包现象，udp不会</li>
+<li>tcp编程保证传输的可靠性，udp则不保证</li>
+<li>tcp需要listren accept ，udp不需要</li>
+<li>tcp使用recv  send进行消息收发，udp使用recvfrom和sendto</li>
+</ol>
+<p>补充：<br><strong>sendall（）</strong><br>功能参数： 同send<br>返回值 ： 发送成功返回None  发送失败返回异常</p>
+<h2 id="套接字对象"><a href="#套接字对象" class="headerlink" title="套接字对象"></a>套接字对象</h2><p>(s表示一个套接字对象)</p>
+<ul>
+<li><p>s.fileno()<br>功能 ： 获取套接字的文件描述符<br>文件描述符 ：每一个IO 事件操作系统都会分配一个不同的正数与之匹配，该正数即为此IO操作的文件描述符<br>sys.stdin    0<br>sys.stdout   1<br>sys.stderr   2</p>
+</li>
+<li><p>s.type : 获取套接字类型</p>
+</li>
+<li><p>s.family: 地址类型</p>
+</li>
+<li><p>s.getsockname()<br>功能 ： 获取套接字绑定的地址</p>
+</li>
+<li><p>s.getpeername()<br>功能 ： 用户连接套接字，获取连接端的地址</p>
+</li>
+<li><p>s.setsockopt(level,optname,value)<br>功能 ： 设置套接字选项 丰富修改原有套接字功能<br>参数：<br>level ： 设置选项的类型 IPPROTP_TCP  IPPROTO_IP  SOL_SOCKET<br>optname： 选项类型中的子选项<br>value ： 为选定的选项设置值</p>
+</li>
+<li><p>s.getsockopt(level,optname)<br>功能 ： 获取套接字选项值<br>参数：  level ： 获取选项的类型 IPPROTP_TCP  IPPROTO_IP SOL_SOCKET<br>optname： 选项类型中的子选项<br>返回值 ： 获取到的值</p>
+</li>
+</ul>
+<h2 id="udp套接字应用之广播"><a href="#udp套接字应用之广播" class="headerlink" title="udp套接字应用之广播"></a>udp套接字应用之广播</h2><p>特点：一点发送多点接收<br>目标地址 ：广播地址 一个网段内最大的地址<br>172.60.50.<strong>255</strong></p>
+<p><em>小贴士：<br>format()<br>功能 ： 字符串属性函数 用来组合字符串</em></p>
+<p><strong>广播风暴</strong>：占用大量的带宽造成网络拥塞</p>
+<h2 id="tcp应用之-http传输"><a href="#tcp应用之-http传输" class="headerlink" title="tcp应用之 http传输"></a>tcp应用之 http传输</h2><p>HTTP协议 —&gt; 超文本传输协议</p>
+<p>用途 ： 编写基于http协议的数据传输程序，网站中浏览器端获取网页的过程<br>将想要获取的内容，以http协议的格式发送给服务端，服务端根据格式进行解析获取到真实需求，将结果以http协议的格式回复给客户端</p>
+<p><strong>特点 ：</strong> </p>
+<ol>
+<li>应用层协议 ，传输层使用tcp服务</li>
+<li>简单，灵活，和多中语言对接方便</li>
+<li>无状态的协议 即不记录用户使用过程中传递的内容</li>
+<li>http1.1 支持持久连接</li>
+</ol>
+<h3 id="http请求-（Request）"><a href="#http请求-（Request）" class="headerlink" title="http请求 （Request）"></a>http请求 （Request）</h3><p>请求格式：</p>
+<p>1 请求行    具体的请求类别<br>   GET           /         HTTP/1.1<br>   请求种类   请求内容    协议版本</p>
+<p>   请求头    对请求新的的具体描述<br>   Accept: text/html<br>   以键值对的格式对信息进行具体描述</p>
+<p>2 空行</p>
+<p>3 请求体    具体的请求参数或者提交内容</p>
+<p><strong>请求类型：</strong><br>GET        获取网络资源<br>POST       提交一定的附加数据，得到返回结果<br>HEAD       获取响应头<br>PUT        更新服务器资源<br>DELETE     删除服务器次元<br>CONNECT<br>TRACE      用于测试<br>OPTIONS    获取服务器性能</p>
+<h3 id="HTTP响应-（Response）"><a href="#HTTP响应-（Response）" class="headerlink" title="HTTP响应 （Response）"></a>HTTP响应 （Response）</h3><p>响应格式：</p>
+<p>1 响应行   反馈具体的响应情况<br> HTTP/1.1    200      OK<br> 版本       响应码   附加信息 </p>
+<p>2 响应头   对响应的具体描述<br> Accept-Ranges: bytes<br> 以键值对方式给出响应信息的具体描述</p>
+<p>3 空行<br> 响应体   将客户想要的内容进行返回</p>
+<p><strong>响应码种类</strong><br>1xx    提示信息，表示请求已经接受<br>2xx    响应成功<br>3xx    响应需要重定向<br>4xx    客户端错误<br>5xx    服务端错误</p>
+<p>200  成功<br>404  请求内容不存在<br>401  没有访问权限<br>500  服务器发生未知错误<br>503  服务器暂时不能执行</p>
+<p>思考 ：<br>什么是http协议<br>请求格式和每部分的功能<br>响应格式和每部分功能<br>http请求和响应的流程</p>
+<p>作业 ：<br>通过流式套接字完成一个文件的发送<br>将一个文件从客户端发送给服务端或者从服务端发送给客户端均可</p>
+<h2 id="基础的http服务器"><a href="#基础的http服务器" class="headerlink" title="基础的http服务器"></a>基础的http服务器</h2><p>1.接收HTTP请求<br>2.给出一定的响应</p>
+<p>IO  input   output</p>
+<p>在内存中存在数据交换的操作都可以认为是输入输出<br>比如：<br>内存和磁盘交互  读写操作<br>内存和网络交互  recv  send</p>
+<h3 id="IO密集型程序"><a href="#IO密集型程序" class="headerlink" title="IO密集型程序"></a>IO密集型程序</h3><p>程序执行中大量的IO操作，而较少的cpu运算。消耗cpu较少，运行时间长</p>
+<p><strong>CPU密集型程序（计算密集型）</strong>：程序中大量的操作都需要cpu运算，IO操作较少。消耗cpu大，运行速度快</p>
+<h4 id="IO-分类"><a href="#IO-分类" class="headerlink" title="IO 分类"></a>IO 分类</h4><p>阻塞IO  非阻塞IO  IO多路复用  事件IO   异步IO。。</p>
+<p>1 阻塞IO ： 默认形态 效率很低的一种IO情形</p>
+<p>阻塞情况 ：因为某种条件没有达成造成的阻塞<br>e.g.   accept   recv   input</p>
+<p>处理IO事件的时候耗时比较长形成阻塞<br>e.g.  文件的读写过程，网络数据发送过程</p>
+<p>2 非阻塞IO ： 通过修改IO事件的属性，使其变为非阻塞的状态。（改变了第一种阻塞的状况）</p>
+<p>通常和循环搭配使用，不断检测阻塞条件是否已经满足。</p>
+<p>s.setblocking()<br>功能： 将套接字设置为非阻塞状态<br>参数： bool   设置为False则表示设置为非阻塞</p>
+<h3 id="超时检测"><a href="#超时检测" class="headerlink" title="超时检测"></a>超时检测</h3><p>将原本阻塞的函数，设置一个阻塞的最长时间，在规定时间内如果条件达到则正常执行，如果仍然阻塞则抛出异常</p>
+<p>s.settimeout(sec)<br>功能 ： 设置套接字超时时间<br>参数 ： 设置的时间</p>
+<h3 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h3><p>定义 ： 同时监控多个IO事件，当哪个IO事件准备就绪就执行哪个IO事件。以此形成，多个IO事件都可以操作，不必诸个等待执行的效果。</p>
+<p>准备就绪：IO事件即将发生的临界状态</p>
+<h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p>import select</p>
+<p>select —-&gt; windows  linux  unix<br>poll —&gt; linux unix<br>epoll –&gt; linux  unix</p>
+<p> r, w, x = select(rlist, wlist, xlist[, timeout])<br> 功能：监控IO事件，阻塞等待IO事件的发生<br> 参数：<br>   rlist  列表  存放我们监控等待处理的IO事件<br>   wlist  列表  存放我们要主动处理的IO事件<br>   xlist  列表  存放如果发生异常需要我们处理的<br>   timeout 数字  超时时间<br>   返回值：r  列表   rlist当中准备就绪的IO<br>   w  列表   wlist当中准备就绪的IO<br>   x  列表   xlist当中准备就绪的IO</p>
+<p><em>注意事项 ： </em><br>1.在处理IO过程中不应该发生死循环（某个IO单独占有服务器）<br>2.IO多路复用行了一种并发的效果，效率较高</p>
+<p>练习 ： 写一个select服务端  同时关注客户端端的连接，客户端的发送和终端的输入。将客户端发送的内容和终端输入的内容均写入到一个文件中</p>
+<h4 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h4><p>按照二进制位进行操作运算</p>
+<p>&amp;(按位与)    |（按位或）    ^（按位异或）<br>&lt;&lt;（左移）    &gt;&gt;（右移） </p>
+<p>11  1011<br>14  1110</p>
+<p>&amp;   1010  一0则0<br>|   1111  一1则1<br>^   0101  相同为0不同为1<br>11 &lt;&lt; 2  ==&gt; 44   右侧补0<br>14 &gt;&gt; 2  ==&gt; 3    挤掉低位的数字</p>
+<p>使用 ： </p>
+<ol>
+<li>在做底层硬件的寄存器操作</li>
+<li>在做标志位过滤时</li>
+</ol>
+<h4 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h4><ul>
+<li><p>创建poll对象<br>p = select.poll()</p>
+</li>
+<li><p>添加关注对象<br>p.register(s，POLLIN | POLLERR)<br>p.unregister(s)<br>poll IO事件类型分类<br>POLLIN POLLOUT  POLLERR POLLHUP  POLLPRI  POLLVAL<br>rlist   wlist   xlist    断开   紧急处理  无效数据</p>
+</li>
+<li><p>进行监控<br>events = p.poll()<br>功能： 阻塞等待register的事件发生<br>返回值 ： events 是一个列表，列表中每个元素表示准备就绪需要处理的IO<br>[(fileno,event),          (),()]<br>  描述符 具体什么就绪了<br>描述符地图｛s.fileno(): s｝</p>
+</li>
+<li><p>处理IO事件</p>
+</li>
+</ul>
+<p>作业 ： </p>
+<ol>
+<li>熟练 写出 select server代码</li>
+<li>能够描述IO多路复用的执行原理和内部机制</li>
+<li>巩固HTTPserver的代码—》理解HTTP服务器执行流程</li>
+</ol>
+<h4 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h4><p>使用方法 ： 代码基本与poll相同</p>
+<ul>
+<li>将生成对象的 poll() 函数 变为 epoll()</li>
+<li>将register注册IO事件时 关注的事件类别改为epoll类别</li>
+</ul>
+<p>区别：<br>epoll 效率要高于 poll和select<br>epoll 的关注触发方式多一些</p>
+<h2 id="本地套接字"><a href="#本地套接字" class="headerlink" title="本地套接字"></a>本地套接字</h2><p>linux下文件类型：<br>b（块设备文件） c（字符设备文件）   d（目录）<br>-（普通文件） l（链接文件） s（套接字文件） p（管道文件）</p>
+<p>作用 ： 用于本地不同的程序间进行通信</p>
+<p>本地套接字创建流程：</p>
+<ul>
+<li>创建套接字对象<br>sockfd = socket（AF_UNIX,SOCK_STREAM）</li>
+<li>建立套接字文件<br>sockfd.bind(path) 绑定一个文件</li>
+<li>监听</li>
+<li>接收发送消息</li>
+</ul>
+<p>*小贴士<br>os.path.exists(path)<br>功能： 判断一个文件是否存在<br>参数： 文件位置<br>返回值： 存在返回True  否则返回False</p>
+<p>os.unlink()   os.remove()<br>功能：删除一个文件<br>参数：要删除的文件</p>
+<p>In [2]: os.path.exists(“./re”)<br>Out[2]: True</p>
+<p>In [3]: os.unlink(“./re”)*</p>
+<h1 id="多任务编程"><a href="#多任务编程" class="headerlink" title="多任务编程"></a>多任务编程</h1><p>意义 ： 充分的利用计算机资源提高程序的运行效率</p>
+<p>定义 ： 通过应用程序利用计算机的多个核心达到同时执行多个任务的目的，以此来提升程序的执行效率</p>
+<p>实施方案 ： 多进程    多线程</p>
+<p>并行： 多个计算机核心在同时处理多个任务，这多个任务间是并行关系</p>
+<p>并发：同时处理多个任务，内核在任务间不断的切换，达到好像都在处理运行的效果</p>
+<p>进程：程序在计算机中的一次执行过程 </p>
+<p>程序 ： 是一个可执行文件，是静态的，占有磁盘，不占计算机的运行资源<br>进程 ： 进程是一个动态的过程描述，占有计算机的资源，有一定的生命周期</p>
+<ul>
+<li>同一个程序的不同运行过程是不同的进程。因为分配的计算机资源不同，生命周期也不同</li>
+</ul>
+<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="进程的创建流程"><a href="#进程的创建流程" class="headerlink" title="进程的创建流程"></a>进程的创建流程</h3><ul>
+<li>1.用户空间运行一个程序，发起进程的创建</li>
+<li>2.操作系统接受用户申请开启进行创建</li>
+<li>3.操作系统分配计算机资源，确定进程状态</li>
+<li>4.将新创建的进程交给用户使用</li>
+</ul>
+<p><strong>cpu时间片</strong><br>如果一个进程占有计算机核心，我们称为该进程占有cpu时间片。多个任务实际会对cpu内核进行争夺，由操作系统分配cpu资源</p>
+<p>进程信息<br><strong>PCB（进程控制块）</strong>：在*nix操作系统中，进程创建后会自动在内存中产生一个空间存放进程信息，称为PCB</p>
+<p>进程信息：进程的ID 进程占有内存位置 创建时间  创建用户..</p>
+<p><strong>查看命令：ps  -aux</strong></p>
+<p><strong>PID</strong>(process ID) : 在操作系统中进程的唯一标志，大于0的整数，由系统自动分配</p>
+<h3 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a>进程的特征</h3><ul>
+<li>进程是操作系统分配计算机资源的最小单位</li>
+<li>每个进程有自己单独的虚拟内存空间</li>
+<li>进程之间的执行上相互独立，互不影响</li>
+</ul>
+<h3 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h3><p>  <strong>三态</strong></p>
+<pre><code>* 就绪态：进程具备执行条件，等待系统分配处理器资源
+* 运行态：进程占有cpu处于运行的状态
+* 等待态：进程暂时不具备运行条件，需要阻塞等待
+</code></pre><p>  <strong>五态</strong> （在三态基础上增加新建态和终止态）</p>
+<pre><code>* 新建态 ：创建一个新的进程，获取资源的过程
+* 终止态 ：进程执行结束，资源释放回收的过程
+</code></pre><p>ps -aux  —-&gt; STAT 表示进程状态</p>
+<pre><code>D  等待态  （不可终端等待）
+S  等待态   （可终端等待）
+T  等待态   （暂停状态）
+R  运行态   （包含就绪态）
+Z  僵尸态  
+
+\+  前台进程 在终端运行
+&lt;  高优先级
+N  低优先级
+l  有进程链接
+s  会话组
+</code></pre><h3 id="进程优先级"><a href="#进程优先级" class="headerlink" title="进程优先级"></a>进程优先级</h3><p>优先级决定了一个进程的执行权限和占有资源的优先程度</p>
+<p><strong>查看优先级</strong> ：<br>    top ： 动态查看进程优先级    摁 &lt;  &gt; 翻页</p>
+<p><strong>优先级取值范围</strong>  -20 — 19   -20最高</p>
+<pre><code>nice ： 以指定的优先级运行一个程序
+    e.g.  nice  -9   ./while.py
+          nice  --9  ./while.py   -9的优先级运行
+</code></pre><h3 id="父子进程"><a href="#父子进程" class="headerlink" title="父子进程"></a>父子进程</h3><p>在系统中除了初始化进程每个进程都有一个父进程，可能有0个或者多个子进程。由此形成进程的父子关系。我们认为每个进程都是父进程创造的。</p>
+<p>查看进程树 : pstree<br>查看父进程PID ： ps  -ajx</p>
+<p>思考 ：<br>什么是进程，进程和程序的区别<br>了解进程的特征<br>清楚进程每种状态，及状态转换</p>
+<p>需求 ： 编写一个程序能够同时做多件任务</p>
+<p>方案 ： 写一个程序，根据需要在程序内不可以创建多个进程完成任务</p>
+<p><strong>使用os.fork()方法实现</strong></p>
+<p>import os </p>
+<p>pid = os.fork()<br>功能 ： 创建一个新的进程<br>参数 ： 无<br>返回值 ：<br>失败返回一个负数   -1<br>成功 ： 在原有进程中返回新进程的PID号，在新进程中返回0</p>
+<ul>
+<li>子进程会复制父进程全部代码段，包括fork之前产生的内存空间</li>
+<li>子进程从fork的下一句开始执行</li>
+<li>父子进程通常会根据fork返回值的差异选择执行不同的代码</li>
+<li>子进程虽然复制父进程的代码空间，但是有自己的特有属性 比如 PID号 PCB等</li>
+<li>父子进程在执行上互补干扰，执行顺序不确定</li>
+<li>父子进程空间独立，在本进程中对空间的操作不会影响到其他进程</li>
+<li><strong>os.fork函数不能在Windows操作系统上面运行</strong></li>
+</ul>
+<p>进程相关函数使用</p>
+<p>获取进程号<br>os.getpid()<br>功能 ：获取当前进程的进程号<br>返回值 ： 返回进程号</p>
+<p>os.getppid()<br>功能：获取父进程的进程号<br>返回值 ： 返回进程号</p>
+<p>进程的退出<br>os._exit(status)<br>功能 ： 退出进程<br>参数 ： 进程的退出状态 整数</p>
+<p>sys.exit([status])<br>功能： 退出进程<br>参数： 不写默认为0<br>       传入一个整数表示退出状态<br>             传入一个字符串，则在进程退出时会打印该字符串</p>
+<ul>
+<li>sys.exit 可以通过捕获 SystemExit 异常阻止其退出</li>
+</ul>
+<p>代码示例：<br>    “””１，创建套接字<br>            ２，绑定<br>            ３，监听<br>            ４，接收客户端请求accept<br>            ５，创建子进程处理客户端请求，父进程继续接收其他客户端连接<br>            ６，客户端退出则子进程结束”””</p>
+<pre><code>import socket
+import os
+import sys
+import signal
+
+s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+s.bind((&quot;127.0.0.1&quot;,9527))
+s.listen(100)
+
+def client_handler(c):
+    print(&quot;asfagg&quot;)
+    print(&quot;cpid deal with client&quot;,c.getpeername())
+    while True:
+        data = c.recv(1024).decode()
+        if not data:
+            break
+        print(data)
+        c.send(b&quot;receive your msg&quot;)
+
+
+signal.signal(signal.SIGCHLD,signal.SIG_IGN)
+while True:
+    try:
+        conn,addr = s.accept()
+    except KeyboardInterrupt:
+        s.close()
+        sys.exit(&quot;exit&quot;)
+    except Exception as e:
+        print(e)
+        continue
+    pid = os.fork()
+    if pid &lt; 0:
+        print(&quot;create failed&quot;)
+    elif pid == 0:     
+        s.close()#子进程不需要监听套接字
+        print(os.getpid(),&quot;hello&quot;)
+        client_handler(conn)
+        # data = conn.recv(1024)
+        # print(data.decode())
+        #子进程处理完客户端请求一定要退出
+        conn.close()
+        sys.exit(0)
+    else:
+        conn.close() #关闭冗余的套接字
+</code></pre><p>作业 ： </p>
+<p>写一个聊天室</p>
+<p>功能 ： 类似QQ群聊</p>
+<ol>
+<li>进入聊天室前需要输入用户名</li>
+<li>有人进入聊天室会向其他用户发起通知<br>xxx  进入了聊天室</li>
+<li>一个人发消息，其他人都能收到<br>xxx 说：xxxxxxxx</li>
+<li>某个人退出聊天室 其他人也会收到通知<br>xxx 退出了聊天室</li>
+</ol>
+<p>思考 服务端    客户端</p>
+<ul>
+<li>使用什么技术</li>
+<li>每个功能的实现方案</li>
+</ul>
+<h3 id="孤儿进程"><a href="#孤儿进程" class="headerlink" title="孤儿进程"></a>孤儿进程</h3><p>父进程先于子进程退出，此时子进程就会成为孤儿进程。</p>
+<ul>
+<li>孤儿进程会被系统指定的进程收养，即系统进程会成为孤儿进程新的父进程。当孤儿进程退出时“继父”，会处理孤儿进程退出状态，使其不会成为僵尸。</li>
+</ul>
+<h3 id="僵尸进程"><a href="#僵尸进程" class="headerlink" title="僵尸进程"></a>僵尸进程</h3><p>子进程先于父进程退出，父进程没有处理子进程的退出状态，此时子进程就会成为僵尸进程 </p>
+<ul>
+<li>僵尸进程会滞留部分PCB信息在内存中，大量的僵尸进程会消耗系统资源，应该尽量避免僵尸进程的产生</li>
+</ul>
+<p><strong>如何避免僵尸进程</strong></p>
+<ul>
+<li>父进程先退出（不佳，因为不好控制）</li>
+<li>父进程处理子进程的退出状态</li>
+</ul>
+<p>pid,status = <strong>os.wait()</strong><br>功能： 在父进程中阻塞等待子进程的退出<br>返回值 ：<br>一个两个元素的元组<br>pid : 退出的子进程的PID号<br>status ： 退出的子进程的退出状态</p>
+<p>pid,status = <strong>os.waitpid(pid，option) </strong><br>功能 ： 处理子进程的退出状态<br>参数 ：<br>pid  -1 表示等待任意子进程退出</p>
+<blockquote>
+<p>0 整数 表示等待对应PID号的子进程退出<br>option ：  0 表示阻塞等待  WNOHONG  表示非阻塞<br>返回值  ： 同wait()</p>
+</blockquote>
+<p>waitpid（-1,0） ====  wait()</p>
+<p><strong>创建二级子进程</strong></p>
+<ul>
+<li>父进程创建子进程等待子进程的退出</li>
+<li>子进程创建二级子进程后马上退出</li>
+<li>二级子进程成为孤儿，处理具体事件</li>
+</ul>
+<h3 id="聊天室项目"><a href="#聊天室项目" class="headerlink" title="聊天室项目"></a>聊天室项目</h3><p>功能 ： 类似QQ群聊</p>
+<ol>
+<li>进入聊天室前需要输入用户名</li>
+<li>有人进入聊天室会向其他用户发起通知<br>xxx  进入了聊天室</li>
+<li>一个人发消息，其他人都能收到<br>xxx 说：xxxxxxxx</li>
+<li>某个人退出聊天室 其他人也会收到通知<br>xxx 退出了聊天室</li>
+<li>管理员喊话功能 ：管理员发言所有客户端都能收到<br>管理员 说：xxxxxxx </li>
+</ol>
+<p>需要什么技术：</p>
+<p>socket 通信</p>
+<p>存储用户 ： 字典或列表 姓名 和 地址</p>
+<p>用什么类型套接字 ： udp套接字</p>
+<p>怎么发消息：</p>
+<ul>
+<li>转发  即客户端发给服务器然后服务器在发送给其他人</li>
+<li>在客户端让发送和接收需要相互独立，各使用一个进程</li>
+<li>服务端，管理员喊话和请求的接收需要独立，各使用一个进程</li>
+</ul>
+<p>注意点</p>
+<ol>
+<li>功能封装  将每个功能模块化</li>
+<li>测试，每个功能进行测试</li>
+</ol>
+<p>代码编写流程</p>
+<p>搭建网络连接—-&gt;多进程的创建—&gt;每个进程功能的编写—&gt;项目功能的诸个编写</p>
+<p>客户端可能发送的请求</p>
+<p>进入聊天室：  “L name”<br>服务端 ： 识别请求  判定是否可以进入<br>  回复客户端  保留用户<br>  告知其他人谁进入</p>
+<p>聊天请求 ： “C name message”<br>服务端 ： 识别请求  转发给其他人</p>
+<p>退出聊天室： “Q name”<br>服务端 ： 识别请求  告知其他人谁退出<br>   将其从用户中删除</p>
+<p><strong> 这里只是写的一种最容易理解的编码方式，在udp协议中是需要在应用层进行加密处理，这里的加密处理明显不够，而且空格并不是很好的分割符，比如人名为Jason smith，发送了一条消息’hello’，在服务器会转发为’jason’说’smith hello’，而本身应该表示’jason smith’说’hello’，但是这里暂且先不处理，简化一下发送格式 </strong></p>
+<h2 id="multiprocessing-模块创建进程"><a href="#multiprocessing-模块创建进程" class="headerlink" title="multiprocessing 模块创建进程"></a>multiprocessing 模块创建进程</h2><ul>
+<li>1.需要将要做的事件进行封装成函数</li>
+<li>2.使用multiprocessing提供的类Process创建进程对象</li>
+<li>3.通过对象和Process的初始化函数对进程进行设置以    及绑定要执行的事件</li>
+<li>4.启动进程，会自动的执行函数代表的事件</li>
+<li>5.完成进程的回收</li>
+</ul>
+<h3 id="创建进程对象"><a href="#创建进程对象" class="headerlink" title="创建进程对象"></a>创建进程对象</h3><p>Process()<br>功能：创建进程对象<br>参数：name ： 给创建的进程对象起一个名字<br>              默认为Process-1<br>            target :  绑定的函数<br>            args ：元组 用来给 target函数传参按位置传参<br>      kwargs ： 字典  按照键值传参</p>
+<p>p.start()<br>功能：启动进程 进程被创建，自动运行对应函数</p>
+<p>p.join([timeout])<br>功能 ： 阻塞等待对应子进程的退出，回收子进程<br>参数 ： 超时时间</p>
+<ul>
+<li>如果不使用join 则子进程会成为僵尸进程</li>
+<li>在使用multiprocessing创建进程中，一般父进程功能   就是创建子进程等待回收，不做过多其他事情</li>
+<li>使用multiprocessing创建子进程，同样子进程复制父   进程空间，之后有自己独立的执行空间，互不干扰</li>
+</ul>
+<p>作业： 1. 将聊天室代码进行梳理</p>
+<pre><code>  2.  复习fork创建进程的内容进行整理
+3. multiprocessing 函数巩固
+</code></pre><h3 id="进程对象属性"><a href="#进程对象属性" class="headerlink" title="进程对象属性"></a>进程对象属性</h3><p>p.join()  回收进程<br>p.start() 启动进程<br>p.is_alive()  判断进程是否在生命周期状态，在生命周期中返回True 否则返回False</p>
+<p>p.name  进程名称 默认为Process-1 如果起名字则为自己取的名称</p>
+<p>p.pid   进程的PID号</p>
+<p>代码示例</p>
+<pre><code>import multiprocessing as mp
+import time
+
+def worker(a,b,c,name):
+    for i in range(3):
+        # time.sleep(sec)
+        print(a,b,c)
+        print(&quot;I&apos;m &quot;,name)
+        print(&quot;I&apos;m working ...&quot;)
+
+p = mp.Process(&apos;k&apos;,worker,(2,3,4),{&quot;name&quot;:&quot;Jason&quot;})
+p.start()
+p.join(4)
+print(&quot;after join&quot;)
+</code></pre><p><strong>p.daemon</strong><br>默认为False  主进程退出不会影响子进程<br><strong>如果设置为 True 则主进程退出时会让所有子进程都退出</strong></p>
+<p><strong> * 该属性的设置必须在start() 前</strong><br><strong> * 该属性一般不用和join同时出现</strong></p>
+<h3 id="创建自定义进程类"><a href="#创建自定义进程类" class="headerlink" title="创建自定义进程类"></a>创建自定义进程类</h3><ul>
+<li>1.继承Process类</li>
+<li>2.运行Process类的<strong>init</strong> 以获取父类属性</li>
+<li>3.<strong>重写run方法</strong>，在通过自定类生成对象后，调用start()会自动执行这个方法</li>
+</ul>
+<p>代码示例：</p>
+<pre><code>import multiprocessing as mp
+import time
+
+class myProcess(mp.Process):
+    def __init__(self,value):
+        super().__init__()
+        self.value = value
+
+    #重写父类的run方法
+    def run(self):
+        print(time.ctime())
+        time.sleep(self.value)
+        print(time.ctime())
+
+    def start(self):
+        pass
+
+
+myP = myProcess(2)
+print(&quot;========&quot;)
+#在启动的时候才会启动run方法，本质是在Process的start中调用的run 方法
+myP.start()
+time.sleep(1)
+print(&quot;-------------&quot;)
+&quot;&quot;&quot;
+Tue Jun 12 10:15:55 2018
+Tue Jun 12 10:15:57 2018
+&quot;&quot;&quot;
+</code></pre><h3 id="多进程优缺点"><a href="#多进程优缺点" class="headerlink" title="多进程优缺点"></a>多进程优缺点</h3><p><strong>优点 ： </strong><br>并行执行多个任务，提高效率<br>创建方便<br>运行独立，不受其他进程影响<br>数据安全<br><strong>缺点 ：</strong>在进程的创建和删除过程中消耗计算机资源较多</p>
+<h3 id="进程池技术"><a href="#进程池技术" class="headerlink" title="进程池技术"></a>进程池技术</h3><p>产生原因 ：如果有大量的任务需要多进程完成，则可能需要频繁的创建和删除进程，给计算机带来较多的消耗。</p>
+<p><strong>使用 ：大量可以短时间完成的任务需要多进程操作的时候比较适用于进程池</strong></p>
+<p>使用方法：</p>
+<ul>
+<li><ol>
+<li>创建进程池，在池内放入适当的进程</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>将事件加入进程池队列</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>事件不断运行，所有事件运行完成</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>关闭进程池，回收进程</li>
+</ol>
+</li>
+</ul>
+<p>from multiprocessing import Pool </p>
+<p>Pool(processes)<br>功能 ： 创建进程池对象<br>参数 ： processes  表示进程池中有多少进程<br>对象 ： 进程池对象</p>
+<p>pool.apply_async(func,args,kwds)<br>功能 ： 将事件放入进程池等待执行<br>参数 ：<br>func   要放入进程池的事件函数<br>args   给func函数以元组传参<br>kwds   给func函数以字典传参<br>返回值 ：<br>返回一个事件对象<br>通过get()方法可以获取事件函数的返回值</p>
+<p>pool.apply(func,args,kwds)<br>功能 ： 将事件放入进程池等待执行<br>参数 ：<br>func   要放入进程池的事件函数<br>args   给func函数以元组传参<br>kwds   给func函数以字典传参</p>
+<p>pool.close()<br>功能 ： 关闭进程池 不能再添加新的事件</p>
+<p>pool.join()<br>功能 ： 回收进程池</p>
+<p>代码示例：</p>
+<pre><code>from multiprocessing import Pool
+import time
+
+def fun(msg):
+    time.sleep(2)
+    print(&quot;msg is &quot;,msg)
+    return time.ctime()
+
+pool = Pool(processes = 5)
+result = []
+for i in range(5):
+    msg = i
+    # r = pool.apply_async(fun,args = (msg,))
+    pool.apply(fun,args = (msg,))
+    # result.append(r)
+
+pool.close()
+
+pool.join()
+# for i in result:
+#     print(i.get())
+</code></pre><p><strong>这里的apply_async 和 apply的区别在于apply是阻塞的，所以进入子进程执行后，等待当前子进程执行完毕，在继续执行下一个进程。<br>apply_async 是异步非阻塞的，不用等待当前进程执行完毕，随时根据系统调度来进行进程切换</strong></p>
+<p>pool.map(func,iter)<br>功能 ： 将要完成的事件放入到进程池<br>参数 ： func 要完成的事件函数，iter 要给func传递的参数的迭代器<br>返回值 ： 返回事件函数的返回值列表</p>
+<p>练习 ： 使用multiprocessing 创建两个进程，分别复制一个文件的上半部分和下半部分到另外一个新的文件中<br><em>小贴士 :  os.path.getsize(path) 获取文件大小</em></p>
+<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><p>进程间由于空间独立，资源互相无法直接获取，此时在不同的进程间传递数据就需要专门的进程间通信方法。</p>
+<p>和磁盘交互 ： 使用中间文件 但是不安全，速度慢</p>
+<p><strong>进程间通信方法 （IPC）</strong><br>管道   消息队列  共享内存   信号  信号量  套接字</p>
+<h3 id="管道通信-Pipe"><a href="#管道通信-Pipe" class="headerlink" title="管道通信 Pipe"></a>管道通信 Pipe</h3><p>在内存中开辟一块空间，形成管道结构，管道对多个进程可见，进程可以通过对管道的读写操作进行通信</p>
+<p>multiprocessing —》 Pipe </p>
+<p>fd1,fd2 = Pipe(duplex = True)<br>功能 ： 创建一个管道<br>参数 ： 默认表示管道为双向管道<br>        如果设置为False 则表示单向管道<br>返回值 : 返回两个管道流对象，表示管道两端<br>         如果是双向管道，则都可以读写<br>                 如果是单向管道，则fd1只读  fd2只写</p>
+<p>fd1.recv()<br>功能 ： 从管道内读信息<br>返回值：读到的内容</p>
+<ul>
+<li>当管道内无内容时会阻塞</li>
+</ul>
+<p>fd2.send(data)<br>功能 ： 向管道写入内容<br>参数 ： 要写的内容</p>
+<ul>
+<li>可以发送几乎Python的任意数据类型</li>
+</ul>
+<p>示例代码：</p>
+<pre><code>from multiprocessing import Process,Pipe
+import os,time
+
+fd1,fd2 = Pipe(duplex=False)
+ps = [] 
+
+def fun(msg):
+    time.sleep(2)
+    print(&quot;msg is&quot;,msg)
+    fd2.send(str(msg))
+
+# ps = []
+for i in range(5):
+    p = Process(target=fun,args=(i,))
+    p.start()
+    ps.append(p)
+
+for i in range(5):
+    data = fd1.recv()
+    print(&quot;data is &quot;,data)
+
+for p in ps:
+    p.join()
+</code></pre><p>运行结果：</p>
+<pre><code>msg is 0
+data is  0
+msg is 1
+data is  1
+msg is 2
+data is  2
+msg is 3
+data is  3
+msg is 4
+data is  4
+</code></pre><h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><p>队列 ： 先进先出<br>在内存中开辟队列结构空间，对多个进程可见。多个进程向队列中存入消息，取出消息，完成进程间通信。</p>
+<p>创建队列<br>q = Queue(maxsize = 0)<br>功能 ： 创建队列<br>参数 ： maxsize 默认表示根据系统分配空间存储消息<br>        如果传入一个正整数则表示最多存入消息数量<br>返回值 ： 队列对象</p>
+<p>q.put(data,[block,timeout])<br>功能 ： 向队列中存入消息<br>参数 ： data  存入的数据 （支持Python数据类型）<br>        block  默认为True表示 当队列满时阻塞<br>                       设置为False 表示非阻塞<br>                timeout  当block为Ture时表示超时时间</p>
+<p>data = q.get([block,timeout])<br>功能 ： 从队列获取消息<br>参数 ： block  默认为True表示 当队列空时阻塞<br>                       设置为False 表示非阻塞<br>                timeout  当block为Ture时表示超时时间<br>返回值：返回获取到的消息</p>
+<p>q.full()  判断队列是否为满<br>q.empty() 判断队列是否为空<br>q.qsize() 获取队列中消息数量<br>q.close() 关闭队列</p>
+<p>示例代码：</p>
+<pre><code>from multiprocessing import Process,Queue
+q = Queue()
+
+def fun1():
+    for x in range(10):
+        q.put(x)
+    q.put(&quot;fasfgsd&quot;)
+    pass
+
+def fun2():
+    data = q.get()
+    while True:
+        if data is not None:
+            print(data)
+            data = q.get()
+        else:
+            break
+        pass
+
+def fun3():
+    while q.qsize():
+        try:
+            data = q.get()
+            print(&apos;queue data: &apos;,data)
+        except Queue.Empty:
+            pass
+        except :
+            pass
+p1 = Process(target=fun1)
+p2 = Process(target=fun3)
+p1.start()
+p2.start()
+p1.join()
+p2.join()
+</code></pre><p>运行结果：<br>        queue data:  0<br>        queue data:  1<br>        queue data:  2<br>        queue data:  3<br>        queue data:  4<br>        queue data:  5<br>        queue data:  6<br>        queue data:  7<br>        queue data:  8<br>        queue data:  9<br>        queue data:  fasfgsd</p>
+<h3 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h3><p>在内存中开辟一段空间，存储数据，对多个进程可见。每次写入共享内存的数据会覆盖之前的内容</p>
+<p>from multiprocessing import  Value，Array</p>
+<p>obj = Value(ctype,obj)<br>功能 ： 开辟共享内存空间<br>参数 ： ctype  字符串 要转变的c的类型code（对照ctype表）<br>        obj  共享内存初始值<br>返回共享内存对象</p>
+<p>obj.value  表示共享内存中的值。对其修改或者使用即为使用共享内存中的值</p>
+<p>obj = Array(ctype,obj)<br>功能 ： 开辟共享内存空间<br>参数 ：<br>ctype  要转换的类型<br>obj 要存入共享内存的数据<br>列表  将列表存入共享内存 要求类型一致<br>整数  在共享内存中开辟几个单元的空间<br>返回值：共享内存对象</p>
+<p>示例代码：</p>
+<pre><code>from multiprocessing import Process,Array
+import time
+
+# shm = Array(&apos;i&apos;,[1,2,3,4,5,6])
+#这里的i 指的是整型数据，C语言中整型数据默认值为0
+shm = Array(&apos;i&apos;,6)
+
+def fun1():
+    for i in shm:
+        print(i)
+    shm[3] = 1000
+
+def fun2():
+    for i in shm:
+        print(i)
+
+p = Process(target= fun1)
+p2 = Process(target= fun2)
+p.start()
+
+p.join()
+p2.start()
+p2.join()
+</code></pre><p>运行结果：在fun1中修改的内容，func取出来是修改过的，通信成功<br>        0<br>        0<br>        0<br>        0<br>        0<br>        0<br>        0<br>        0<br>        0<br>        1000<br>        0<br>        0</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>管道</th>
+<th>消息队列</th>
+<th>共享内存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开辟空间</td>
+<td>内存</td>
+<td>内存</td>
+<td>内存</td>
+</tr>
+<tr>
+<td>读写方式</td>
+<td>两端读写（双向/单向）</td>
+<td>先进先出</td>
+<td>操作覆盖内存            </td>
+</tr>
+<tr>
+<td>效率</td>
+<td>一般</td>
+<td>一般</td>
+<td>较快</td>
+</tr>
+<tr>
+<td>应用</td>
+<td>多用于父子进程</td>
+<td>广泛灵活</td>
+<td>复杂<br>需要互斥机制</td>
+</tr>
+</tbody>
+</table>
+<p>作业 ：<br>熟练掌握进程间通信方法<br>自己实现进程池的使用，知道进程池特性</p>
+<h3 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h3><p>一个进程向另一个进程通过信号传递某种讯息。接收方在接受到信号时进行相应的处理</p>
+<p>kill  -l   查看信号<br>kill  -signame  PID   给PID的进程发送一个信号 </p>
+<p>关于信号 </p>
+<p>信号名称 ： 系统定义，  名字或者数字<br>信号含义 ： 系统定义，  信号的作用<br>默认处理方法：当一个进程接收到信号时默认产生的效果<br>               终止进程   暂停进程   忽略<br>e.g.<br>SIGHUP   连接断开<br>SIGINT   CTRL + C<br>SIGQUIT  CTRL + \<br>SIGTSTP  CTRL + Z<br>SIGKILL  终止进程且不能被处理<br>SIGSTOP  暂停进程且不能被处理<br>SIGALRM  时钟信号<br>SIGCHLD  子进程状态改变给父进程发送</p>
+<p>Python进行信号处理</p>
+<p>os.kill(pid,sig)<br>功能 ： 发送信号给某个进程<br>参数 ： pid   给哪个进程发送信号<br>        sig   要发送什么信号</p>
+<p>signal.alarm(sec)<br>功能 ： 一定时间后向自身发送 一个SIGALRM信号<br>参数 ： 定时时间</p>
+<ul>
+<li>在一个进程中只允许有一个时钟，设置第二个的时候时   间就会重置</li>
+</ul>
+<p>程序执行的异步和同步</p>
+<p>同步：按照步骤一步一步往下顺序执行<br>异步：在程序执行中利用内核，不想应用层的持续执行</p>
+<ul>
+<li>信号是唯一的异步通信方式</li>
+</ul>
+<p>signal.pause()<br>功能 ： 阻塞等待进程收到一个信号</p>
+<p>signal.signal(signum，handler)<br>功能 ： 处理信号<br>参数 ： signum  ： 要处理的信号<br>handler ： 信号的处理方法<br><strong>可选值 ：<br>SIG_DFL  表示使用默认方法处理<br>SIG_IGN  表示忽略这个信号<br>func     自定义函数</strong></p>
+<p>自定义函数格式：<br>def func(sig,frame)<br>sig：接收到的信号<br>frame：信号结构对象</p>
+<ul>
+<li>signal函数是一个异步处理函数</li>
+<li>signal函数不能处理SIGKILL，SIGSTOP信号</li>
+<li>在父进程中加上signal(SIGCHLD,SIG_IGN)，当子进程退   出时会自动交由系统处理</li>
+</ul>
+<p>示例代码：<br>        from signal import *<br>        import time<br>        import os</p>
+<pre><code>#信号处理函数
+def handler(sig,frame):
+    if sig == SIGALRM:
+        print(&quot;接收到时钟信号&quot;)
+        exit()
+    elif sig == SIGINT:
+        print(&quot;就不结束&quot;)
+
+alarm(5)
+
+#当接收到SIGALRM信号 用handler函数处理
+signal(SIGALRM,handler)
+signal(SIGINT,handler)
+
+while True:
+    print(&quot;Waiting for a signal&quot;)
+    time.sleep(2)
+</code></pre><p>运行结果：<br>        Waiting for a signal<br>        ^C就不结束<br>        Waiting for a signal<br>        ^C就不结束<br>        ^C就不结束<br>        Waiting for a signal<br>        接收到时钟信号</p>
+<h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><p>给定一定的数量，对多个进程可见，并且多个进程根据信号的数量多少确定不同的行为</p>
+<p>multiprocessing —》 Semaphore() </p>
+<p>sem = Semaphore(num)<br>功能 ： 生成信号量对象<br>参数 ： 信号量的初始值<br>返回值 ： 信号量对象</p>
+<p>sem.acquire()  将信号量数量减一  信号量为0会阻塞<br>sem.release()  将信号量数量加一<br>sem.get_value() 获取当前信号量的值</p>
+<p>示例代码：</p>
+<pre><code>import multiprocessing as mp
+import time
+import os
+sem = mp.Semaphore(3)
+
+def fun():
+    print(&quot;process %d wait semaphore&quot;%os.getpid())
+    sem.acquire()
+    print(&quot;process %d use semaphore&quot;%os.getpid())
+    time.sleep(1)
+    sem.release()
+    print(&quot;process %d add semaphore&quot;%os.getpid())
+
+jobs = []
+for i in range(4):
+    p = mp.Process(target=fun)
+    jobs.append(p)
+    p.start()
+for i in jobs:
+    i.join()
+</code></pre><p>运行结果：</p>
+<pre><code>process 8441 wait semaphore
+process 8441 use semaphore
+process 8442 wait semaphore
+process 8442 use semaphore
+process 8443 wait semaphore
+process 8443 use semaphore
+process 8444 wait semaphore
+process 8441 add semaphore
+process 8444 use semaphore
+process 8442 add semaphore
+process 8443 add semaphore
+process 8444 add semaphore
+</code></pre><h2 id="同步互斥机制"><a href="#同步互斥机制" class="headerlink" title="同步互斥机制"></a>同步互斥机制</h2><p>目的 ： 解决对共有资源操作产生的争夺</p>
+<p>临界资源 ： 多个进程或者线程都能够操作的资源<br>临界区   ： 操作临界资源的代码段</p>
+<p>同步 ： 同步是一种合作关系，为完成某个任务多进程或者多线程之间形成一种协调，按照约定或条件一次执行操作临界资源，相互告知资源使用         情况。</p>
+<p>互斥 ： 互斥是一种制约关系，当一个进程或者线程进入临界区会进行加锁的操作。此时其他进程（线程）再企图使用临界资源时就会阻塞，直到         资源被释放才能使用</p>
+<h3 id="Event-事件"><a href="#Event-事件" class="headerlink" title="Event  事件"></a>Event  事件</h3><p>multiprocessing Event<br>创建事件对象<br>e = Event()</p>
+<p>事件阻塞<br>e.wait([timeout])</p>
+<p>事件设置  e处于设置状态，e.wait()不再阻塞<br>e.set()</p>
+<p>事件清除  e处于未设置状态，e.wait()阻塞<br>e.clear() </p>
+<p>事件判断  判断e的当前状态<br>e.is_set()</p>
+<p>示例代码：</p>
+<pre><code>from multiprocessing import Process,Event
+import time
+
+e = Event()
+def wait_event():
+    print(&quot;waiting for event set&quot;)
+    e.wait()
+    print(&quot;it&apos;s my turn&quot;,e.is_set())
+
+def wait_event_timeout():
+    print(&quot;I just wait for 2s &quot;)
+    e.wait(2)
+    print(&quot;after 2s,it&apos;s my turn&quot;)
+
+p1 = Process(target = wait_event)
+p2 = Process(target = wait_event_timeout)
+
+p1.start()
+p2.start()
+
+print(&quot;main process is operating resource&quot;)
+time.sleep(3)
+e.set()
+print(&quot;open resoure&quot;)
+
+p1.join()
+p2.join()
+</code></pre><p>运行结果：</p>
+<pre><code>main process is operating resource
+waiting for event set
+I just wait for 2s 
+after 2s,it&apos;s my turn
+open resoure
+it&apos;s my turn True
+</code></pre><h3 id="锁-Lock"><a href="#锁-Lock" class="headerlink" title="锁  Lock"></a>锁  Lock</h3><p>multiprocessing —&gt; Lock</p>
+<p>创建对象<br>lock = Lock()</p>
+<p>lock.acquire()  上锁<br>lock.release()  解锁</p>
+<p>上锁状态 ： 此时执行acquire（）操作会阻塞<br>解锁状态 ： 执行acquire（）操作为非阻塞</p>
+<p>with  lock：  —-》 上锁<br>….<br>….<br>—-&gt; with代码段结束后自动解锁 </p>
+<p>示例代码：</p>
+<pre><code>from multiprocessing import Process,Lock 
+import sys 
+from time import sleep 
+
+#sys.stdout标准输出流作为所有进程的临界资源
+
+def writer1():
+    lock.acquire()  #上锁
+    for i in range(5):
+        sleep(1)
+        sys.stdout.write(&quot;writer1输出\n&quot;)
+    lock.release()  #解锁
+
+def writer2():
+    #with方式上锁
+    with lock:
+        for i in range(5):
+            sleep(1)
+            sys.stdout.write(&quot;writer2输出\n&quot;)
+
+#创建锁
+lock = Lock()
+
+w1 = Process(target = writer1)
+w2 = Process(target = writer2)
+
+w1.start()
+w2.start()
+
+w1.join()
+w2.join()
+</code></pre><p>运行结果：</p>
+<pre><code>writer1输出
+writer1输出
+writer1输出
+writer1输出
+writer1输出
+writer2输出
+writer2输出
+writer2输出
+writer2输出
+writer2输出
+</code></pre><h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>这里不得不说死锁的概念<br>出自： <a href="https://www.cnblogs.com/Simon-xm/p/4072986.html" target="_blank" rel="noopener">https://www.cnblogs.com/Simon-xm/p/4072986.html</a><br>Python——网络编程，如何避免死锁？<br>问题描述：什么是死锁？</p>
+<p>死锁发生在当一个服务器和客户端同时试图往一个连接上写东西或同时从一个连接上读的时候。在这种情况下，没有进程可以得到任何数据（如果它们都正在读），因此，如果它们正在写，向外的buffer会被充满，结果他们就好象被骗了，什么都做不了。</p>
+<p>示例服务器代码：</p>
+<pre><code>import socket,traceback
+
+host=&quot;&quot;
+port=51423
+
+sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+sock.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+sock.bind((host,port))
+sock.listen(1)
+
+while True:
+    try:
+        clientsock,clientaddr= sock.accept()
+    except KeyboardInterrupt:
+        raise
+    except:
+        traceback.print_exc()
+        continue
+
+    try:
+        print(&quot;Got connection from &quot;,clientsock.getpeername)
+        while True:
+            data = clientsock.recv(4096)
+            if not len(data):
+                break
+            clientsock.sendall(data)
+    except (KeyboardInterrupt,SystemExit):
+            raise
+    except:
+            traceback.print_exc()
+
+    try:
+        clientsock.close()
+    except KeyboardInterrupt:
+        raise
+    except:
+        traceback.print_exc()
+</code></pre><p>示例客户端代码：</p>
+<pre><code>import socket
+import sys
+
+port=51423
+host=&quot;localhost&quot;
+
+data=b&quot;x&quot;*10485760
+sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+sock.connect((host,port))
+
+byteswritten=0
+while byteswritten&lt;len(data):
+    startpos = byteswritten
+    endpos = min(byteswritten+1024,len(data))
+    byteswritten+=sock.send(data[startpos:endpos])
+    sys.stdout.write(&quot;wrote %d bytes\r&quot;% byteswritten)
+    sys.stdout.flush()
+
+sock.shutdown(1)
+
+print(&quot;All data sent.&quot;)
+while True:
+    buf = sock.recv(1024).decode()
+    if not len(buf):
+        break
+    sys.stdout.write(buf)
+</code></pre><p>在运行上述服务器代码的情况下运行客户端代码，得到如下结果：</p>
+<p>服务器：<br>(ev1)[root@Simonxu bin]# python testserver.py<br>Got connection from  <built-in method="" getpeername="" of="" socket="" object="" at="" 0x7f5e18d2b460=""><br>客户端：<br>(ev1)[root@Simonxu bin]# python test.py<br>wrote 164864 bytes<br>可以看出，上述服务器和客户端卡在的wrote 164864 bytes。</built-in></p>
+<p><strong>分析：</strong></p>
+<p>已知客户端程序试图发送一个10MB的数据，每次传输1KB，同时显示发送数据动态，并在所有数据发送完成后，从服务器每次1KB读取并写数据。</p>
+<p>而服务器在建立套接口连接后，从客户端每次读取4KB数据，在接收到数据后，直接把数据发回客户端。</p>
+<p>而矛盾的是，由于客户端在发送一个10MB大小的数据，这要发送较长时间，在发送的过程中没有办法读取数据，因此服务器返回的数据就堆积在客户端的接收缓冲区。</p>
+<p>当接收缓冲区满了之后，服务器的sendall（）函数发生错误，循环死锁，服务器不再接收客户端发来的数据。客户端也无法继续发送数据。就形成了上面的情况。</p>
+<p><strong>如何避免死锁？</strong></p>
+<ul>
+<li><p>1、可以在客户端每次执行完send（）后，进行一次recv（）以接收服务器发来的数据，避免buffer充满。</p>
+</li>
+<li><p>2、可以让客户端发送的数据较少，这样在buffer充满之前就可以从缓冲区读取服务器发回的数据。</p>
+</li>
+<li><p>3、采用多线程或其他一些方法，使客户端可以同时发送和接收。</p>
+</li>
+</ul>
+<p><strong>知识补充</strong></p>
+<p>缓冲区：</p>
+<ol>
+<li><p>tcp 收发缓冲区默认值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/ipv4/tcp_rmem<br>　　4096    87380   4161536<br>　　87380  ：tcp接收缓冲区的默认值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/ipv4/tcp_wmem<br>　　4096    16384   4161536<br>　　16384  ： tcp 发送缓冲区的默认值</p>
+</li>
+<li><p>tcp 或udp收发缓冲区最大值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/core/rmem_max<br>　　131071<br>　　131071：tcp 或 udp 接收缓冲区最大可设置值的一半。<br>　　也就是说调用 setsockopt(s, SOL_SOCKET, SO_RCVBUF, &amp;rcv_size, &amp;optlen);  时rcv_size 如果超过 131071，那么<br>　　getsockopt(s, SOL_SOCKET, SO_RCVBUF, &amp;rcv_size, &amp;optlen); 去到的值就等于 131071 * 2 = 262142<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/core/wmem_max<br>　　131071<br>　　131071：tcp 或 udp 发送缓冲区最大可设置值得一半。<br>　　跟上面同一个道理</p>
+</li>
+<li><p>udp收发缓冲区默认值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/core/rmem_default<br>　　111616：udp接收缓冲区的默认值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/core/wmem_default<br>　　111616<br>　　111616：udp发送缓冲区的默认值</p>
+</li>
+<li><p>tcp 或udp收发缓冲区最小值<br>　　tcp 或udp接收缓冲区的最小值为 256 bytes，由内核的宏决定；<br>　　tcp 或udp发送缓冲区的最小值为 2048 bytes，由内核的宏决定</p>
+</li>
+</ol>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>什么是线程 </p>
+<p>线程也是一种多任务编程方式，可以使用计算机的多核资源。线程被称为轻量级的进程。</p>
+<h3 id="线程的特征"><a href="#线程的特征" class="headerlink" title="线程的特征"></a>线程的特征</h3><ul>
+<li>线程是计算机多核分配的最小单位</li>
+<li>一个进程可以包含多个线程</li>
+<li>线程也是一个运行过程，也要消耗计算机资源。多个   线程共享进程的资源和空间</li>
+<li>线程也拥有自己特有的资源属性，比如指令集，TID等</li>
+<li>线程无论是创建删除还是运行消耗的资源都小于进程</li>
+<li>多个线程之间并行执行，执行上互不干扰</li>
+</ul>
+<h3 id="threading-模块创建线程"><a href="#threading-模块创建线程" class="headerlink" title="threading 模块创建线程"></a>threading 模块创建线程</h3><p>threading.Thread()<br>功能 : 创建线程对象<br>参数 ：name  线程名称  默认为Thread-1<br>       target  线程函数<br>             args   元组  给线程函数位置传参<br>             kwargs 字典  给线程函数键值传参<br>返回 ： 线程对象</p>
+<p>t.start()   启动线程<br>t.join([timeout])   回收线程</p>
+<p>线程对象的属性<br>t.is_alive() 查看线程的状态<br>t.name  线程名称<br>t.setName()  设置线程名称<br>threading.currentThread()  获取当前线程对象</p>
+<p><strong>t.daemon 属性<br>默认情况下主线的结束不会影响到分支线程的执行<br>如果设置为True 则主线程退出分支线程也会退出</strong></p>
+<p>设置方法：<br>t.daemon = True<br>t.setDaemon(True)</p>
+<p>判断daemon属性:<br>t.isDaemon()</p>
+<ul>
+<li>线程daemon属性的设置在start前</li>
+<li>一般设置daemon后不会再使用join</li>
+</ul>
+<p>示例代码：</p>
+<pre><code>import threading
+import time
+import os
+
+a = 1
+def music():
+    # while True:
+    global a
+    a = 100
+    for i in range(3):
+        time.sleep(2)
+        print(&quot;play music&quot;,os.getpid())
+
+# for i in range(3):
+#     time.sleep(2)
+#     print(&quot;play game&quot;) 
+
+t = threading.Thread(target = music)
+t.start()
+for i in range(5):
+    time.sleep(2)
+    print(&quot;play game&quot;,os.getpid()) 
+t.join()
+
+print(a)
+</code></pre><p>运行结果:</p>
+<pre><code>play game 8687
+play music 8687
+play game 8687
+play music 8687
+play game 8687
+play music 8687
+play game 8687
+play game 8687
+100
+</code></pre><h3 id="创建自己的线程类"><a href="#创建自己的线程类" class="headerlink" title="创建自己的线程类"></a>创建自己的线程类</h3><p>步骤：<br>1.继承 Thread类<br>2.运行Thread类中的<strong>init</strong>方法以获取父类原有属性<br>3.重写run方法</p>
+<p>示例代码：</p>
+<pre><code>from threading import Thread
+from time import ctime,sleep
+
+class Mythread(Thread):
+    def __init__(self,name=&quot;HMoon&quot;,target=None,args=(),kwargs={}):
+        super().__init__()
+        self.name = name
+        self.target = target
+        self.args = args
+        self.kwargs = kwargs
+
+    def fun(self):
+        print(&quot;fdsggsdggh&quot;)
+        self.target(*self.args)
+
+def aaa(msg):
+    print(&quot;aaaaa&quot;)
+    print(msg)
+
+t = Mythread(name= &quot;aaa&quot;,target=aaa,args=(&quot;fsaff&quot;,))
+t.start()
+t.join()
+</code></pre><p>运行结果：</p>
+<pre><code>fdsggsdggh
+aaaaa
+fsaff
+</code></pre><p>作业 ： </p>
+<ol>
+<li>复习网络编程</li>
+<li>司机和售票员<ul>
+<li>创建父子进程 分别表示司机和售票员</li>
+<li>当售票员捕捉到SIGINT信号，给司机发送SIGUSER1信   号，此时司机打印“老司机开车了”<br>当售票员捕捉到SIGQUIT信号，给司机发送SIGUSER2信号，此时司机打印：”车速有点快，系好安全带”<br>当司机捕捉到SIGTSTP信号，给售票员发送SIGUSER1,此时售票员打印“到站了请下车”</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>到站后，售票员先下车（子进程先退出），然后司机   下车</li>
+</ul>
+<p>作业代码：<br>        import multiprocessing as mp<br>        from signal import *<br>        import sys,os<br>        import time</p>
+<pre><code>def driver_handle(sig,frame):
+    if sig == SIGUSR1:
+        print(&quot;老司机开车了&quot;)
+    elif sig  == SIGUSR2:
+        print(&quot;车速有点快，系好安全带&quot;)
+    elif sig == SIGTSTP:
+        os.kill(p.pid,SIGUSR1)
+
+def saler_handle(sig,frame):
+    if sig == SIGINT:
+        os.kill(os.getppid(),SIGUSR1)
+    elif sig == SIGQUIT:
+        os.kill(os.getppid(),SIGUSR2)
+    elif sig == SIGUSR1:
+        print(&quot;到站了,请下车&quot;)
+        sys.exit(&quot;售票员下车&quot;)
+
+def saler():
+    signal(SIGINT,saler_handle)
+    signal(SIGQUIT,saler_handle)
+    signal(SIGUSR1,saler_handle)
+    signal(SIGTSTP,SIG_IGN)
+    while True:
+        time.sleep(3)
+        print(&quot;Python带你去远方&quot;)
+
+p = mp.Process(target = saler)
+p.start()
+
+signal(SIGUSR1,driver_handle)
+signal(SIGUSR2,driver_handle)
+signal(SIGTSTP,driver_handle)
+signal(SIGINT,SIG_IGN)
+signal(SIGQUIT,SIG_IGN)
+
+p.join()
+</code></pre><h2 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h2><p>  通信方法 : 多个线程共用进程空间，所以进程的全局量对进程内的线程均可见。因此线程间没有特有的通信方式往往使用全局变量通信</p>
+<p>  注意事项 ：线程间使用全局变量通信往往需要同步互斥机制做为通信的安全保证</p>
+<p>线程的同步互斥</p>
+<h3 id="线程event对象"><a href="#线程event对象" class="headerlink" title="线程event对象"></a>线程event对象</h3><p>创建对象 ：<br>  e = threading.Event()<br>  e.wait([timeout])  如果e为设置状态则不会阻塞，未设置则阻塞<br>  e.set()   将e变为设置状态<br>  e.clear() 将e的设置去除</p>
+<p>示例代码：</p>
+<pre><code>import threading 
+from time import sleep 
+
+msg = None 
+
+#创建事件对象
+e = threading.Event()
+
+def bar():
+    print(&quot;呼叫foo&quot;)
+    global msg 
+    msg = &quot;天王盖地虎&quot;
+
+def foo():
+    print(&quot;等待口令&quot;)
+    sleep(2)
+    if msg == &quot;天王盖地虎&quot;:
+        print(&quot;宝塔镇河妖,自己人,哈哈哈&quot;)
+    else:
+        print(&quot;口令错误,打死他&quot;)
+    e.set()
+
+def fun(): 
+    print(&quot;呵呵....内奸出现&quot;)
+    sleep(1)
+    e.wait()
+    global msg
+    msg = &quot;小鸡炖蘑菇&quot; 
+
+t1 = threading.Thread(target = bar)
+t2 = threading.Thread(target = foo)
+t3 = threading.Thread(target = fun)
+t1.start()
+t2.start()
+t3.start()
+t1.join()
+t2.join()
+t3.join()
+</code></pre><p>运行结果：</p>
+<pre><code>call foo
+wait keyword
+hehe...内奸出现
+宝塔镇河妖，自己人，哈哈哈
+</code></pre><h3 id="线程锁"><a href="#线程锁" class="headerlink" title="线程锁"></a>线程锁</h3><p>  lock = threading.Lock() 创建锁对象<br>  lock.acquire()  上锁<br>  lock.release()  解锁</p>
+<pre><code>**在一个进程中对一个线程锁重复上锁则会阻塞
+</code></pre><p>示例代码：</p>
+<pre><code>import threading as th
+import time
+a = b = 0
+
+lock = th.Lock()
+def value():
+    while True:
+        lock.acquire()
+        if a != b:
+            print(&quot;a = %d  b = %d&quot;%(a,b))
+        else:
+            print(a,b)
+        lock.release()
+
+t = th.Thread(target= value)
+t.start()
+
+while True:
+    lock.acquire()
+    a += 1
+    b += 1
+    lock.release()
+t.join()
+</code></pre><p>运行结果片段：（需要ctrl+c结束死循环运行）<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937</p>
+<h3 id="Python线程的GIL问题-（全局解释器锁）"><a href="#Python线程的GIL问题-（全局解释器锁）" class="headerlink" title="Python线程的GIL问题 （全局解释器锁）"></a>Python线程的GIL问题 （全局解释器锁）</h3><p>python —》 支持多线程 –》同步互斥 –》加锁 —》超级锁，给解释器加锁</p>
+<p>后果 ： 一个解释器，同一时刻只能解释一个线程。因此大大降低了Python线程的执行效率</p>
+<p><strong>Python 的GIL问题 解决方法</strong></p>
+<ul>
+<li>尽量使用进程方式并行</li>
+<li>不适用c作为解释器，可以采用 c# java</li>
+<li>Python线程适用于高延迟的IO操作，网络操作。不适合用cpu密集型程序。线程在遇到IO阻塞时会让出解释器和cpu</li>
+</ul>
+<p>效率测试 </p>
+<p>分别测试 在 IO密集型程序和CPU密集型程序下，多进程，多线程，单进程执行效率</p>
+<p>Line cpu: 8.061699390411377<br>Line IO: 5.261598348617554</p>
+<p>Thread cpu: 8.920610427856445<br>Thread io: 5.60230565071106</p>
+<p>process cpu: 4.07219386100769<br>Process io: 3.383375406265259</p>
+<p>测试代码：</p>
+<pre><code>import threading as th
+import multiprocessing as mp
+from time import ctime,sleep,time
+&quot;&quot;&quot;
+效率测试
+分别测试在ＩＯ密集型和ＣＰＵ密集型下，多进程　多线程　单线程执行效率
+&quot;&quot;&quot;
+
+def count(x,y):
+    # print(time())
+    c = 0 
+    while c &lt; 7000000:
+        c += 1
+        x += 1
+        y += 1
+    # print(time())
+
+def mywrite():
+    # print(ctime())
+    f = open(&quot;test.txt&quot;,&quot;w&quot;)
+    for x in range(1000000):
+        f.write(&quot;hehehehehehehe&quot;)
+    f.close()
+    # print(ctime())
+
+def myread():
+    # print(ctime())
+    f = open(&quot;test.txt&quot;,&quot;r&quot;)
+    lines = f.readlines()
+    # print(ctime())
+
+def myio():
+    mywrite()
+    myread()
+start = time()
+jobs = []
+for i in range(10):
+    t = th.Thread(target = myio)
+    jobs.append(t)
+    t.start()
+for i in jobs:
+    i.join()
+end = time()
+print(end - start)
+</code></pre><p><strong>进程和线程的区别和联系</strong></p>
+<ul>
+<li>1.两者都是多任务编程的方式，都能够使用计算机多核</li>
+<li>2.进程的创建和删除要比线程消耗更多计算机资源</li>
+<li>3.进程空间独立，数据安全性好，有专门的进程间通信方法</li>
+<li>4.线程使用全局变量通信，更加简单，但是往往要与同步互斥机制公用</li>
+<li>5.一个进程可以包含多个线程，线程共享进程的资源空间</li>
+<li>6.进线程都有自己特有的资源，如命令，属性 id等</li>
+</ul>
+<p><strong>使用场景 : </strong></p>
+<ul>
+<li>需要创建较多的并发，任务比较简单时，线程比较合适</li>
+<li>如果程序数据资源比较复杂，特别是共享资源较多时，   需要考虑到线程锁的复杂性</li>
+<li>如果多个任务无必要的关联性，不易将其强行融入到一   个进程中</li>
+<li>Python线程不适合cpu密集型程序</li>
+</ul>
+<p><strong>总结 ： </strong></p>
+<ol>
+<li>进程线程的区别和关系</li>
+<li>进程间以什么方式通信，有什么特点</li>
+<li>同步互斥的意义，有什么方法实现同步互斥</li>
+<li>僵尸进程，进程状态，线程GIL的概念</li>
+<li>给一个情景，问选择进程还是线程，怎么做为什么</li>
+</ol>
+<h1 id="服务器模型"><a href="#服务器模型" class="headerlink" title="服务器模型"></a>服务器模型</h1><p>硬件服务器 ： 主机  集群<br>厂商 ： IBM  HP  联想  浪潮</p>
+<p>软件服务器 ： 编写的服务端程序，依托于硬件服务器运行，提供给用户一定的软件服务</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>webserver   —-》 网络后端程序提供网络请 求的后端处理和数据交互<br>httpserver  —-》 处理HTTP请求，回复http响应<br>邮箱服务器 —–》 提供邮箱服务<br>文件服务器 —–》 提供文件的上传下载</p>
+<p>功能： 网络连接，逻辑处理，数据的交互，数据的传输 协议的实现</p>
+<h2 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h2><p> c/s  (客户端服务器模型)<br> b/s  (浏览器服务器模型)</p>
+<p>服务器目标：处理速度快，数据更安全，并发量大 </p>
+<p>硬件 ： 更高的配置，集成分布的技术，更好的网络速度，更多的主机，网络安全</p>
+<p>软件 ： 程序占有更少的计算机资源，更稳定的运行效果，更流畅的运行速度，采用更合理的技术。处理更高的并发</p>
+<h2 id="服务器模型-1"><a href="#服务器模型-1" class="headerlink" title="服务器模型"></a>服务器模型</h2><ul>
+<li><p>循环服务器 ：单进程程序，循环的接收客户端的请求，处理请求，每处理完一个请求后再去接收处理下一个请求 </p>
+<p> 优点 ： 实现简单，占用系统资源少<br> 缺点 ： 无法同时连接多个客户端，当一个客户端长期占有服务器时会形成其他客户端无法访问的情况<br> 使用情况：任务比较短暂，udp套接字更适合循环</p>
+</li>
+</ul>
+<ul>
+<li><p>并发服务器 ： 同时能够处理多个客户端的任务请求。并发可分为IO并发或者多进程多线程并发。</p>
+<p>  IO并发 ： IO多路复用    协程</p>
+<p>  优点：资源消耗少，适用于IO类型服务器<br>  缺点：不能监控CPU密集的情况，单线程，不能长期阻塞的消息的收发</p>
+<p>  进程/线程并发：为每个客户端单独提供一个进程线程，处理客户端请求</p>
+<p>  优点： 客户端可以长期占用服务器<br>  缺点： 消耗系统资源较多</p>
+</li>
+</ul>
+<h2 id="多进程并发模型"><a href="#多进程并发模型" class="headerlink" title="多进程并发模型"></a>多进程并发模型</h2><p>使用fork完成并发</p>
+<ul>
+<li>1.创建套接字  绑定  监听</li>
+<li>2.等待接收客户端请求 accept</li>
+<li>3.创建子进程处理客户端请求，<br>父进程继续准备接收其他客户端连接</li>
+<li>4.客户端退出则子进程结束</li>
+</ul>
+<h2 id="tftp文件服务器"><a href="#tftp文件服务器" class="headerlink" title="tftp文件服务器"></a>tftp文件服务器</h2><p>项目功能 ： </p>
+<ul>
+<li>客户端有简单的页面命令提示</li>
+<li><p>功能包含</p>
+<ol>
+<li>查看服务端文件库文件列表</li>
+<li>下载其中的某个文件到本地</li>
+<li>将本地文件上传到服务器文件库中</li>
+<li>退出</li>
+</ol>
+</li>
+<li><p>服务端需要：<br> 1.处理客户端的各种请求<br> 2.允许多个客户端同时进行操作</p>
+</li>
+</ul>
+<p>技术分析 ：<br>        tcp套接字<br>        并发 —》 多进程<br>        对文件的读写发送操作<br>        查看文件列表时需要考虑到粘包问题</p>
+<p>整体结构 ：功能封装在类中（上传，下载，查看列表）</p>
+<pre><code>流程控制使用main（）
+          创建套接字，创建连接创建进程，接收请求
+</code></pre><p>作业 ： 完成 get  和 put功能</p>
+<p>服务器端代码：</p>
+<pre><code>&apos;&apos;&apos;
+tftp 文件服务器程序
+&apos;&apos;&apos;
+from socket import * 
+import os 
+import signal 
+import sys 
+import time 
+
+#文件库路径
+FILE_PATH = &quot;/home/tarena/&quot;
+
+#实现服务器功能模块
+class TftpServer(object):
+    def __init__(self,connfd):
+        self.connfd = connfd
+    def do_list(self):
+        #获取列表
+        file_list = os.listdir(FILE_PATH)
+        if not file_list:
+            self.connfd.send(&apos;文件库为空&apos;.encode())
+            return 
+        else:
+            self.connfd.send(b&apos;OK&apos;)
+            time.sleep(0.1)
+
+        files = &quot;&quot;
+        for file in file_list:
+            if file[0] != &apos;.&apos; and \
+            os.path.isfile(FILE_PATH + file):
+                files = files + file + &apos;#&apos;
+        self.connfd.send(files.encode())     
+
+
+    def do_get(self,filename):
+        try:
+            fd = open(FILE_PATH + filename,&apos;rb&apos;)
+        except:
+            self.connfd.send(&quot;文件不存在&quot;.encode())
+            return
+        self.connfd.send(b&quot;OK&quot;)
+        time.sleep(0.1) 
+        #发送文件
+        try:
+            for line in fd:
+                self.connfd.send(line)
+            fd.close()
+        except Exception as e:
+            print(e)
+        time.sleep(0.1)
+        self.connfd.send(b&apos;##&apos;)
+        print(&quot;文件发送完毕&quot;)
+
+
+    def do_put(self,filename):
+        try:
+            fd = open(FILE_PATH + filename,&apos;w&apos;)
+        except:
+            self.connfd.send(&quot;无法完成上传&quot;)
+        self.connfd.send(b&apos;OK&apos;)
+        while True:
+            data = self.connfd.recv(1024).decode()
+            if data == &quot;##&quot;:
+                break
+            fd.write(data)
+        fd.close()
+        print(&quot;上传完毕&quot;)
+
+#流程控制,创建套接字连接,接收请求
+def main():
+    HOST = &apos;0.0.0.0&apos;
+    PORT = 8888
+    ADDR = (HOST,PORT)
+
+    sockfd = socket()
+    sockfd.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)
+    sockfd.bind(ADDR)
+    sockfd.listen(5)
+
+    signal.signal(signal.SIGCHLD,signal.SIG_IGN)
+    print(&quot;Listen to port 8888....&quot;)
+
+    while True:
+        try: 
+            connfd,addr = sockfd.accept()
+        except KeyboardInterrupt:
+            sockfd.close()
+            sys.exit(&quot;服务器退出&quot;)
+        except Exception as e:
+            print(e)
+            continue
+        print(&quot;客户端登录:&quot;,addr)
+        #创建父子进程
+        pid = os.fork()
+        if pid &lt; 0:
+            print(&quot;创建子进程失败&quot;)
+            continue
+        elif pid == 0:
+            sockfd.close()
+            tftp = TftpServer(connfd)
+            #接收客户端请求
+            while True:
+                data = connfd.recv(1024).decode()
+                if not data:
+                    continue
+                elif data[0] == &apos;L&apos;:
+                    tftp.do_list()
+                #data ==&gt; G filename
+                elif data[0] == &apos;G&apos;:
+                    filename = data.split(&apos; &apos;)[-1]
+                    tftp.do_get(filename)
+                elif data[0] == &apos;P&apos;:
+                    filename = data.split(&apos; &apos;)[-1]
+                    tftp.do_put(filename)
+                elif data[0] == &apos;Q&apos;:
+                    print(&quot;客户端退出&quot;)
+                    sys.exit(0)
+
+        else:
+            connfd.close()
+            continue
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre><p>客户端代码：</p>
+<pre><code>from socket import * 
+import sys 
+import time 
+
+#实现基本的请求功能
+class TftpServer(object):
+    def __init__(self,sockfd):
+        self.sockfd = sockfd
+
+    def do_list(self):
+        self.sockfd.send(b&quot;L&quot;) #发送请求类型
+        #等待接收服务器端确认
+        data = self.sockfd.recv(1024).decode()
+        if data == &apos;OK&apos;:
+            data = self.sockfd.recv(4096).decode()
+            files = data.split(&apos;#&apos;)
+            for file in files:
+                print(file)
+            print(&quot;%%%%%文件列表展示完毕%%%%%\n&quot;)
+        else:
+            #失败的原因由服务器发送过来
+            print(data)
+
+
+    def do_get(self,filename):
+        self.sockfd.send((&apos;G &apos;+filename).encode())
+        data = self.sockfd.recv(1024).decode()
+        if data == &apos;OK&apos;:
+            fd = open(filename,&apos;w&apos;)
+            while True:
+                data = self.sockfd.recv(1024).decode()
+                if data == &quot;##&quot;:
+                    break
+                fd.write(data)
+            fd.close()
+            print(&quot;%s 下载完成\n&quot;%filename)
+        else:
+            print(data)
+
+    def do_put(self,filename):
+        try:
+            fd = open(filename,&apos;rb&apos;)
+        except:
+            print(&quot;上传的文件不存在&quot;)
+            return
+        self.sockfd.send((&quot;P &quot; + filename).encode())
+        data = self.sockfd.recv(1024).decode()
+        if data == &apos;OK&apos;:
+            for line in fd:
+                self.sockfd.send(line)
+            fd.close()
+            time.sleep(0.1)
+            self.sockfd.send(b&apos;##&apos;)
+            print(&quot;%s 文件上传完毕&quot;%filename)
+        else:
+            print(data)
+
+
+    def do_quit(self):
+        self.sockfd.send(b&apos;Q&apos;)
+
+
+#套接字连接
+def main():
+    if len(sys.argv) &lt; 3:
+        print(&quot;argv is error&quot;)
+        return 
+    HOST = sys.argv[1]
+    PORT = int(sys.argv[2])
+    ADDR = (HOST,PORT)
+
+    sockfd = socket()
+    sockfd.connect(ADDR)
+
+    tftp = TftpServer(sockfd) #tftp对象调用请求方法
+
+    while True:
+        print(&quot;=======命令选项========&quot;)
+        print(&quot;******* list *********&quot;)
+        print(&quot;*******get file ******&quot;)
+        print(&quot;*******put file ******&quot;)
+        print(&quot;******* quit *********&quot;)
+        print(&quot;======================&quot;)
+
+        cmd = input(&quot;请输入命令&gt;&gt;&quot;)
+
+        if cmd.strip() == &apos;list&apos;:
+            tftp.do_list()
+        elif cmd[:3] == &quot;get&quot;:
+            filename = cmd.split(&apos; &apos;)[-1]
+            tftp.do_get(filename)
+        elif cmd[:3] == &quot;put&quot;:
+            filename = cmd.split(&apos; &apos;)[-1]
+            tftp.do_put(filename)
+        elif cmd.strip() == &quot;quit&quot;:
+            tftp.do_quit()
+            sockfd.close()
+            sys.exit(&quot;欢迎使用&quot;) 
+        else:
+            print(&quot;请输入正确的命令!!!&quot;)
+            continue
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre><hr>
+<p>*小贴士：</p>
+<p>文件处理函数</p>
+<p>os.listdir(PATH) : 获取一个目录内文件列表<br>os.path.isfile() :判断一个文件的类型是否为普通文件<br>os.path.isdir() ：判断一个文件的类型是否为目录*</p>
+<hr>
+<h2 id="threading-的多线程并发"><a href="#threading-的多线程并发" class="headerlink" title="threading 的多线程并发"></a>threading 的多线程并发</h2><p>对比多进程并发：<br>优点 ： 资源消耗少<br>缺点 ： 需要注意共享资源的争夺<br>        Python多线程收到GIL的影响</p>
+<p>实现步骤：</p>
+<ul>
+<li>1 创建套接字，绑定，监听</li>
+<li>2 接收客户端连接请求，创建新的线程</li>
+<li>3 主线程继续等待其他客户端连接，分支线程执行客户    端请求</li>
+<li>4 处理完客户端请求后，分支线程退出，关闭客户端套    接字</li>
+</ul>
+<p>socket服务器集成模块</p>
+<p>python2  SocketServer<br>python3  socketserver</p>
+<p>功能 ： 通过模块的接口完成基于多进程/多线程的tcp/udp 的socket并发程序</p>
+<p>模块类</p>
+<p>DatagramRequestHandler  处理udp请求<br>StreamRequestHandler    处理tcp请求</p>
+<p>UDPServer   提供udp服务端类<br>TCPServer   提供tcp服务端类</p>
+<p>ForkingMixIn   提供进程创建<br>ForkingTCPServer   ==》ForkingMixIn + TCPServer<br>ForkingUDPServer   ==》ForkingMixIn + UDPServer</p>
+<p>ThreadingMixIn  提供线程创建<br>ThreadingTCPServer  ==》ThreadingMixIn + TCPServer<br>ThreadingUDPServer  ==》ThreadingMixIn + TCPServer</p>
+<p>基于多线程并发的 HTTPServer</p>
+<p>HTTPServer的作用 </p>
+<ul>
+<li>1.就收浏览器发送的http请求</li>
+<li>2.对http请求进行解析</li>
+<li>3.组织响应内容进行回发</li>
+</ul>
+<p>升级</p>
+<ul>
+<li>使用多线程的并发可以同时处理多个客户端请求</li>
+<li>增加简单的应用程序，使浏览器不仅可以访问静态网页也可以访问后台程序</li>
+<li>使用类对服务器功能模块进行封装</li>
+</ul>
+<p>技术点 ： threading 并发<br>          tcp socket 套接字<br>                    http协议响应内容进行字符串拼接</p>
+<p>代码示例：<br>        ‘’’<br>        http server 第二版<br>        ‘’’<br>        from socket import *<br>        from threading import Thread<br>        import time </p>
+<pre><code>ADDR = (&apos;0.0.0.0&apos;,8000)
+#存放静态页面的目录
+STATIC_DIR = &quot;./static&quot;
+
+#httpserver类 封装服务器功能
+class HTTPServer(object):
+    def __init__(self,addr): 
+        #套接字创建
+        self.sockfd = socket()
+        self.sockfd.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)
+        self.sockfd.bind(addr)
+        self.sockfd.listen(5)
+        #为对象添加一些属性
+        self.name = &quot;HttpServer&quot;
+        self.port = 8000
+        self.address = addr
+
+    # 监听客户端的链接请求,创建新的线程处理
+    def serve_forever(self):
+        print(&quot;Listen to port 8000.....&quot;)
+        while True:
+            connfd,addr = self.sockfd.accept()
+            #创建新的线程处理具体请求
+            clientThread = Thread(target = self.handleRequest,args = (connfd,))
+
+            clientThread.setDaemon(True)
+            clientThread.start()
+
+    def handleRequest(self,connfd):
+        #接收客户端请求
+        request = connfd.recv(4096)
+        requestHeadlers = request.splitlines()
+        #请求行
+        print(connfd.getpeername(),&quot;:&quot;,requestHeadlers[0])
+        #获取具体请求
+        getRequest = str(requestHeadlers[0]).split(&apos; &apos;)[1]
+
+        #访问静态网页
+        if getRequest[-3:] != &quot;.py&quot;:
+            if getRequest == &apos;/&apos;:
+                getFilename = STATIC_DIR + &quot;/index.html&quot;
+            else:
+                getFilename = STATIC_DIR + getRequest
+
+            try:
+                f = open(getFilename)
+            except Exception:
+                #没有找到页面
+                responseHeaders = &quot;HTTP/1.1 404 not found\r\n&quot;
+                responseHeaders += &quot;\r\n&quot;
+                responseBody = &quot;===Sorry,the page not found===&quot;
+            else:
+                responseHeaders = &quot;HTTP/1.1 200 OK\r\n&quot;
+                responseHeaders += &quot;\r\n&quot;
+                responseBody = f.read()
+            finally:
+                response = responseHeaders + responseBody
+                connfd.send(response.encode())
+        #访问后台程序
+        else:
+            #通过函数得到响应体
+            responseBody = self.application()
+
+            responseHeaders = &quot;HTTP/1.1 200 OK\r\n&quot;
+            responseHeaders += &quot;\r\n&quot;
+            response = responseHeaders + responseBody
+
+            connfd.send(response.encode())
+
+        connfd.close()
+
+    #获取去你要使用的外部函数,变为属性
+    def setApp(self,application):
+        self.application = application 
+
+
+#后台程序
+def app():
+    return &quot;\n===假设这是一个很复杂的程序,你得到了一个很牛逼的内容===\n%s&quot;%time.ctime()
+
+
+if __name__ == &quot;__main__&quot;:
+    httpd = HTTPServer(ADDR)
+    httpd.setApp(app)
+    #启动服务器
+    httpd.serve_forever()
+</code></pre><h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><p>定义： 纤程 微线程 ，协程本质只有一个线程在运行</p>
+<p>功能原理 ： 通过应用层程序，记录上下文栈区，实现在程序执行过程中的跳跃，选择可以不阻塞的部分执行，从而提高IO的执行效率</p>
+<p><strong>优点 ： </strong><br>资源消耗很少<br>无需多线程那样来回切换的开销<br>无需进行同步互斥操作<br>IO并发性好</p>
+<p><strong>缺点 ： </strong><br>无法利用计算机的多核资源<br>程序不能够一个客户端单独长时间占有服务端</p>
+<p>yield–&gt; 协程的基本实现关键字</p>
+<pre><code>sudo pip3 install  greenlet
+sudo pip3 install  gevent
+
+greenlet 
+greenlet.greenlet()
+gr.switch()
+</code></pre><p>示例代码：</p>
+<pre><code>from greenlet import greenlet
+
+def test1():
+    print(12)
+    gr2.switch()
+    s =  input(&quot;t1 input: &quot;)
+    print(&quot;s= &quot;,s)
+    print(34)
+    gr2.switch()
+
+def test2():
+    print(56)
+    gr1.switch()
+    print(78)
+
+gr1 = greenlet(test1)
+gr2 = greenlet(test2)
+
+gr1.switch()
+</code></pre><p>gevent</p>
+<ul>
+<li>将协程事件封装为函数</li>
+</ul>
+<p>gevent.spawn(func,argv)<br>功能 ： 将事件变为协程事件并启动<br>参数 ： func  传入一个函数变为协程<br>        argv  给func函数传参<br>返回值 ： 协程对象</p>
+<p>gevent.joinall()<br>功能：回收协程</p>
+<p>gevent.sleep(n)<br>功能 ； 模拟IO阻塞的情况</p>
+<pre><code>from gevent import  monkey
+monkey.patch_all()
+</code></pre><p>功能 ： 在导入socket模块之前使用，修改socket的IO设置行为</p>
+<p>示例代码：</p>
+<pre><code>import gevent
+from gevent import monkey
+
+def foo():
+    print(&quot;run in foo&quot;)
+    gevent.sleep(2)
+    print(&quot;switch to foo again&quot;)
+
+def bar():
+    print(&quot;run in bar&quot;)
+    gevent.sleep(3)
+    print(&quot;switch to bar again&quot;)
+
+f = gevent.spawn(foo)
+b = gevent.spawn(bar)
+
+gevent.joinall([b,f])
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/10/图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -5148,165 +8377,6 @@ update_one()</code></p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/06/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Godshion">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="响神的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/06/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-06T21:31:59+08:00">
-                2018-08-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  78 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -5358,7 +8428,7 @@ update_one()</code></p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -5380,7 +8450,7 @@ update_one()</code></p>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -5445,7 +8515,7 @@ update_one()</code></p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">38.8k</span>
+    <span title="Site words total count">64.6k</span>
   
 </div>
 
