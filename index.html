@@ -5141,7 +5141,7 @@ mgpath(1,1,8,8)
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  16,339 字
+                  16,338 字
                 </span>
               
 
@@ -5202,7 +5202,7 @@ mgpath(1,1,8,8)
 <ul>
 <li>E.其他：比如分析淘宝上竞争对手的数据；分析微博的数据传递影响力，政府的舆情分析，分析人与人之间的关系等等；</li>
 </ul>
-<p>总之一句话：在当今的大数据时代，做任何价值分析的前提是数据，而爬虫则是获得这个前提的一个低成本高收益手段；而对同学们而言，另一个重要的价值是解决就业问题。Python爬虫工程师的招聘情况见：</p>
+<p>总之一句话：在当今的大数据时代，做任何价值分析的前提是数据，而爬虫则是获得这个前提的一个低成本高收益手段；而程序员而言，另一个重要的价值是解决就业问题。Python爬虫工程师的招聘情况见：</p>
 <p><a href="https://www.lagou.com/jobs/list_python%20%E7%88%AC%E8%99%AB%E5%B7%A5%E7%A8%8B%E5%B8%88city=%E5%85%A8%E5%9B%BD&amp;cl=false&amp;fromSearch=true&amp;labelWords=&amp;suginput" title="https://www.lagou.com/jobs/list_python%20%E7%88%AC%E8%99%AB%E5%B7%A5%E7%A8%8B%E5%B8%88city=%E5%85%A8%E5%9B%BD&amp;cl=false&amp;fromSearch=true&amp;labelWords=&amp;suginput" target="_blank" rel="noopener">https://www.lagou.com/jobs/list_python%20%E7%88%AC%E8%99%AB%E5%B7%A5%E7%A8%8B%E5%B8%88city=%E5%85%A8%E5%9B%BD&amp;cl=false&amp;fromSearch=true&amp;labelWords=&amp;suginput</a></p>
 <h3 id="1-2-2怎么做爬虫"><a href="#1-2-2怎么做爬虫" class="headerlink" title="1.2.2怎么做爬虫"></a>1.2.2怎么做爬虫</h3><p>用Python做爬虫非常的简单，在交互式环境中简单的两行代码即可</p>
 <p>做一个爬虫如此简单吗？<br>当然不是。让我们来看下要做一个爬虫工程师需要哪些知识和技能：</p>
@@ -5245,7 +5245,13 @@ mgpath(1,1,8,8)
 <p>说明：这里只是通过百度搜索引擎大致来估算网站的大小，受到网站本身对搜索引擎爬虫的限制，及搜索引擎本身爬取数据技术的限制，所以这只是一个经验值，可以作为估算网站体量量级的一个经验值。</p>
 <h3 id="2-2-4-识别网站用了何种技术"><a href="#2-2-4-识别网站用了何种技术" class="headerlink" title="2.2.4 识别网站用了何种技术"></a>2.2.4 识别网站用了何种技术</h3><p>为了更好的了解网站，抓取该网站的信息，我们可以先了解一下该网站大致所使用的技术架构。<br>安装builtwith :<br>Windows： pip install bulitwith<br>Linux:     sudo pip install builtwith<br>使用：在Python交互环境下，输入：<br>import builtwith<br>builtwith.parse(“<a href="http://www.sina.com.cn&quot;" target="_blank" rel="noopener">http://www.sina.com.cn&quot;</a>)</p>
 <h3 id="2-2-5-寻找网站的所有者"><a href="#2-2-5-寻找网站的所有者" class="headerlink" title="2.2.5 寻找网站的所有者"></a>2.2.5 寻找网站的所有者</h3><p>有时候，我们需要知道网站的所有者是谁，这里在技术上有个简单的方法可以参考。<br>安装python-whois :<br>Windows： pip install python-whois<br>使用：在Python交互环境下，输入：<br>import whois<br>whois.whois(“<a href="http://www.sina.com.cn&quot;" target="_blank" rel="noopener">http://www.sina.com.cn&quot;</a>) </p>
-<h1 id="第三章-简单爬虫的实现"><a href="#第三章-简单爬虫的实现" class="headerlink" title="第三章 简单爬虫的实现"></a>第三章 简单爬虫的实现</h1><h2 id="3-1-可能是史上最简单的爬虫Demo"><a href="#3-1-可能是史上最简单的爬虫Demo" class="headerlink" title="3.1 可能是史上最简单的爬虫Demo"></a>3.1 可能是史上最简单的爬虫Demo</h2><p>最简单的爬虫Demo：<br>第一个爬虫程序，两行代码写一个爬虫：<br>import urllib2  #Python2<br>print(urllib2.urlopen(“<a href="http://example.webscraping.com&quot;).read()" target="_blank" rel="noopener">http://example.webscraping.com&quot;).read()</a>)<br>这两行代码在Python2.7下可以正常运行，获取<a href="http://example.webscraping.com" target="_blank" rel="noopener">http://example.webscraping.com</a><br>这个页面的内容；<br>备注：如果是Python3 ,则使用如下两行代码：<br>import requests #Python3<br>print(requests.get(‘<a href="http://example.webscraping.com&#39;).text" target="_blank" rel="noopener">http://example.webscraping.com&#39;).text</a>)<br>如果没有requests 库，则需要使用命令pip install requests 安装一下；<br>说明：本讲义结合了Python2和Python3两种不同的环境。当看见#Python2 或者有些以p2结尾的文件，时说明此代码需要在Python2.7的环境下运行；看见#Python3或者有些以p3结尾的文件时说明此代码需要在Python3.5及以上的环境中运行。之所以会有这种情况出现是历史原因导致：Python3当然是大势所趋，但是目前有很多库还没有完全移植到Python3上，同时有些公司还在使用Python2进行开发。大家不用过于担心，在本讲义的附录A中会将Python2和Python3在爬虫这块最主要几个库的对照表收录进来，按照这张表就可以方便的实现Python2与Python3在爬虫这块代码的移植。</p>
+<h1 id="第三章-简单爬虫的实现"><a href="#第三章-简单爬虫的实现" class="headerlink" title="第三章 简单爬虫的实现"></a>第三章 简单爬虫的实现</h1><h2 id="3-1-可能是史上最简单的爬虫Demo"><a href="#3-1-可能是史上最简单的爬虫Demo" class="headerlink" title="3.1 可能是史上最简单的爬虫Demo"></a>3.1 可能是史上最简单的爬虫Demo</h2><p>最简单的爬虫Demo：<br>第一个爬虫程序，两行代码写一个爬虫：</p>
+<pre><code>import urllib2  #Python2
+print(urllib2.urlopen(&quot;http://example.webscraping.com&quot;).read())
+</code></pre><p>这两行代码在Python2.7下可以正常运行，获取<a href="http://example.webscraping.com" target="_blank" rel="noopener">http://example.webscraping.com</a><br>这个页面的内容；<br>备注：如果是Python3 ,则使用如下两行代码：</p>
+<pre><code>import requests #Python3
+print(requests.get(&apos;http://example.webscraping.com&apos;).text)
+</code></pre><p>如果没有requests 库，则需要使用命令pip install requests 安装一下；<br>说明：本讲义结合了Python2和Python3两种不同的环境。当看见#Python2 或者有些以p2结尾的文件，时说明此代码需要在Python2.7的环境下运行；看见#Python3或者有些以p3结尾的文件时说明此代码需要在Python3.5及以上的环境中运行。之所以会有这种情况出现是历史原因导致：Python3当然是大势所趋，但是目前有很多库还没有完全移植到Python3上，同时有些公司还在使用Python2进行开发。大家不用过于担心，在本讲义的附录A中会将Python2和Python3在爬虫这块最主要几个库的对照表收录进来，按照这张表就可以方便的实现Python2与Python3在爬虫这块代码的移植。</p>
 <h2 id="3-2-回顾一下HTTP，HTTPS协议"><a href="#3-2-回顾一下HTTP，HTTPS协议" class="headerlink" title="3.2    回顾一下HTTP，HTTPS协议"></a>3.2    回顾一下HTTP，HTTPS协议</h2><h3 id="3-2-1-关于URL："><a href="#3-2-1-关于URL：" class="headerlink" title="3.2.1.    关于URL："></a>3.2.1.    关于URL：</h3><p>URL（Uniform / Universal Resource Locator的缩写）：统一资源定位符，是用于完整地描述Internet上网页和其他资源的地址的一种标识方法。<br>基本格式：scheme://host[:port#]/path/…/[?query-string][#anchor]<br>scheme：协议(例如：http, https, ftp)<br>host：服务器的IP地址或者域名<br>port#：服务器的端口（如果是走协议默认端口，缺省端口80）<br>path：访问资源的路径<br>query-string：参数，发送给http服务器的数据<br>anchor：锚（跳转到网页的指定锚点位置）<br>例如：<br><a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a><br><a href="http://item.jd.com/11963485.html#product-detail" target="_blank" rel="noopener">http://item.jd.com/11963485.html#product-detail</a><br><a href="ftp://192.168.1.118:8081/index" target="_blank" rel="noopener">ftp://192.168.1.118:8081/index</a><br>URL是爬虫的入口，非常的重要。</p>
 <h3 id="3-2-2-HTTP协议，HTTPS协议："><a href="#3-2-2-HTTP协议，HTTPS协议：" class="headerlink" title="3.2.2.    HTTP协议，HTTPS协议："></a>3.2.2.    HTTP协议，HTTPS协议：</h3><p>HTTP协议（HyperText Transfer Protocol，超文本传输协议）：是一种发布和接收 HTML页面的方法。HTTP协议是一个应用层的协议，无连接（每次连接只处理一个请求），无状态（每次连接，传输都是独立的）<br>HTTPS（Hypertext Transfer Protocol over Secure Socket Layer）协议简单讲是HTTP的安全版，在HTTP下加入SSL层。HTTPS = HTTP+SSL（Secure Sockets Layer 安全套接层）主要用于Web的安全传输协议，在传输层对网络连接进行加密，保障在Internet上数据传输的安全<br>HTTP的端口号为80；HTTPS的端口号为443；</p>
 <h3 id="3-2-3-HTTP-Request请求常用的两种方法："><a href="#3-2-3-HTTP-Request请求常用的两种方法：" class="headerlink" title="3.2.3.    HTTP Request请求常用的两种方法："></a>3.2.3.    HTTP Request请求常用的两种方法：</h3><p>Get：是为了从服务器上获取信息，传输给服务器的数据的过程不够安全，数据大小有限制；<br>Post：向服务器传递数据，传输数据的过程是安全的，大小理论上没有限制；</p>
@@ -5254,8 +5260,20 @@ mgpath(1,1,8,8)
 <p>通过这个例子，我们发现Python爬虫有个默认的带有版本号的User-Agent，由此很容易能识别出来这是一个Python写的爬虫程序。所以如果用默认的User-Agent，那些反爬虫的程序一眼就能识别出来我们是个Python爬虫，这对Python爬虫是不利的。<br>那么，我们如何修改这个User-Agent，来伪装我们的爬虫程序呢？<br>user_agent = “Mozilla/5.0 (Windows NT 10.0; WOW64; rv:58.0) Gecko/20100101 Firefox/58.0”<br>headers = {‘User-agent’: user_agent}<br>request = urllib2.Request(url, headers=headers)<br>SpiderCodes\ simplestSpiderp2.py<br>SpiderCodes\ simplestSpiderp3.py</p>
 <h3 id="3-2-5-HTTP-Response响应的状态码："><a href="#3-2-5-HTTP-Response响应的状态码：" class="headerlink" title="3.2.5.    HTTP Response响应的状态码："></a>3.2.5.    HTTP Response响应的状态码：</h3><p>200为成功，300是跳转；<br>400，500意味着有错误：</p>
 <p>说明：服务器返回给爬虫的信息可以用来判断我们爬虫当前是否正常在运行；<br>当出现异常错误时：一般来说如果是500的错误那么爬虫会进入休眠状态，说明服务器已经宕机；如果是400的错误，则需要考虑爬虫的抓取策略的修改，可能是网站更新了，或者是爬虫被禁了。如果在一个分布式的爬虫系统中，更容易发现和调整爬虫的策略。</p>
-<h3 id="3-2-6-HTTP-响应体是我们爬虫需要关心的协议部分的内容："><a href="#3-2-6-HTTP-响应体是我们爬虫需要关心的协议部分的内容：" class="headerlink" title="3.2.6.    HTTP 响应体是我们爬虫需要关心的协议部分的内容："></a>3.2.6.    HTTP 响应体是我们爬虫需要关心的协议部分的内容：</h3><p>通过Python的交互是环境，我们可以直观的方便的看到请求响应的信息，这也看出了Python瑞士军刀般的作用。<br>        &gt;&gt;&gt; import requests  #Python3<br>        &gt;&gt;&gt; html = requests.get(‘<a href="http://example.webscraping.com&#39;" target="_blank" rel="noopener">http://example.webscraping.com&#39;</a>)<br>        &gt;&gt;&gt; print(html.status_code)<br>        200<br>        &gt;&gt;&gt; print(html.elapsed)<br>        0:00:00.818880<br>        &gt;&gt;&gt; print(html.encoding)<br>        utf-8<br>        &gt;&gt;&gt; print(html.headers)<br>        {‘Server’: ‘nginx’, ‘Date’: ‘Thu, 01 Feb 2018 09:23:30 GMT’, ‘Content-Type’: ‘text/html; charset=utf-8’, ‘Transfer-Encoding’: ‘chunked’, ‘Connection’: ‘keep-alive’, ‘Vary’: ‘Accept-Encoding’, ‘X-Powered-By’: ‘web2py’, ‘Set-Cookie’: ‘session_id_places=True; httponly; Path=/, session_data_places=”6853de2931bf0e3a629e019a5c352fca:1Ekg3FlJ7obeqV0rcDDmjBm3y4P4ykVgQojt-qrS33TLNlpfFzO2OuXnY4nyl5sDvdq7p78_wiPyNNUPSdT2ApePNAQdS4pr-gvGc0VvnXo3TazWF8EPT7DXoXIgHLJbcXoHpfleGTwrWJaHq1WuUk4yjHzYtpOhAbnrdBF9_Hw0OFm6-aDK_J25J_asQ0f7”; Path=/‘, ‘Expires’: ‘Thu, 01 Feb 2018 09:23:30 GMT’, ‘Pragma’: ‘no-cache’, ‘Cache-Control’: ‘no-store, no-cache, must-revalidate, post-check=0, pre-check=0’, ‘Content-Encoding’: ‘gzip’}<br>        &gt;&gt;&gt; print(html.content)<br>        略，内容太多了</p>
-<p>在复习完HTTP协议之后，我们再来看看我们的爬虫程序：<br><em>**</em> \SpiderCodes\httpSpidersp2.py<br>练习：将httpSpidersp2.py中的代码用Python3重新实现一次；</p>
+<h3 id="3-2-6-HTTP-响应体是我们爬虫需要关心的协议部分的内容："><a href="#3-2-6-HTTP-响应体是我们爬虫需要关心的协议部分的内容：" class="headerlink" title="3.2.6.    HTTP 响应体是我们爬虫需要关心的协议部分的内容："></a>3.2.6.    HTTP 响应体是我们爬虫需要关心的协议部分的内容：</h3><p>通过Python的交互是环境，我们可以直观的方便的看到请求响应的信息，这也看出了Python瑞士军刀般的作用。</p>
+<pre><code>&gt;&gt;&gt; import requests  #Python3
+&gt;&gt;&gt; html = requests.get(&apos;http://example.webscraping.com&apos;)
+&gt;&gt;&gt; print(html.status_code)
+200
+&gt;&gt;&gt; print(html.elapsed)
+0:00:00.818880
+&gt;&gt;&gt; print(html.encoding)
+utf-8
+&gt;&gt;&gt; print(html.headers)
+{&apos;Server&apos;: &apos;nginx&apos;, &apos;Date&apos;: &apos;Thu, 01 Feb 2018 09:23:30 GMT&apos;, &apos;Content-Type&apos;: &apos;text/html; charset=utf-8&apos;, &apos;Transfer-Encoding&apos;: &apos;chunked&apos;, &apos;Connection&apos;: &apos;keep-alive&apos;, &apos;Vary&apos;: &apos;Accept-Encoding&apos;, &apos;X-Powered-By&apos;: &apos;web2py&apos;, &apos;Set-Cookie&apos;: &apos;session_id_places=True; httponly; Path=/, session_data_places=&quot;6853de2931bf0e3a629e019a5c352fca:1Ekg3FlJ7obeqV0rcDDmjBm3y4P4ykVgQojt-qrS33TLNlpfFzO2OuXnY4nyl5sDvdq7p78_wiPyNNUPSdT2ApePNAQdS4pr-gvGc0VvnXo3TazWF8EPT7DXoXIgHLJbcXoHpfleGTwrWJaHq1WuUk4yjHzYtpOhAbnrdBF9_Hw0OFm6-aDK_J25J_asQ0f7&quot;; Path=/&apos;, &apos;Expires&apos;: &apos;Thu, 01 Feb 2018 09:23:30 GMT&apos;, &apos;Pragma&apos;: &apos;no-cache&apos;, &apos;Cache-Control&apos;: &apos;no-store, no-cache, must-revalidate, post-check=0, pre-check=0&apos;, &apos;Content-Encoding&apos;: &apos;gzip&apos;}
+&gt;&gt;&gt; print(html.content)
+略，内容太多了
+</code></pre><p>在复习完HTTP协议之后，我们再来看看我们的爬虫程序：<br><em>**</em> \SpiderCodes\httpSpidersp2.py<br>练习：将httpSpidersp2.py中的代码用Python3重新实现一次；</p>
 <h2 id="3-3关于爬虫抓取的策略"><a href="#3-3关于爬虫抓取的策略" class="headerlink" title="3.3关于爬虫抓取的策略"></a>3.3关于爬虫抓取的策略</h2><p>一般在抓取爬虫数据时，我们不会只抓取一个入口的URL数据就停止了。当有多个URL链接需要抓取时，我们怎么办？</p>
 <h3 id="3-3-1-深度优先算法"><a href="#3-3-1-深度优先算法" class="headerlink" title="3.3.1 深度优先算法"></a>3.3.1 深度优先算法</h3><p>深度优先是指搜索引擎先从网站页面上的某个链接进行抓取，进入到这个链接的页面之后，抓取页面上的内容，然后继续顺着当前页面上的这个链接进行抓取下去，直到顺着这个页面上的链接全部抓取完，最深的页面上没有链接了，爬虫再回过头来顺着第一个网站页面上的另外一个链接进行抓取；如下图所示。</p>
 <h3 id="3-3-2-广度-宽度优先算法"><a href="#3-3-2-广度-宽度优先算法" class="headerlink" title="3.3.2 广度/宽度优先算法"></a>3.3.2 广度/宽度优先算法</h3><p>广度优先则是另一个过程，它先把该层次的都遍历完，再继续往下走。<br>如下图所示：</p>
