@@ -2277,7 +2277,10 @@ gevent.joinall([b,f])
     }
   </script>
   <script>
-    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?'];
+    var d = document, s = d.createElement('script');
+    s.src = '/static/api/js/share.js?v=89860593.js?';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
   </script>
 
 
