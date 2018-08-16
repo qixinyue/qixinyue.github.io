@@ -232,6 +232,1663 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/julia/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/14/julia/" itemprop="url">Julia</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-14T19:05:04+08:00">
+                2018-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Julia/" itemprop="url" rel="index">
+                    <span itemprop="name">Julia</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8,347 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  35 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>编程界的新宠Julia发布1.0正式版本，多种优势集于一身</p>
+<p>源编程语言 Julia 迎来 1.0 正式版本。在 8 月 9 日的于伦敦举行的 JuliaCon 2018 会议上，Julia1.0 版本正式发布，这对 Julia 来说是自 2012 年 2 月公司成立以来最重要的时刻。Julia 是一种面向科学、数值计算的简单、高效的开源编程语言。而此次发布的Julia 1.0 是第一个完善、稳定和向前兼容的 Julia 版本。Julia 的联合创始人 Jeff Bezanson，Stefan Karpinski，Viral Shah 和 Alan Edelman 在会上对新版本进行了介绍。从问世至今的六年半时间里，Julia 的累积下载次数超过 200 万，已被应用于自动驾驶汽车、机器人、3D 打印、精准医疗、增强现实、基因组学、能源交易、机器学习、金融风控和太空任务设计等多个领域。此次 Julia 1.0 版本的发布，更是将商业用户越来越看重的稳定性与原有的快速、高生产力的特性结合起来，足以媲美 Python，R，C++和 Java 等编程语言。众多来自科技、咨询和金融等行业的公司都有采用 Julia 语言并雇佣 Julia 开发人员，其中包括：亚马逊、苹果、贝莱德集团、博思艾伦咨询公司、Capital One、康卡斯特、迪斯尼、安永、脸书、美国联邦航空管理局、纽约联储银行、福特、谷歌、IBM、英特尔、毕马威、微软、NASA、甲骨文、普华永道和优步。除了商业公司，目前还有超过 700 所大学、研究机构和实验室使用 Julia，其中不乏 MIT、哈佛、加州理工、劳伦斯·伯克利国家实验室、橡树岭国家实验室等知名大学和实验室。Julia 社区已有超过 700 名贡献者，开发了超过 1900 个扩展包。截至目前，Julia 已被下载超过 200 多万次，在 GitHub 上获得超过 41000 个星星，下载量年增长率超过 101%。Julia 兼具 Python 和 R 等高级语言的易用性和 C++的运行速度。它是目前唯一经过千万亿次量级计算考验的高级编程语言。在世界排名第 6 的超级计算机上，Julia 在 9300 个英特尔 Knights Landing (KNL) 计算节点上调用 65 万个核与 130 万个线程，对 1.88 亿个天体进行编目，仅耗时 14.6 分钟。外在金融风控模型和天文学图像分析等应用领域，Julia 对速度和性能的提升可达到 1000 倍以上。不论是在笔记本电脑还是在超级计算机上，不管采用 1 个还是数千个具备多线程、GPU 和并行计算能力的节点，Julia 均可保持出色的表现。对美国联邦航空管理局的飞机防撞系统（Aircraft Collision Avoidance System (ACAS-X)）、贝莱德集团的阿拉丁分析平台（Aladdin analytics platform）和纽约联储银行的动态随机通用平衡 (DSGE) 宏观经济学模型等项目，Julia 都被应用在其中且发挥了重要作用。</p>
+<h1 id="julia环境的搭建"><a href="#julia环境的搭建" class="headerlink" title="julia环境的搭建"></a>julia环境的搭建</h1><p>1 在linux下执行sudo pip install julia,前提是pip是可以使用的</p>
+<p>2 windows下到官网<a href="https://julialang.org/downloads/" target="_blank" rel="noopener">https://julialang.org/downloads/</a> 进行下载</p>
+<p>3 进行测试环境是否ok</p>
+<pre><code>linux下命令行输入julia,出现如下界面则表示安装成功
+桌面/$ julia
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.0.0 (2018-08-08)
+ _/ |\__&apos;_|_|_|\__&apos;_|  |  Official https://julialang.org/ release
+|__/                   |
+
+
+julia&gt; 
+</code></pre><p>4 第一行julia代码运行</p>
+<pre><code>julia&gt; print(&apos;hello julia&apos;)
+ERROR: syntax: invalid character literal
+
+julia&gt; print(&quot;hello julia&quot;)
+hello julia
+julia&gt; print(&apos;a&apos;)
+a
+在这里需要注意的是julia对单引号&apos;&apos;的操作不能像python一样，而是和c语言的char现象一致
+</code></pre><p>5 第一个jl文件的运行</p>
+<pre><code>新建一个名为hello.jl的文件，在里面写一段代码：
+println(&quot;hello julia in .jl file&quot;)
+
+在控制台进行运行，结果如下
+/桌面/julia$ julia hello.jl 
+hello julia in .jl file
+</code></pre><p>6 将执行指令写入并保存到.jl文件中，如下指令</p>
+<pre><code>/桌面/julia$ julia -e &apos;println(&quot;hello julia&quot;); for x in ARGS; println(x); end&apos; foo bar
+hello julia
+foo
+bar
+
+echo &apos;println(PROGRAM_FILE); for x in ARGS; println(x); end&apos; &gt; script.jl
+
+然后在控制台运行 
+julia script.jl foo bar
+</code></pre><p>7 julia运行程序的表达式</p>
+<p>表达式： julia [switches] – [programfile] [args…]</p>
+<table>
+<thead>
+<tr>
+<th>开关</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-v， –version</td>
+<td>显示版本信息</td>
+</tr>
+<tr>
+<td>-h， –help</td>
+<td>打印此邮件</td>
+</tr>
+<tr>
+<td>-J， –sysimage <file></file></td>
+<td>启动给定的系统映像文件</td>
+</tr>
+<tr>
+<td>-H， –home <dir></dir></td>
+<td>设置julia可执行文件的位置</td>
+</tr>
+<tr>
+<td>–startup-file={yes/no}</td>
+<td>加载 ~/.julia/config/startup.jl</td>
+</tr>
+<tr>
+<td>–handle-signals={yes/no}</td>
+<td>启用或禁用Julia的默认信号处理程序</td>
+</tr>
+<tr>
+<td>–sysimage-native-code={yes/no}</td>
+<td>如果可用，请使用系统映像中的本机代码</td>
+</tr>
+<tr>
+<td>–compiled-modules={yes/no}</td>
+<td>启用或禁用模块的增量预编译</td>
+</tr>
+<tr>
+<td>-e， –eval <expr></expr></td>
+<td>评估 <expr></expr></td>
+</tr>
+<tr>
+<td>-E， –print <expr></expr></td>
+<td>评估<expr>并显示结果</expr></td>
+</tr>
+<tr>
+<td>-L， –load <file></file></td>
+<td><file>立即加载所有处理器</file></td>
+</tr>
+<tr>
+<td>-p，–procs {N/auto}</td>
+<td>整数值N启动N个额外的本地工作进程; auto启动与本地CPU线程数（逻辑核心数）一样多的工作程序</td>
+</tr>
+<tr>
+<td>–machine-file <file></file></td>
+<td>在上面列出的主机上运行进程 <file></file></td>
+</tr>
+<tr>
+<td>-i</td>
+<td>互动模式; REPL运行并且isinteractive()是真的</td>
+</tr>
+<tr>
+<td>-q， –quiet</td>
+<td>安静的启动：没有横幅，抑制REPL警告</td>
+</tr>
+<tr>
+<td>–banner={yes/no/auto}</td>
+<td>启用或禁用启动横幅</td>
+</tr>
+<tr>
+<td>–color={yes/no/auto}</td>
+<td>启用或禁用彩色文本</td>
+</tr>
+<tr>
+<td>–history-file={yes/no}</td>
+<td>加载或保存历史记录</td>
+</tr>
+<tr>
+<td>–depwarn={yes/no/error}</td>
+<td>启用或禁用语法和方法弃用警告（error将警告转换为错误）</td>
+</tr>
+<tr>
+<td>–warn-overwrite={yes/no}</td>
+<td>启用或禁用方法覆盖警告</td>
+</tr>
+<tr>
+<td>-C， –cpu-target <target></target></td>
+<td>限制cpu功能的使用，最高为<target>; 设置为help查看可用选项</target></td>
+</tr>
+<tr>
+<td>-O， –optimize={0,1,2,3}</td>
+<td>设置优化级别（如果未指定，则默认级别为2;如果不使用级别，则默认级别为3）</td>
+</tr>
+<tr>
+<td>-g， -g <level></level></td>
+<td>启用/设置调试信息生成的级别（如果未指定，则默认级别为1;如果不使用级别，则默认级别为2）</td>
+</tr>
+<tr>
+<td>–inline={yes/no}</td>
+<td>控制是否允许内联，包括覆盖@inline声明</td>
+</tr>
+<tr>
+<td>–check-bounds={yes/no}</td>
+<td>始终或从不发出边界检查（忽略声明）</td>
+</tr>
+<tr>
+<td>–math-mode={ieee,fast}</td>
+<td>禁止或启用不安全的浮点优化（覆盖@fastmath声明）</td>
+</tr>
+<tr>
+<td>–code-coverage={none/user/all}</td>
+<td>计算源代码行的执行次数</td>
+</tr>
+<tr>
+<td>–code-coverage</td>
+<td>相当于 –code-coverage=user</td>
+</tr>
+<tr>
+<td>–track-allocation={none/user/all}</td>
+<td>计算每个源行分配的字节数</td>
+</tr>
+<tr>
+<td>–track-allocation</td>
+<td>相当于 –track-allocation=user</td>
+</tr>
+</tbody>
+</table>
+<p>8 查看版本号</p>
+<pre><code>julia&gt; VERSION
+v&quot;1.0.0&quot;
+</code></pre><h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>Julia中的变量是与值相关联（或绑定）的名称，不需要事先声明变量的类型，而是根据赋值表达式生成对应类型的数据，用变量进行保存。<br>例如：</p>
+<pre><code>julia&gt; x = 10
+10
+julia&gt; x+1
+11
+julia&gt; x = 1+2
+3
+
+julia&gt; x = &quot;hello julia&quot;
+&quot;hello julia&quot;
+</code></pre><p>在上面示例中，x是指向存储的常量10</p>
+<h2 id="变量命名规则："><a href="#变量命名规则：" class="headerlink" title="变量命名规则："></a>变量命名规则：</h2><p>1 变量区分大小写，a 与 A不是一个对象<br>2 变量采用的utf-8编码<br>3 变量字符集合：数字字母下划线，其他等同于字母的符号，首字母不为数字<br>4 不能和系统关键字同名</p>
+<h2 id="文体约定"><a href="#文体约定" class="headerlink" title="文体约定"></a>文体约定</h2><p>虽然Julia对有效名称的限制很少，但采用以下约定变得很有用：</p>
+<ul>
+<li>变量名称为小写。</li>
+<li>可以用下划线（’_’）表示单词分隔，但不鼓励使用下划线，除非该名称很难以其他方式阅读。</li>
+<li>Types和Modules的名称以大写字母开头，单词分隔用上面的驼峰表示而不是下划线。</li>
+<li>functions和macros的名称是小写的，没有下划线。</li>
+<li>写入其参数的函数具有以其结尾的名称!。这些函数有时被称为“变异”或“就地”函数，因为它们旨在在调用函数后生成其参数的更改，而不仅仅是返回值。</li>
+</ul>
+<h1 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h1><h2 id="整数和浮点数"><a href="#整数和浮点数" class="headerlink" title="整数和浮点数"></a>整数和浮点数</h2><p>以下是Julia的原始数字类型：</p>
+<h3 id="整数类型："><a href="#整数类型：" class="headerlink" title="整数类型："></a><strong>整数类型：</strong></h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>签？</th>
+<th>位数</th>
+<th>最小的价值</th>
+<th>最大的价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Int8</td>
+<td>✓</td>
+<td>8</td>
+<td>-2 ^ 7</td>
+<td>2 ^ 7 - 1</td>
+</tr>
+<tr>
+<td>UInt8</td>
+<td></td>
+<td>8</td>
+<td>0</td>
+<td>2 ^ 8 - 1</td>
+</tr>
+<tr>
+<td>Int16</td>
+<td>✓</td>
+<td>16</td>
+<td>-2 ^ 15</td>
+<td>2 ^ 15 - 1</td>
+</tr>
+<tr>
+<td>UInt16</td>
+<td></td>
+<td>16</td>
+<td>0</td>
+<td>2 ^ 16 - 1</td>
+</tr>
+<tr>
+<td>Int32</td>
+<td>✓</td>
+<td>32</td>
+<td>-2 ^ 31</td>
+<td>2 ^ 31 - 1</td>
+</tr>
+<tr>
+<td>UInt32</td>
+<td></td>
+<td>32</td>
+<td>0</td>
+<td>2 ^ 32 - 1</td>
+</tr>
+<tr>
+<td>Int64</td>
+<td>✓</td>
+<td>64</td>
+<td>-2 ^ 63</td>
+<td>2 ^ 63 - 1</td>
+</tr>
+<tr>
+<td>UInt64</td>
+<td></td>
+<td>64</td>
+<td>0</td>
+<td>2 ^ 64 - 1</td>
+</tr>
+<tr>
+<td>Int128</td>
+<td>✓</td>
+<td>128</td>
+<td>-2 ^ 127</td>
+<td>2 ^ 127 - 1</td>
+</tr>
+<tr>
+<td>UInt128</td>
+<td></td>
+<td>128</td>
+<td>0</td>
+<td>2 ^ 128 - 1</td>
+</tr>
+<tr>
+<td>Bool</td>
+<td>N / A</td>
+<td>8</td>
+<td>false （0）</td>
+<td>true （1）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="浮点类型："><a href="#浮点类型：" class="headerlink" title="浮点类型："></a><strong>浮点类型：</strong></h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>精确</th>
+<th>位数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Float16</td>
+<td>半</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Float32</td>
+<td>单</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Float64</td>
+<td>双</td>
+<td>64</td>
+</tr>
+</tbody>
+</table>
+<p>查看本机是32位还是64位</p>
+<pre><code>julia&gt; typeof(1) 返回值为Int64则为64位，返回值为Int32 则为32位机
+Int64
+</code></pre><p>32位机无法表示的数字时会自动转换为Int64类型</p>
+<h3 id="无符号整数使用0x前缀和十六进制（基数为16）数字"><a href="#无符号整数使用0x前缀和十六进制（基数为16）数字" class="headerlink" title="无符号整数使用0x前缀和十六进制（基数为16）数字"></a><strong>无符号整数使用0x前缀和十六进制（基数为16）数字</strong></h3><p>进行输入和输出0-9a-f（大写数字A-F也适用于输入）。无符号值的大小由使用的十六进制数字数决定：<br>(ans)是只在交互模式下才能使用的变量，保存的内容是上一个表达式的运算结果</p>
+<pre><code>julia&gt; 0x1
+0x01
+
+julia&gt; typeof(ans)
+UInt8
+
+julia&gt; 0x123
+0x0123
+
+julia&gt; typeof(ans)
+UInt16
+
+julia&gt; 0x1234567
+0x01234567
+
+julia&gt; typeof(ans)
+UInt32
+
+julia&gt; 0x123456789abcdef
+0x0123456789abcdef
+
+julia&gt; typeof(ans)
+UInt64
+
+julia&gt; 0x11112222333344445555666677778888
+0x11112222333344445555666677778888
+
+julia&gt; typeof(ans)
+UInt128
+</code></pre><h3 id="还支持二进制和八进制文字："><a href="#还支持二进制和八进制文字：" class="headerlink" title="还支持二进制和八进制文字："></a><strong>还支持二进制和八进制文字：</strong></h3><pre><code>julia&gt; 0b10
+0x02
+
+julia&gt; typeof(ans)
+UInt8
+
+julia&gt; 0o010
+0x08
+
+julia&gt; typeof(ans)
+UInt8
+
+julia&gt; 0x00000000000000001111222233334444
+0x00000000000000001111222233334444
+
+julia&gt; typeof(ans)
+UInt128
+</code></pre><p>在二进制，八进制和十六进制前加-号表示取补码。它们产生一个与无符号文字相同大小的无符号整数</p>
+<pre><code>julia&gt; -0x2
+0xfe
+
+julia&gt; -0x0002
+0xfffe
+</code></pre><h3 id="原始数字类型（如整数）的最小和最大可表示值由typemin和typemax函数给出："><a href="#原始数字类型（如整数）的最小和最大可表示值由typemin和typemax函数给出：" class="headerlink" title="原始数字类型（如整数）的最小和最大可表示值由typemin和typemax函数给出："></a>原始数字类型（如整数）的最小和最大可表示值由typemin和typemax函数给出：</h3><pre><code>julia&gt; (typemin(Int32), typemax(Int32))
+(-2147483648, 2147483647)
+
+julia&gt; for T in [Int8,Int16,Int32,Int64,Int128,UInt8,UInt16,UInt32,UInt64,UInt128]
+           println(&quot;$(lpad(T,7)): [$(typemin(T)),$(typemax(T))]&quot;)
+       end
+   Int8: [-128,127]
+  Int16: [-32768,32767]
+  Int32: [-2147483648,2147483647]
+  Int64: [-9223372036854775808,9223372036854775807]
+ Int128: [-170141183460469231731687303715884105728,170141183460469231731687303715884105727]
+  UInt8: [0,255]
+ UInt16: [0,65535]
+ UInt32: [0,4294967295]
+ UInt64: [0,18446744073709551615]
+UInt128: [0,340282366920938463463374607431768211455]
+</code></pre><h3 id="溢出行为"><a href="#溢出行为" class="headerlink" title="溢出行为"></a>溢出行为</h3><p>在Julia中，超出给定类型的最大可表示值会导致环绕行为：</p>
+<pre><code>julia&gt; x = typemax(Int64)
+9223372036854775807
+
+julia&gt; x + 1
+-9223372036854775808
+
+julia&gt; x + 1 == typemin(Int64)
+true
+</code></pre><h3 id="除法错误"><a href="#除法错误" class="headerlink" title="除法错误"></a>除法错误</h3><p>除法需要考虑除数为0的情况<br>1 一个非0数字除以0，得到Inf<br>2 0/0  -&gt; NaN<br>3 任意数对0求余数，报错<br>4 一个常规数字对Inf进行除法，得到的结果为0.0<br>5 一个常规数字对NaN除法，得到的结果还是NaN<br>6 Inf/Inf –&gt; Nan<br>7 0/Inf  –&gt; NaN</p>
+<pre><code>julia&gt; 3%0
+ERROR: DivideError: integer division error
+ in rem at ./int.jl:80
+
+julia&gt; 3/0
+Inf
+
+julia&gt; 0/0
+NaN
+
+julia&gt; 0%0
+ERROR: DivideError: integer division error
+ in rem at ./int.jl:80
+
+julia&gt; x = 1/0
+Inf
+
+julia&gt; 2/x
+0.0
+
+julia&gt; x = 0/0
+NaN
+
+julia&gt; 2/x
+NaN
+</code></pre><h3 id="浮点数字"><a href="#浮点数字" class="headerlink" title="浮点数字"></a>浮点数字</h3><p>可以使用科学计数法 1.3e4 = 13000.0<br><strong>另外可以使用f替代e来实现科学计数法</strong> 0.5f2 = 50.0f0<br>还支持半精度浮点数（Float16），但它们在软件中实现并Float32用于计算。</p>
+<pre><code>julia&gt; sizeof(Float16(4.))
+2
+
+julia&gt; 2*Float16(4.)
+Float16(8.0)
+</code></pre><p><strong>下划线_可用作数字分隔符：</strong></p>
+<pre><code>julia&gt; 10_000, 0.000_000_005, 0xdead_beef, 0b1011_0010
+(10000, 5.0e-9, 0xdeadbeef, 0xb2)
+</code></pre><p><strong>Machine epsilon</strong> (暂时不知道怎么翻译)<br>大多数实数不能用浮点数精确表示,所以需要一个精度来判断该值与表达式所写值得差值是否满足精度，满足则认为是正确表示的。</p>
+<p>Julia提供eps，它给出了1.0到下一个更大的可表示浮点值之间的距离：</p>
+<pre><code>julia&gt; eps(Float32)
+1.1920929f-7
+
+julia&gt; eps(Float64)
+2.220446049250313e-16
+
+julia&gt; eps() # same as eps(Float64)
+2.220446049250313e-16
+</code></pre><p>这个东西就像我们结帐的时候，都是以最低单位为分的，但是在实际过程中，都是以元为最低单位进行结算，但是分确实就是我国的最低结算单位，在银行等地方还是会用到的。</p>
+<p>Julia还提供了<strong>nextfloat与prevfloat</strong>它们分别返回下一个最大或最小的可表示浮点数的参数功能：</p>
+<pre><code>julia&gt; x = 1.25f0
+1.25f0
+
+julia&gt; nextfloat(x)
+1.2500001f0
+
+julia&gt; prevfloat(x)
+1.2499999f0
+
+julia&gt; bitstring(prevfloat(x))
+&quot;00111111100111111111111111111111&quot;
+
+julia&gt; bitstring(x)
+&quot;00111111101000000000000000000000&quot;
+
+julia&gt; bitstring(nextfloat(x))
+&quot;00111111101000000000000000000001&quot;
+</code></pre><h3 id="舍入模式"><a href="#舍入模式" class="headerlink" title="舍入模式"></a>舍入模式</h3><p>如果数字没有精确的浮点表示，则必须将其四舍五入到适当的可表示值。但是，如果需要，可以根据IEEE 754标准中提出的舍入模式改变完成此舍入的方式。</p>
+<p>使用的默认模式始终是RoundNearest，它舍入到最接近的可表示值，并使用最低有效位向最近的值四舍五入。</p>
+<h3 id="任意精度算术"><a href="#任意精度算术" class="headerlink" title="任意精度算术"></a>任意精度算术</h3><p>为了允许使用任意精度整数和浮点数进行计算，Julia分别包装了GNU多精度算术库（GMP）和GNU MPFR库。Julia中的BigInt和BigFloat类型分别用于任意精度整数和浮点数。</p>
+<p>存在构造函数以从原始数字类型创建这些类型，并且parse可以用于从AbstractStrings 构造它们。一旦创建，由于Julia的类型提升和转换机制，它们与所有其他数字类型一起参与算术运算：</p>
+<pre><code>julia&gt; BigInt(typemax(Int64)) + 1
+9223372036854775808
+
+julia&gt; parse(BigInt, &quot;123456789012345678901234567890&quot;) + 1
+123456789012345678901234567891
+
+julia&gt; parse(BigFloat, &quot;1.23456789012345678901&quot;)
+1.234567890123456789010000000000000000000000000000000000000000000000000000000004
+
+julia&gt; BigFloat(2.0^66) / 3
+2.459565876494606882133333333333333333333333333333333333333333333333333333333344e+19
+
+julia&gt; factorial(BigInt(40))
+815915283247897734345611269596115894272000000000
+</code></pre><p>但是，上述基本类型之间的类型提升和BigInt/ BigFloat不是自动的，必须明确说明。</p>
+<pre><code>julia&gt; x = typemin(Int64)
+-9223372036854775808
+
+julia&gt; x = x - 1
+9223372036854775807
+
+julia&gt; typeof(x)
+Int64
+
+julia&gt; y = BigInt(typemin(Int64))
+-9223372036854775808
+
+julia&gt; y = y - 1
+-9223372036854775809
+
+julia&gt; typeof(y)
+BigInt
+</code></pre><p>BigFloat可以通过调用setprecision和全局更改默认精度（有效数的位数）和舍入操作模式setrounding，并且所有进一步的计算将考虑这些更改。或者，通过使用与do块相同的函数，只能在特定代码块的执行中更改精度或舍入：</p>
+<pre><code>julia&gt; setrounding(BigFloat, RoundUp) do
+           BigFloat(1) + parse(BigFloat, &quot;0.1&quot;)
+       end
+1.100000000000000000000000000000000000000000000000000000000000000000000000000003
+
+julia&gt; setrounding(BigFloat, RoundDown) do
+           BigFloat(1) + parse(BigFloat, &quot;0.1&quot;)
+       end
+1.099999999999999999999999999999999999999999999999999999999999999999999999999986
+
+julia&gt; setprecision(40) do
+           BigFloat(1) + parse(BigFloat, &quot;0.1&quot;)
+       end
+1.1000000000004
+</code></pre><h3 id="数字文字系数-（此乃神器）"><a href="#数字文字系数-（此乃神器）" class="headerlink" title="数字文字系数 ###（此乃神器）"></a>数字文字系数 ###（此乃神器）</h3><p>为了使常见的数字公式和表达式更清晰，Julia允许变量紧跟数字文字，表示乘法。这使得写多项式表达式更加清晰：</p>
+<pre><code>julia&gt; x = 3
+3
+
+julia&gt; 2x^2 - 3x + 1
+10
+
+julia&gt; 1.5x^2 - .5x + 1
+13.0
+julia&gt; 4^2x
+4096（备注：先计算的是2x后再计算的幂）
+</code></pre><p>数字文字也可用作带括号的表达式的系数：</p>
+<pre><code>julia&gt; 2(x-1)^2 - 3(x-1) + 1
+3
+</code></pre><p>另外，带括号的表达式可以用作变量的系数，意味着表达式乘以变量：</p>
+<pre><code>julia&gt; (x-1)x
+6
+</code></pre><p><strong>但是</strong>，两个带括号的表达式的并置，也不能在括号表达式之前放置变量，都可以用来暗示乘法：</p>
+<pre><code>julia&gt; (x-1)(x+1)
+ERROR: MethodError: objects of type Int64 are not callable
+
+julia&gt; x(x+1)
+ERROR: MethodError: objects of type Int64 are not callable
+</code></pre><p><strong>后置括号跟函数的参数调用冲突，所以这样的写法会报错</strong></p>
+<h3 id="字面零和一"><a href="#字面零和一" class="headerlink" title="字面零和一"></a>字面零和一</h3><p>Julia提供的函数返回对应于指定类型或给定变量类型的文字0和1。</p>
+<p>功能    描述<br>zero(x)    x变量类型或类型的字面零x<br>one(x)    文字类型x或类型的变量x<br>这些函数在数值比较中很有用，可以避免不必要的类型转换带来的开销。</p>
+<p>例子：</p>
+<pre><code>julia&gt; zero(Float32)
+0.0f0
+
+julia&gt; zero(1.0)
+0.0
+
+julia&gt; one(Int32)
+1
+
+julia&gt; one(BigFloat)
+1.0
+</code></pre><h2 id="数学运算和基本功能"><a href="#数学运算和基本功能" class="headerlink" title="数学运算和基本功能"></a>数学运算和基本功能</h2><h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><p>所有原始数字类型都支持以下算术运算符：</p>
+<table>
+<thead>
+<tr>
+<th>表达</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+x</td>
+<td>一元加</td>
+<td>身份操作</td>
+</tr>
+<tr>
+<td>-x</td>
+<td>一元减去</td>
+<td>将值映射到它们的加法反转</td>
+</tr>
+<tr>
+<td>x + y</td>
+<td>二进制加</td>
+<td>执行添加</td>
+</tr>
+<tr>
+<td>x - y</td>
+<td>二进制减去</td>
+<td>执行减法</td>
+</tr>
+<tr>
+<td>x * y</td>
+<td>时</td>
+<td>执行乘法运算</td>
+</tr>
+<tr>
+<td>x / y</td>
+<td>划分</td>
+<td>执行分裂</td>
+</tr>
+<tr>
+<td>x ÷ y</td>
+<td>整数除</td>
+<td>x / y，截断为整数</td>
+</tr>
+<tr>
+<td>x \ y</td>
+<td>逆分</td>
+<td>相当于 y / x</td>
+</tr>
+<tr>
+<td>x ^ y</td>
+<td>功率</td>
+<td>提升x到了y力量</td>
+</tr>
+<tr>
+<td>x % y</td>
+<td>余</td>
+<td>相当于 rem(x,y)</td>
+</tr>
+</tbody>
+</table>
+<p>以及对Bool类型的否定：</p>
+<table>
+<thead>
+<tr>
+<th>表达</th>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>!x</td>
+<td>否定</td>
+<td>改变true，false反之亦然</td>
+</tr>
+</tbody>
+</table>
+<p><strong>julia中/是算术除法，÷是地板除法</strong></p>
+<p>按位运算符<br>所有原始整数类型都支持以下按位运算符：</p>
+<table>
+<thead>
+<tr>
+<th>表达</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>~x</td>
+<td>按位不是</td>
+</tr>
+<tr>
+<td>x &amp; y</td>
+<td>按位和</td>
+</tr>
+<tr>
+<td>x</td>
+<td>y</td>
+<td>按位或</td>
+</tr>
+<tr>
+<td>x ⊻ y</td>
+<td>按位xor（独占或）</td>
+</tr>
+<tr>
+<td><strong>x &gt;&gt;&gt; y</strong></td>
+<td><strong>逻辑右移</strong></td>
+</tr>
+<tr>
+<td>x &gt;&gt; y</td>
+<td>算术右移</td>
+</tr>
+<tr>
+<td>x &lt;&lt; y</td>
+<td>逻辑/算术移位左</td>
+</tr>
+</tbody>
+</table>
+<p>所有二进制算术和按位赋值运算符如下：<br>+=  -=  *=  /=  \=  ÷=  %=  ^=  &amp;=  |=  ⊻=  &gt;&gt;&gt;=  &gt;&gt;=  &lt;&lt;=</p>
+<h3 id="矢量化的“点”运算符-此乃第二大神器）"><a href="#矢量化的“点”运算符-此乃第二大神器）" class="headerlink" title="矢量化的“点”运算符 ###(此乃第二大神器）"></a>矢量化的“点”运算符 ###(此乃第二大神器）</h3><p>对于每个二进制操作^，都有一个相应的“点”操作.^，它被自动定义为^在数组上逐个元素地执行。例如，[1,2,3] ^ 3未定义，因为“立方”（非正方形）数组没有标准数学意义，而是[1,2,3] .^ 3定义为计算元素（或“矢量化”）结果[1^3, 2^3, 3^3]。类似地，对于像!或一样的一元运算符.x，有一个对应.x的元素应用运算符。</p>
+<pre><code>julia&gt; [1,2,3] .^ 3
+3-element Array{Int64,1}:
+  1
+  8
+ 27
+
+julia&gt; [1,2,3] .+4
+3-element Array{Int64,1}:
+ 5
+ 6
+ 7
+
+julia&gt; x = 3
+3
+
+julia&gt; [1,2,3] .*x
+3-element Array{Int64,1}:
+ 3
+ 6
+ 9
+</code></pre><h3 id="数字比较"><a href="#数字比较" class="headerlink" title="数字比较"></a>数字比较</h3><p>为所有原始数字类型定义标准比较操作：</p>
+<table>
+<thead>
+<tr>
+<th>操作者</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>相等</td>
+</tr>
+<tr>
+<td>!=， ≠</td>
+<td>不相等</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&lt;=， ≤</td>
+<td>小于或等于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&gt;=， ≥</td>
+<td>大于或等于</td>
+</tr>
+</tbody>
+</table>
+<p>根据IEEE 754标准比较浮点数：</p>
+<ul>
+<li>有限数字以通常的方式排序。</li>
+<li>正零等于但不大于负零。</li>
+<li>Inf等于自己，比其他任何值都大。</li>
+<li>-Inf等于自己，小于任意值。</li>
+<li><p>NaN 不等于，不小于，不大于任何东西，包括它本身。不可做比较运算</p>
+<pre><code>julia&gt; NaN == NaN
+false
+
+julia&gt; NaN != NaN
+true
+
+julia&gt; NaN &lt; NaN
+false
+
+julia&gt; NaN &gt; NaN
+false
+</code></pre></li>
+</ul>
+<p>Julia提供了额外的函数来测试特殊值的数字，这在哈希键比较的情况下非常有用：</p>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>测试是否</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isequal(x, y)</td>
+<td>x并且y是相同的</td>
+</tr>
+<tr>
+<td>isfinite(x)</td>
+<td>x 是一个有限数，非无穷</td>
+</tr>
+<tr>
+<td>isinf(x)</td>
+<td>x 是无穷的</td>
+</tr>
+<tr>
+<td>isnan(x)</td>
+<td>x 不是一个数字</td>
+</tr>
+</tbody>
+</table>
+<p><strong>isequal认为NaNs彼此相等：</strong></p>
+<pre><code>julia&gt; isequal(NaN, NaN)
+true
+
+julia&gt; isequal([1 NaN], [1 NaN])
+true
+
+julia&gt; isequal(NaN, NaN32)
+true
+</code></pre><p><strong>isequal 也可用于区分带符号的零：</strong></p>
+<pre><code>julia&gt; -0.0 == 0.0
+true
+
+julia&gt; isequal(-0.0, 0.0)
+false
+</code></pre><h3 id="连续比较-（此乃第三大神器）"><a href="#连续比较-（此乃第三大神器）" class="headerlink" title="连续比较 ###（此乃第三大神器）"></a>连续比较 ###（此乃第三大神器）</h3><p>与大多数语言不同，除了Python之外，比较可以任意链接：</p>
+<pre><code>julia&gt; 1 &lt; 2 &lt;= 2 &lt; 3 == 3 &gt; 2 &gt;= 1 == 1 &lt; 3 != 5
+true
+
+julia&gt; v(x) = (println(x); x)
+v (generic function with 1 method)
+julia&gt; v(1)&lt;v(2)&lt;v(3)&lt;v(4)&lt;v(5)
+2
+1
+3
+4
+5
+true
+</code></pre><p>链式比较中的评估顺序是不确定的。强烈建议不要在链式比较中使用带副作用的表达式（如打印）。如果需要副作用，&amp;&amp;应明确使用短路操作器。</p>
+<h3 id="运算符优先级和相关性"><a href="#运算符优先级和相关性" class="headerlink" title="运算符优先级和相关性"></a>运算符优先级和相关性</h3><p>Julia应用以下顺序和操作的关联性，从最高优先级到最低优先级：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>操作符</th>
+<th>关联性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>句法</td>
+<td>.  ::</td>
+<td>从左往右</td>
+</tr>
+<tr>
+<td>幂</td>
+<td>^</td>
+<td>从右往左</td>
+</tr>
+<tr>
+<td>一元</td>
+<td>+ - √</td>
+<td>从右往左[1]</td>
+</tr>
+<tr>
+<td>移位</td>
+<td>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</td>
+<td>从左往右</td>
+</tr>
+<tr>
+<td>馏分</td>
+<td>//</td>
+<td>从左往右</td>
+</tr>
+<tr>
+<td>乘除</td>
+<td>* / % &amp; \ ÷</td>
+<td>从左往右[2]</td>
+</tr>
+<tr>
+<td>加减</td>
+<td>+ - &#124; ⊻</td>
+<td>从左往右[2]</td>
+</tr>
+<tr>
+<td>句法</td>
+<td>: ..</td>
+<td>从左往右</td>
+</tr>
+<tr>
+<td>句法</td>
+<td>&gt;    从左往右</td>
+</tr>
+<tr>
+<td>句法</td>
+<td>&lt;</td>
+<td>从右往左</td>
+</tr>
+<tr>
+<td>比较</td>
+<td>&gt; &lt; &gt;= &lt;= == === != !== &lt;:</td>
+<td>非关联</td>
+</tr>
+<tr>
+<td>控制流</td>
+<td>‘&amp;&amp;’&gt;’&#124;&#124;’&gt;’?’</td>
+<td>从右往左</td>
+</tr>
+<tr>
+<td>配对</td>
+<td>=&gt;</td>
+<td>从右往左</td>
+</tr>
+<tr>
+<td>赋值</td>
+<td>= += -= *= /= //= \= ^= ÷= %= &#124;= &amp;= ⊻= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;=</td>
+<td>从右往左</td>
+</tr>
+</tbody>
+</table>
+<p>[1]<br>一元运算符+和-需要围绕它们的参数明确括号以使它们与运算符++等消除歧义。一元运算符的其他组合被解析为具有右关联性，例如√√-aas √(√(-a))。</p>
+<p>[2]<br>运算符+，++和<em>是非关联的。a + b + c被解析为+(a, b, c)而不是+(+(a, b), c)。但是，后备方法+(a, b, c, d…)和</em>(a, b, c, d…)默认为左关联。</p>
+<h3 id="求和-积运算-（此乃第四大神器）"><a href="#求和-积运算-（此乃第四大神器）" class="headerlink" title="求和 积运算 ###（此乃第四大神器）"></a>求和 积运算 ###（此乃第四大神器）</h3><pre><code>julia&gt; +(1,2,3)
+6
+
+julia&gt; +(+(1,2,3),4)
+10
+
+julia&gt; *(1,2,3,4)
+24
+</code></pre><p>运输符优先级函数<br>您还可以通过内置函数找到任何给定运算符的数字优先级Base.operator_precedence，其中较高的数字优先：</p>
+<pre><code>julia&gt; Base.operator_precedence(:+), Base.operator_precedence(:*), Base.operator_precedence(:.)
+(9,11,15)
+</code></pre><p>通过调用内置函数也可以找到表示运算符关联性的符号Base.operator_associativity–此函数在官网上面有，但是我的版本里面是没有的定义。<br>官网上面写的运行结果为（看个人电脑情况吧，没有搞清楚怎么回事）</p>
+<pre><code>julia&gt; Base.operator_associativity(:-), Base.operator_associativity(:+), Base.operator_associativity(:^)
+(:left, :none, :right)
+</code></pre><h3 id="数字转换"><a href="#数字转换" class="headerlink" title="数字转换"></a>数字转换</h3><p>Julia支持三种形式的数值转换，它们在处理不精确转换时有所不同。</p>
+<ul>
+<li>T(x)或convert(T,x)转换x为T类型的值。 T取值可以是Int8 Int16 Float16等</li>
+</ul>
+<p>如果T是浮点类型，则结果是最接近的可表示值，可以是正无穷大或负无穷大。<br>如果T是整数类型，InexactError则如果x不能表示，则引发a T。</p>
+<ul>
+<li><p>x % T将整数转换x为整数类型的值全T等到x模数2^n，其中n是位数T。换句话说，二进制表示被截断以适合。</p>
+</li>
+<li><p>round函数采取类型T作为可选参数。例如，round(Int,x)是一个简写Int(round(x))。</p>
+</li>
+</ul>
+<h3 id="舍-amp-入函数使用说明"><a href="#舍-amp-入函数使用说明" class="headerlink" title="舍&amp;入函数使用说明"></a>舍&amp;入函数使用说明</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+<th>返回值类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>round(x)</td>
+<td>就近取整</td>
+<td>typeof(x)</td>
+</tr>
+<tr>
+<td>round(T, x)</td>
+<td>就近取整</td>
+<td>T</td>
+</tr>
+<tr>
+<td>floor(x)</td>
+<td>向下取整</td>
+<td>typeof(x)</td>
+</tr>
+<tr>
+<td>floor(T, x)</td>
+<td>向下取整</td>
+<td>T</td>
+</tr>
+<tr>
+<td>ceil(x)</td>
+<td>向上取整</td>
+<td>typeof(x)</td>
+</tr>
+<tr>
+<td>ceil(T, x)</td>
+<td>向上取整</td>
+<td>T</td>
+</tr>
+<tr>
+<td>trunc(x)</td>
+<td>向0取整</td>
+<td>typeof(x)</td>
+</tr>
+<tr>
+<td>trunc(T, x)</td>
+<td>向0取整</td>
+<td>T</td>
+</tr>
+</tbody>
+</table>
+<h3 id="除法函数"><a href="#除法函数" class="headerlink" title="除法函数"></a>除法函数</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>div(x,y), x÷y</td>
+<td>取整整除</td>
+</tr>
+<tr>
+<td>fld(x,y)</td>
+<td>向下取整整除</td>
+</tr>
+<tr>
+<td>cld(x,y)</td>
+<td>向上取整整除</td>
+</tr>
+<tr>
+<td>rem(x,y)</td>
+<td>取模</td>
+</tr>
+<tr>
+<td>mod(x,y)</td>
+<td>取模</td>
+</tr>
+<tr>
+<td>mod1(x,y)</td>
+<td>取模，但是在整除时返回值为y</td>
+</tr>
+<tr>
+<td>divrem(x,y)</td>
+<td>返回商和余数的元组（a,b）</td>
+</tr>
+<tr>
+<td>fldmod(x,y)</td>
+<td>返回商和余数的元组（a,b）</td>
+</tr>
+<tr>
+<td>gcd(x,y…)</td>
+<td>最大公约数</td>
+</tr>
+<tr>
+<td>lcm(x,y…)</td>
+<td>最小公倍数</td>
+</tr>
+</tbody>
+</table>
+<h3 id="符号和绝对值函数"><a href="#符号和绝对值函数" class="headerlink" title="符号和绝对值函数"></a>符号和绝对值函数</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abs(x)</td>
+<td>x的绝对值</td>
+</tr>
+<tr>
+<td>abs2(x)</td>
+<td>x^2</td>
+</tr>
+<tr>
+<td>sign(x)</td>
+<td>正数返回1，负数返回-1 ，0返回0</td>
+</tr>
+<tr>
+<td>signbit(x)</td>
+<td>负数返回true,其他都返回false</td>
+</tr>
+<tr>
+<td>copysign(x,y)</td>
+<td>将y的符号给到x，返回之后的x</td>
+</tr>
+<tr>
+<td>flipsign(x,y)</td>
+<td>x的符号取决于x*y的符号，返回之后的x</td>
+</tr>
+</tbody>
+</table>
+<h3 id="指数-对数-平方根函数"><a href="#指数-对数-平方根函数" class="headerlink" title="指数 对数 平方根函数"></a>指数 对数 平方根函数</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sqrt(x), √x</td>
+<td>对x进行开方</td>
+</tr>
+<tr>
+<td>cbrt(x), ∛x</td>
+<td>对x进行开3次方</td>
+</tr>
+<tr>
+<td>hypot(x,y)</td>
+<td>返回x y的平方和之后的根，也就是向量(x,y)的长度</td>
+</tr>
+<tr>
+<td>exp(x)</td>
+<td>底数为e，返回e^x的结果</td>
+</tr>
+<tr>
+<td>expm1(x)</td>
+<td>返回exp(x)-1</td>
+</tr>
+<tr>
+<td>ldexp(x,n)</td>
+<td>返回2^n * x的结果，<strong>这里x必须为Float类型</strong></td>
+</tr>
+<tr>
+<td>log(x)</td>
+<td>自然数对数</td>
+</tr>
+<tr>
+<td>log(b,x)</td>
+<td>返回以b为底，x为基数的对数</td>
+</tr>
+<tr>
+<td>log2(x)</td>
+<td>返回以2为底，x为基数的对数</td>
+</tr>
+<tr>
+<td>log10(x)</td>
+<td>返回以10为底，x为基数的对数</td>
+</tr>
+<tr>
+<td>log1p(x)</td>
+<td>返回log(x+1)的结果</td>
+</tr>
+<tr>
+<td>exponent(x)</td>
+<td>返回整数部分2进制的位数，exponent(127.0)=6 exponent(128.0)=7 </td>
+</tr>
+<tr>
+<td>significand(x)</td>
+<td>返回值为1.a，a的算法为x%8/8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h3><p>sin 正弦   sinA = a/c a为A的对角的边长，c为斜边<br>cos余弦    cosA = b/c b为另外的一条直角边<br>tan  正切  tanA = a/b<br>cot  余切  cotA = b/a<br>sec  正割  secA = c/b<br>csc余割    cscA = c/a<br>sinh   cosh   tanh   coth   sech   csch 双曲xx<br>asin   acos   atan   acot   asec   acsc  反xx  x=sin(y) -&gt; y = asin(x) + pi/2*N<br>asinh  acosh  atanh  acoth  asech  acsch 反双曲xx<br>sinc   cosc 周期为2的正余弦函数</p>
+<p>以d结束的三角函数都是以度数作为单位进行运算的，前面和之前的一样<br>sind   cosd   tand   cotd   secd   cscd<br>asind  acosd  atand  acotd  asecd  acscd</p>
+<p>举例：</p>
+<pre><code>julia&gt; sind(90)
+1.0
+
+julia&gt; sind(45)
+0.7071067811865476
+</code></pre><p>更多特殊函数请移步 <a href="https://github.com/JuliaMath/SpecialFunctions.jl" target="_blank" rel="noopener">SpecialFunctions.jl</a></p>
+<h2 id="复数和有理数"><a href="#复数和有理数" class="headerlink" title="复数和有理数"></a>复数和有理数</h2><p>复数表示方式示例 2+3im,其中2为实部，3为虚部，im是虚部的标志，将3im写前面语法上是对的，但是输出的时候会显示为2+3im<br>使用复数执行所有标准算术运算：</p>
+<pre><code>julia&gt; (1 + 2im)*(2 - 3im)
+8 + 1im
+
+julia&gt; (1 + 2im)/(1 - 2im)
+-0.6 + 0.8im
+
+julia&gt; (1 + 2im) + (1 - 2im)
+2 + 0im
+
+julia&gt; (-3 + 2im) - (5 - 1im)
+-8 + 3im
+
+julia&gt; (-1 + 2im)^2
+-3 - 4im
+
+julia&gt; (-1 + 2im)^2.5
+2.729624464784009 - 6.9606644595719im
+
+julia&gt; (-1 + 2im)^(1 + 1im)
+-0.27910381075826657 + 0.08708053414102428im
+
+julia&gt; 3(2 - 5im)
+6 - 15im
+
+julia&gt; 3(2 - 5im)^2
+-63 - 60im
+
+julia&gt; 3(2 - 5im)^-1.0
+0.20689655172413796 + 0.5172413793103449im
+</code></pre><p>注意 3/4im == 3/(4<em>im) == -(3/4</em>im)</p>
+<h3 id="复数函数"><a href="#复数函数" class="headerlink" title="复数函数"></a>复数函数</h3><pre><code>julia&gt; z = 1 + 2im
+1 + 2im
+
+julia&gt; real(1 + 2im) # real part of z
+1
+
+julia&gt; imag(1 + 2im) # imaginary part of z
+2
+
+julia&gt; conj(1 + 2im) # complex conjugate of z
+1 - 2im
+
+julia&gt; abs(1 + 2im) # absolute value of z
+2.23606797749979  #sqrt(a^2+b^2)
+
+julia&gt; abs2(1 + 2im) # squared absolute value
+5  #a^2+b^2
+
+julia&gt; angle(1 + 2im) # phase angle in radians
+1.1071487177940904
+</code></pre><p>conj(x)    返回的是复数x的共轭复数，实部一样，虚部取-运算</p>
+<p>有如下公式成立：<br><strong>x = conj(X)/abs2(x)</strong></p>
+<p>angle(x)函数是求复数相角，是在matlab中的一种方法，计算复数x向量的相角，返回值为为-pi~pi之间，结果准确表达的含义是向量与x轴正向的夹角的弧度，当向量无限趋近于-x轴方向时越接近最值pi或者-pi</p>
+<pre><code>julia&gt; sqrt(1im)
+0.7071067811865476 + 0.7071067811865475im
+
+
+julia&gt; sqrt(1 + 2im)
+1.272019649514069 + 0.7861513777574233im
+
+julia&gt; cos(1 + 2im)
+2.0327230070196656 - 3.0518977991518im
+
+julia&gt; exp(1 + 2im)
+-1.1312043837568135 + 2.4717266720048188im
+
+julia&gt; sinh(1 + 2im)
+-0.4890562590412937 + 1.4031192506220405im
+</code></pre><p>说明一下，有如下公式成立</p>
+<p><strong>angle(x)/2 = angle(sqrt(x))</strong></p>
+<p>复数的开发实际是将相位/2，求新得到的相位上的长度的对应表示方法<br>复数的构造函数complex(a,b) -&gt; (a+bim)</p>
+<p>注意一下INF Nan在复数上的表示</p>
+<pre><code>julia&gt; 1 + Inf*im
+1.0 + Inf*im
+
+julia&gt; 1 + NaN*im
+1.0 + NaN*im
+</code></pre><h2 id="有理数"><a href="#有理数" class="headerlink" title="有理数"></a>有理数</h2><p>分数表示方式 2//3表示的是三分之二</p>
+<pre><code>julia&gt; 2//3 == 6//9
+true
+
+julia&gt; 2//3 == 9//27
+false
+
+julia&gt; 3//7 &lt; 1//2
+true
+
+julia&gt; 3//4 &gt; 2//3
+true
+
+julia&gt; 2//4 + 1//6
+2//3
+
+julia&gt; 5//12 - 1//4
+1//6
+
+julia&gt; 5//8 * 3//12
+5//32
+
+julia&gt; 6//5 / 10//7
+21//25
+</code></pre><p>特殊注意的是分母为0时的情况</p>
+<pre><code>julia&gt; 5//0
+1//0
+
+julia&gt; -3//0
+-1//0
+
+julia&gt; 0//0
+ERROR: ArgumentError: invalid rational: zero(Int64)//zero(Int64)
+ in call at ./rational.jl:8
+</code></pre><p>5//0显示为1//0，然后与分数运算，结果为1//0</p>
+<pre><code>julia&gt; 5//0 + 1//2
+1//0
+
+julia&gt; 5//0 *1//2
+1//0
+
+julia&gt; 5//0 *10
+1//0
+
+julia&gt; 5//0 +1
+1//0
+
+julia&gt; 5//0 *100
+1//0
+</code></pre><p>分数表示的运算和浮点数运算规则一样，只是表示的方法一直都是分数</p>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="字符串-1"><a href="#字符串-1" class="headerlink" title="字符串"></a>字符串</h2><p>Julia的字符串支持的编码是UTF-8的，支持中文以及大众语言，当然,ascii的字符处理起来更快一点。</p>
+<h3 id="字符串高级功能"><a href="#字符串高级功能" class="headerlink" title="字符串高级功能"></a>字符串高级功能</h3><p>关于Julia的字符串有一些值得注意的高级功能：</p>
+<ul>
+<li>Julia中用于字符串（和字符串文字）的内置具体类型是String。它通过UTF-8编码支持所有Unicode字符。（提供了一个函数来转换为/从其他Unicode编码转换。）</li>
+<li>所有字符串类都是抽象类AbstractString的子类，外部包定义了其他AbstractString子类型（例如，用于其他编码-gbk）。如果定义了一个函数需要一个字符串参数，则应该将类型声明为AbstractString，这样可以接受任何类型字符串。</li>
+<li>像C和Java一样，但与大多数动态语言不同，Julia有一个用于表示单个字符的第一类类型，称为AbstractChar。内置Char子类型AbstractChar是32位基本类型，可以表示任何Unicode字符（并且基于UTF-8编码）。</li>
+<li>与在Java中一样，字符串是不可变的：AbstractString不能更改对象的值。要构造不同的字符串值，可以从其他字符串的来构造新字符串。</li>
+<li>从概念上讲，字符串是从索引到字符的部分函数：对于某些索引值，不返回任何字符值，而是抛出异常。这允许通过编码表示的字节索引而不是字符索引有效地索引到字符串，这对于Unicode字符串的可变宽度编码不能有效且简单地实现。</li>
+<li><strong>字符串的索引值下标从1开始的，a[0]会报错julia&gt; ab[0]</strong><br>ERROR: BoundsError: attempt to access 16-element Array{UInt8,1}:</li>
+</ul>
+<h3 id="字符"><a href="#字符" class="headerlink" title="字符"></a>字符</h3><p>字符是用单引号表示的，里面只能包含表示一个字符的表达式或者字母，如果不止一个字符则会报错</p>
+<pre><code>julia&gt; &apos;x&apos;
+&apos;x&apos;: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
+
+julia&gt; typeof(ans)
+Char
+
+julia&gt; Int(&apos;x&apos;)
+120
+
+julia&gt; typeof(ans)
+Int64
+
+julia&gt; &apos;\u0&apos;
+&apos;\0&apos;: ASCII/Unicode U+0000 (category Cc: Other, control)
+
+julia&gt; &apos;\u78&apos;
+&apos;x&apos;: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
+
+julia&gt; &apos;\u2200&apos;
+&apos;∀&apos;: Unicode U+2200 (category Sm: Symbol, math)
+
+julia&gt; &apos;\U10ffff&apos;
+&apos;\U10ffff&apos;: Unicode U+10ffff (category Cn: Other, not assigned)
+更多ASCII字符表示可以百度一下
+</code></pre><p>字符是可以比较和做加减法运算的，但是不能2个字符进行加法</p>
+<pre><code>julia&gt; a = &apos;a&apos;
+&apos;a&apos;
+
+julia&gt; b = &apos;b&apos;
+&apos;b&apos;
+
+julia&gt; a+b
+ERROR: MethodError: `+` has no method matching +(::Char, ::Char)
+Closest candidates are:
+  +(::Any, ::Any, ::Any, ::Any...)
+  +(::Integer, ::Char)
+  +(::Char, ::Integer)
+
+julia&gt; a+1
+&apos;b&apos;
+
+julia&gt; a+2
+&apos;c&apos;
+
+julia&gt; b -a
+1
+
+julia&gt; b-1
+&apos;a&apos;
+</code></pre><h2 id="字符串基础"><a href="#字符串基础" class="headerlink" title="字符串基础"></a>字符串基础</h2><h3 id="字符串表示方式"><a href="#字符串表示方式" class="headerlink" title="字符串表示方式"></a>字符串表示方式</h3><p>字符串可以用双引号 三引号进行表示，当字符串内容里面需要有双引号的时候，可以使用三引号，也可以选择转义</p>
+<pre><code>julia&gt; str = &quot;Hello, world.\n&quot;
+&quot;Hello, world.\n&quot;
+
+julia&gt; &quot;&quot;&quot;Contains &quot;quote&quot; characters&quot;&quot;&quot;
+&quot;Contains \&quot;quote\&quot; characters&quot;
+</code></pre><h3 id="字符串的访问"><a href="#字符串的访问" class="headerlink" title="字符串的访问"></a>字符串的访问</h3><p><strong>字符串的默认最后一个字符的下标为end</strong>，str[end]就是取最后一个元素，但是<strong>没有start，起始值就是1，也不是0</strong>，不能想当然。<br><strong>独此一份，Julia的下标是从1开始的，与其他计算机编程语言都不同</strong></p>
+<pre><code>julia&gt; str[1]
+&apos;H&apos;: ASCII/Unicode U+0048 (category Lu: Letter, uppercase)
+
+julia&gt; str[6]
+&apos;,&apos;: ASCII/Unicode U+002c (category Po: Punctuation, other)
+
+julia&gt; str[end]
+&apos;\n&apos;: ASCII/Unicode U+000a (category Cc: Other, control)
+</code></pre><h3 id="字符串切片"><a href="#字符串切片" class="headerlink" title="字符串切片"></a>字符串切片</h3><p>返回字符串str的第四位到第九位，包含9</p>
+<pre><code>julia&gt; str[4:9]
+&quot;lo, wo&quot;  
+</code></pre><p>返回的是<strong>字符类型</strong></p>
+<pre><code>julia&gt; str[6] 
+&apos;,&apos;: ASCII/Unicode U+002c (category Po: Punctuation, other)
+</code></pre><p>返回的是<strong>字符串类型</strong></p>
+<pre><code>julia&gt; str[6:6]
+&quot;,&quot; 
+</code></pre><p>切片函数SubString(str,start,stop) #避免end歧义所以用的stop</p>
+<pre><code>julia&gt; str = &quot;long string&quot;
+&quot;long string&quot;
+
+julia&gt; substr = SubString(str, 1, 4)
+&quot;long&quot;
+
+julia&gt; typeof(substr)
+SubString{String}
+</code></pre><p>unicode &amp; utf-8<br>这个知识点是计算机都有的，自行百度，其中一个：<br><a href="https://blog.csdn.net/humadivinity/article/details/79403625" target="_blank" rel="noopener">https://blog.csdn.net/humadivinity/article/details/79403625</a></p>
+<h3 id="字符串的遍历"><a href="#字符串的遍历" class="headerlink" title="字符串的遍历"></a>字符串的遍历</h3><ul>
+<li>for x in str的方式遍历<br>s = “a b c d”<br>julia&gt; for c in s<pre><code>    println(c)
+end
+</code></pre>a</li>
+</ul>
+<p>b</p>
+<p>c</p>
+<p>d</p>
+<ul>
+<li>foreach函数（我的版本中无效，官网是有写的）<br>foreach(display,s)</li>
+</ul>
+<h3 id="字符串构造函数"><a href="#字符串构造函数" class="headerlink" title="字符串构造函数"></a>字符串构造函数</h3><p>string(s1,s2,s3,s4)  -&gt;返回值为s1s2s3s4的拼接结果</p>
+<pre><code>julia&gt; greet = &quot;Hello&quot;
+&quot;Hello&quot;
+
+julia&gt; whom = &quot;world&quot;
+&quot;world&quot;
+
+julia&gt; string(greet, &quot;, &quot;, whom, &quot;.\n&quot;)
+&quot;Hello, world.\n&quot;
+</code></pre><h3 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h3><p>字符串不支持 s<em>number的格式来复制字符串，但是支持 s1 </em> s2 * s3来对s1 s2 s3进行拼接</p>
+<h3 id="字符串引用"><a href="#字符串引用" class="headerlink" title="字符串引用"></a>字符串引用</h3><p>使用$符号后面接变量名称来引用变量存放的内容</p>
+<pre><code>julia&gt; &quot;$greet, $whom.\n&quot;
+&quot;Hello, world.\n&quot;
+
+julia&gt; &quot;1 + 2 = $(1 + 2)&quot;
+&quot;1 + 2 = 3&quot;
+
+julia&gt; v = [1,2,3]
+3-element Array{Int64,1}:
+ 1
+ 2
+ 3
+
+julia&gt; &quot;v: $v&quot;
+&quot;v: [1, 2, 3]&quot;
+
+julia&gt; name = &apos;Bob&apos;
+&apos;x&apos;: ASCII/Unicode U+0078 (category Ll: Letter, lowercase)
+
+julia&gt; &quot;hi, $name&quot;
+&quot;hi, Bob&quot;
+</code></pre><h3 id="三引号字符串"><a href="#三引号字符串" class="headerlink" title="三引号字符串"></a>三引号字符串</h3><p>三引号字符串可以隐式换行，想在字符串中保持原文内容不变，可以采用三引号来表示。<br>显示的时候换行是用的 \n 来显示的</p>
+<h3 id="通用操作"><a href="#通用操作" class="headerlink" title="通用操作"></a>通用操作</h3><p>字符串可以进行：<br>1 大小比较运算​<br>2 相等判断<br>3 查找是否包含<br>4 重复复制字符串 repeat(s,10) s复制10次<br>5 将列表转换为字符串，有2个参数，第二个可选，第一个参数含义是列表中的元素用参数1进行拼接，如果第二个参数有，则表示在最后一个元素前添加该参数，示例如下</p>
+<pre><code>julia&gt; join([&quot;aaa&quot;,&quot;bbb&quot;,&quot;ccc&quot;,&quot;ddd&quot;],&quot;,&quot;,&quot; and &quot;)
+&quot;aaa,bbb,ccc and ddd&quot;
+</code></pre><p>6 其他一些有用的函数有包括：</p>
+<p>firstindex(str)给出了可用于索引的最小（字节）索引str（对于字符串总是1，对于其他容器不一定是真的）。<br>lastindex(str)给出了可用于索引的最大（字节）索引str。<br>length(str)中的字符数str。<br>length(str, i, j)有效字符的数量指标的str，从i到j。<br>ncodeunits(str)字符串中的代码单元数。<br>codeunit(str, i)给出str索引处字符串中的代码单元值i。<br>thisind(str, i) 给一个字符串中的任意索引找到索引指向的字符的第一个索引。<br>nextind(str, i, n=1)找到n索引后开始的第th个字符的开头i。<br>prevind(str, i, n=1)找到n索引前的第th个字符的开头i。</p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>正则表达式的表示方式<br>r”xxxxx”</p>
+<p>你可以从RegexMatch对象中提取以下信息：</p>
+<p>整个子串匹配： m.match<br>捕获的子串作为字符串数组： m.captures<br>整个匹配开始的偏差： m.offset<br>捕获的子串的偏移量作为向量： m.offsets</p>
+<pre><code>julia&gt; m = match(r&quot;(a|b)(c)?(d)&quot;, &quot;acd&quot;)
+RegexMatch(&quot;acd&quot;, 1=&quot;a&quot;, 2=&quot;c&quot;, 3=&quot;d&quot;)
+
+julia&gt; m.match
+&quot;acd&quot;
+
+julia&gt; m.captures
+3-element Array{Union{Nothing, SubString{String}},1}:
+ &quot;a&quot;
+ &quot;c&quot;
+ &quot;d&quot;
+
+julia&gt; m.offset
+1
+
+julia&gt; m.offsets
+3-element Array{Int64,1}:
+ 1
+ 2
+ 3
+
+julia&gt; m = match(r&quot;(a|b)(c)?(d)&quot;, &quot;ad&quot;)
+RegexMatch(&quot;ad&quot;, 1=&quot;a&quot;, 2=nothing, 3=&quot;d&quot;)
+
+julia&gt; m.match
+&quot;ad&quot;
+
+julia&gt; m.captures
+3-element Array{Union{Nothing, SubString{String}},1}:
+ &quot;a&quot;
+ nothing
+ &quot;d&quot;
+
+julia&gt; m.offset
+1
+
+julia&gt; m.offsets
+3-element Array{Int64,1}:
+ 1
+ 0
+ 2
+</code></pre><p>子组的访问方式</p>
+<pre><code>julia&gt; m=match(r&quot;(?&lt;hour&gt;\d+):(?&lt;minute&gt;\d+)&quot;,&quot;12:45&quot;)
+RegexMatch(&quot;12:45&quot;, hour=&quot;12&quot;, minute=&quot;45&quot;)
+
+julia&gt; m[:minute]
+&quot;45&quot;
+
+julia&gt; m[2]
+&quot;45&quot;
+</code></pre><p><strong>将2个单词交换位置：</strong></p>
+<pre><code>julia&gt; replace(&quot;first second&quot;, r&quot;(\w+) (?&lt;agroup&gt;\w+)&quot; =&gt; s&quot;\g&lt;agroup&gt; \1&quot;)
+&quot;second first&quot;
+
+julia&gt; m = match(r&quot;(a|b)(c)?(d)&quot;, &quot;acd&quot;)
+RegexMatch(&quot;acd&quot;, 1=&quot;a&quot;, 2=&quot;c&quot;, 3=&quot;d&quot;)
+
+julia&gt; m.match
+&quot;acd&quot;
+
+julia&gt; m.captures
+3-element Array{Union{Nothing, SubString{String}},1}:
+ &quot;a&quot;
+ &quot;c&quot;
+ &quot;d&quot;
+
+julia&gt; m.offset
+1
+
+julia&gt; m.offsets
+3-element Array{Int64,1}:
+ 1
+ 2
+ 3
+
+julia&gt; m = match(r&quot;(a|b)(c)?(d)&quot;, &quot;ad&quot;)
+RegexMatch(&quot;ad&quot;, 1=&quot;a&quot;, 2=nothing, 3=&quot;d&quot;)
+
+julia&gt; m.match
+&quot;ad&quot;
+
+julia&gt; m.captures
+3-element Array{Union{Nothing, SubString{String}},1}:
+ &quot;a&quot;
+ nothing
+ &quot;d&quot;
+
+julia&gt; m.offset
+1
+
+julia&gt; m.offsets
+3-element Array{Int64,1}:
+ 1
+ 0
+ 2
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/11/web前端/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -8230,174 +9887,13 @@ update_one()</code></p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/07/python3环境搭建/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Godshion">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="响神的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/07/python3环境搭建/" itemprop="url">python3环境搭建</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-07T09:59:03+08:00">
-                2018-08-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  361 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Python-3-教程"><a href="#Python-3-教程" class="headerlink" title="Python 3 教程"></a>Python 3 教程</h1><p>python3<br>Python的3.0版本，常被称为Python 3000，或简称Py3k。相对于Python的早期版本，这是一个较大的升级。为了不带入过多的累赘，Python 3.0在设计的时候没有考虑向下兼容。</p>
-<p>Python 介绍及安装教程我们在Python 2.X版本的教程中已有介绍，这里就不再赘述。</p>
-<p>你也可以点击 Python2.x与3​​.x版本区别 来查看两者的不同。</p>
-<p>本教程主要针对Python 3.x版本的学习，如果你使用的是Python 2.x版本请移步至Python 2.X版本的教程。</p>
-<h2 id="查看python版本"><a href="#查看python版本" class="headerlink" title="查看python版本"></a>查看python版本</h2><p>我们可以在命令窗口(Windows 使用 win+R 调出 cmd 运行框)使用以下命令查看我们使用的Python版本：</p>
-<p>python -V<br>以上命令执行结果如下：</p>
-<p>Python 3.3.2<br>你也可以进入Python的交互式编程模式，查看版本：</p>
-<p>Python 3.3.2 (v3.3.2:d047928ae3f6, May 16 2013, 00:03:43) [MSC v.1600 32 bit (Intel)] on win32<br>Type “copyright”, “credits” or “license()” for more information.</p>
-<h3 id="第一个Python3-x程序"><a href="#第一个Python3-x程序" class="headerlink" title="第一个Python3.x程序"></a>第一个Python3.x程序</h3><p>对于大多数程序语言，第一个入门编程代码便是”Hello World！”，以下代码为使用Python输出”Hello World！”：</p>
-<p>实例(Python 3.0+)</p>
-<p>#!/usr/bin/python3</p>
-<p>print(“Hello, World!”)</p>
-<p>运行实例 »<br>你可以将以上代码保存在 hello.py 文件中并使用 python 命令执行该脚本文件。</p>
-<p>$ python3 hello.py<br>以上命令输出结果为：</p>
-<p>Hello, World!</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -8445,7 +9941,7 @@ update_one()</code></p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -8456,7 +9952,7 @@ update_one()</code></p>
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -8467,7 +9963,7 @@ update_one()</code></p>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -8532,7 +10028,7 @@ update_one()</code></p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">64.6k</span>
+    <span title="Site words total count">72.9k</span>
   
 </div>
 
