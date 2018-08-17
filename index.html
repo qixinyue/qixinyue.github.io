@@ -160,7 +160,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">python入门到精通</p>
+        <p class="site-subtitle">计算机编程-python入门到精通</p>
       
   </div>
 
@@ -951,7 +951,7 @@ mp.show()  # 窗口不关闭的情况下，后面的代码是不执行的
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,257 字
+                  6,963 字
                 </span>
               
 
@@ -967,7 +967,7 @@ mp.show()  # 窗口不关闭的情况下，后面的代码是不执行的
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13 分钟
+                  27 分钟
                 </span>
               
             </div>
@@ -1020,41 +1020,39 @@ mp.show()  # 窗口不关闭的情况下，后面的代码是不执行的
 <li>在响应的程序目录下通过 python3 hello.py 的形式运行程序</li>
 </ol>
 <p>第二种方法<br>1 在程序的第一行加上解释器位置</p>
-<p>#！/usr/bin/python3<br>2 将程序文件修改为有可行性权限<br>chmod  766  hello.py<br>3 通过指明程序的路径即可运行<br>./hello.py</p>
-<p>更多方法<br>使用集成工具，例如pycharm spyder等，初学者还是老老实实的用sublime 或者 editplus 或者Notepad等偏文本编辑工具编写程序。</p>
+<pre><code>#！/usr/bin/python3
+</code></pre><p>2 将程序文件修改为有可行性权限</p>
+<pre><code>chmod  766  hello.py
+</code></pre><p>3 通过指明程序的路径即可运行</p>
+<pre><code>./hello.py
+</code></pre><p>更多方法<br>使用集成工具，例如pycharm spyder等，初学者还是老老实实的用sublime 或者 editplus 或者Notepad等偏文本编辑工具编写程序。</p>
 <h2 id="python程序组成"><a href="#python程序组成" class="headerlink" title="python程序组成"></a>python程序组成</h2><p>数据 —&gt; 语句 —&gt;语句块 —&gt;模块 —-&gt;工程<br>1        x = 1    x = 1 y=2  hello.py  hello(文件夹）</p>
 <p>程序 =  算法 + 数据结构</p>
 <h2 id="python支持的数据类型-："><a href="#python支持的数据类型-：" class="headerlink" title="python支持的数据类型 ："></a>python支持的数据类型 ：</h2><p>数字 （整数  小数  复数）<br>字符串 （字串 单个字符）<br>布尔数据 （True  False）<br>列表  元组  字典   集合  Nonetype<br>文件  类类型   对象  </p>
 <h1 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h1><h2 id="整型-int"><a href="#整型-int" class="headerlink" title="整型  int"></a>整型  int</h2><p>1 2 3  -100  0</p>
 <h2 id="浮点型（小数）-float"><a href="#浮点型（小数）-float" class="headerlink" title="浮点型（小数）  float"></a>浮点型（小数）  float</h2><p>1.2  1.3  -3.4    1.2e+23 2.3e-23</p>
 <h2 id="复数-complex"><a href="#复数-complex" class="headerlink" title="复数 complex"></a>复数 complex</h2><p>复数分为实部和虚部，虚部后面加j， j*j = -1</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>(1+2j)*(3+4j)<br>(-5+10j)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>运算表达式</p>
+<pre><code>&gt;&gt;&gt; (1+2j)*(3+4j)
+(-5+10j)
+</code></pre><p>运算表达式</p>
 <p>表达式： 由一个数字或者数字和运算符构成</p>
-<h2 id="算数运算符："><a href="#算数运算符：" class="headerlink" title="算数运算符："></a>算数运算符：</h2><ul>
-<li>加法</li>
+<h2 id="算数运算符："><a href="#算数运算符：" class="headerlink" title="算数运算符："></a>算数运算符：</h2><pre><code>+   加法
+-   减法
+*   乘法
+/   除法  得到浮点数  真除法
+//  除法  取整数商    地板除
+%   取余  
+**  幂运算
+</code></pre><ul>
+<li>当高精度数据和低精度数据进行运算的时候结果自动转换为高精度</li>
 </ul>
-<ul>
-<li>减法</li>
-</ul>
-<ul>
-<li><p>乘法<br>/   除法  得到浮点数  真除法<br>//  除法  取整数商    地板除<br>%   取余<br>**  幂运算</p>
-</li>
-<li><p>当高精度数据和低精度数据进行运算的时候结果自动转换为高精度</p>
-</li>
-</ul>
-<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>**</p>
-<p>/  //  *  %  </p>
-<ul>
-<li>-</li>
-</ul>
-<h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>自定义的标识符，用来代表某个值</p>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><pre><code>**
+
+/  //  *  %  
+
++  -
+</code></pre><h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><p><strong>首先，python是通过缩进来表示层次关系的，在同一缩进层代表是平级关系。<br>在代码中严禁用空格和tab快捷键组合使用来进行缩进的</strong></p>
+<h2 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>自定义的标识符，用来代表某个值</p>
 <p>标识符，即在编程中自己给需要起名的地方起的名字如：<br>变量名，类名，函数名等<br>1 数字字母下划线组成，$也是合法的<br>2 不能以数字开头<br>3 不能和python保留字（关键字）重复</p>
 <p>合法变量举例：<br>a   a_b  a1  aaaa  get_name  _var<br>a$  a  A   1a</p>
 <p>python关键字<br>if   for   is   not  True  …….</p>
@@ -1238,7 +1236,463 @@ False or False # False
 3. 打印出平均分是多少分
 </code></pre><p>  3  给出一个年份，判断是否为闰年并打印结果<br>    闰年规则: 每四年一闰，每百年不闰，四百年又是一个闰年<br>    例:<br>      2016年 闰年<br>      2100年 不是闰年<br>      2400年 是闰年</p>
 <p>  4 BMI 指数(Body Mass Index) 以称身体质量指数<br>    BMI值计算公式:<br>         BMI = 体重(公斤)/ 身高(米)的平方<br>    例如:<br>       一个69公斤的人，身高是 173公分<br>       BMI = 69 / 1.73 ** 2 = 23.05<br>    标准表:<br>       BMI &lt; 18.5        体重过轻<br>       18.5 &lt;= BMI &lt;= 24 正常范围<br>       BMI &gt; 24          体重过重（超标)<br>    输入身高和体重，打印BMI值，并打印体重状况</p>
-<h2 id="这里缺少for-while循环的内容"><a href="#这里缺少for-while循环的内容" class="headerlink" title="这里缺少for while循环的内容"></a><strong>这里缺少for while循环的内容</strong></h2>
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><p>python中的循环语句有2种，分别为while 语句 for 语句</p>
+<h3 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h3><p>问题:<br>  输入一个数用n绑定,打印出n行的”hello world!”<br>  print(“hello world!”)</p>
+<p>while 语句:<br>作用：<br>    根据一定条件，重复的执行一条语句或多条语句<br>语法:<br>while 真值表达式:<br>  语句块<br>else:<br>  语句块</p>
+<p>示例:</p>
+<pre><code>while n &gt; 0:
+    print(&quot;hello world!&quot;)
+    n -= 1
+</code></pre><p>练习：<br>  编写程序，用while语句解决下面的问题<br>  问题:<br>    输入一个数用n绑定,打印出n行的”hello world!”</p>
+<p>练习：</p>
+<ol>
+<li><p>输入一个整数,用end变量绑定，打印出 1~end的所有整数，(包含end)</p>
+</li>
+<li><p>写程序，输入二个整数，第一个用begin绑定，第二个用end变量绑定，打印出 begin~end的所有的整数</p>
+</li>
+</ol>
+<p>while 语句语法说明:</p>
+<p>1  先执行真值表达式，判断True/False<br>2  如果为True则执行语句块1,然后跳转到第1步<br>3  如果为 False则执行else子句部分的语句块2.然后结束此while语句的执行.如果没有else子句，则直接结束此while语句<br>4  else 子句部分可以省略(同if语句类似)</p>
+<p>while 注意事项:</p>
+<p>1  要控制真值表达式来访问死循环<br>2  通常用真值表达式内的变量来控制循环条件<br>3  通常要在循环语句块内改变循环变量来控制循环的次数和变量的走向</p>
+<p>练习:</p>
+<ol>
+<li>打印 1~ 20的整数，打印在一行内显示，每个数字之间用一个空格分隔开<br>如:<br> 1 2 3 4 5 6 … 18 19 20<br>(提示:print(…. , end=’ ‘) 可以不换新行)</li>
+<li>打印 1~ 20的整数，每行5个，打印四行，如:<br>1 2 3 4 5<br>6 7 8 9 10<br>….<br>….<br>(注: while语句内可以嵌入if语句)</li>
+<li>用while语句打印 10 ~ 1的所有整数(包含1)</li>
+</ol>
+<p>练习:</p>
+<ol>
+<li><p>写程序，用while循环来计算<br>1 + 2 + 3 + 4 + ….+ 99 + 100的和</p>
+</li>
+<li><p>用while 语句实现打印三角形,输入一个整数，表示三角形的宽度和高度，打印出相应的直角三角形<br>如:<br>请输入三角形宽度: 4<br>打印如下:<br>*<br>**</p>
+<hr>
+<hr>
+</li>
+</ol>
+<p><strong>while 语句嵌套</strong><br>  while 语句本身是语句，和其它语句一样，可以放在其它复合语句的内部<br>while 嵌套示意<br>  while 真值表达式:<br>      …<br>      while 真值表达式2:<br>          …<br>      else:<br>          …<br>      …<br>  else:<br>      …</p>
+<p>问题:<br>  打印1~20 之间的整数打印在一行<br>   1 2 3 4 …. 18 19 20<br>  把以上的数据打印10行<br>示例见:<br>  03_while_embed.py</p>
+<p>练习:<br>  输入一个数，打印指定宽度的正方形<br>  如:<br>    请输入: 5<br>  打印如下正方形:<br>    1 2 3 4 5<br>    1 2 3 4 5<br>    1 2 3 4 5<br>    1 2 3 4 5<br>    1 2 3 4 5<br>  如:<br>    请输入: 4<br>  打印如下:<br>    1 2 3 4<br>    1 2 3 4<br>    1 2 3 4<br>    1 2 3 4</p>
+<h3 id="break-语句"><a href="#break-语句" class="headerlink" title="break 语句"></a>break 语句</h3><p>  作用：<br>    用于循环语句(while,for语句)中，用来终止当前循环语句的执行</p>
+<p>break说明</p>
+<p>1  当break语句执行后，此循环语句break之后的语句将不再执行<br>2  break语句通常和if语句组合使用<br>3  break语句终止循环时，循环语句的else子句的语句将不会执行<br>4  break语句只能终止当前循环语句的执行，如果有循环嵌套时，不会跳出嵌套的外重循环<br>5  break 语句只能在循环语句(while或for语句)内部使用</p>
+<p><strong>死循环:</strong></p>
+<p>  死循环是指循环条件一直成立的循环<br>  死循环通常用break语句来终止循环<br>  死循环的else子句永远不会执行</p>
+<p>示例:</p>
+<pre><code>while True:
+  n = int(input(&quot;请输入: &quot;))
+  if n == 0:
+      break
+  print(n)
+</code></pre><p>练习:</p>
+<pre><code>1. 任意输入一些整数，
+每次输入一个,当输入负数时结束输入,当输入完成后，打印您输入的这些数的和
+2. 写程序用while实现打印三角形。
+要求输入一个整数表示三角形的宽度和高度,打印出如下的三种直角三角形
+1)
+    *
+   **
+  ***
+ ****
+2)
+ ****
+  ***
+   **
+    *
+3) 
+ ****
+ ***
+ **
+ *
+3. 写程序求多项式的和:
+1/1 - 1/3 + 1/5 - 1/7 + 1/9 ... + 1/(2*n-1) 的和
+n最大取： 1000000
+1) 打印这个和
+2) 打印这个和乘以4的值?(看看这个数眼熟不?)
+</code></pre><hr>
+<h1 id="字符串-str"><a href="#字符串-str" class="headerlink" title="字符串 str"></a>字符串 str</h1><h2 id="str"><a href="#str" class="headerlink" title="str"></a>str</h2><p>作用：<br>用来记录文本（文字）信息</p>
+<p>字符串的表示方法：<br>在非注释中，凡是用引号括起来的部分都是字符串<br>‘   单引号<br>“   双引号<br>‘’’ 三单引号<br>“”” 三双引号</p>
+<p>空字符串的字面值表示方式<br>‘’<br>“”<br>‘’’’’’<br>“”””””</p>
+<p>非空字符串的字面值表示方式<br>‘hello’<br>“hello”<br>‘’’hello’’’<br>“””hello”””</p>
+<p>单引号和双引号的区别:<br>单引号内的双引号不算结束符<br>双引号内的单引号不算结束符</p>
+<p>三引号字符串:<br>作用：<br>  三引号字符串的换行会自动转换为换行符’\n’<br>  三引号内可以包含单引号和双引号<br>如何表示:<br>‘welcome to beijing\nI like python!\nI am studing!’<br>s = ‘’’welcome to beijing<br>I like python!<br>I am studing!’’’</p>
+<p>用转义序列代表特殊字符<br>  字符串字面值中，用字符反斜杠() 后跟一些字符代表一个字符</p>
+<p>字符串中的转义字符表</p>
+<pre><code>\&apos;    代表一个单引号
+\&quot;    一个双引号
+\\    代表一个反斜杠
+\n    换行
+\r    返回光标至行首
+\f    换页
+\t    水平制表符
+\v    垂直制表符
+\b    倒退
+\0    空字符，字符值为0
+\0oo  oo 为两位八进制表示的字符
+\xXX  XX为两位十六进制表示的字符
+\uXXXX  Unicode16的十六进制表示的字符
+\UXXXXXXXX Unicode32的十六进制表示的字符
+</code></pre><p>ASCII编码:<br>  查看ASCII 字符表<br>  $ man ascii</p>
+<p>常用ASCII编码:<br>字符   十进制   十六进制<br>‘0’     48      0x30<br>‘A’     65      0x41<br>‘a’     97      0x61</p>
+<h2 id="raw-字符串-原始字符串"><a href="#raw-字符串-原始字符串" class="headerlink" title="raw 字符串(原始字符串)"></a>raw 字符串(原始字符串)</h2><p>  字面值格式:</p>
+<pre><code>r&apos;字符串内容&apos;
+r&quot;字符串内容&quot;
+r&apos;&apos;&apos;字符串内容&apos;&apos;&apos;
+r&quot;&quot;&quot;字符串内容&quot;&quot;&quot;
+</code></pre><p>  作用：让转义字符 \ 无效</p>
+<p>  示例:</p>
+<pre><code>a = &apos;C:\newfile\test.py&apos;
+print(a)
+print(len(a))  # 得到字符串的长度
+a = r&apos;C:\newfile\test.py&apos;
+print(a)
+print(len(a))
+</code></pre><h2 id="字符串的运算"><a href="#字符串的运算" class="headerlink" title="字符串的运算:"></a>字符串的运算:</h2><p>  算术运算符:</p>
+<pre><code>+  +=  *  *= 
+</code></pre><p>  + 加号运算符用于字符串的拼接</p>
+<p>  例:</p>
+<pre><code>x = &apos;abcd&apos; + &apos;efg&apos;
+print(x)  # abcdefg
+x += &apos;123&apos;
+print(x)  # abcdefg123
+</code></pre><p>  * 运算符用于生成重复的字符串</p>
+<pre><code>x = &apos;123&apos;
+y = x * 2  # y = &apos;123123&apos;
+
+x *= 3   # x = &apos;123123123&apos;
+x = 3
+x *= &apos;123&apos; # x = &apos;123123123&apos;
+</code></pre><p>练习：<br>  写一个程序，打印一个高度为4的矩形方框<br>  要求输入一个整数，此整数代表矩形的宽度，输出此矩形<br>  如:<br>   请输入宽度: 10<br>   打印如下:</p>
+<pre><code>##########
+#        #
+#        #
+##########
+</code></pre><h2 id="字符串的比较运算"><a href="#字符串的比较运算" class="headerlink" title="字符串的比较运算"></a>字符串的比较运算</h2><p>运算符:</p>
+<pre><code>&gt;  &gt;=  &lt;  &lt;=  ==  != 
+</code></pre><p>示例:</p>
+<pre><code>&apos;A&apos; &lt; &apos;B&apos;      # True
+&apos;B&apos; &lt; &apos;a&apos;      # True
+&apos;ABC&apos; &gt; &apos;AB&apos;   # True
+&apos;AD&apos; &lt; &apos;ABC&apos;   # False
+&apos;ABC&apos; == &apos;abc&apos; # False
+</code></pre><h2 id="in-not-in-运算符"><a href="#in-not-in-运算符" class="headerlink" title="in / not in 运算符"></a>in / not in 运算符</h2><p>作用: in 用于序列，字典，集合中，用于判断某个值是否存在于容器中，如果存在则返回True, 否则返回False<br>格式: 对象 in 容器<br>示例:</p>
+<pre><code>s = &apos;welcome to tarena!&apos;
+&apos;to&apos; in s  # True
+&apos;weimingze&apos; in s  # False
+</code></pre><h2 id="字符串的索引操作"><a href="#字符串的索引操作" class="headerlink" title="字符串的索引操作"></a>字符串的索引操作</h2><p>  python 字符串str是不可以改变的字符序列</p>
+<h3 id="索引-index"><a href="#索引-index" class="headerlink" title="索引 index"></a>索引 index</h3><p>索引语法:字符串[整数表达式]<br>说明</p>
+<ul>
+<li>python 序列都可以用索引(index) 来访问序列中的对象(元素)</li>
+<li>python 序列的正向索引是从0开始的，第二个索引为1,最后一个索引为len(s) -1</li>
+<li>python 序列的反向索引是从-1开始的，-1代表最后一个，-2代表倒数第二个，第一个是-len(s)</li>
+</ul>
+<p>示例:</p>
+<pre><code>s = &apos;ABCDE&apos;
+print(s[0])  # A
+print(s[1])  # B
+print(s[4])  # E
+</code></pre><h3 id="切片-slice"><a href="#切片-slice" class="headerlink" title="切片 slice"></a>切片 slice</h3><p>从字符串序列中取出相应的元素重新组成一个字符串序列</p>
+<p>语法:s[(开始索引b):(结束索引e)(:(步长s))]<br>注:小括号() 括起的部分代表可省略</p>
+<p>语法说明:<br>开始索引是切片开始切下的位置0代表第1个，<br>结束索引是切片的终止索引（但不包含终止点)<br>步长是切片每次获取完当前元素后移动的方向和偏移量</p>
+<p>  1 没有步长，相当于取值完成后向右移动一个索引的位置（默认为1)<br>  2 当步长为正数时，取正向切片:<br>    步长默认为1,开始索引默认为0, 结束索引默认为len(s)<br>  3 当步长为负整数时，取反向切片<br>     反向切片时。默认的起始位置为最后一个元素，终止位置是第一个元素的前一个位置</p>
+<p>示例:</p>
+<pre><code>s = &apos;ABCDE&apos;
+a = s[1:4]  # a--&gt; &apos;BCD&apos;
+a = s[:4]   # a--&gt; &apos;ABCD&apos;
+a = s[2:]   # a--&gt; &apos;CDE&apos;
+a = s[0:2]  # a--&gt; &apos;AB&apos;
+a = s[1:1]  # a--&gt; &apos;&apos;
+a = s[3:1]  # a--&gt; &apos;&apos;  空字符串
+a = s[::2]  # a--&gt; &apos;ACE&apos;
+a = s[2::2] # a--&gt; &apos;CE&apos;
+a = s[::-1] # a--&gt; &apos;EDCBA&apos; 
+a = s[3::-2] # a--&gt; &apos;DB&apos;
+</code></pre><p>练习：<br>　　1. 输入一个字符串，打印如下内容<br>     1) 打印这个字符串的第一个字符<br>     2) 打印这个字符串的最后一个字符<br>     3) 如果这个字符串长度是奇数，打印中间这个字符<br>     (注: 求字符串长度的函数是 len(s))</p>
+<ol start="2">
+<li>输入任意一个字符串，判断这个字符串是否是回文<br>　　回文是指中心对称的文字<br>如:<br> 上海自来水来自海上<br> ABCCBA</li>
+</ol>
+<h2 id="Python3中常用的函数"><a href="#Python3中常用的函数" class="headerlink" title="Python3中常用的函数"></a>Python3中常用的函数</h2><ul>
+<li>len(seq)  返回序列的长度</li>
+<li>max(x)    返回序列的最大值元素</li>
+<li>min(x)    返回序列的最小值元素</li>
+</ul>
+<p>示例:</p>
+<pre><code>s = &quot;ABCD&quot;
+print(len(s))  # 4
+print(max(s))  # D
+print(min(s))  # A
+</code></pre><p><strong>字符串编码转换函数</strong></p>
+<ul>
+<li>ord(c)  返回一个字符串的Unicode编码值</li>
+<li>chr(i)  返回i这个值所对应的字符</li>
+</ul>
+<p>示例:</p>
+<pre><code>print(ord(&apos;A&apos;))  # 65
+print(ord(&apos;中&apos;)) # 
+
+#以下语句是通过循环打印26个字母
+for x in range(26):
+    print(chr(ord(&apos;a&apos;)+x))
+</code></pre><p>练习：</p>
+<ol>
+<li><p>写一个程序，输入一段字符串，如果字符串不为空，则把第一个字符的编码打印出来</p>
+</li>
+<li><p>写一个程序，输入一个整数值(0~65535)，打印出这个数值所对应的字符</p>
+</li>
+</ol>
+<p><strong>整数转换为字符串函数</strong></p>
+<ul>
+<li>hex(i)  将整数转换为十六进制的字符串</li>
+<li>oct(i)  将整数转换为八进制字符串</li>
+<li>bin(i)  将整数转换为二进制字符串</li>
+</ul>
+<p><strong>字符串的构造(创建)函数 str</strong></p>
+<ul>
+<li>str(obj=’’)  将对象转换为字符串</li>
+</ul>
+<p>示例:</p>
+<pre><code>s = 123
+print(str(s) + &apos;456&apos;)  # 123456
+</code></pre><p>练习:<br>  1.　用字符串<em> 运算符打印三角形<br>    要求输入一个整数，此整数代表此三角形离左侧的字节数<br>    如:<br>      $ python3 tri_angle.py<br>      请输入离左侧的距离: 3<br>      则打印:
+          </em><br>         <strong><em><br>        **</em></strong><br>       <strong>***</strong></p>
+<ol start="2">
+<li>输入三行文字，让这三行文字在一个方框居中显示<br>如输入(不要输入中文):<br>hello tarena!<br>my name is weimingze<br>python<br>显示如下:<br>+———————-+<br>|    hello tarena!     |<br>| my name is weimingze |<br>|        python        |<br>+———————-+</li>
+</ol>
+<h2 id="常用的字符串方法"><a href="#常用的字符串方法" class="headerlink" title="常用的字符串方法:"></a>常用的字符串方法:</h2><p>字符串方法的调用语法<br>对象.方法名(方法传参)<br>注:<br>  方法的调用属于表达式，通常可以返回一个值或None</p>
+<p><strong>字符串中反斜杠字符表</strong></p>
+<table>
+<thead>
+<tr>
+<th>转义格式</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\’</td>
+<td>单引号(‘)</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>双引号(“)</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠(\ )</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>返回光标至行首</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表符</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>重直制表符</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>倒退</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>空字符，字符值为零</td>
+</tr>
+<tr>
+<td>\0oo</td>
+<td>oo为两位八进制表示的字符</td>
+</tr>
+<tr>
+<td>\xXX</td>
+<td>XX为两位十六进制表示的字符</td>
+</tr>
+<tr>
+<td>\uXXXX</td>
+<td>Unicode 16的十六进制表示的字符</td>
+</tr>
+<tr>
+<td>\UXXXXXXXX</td>
+<td>Unicode 32的十六进制表示的字符</td>
+</tr>
+</tbody>
+</table>
+<p><strong>常用字符串方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S.isdigit()</td>
+<td>判断字符串中的字符是否全为数字</td>
+</tr>
+<tr>
+<td>S.isalpha()</td>
+<td>判断字符串是否全为英文字母</td>
+</tr>
+<tr>
+<td>S.islower()</td>
+<td>判断字符串所有字符是否全为小写英文字母</td>
+</tr>
+<tr>
+<td>S.isupper()</td>
+<td>判断字符串所有字符是否全为大写英文字母</td>
+</tr>
+<tr>
+<td>S.isspace()</td>
+<td>判断字符串是否全为空白字符</td>
+</tr>
+<tr>
+<td>S.center(width[,fill])</td>
+<td>将原字符串居中，左右默认填充空格</td>
+</tr>
+<tr>
+<td>S.count(sub[, start[,end]])</td>
+<td>获取一个字符串中子串的个数</td>
+</tr>
+<tr>
+<td>S.find(sub[, start[,end]])</td>
+<td>获取字符串中子串sub的索引,失败返回-1</td>
+</tr>
+<tr>
+<td>S.strip()</td>
+<td>返回去掉左右空白字符的字符串</td>
+</tr>
+<tr>
+<td>S.lstrip()</td>
+<td>返回去掉左侧空白字符的字符串</td>
+</tr>
+<tr>
+<td>S.rstrip()</td>
+<td>返回去掉右侧空白字符的字符串</td>
+</tr>
+<tr>
+<td>S.upper()</td>
+<td>生成将英文转换为大写的字符串</td>
+</tr>
+<tr>
+<td>S.lower()</td>
+<td>生成将英文转换为小写的字符串</td>
+</tr>
+<tr>
+<td>S.replace(old, new[, count])</td>
+<td>将原字符串的old用new代替，生成一个新的字符串</td>
+</tr>
+<tr>
+<td>S.startswith(prefix[, start[, end]])</td>
+<td>返回S是否是以prefix开头，如果以prefix开头返回True,否则返回False,</td>
+</tr>
+<tr>
+<td>S.endswith(suffix[, start[, end]])</td>
+<td>返回S是否是以suffix结尾，如果以suffix结尾返回True,否则返回False</td>
+</tr>
+<tr>
+<td>S.title()</td>
+<td>生成每个英文单词的首字母大写字符串</td>
+</tr>
+<tr>
+<td>S.isnumeric()</td>
+<td>判断字符串是否全为数字字符</td>
+</tr>
+</tbody>
+</table>
+<p><strong>空白字符</strong><br>是指空格,水平制表符(\t),换行符(\n)等不可见的字符</p>
+<p><strong>格式化字符串中的占位符和类型码</strong></p>
+<table>
+<thead>
+<tr>
+<th>占位符类型码</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%s</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>%r</td>
+<td>字符串，使用repr 而不是str</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>整数转为单个字符</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>十进制整数</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>八进制整数</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>十六进制整数(字符a-f小写)</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>十六进制整数(字符A-F大写)</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>指数型浮点数(e小写),如2.9e+10</td>
+</tr>
+<tr>
+<td>%E</td>
+<td>指数型浮点数(E大写),如2.9E+10</td>
+</tr>
+<tr>
+<td>%f, %F</td>
+<td>浮点十进制形式</td>
+</tr>
+<tr>
+<td>%g, %G</td>
+<td>十进制形式浮点或指数浮点自动转换</td>
+</tr>
+<tr>
+<td>%%</td>
+<td>等同于一个%字符</td>
+</tr>
+</tbody>
+</table>
+<p>字符串的格式化表达式<br>作用:<br>生成一定格式的字符串<br>运算符 %<br>语法格式<br>格式字符串 % 参数值<br>格式字符串 % (参数值1, 参数值2, …)<br>说明:<br>格式化字符串中以%开头的为占位符,占位符的位置将用参数值替换<br>% 右侧为参数值，当有多个参数值时用括号() 括起来，之间用逗号(,) 分隔<br>示例:</p>
+<pre><code>fmt = &quot;姓名: %s, 年龄: %d&quot;  
+name = &apos;tarena&apos;
+age = 15
+print(fmt % (name, age))
+</code></pre><p>占位符和类型码之间的格式语法<br> % [格式语法] 类型码<br>   格式语法：</p>
+<pre><code>- 左对齐
++ 显示正号
+0 补零
+宽度(整数)
+宽度.精度(整数)
+</code></pre><p>  示例:</p>
+<pre><code>&apos;%10d&apos; % 123   # &apos;       123&apos;
+&apos;%-10d&apos; % 123  # &apos;123       &apos;
+&apos;%10s&apos; % &apos;abc&apos; # &apos;       abc&apos; 
+&apos;%-5s&apos; % &apos;abc&apos; # &apos;abc  &apos;
+&apos;%05d&apos; % 123   # &apos;00123&apos;
+&apos;%7.3f&apos; % 3.1415926  # &apos;003.142&apos;
+</code></pre><p>练习:<br>  输入三行文字，让这些文字依次以20字符的宽度右对齐输出.<br>  如:<br>  请输入第1行: hello world<br>  请输入第2行: abcd<br>  请输入第3行: a<br>  输出结果为:</p>
+<pre><code>hello world
+       abcd
+          a
+</code></pre><p>  做完上面的题后再思考:<br>    能否以最长字符串的长度进行右对齐显示(左侧填充空格)</p>
+
           
         
       
@@ -8817,7 +9271,7 @@ items.py     保存item的映射
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.5k</span>
+    <span title="Site words total count">83.2k</span>
   
 </div>
 
