@@ -317,7 +317,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,936 字
+                  3,251 字
                 </span>
               
 
@@ -333,7 +333,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14 分钟
+                  16 分钟
                 </span>
               
             </div>
@@ -773,8 +773,52 @@ ax.spines[&apos;left&apos;].set_position((&apos;data&apos;, 0))
 ax.spines[&apos;bottom&apos;].set_position((&apos;data&apos;, 0))
 ax.spines[&apos;top&apos;].set_color(&apos;none&apos;)
 ax.spines[&apos;right&apos;].set_color(&apos;none&apos;)
-</code></pre><p>6 图例<br>plot(…label=图例文本)<br>legend(loc=位置)</p>
+</code></pre><p>6 图例<br>plot(…label=图例文本)<br>legend(loc=位置) loc可以不指定，系统自动选择，但是函数必须调用</p>
+<p>7 特殊点<br>scatter(水平坐标数组，垂直坐标数组）</p>
+<p>8 备注<br>annotate(<br>备注文本，<br>xy=目标坐标，<br>xycoords=目标坐标系，<br>xytext=备注位置，<br>textcoords=备注坐标系,<br>fontsize=字体大小,<br>arrowprops=箭头属性<br>）</p>
+<p><strong>以上8个用例完整代码：</strong></p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as mp
 
+x = np.linspace(-np.pi, np.pi, 1000)
+
+cos_y = np.cos(x) / 2
+sin_y = np.sin(x)
+
+xo = np.pi / 2
+yo_cos = np.cos(xo) / 2
+yo_sin = np.sin(xo)
+
+mp.xlim(x.min() * 1.1, x.max() * 1.1)  # 留一点空白区域
+mp.ylim(sin_y.min() * 1.1, sin_y.max() * 1.1)
+mp.plot(x, cos_y, linestyle=&apos;-&apos;, color=&apos;orangered&apos;, label=r&apos;$cos(x)$&apos;)
+mp.xticks([-np.pi, -np.pi / 2, 0, np.pi / 2, np.pi],
+          [r&apos;$-\pi$&apos;, r&apos;$-\pi/2$&apos;, r&apos;$0$&apos;, r&apos;$-\pi/2$&apos;, r&apos;$-\pi$&apos;])
+mp.yticks([-1, -0.5, 0, 0.5, 1])
+
+ax = mp.gca()
+ax.spines[&apos;left&apos;].set_position((&apos;data&apos;, 0))
+ax.spines[&apos;bottom&apos;].set_position((&apos;data&apos;, 0))
+ax.spines[&apos;top&apos;].set_color(&apos;none&apos;)
+ax.spines[&apos;right&apos;].set_color(&apos;none&apos;)
+
+mp.plot(x, sin_y, linestyle=&apos;-&apos;, linewidth=0.5,
+        color=&apos;green&apos;, label=r&apos;$sin(x)/2$&apos;)
+
+mp.plot([xo, xo], [yo_cos, yo_sin], linestyle=&apos;--&apos;, color=&apos;limegreen&apos;)
+mp.scatter([xo, xo], [yo_cos, yo_sin], s=60,
+           edgecolor=&apos;limegreen&apos;, facecolor=&apos;white&apos;, zorder=3)
+mp.annotate(r&apos;$sin(\pi/2)=1$&apos;,
+            xy=(xo, yo_sin),
+            xycoords=&apos;data&apos;,
+            xytext=(40, 40),
+            textcoords=&apos;offset points&apos;,
+            fontsize=14,
+            arrowprops=dict(arrowstyle=&apos;-&gt;&apos;, connectionstyle=&apos;arc3,rad=0.2&apos;)
+            )
+mp.legend(loc=&apos;upper left&apos;)
+mp.show()  # 窗口不关闭的情况下，后面的代码是不执行的
+</code></pre>
           
         
       
@@ -8773,7 +8817,7 @@ items.py     保存item的映射
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">79.1k</span>
+    <span title="Site words total count">79.5k</span>
   
 </div>
 
