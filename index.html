@@ -317,7 +317,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,416 字
+                  2,936 字
                 </span>
               
 
@@ -333,7 +333,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  14 分钟
                 </span>
               
             </div>
@@ -405,7 +405,7 @@ c = np.array([[np.arange(1, 5), np.arange(5, 9), np.arange(9, 13)],
 print(c)
 print(c.shape)
 
-d = b.reshape(3, 2)
+d = b.reshape(3, 2) #如果参数为-1则表示该行自动计算
 print(d)
 
 运行结果：
@@ -439,7 +439,7 @@ print(d)
 <h3 id="3-浮点"><a href="#3-浮点" class="headerlink" title="3 浮点"></a>3 浮点</h3><p>float16 float32 float64</p>
 <h3 id="4-复数"><a href="#4-复数" class="headerlink" title="4 复数"></a>4 复数</h3><p>complex64(float32+float32) complex128(float64+float64)</p>
 <h3 id="5-字符串"><a href="#5-字符串" class="headerlink" title="5 字符串"></a>5 字符串</h3><p>str_ 加下划线是为了和python进行区别</p>
-<h2 id="显示使用数据类型"><a href="#显示使用数据类型" class="headerlink" title="显示使用数据类型"></a>显示使用数据类型</h2><p>1 默认数据类型不满足需求时，需要人为指定<br>2 复合类型，在一个元素中含有多个字段。<br>numpy.array(…,dtype=类型）</p>
+<h2 id="显式使用数据类型"><a href="#显式使用数据类型" class="headerlink" title="显式使用数据类型"></a>显式使用数据类型</h2><p>1  默认数据类型不满足需求时，需要人为指定<br>2  复合类型，在一个元素中含有多个字段。 numpy.array(…,dtype=类型）</p>
 <pre><code>import numpy as np
 
 age = np.array([20, 22, 28, 25, 19])  # 存放年龄
@@ -475,7 +475,7 @@ abc [&apos;1&apos; &apos;2&apos; &apos;3&apos;]
 abc [1 2 3]
 abc [&apos;1&apos; &apos;2&apos; &apos;3&apos;]
 abc [&apos;1&apos; &apos;2&apos; &apos;3&apos;]
-</code></pre><p>3 用不同类型访问同一个元素</p>
+</code></pre><p>3  用不同类型访问同一个元素</p>
 <p>  接上面的代码</p>
 <pre><code>e = np.array(0x1234)
 print(e)  # 默认为16进制的数，打印出10进制的值
@@ -512,7 +512,269 @@ print(b)
 -&gt; [[13 14 15 16]
   [17 18 19 20]
   [21 22 23 24]]]
-</code></pre>
+
+print(b[:, 0, 0])  # 取每页 0行0列元素
+print(b[0, 1, :2])  # 取第0页 第一行 步长为2的取列
+print(b[..., 1])  # 列数为1的元素
+print(b[::-1, ::-1])  # 每页 每行调换顺序
+print*b[-1, 1:, 2:]  # 最后1页的第一行到后面的所有行，第二列开始的所有列
+
+[ 1 13]
+[5 6]
+[[ 2  6 10]
+ [14 18 22]]
+[[[21 22 23 24]
+  [17 18 19 20]
+  [13 14 15 16]]
+
+ [[ 9 10 11 12]
+  [ 5  6  7  8]
+  [ 1  2  3  4]]]
+[[19 20]
+ [23 24]]
+</code></pre><h2 id="改变维度"><a href="#改变维度" class="headerlink" title="改变维度"></a>改变维度</h2><h3 id="视图变维"><a href="#视图变维" class="headerlink" title="视图变维"></a>视图变维</h3><p>根据所指定的新维度，构造新的元数据，实际数据共享。<br>一份数据存放在内存中，通过建立不同的指针指向该数据，而这些指针是不同的维度来操作数据。</p>
+<pre><code>源数组.reshape(新维度) -&gt; 目标数组
+\______________________________/
+        共享实际数据
+ ___________________________
+/                           \
+  源数组.ravel()-&gt;一维目标数组
+</code></pre><h3 id="复制变维"><a href="#复制变维" class="headerlink" title="复制变维"></a>复制变维</h3><p>flatten()是将数据拷贝了一份，拷贝的源数据的修改不影响该拷贝数据的内容</p>
+<pre><code>源数组.flatten() -&gt; 一维目标数组
+  |                     |
+实际数据 &lt;- 非共享 -&gt; 实际数据副本
+</code></pre><h3 id="就地变维"><a href="#就地变维" class="headerlink" title="就地变维"></a>就地变维</h3><p>源数组.shape = 新维度<br>源数组.resize(新维度)</p>
+<p>copy()函数是可以将实际数据拷贝一份，新生成的数据的修改与原始实际数据没有关系。</p>
+<pre><code>import numpy as np
+
+a = np.arange(1, 9)
+print(a)
+b = a.reshape(2, 4)
+print(b)
+c = b.reshape(2, 2, 2)
+print(c)
+d = c.ravel()
+print(d)
+e = c.flatten()
+print(e)
+
+a += 10
+print(&quot;after a += 10 --------------&quot;)
+print(b)
+print(c)
+print(d)
+print(e)
+
+[1 2 3 4 5 6 7 8]
+[[1 2 3 4]
+ [5 6 7 8]]
+[[[1 2]
+  [3 4]]
+
+ [[5 6]
+  [7 8]]]
+[1 2 3 4 5 6 7 8]
+[1 2 3 4 5 6 7 8]
+after a += 10 --------------
+[[11 12 13 14]
+ [15 16 17 18]]
+[[[11 12]
+  [13 14]]
+
+ [[15 16]
+  [17 18]]]
+[11 12 13 14 15 16 17 18]
+[1 2 3 4 5 6 7 8]
+
+a.resize(4, 2)
+print(a)
+[[11 12]
+ [13 14]
+ [15 16]
+ [17 18]]
+</code></pre><h3 id="转置"><a href="#转置" class="headerlink" title="转置"></a>转置</h3><p>源数组.transpose() -&gt;转置视图</p>
+<pre><code>f = a.transpose()
+print(f)
+
+[[11 13 15 17]
+ [12 14 16 18]]
+</code></pre><h2 id="合并与拆分"><a href="#合并与拆分" class="headerlink" title="合并与拆分"></a>合并与拆分</h2><h3 id="垂直合分"><a href="#垂直合分" class="headerlink" title="垂直合分"></a>垂直合分</h3><p>vstack((上，下)) -&gt;垂直合并  等价于<br>concatenate((上，下),axis=0) axis表示的是轴向</p>
+<p>vsplit(数组，等分份数）-&gt;垂直拆分  等价于<br>split(数组，等分份数，axis=0)</p>
+<pre><code>import numpy as np #后面都省略
+
+a = np.arange(11, 20).reshape(3, 3)
+print(a)
+print(&quot;--------------&quot;)
+b = a + 10
+print(b)
+print(&quot;--------------&quot;)
+c = np.vstack((a, b))
+print(c)
+print(&quot;--------------&quot;)
+d = np.concatenate((a, b), axis=0)
+print(d)
+print(&quot;--------------&quot;)
+e, f, g = np.vsplit(c, 3)
+print(e, f, g, sep=&quot;\n&quot;)
+print(&quot;--------------&quot;)
+
+[[11 12 13]
+ [14 15 16]
+ [17 18 19]]
+--------------
+[[21 22 23]
+ [24 25 26]
+ [27 28 29]]
+--------------
+[[11 12 13]
+ [14 15 16]
+ [17 18 19]
+ [21 22 23]
+ [24 25 26]
+ [27 28 29]]
+--------------
+[[11 12 13]
+ [14 15 16]
+ [17 18 19]
+ [21 22 23]
+ [24 25 26]
+ [27 28 29]]
+--------------
+[[11 12 13]
+ [14 15 16]]
+[[17 18 19]
+ [21 22 23]]
+[[24 25 26]
+ [27 28 29]]
+</code></pre><h3 id="水平合分"><a href="#水平合分" class="headerlink" title="水平合分"></a>水平合分</h3><p>hstack((上，下)) -&gt;水平合并  等价于<br>concatenate((上，下),axis=1) axis表示的是轴向</p>
+<p>hsplit(数组，等分份数）-&gt;水平拆分  等价于<br>split(数组，等分份数，axis=1)</p>
+<p>用法和垂直合分一样，这里不举例了</p>
+<h3 id="深度合分"><a href="#深度合分" class="headerlink" title="深度合分"></a>深度合分</h3><p>dstack((前，后)) -&gt;深度合并<br>dsplit(数组，等分份数）-&gt;深度拆分</p>
+<pre><code>a = np.arange(11, 20).reshape(3, 3)
+b = a + 10
+c = np.dstack((a, b))
+print(c)
+print(&quot;-------------&quot;)
+
+d, e = np.dsplit(c, 2)
+print(d)
+print(e)
+
+
+[[[11]
+  [12]
+  [13]]
+
+ [[14]
+  [15]
+  [16]]
+
+ [[17]
+  [18]
+  [19]]]
+[[[21]
+  [22]
+  [23]]
+
+ [[24]
+  [25]
+  [26]]
+
+ [[27]
+  [28]
+  [29]]]
+
+print(d.T[0].T)#T是转置数组，是一种属性
+print(e.T[0].T)
+[[11 12 13]
+ [14 15 16]
+ [17 18 19]]
+[[21 22 23]
+ [24 25 26]
+ [27 28 29]]
+</code></pre><h3 id="行列合并"><a href="#行列合并" class="headerlink" title="行列合并"></a>行列合并</h3><p>row_stack((上，下)) -&gt; 行合并<br>column_stack((左，右)) -&gt; 列合并</p>
+<pre><code>a = np.array([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;])
+b = np.array([&quot;d&quot;, &quot;e&quot;, &quot;f&quot;])
+c = np.row_stack((a, b))
+print(c)
+d = np.column_stack((a, b))
+print(d)
+
+[[&apos;a&apos; &apos;b&apos; &apos;c&apos;]
+ [&apos;d&apos; &apos;e&apos; &apos;f&apos;]]
+[[&apos;a&apos; &apos;d&apos;]
+ [&apos;b&apos; &apos;e&apos;]
+ [&apos;c&apos; &apos;f&apos;]]
+</code></pre><h2 id="ndarray对象的属性"><a href="#ndarray对象的属性" class="headerlink" title="ndarray对象的属性"></a>ndarray对象的属性</h2><p>dtype - 元素数据类型<br>shape - 数组维度 （3,4）<br>ndim - 数组维数 2<br>size - 元素数 12  len返回的是3<br>itemsize - 每个元素的字节数<br>nbytes - 所有元素的总字节数 =size * timesize<br>T -转置视图<br>real/imag -复数的实部 虚部<br>flat -扁平迭代器</p>
+<pre><code>a = np.array([[1 + 2j, 2 + 3j, 3 + 4j], [11 + 12j, 12 + 13j,\
+                                         13 + 14j], [11 + 12j, 12 + 13j, 13 + 14j]])
+print(a.dtype)
+print(a.shape)
+print(a.ndim)
+print(a.size, a.shape[0] * a.shape[1])
+print(a.itemsize, int(128 / 8))
+print(a.nbytes, a.size * a.itemsize)
+print(a.T, a.transpose(), sep=&apos;\n&apos;)
+print(a.real, a.imag, sep=&apos;\n&apos;)
+for ele in a.flat:
+    print(ele)
+
+complex128
+(3, 3)
+2
+9 9
+16 16
+144 144
+[[  1. +2.j  11.+12.j  11.+12.j]
+ [  2. +3.j  12.+13.j  12.+13.j]
+ [  3. +4.j  13.+14.j  13.+14.j]]
+[[  1. +2.j  11.+12.j  11.+12.j]
+ [  2. +3.j  12.+13.j  12.+13.j]
+ [  3. +4.j  13.+14.j  13.+14.j]]
+[[  1.   2.   3.]
+ [ 11.  12.  13.]
+ [ 11.  12.  13.]]
+[[  2.   3.   4.]
+ [ 12.  13.  14.]
+ [ 12.  13.  14.]]
+(1+2j)
+(2+3j)
+(3+4j)
+(11+12j)
+(12+13j)
+(13+14j)
+(11+12j)
+(12+13j)
+(13+14j)
+</code></pre><p>numpy 与 python结构直接转换<br>a = np.arrar(lst)<br>b = list(a)<br>c = tuple(a)<br>d = set(a)</p>
+<h2 id="数据可视化-matplotlib"><a href="#数据可视化-matplotlib" class="headerlink" title="数据可视化 matplotlib"></a>数据可视化 matplotlib</h2><p>1 缺省样式<br>曲线图 plot(水平坐标数组，垂直坐标数组)</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as mp
+
+x = np.linspace(-np.pi, np.pi, 1000)
+
+cos_y = np.cos(x) / 2
+sin_y = np.sin(x)
+mp.plot(x, cos_y)
+mp.plot(x, sin_y)
+mp.show()#窗口不关闭的情况下，后面的代码是不执行的
+#运行结果这里不添加了，是图形化界面
+</code></pre><p>2 线型 线宽 和 颜色<br>plot(…,linestyle=线型,linewidth=线宽,color=颜色)<br>linestyle=线型 可选的有 ‘–’虚线  ‘:’点号  ‘-.’<br>linewidth=线宽<br>color 就用常见的几种颜色的英文</p>
+<p>3 设置坐标范围<br>mp.xlim(最小水平坐标，最大水平坐标）<br>mp.ylim(最小垂直坐标，最大垂直坐标）</p>
+<pre><code>mp.xlim(x.min(), x.max())
+mp.ylim(sin_y.min(), sin_y.max())
+</code></pre><p>4 设置刻度标签<br>mp.xticks(刻度位置数组，刻度文本数组=None)<br>mp.yticks(刻度位置数组，刻度文本数组=None)</p>
+<pre><code>mp.xticks([-np.pi, -np.pi / 2, 0, np.pi / 2, np.pi],\
+          [r&apos;$-\pi$&apos;, r&apos;$-\pi/2$&apos;, r&apos;$0$&apos;, r&apos;$-\pi/2$&apos;, r&apos;$-\pi$&apos;])
+mp.yticks([-1, -0.5, 0, 0.5, 1])
+</code></pre><p>5 十字坐标轴<br>ax = mp.gca() 获得当前坐标图<br>ax.spines[‘left’].set_position(坐标系，位置坐标)<br>ax.spines[‘left’].set_color(颜色)</p>
+<pre><code>ax = mp.gca()
+ax.spines[&apos;left&apos;].set_position((&apos;data&apos;, 0))
+ax.spines[&apos;bottom&apos;].set_position((&apos;data&apos;, 0))
+ax.spines[&apos;top&apos;].set_color(&apos;none&apos;)
+ax.spines[&apos;right&apos;].set_color(&apos;none&apos;)
+</code></pre><p>6 图例<br>plot(…label=图例文本)<br>legend(loc=位置)</p>
+
           
         
       
@@ -645,7 +907,7 @@ print(b)
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,659 字
+                  3,257 字
                 </span>
               
 
@@ -661,7 +923,7 @@ print(b)
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7 分钟
+                  13 分钟
                 </span>
               
             </div>
@@ -748,24 +1010,28 @@ print(b)
 <ul>
 <li>-</li>
 </ul>
-<h1 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h1><h2 id="待编辑"><a href="#待编辑" class="headerlink" title="待编辑"></a><strong>待编辑</strong></h2><p>变量 ： 自定义的标识符，用来代表某个值</p>
-<p>标识符，即在编程中自己给需要起名的地方起的名字如：<br>变量名，类名，函数名等<br>1.数字字母下划线组成<br>2.不能以数字开头<br>3.不能和python保留字重复</p>
-<p>a   a_b  a1  aaaa  get_name  _var<br>a$  a  A   1a</p>
-<p>if   for   is   not  True  …….</p>
+<h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>自定义的标识符，用来代表某个值</p>
+<p>标识符，即在编程中自己给需要起名的地方起的名字如：<br>变量名，类名，函数名等<br>1 数字字母下划线组成，$也是合法的<br>2 不能以数字开头<br>3 不能和python保留字（关键字）重复</p>
+<p>合法变量举例：<br>a   a_b  a1  aaaa  get_name  _var<br>a$  a  A   1a</p>
+<p>python关键字<br>if   for   is   not  True  …….</p>
 <p>=  赋值符号 左侧为变量，右侧为要为变量赋予的值</p>
-<ol>
-<li>python中变量不需要提前定义，何时使用何时直接赋值就可以，初次赋值即称为变量的初始化</li>
-<li>变量可以被多次赋值，后赋值内容会覆盖前面内容</li>
-<li>python中变量没有固定类型，赋值什么类型的数据即为什么类型的变量</li>
-</ol>
-<p>a = 1<br>a = 1 + 1<br>b = a<br>b = a * 3<br>c = b = a = 4<br>a,b = 1,2</p>
-<p>a b 交换   c = a  a = b  b = c<br>           a,b = b,a</p>
-<p>删除一个变量 del</p>
-<p>e.g.   del  a   </p>
-<p>常量 ： 不可改变的量</p>
-<p>1 2 3  1.1   1.2  “hello”<br>[1,2,3]  (1,2,3)  {‘a’:1,’b’:2}</p>
-<p>布尔类型 bool<br>True（逻辑真）   False（逻辑假）</p>
-<p>逻辑比较语句</p>
+<h3 id="变量赋值规则"><a href="#变量赋值规则" class="headerlink" title="变量赋值规则"></a>变量赋值规则</h3><p>1  python中变量不需要提前定义，何时使用何时直接赋值就可以，初次赋值即称为变量的初始化<br>2  变量可以被多次赋值，后赋值内容会覆盖前面内容<br>3  python中变量没有固定类型，赋值什么类型的数据即为什么类型的变量</p>
+<pre><code>a = 1
+a = 1 + 1
+b = a 
+b = a * 3
+c = b = a = 4
+a,b = 1,2
+
+a b 交换   c = a  a = b  b = c
+           a,b = b,a
+</code></pre><p>删除一个变量 del</p>
+<pre><code>e.g.   del  a   
+</code></pre><h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>不可改变的量</p>
+<pre><code>1 2 3  1.1   1.2  “hello”
+[1,2,3]  (1,2,3)  {&apos;a&apos;:1,&apos;b&apos;:2}
+</code></pre><h2 id="布尔类型-bool"><a href="#布尔类型-bool" class="headerlink" title="布尔类型 bool"></a>布尔类型 bool</h2><p>True（逻辑真）   False（逻辑假） <strong>这里的首字母大写了</strong></p>
+<h3 id="逻辑比较语句"><a href="#逻辑比较语句" class="headerlink" title="逻辑比较语句"></a>逻辑比较语句</h3><p>返回值都是bool类型</p>
 <blockquote>
 <p>  大于<br>&lt;   小于<br>=  大于等于<br>&lt;=  小于等于<br>==  逻辑相等<br>!=  不等于</p>
 </blockquote>
@@ -774,34 +1040,161 @@ print(b)
 </ul>
 <p>in<br>not in<br>is<br>is not</p>
 <p>python 中关于True  和 False的其他规定</p>
-<h2 id="0-0-0-0-0j"><a href="#0-0-0-0-0j" class="headerlink" title="0   0.0   0+0j"></a>0   0.0   0+0j</h2><p>None值<br>空的字符串 “”<br>空的列表 []<br>空的集合 set()<br>空的元组 ()<br>空的字典 {}</p>
-<p>Nonetype</p>
-<p>值 ： None<br>作用 ： 无意义，用作占位<br>        函数无返回值则返回一个None表示<br>    有时候用作形参的默认值</p>
-<p>复合运算符号</p>
-<h1 id="y-x-gt-y-y-x"><a href="#y-x-gt-y-y-x" class="headerlink" title="+=     y += x  ===&gt; y = y + x"></a>+=     y += x  ===&gt; y = y + x</h1><p>*=<br>/=     y /= x  ===&gt; y = y / x<br>//=<br>%=<br>**=</p>
-<p>换行符<br>\  在书写中连接换行位置</p>
+<p>以下都是返回的False<br>0   0.0   0+0j<br>None值<br>空的字符串 “”<br>空的列表 []<br>空的集合 set()<br>空的元组 ()<br>空的字典 {}</p>
+<p><strong> “ “不是False的真值表达式，返回的True,请注意中间有一个空格，其长度为0. </strong></p>
+<h2 id="Nonetype"><a href="#Nonetype" class="headerlink" title="Nonetype"></a>Nonetype</h2><p>值 ： None<br>作用 ： 无意义，用作占位<br>        函数无返回值则返回一个None表示<br>    有时候用作形参的默认值</p>
+<h2 id="复合运算符号"><a href="#复合运算符号" class="headerlink" title="复合运算符号"></a>复合运算符号</h2><pre><code>+=
+y += x  ===&gt; y = y + x
+-=
+*=
+/=
+y /= x  ===&gt; y = y / x   
+//=
+%= 
+**=
+</code></pre><p>换行符<br>\  在书写中连接换行位置</p>
 <p>e.g.<br>print\<br>(“I love China and I love Xidada”)</p>
-<p>注释的使用</p>
-<p>注释 ： 对代码的解释说明在运行过程中不参与程序的运行</p>
+<h2 id="注释的使用"><a href="#注释的使用" class="headerlink" title="注释的使用"></a>注释的使用</h2><p>注释 ： 对代码的解释说明在运行过程中不参与程序的运行</p>
 <p>python中使用#引起单行注释，注释通常写在被标注代码的上方或者右侧</p>
 <p>python中三引号可以当作多行注释使用</p>
 <p>说明：良好的代码风格一般注释在15%以上</p>
-<p>内建函数的使用</p>
-<p>内建函数 ： python提供的已经实现的函数，可以直接使用</p>
-<p>abs()  求绝对值内建函数</p>
+<h2 id="内建函数的使用"><a href="#内建函数的使用" class="headerlink" title="内建函数的使用"></a>内建函数的使用</h2><p>内建函数 ： python提供的已经实现的函数，可以直接使用</p>
+<ul>
+<li>abs()  求绝对值内建函数</li>
+</ul>
 <p>abs(-9)  —-&gt; 9</p>
-<p>round(number,[ndigits])<br>默认对number四舍五入到整数<br>ndigits 表示保留小数点后几位<br>round(1.234567,3) —》1.235</p>
-<p>float()  强制转换为浮点型<br>int() 强制转换为整型 （舍去精度）<br>bool() 强制转换为布尔类型</p>
-<p>In [125]: float(3)<br>Out[125]: 3.0</p>
-<p>In [126]: int(1.234)<br>Out[126]: 1</p>
-<p>In [127]: int(1.666)<br>Out[127]: 1</p>
-<p>In [128]: bool(123)<br>Out[128]: True</p>
-<p>In [129]: bool(0)<br>Out[129]: False</p>
-<p>id()  查看一个变量的内存地址<br>1T = 1024 G<br>1G = 1024 M<br>1M = 1024 K<br>1K = 1024 byte（字节）<br>1字节 = 8 bit （位）</p>
-<p>如果id(a)和id(b)相同 则 a is b一定为True</p>
-<p>type()  查看一个变量/常量的类型 type是元类，关于元类这里不做解释。<br>In [140]: type(a)<br>Out[140]: float</p>
-<p>help() 查看python内建函数或者模块的帮助<br>help（abs） q退出</p>
+<ul>
+<li><p>round(number,[ndigits])<br>默认对number四舍六入到整数，五根据实际情况处理。<br>ndigits 表示保留小数点后几位<br>round(1.234567,3) —&gt;1.235</p>
+</li>
+<li><p>float()  强制转换为浮点型</p>
+</li>
+<li>int() 强制转换为整型 （舍去精度）</li>
+<li><p>bool() 强制转换为布尔类型</p>
+<pre><code>In [125]: float(3)
+Out[125]: 3.0
 
+In [126]: int(1.234)
+Out[126]: 1
+
+In [127]: int(1.666)
+Out[127]: 1
+
+In [128]: bool(123)
+Out[128]: True
+
+In [129]: bool(0)
+Out[129]: False
+</code></pre></li>
+</ul>
+<ul>
+<li>id()  查看一个变量的内存地址<br>1T = 1024 G<br>1G = 1024 M<br>1M = 1024 K<br>1K = 1024 byte（字节）<br>1字节 = 8 bit （位）</li>
+</ul>
+<p>如果id(a)和id(b)相同 则 a is b一定为True</p>
+<ul>
+<li><p>type()  查看一个变量/常量的类型 type是元类，关于元类这里不做解释。</p>
+<pre><code>In [140]: type(a)
+Out[140]: float
+</code></pre></li>
+<li><p><strong>help()</strong> 查看python内建函数或者模块的帮助<br>help（abs） q退出<br>help()函数在后面会经常用到的，是一个非常强大的函数，可以查看几乎所有的函数的说明。</p>
+</li>
+</ul>
+<h2 id="基本输入输出"><a href="#基本输入输出" class="headerlink" title="基本输入输出"></a>基本输入输出</h2><h3 id="基本输入函数-input"><a href="#基本输入函数-input" class="headerlink" title="基本输入函数 input"></a>基本输入函数 input</h3><p>  作用<br>    从标准输入设备上读取一个字符串(末尾的换行符会被删除)<br>  格式:<br>    input(‘提示字符串’)<br>  说明：<br>  　　返回输入的字符串(仅python3)<br>    ‘提示字符串’ 可以为空</p>
+<pre><code>n = input(&apos;please input a number: &apos;)
+含义是从命令行输入一个数字，用变量n保存，保存格式为字符串，如果需要变为数字可以强制转换。
+</code></pre><h3 id="基本输出函数-print"><a href="#基本输出函数-print" class="headerlink" title="基本输出函数　print"></a>基本输出函数　print</h3><p>  作用：<br>  　　将一系列的值以字符串形式输出到标准输出设备上，默认为终端<br>  格式<br>    print(value, …, sep=’ ‘, end=’\n’)<br>  选项的关键字参数为:<br>    sep 两个值之间的分隔符，默认为一个空格<br>    end 输出完毕后在流末尾自动追加一个字符，默认为换行符’\n’</p>
+<h1 id="python流程控制语句-part1"><a href="#python流程控制语句-part1" class="headerlink" title="python流程控制语句 part1"></a>python流程控制语句 part1</h1><h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><ul>
+<li>作用：<br>　　让程序根据条件选择性的执行某条语句或某些语句</li>
+<li>说明：<br>　　if 语句又叫条件语句，也叫分支语句</li>
+<li><p>语法:</p>
+<p> if 真值表达式1:<br>   　　语句块1<br> elif 真值表达式2:</p>
+<pre><code>语句块2
+</code></pre><p> elif 真值表达式3:</p>
+<pre><code>语句块3
+</code></pre><p> …<br> else:</p>
+<pre><code>语句块4
+</code></pre><ul>
+<li>语法说明:<br>elif子句可以有0个,１个或多个<br>else子句可以有0个或1个且只能放在此if语句的最后</li>
+<li>要求:<br>if语句内部的语句通常要以4个空格的缩进来表示包含关系，相同的缩进格式代表相同的所属级别</li>
+</ul>
+</li>
+</ul>
+<p>练习：<br>  任意输入一个数:</p>
+<ol>
+<li>判断这个数是否大于100</li>
+<li>判断这个数是否小于0</li>
+<li>判断这个数是否在20 ~ 50之间</li>
+</ol>
+<p>练习:</p>
+<ol>
+<li><p>输入个季度 1~4 输出这个季度有哪儿几个月，如果输入不是1~4的数，提示用户您的输入有误！</p>
+</li>
+<li><p>输入一年中的月份(1~12), 输出这个月在哪儿个季度，如果输入的是其它数，提示您的输入有误!</p>
+</li>
+</ol>
+<p>if 语句的真值表达式</p>
+<pre><code>if 100:
+    print(&quot;真值&quot;)
+# 等同于
+if bool(100):
+    print(&quot;真值&quot;)
+</code></pre><p>bool(x) 返回假的情况:<br>  x为:<br>    0, 0.0, 0+0j, False, None,<br>    ‘’(空字符串)<br>    [] 空列表<br>    {} 空字典<br>    set() 空集合<br>    () 空元组<br>    ….</p>
+<p>补充说明，字符串的空和空格字符串是不一样的，这里一定要区分开</p>
+<pre><code>&gt;&gt;&gt; bool(&apos;&apos;)
+False
+&gt;&gt;&gt; bool(&apos; &apos;)
+True
+</code></pre><p><strong>补充说明：python没有switch case语句，所以只能通过if…elif…elif…else来实现多分支</strong></p>
+<p><strong>elif 的写法也与大部分的语言中的else if不一样</strong></p>
+<p>if语句嵌套<br>  if语句本身是由多条子句组成的一条复合语句<br>  if语句可以作为语句嵌套到另一个语句的内部</p>
+<p>练习：<br>  输入一个学生的成绩(0~100),<br>  判断这个学生的成绩是优（90~100），良(80~89)，及格(60~79)，不及格，成绩不合法5种状态<br>  (建议使用if语句嵌套)</p>
+<h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><p>  语法:<br>    表达式1 if 真值表达式 else 表达式2<br>  作用：<br>    如果真值表达式的布尔环境值为True,则执行表达式1并返回结果的引用，否则执行表达式2并返回结果的引用</p>
+<p>练习：<br>  写程序，输入一个数<br>    1) 用if语句计算出这个数的绝对值并打印出来<br>    2) 用条件表达式计算出这个数的绝对值并打印出来</p>
+<h3 id="pass-语句"><a href="#pass-语句" class="headerlink" title="pass 语句"></a>pass 语句</h3><p>  作用：<br>    通常用来填充语法空白<br>    pass 语句又名空语句<br>  语法:<br>    pass<br>  示例见:<br>    code/07_pass.py</p>
+<h3 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算:"></a>布尔运算:</h3><p>  运算符:<br>    not   and    or</p>
+<ul>
+<li><p>布尔非操作 not<br>语法:<br>  not x<br>作用：<br>  对 x进行布尔取值,如 bool(x) 为True,则返回False, 否则返回True<br>示例:<br>  not True  # False<br>  not False  # True<br>  not 100  # False</p>
+</li>
+<li><p>布尔与操作 and<br>语法:<br>  x and y<br>  注: x, y代表表达式<br>作用：<br>  优先返回假值对象<br>  当bool(x)的值为False时，返回x,否则返回y<br>示例:</p>
+<pre><code>True and True    # True
+True and False   # False
+False and True   # False
+False and False  # False
+
+&gt;&gt;&gt; 100 and 200
+200
+&gt;&gt;&gt; 0.0 and 200
+0.0
+&gt;&gt;&gt; 0 and 0.0
+0
+</code></pre></li>
+</ul>
+<ul>
+<li><p>布尔或操作<br>语法:<br>  x or y<br>作用：<br>  优先返回真值对象,<br>  当x为True时返回x, 否则返回y<br>示例:</p>
+<pre><code>True or True   # True
+True or False  # True
+False or True  # True
+False or False # False
+100 or 200   # 100
+100 or 0.0   # 100
+0 or 200     # 200
+0 or 0.0     # 0.0
+</code></pre></li>
+</ul>
+<p>思考以下代码是做什么用的:<br>  score = input(“请输入成绩: “) or ‘0’<br>  score = int(score)<br>  if score &lt; 0 or score &gt; 100:<br>      print(“您的成绩不合法!!!”)<br>  else:<br>      print(“您输入的成绩是:”, score)</p>
+<h3 id="正负号运算符"><a href="#正负号运算符" class="headerlink" title="正负号运算符:"></a>正负号运算符:</h3><pre><code>+(正号) -(负号)
+</code></pre><p>  语法:</p>
+<pre><code>+ 表达式
+- 表达式
+</code></pre><p>  示例:<br>    a = 5<br>    b = -a<br>    c = +a</p>
+<p>练习：</p>
+<p>  1  北京出租车计费<br>    收费标准:<br>      3公里以内收费13元<br>      超过3公里后基本单价为 2.3元/公里<br>      空驶费: 超过15公里后，每公里加收基本单价的50%作为返程的空驶费(3.45元/公里)<br>    要求：<br>      输入公里数，打印出费用的金额(以元为单位进行四舍五入)</p>
+<p>  2  输一个学生的三科成绩：</p>
+<pre><code>1. 打印出最高分是多少分
+2. 打印出最低分是多少分
+3. 打印出平均分是多少分
+</code></pre><p>  3  给出一个年份，判断是否为闰年并打印结果<br>    闰年规则: 每四年一闰，每百年不闰，四百年又是一个闰年<br>    例:<br>      2016年 闰年<br>      2100年 不是闰年<br>      2400年 是闰年</p>
+<p>  4 BMI 指数(Body Mass Index) 以称身体质量指数<br>    BMI值计算公式:<br>         BMI = 体重(公斤)/ 身高(米)的平方<br>    例如:<br>       一个69公斤的人，身高是 173公分<br>       BMI = 69 / 1.73 ** 2 = 23.05<br>    标准表:<br>       BMI &lt; 18.5        体重过轻<br>       18.5 &lt;= BMI &lt;= 24 正常范围<br>       BMI &gt; 24          体重过重（超标)<br>    输入身高和体重，打印BMI值，并打印体重状况</p>
+<h2 id="这里缺少for-while循环的内容"><a href="#这里缺少for-while循环的内容" class="headerlink" title="这里缺少for while循环的内容"></a><strong>这里缺少for while循环的内容</strong></h2>
           
         
       
@@ -8380,7 +8773,7 @@ items.py     保存item的映射
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">76.0k</span>
+    <span title="Site words total count">79.1k</span>
   
 </div>
 
