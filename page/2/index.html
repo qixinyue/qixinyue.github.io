@@ -232,6 +232,1158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/07/mongodb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/07/mongodb/" itemprop="url">mongodb</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-07T10:31:00+08:00">
+                2018-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,659 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  27 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h1><p>MongoDB （芒果数据库）</p>
+<h2 id="数据存储阶段"><a href="#数据存储阶段" class="headerlink" title="数据存储阶段"></a>数据存储阶段</h2><ul>
+<li><h2 id="文件管理阶段-（-txt-doc-xls）"><a href="#文件管理阶段-（-txt-doc-xls）" class="headerlink" title="文件管理阶段 （.txt  .doc  .xls）"></a>文件管理阶段 （.txt  .doc  .xls）</h2></li>
+</ul>
+<h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><ul>
+<li>数据可以长期保存</li>
+<li>可以存储大量的数据</li>
+<li>使用简单<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点:"></a>缺点:</h3></li>
+<li>数据的一致性差</li>
+<li>数据的查找修改不方便</li>
+<li><p>数据的冗余性大</p>
+</li>
+<li><h2 id="数据库存储阶段"><a href="#数据库存储阶段" class="headerlink" title="数据库存储阶段"></a>数据库存储阶段</h2></li>
+</ul>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>数据组织结构化，降低了冗余</li>
+<li>提高了增删改查的效率</li>
+<li>方便扩展</li>
+<li>方便程序调用，做自动化的处理</li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>数据库使用往往需要特定的语句或者命令进行操作，相对比较复杂</li>
+</ul>
+<h2 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h2><ul>
+<li><p>数据 ：能够输入到计算机中并被识别处理的信息的集合</p>
+</li>
+<li><p>数据结构：研究一个数据集合中，数据之间关系的学科</p>
+</li>
+<li><p>数据库：按照数据结构，存储管理数据的仓库。数据库是在数据库管理系统管理和控制下在一定介质上的数据集合。</p>
+</li>
+<li><p>数据库管理系统：数据库管理软件，用于建立维护数据库</p>
+</li>
+<li><p>数据库系统：由数据库和数据库管理系统等开发工具组成的集合</p>
+</li>
+</ul>
+<hr>
+<h2 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><p>采用关系模型来组织数据结构的数据库（二维表）</p>
+<p>Oracle   DB2   SQLServer    MySQL   SqLite </p>
+<h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>容易理解，逻辑类似常见表格</li>
+<li>使用方便，都使用sql语句，sql语句非常成熟</li>
+<li>数据的一致性高，冗余低，完整性好</li>
+<li>技术成熟，可以使用外部链接等复杂的操作</li>
+</ul>
+<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><ul>
+<li>每次都需要sql语句的解析，消耗较大</li>
+<li>不能很好满足并发需求，特别是海量数据的爆发，关系型数据库普遍读写能力不足</li>
+<li>关系型数据库内部每一步都要加锁的操作，以保证操作的原子性，增加了数据库负担</li>
+<li>数据的一致性有时会导致大量的空间浪费</li>
+</ul>
+<h2 id="非关系型数据库-（NoSql-–-gt-not-only-sql）"><a href="#非关系型数据库-（NoSql-–-gt-not-only-sql）" class="headerlink" title="非关系型数据库 （NoSql –&gt; not only sql）"></a>非关系型数据库 （NoSql –&gt; not only sql）</h2><h3 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>高并发，读写能力强</li>
+<li>普遍比关系型数据库容易扩展</li>
+<li>弱化了数据结构，降低了数据的一致性</li>
+</ul>
+<h3 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>通用性差，没有sql一样的一致化的操作</li>
+<li>操作灵活，容易混乱</li>
+<li>没有join等操作，有的数据库不支持关系型数据库中类似事务等操作。版本更新快</li>
+</ul>
+<h2 id="Nosql的使用情况"><a href="#Nosql的使用情况" class="headerlink" title="Nosql的使用情况"></a>Nosql的使用情况</h2><ol>
+<li>数据一致性要求低</li>
+<li>数据库处理海量并发存储</li>
+<li>数据库大小不容易估算，需要分布扩展</li>
+<li>给定的数据比较容易建立Nosql模型</li>
+</ol>
+<h2 id="Nosql的分类"><a href="#Nosql的分类" class="headerlink" title="Nosql的分类"></a>Nosql的分类</h2><ul>
+<li>键值型数据库 ： Redis  </li>
+<li>列存储数据库  </li>
+<li>文档型数据库 ： MongoDB  </li>
+<li>图形数据库</li>
+</ul>
+<h2 id="MongoDB数据库-（非关系型数据库—》-文档型数据库）"><a href="#MongoDB数据库-（非关系型数据库—》-文档型数据库）" class="headerlink" title="MongoDB数据库 （非关系型数据库—》 文档型数据库）"></a>MongoDB数据库 （非关系型数据库—》 文档型数据库）</h2><p>1.由c++编写的数据库管理系统<br>2.支持丰富的增删改查操作<br>3.支持丰富的数据类型<br>4.支持众多的编程语言接口（python PHP c++  c#）<br>5.使用方便，便于部署。在非关系数据库中属于比较成熟   的数据库</p>
+<h2 id="MongoDB安装"><a href="#MongoDB安装" class="headerlink" title="MongoDB安装"></a>MongoDB安装</h2><ul>
+<li>自动安装<br><code>sudo apt-get install mongodb</code></li>
+</ul>
+<ul>
+<li><p>用来查看软件位置<br><code>whereis  软件名称</code></p>
+</li>
+<li><p>默认安装位置： /var/lib/mongodb</p>
+</li>
+<li>配置文件位置： /etc/mongodb.conf</li>
+<li>命令集: /usr/bin  /usr/local/bin</li>
+</ul>
+<ul>
+<li>手动安装</li>
+</ul>
+<ol>
+<li><p>下载MongoDB （开源）<br><a href="http://www.mongodb.com" target="_blank" rel="noopener">www.mongodb.com</a> —&gt;get mongodb–&gt;community server<br>选择想要的版本下载</p>
+</li>
+<li><p>选择合适的位置解压 （/usr/local  /opt）<br>tar 解压后得到Mongodb文件夹</p>
+</li>
+<li><p>将MongoDB文件夹中的bin文件夹变为环境变量<br>PATH=$PATH:/opt/mongo…./bin<br>export PATH<br>将以上两句写入 /etc/rc.local</p>
+</li>
+<li><p>重启系统</p>
+</li>
+</ol>
+<h2 id="MongoDB命令"><a href="#MongoDB命令" class="headerlink" title="MongoDB命令"></a>MongoDB命令</h2><ol>
+<li><p>设置数据库的存储位置<br>mongod  –dbpath  目录<br>e.g.mongod –dbpath  dbs</p>
+</li>
+<li><p>设置数据库端口<br>mongod  –port   8080<br>*如果不设置默认 27017</p>
+</li>
+<li><p><code>mongo</code><br>进入mongo shell界面 ：mongodb的交互界面，用来通过mongo语句操作mongodb数据库<br>退出mongo shell ： <code>quit()</code>  或者 ctrl + c </p>
+</li>
+<li><p>组织结构 ： 键值对–&gt; 文档 —&gt; 集合 –&gt;数据库</p>
+</li>
+</ol>
+<h4 id="mysql存放情况"><a href="#mysql存放情况" class="headerlink" title="mysql存放情况"></a>mysql存放情况</h4><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>name</th>
+<th>age</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Lily</td>
+<td>17</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Lucy</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mongodb存放情况"><a href="#mongodb存放情况" class="headerlink" title="mongodb存放情况"></a>mongodb存放情况</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;_id&quot;:ObjectId(&quot;agfsdfglk989q98&quot;),</span><br><span class="line">	&quot;name&quot;:&quot;Lily&quot;,</span><br><span class="line">	&quot;age&quot;:17</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">	&quot;_id&quot;:ObjectId(&quot;aggfsdfg3989q98&quot;),</span><br><span class="line">	&quot;name&quot;:&quot;Lucy&quot;,</span><br><span class="line">	&quot;age&quot;:18</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="mysql-和-mongodb-概念比较"><a href="#mysql-和-mongodb-概念比较" class="headerlink" title="mysql 和 mongodb 概念比较"></a>mysql 和 mongodb 概念比较</h3><table>
+<thead>
+<tr>
+<th>mysql</th>
+<th>mongodb</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>database</td>
+<td>database</td>
+<td>数据库</td>
+</tr>
+<tr>
+<td>table</td>
+<td>collection</td>
+<td>表/集合</td>
+</tr>
+<tr>
+<td>column</td>
+<td>field</td>
+<td>字段/域</td>
+</tr>
+<tr>
+<td>row</td>
+<td>document</td>
+<td>记录/文档</td>
+</tr>
+<tr>
+<td>index</td>
+<td>index</td>
+<td>索引</td>
+</tr>
+</tbody>
+</table>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><ul>
+<li><p>创建一个名字为stu的数据库<br><code>use databaseName</code><br>e.g.use  stu<br><strong> use 实际上是表示选择使用哪个数据库，如果这个数据库不存在则表示同时创建这个数据库</strong><br><strong> 使用use后数据库不会被马上创建，而是需要写入数据时才会创建</strong></p>
+</li>
+<li><p>查看当前系统下数据库<br><code>show  dbs</code></p>
+</li>
+<li><p>系统数据库：<br>admin ： 存放用户及其权限<br>local ： 存储本地数据<br>config ： 存储分片信息</p>
+</li>
+<li><p>数据库的命名规则：<br>1.使用UTF-8字符<br>2.不能含有空格，点  /  \  ‘\0’字符<br>3.长度不能超过64字节<br>4.不能和系统数据库重名<br>5.习惯使用小写字母，表达数据库功能</p>
+</li>
+</ul>
+<p><strong> db：mongo系统全局变量，代表你当前正在使用的数据库</strong></p>
+<p><strong> 当不用use选择任何数据库时，db表示test。此时插入数据则创建test数据库</strong></p>
+<h2 id="数据库的备份和恢复"><a href="#数据库的备份和恢复" class="headerlink" title="数据库的备份和恢复"></a>数据库的备份和恢复</h2><ul>
+<li><p>备份</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongodump -h dbhost  -d  dbname  -o  dbdir</span><br><span class="line">e.g. mongodump -h 127.0.0.1 -d stu  -o  bak</span><br><span class="line">将127.0.0.1主机上stu数据库备份入bak文件夹</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>恢复</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mongorestore -h  dbhost:port  -d dbname path</span><br><span class="line">e.g. mongorestore -h 127.0.0.1:27017 -d student bak/stu</span><br><span class="line">将bak文件夹下备份的stu数据库恢复到 本机的student数据库中。student不存在则会自动创建</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="数据库的监测"><a href="#数据库的监测" class="headerlink" title="数据库的监测"></a>数据库的监测</h2><ul>
+<li><p><code>mongostat</code><br>insert query update delete ： 每秒增删改查的次数<br>command  每秒运行命令次数<br>flushes  每秒和磁盘交互次数<br>vsize  使用虚拟内存</p>
+</li>
+<li><p><code>mongotop</code><br>监测每个数据库的读写时长</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ns</th>
+<th>total</th>
+<th>read</th>
+<th>write</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据集合</td>
+<td>总时长</td>
+<td>读时长</td>
+<td>写时长</td>
+</tr>
+</tbody>
+</table>
+<h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><p><code>db.dropDatabase()</code><br>删除db当前所代表的数据库</p>
+<h2 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h2><p><code>db.createCollection(collection_name)</code><br>e.g.  db.createCollection(‘class2’)<br>创建一个集合名字为class2</p>
+<hr>
+<p>当向一个集合中插入数据的时候，如果这个集合不存在则会自动创建<br><code>db.collectionName.insert(...)</code><br>e.g.  db.class3.insert({name:’Lucy’})<br>      如果class3不存在则自动创建这个集合</p>
+<hr>
+<p>集合命名规则：<br>1.合法的utf-8字符串<br>2.不能有’\0’<br>3.不能以system.开头 因为这是系统的保留前缀<br>4.不能和关键字重复</p>
+<h2 id="删除集合"><a href="#删除集合" class="headerlink" title="删除集合"></a>删除集合</h2><p><code>db.collectionName.drop()</code><br>e.g. db.class3.drop()<br>删除class3这个集合</p>
+<h2 id="集合重命名"><a href="#集合重命名" class="headerlink" title="集合重命名"></a>集合重命名</h2><p><code>db.collectionName.renameCollection(&quot;new_name&quot;)</code><br>e.g.   db.class2.renameCollection(“class0”)<br>将class2 重命名为class0 </p>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p>mongodb中数据的组织形式 —&gt;文档<br>mongo文档： 以键值对的形式组成的类似于字典的数据描述形式</p>
+<h2 id="键-：即文档的域"><a href="#键-：即文档的域" class="headerlink" title="键 ：即文档的域"></a>键 ：即文档的域</h2><ul>
+<li>键的命名规则</li>
+</ul>
+<ol>
+<li>utf-8格式字符串</li>
+<li>不适用‘\0’ 通常不会适用.和$</li>
+<li>一个文档中键不可以重复</li>
+</ol>
+<p><strong> 文档中的键值对是有序的</strong><br><strong> mongodb严格的区分大小写</strong></p>
+<ul>
+<li>值 ：即文档存储的数据,支持bson类型</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>整形</td>
+<td>整数</td>
+</tr>
+<tr>
+<td>布尔类型</td>
+<td>true  false</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>小数</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>时间戳</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>时间日期</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>内部文档</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>空值 null</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td>特殊字符</td>
+</tr>
+<tr>
+<td>String</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>Binary data</td>
+<td>二进制字符串</td>
+</tr>
+<tr>
+<td>code</td>
+<td>代码</td>
+</tr>
+<tr>
+<td>regex</td>
+<td>正则表达式</td>
+</tr>
+<tr>
+<td>ObjectId</td>
+<td>ObjectId字串</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ObjectId<br>“_id” : ObjectId(“5b28a02c154710728ef6cac2”)<br>_id : 当在mongodb中插入文档时，如果不指定_id则会自动添加这个域。值是一个ObjectId类型数据<br>24位 16进制数 —-&gt;保证_id值的唯一性<br>8位文档创建时间  6位机器id  4位进程id  6位计数器</li>
+</ul>
+<hr>
+<h4 id="集合中的文档"><a href="#集合中的文档" class="headerlink" title="集合中的文档"></a>集合中的文档</h4><ol>
+<li>集合中的文档不一定都有相同的域</li>
+<li>集合中文档域的个数也不一定相同</li>
+</ol>
+<h4 id="集合的设计"><a href="#集合的设计" class="headerlink" title="集合的设计"></a>集合的设计</h4><ol>
+<li>集合中的文档尽可能描述同一类数据</li>
+<li>同一类数据不要过多的分散集合存放</li>
+<li>集合中文档的层次不要包含太多</li>
+</ol>
+<h2 id="插入文档"><a href="#插入文档" class="headerlink" title="插入文档"></a>插入文档</h2><ul>
+<li>插入单个文档<br><code>db.collectionName.insert()</code></li>
+</ul>
+<p>e.g. db.class1.insert({name:’Lucy’,age:18})</p>
+<p>1 <strong>插入操作的键可以不加引号</strong><br>2 <strong>查看插入结果  db.class1.find()</strong><br>3 <strong>_id 为系统自动添加主键，如果自己写_id则会使用自己的值，但是仍然不能重复</strong></p>
+<ul>
+<li>插入多个文档<br><code>db.collectionName.insert([{},{},{}])</code><br>e.g. db.class0.insert([{name:’阿花’,age:28},{name:’阿彪’,age:27},{name:’阿宝’,age:’26’}])</li>
+</ul>
+<ul>
+<li>save 插入文档<br>db.collectionName.save()<br>e.g.  db.class0.save({name:’阿荣’,age:29})</li>
+</ul>
+<p>1 <strong>如果不加_id选项时save和insert相同</strong><br>2 <strong>如果加_id项，则如果此_id值存在则save表示修改该文档内容，如果不存在则正常插入</strong></p>
+<h4 id="作业："><a href="#作业：" class="headerlink" title="作业："></a>作业：</h4><ol>
+<li>关系型数据库和非关系型数据库有什么区别？</li>
+<li>复习mysql增删改查操作</li>
+<li>练习mongo数据库的创建删除，集合的创建删除，文档插入</li>
+</ol>
+<h1 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h1><h2 id="获取集合对象"><a href="#获取集合对象" class="headerlink" title="获取集合对象"></a>获取集合对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.class1</span><br><span class="line">db.getCollection(&quot;class1&quot;)</span><br><span class="line">e.g.  db.getCollection(&quot;class0&quot;).insert(&#123;name:&apos;阿喜&apos;,age:25&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作"></a>查找操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql : select ... from  table where  ....</span><br><span class="line">mongo :  db.collection.find(query,field)</span><br></pre></td></tr></table></figure>
+<h2 id="查找所有内容"><a href="#查找所有内容" class="headerlink" title="查找所有内容"></a>查找所有内容</h2><p><code>db.collection.find()</code>  —-&gt; select * from table</p>
+<h3 id="find-query-field"><a href="#find-query-field" class="headerlink" title="find(query,field)"></a>find(query,field)</h3><p><strong>功能 ：</strong> 查找数据<br><strong>参数 ：</strong><br>query ： 筛选条件，相当于where子句<br>field ： 选定要展示的域<br><strong>返回值：</strong> 返回查找到的文档</p>
+<h4 id="query-：-以键值对的形式给出筛选条件"><a href="#query-：-以键值对的形式给出筛选条件" class="headerlink" title="query ： 以键值对的形式给出筛选条件"></a>query ： 以键值对的形式给出筛选条件</h4><p>e.g. db.class0.find({name:’阿宝’})</p>
+<h4 id="field-：以键值对的形式给出要展示（不展示）的域-域名为键，值为1则表示展示，0表示不展示"><a href="#field-：以键值对的形式给出要展示（不展示）的域-域名为键，值为1则表示展示，0表示不展示" class="headerlink" title="field ：以键值对的形式给出要展示（不展示）的域,域名为键，值为1则表示展示，0表示不展示"></a>field ：以键值对的形式给出要展示（不展示）的域,域名为键，值为1则表示展示，0表示不展示</h4><ul>
+<li>如果某个域设为0则表示不展示该域，其他域均显示<br>如果某个域设为1则表示展示该域，其他域均不显示</li>
+<li>在field显示设置的时候普通域0和1不能同时出现</li>
+<li>_id 默认永远显示，除非设置为0</li>
+<li>如果不写field参数则表示所有内容都显示<br><code>e.g.   db.class1.find({name:&#39;Abby&#39;},{_id:0,name:1,age:1})</code></li>
+</ul>
+<h3 id="findOne-query-field"><a href="#findOne-query-field" class="headerlink" title="findOne(query,field)"></a>findOne(query,field)</h3><p><strong>功能 :</strong> 查找符合条件的第一条文档<br><strong>参数 ：</strong> 同find<br><strong>返回值：</strong>返回查找到的文档<br><code>e.g.  db.class1.findOne({age:18},{_id:0})</code></p>
+<h2 id="query更多的筛选功能"><a href="#query更多的筛选功能" class="headerlink" title="query更多的筛选功能"></a>query更多的筛选功能</h2><h3 id="操作符：使用-符号注明的一个特殊字串，表达一定的含义。-比如-lt-表示小于"><a href="#操作符：使用-符号注明的一个特殊字串，表达一定的含义。-比如-lt-表示小于" class="headerlink" title="操作符：使用$符号注明的一个特殊字串，表达一定的含义。 比如 $lt 表示小于"></a>操作符：使用$符号注明的一个特殊字串，表达一定的含义。 比如 $lt 表示小于</h3><h4 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a>比较操作符</h4><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$eq</td>
+<td>等于</td>
+<td>db.class1.find({age:{$eq:18}},{_id:0})</td>
+<td><strong>字符串也可以比较大小</strong></td>
+</tr>
+<tr>
+<td>$lt</td>
+<td>小于</td>
+<td>db.class1.find({age:{$lt:18}},{_id:0})</td>
+<td></td>
+</tr>
+<tr>
+<td>$lte</td>
+<td>小于等于</td>
+<td>db.class0.find({age:{$lte:27}},{_id:0})</td>
+<td></td>
+</tr>
+<tr>
+<td>$gt</td>
+<td>大于</td>
+<td>db.class0.find({age:{$gt:26}},{_id:0})</td>
+<td></td>
+</tr>
+<tr>
+<td>$gte</td>
+<td>大于等于</td>
+<td>db.class0.find({age:{$gte:27}},{_id:0})</td>
+<td></td>
+</tr>
+<tr>
+<td>$ne</td>
+<td>不等于</td>
+<td>db.class0.find({age:{$ne:27}},{_id:0})</td>
+<td>如果一个文档不存在某个域，则也认为不等于</td>
+</tr>
+<tr>
+<td>$in</td>
+<td>包含</td>
+<td>db.class0.find({age:{$in:[25,27,30]}},{_id:0})</td>
+<td>年龄包含在25 27 30中的</td>
+</tr>
+<tr>
+<td>$nin</td>
+<td>不包含</td>
+<td>db.class0.find({age:{$nin:[24,25,26]}},{_id:0})</td>
+<td>年龄不包含24，25，26 </td>
+</tr>
+</tbody>
+</table>
+<h4 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h4><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+<th>表达式 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$and</td>
+<td>逻辑与</td>
+<td>db.class1.find({$and:[{name:{$lt:’Tom’}},{age:17}]},{_id:0})</td>
+</tr>
+<tr>
+<td>$or</td>
+<td>逻辑或</td>
+<td>db.class0.find({$or:[{age:{$gt:28}},{age:{$lt:26}}]},{_id:0})</td>
+</tr>
+<tr>
+<td>$not</td>
+<td>逻辑非</td>
+<td>db.class1.find({age:{$not:{$eq:18}}},{_id:0})</td>
+</tr>
+<tr>
+<td>$nor</td>
+<td>既不也不</td>
+<td>db.class1.find({$nor:[{age:17},{sex:’m’}]},{_id:0})</td>
+</tr>
+</tbody>
+</table>
+<h4 id="条件混合"><a href="#条件混合" class="headerlink" title="条件混合"></a>条件混合</h4><p>（年龄大于27 并且叫阿花） 或者  叫阿喜</p>
+<p><code>db.class0.find({$or:[{name:&#39;阿花&#39;,age:{$gt:27}},{name:&#39;阿喜&#39;}]},{_id:0})</code></p>
+<h4 id="数组值-1-2-3-4"><a href="#数组值-1-2-3-4" class="headerlink" title="数组值 [1,2,3,4]"></a>数组值 [1,2,3,4]</h4><ul>
+<li>数值类型可以混合</li>
+<li>是有序的</li>
+</ul>
+<h4 id="数组查找"><a href="#数组查找" class="headerlink" title="数组查找"></a>数组查找</h4><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+<th>表达式 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>null</td>
+<td>查看数组中是否包含某一项</td>
+<td>db.class2.find({score:{$lt:60}},{_id:0})</td>
+</tr>
+<tr>
+<td>$all</td>
+<td>查找数组中同时包含多项的文档</td>
+<td>db.class2.find({score:{$all:[65,88]}},{_id:0})</td>
+</tr>
+<tr>
+<td>$size</td>
+<td>通过数组中元素个数查找</td>
+<td>db.class2.find({score:{$size:4}},{_id:0})</td>
+</tr>
+<tr>
+<td>$slice</td>
+<td>显示数组中的前几项</td>
+<td>db.class2.find({},{_id:0,score:{$slice:2}})</td>
+</tr>
+<tr>
+<td>$slice</td>
+<td>跳过数组中第一项显示后两项</td>
+<td>db.class2.find({},{_id:0,score:{$slice:[1,2]}})</td>
+</tr>
+<tr>
+<td>$exists</td>
+<td>判断一个域是否存在</td>
+<td>db.class1.find({sex:{$exists:true}},{_id:0})</td>
+</tr>
+<tr>
+<td>$mod</td>
+<td>查找age除以2余数为1 的文档</td>
+<td>db.class2.find({age:{$mod:[2,1]}},{_id:0})</td>
+</tr>
+<tr>
+<td>$type</td>
+<td>查找指定数据类型的文档</td>
+<td>db.class2.find({age:{$type:1}},{_id:0})</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关于$type的类型取值如下</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型描述</th>
+<th>类型值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Double</td>
+<td>1</td>
+</tr>
+<tr>
+<td>String</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Binary data</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Object id</td>
+<td>7</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Null</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Regular expression</td>
+<td>11</td>
+</tr>
+<tr>
+<td>JavaScript code</td>
+<td>13</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td>14</td>
+</tr>
+<tr>
+<td>JavaScript code with scope</td>
+<td>15</td>
+</tr>
+<tr>
+<td>32-bit integer</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Timestamp</td>
+<td>17</td>
+</tr>
+<tr>
+<td>64-bit integer</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Min key</td>
+<td>255</td>
+</tr>
+<tr>
+<td>Max key</td>
+<td>127</td>
+</tr>
+</tbody>
+</table>
+<h4 id="查找结果相关的函数"><a href="#查找结果相关的函数" class="headerlink" title="查找结果相关的函数"></a>查找结果相关的函数</h4><table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>distinct()</td>
+<td>查看集合某个域的取值范围</td>
+</tr>
+<tr>
+<td>pretty()</td>
+<td>格式化显示查找结果</td>
+</tr>
+<tr>
+<td>limit(n)</td>
+<td>显示查找结果的前2条</td>
+<td>db.class0.find({},{_id:0}).limit(2)</td>
+</tr>
+<tr>
+<td>skip(n)</td>
+<td>显示查找结果跳过前2条</td>
+<td>db.class0.find({},{_id:0}).skip(2)</td>
+</tr>
+<tr>
+<td>count()</td>
+<td>查找结果计数</td>
+<td>db.class0.find({age:{$gt:26}},{_id:0}).count()</td>
+</tr>
+<tr>
+<td>sort({域:1/-1})</td>
+<td>对查找结果排序显示</td>
+<td>db.class2.find({},{_id:0}).sort({age:1})</td>
+</tr>
+</tbody>
+</table>
+<p><strong> sort函数参数1 表示按照升序排列  -1表示降序排列</strong></p>
+<h4 id="函数连续使用"><a href="#函数连续使用" class="headerlink" title="函数连续使用"></a>函数连续使用</h4><p>当函数返回的是文档集合时可以连续调用操作函数<br>e.g.  db.class2.find({},{_id:0}).sort({age:1}).limit(3)</p>
+<h3 id="文档删除操作"><a href="#文档删除操作" class="headerlink" title="文档删除操作"></a>文档删除操作</h3><p><code>db.collection.remove(query,justOne)</code><br>功能 ： 删除文档<br>参数 ： </p>
+<ul>
+<li>query  : 筛选要删除的文档 相当于where,用法同查找操作</li>
+<li>justOne：布尔值，默认为false 表示删除所有符合条件的文档,如果赋值为true则只删除第一条符合条件文档<br>e.g.  <code>db.class1.remove({sex:{$exists:true}})</code> 删除所有有sex域的文档<br>e.g.  <code>db.class1.remove({age:17},true)</code>删除第一条年龄为17的文档</li>
+</ul>
+<h3 id="删除集合中所有文档"><a href="#删除集合中所有文档" class="headerlink" title="删除集合中所有文档"></a>删除集合中所有文档</h3><p><code>db.collection.remove({})</code><br>e.g.  db.class0.remove({})  </p>
+<p>练习：</p>
+<ol>
+<li>创建数据库 名字 grade<br>use grade</li>
+<li>数据库中创建集合名字 class</li>
+<li>集合中插入若干文档，文档格式如下<br>name:’zhang’,age:10,sex:’m’,hobby:[‘a’,’b’]｝<br>hobby 可以是 ： draw sing  dance  basketball  football  pingpong  computer<br>db.class.insert(｛name:’zhang’,age:10,sex:’m’,hobby:[‘a’,’b’]｝)</li>
+<li>查找练习</li>
+</ol>
+<hr>
+<p>查看班级所有人信息<br>db.class.find()</p>
+<hr>
+<p>查看班级中年龄为8岁的学生信息<br>find({age:8})</p>
+<hr>
+<p>查看年龄大于10岁的学生信息<br>find({age:{$gt:10}})</p>
+<hr>
+<p>查看年龄在8-11岁之间的学生信息<br>find({age:{$gte:8,$lte:11}})</p>
+<hr>
+<p>找到年龄为9岁且为男生的学生<br>find({age:9,sex:’m’})</p>
+<hr>
+<p>找到年龄小于7岁或者大于11岁的学生<br>find({$or:[{age:{$lt:7}},{age:{$gt:11}}]})</p>
+<hr>
+<p>找到年龄是8岁或者11岁的学生<br>find({age:{$in:[8,11]}})</p>
+<hr>
+<p>找到有两项兴趣爱好的学生<br>find({hobby:{$size:2}})</p>
+<hr>
+<p>找到兴趣爱好中有draw的学生<br>find({hobby:’draw’})</p>
+<hr>
+<p>找到喜欢画画和跳舞的学生<br>find({hobby:{$all:[‘draw’,’dance’]}})</p>
+<hr>
+<p>统计兴趣有三项的学生人数<br>find({hobby:{$size:3}}).count()</p>
+<hr>
+<p>找出本班年龄第二大的学生<br>find().sort({age:-1}).skip(1).limit(1)</p>
+<hr>
+<p>查看学生的兴趣范围<br>db.class.distinct(‘hobby’)</p>
+<hr>
+<p>找到班级中年龄最大的三个学生<br>find().sort({age:-1}).limit(3)</p>
+<ol start="5">
+<li>删除所有年龄大于12或者小于6岁的学生<br>db.class.remove({$or:[{age:{$lt:6}},{age:{$gt:12}}]})</li>
+</ol>
+<hr>
+<h1 id="第三部分"><a href="#第三部分" class="headerlink" title="第三部分"></a>第三部分</h1><h2 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h2><p><code>db.collection.update(query,update,upsert,multi)</code><br><strong>功能：</strong>修改文档<br><strong>参数：</strong></p>
+<ul>
+<li>query ： 筛选要修改的文档，相当于where子句,用法同查找</li>
+<li>update： 将筛选的文档修改什么内容，相当于set。需要配合修改操作符使用</li>
+<li>upsert： bool值  默认为false  表示如果query的文档不存在则无法修改,如果设置为true 则表示如果筛选的文档不存在则根据修改内容插入一条文档</li>
+<li>multi ： bool值 默认为false 表示如果有多条文档符合筛选条件只修改第一条，如果设置为true则表示修改全部</li>
+</ul>
+<p>e.g. 将Lucy年龄改为20  <code>db.class1.update({name:&#39;Lucy&#39;},{$set:{age:20}})</code><br>e.g. 如果没有name 为 Lily的文档则插入一条   <code>db.class1.update({name:&#39;Lily&#39;},{$set:{age:20}},true)</code><br>e.g.  如果匹配到的文档有多个，则都进行修改 <code>db.class1.update({age:17},{$set:{age:18}},false,true)</code></p>
+<h2 id="修改操作符"><a href="#修改操作符" class="headerlink" title="修改操作符"></a>修改操作符</h2><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$set</td>
+<td>修改一个域的值，或者增加一个域</td>
+<td>db.class1.update({},{$set:{sex:’w’}},false,true)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>db.class1.update({name:’Abby’},{$set:{age:19,sex:’m’}})</td>
+</tr>
+<tr>
+<td>$unset</td>
+<td>删除一个域</td>
+<td>db.class1.update({name:’Abby’},{$unset:{sex:0}})</td>
+<td></td>
+</tr>
+<tr>
+<td>$rename</td>
+<td>修改域名</td>
+<td>db.class1.update({},{$rename:{sex:’gender’}},false,true)</td>
+<td></td>
+</tr>
+<tr>
+<td>$setOnInsert</td>
+<td>如果第三个参数为true 并且插入新的文档，则作为插入补充内容</td>
+<td>db.class1.update({name:’Jame’},{$set:{age:19},$setOnInsert:{gender:’m’,’tel’:”12345”}},true)</td>
+</tr>
+<tr>
+<td>$inc</td>
+<td>加减修改器</td>
+<td>db.class1.update({name:’Abby’},{$inc:{age:1}})</td>
+</tr>
+<tr>
+<td>$mul</td>
+<td>乘除法修改器</td>
+<td>db.class1.update({name:’Jame’},{$mul:{age:0.5}})</td>
+</tr>
+<tr>
+<td>$min</td>
+<td>如果筛选的文档指定的值小于min则不修改</td>
+<td>db.class1.update({gender:’w’},{$min:{age:19}},false,true)</td>
+</tr>
+<tr>
+<td>$max</td>
+<td>如果筛选的文档指定域的值大于max值则不变</td>
+<td>db.class1.update({name:’Jame’},{$max:{age:20}})</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数组修改器"><a href="#数组修改器" class="headerlink" title="数组修改器"></a>数组修改器</h2><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$push</td>
+<td>向数组中添加一项</td>
+<td>db.class2.update({name:’小刚’},{$push:{score:10}})</td>
+</tr>
+<tr>
+<td>$pushAll</td>
+<td>向数组中添加多项</td>
+<td>db.class2.update({name:’小明’},{$pushAll:{score:[10,5]}})</td>
+</tr>
+<tr>
+<td>$pull</td>
+<td>从数组中删除一项</td>
+<td>db.class2.update({name:’小红’},{$pull:{score:’78’}})</td>
+</tr>
+<tr>
+<td>$pullAll</td>
+<td>从数组中删除多项</td>
+<td>db.class2.update({name:’小明’},{$pullAll:{score:[10,5]}})</td>
+</tr>
+<tr>
+<td>$each</td>
+<td>对多个值进行逐一操作</td>
+<td>db.class2.update({name:’小明’},{$push:{score:{$each:[10,5]}}})</td>
+</tr>
+<tr>
+<td>$position</td>
+<td>需要搭配each使用，插入到1号位置</td>
+<td>db.class2.update({name:’小红’},{$push:{score:{$each:[78],$position:1}}})</td>
+</tr>
+<tr>
+<td>$sort</td>
+<td>对数组进行排序</td>
+<td>db.class2.update({name:’小明’},{$push:{score:{$each:[],$sort:1}}})</td>
+</tr>
+<tr>
+<td>$pop</td>
+<td>弹出最后一项</td>
+<td>db.class2.update({name:’小明’},{$pop:{score:1}})</td>
+</tr>
+<tr>
+<td>$addToSet</td>
+<td>向数组中添加一项，不能和其他的项重复</td>
+<td>db.class2.update({name:’小明’},{$addToSet:{score:5}})</td>
+</tr>
+</tbody>
+</table>
+<h2 id="时间类型"><a href="#时间类型" class="headerlink" title="时间类型"></a>时间类型</h2><hr>
+<p>mongo中存储事件格式 ： ISODate()</p>
+<hr>
+<p>方法1： new Date()   自动生成当前时间<br><code>db.class0.insert({title:&#39;Python入门&#39;,date:new Date()})</code></p>
+<hr>
+<p>方法2： ISODate()  生成当前时间<br><code>db.class0.insert({title:&#39;Python精通&#39;,date:ISODate()})</code></p>
+<hr>
+<p>方法3： Date()  将生成的当前时间变为字符串<br><code>db.class0.insert({title:&#39;Python疯狂&#39;,date:Date()})</code></p>
+<hr>
+<p>ISODate()<br><strong>功能：</strong>生成mongo时间存储类型<br><strong>参数：</strong>参数为指定时间<br>“2018-1-1 12:10:34”<br>“20180101 12:10:34”<br>“20181102”<br>e.g. <code>db.class0.insert({title:&#39;Python崩溃&#39;,date:ISODate(&quot;2018-11-12 11:23:32&quot;)})</code></p>
+<hr>
+<h2 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h2><p>valueof（） 将当前时间生成为时间戳<br>e.g.  <code>db.class0.insert({title:&#39;Python放生&#39;,date:ISODate().valueOf()})</code></p>
+<h2 id="null"><a href="#null" class="headerlink" title="null"></a>null</h2><ol>
+<li>如果某个域存在却没有值可以设置为null<br>e.g.  <code>db.class0.insert({title:&#39;Python 爬虫&#39;,price:null})</code></li>
+<li>某个域不存在，可以使用null来匹配<br>e.g. <code>db.class1.find({gender:null},{_id:0})</code> 当gender域不存在时可以找到这个文档</li>
+</ol>
+<h2 id="Object-内部文档"><a href="#Object-内部文档" class="headerlink" title="Object  内部文档"></a>Object  内部文档</h2><p>文档内某个域的值还是一个文档则这个文档为内部文档</p>
+<ul>
+<li>当需要使用内部文档某个域时，可以使用外部文档引用内部文档的方式。但是注意在使用时需要加引号<br>e.g. <code>db.class3.find({&#39;book2.title&#39;:&#39;Css3&#39;},{_id:0})</code><br>e.g. <code>db.class3.update({&#39;book3.title&#39;:&#39;JavaScript&#39;},{$set:{&#39;book3.price&#39;:38.8}})</code></li>
+</ul>
+<h2 id="数组的下标引用"><a href="#数组的下标引用" class="headerlink" title="数组的下标引用"></a>数组的下标引用</h2><p>使用数组时，可以使用数组域数组序列下标的方式使用数组中的具体某一个元素<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">e.g.  修改数组中的第0项</span><br><span class="line">db.class2.update(&#123;name:&quot;小明&quot;&#125;,&#123;$set:&#123;&apos;score.0&apos;:15&#125;&#125;)</span><br><span class="line">e.g. 通过数组中的第0项查找</span><br><span class="line">db.class2.find(&#123;&apos;score.0&apos;:15&#125;,&#123;_id:0&#125;)</span><br></pre></td></tr></table></figure></p>
+<h2 id="查找结果的有序性"><a href="#查找结果的有序性" class="headerlink" title="查找结果的有序性"></a>查找结果的有序性</h2><p>即可以对find查找结果使用[]引用序列下标的方式获取查找结果的第几项<br>e.g.<code>db.class2.find({},{_id:0})[3]</code></p>
+<hr>
+<p>练习 ：<br>使用之前的grade数据库</p>
+<hr>
+<ol>
+<li>将小红年龄修改为8岁，兴趣爱好变为跳舞 画画<br>｛$set:{age:8,hobby:[‘dance’,’draw’]}｝</li>
+</ol>
+<hr>
+<ol start="2">
+<li>追加小明的兴趣 爱好 唱歌<br>{$push:{hobby:’sing’}}</li>
+</ol>
+<hr>
+<ol start="3">
+<li>小王兴趣爱好多了 吹牛，打篮球<br>{$pushAll:{hobby:[‘吹牛’,’basketball’]}}</li>
+</ol>
+<hr>
+<ol start="4">
+<li>小李兴趣多了跑步和唱歌，但是要确保不和之前的兴趣重复<br>｛$addToSet:{hobby:{$each:[‘running’,’sing’]}}｝</li>
+</ol>
+<hr>
+<ol start="5">
+<li>该班所有同学年龄加1<br>update({},{$inc:{age:1}},false,ture)</li>
+</ol>
+<hr>
+<ol start="6">
+<li>删除小明的sex属性<br>{$unset:{sex:0}}</li>
+</ol>
+<hr>
+<ol start="7">
+<li>删除小李的兴趣中的第一项<br>{$pop:{hobby:-1}}</li>
+</ol>
+<hr>
+<ol start="8">
+<li>删除小红兴趣中画画和唱歌<br>{$pullAll:{hobby:[‘draw’,’sing’]}}</li>
+</ol>
+<hr>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><p><strong>指建立指定键值及所在文档中存储位置的对照清单。使用索引可以方便我们进行快速查找，减少遍历次数，提高查找效率</strong></p>
+<h3 id="mongo如何创建索引"><a href="#mongo如何创建索引" class="headerlink" title="mongo如何创建索引"></a>mongo如何创建索引</h3><p>ensureIndex()<br>功能： 创建索引<br>参数： 索引域，索引类别，索引选项<br>e.g.  根据name域创建索引<br><code>db.class1.ensureIndex({&#39;name&#39;:1})</code></p>
+<ul>
+<li>1表示正向索引，-1表示逆向索引</li>
+</ul>
+<hr>
+<h3 id="查看集合索引"><a href="#查看集合索引" class="headerlink" title="查看集合索引"></a>查看集合索引</h3><p>db.class1.getIndexes()</p>
+<ul>
+<li>_id域是由系统自动为集合创建的索引<br>自定义索引名称<br>通过第二个参数中name选项<br><code>db.class1.ensureIndex({&#39;age&#39;:1},{name:&#39;myIndex&#39;})</code></li>
+</ul>
+<hr>
+<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><p>dropIndex（）<br>功能：删除索引<br>参数：要删除的索引，可以是索引名称或者索引键值对<br>e.g.   <code>db.class1.dropIndex({name:1})</code><br>e.g.   <code>db.class1.dropIndex(&#39;myIndex&#39;)</code><br>dropIndexes()<br>功能：删除所有索引<br>e.g.  删除所有索引但是不会删除_id索引<br><code>db.class1.dropIndexes()</code></p>
+<hr>
+<h3 id="复合索引"><a href="#复合索引" class="headerlink" title="复合索引"></a>复合索引</h3><p>根据多个域创建一个索引<br>e.g.   <code>db.class1.ensureIndex({name:1,age:-1})</code></p>
+<hr>
+<h3 id="数组和子文档索引"><a href="#数组和子文档索引" class="headerlink" title="数组和子文档索引"></a>数组和子文档索引</h3><p>如果对某个域的值为数组或者子文档的域创建索引，则通过数组或者子文档进行查找时也是索引查找<br>e.g. 如果对score创建了索引则该查找也为索引查找<br><code>db.class2.find({&#39;score.0&#39;:15},{_id:0})</code></p>
+<hr>
+<h3 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h3><p>创建索引时希望集合中创建索引的域的值均不重复<br>e.g.<code>db.class1.ensureIndex({name:1},{unique:true})</code><br>当对某个域创建了唯一索引则无法插入重复值</p>
+<hr>
+<h3 id="稀疏索引"><a href="#稀疏索引" class="headerlink" title="稀疏索引"></a>稀疏索引</h3><p>只针对有指定域的文档创建索引表，如果某个文档没有该域则不会在索引表中插入内容<br>e.g.  对没有gender域的文档不做索引处理<br><code>db.class1.ensureIndex({gender:1},{sparse:true})</code></p>
+<hr>
+<h3 id="索引约束"><a href="#索引约束" class="headerlink" title="索引约束"></a>索引约束</h3><ol>
+<li>当数据发生更新索引表也要随之更新,影响插入,删除,修改操作效率</li>
+<li>索引表也需要占有一定的磁盘空间</li>
+</ol>
+<hr>
+<p><strong>综上：<br>1.当对数据库进行大量的查找操作，而不是修改操作<br>2.集合中文档的数量较大的时候<br>比较适合创建索引</strong></p>
+<hr>
+<h1 id="第四部分"><a href="#第四部分" class="headerlink" title="第四部分"></a>第四部分</h1><h2 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a>聚合操作</h2><p>对文档的筛选结果进行整理统计(更高级的查找)<br>db.collection.aggregate()<br>功能： 聚合函数 ，完成聚合操作<br>参数： 聚合条件  —&gt; 聚合操作符</p>
+<h2 id="聚合操作符"><a href="#聚合操作符" class="headerlink" title="聚合操作符"></a>聚合操作符</h2><table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>说明</th>
+<th>实例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$group</td>
+<td>分组聚合,需要配合具体的分组操作符使用</td>
+<td>db.class1.aggregate({$group:{_id:’$age’,num:{$sum:1}}})    </td>
+</tr>
+<tr>
+<td>$sum</td>
+<td>求和</td>
+<td>db.class1.aggregate({$group:{_id:’$gender’,num:{$sum:’$age’}}})</td>
+</tr>
+<tr>
+<td>$avg</td>
+<td>求平均数</td>
+<td>db.class1.aggregate({$group:{_id:’$gender’,avg_age:{$avg:’$age’}}})</td>
+</tr>
+<tr>
+<td>$max</td>
+<td>求最大值</td>
+<td>db.class1.aggregate({$group:{_id:’$gender’,max:{$max:’$age’}}})</td>
+</tr>
+<tr>
+<td>$min</td>
+<td>求最小值</td>
+<td>db.class1.aggregate({$group:{_id:’$gender’,min:{$min:’$age’}}})</td>
+</tr>
+<tr>
+<td>$project</td>
+<td>用于修改文档的显示效果</td>
+<td>db.class1.aggregate({$project:{_id:0,name:1,age:1}})</td>
+</tr>
+<tr>
+<td>$match</td>
+<td>过滤数据</td>
+<td>db.class1.aggregate({$match:{age:{$gt:18}}})</td>
+</tr>
+<tr>
+<td>$limit</td>
+<td>显示前几条文档</td>
+<td>db.class1.aggregate({$limit:3})</td>
+</tr>
+<tr>
+<td>$skip</td>
+<td>跳过几条文档</td>
+<td>db.class1.aggregate({$skip:2})</td>
+</tr>
+<tr>
+<td>$sort</td>
+<td>排序</td>
+<td>db.class1.aggregate({$sort:{age:-1}})</td>
+</tr>
+</tbody>
+</table>
+<h2 id="聚合管道-：将前一个聚合操作得到的结果，给后一个聚合操作继续使用"><a href="#聚合管道-：将前一个聚合操作得到的结果，给后一个聚合操作继续使用" class="headerlink" title="聚合管道 ：将前一个聚合操作得到的结果，给后一个聚合操作继续使用"></a>聚合管道 ：将前一个聚合操作得到的结果，给后一个聚合操作继续使用</h2><p>db.collection.aggregate([聚合1，聚合2…])<br>e.g.  match —&gt; project —&gt; sort<br><code>db.class1.aggregate([{$match:{gender:&#39;m&#39;}},{$project:{_id:0}},{$sort:{age:-1}}])</code><br>e.g.  group —&gt; match<br><code>db.class1.aggregate([{$group:{_id:&#39;$name&#39;,num:{$sum:1}}},{$match:{num:{$gt:1}}}])</code></p>
+<hr>
+<h2 id="固定集合"><a href="#固定集合" class="headerlink" title="固定集合"></a>固定集合</h2><p>mongodb中可以创建大小固定的集合，称之为固定集合。<br><strong> 特点 ：</strong> </p>
+<ul>
+<li>插入速度快，顺序查找速度快</li>
+<li>能够淘汰早期的数据</li>
+<li>可以控制集合的空间大小</li>
+</ul>
+<p><strong>使用 ：</strong><br>临时缓存<br>日志处理</p>
+<p><strong>创建：</strong><br>db.createCollection(collection,{capped:true,size:10000,max:10000})<br>capped:true    表示创建的集合是固定集合<br>size：表示集合的大小 单位 kb<br>max: 表示最多存放的文档个数<br>e.g. <code>db.createCollection(&#39;log&#39;,{capped:true,size:10,max:3})</code></p>
+<hr>
+<h2 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h2><h3 id="文件存储数据库的方式"><a href="#文件存储数据库的方式" class="headerlink" title="文件存储数据库的方式"></a>文件存储数据库的方式</h3><ol>
+<li>存储路径<br>将文件在本地的路径以字符串形式存储到数据库<br>优点：节省数据库空间<br>缺点：当数据库或者文件位置发生变化时需要修改数据库内容 </li>
+<li>存储文件本身<br>将文件以二进制（数据库指定编码）的形式存入到数据库中<br>优点 ： 数据库在，文件就在，不会丢失<br>缺点 ： 占用数据库的空间大。特别是文件较大的时候，由于数据库都是结构化的存储数据，所以对大文件处理效率较低</li>
+</ol>
+<h3 id="mongo存储大文件方案-：-GridFS-存储大文件"><a href="#mongo存储大文件方案-：-GridFS-存储大文件" class="headerlink" title="mongo存储大文件方案 ： GridFS 存储大文件"></a>mongo存储大文件方案 ： GridFS 存储大文件</h3><p>超过16M的文件为大文件</p>
+<h4 id="GridFS方案解释"><a href="#GridFS方案解释" class="headerlink" title="GridFS方案解释"></a>GridFS方案解释</h4><p>  在mongodb一个数据库中创建两个集合共同完成文件的存储<br>  fs.files ： 存储文件的相关信息（文件名，文件类型）<br>  fs.chunks: 分块存储文件的实际内容</p>
+<h3 id="如何存储"><a href="#如何存储" class="headerlink" title="如何存储"></a>如何存储</h3><p> <code>mongofiles  -d  dbname  put  file</code></p>
+<p>数据库不存在则自动创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fs.files</span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5b2dc13269d72e13a6a28eaa&quot;), &quot;chunkSize&quot; : 261120, &quot;uploadDate&quot; : ISODate(&quot;2018-06-23T03:40:34.827Z&quot;), &quot;length&quot; : 119862, &quot;md5&quot; : &quot;ab01c0bfa9d2751b2ae33aea70e8f879&quot;, &quot;filename&quot; : &quot;file.jpg&quot; &#125;</span><br><span class="line"></span><br><span class="line">fs.chunks </span><br><span class="line"></span><br><span class="line">&#123; &quot;_id&quot; : ObjectId(&quot;5b2dc13269d72e13a6a28eab&quot;), &quot;files_id&quot; : ObjectId(&quot;5b2dc13269d72e13a6a28eaa&quot;), &quot;n&quot; : 0, &quot;data&quot; : BinData(0,&quot;/9j/4AAQSkZJRgAB...)&#125;</span><br></pre></td></tr></table></figure>
+<p>对于同一个文件 fs.files 的_id值 等于 fs.chunks 中files_id域的值</p>
+<h3 id="提取文件"><a href="#提取文件" class="headerlink" title="提取文件"></a>提取文件</h3><p><code>mongofiles -d  dbname  get  file</code> </p>
+<h3 id="Grid的优缺点"><a href="#Grid的优缺点" class="headerlink" title="Grid的优缺点"></a>Grid的优缺点</h3><p>优点 ： 存储方便，提供较好的存命令，方便移植<br>缺点 ： 读写效率低</p>
+<hr>
+<h2 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h2><p>通过获取操作数据库的返回结果，得到返回结果的对象。通过该游标对象可以进一步得到数据库内容。<br>var cursor = db.class1.find()<br>cursor.next()<br>cursor.hasNext()</p>
+<h2 id="通过python-操作MongoDB"><a href="#通过python-操作MongoDB" class="headerlink" title="通过python 操作MongoDB"></a>通过python 操作MongoDB</h2><p>pymongo 模块   第三方模块</p>
+<p>安装<br>    <code>sudo pip3 install pymongo</code></p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><ol>
+<li><p>创建mongodb数据库连接对象<br> conn = pymongo.MongoClient(‘localhost’,27017)</p>
+</li>
+<li><p>生成要操作的数据库对象 (<strong>getitem</strong>)<br><code>db = conn.stu
+db = conn[&#39;stu&#39;]</code></p>
+</li>
+<li><p>获取集合对象<br><code>myset = db.class0
+myset = db[&#39;class0&#39;]</code></p>
+</li>
+<li><p>通过集合对象操作mongodb数据库</p>
+<p>  增删改查索引聚合文件操作</p>
+</li>
+<li><p>关闭数据库连接<br><code>conn.close()</code></p>
+</li>
+</ol>
+<h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4><p>insert()   参数用法同mongoshell中insert<br>insert_many()  or  insert_one()<br>save()</p>
+<h4 id="查找操作-1"><a href="#查找操作-1" class="headerlink" title="查找操作"></a>查找操作</h4><p>find()<br>功能 ： 查找数据库内容<br>参数 ： 同mongo shell find（）<br>返回值 ： 返回一个结果游标cursor</p>
+<p>在pymongo中使用操作符的方法和在mongoshell中一样，只需要加引号以字符串的方式给出</p>
+<p>cursor属性函数</p>
+<p>next()<br>limit()<br>skip()<br>count()<br>sort()<br>pymongo  ：sort([(‘age’,-1),(‘name’,1)])<br>mongo shell ： sort({age:-1,name:1})</p>
+<p>当游标使用了next或for取值后就不能再进行limit skip或者sort操作了</p>
+<p>find_one() 返回一个字典</p>
+<h4 id="修改操作"><a href="#修改操作" class="headerlink" title="修改操作"></a>修改操作</h4><p><code>update（query,update,upsert=False,multi=False）
+update_many（）
+update_one()</code></p>
+<h4 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h4><pre><code>remove(query,multi = True)
+</code></pre><p>multi默认为True表示删除所有符合条件的数据<br>设置为False表示只删除一条</p>
+<h4 id="索引-1"><a href="#索引-1" class="headerlink" title="索引"></a>索引</h4><p>ensure_index()<br>list_indexes()<br>drop_index()<br>drop_indexes()</p>
+<h4 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h4><p>aggregate([])<br>参数： 和mongoshell中写法一致<br>返回值 ： 返回一个迭代器同find </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/07/python3环境搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -438,7 +1590,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -525,7 +1677,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">72.9k</span>
+    <span title="Site words total count">74.6k</span>
   
 </div>
 

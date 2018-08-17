@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="绪论编程界的新宠Julia发布1.0正式版本，多种优势集于一身 源编程语言 Julia 迎来 1.0 正式版本。在 8 月 9 日的于伦敦举行的 JuliaCon 2018 会议上，Julia1.0 版本正式发布，这对 Julia 来说是自 2012 年 2 月公司成立以来最重要的时刻。Julia 是一种面向科学、数值计算的简单、高效的开源编程语言。而此次发布的Julia 1.0 是第一个完善、稳">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-16T01:20:19.029Z">
+<meta property="og:updated_time" content="2018-08-16T01:42:23.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Julia知识详解">
 <meta name="twitter:description" content="绪论编程界的新宠Julia发布1.0正式版本，多种优势集于一身 源编程语言 Julia 迎来 1.0 正式版本。在 8 月 9 日的于伦敦举行的 JuliaCon 2018 会议上，Julia1.0 版本正式发布，这对 Julia 来说是自 2012 年 2 月公司成立以来最重要的时刻。Julia 是一种面向科学、数值计算的简单、高效的开源编程语言。而此次发布的Julia 1.0 是第一个完善、稳">
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8,347 字
+                  8,351 字
                 </span>
               
 
@@ -1811,8 +1811,8 @@ julia&gt; m[2]
 </code></pre><p><strong>将2个单词交换位置：</strong></p>
 <pre><code>julia&gt; replace(&quot;first second&quot;, r&quot;(\w+) (?&lt;agroup&gt;\w+)&quot; =&gt; s&quot;\g&lt;agroup&gt; \1&quot;)
 &quot;second first&quot;
-
-julia&gt; m = match(r&quot;(a|b)(c)?(d)&quot;, &quot;acd&quot;)
+</code></pre><p>正则函数</p>
+<pre><code>julia&gt; m = match(r&quot;(a|b)(c)?(d)&quot;, &quot;acd&quot;)
 RegexMatch(&quot;acd&quot;, 1=&quot;a&quot;, 2=&quot;c&quot;, 3=&quot;d&quot;)
 
 julia&gt; m.match
@@ -1892,6 +1892,10 @@ julia&gt; m.offsets
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/17/python知识详解/" rel="prev" title="python知识详解">
+                python知识详解 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -2016,7 +2020,7 @@ julia&gt; m.offsets
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2119,7 +2123,7 @@ julia&gt; m.offsets
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">72.9k</span>
+    <span title="Site words total count">74.6k</span>
   
 </div>
 
