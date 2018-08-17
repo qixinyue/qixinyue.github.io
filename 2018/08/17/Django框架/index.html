@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Django框架," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前情知识 jQuery-事件 1、事件对象 - event     在绑定事件的时候，允许传递 event 参数来表示事件对象      1、         $obj.bind(&amp;quot;click&amp;quot;,function(event){             //event 表示的就是事件对象         });     2、         $obj.click(functio">
+<meta name="keywords" content="Django框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django框架">
+<meta property="og:url" content="http://yoursite.com/2018/08/17/Django框架/index.html">
+<meta property="og:site_name" content="响神的博客">
+<meta property="og:description" content="前情知识 jQuery-事件 1、事件对象 - event     在绑定事件的时候，允许传递 event 参数来表示事件对象      1、         $obj.bind(&amp;quot;click&amp;quot;,function(event){             //event 表示的就是事件对象         });     2、         $obj.click(functio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-17T12:37:49.001Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django框架">
+<meta name="twitter:description" content="前情知识 jQuery-事件 1、事件对象 - event     在绑定事件的时候，允许传递 event 参数来表示事件对象      1、         $obj.bind(&amp;quot;click&amp;quot;,function(event){             //event 表示的就是事件对象         });     2、         $obj.click(functio">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/17/Django框架/"/>
+
+
+
+
+
+  <title>Django框架 | 响神的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">响神的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">计算机编程-python入门到精通</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/Django框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Django框架</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-17T19:52:45+08:00">
+                2018-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web框架/" itemprop="url" rel="index">
+                    <span itemprop="name">web框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/17/Django框架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/17/Django框架/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,819 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前情知识"><a href="#前情知识" class="headerlink" title="前情知识"></a>前情知识</h1><ul>
+<li><p>jQuery-事件</p>
+<pre><code>1、事件对象 - event
+    在绑定事件的时候，允许传递 event 参数来表示事件对象
+
+    1、
+        $obj.bind(&quot;click&quot;,function(event){
+            //event 表示的就是事件对象
+        });
+    2、
+        $obj.click(function(event){
+            //event 表示的就是事件对象
+        });
+2、事件冒泡
+    1、什么是事件冒泡
+        在执行子元素的事件时，同时把父元素/祖先元素的对应的事件也给执行了
+    2、阻止事件冒泡
+        event.stopPropagation()
+</code></pre></li>
+<li><p>jQuery-动画</p>
+</li>
+</ul>
+<pre><code>1、基本显示 / 隐藏
+    语法：
+        $obj.show() / $obj.show(执行时间)
+        $obj.hide() / $obj.hide(执行时间)
+2、滑动式显示 / 隐藏
+    语法：
+        显示:$obj.slideDown() / $obj.slideDown(执行时间)
+        隐藏:$obj.slideUp() / $obj.slideUp(执行时间)
+3、淡入淡出式显示 / 隐藏
+    语法：
+        显示:$obj.fadeIn() / $obj.fadeIn(执行时间)
+        隐藏:$obj.fadeOut() / $obj.fadeOut(执行时间)
+</code></pre><ul>
+<li>jQuery-插件</li>
+</ul>
+<p>====================================================<br>静态网站：无法与服务器进行交互<br>动态网站：允许与服务器进行交互</p>
+<h1 id="Django框架"><a href="#Django框架" class="headerlink" title="Django框架"></a>Django框架</h1><h2 id="WEB-与-服务器"><a href="#WEB-与-服务器" class="headerlink" title="WEB 与 服务器"></a>WEB 与 服务器</h2><p>1 WEB ：表示用户可以浏览的网页(HTML,CSS,JS)</p>
+<p>2 服务器:能够给用户提供服务的机器</p>
+<ul>
+<li><p>硬件 与 软件</p>
+<p>  硬件范畴：一台计算机<br>  软件范畴：一个能够接收用户请求并给出响应的程序</p>
+<pre><code>1、APACHE
+2、TOMCAT
+3、IIS(Internet Information Service)
+4、Nginx
+</code></pre></li>
+<li><p>作用</p>
+<p>  1、存储WEB所需要的信息(HTML，图片，音频)<br>  2、能够处理用户的请求(request)并给出响应(response)<br>  3、执行服务器端的程序</p>
+</li>
+<li><p>WEB 与 服务器之间的关系</p>
+</li>
+</ul>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>1 什么是框架</p>
+<p>框架是一个为了解决开放性问题而存在的一种结构。框架本身提供了一些最基本的功能。我们需要在基本的功能基础上开发属于自己的操作即可。</p>
+<p>2 Python中的框架(WEB)</p>
+<pre><code>1、Django ：重量级的WEB框架
+2、Tornado ：异步框架
+3、Flask ：轻量级框架
+    ... ...
+</code></pre><h2 id="Django-框架"><a href="#Django-框架" class="headerlink" title="Django 框架"></a>Django 框架</h2><h3 id="什么是Django"><a href="#什么是Django" class="headerlink" title="什么是Django"></a>什么是Django</h3><p>是一个开源框架，2005年发布，采用Python语言开发。早期是做新闻以及内容管理的网站。提供了强大的后台管理系统。</p>
+<h3 id="Django的框架模式-MTV"><a href="#Django的框架模式-MTV" class="headerlink" title="Django的框架模式 - MTV"></a>Django的框架模式 - MTV</h3><p>M ：Models 层<br>    模型层，负责数据库的建模以及CRUD的操作</p>
+<p>T ：Templates 层<br>    模板层，用于处理用户显示的内容的。如：html</p>
+<p>V ：Views 层<br>    视图层，处理与用户交互的部分内容，从模型中获取数据再将数据发送给模板，最终再将模板显示给用户</p>
+<p>自行了解：MVC - Flask采用该方法，参见本站 Flask框架<br>M ：Models 模型层<br>    负责数据库的建模以及CRUD的操作<br>V ：Views 视图层<br>    处理用户显示的内容 。如：html<br>C ：Controller 控制器<br>    处理与用户交互的部分内容。接收请求，处理请求并响应结果给客户端</p>
+<p>MTV       MVC<br>M  —–  M<br>T  —–  V<br>V  —–  C</p>
+<h2 id="Django-框架的使用"><a href="#Django-框架的使用" class="headerlink" title="Django 框架的使用"></a>Django 框架的使用</h2><h3 id="Django的安装"><a href="#Django的安装" class="headerlink" title="Django的安装"></a>Django的安装</h3><p>1、查看已安装的Django版本</p>
+<pre><code>1、进入到终端以及python的交互模式
+    python3 / ipython3
+2、在交互模式中 输入 import django
+    如果未报错：说明已经安装了Django
+    如果报错：说明未安装Django
+3、查看已安装的版本
+    交互模式中：django.VERSION
+</code></pre><p>2、安装</p>
+<pre><code>1、在线安装 - 使用 pip / pip3
+    pip : 安装到python2.7下
+    pip3 : 安装到python3.5下
+
+    1、sudo pip3 install django
+        (默认安装Django的最高版本)
+    2、sudo pip3 install django==1.11.8
+        (指定安装1.11.8版本)
+
+2、离线安装
+    1、下载所需的Django包
+        Django官网
+        http://www.djangoproject.com
+    2、在环境中解压Django包
+        tar -xvf Django-1.11.8.tar.gz
+    3、进入到目录中
+        cd Django-1.11.8
+    4、安装
+        sudo python3 setup.py install
+</code></pre><h3 id="Django文档"><a href="#Django文档" class="headerlink" title="Django文档"></a>Django文档</h3><p>1、Django官网<br>    <a href="http://www.djangoproject.com" target="_blank" rel="noopener">http://www.djangoproject.com</a><br>2、DjangoBook<br>    <a href="http://djangobook.py3k.cn/2.0/" target="_blank" rel="noopener">http://djangobook.py3k.cn/2.0/</a><br>3、离线文档</p>
+<h3 id="使用Django"><a href="#使用Django" class="headerlink" title="使用Django"></a>使用Django</h3><p>1、创建目录 ：用于保存Django项目<br>    mkdir Django<br>    (准备工作)</p>
+<p>2、创建Django项目</p>
+<pre><code>使用 django-admin 指令 创建Django项目
+
+django-admin startproject 项目名
+</code></pre><p>3、启动服务，访问网站</p>
+<pre><code>在创建好的项目中，找到 manage.py 文件
+通过 manage.py启动服务
+
+python3 manage.py runserver
+
+访问地址：
+    http://127.0.0.1:8000/
+    http://localhost:8000/
+</code></pre><p>4、Django的项目结构介绍</p>
+<ul>
+<li><p>manage.py 负责执行django中的各项操作的文件<br>如：</p>
+<p>  启动服务<br>  创建应用<br>  数据库的同步操作<br>  创建后台超级管理员</p>
+</li>
+</ul>
+<p>使用方式：</p>
+<pre><code>方法1、python3 manage.py 子命令
+方法2、./manage.py 子命令
+</code></pre><ul>
+<li><p>主文件夹(名称与项目名称相同)</p>
+<p>  1、<strong>init</strong>.py</p>
+<pre><code>项目初始化文件，每当服务器启动的时候，自动执行
+</code></pre><p>  2、urls.py</p>
+<pre><code>项目的基础路由配置文件/主路由配置文件
+将请求地址映射到对应的视图上
+</code></pre><p>  3、wsgi.py</p>
+<pre><code>应用服务器的配置文件，暂时不用
+</code></pre><p>  4、settings.py</p>
+<pre><code>项目的主设置文件：模板，数据库，应用，...
+
+1、BASE_DIR:当前项目所在的绝对路径
+    /home/tarena/Django/netease
+
+2、DEBUG:调试模式
+    开发过程：推荐使用True
+    上线运行：必须改为False
+
+3、ALLOWED_HOSTS
+    设置允许访问本项目的地址列表
+    如果不设置的话，只有本机(127.0.0.1/localhost)能够访问
+
+    推荐写&apos;*&apos;,任何表示该机器的地址都可以访问当前项目
+
+    注意：如果允许被外部机器访问的话，则：
+        ./manage.py runserver 0.0.0.0:8000s
+
+4、INSTALLED_APPS
+    指定已安装的应用，如果有自定义应用的话，需要在此注册
+
+5、ROOT_URLCONF  暂时不管
+
+6、TEMPLATES:指定模板的信息
+
+7、DATABASES:指定数据库的信息
+
+8、LANGUAGE_CODE:指定项目语言，允许修改为zh-Hans (简体中文)
+
+9、TIME_ZONE:指定时区，建议修改为 Asia/Shanghai
+</code></pre></li>
+</ul>
+<h1 id="URL的使用"><a href="#URL的使用" class="headerlink" title="URL的使用"></a>URL的使用</h1><h2 id="urls-py"><a href="#urls-py" class="headerlink" title="urls.py"></a>urls.py</h2><pre><code>默认是在主目录中的，主路由配置文件，包含所有的地址映射
+
+每一个请求到达之后，都会由urls.py中的urlpatterns列表中的url()进行匹配。当url()匹配上之后，可能就会将请求转交给其他的视图(Views)或其他的urls.py去处理
+</code></pre><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>在主目录中，创建 views.py<br>作用：包含所有定义好的视图(处理程序)</p>
+<h2 id="url函数详解"><a href="#url函数详解" class="headerlink" title="url函数详解"></a>url函数详解</h2><h3 id="url函数的语法"><a href="#url函数的语法" class="headerlink" title="url函数的语法"></a>url函数的语法</h3><p>url(regex,views,kwargs=None,name=None)</p>
+<p>1、regex<br>    正则表达式模式，匹配请求的url，字符串类型</p>
+<p>2、views<br>    当前url对应的处理的视图函数，此处写函数名即可</p>
+<p>3、kwargs<br>    字典，用来向views传参的，如果没有参数可以省略</p>
+<p>4、name<br>    字符串，给url()起别名，方便在模板中使用</p>
+<h3 id="通过-url-向-views-传参"><a href="#通过-url-向-views-传参" class="headerlink" title="通过 url 向 views 传参"></a>通过 url 向 views 传参</h3><p>1 使用正则表达式子组传参</p>
+<p>使用子组传参 - ()，一个子组是一个参数，如果想传递多个参数的话，则使用多个子组，多个参数之间使用 / 分割</p>
+<pre><code>urlpatterns = [
+    # 访问路径是 run/ ，交给 run_views
+    url(r&apos;^run/$&apos;,run_views),
+    # 访问路径是 run/两位数字，交给run_arg1_views
+    url(r&apos;^run/(\d{2})/$&apos;,run_arg1_views),
+    # 访问路径是 run/两位数字/四位数字，交给run_arg2_views
+    url(r&apos;^run/(\d{2})/(\d{4})&apos;,run_arg2_views),
+]
+</code></pre><p>注意：</p>
+<pre><code>1、在 url() 中，一个子组表示一个参数
+2、在 views.py 中，对应的处理函数要根据url()中子组的个数，相应的定义参数(形参)。定义的参数要位于request之后
+
+url(r&apos;^run/(\d{2})/(\d{4})&apos;,run_arg2_views)
+
+def run_arg2_views(request,num1,num2):
+    pass
+</code></pre><p>2 使用url()第三个参数，字典传参</p>
+<pre><code>urlpatterns = [
+    url(
+        r&apos;^show/$&apos;,
+        show_views,
+        {&apos;name&apos;:&apos;zsf&apos;,&apos;age&apos;:&apos;25&apos;}
+    )
+]
+
+def show_views(request,name,age):
+        pass
+</code></pre><h1 id="Django中的应用"><a href="#Django中的应用" class="headerlink" title="Django中的应用"></a>Django中的应用</h1><h2 id="什么是应用"><a href="#什么是应用" class="headerlink" title="什么是应用"></a>什么是应用</h2><pre><code>应用就是网站中的一块独立的程序
+在Django中，主目录一般不处理用户的具体请求，主要做的是项目的初始化以及请求的分发
+</code></pre><h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><h3 id="通过-指令-创建应用"><a href="#通过-指令-创建应用" class="headerlink" title="通过 指令 创建应用"></a>通过 指令 创建应用</h3><pre><code>./manage.py startapp 应用名称
+ex:
+    ./manage.py startapp news
+</code></pre><h3 id="在-settings-py-中注册应用"><a href="#在-settings-py-中注册应用" class="headerlink" title="在 settings.py 中注册应用"></a>在 settings.py 中注册应用</h3><pre><code>在 INSTALLED_APPS 中追加应用名称
+INSTALLED_APPS = [
+    &apos;django.contrib.admin&apos;,
+    ... ...
+    &apos;news&apos;
+]
+</code></pre><h3 id="应用的结构组成"><a href="#应用的结构组成" class="headerlink" title="应用的结构组成"></a>应用的结构组成</h3><p>1、migrations 目录<br>    存放数据库中间文件的目录(日志文件)</p>
+<p>2、<strong>init</strong>.py<br>    应用的初始化文件</p>
+<p>3、admin.py<br>    应用的后台管理配置文件</p>
+<p>4、apps.py<br>    应用的属性配置文件</p>
+<p>5、models.py<br>    模型配置文件</p>
+<p>6、tests.py<br>    测试模块</p>
+<p>7、views.py<br>    视图处理文件</p>
+<pre><code>练习：
+    1、创建 index 应用，并注册
+    2、创建 sport 应用，并注册
+    3、创建 music 应用，并注册
+</code></pre><h3 id="应用中的-urls"><a href="#应用中的-urls" class="headerlink" title="应用中的 urls"></a>应用中的 urls</h3><pre><code>练习
+    1、访问 http://localhost:8000/news/index
+        交给news应用中的urls处理(找 index_views视图)
+    2、访问 http://localhost:8000/music/index
+        交给music应用中的urls处理(找index_views视图)
+    3、访问 http://localhost:8000/sport/index
+        交给sport应用中的urls处理(找index_views视图)
+    4、访问 http://localhost:8000
+        交给index应用中的urls处理(找index_views视图)
+    5、访问 http://localhost:8000/login
+        交给index应用中的urls处理(找login_views视图)
+    6、访问 http://localhost:8000/register
+        交给index应用中的urls处理(找regsiter_views视图)
+    7、访问 http://localhost:8000/news/
+        交给news应用中的urls处理(找 index_views视图)
+    8、访问 http://localhost:8000/music/
+        交给music应用中的urls处理(找 index_views视图)
+    9、访问 http://localhost:8000/sport/
+        交给sport应用中的urls处理(找 index_views视图)
+</code></pre><h1 id="Django中的模板-Tempates"><a href="#Django中的模板-Tempates" class="headerlink" title="Django中的模板(Tempates)"></a>Django中的模板(Tempates)</h1><h2 id="什么是模板"><a href="#什么是模板" class="headerlink" title="什么是模板"></a>什么是模板</h2><p>模板是要动态给用户呈现的网页<br>模板就是一个网页 - 前后端结合的网页<br>模板是通过视图(Views)呈现给用户的</p>
+<h2 id="模板的设置"><a href="#模板的设置" class="headerlink" title="模板的设置"></a>模板的设置</h2><p>在 settings.py 中 TEMPLATES 变量 进行模板的设置</p>
+<pre><code>TEMPLATES = [
+    {
+        &apos;BACKEND&apos;:&apos;... ...&apos;,
+        &apos;DIRS&apos;:[],
+        ... ...
+    }
+]
+</code></pre><p>1、BACKEND：指定模板的搜索引擎，不用改动<br>2、DIRS：指定模板所存放的目录们<br>    DIRS : [‘index.temp’,’news.temp’,…]<br>    但是，如果DIRS中内容为空的话，那么Django会自动的到每个应用下去搜索一个叫 templates 的目录作为模板的存放目录。<br>    推荐：<br>        1、DIRS内容为空<br>        2、在每个应用中，创建一个 templates 目录<br>3、APP_DIRS<br>    True:首先从DIRS中指定的目录中去查找模板，没找到的话再搜索templates目录</p>
+<h2 id="模板的加载方式"><a href="#模板的加载方式" class="headerlink" title="模板的加载方式"></a>模板的加载方式</h2><p>模板的加载需要在“视图”中完成<br>1、使用 loader 获取模板，通过 HttpResponse 进行响应</p>
+<pre><code>from django.template import loader
+from django.http import HttpResponse
+
+def index_views(request):
+    #1、通过 loader 加载模板(得到一个模板对象)
+    t = loader.get_template(&quot;模板名称&quot;)
+    #2、通过模板对象t，将模板渲染成字符串
+    html = t.render()
+    #3、通过 HttpResponse 将html响应给客户端
+    return HttpResponse(html)
+</code></pre><p>2、使用 render 直接加载并返回模板</p>
+<pre><code>from django.shortcuts import render
+
+def xxx_views(request):
+    return render(request,&apos;模板名称&apos;)
+</code></pre><h2 id="模板的语法"><a href="#模板的语法" class="headerlink" title="模板的语法"></a>模板的语法</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>1、作用</p>
+<p>允许将后端的数据传递给模板，在模板中，会根据变量的值进行显示</p>
+<p>2、Django中允许传递给模板做变量的数据类型</p>
+<p>数字，字符串，列表，元组，字典，函数，对象</p>
+<p>3、变量的语法</p>
+<pre><code>通过一个字典，将要传递给模板的变量封装起来
+dic = {
+    &apos;变量1&apos;:&apos;值1&apos;,
+    &apos;变量2&apos;:&apos;值2&apos;,
+}
+1、使用 loader 
+    t = loader.get_template(&apos;模板名称&apos;)
+    html = t.render(dic)
+    return HttpResponse(html)
+2、使用 render
+    return render(request,&apos;模板名称&apos;,dic)
+</code></pre><p>4、在模板中使用变量</p>
+<pre><code>使用 {{变量名}}
+
+如果变量不存在或值为空的话，此位置不显示任何内容
+
+练习：
+    在模板中显示以下内容：
+    书名：《西游记》
+    作者：罗贯中
+    主题：1个和尚和3个宠物的故事
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Django框架/" rel="tag"># Django框架</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/17/人工智能/" rel="next" title="数据分析">
+                <i class="fa fa-chevron-left"></i> 数据分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js'];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Godshion</p>
+              <p class="site-description motion-element" itemprop="description">本站主要提供python教学的系列知识汇总</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                主页
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/weixin_41661393" title="csdn_blog" target="_blank">csdn_blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前情知识"><span class="nav-number">1.</span> <span class="nav-text">前情知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django框架"><span class="nav-number">2.</span> <span class="nav-text">Django框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB-与-服务器"><span class="nav-number">2.1.</span> <span class="nav-text">WEB 与 服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#框架"><span class="nav-number">2.2.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-框架"><span class="nav-number">2.3.</span> <span class="nav-text">Django 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Django"><span class="nav-number">2.3.1.</span> <span class="nav-text">什么是Django</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django的框架模式-MTV"><span class="nav-number">2.3.2.</span> <span class="nav-text">Django的框架模式 - MTV</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-框架的使用"><span class="nav-number">2.4.</span> <span class="nav-text">Django 框架的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Django的安装"><span class="nav-number">2.4.1.</span> <span class="nav-text">Django的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django文档"><span class="nav-number">2.4.2.</span> <span class="nav-text">Django文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Django"><span class="nav-number">2.4.3.</span> <span class="nav-text">使用Django</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL的使用"><span class="nav-number">3.</span> <span class="nav-text">URL的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#urls-py"><span class="nav-number">3.1.</span> <span class="nav-text">urls.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">3.2.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#url函数详解"><span class="nav-number">3.3.</span> <span class="nav-text">url函数详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url函数的语法"><span class="nav-number">3.3.1.</span> <span class="nav-text">url函数的语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-url-向-views-传参"><span class="nav-number">3.3.2.</span> <span class="nav-text">通过 url 向 views 传参</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django中的应用"><span class="nav-number">4.</span> <span class="nav-text">Django中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是应用"><span class="nav-number">4.1.</span> <span class="nav-text">什么是应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建应用"><span class="nav-number">4.2.</span> <span class="nav-text">创建应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-指令-创建应用"><span class="nav-number">4.2.1.</span> <span class="nav-text">通过 指令 创建应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-settings-py-中注册应用"><span class="nav-number">4.2.2.</span> <span class="nav-text">在 settings.py 中注册应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用的结构组成"><span class="nav-number">4.2.3.</span> <span class="nav-text">应用的结构组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用中的-urls"><span class="nav-number">4.2.4.</span> <span class="nav-text">应用中的 urls</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django中的模板-Tempates"><span class="nav-number">5.</span> <span class="nav-text">Django中的模板(Tempates)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是模板"><span class="nav-number">5.1.</span> <span class="nav-text">什么是模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的设置"><span class="nav-number">5.2.</span> <span class="nav-text">模板的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的加载方式"><span class="nav-number">5.3.</span> <span class="nav-text">模板的加载方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的语法"><span class="nav-number">5.4.</span> <span class="nav-text">模板的语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">5.4.1.</span> <span class="nav-text">变量</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Godshion</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">86.0k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

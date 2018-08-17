@@ -232,6 +232,470 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/Django框架/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/17/Django框架/" itemprop="url">Django框架</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-17T19:52:45+08:00">
+                2018-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web框架/" itemprop="url" rel="index">
+                    <span itemprop="name">web框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,819 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  11 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前情知识"><a href="#前情知识" class="headerlink" title="前情知识"></a>前情知识</h1><ul>
+<li><p>jQuery-事件</p>
+<pre><code>1、事件对象 - event
+    在绑定事件的时候，允许传递 event 参数来表示事件对象
+
+    1、
+        $obj.bind(&quot;click&quot;,function(event){
+            //event 表示的就是事件对象
+        });
+    2、
+        $obj.click(function(event){
+            //event 表示的就是事件对象
+        });
+2、事件冒泡
+    1、什么是事件冒泡
+        在执行子元素的事件时，同时把父元素/祖先元素的对应的事件也给执行了
+    2、阻止事件冒泡
+        event.stopPropagation()
+</code></pre></li>
+<li><p>jQuery-动画</p>
+</li>
+</ul>
+<pre><code>1、基本显示 / 隐藏
+    语法：
+        $obj.show() / $obj.show(执行时间)
+        $obj.hide() / $obj.hide(执行时间)
+2、滑动式显示 / 隐藏
+    语法：
+        显示:$obj.slideDown() / $obj.slideDown(执行时间)
+        隐藏:$obj.slideUp() / $obj.slideUp(执行时间)
+3、淡入淡出式显示 / 隐藏
+    语法：
+        显示:$obj.fadeIn() / $obj.fadeIn(执行时间)
+        隐藏:$obj.fadeOut() / $obj.fadeOut(执行时间)
+</code></pre><ul>
+<li>jQuery-插件</li>
+</ul>
+<p>====================================================<br>静态网站：无法与服务器进行交互<br>动态网站：允许与服务器进行交互</p>
+<h1 id="Django框架"><a href="#Django框架" class="headerlink" title="Django框架"></a>Django框架</h1><h2 id="WEB-与-服务器"><a href="#WEB-与-服务器" class="headerlink" title="WEB 与 服务器"></a>WEB 与 服务器</h2><p>1 WEB ：表示用户可以浏览的网页(HTML,CSS,JS)</p>
+<p>2 服务器:能够给用户提供服务的机器</p>
+<ul>
+<li><p>硬件 与 软件</p>
+<p>  硬件范畴：一台计算机<br>  软件范畴：一个能够接收用户请求并给出响应的程序</p>
+<pre><code>1、APACHE
+2、TOMCAT
+3、IIS(Internet Information Service)
+4、Nginx
+</code></pre></li>
+<li><p>作用</p>
+<p>  1、存储WEB所需要的信息(HTML，图片，音频)<br>  2、能够处理用户的请求(request)并给出响应(response)<br>  3、执行服务器端的程序</p>
+</li>
+<li><p>WEB 与 服务器之间的关系</p>
+</li>
+</ul>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>1 什么是框架</p>
+<p>框架是一个为了解决开放性问题而存在的一种结构。框架本身提供了一些最基本的功能。我们需要在基本的功能基础上开发属于自己的操作即可。</p>
+<p>2 Python中的框架(WEB)</p>
+<pre><code>1、Django ：重量级的WEB框架
+2、Tornado ：异步框架
+3、Flask ：轻量级框架
+    ... ...
+</code></pre><h2 id="Django-框架"><a href="#Django-框架" class="headerlink" title="Django 框架"></a>Django 框架</h2><h3 id="什么是Django"><a href="#什么是Django" class="headerlink" title="什么是Django"></a>什么是Django</h3><p>是一个开源框架，2005年发布，采用Python语言开发。早期是做新闻以及内容管理的网站。提供了强大的后台管理系统。</p>
+<h3 id="Django的框架模式-MTV"><a href="#Django的框架模式-MTV" class="headerlink" title="Django的框架模式 - MTV"></a>Django的框架模式 - MTV</h3><p>M ：Models 层<br>    模型层，负责数据库的建模以及CRUD的操作</p>
+<p>T ：Templates 层<br>    模板层，用于处理用户显示的内容的。如：html</p>
+<p>V ：Views 层<br>    视图层，处理与用户交互的部分内容，从模型中获取数据再将数据发送给模板，最终再将模板显示给用户</p>
+<p>自行了解：MVC - Flask采用该方法，参见本站 Flask框架<br>M ：Models 模型层<br>    负责数据库的建模以及CRUD的操作<br>V ：Views 视图层<br>    处理用户显示的内容 。如：html<br>C ：Controller 控制器<br>    处理与用户交互的部分内容。接收请求，处理请求并响应结果给客户端</p>
+<p>MTV       MVC<br>M  —–  M<br>T  —–  V<br>V  —–  C</p>
+<h2 id="Django-框架的使用"><a href="#Django-框架的使用" class="headerlink" title="Django 框架的使用"></a>Django 框架的使用</h2><h3 id="Django的安装"><a href="#Django的安装" class="headerlink" title="Django的安装"></a>Django的安装</h3><p>1、查看已安装的Django版本</p>
+<pre><code>1、进入到终端以及python的交互模式
+    python3 / ipython3
+2、在交互模式中 输入 import django
+    如果未报错：说明已经安装了Django
+    如果报错：说明未安装Django
+3、查看已安装的版本
+    交互模式中：django.VERSION
+</code></pre><p>2、安装</p>
+<pre><code>1、在线安装 - 使用 pip / pip3
+    pip : 安装到python2.7下
+    pip3 : 安装到python3.5下
+
+    1、sudo pip3 install django
+        (默认安装Django的最高版本)
+    2、sudo pip3 install django==1.11.8
+        (指定安装1.11.8版本)
+
+2、离线安装
+    1、下载所需的Django包
+        Django官网
+        http://www.djangoproject.com
+    2、在环境中解压Django包
+        tar -xvf Django-1.11.8.tar.gz
+    3、进入到目录中
+        cd Django-1.11.8
+    4、安装
+        sudo python3 setup.py install
+</code></pre><h3 id="Django文档"><a href="#Django文档" class="headerlink" title="Django文档"></a>Django文档</h3><p>1、Django官网<br>    <a href="http://www.djangoproject.com" target="_blank" rel="noopener">http://www.djangoproject.com</a><br>2、DjangoBook<br>    <a href="http://djangobook.py3k.cn/2.0/" target="_blank" rel="noopener">http://djangobook.py3k.cn/2.0/</a><br>3、离线文档</p>
+<h3 id="使用Django"><a href="#使用Django" class="headerlink" title="使用Django"></a>使用Django</h3><p>1、创建目录 ：用于保存Django项目<br>    mkdir Django<br>    (准备工作)</p>
+<p>2、创建Django项目</p>
+<pre><code>使用 django-admin 指令 创建Django项目
+
+django-admin startproject 项目名
+</code></pre><p>3、启动服务，访问网站</p>
+<pre><code>在创建好的项目中，找到 manage.py 文件
+通过 manage.py启动服务
+
+python3 manage.py runserver
+
+访问地址：
+    http://127.0.0.1:8000/
+    http://localhost:8000/
+</code></pre><p>4、Django的项目结构介绍</p>
+<ul>
+<li><p>manage.py 负责执行django中的各项操作的文件<br>如：</p>
+<p>  启动服务<br>  创建应用<br>  数据库的同步操作<br>  创建后台超级管理员</p>
+</li>
+</ul>
+<p>使用方式：</p>
+<pre><code>方法1、python3 manage.py 子命令
+方法2、./manage.py 子命令
+</code></pre><ul>
+<li><p>主文件夹(名称与项目名称相同)</p>
+<p>  1、<strong>init</strong>.py</p>
+<pre><code>项目初始化文件，每当服务器启动的时候，自动执行
+</code></pre><p>  2、urls.py</p>
+<pre><code>项目的基础路由配置文件/主路由配置文件
+将请求地址映射到对应的视图上
+</code></pre><p>  3、wsgi.py</p>
+<pre><code>应用服务器的配置文件，暂时不用
+</code></pre><p>  4、settings.py</p>
+<pre><code>项目的主设置文件：模板，数据库，应用，...
+
+1、BASE_DIR:当前项目所在的绝对路径
+    /home/tarena/Django/netease
+
+2、DEBUG:调试模式
+    开发过程：推荐使用True
+    上线运行：必须改为False
+
+3、ALLOWED_HOSTS
+    设置允许访问本项目的地址列表
+    如果不设置的话，只有本机(127.0.0.1/localhost)能够访问
+
+    推荐写&apos;*&apos;,任何表示该机器的地址都可以访问当前项目
+
+    注意：如果允许被外部机器访问的话，则：
+        ./manage.py runserver 0.0.0.0:8000s
+
+4、INSTALLED_APPS
+    指定已安装的应用，如果有自定义应用的话，需要在此注册
+
+5、ROOT_URLCONF  暂时不管
+
+6、TEMPLATES:指定模板的信息
+
+7、DATABASES:指定数据库的信息
+
+8、LANGUAGE_CODE:指定项目语言，允许修改为zh-Hans (简体中文)
+
+9、TIME_ZONE:指定时区，建议修改为 Asia/Shanghai
+</code></pre></li>
+</ul>
+<h1 id="URL的使用"><a href="#URL的使用" class="headerlink" title="URL的使用"></a>URL的使用</h1><h2 id="urls-py"><a href="#urls-py" class="headerlink" title="urls.py"></a>urls.py</h2><pre><code>默认是在主目录中的，主路由配置文件，包含所有的地址映射
+
+每一个请求到达之后，都会由urls.py中的urlpatterns列表中的url()进行匹配。当url()匹配上之后，可能就会将请求转交给其他的视图(Views)或其他的urls.py去处理
+</code></pre><h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>在主目录中，创建 views.py<br>作用：包含所有定义好的视图(处理程序)</p>
+<h2 id="url函数详解"><a href="#url函数详解" class="headerlink" title="url函数详解"></a>url函数详解</h2><h3 id="url函数的语法"><a href="#url函数的语法" class="headerlink" title="url函数的语法"></a>url函数的语法</h3><p>url(regex,views,kwargs=None,name=None)</p>
+<p>1、regex<br>    正则表达式模式，匹配请求的url，字符串类型</p>
+<p>2、views<br>    当前url对应的处理的视图函数，此处写函数名即可</p>
+<p>3、kwargs<br>    字典，用来向views传参的，如果没有参数可以省略</p>
+<p>4、name<br>    字符串，给url()起别名，方便在模板中使用</p>
+<h3 id="通过-url-向-views-传参"><a href="#通过-url-向-views-传参" class="headerlink" title="通过 url 向 views 传参"></a>通过 url 向 views 传参</h3><p>1 使用正则表达式子组传参</p>
+<p>使用子组传参 - ()，一个子组是一个参数，如果想传递多个参数的话，则使用多个子组，多个参数之间使用 / 分割</p>
+<pre><code>urlpatterns = [
+    # 访问路径是 run/ ，交给 run_views
+    url(r&apos;^run/$&apos;,run_views),
+    # 访问路径是 run/两位数字，交给run_arg1_views
+    url(r&apos;^run/(\d{2})/$&apos;,run_arg1_views),
+    # 访问路径是 run/两位数字/四位数字，交给run_arg2_views
+    url(r&apos;^run/(\d{2})/(\d{4})&apos;,run_arg2_views),
+]
+</code></pre><p>注意：</p>
+<pre><code>1、在 url() 中，一个子组表示一个参数
+2、在 views.py 中，对应的处理函数要根据url()中子组的个数，相应的定义参数(形参)。定义的参数要位于request之后
+
+url(r&apos;^run/(\d{2})/(\d{4})&apos;,run_arg2_views)
+
+def run_arg2_views(request,num1,num2):
+    pass
+</code></pre><p>2 使用url()第三个参数，字典传参</p>
+<pre><code>urlpatterns = [
+    url(
+        r&apos;^show/$&apos;,
+        show_views,
+        {&apos;name&apos;:&apos;zsf&apos;,&apos;age&apos;:&apos;25&apos;}
+    )
+]
+
+def show_views(request,name,age):
+        pass
+</code></pre><h1 id="Django中的应用"><a href="#Django中的应用" class="headerlink" title="Django中的应用"></a>Django中的应用</h1><h2 id="什么是应用"><a href="#什么是应用" class="headerlink" title="什么是应用"></a>什么是应用</h2><pre><code>应用就是网站中的一块独立的程序
+在Django中，主目录一般不处理用户的具体请求，主要做的是项目的初始化以及请求的分发
+</code></pre><h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><h3 id="通过-指令-创建应用"><a href="#通过-指令-创建应用" class="headerlink" title="通过 指令 创建应用"></a>通过 指令 创建应用</h3><pre><code>./manage.py startapp 应用名称
+ex:
+    ./manage.py startapp news
+</code></pre><h3 id="在-settings-py-中注册应用"><a href="#在-settings-py-中注册应用" class="headerlink" title="在 settings.py 中注册应用"></a>在 settings.py 中注册应用</h3><pre><code>在 INSTALLED_APPS 中追加应用名称
+INSTALLED_APPS = [
+    &apos;django.contrib.admin&apos;,
+    ... ...
+    &apos;news&apos;
+]
+</code></pre><h3 id="应用的结构组成"><a href="#应用的结构组成" class="headerlink" title="应用的结构组成"></a>应用的结构组成</h3><p>1、migrations 目录<br>    存放数据库中间文件的目录(日志文件)</p>
+<p>2、<strong>init</strong>.py<br>    应用的初始化文件</p>
+<p>3、admin.py<br>    应用的后台管理配置文件</p>
+<p>4、apps.py<br>    应用的属性配置文件</p>
+<p>5、models.py<br>    模型配置文件</p>
+<p>6、tests.py<br>    测试模块</p>
+<p>7、views.py<br>    视图处理文件</p>
+<pre><code>练习：
+    1、创建 index 应用，并注册
+    2、创建 sport 应用，并注册
+    3、创建 music 应用，并注册
+</code></pre><h3 id="应用中的-urls"><a href="#应用中的-urls" class="headerlink" title="应用中的 urls"></a>应用中的 urls</h3><pre><code>练习
+    1、访问 http://localhost:8000/news/index
+        交给news应用中的urls处理(找 index_views视图)
+    2、访问 http://localhost:8000/music/index
+        交给music应用中的urls处理(找index_views视图)
+    3、访问 http://localhost:8000/sport/index
+        交给sport应用中的urls处理(找index_views视图)
+    4、访问 http://localhost:8000
+        交给index应用中的urls处理(找index_views视图)
+    5、访问 http://localhost:8000/login
+        交给index应用中的urls处理(找login_views视图)
+    6、访问 http://localhost:8000/register
+        交给index应用中的urls处理(找regsiter_views视图)
+    7、访问 http://localhost:8000/news/
+        交给news应用中的urls处理(找 index_views视图)
+    8、访问 http://localhost:8000/music/
+        交给music应用中的urls处理(找 index_views视图)
+    9、访问 http://localhost:8000/sport/
+        交给sport应用中的urls处理(找 index_views视图)
+</code></pre><h1 id="Django中的模板-Tempates"><a href="#Django中的模板-Tempates" class="headerlink" title="Django中的模板(Tempates)"></a>Django中的模板(Tempates)</h1><h2 id="什么是模板"><a href="#什么是模板" class="headerlink" title="什么是模板"></a>什么是模板</h2><p>模板是要动态给用户呈现的网页<br>模板就是一个网页 - 前后端结合的网页<br>模板是通过视图(Views)呈现给用户的</p>
+<h2 id="模板的设置"><a href="#模板的设置" class="headerlink" title="模板的设置"></a>模板的设置</h2><p>在 settings.py 中 TEMPLATES 变量 进行模板的设置</p>
+<pre><code>TEMPLATES = [
+    {
+        &apos;BACKEND&apos;:&apos;... ...&apos;,
+        &apos;DIRS&apos;:[],
+        ... ...
+    }
+]
+</code></pre><p>1、BACKEND：指定模板的搜索引擎，不用改动<br>2、DIRS：指定模板所存放的目录们<br>    DIRS : [‘index.temp’,’news.temp’,…]<br>    但是，如果DIRS中内容为空的话，那么Django会自动的到每个应用下去搜索一个叫 templates 的目录作为模板的存放目录。<br>    推荐：<br>        1、DIRS内容为空<br>        2、在每个应用中，创建一个 templates 目录<br>3、APP_DIRS<br>    True:首先从DIRS中指定的目录中去查找模板，没找到的话再搜索templates目录</p>
+<h2 id="模板的加载方式"><a href="#模板的加载方式" class="headerlink" title="模板的加载方式"></a>模板的加载方式</h2><p>模板的加载需要在“视图”中完成<br>1、使用 loader 获取模板，通过 HttpResponse 进行响应</p>
+<pre><code>from django.template import loader
+from django.http import HttpResponse
+
+def index_views(request):
+    #1、通过 loader 加载模板(得到一个模板对象)
+    t = loader.get_template(&quot;模板名称&quot;)
+    #2、通过模板对象t，将模板渲染成字符串
+    html = t.render()
+    #3、通过 HttpResponse 将html响应给客户端
+    return HttpResponse(html)
+</code></pre><p>2、使用 render 直接加载并返回模板</p>
+<pre><code>from django.shortcuts import render
+
+def xxx_views(request):
+    return render(request,&apos;模板名称&apos;)
+</code></pre><h2 id="模板的语法"><a href="#模板的语法" class="headerlink" title="模板的语法"></a>模板的语法</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>1、作用</p>
+<p>允许将后端的数据传递给模板，在模板中，会根据变量的值进行显示</p>
+<p>2、Django中允许传递给模板做变量的数据类型</p>
+<p>数字，字符串，列表，元组，字典，函数，对象</p>
+<p>3、变量的语法</p>
+<pre><code>通过一个字典，将要传递给模板的变量封装起来
+dic = {
+    &apos;变量1&apos;:&apos;值1&apos;,
+    &apos;变量2&apos;:&apos;值2&apos;,
+}
+1、使用 loader 
+    t = loader.get_template(&apos;模板名称&apos;)
+    html = t.render(dic)
+    return HttpResponse(html)
+2、使用 render
+    return render(request,&apos;模板名称&apos;,dic)
+</code></pre><p>4、在模板中使用变量</p>
+<pre><code>使用 {{变量名}}
+
+如果变量不存在或值为空的话，此位置不显示任何内容
+
+练习：
+    在模板中显示以下内容：
+    书名：《西游记》
+    作者：罗贯中
+    主题：1个和尚和3个宠物的故事
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/人工智能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -8208,928 +8672,6 @@ mgpath(1,1,8,8)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/爬虫/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Godshion">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="响神的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/爬虫/" itemprop="url">爬虫</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T15:06:10+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/爬虫/" itemprop="url" rel="index">
-                    <span itemprop="name">爬虫</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  16,338 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  62 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>内容简介<br>第一章：爬虫简介，简单介绍了什么是爬虫，爬虫的作用，及如何实现一个爬虫，爬虫所需要的先决知识及关键核心技术等等，分级别的告诉大家初级爬虫工程师，中级爬虫工程师及高级爬虫工程师所需要的知识体系及技能。<br>第二章：介绍了关于爬虫的一些基本常识，包括爬虫的法律风险等，之后介绍了怎么对需要爬取的网站进行背景调研：网站的Robots协议，Sitemap，怎么估算网站的大小，怎么识别网站用了什么技术架构，怎么寻找网站的所有者等等，这些都是在抓取一个网站之前所需要做的背景调研，以便我们更好的能够抓取到网站的信息。<br>第三章：通过实例给大家展示在Python中一个简单的爬虫应该怎么写，同时简单复习一下爬虫的相关网络知识，主要是HTTP, HTTPS协议，最后介绍了爬虫爬取数据两种常用算法策略：广度优先和深度优先的策略，及实际项目如何选择策略。<br>第四章：介绍了怎么对爬取到的内容进行提取，对结构化的数据与非结构化的数据分别怎么进行提取，常见的文件格式JSON，XML，HTML等，及Beautiful Soup，lxml，正则表达式等等提取数据的方法，并对各种数据，数据解析方法及使用场景进行了总结。<br>第五章：介绍了针对动态网页数据的抓取，可以采用的策略：模拟网络数据包的过程及使用内置浏览器的方案Selenium + PhantomJS的策略，分别用示例说明了这种方法各自的优缺点。<br>第六章：简单介绍下讲述怎么登录，提交表单，怎么使用Cookie记录管理登录状态，怎么使用图像识别技术来尝试破解验证码。<br>第七章：讲述了怎么存储爬取到的数据，怎么做持久化，如何选择及使用MySQL, MongoDB，HBase等数据库进行存储，简单介绍一下怎么对数据进行压缩存储，以节省存储空间。<br>第八章：高效爬虫之路，怎么使用多线程，多进程来提升爬虫爬取数据的效率，简单介绍下怎么来调度并行爬虫，怎么设置代理服务器，来防止爬虫在告诉爬取数据时尽可能不被反爬程序发现。<br>第九章：简单介绍下怎么去重，怎么使用Redis数据库进行去重，大数据量时怎么使用HASH算法Bloom Filter减少空间消耗。<br>第十章：介绍Scrapy框架，如何快速使用Scrapy搭建一个网站的爬虫，如何使用Scrapy-Redis快速搭建一个分布式爬虫的框架。<br>第十一章：介绍下常用的反爬策略, 怎么解决HTTPS对爬虫的阻碍行为。<br>第十二章：其他，简单介绍下如果使用机器学习的方法优化爬虫爬取数据的策略，以及如果使用爬虫爬取的数据，对于爬虫的时效性问题，怎么设计其更新的频率，怎么尝试使用机器学习的方法调节其自动更新的频率。</p>
-<h1 id="第一章-爬虫简介"><a href="#第一章-爬虫简介" class="headerlink" title="第一章 爬虫简介"></a>第一章 爬虫简介</h1><h2 id="1-1-什么是网络爬虫"><a href="#1-1-什么是网络爬虫" class="headerlink" title="1.1 什么是网络爬虫"></a>1.1 什么是网络爬虫</h2><h3 id="1-1-1-爬虫的简单定义"><a href="#1-1-1-爬虫的简单定义" class="headerlink" title="1.1.1 爬虫的简单定义"></a>1.1.1 爬虫的简单定义</h3><p>网络爬虫（又被称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。<br>简单来说：使用事先写好的程序去抓取网络上所需要的数据，这样的程序就叫网络爬虫。</p>
-<h3 id="1-1-2-爬虫的分类"><a href="#1-1-2-爬虫的分类" class="headerlink" title="1.1.2 爬虫的分类"></a>1.1.2 爬虫的分类</h3><p>网络爬虫可以分为通用网络爬虫(如搜索引擎的爬虫，根据几个URL的种子不断的去抓取数据)和聚焦网络爬虫(有选择性的抓取预先定义好的主题和相关页面的网络爬虫)。</p>
-<ul>
-<li>A.通用网络爬虫：<br>搜索引擎中第一步就是爬虫。但是搜索引擎中的爬虫是一种广泛获取各种网页的信息的程序；除了HTML文件外，搜索引擎通常还会抓取和索引文字为基础的多种文件类型，如TXT，WORD，PDF等； 但是对于图片，视频，等非文字的内容则一般不会处理；但是对于脚本和一些网页中的程序是不会处理的；</li>
-</ul>
-<ul>
-<li>B.聚焦网络爬虫：<br>针对某一特定领域的数据进行抓取的程序。比如旅游网站，金融网站，招聘网站等等；特定领域的聚集爬虫会使用各种技术去处理我们需要的信息，所以对于网站中动态的一些程序，脚本仍会执行，以保证确定能抓取到网站中的数据；</li>
-</ul>
-<h2 id="1-2-为什么需要爬虫"><a href="#1-2-为什么需要爬虫" class="headerlink" title="1.2 为什么需要爬虫"></a>1.2 为什么需要爬虫</h2><h3 id="1-2-1-爬虫的用途"><a href="#1-2-1-爬虫的用途" class="headerlink" title="1.2.1 爬虫的用途"></a>1.2.1 爬虫的用途</h3><ul>
-<li><p>A.解决冷启动问题：对于很多社交类的网站，冷启动是很困难的。对于新注册的用户而言，要留住他们，需要先注入一批假用户，已构造社区的氛围。一般这些假的用户可以通过网络爬虫从微博或其他APP中抓取而来；今日头条等互联网媒体最早也就是使用了爬虫+网页排序的技术，所以它们解决冷启动的方式也是需要爬虫；</p>
-</li>
-<li><p>B.搜索引擎的根基：做搜索引擎少不了爬虫程序；</p>
-</li>
-<li><p>C.建立起知识图谱，帮助建立机器学习的训练集：</p>
-</li>
-<li><p>D.可以制作各种商品的比价，趋势分析等：</p>
-</li>
-</ul>
-<ul>
-<li>E.其他：比如分析淘宝上竞争对手的数据；分析微博的数据传递影响力，政府的舆情分析，分析人与人之间的关系等等；</li>
-</ul>
-<p>总之一句话：在当今的大数据时代，做任何价值分析的前提是数据，而爬虫则是获得这个前提的一个低成本高收益手段；而程序员而言，另一个重要的价值是解决就业问题。Python爬虫工程师的招聘情况见：</p>
-<p><a href="https://www.lagou.com/jobs/list_python%20%E7%88%AC%E8%99%AB%E5%B7%A5%E7%A8%8B%E5%B8%88city=%E5%85%A8%E5%9B%BD&amp;cl=false&amp;fromSearch=true&amp;labelWords=&amp;suginput" title="https://www.lagou.com/jobs/list_python%20%E7%88%AC%E8%99%AB%E5%B7%A5%E7%A8%8B%E5%B8%88city=%E5%85%A8%E5%9B%BD&amp;cl=false&amp;fromSearch=true&amp;labelWords=&amp;suginput" target="_blank" rel="noopener">https://www.lagou.com/jobs/list_python%20%E7%88%AC%E8%99%AB%E5%B7%A5%E7%A8%8B%E5%B8%88city=%E5%85%A8%E5%9B%BD&amp;cl=false&amp;fromSearch=true&amp;labelWords=&amp;suginput</a></p>
-<h3 id="1-2-2怎么做爬虫"><a href="#1-2-2怎么做爬虫" class="headerlink" title="1.2.2怎么做爬虫"></a>1.2.2怎么做爬虫</h3><p>用Python做爬虫非常的简单，在交互式环境中简单的两行代码即可</p>
-<p>做一个爬虫如此简单吗？<br>当然不是。让我们来看下要做一个爬虫工程师需要哪些知识和技能：</p>
-<p><strong> 爬虫工程师的晋级之路，网络爬虫涉及哪些技术： </strong></p>
-<p><strong>初级爬虫工程师：</strong></p>
-<ol>
-<li>Web前端的知识：HTML, CSS, JavaScript, DOM, HTML, Ajax, jQuery,json等；</li>
-<li>正则表达式，能提取正常一般网页中想要的信息，比如某些特殊的文字，链接信息，知道什么是懒惰，什么是贪婪型的正则；</li>
-<li>会使用re, BeautifulSoup，XPath等获取一些DOM结构中的节点信息；</li>
-<li>知道什么是深度优先，广度优先的抓取算法，及实践中的使用规则；</li>
-<li>能分析简单网站的结构，会使用urllib或requests库进行简单的数据抓取；</li>
-</ol>
-<p><strong>中级爬虫工程师：</strong></p>
-<ol>
-<li>了解什么是Hash，会使用简单的MD5,SHA1等算法对数据进行Hash以便存储；</li>
-<li>熟悉HTTP,HTTPS协议的基础知识,了解GET，POST方法,了解HTTP头中的信息，包括返回状态码，编码，user-agent，cookie，session等；</li>
-<li>能设置User-Agent进行数据爬取，设置代理等； </li>
-<li>知道什么是Request，什么是Response，会使用Fiddler, Wireshark等工具抓取及分析简单的网络数据包；对于动态爬虫，要学会分析Ajax请求，模拟制造Post数据包请求，抓取客户端session等信息，对于一些简单的网站，能够通过模拟数据包进行自动登录；</li>
-<li>对于比较难搞定的网站，学会使用浏览器+selenium抓取一些动态网页信息；</li>
-<li>并发下载，通过并行下载加速数据抓取；多线程的使用；</li>
-</ol>
-<p><strong>高级爬虫工程师：</strong></p>
-<ol>
-<li>能使用Tesseract，百度AI, HOG+SVM,CNN等库进行验证码识别；</li>
-<li>能使用数据挖掘的技术，分类算法等避免死链等；</li>
-<li>会使用常用的数据库进行数据存储，查询，如Mongodb，Redis(大数据量的缓存)等；下载缓存，学习如何通过缓存避免重复下载的问题；Bloom Filter的使用；</li>
-<li>能使用机器学习的技术动态调整爬虫的爬取策略，从而避免被禁IP封号等；</li>
-<li>能使用一些开源框架Scrapy, Scarpy-Redis，Celery等分布式爬虫，能部署掌控分布式爬虫进行大规模的数据抓取；</li>
-</ol>
-<h1 id="第二章-爬虫的基本常识"><a href="#第二章-爬虫的基本常识" class="headerlink" title="第二章 爬虫的基本常识"></a>第二章 爬虫的基本常识</h1><h2 id="2-1-爬虫的合法性问题"><a href="#2-1-爬虫的合法性问题" class="headerlink" title="2.1 爬虫的合法性问题"></a>2.1 爬虫的合法性问题</h2><p>目前还处于不明确的蛮荒阶段，“允许哪些行为”这种基本秩序还处于建设中。<br>至少目前来看，如果抓取的数据为个人所用，则不存在问题；如果数据用于转载，那么<br>抓取数据的类型就很重要了：一般来说，当抓取的数据是实现生活中的真实数据（比如，营业地址，电话清单）时，是允许转载的，但是，如果是原创数据（比如，意见或评论），通常就会受到版权限制，而不能转载。<br>讨论：百度爬虫抓取数据行为的合法性问题。<br>**注意：不管怎么样，作为一个访客，应当约束自己的抓取行为，这就是说要求下载请求的速度需要限定在一个合理值之内，并且还需要设定一个专属的用户代理来标识自己。</p>
-<h2 id="2-2-爬虫的准备工作：网站的背景调研"><a href="#2-2-爬虫的准备工作：网站的背景调研" class="headerlink" title="2.2 爬虫的准备工作：网站的背景调研"></a>2.2 爬虫的准备工作：网站的背景调研</h2><p>网站的背景调研对聚焦的网络爬虫而言至关重要，正所谓：知己知彼，百战不殆。</p>
-<h3 id="2-2-1-robots协议"><a href="#2-2-1-robots协议" class="headerlink" title="2.2.1 robots协议"></a>2.2.1 robots协议</h3><p>Robots协议（也称为爬虫协议、机器人协议等）的全称是“网络爬虫排除标准”（Robots Exclusion Protocol），网站通过Robots协议告诉搜索引擎哪些页面可以抓取，哪些页面不能抓取。<br>       比如：<br>淘宝网：<a href="https://www.taobao.com/robots.txt" target="_blank" rel="noopener">https://www.taobao.com/robots.txt</a><br>腾讯网：<a href="http://www.qq.com/robots.txt" target="_blank" rel="noopener">http://www.qq.com/robots.txt</a><br>         再比如：<br><a href="https://www.douban.com/robots.txt" target="_blank" rel="noopener">https://www.douban.com/robots.txt</a><br><a href="http://www.mafengwo.cn/robots.txt" target="_blank" rel="noopener">http://www.mafengwo.cn/robots.txt</a><br>搜索引擎和DNS解析服务商(如DNSPod等）合作，新网站域名将被迅速抓取。但是搜索引擎蜘蛛的爬行是被输入了一定的规则的，它需要遵从一些命令或文件的内容，如标注为nofollow的链接，或者是Robots协议。另外一种则是，通过网站的站长主动对搜索引擎提交网站的网址，搜索引擎则会在接下来派出“蜘蛛”，对该网站进行爬取。 </p>
-<h3 id="2-2-2-网站地图sitemap"><a href="#2-2-2-网站地图sitemap" class="headerlink" title="2.2.2 网站地图sitemap"></a>2.2.2 网站地图sitemap</h3><p>sitemap是一个网站所有链接的容器。很多网站的连接层次比较深，蜘蛛很难抓取到，网站地图可以方便搜索引擎蜘蛛抓取网站页面，通过抓取网站页面，清晰了解网站的架构，网站地图一般存放在根目录下并命名为sitemap，为搜索引擎蜘蛛指路，增加网站重要内容页面的收录。网站地图就是根据网站的结构、框架、内容，生成的导航网页文件。大多数人都知道网站地图对于提高用户体验有好处：它们为网站访问者指明方向，并帮助迷失的访问者找到他们想看的页面。<br>例子：<a href="http://www.mafengwo.cn/sitemapIndex.xml" target="_blank" rel="noopener">http://www.mafengwo.cn/sitemapIndex.xml</a></p>
-<p>网站地图sitemap有两种形式：</p>
-<ul>
-<li>A.HTML：称为HTML版本的网站地图，英文是sitemap,特质HTML版网站地图，这个版本的网站地图就是用户可以在网站上看到的，列出网站上所有主要页面的链接的页面。对小网站来说，甚至可以列出整个网站的所有页面，对于具有规模的网站来说，一个网站地图不可能罗列所有的页面链接，可以采取两种办法，一种办法是网站地图只列出网站最主要的链接，如一级分类，二级分类，第二种办法是将网站地图分成几个文件，主网站地图列出通往次级网站的链接，次级网站地图在列出一部分页面链接。</li>
-<li>B.XML：XML版本的网站地图是由Google首先提出的，怎么区分了，上面所说的HTML版本的s是小写的，而XML版本的S则是大写的，XML版本的网站地图是由XML标签组成的，文件本身必须是utf8编码，网站地图文件实际上就是列出网站需要被收录的页面的URL，最简单的网站地图可以是一个纯文本件，文件只要列出页面的URL，一行列一个URL，搜索引擎就能抓取并理解文件内容。<br>可以使用这个网站工具来生成某网站的sitemap： <a href="http://www.sitemap-xml.org" target="_blank" rel="noopener">www.sitemap-xml.org</a></li>
-</ul>
-<h3 id="2-2-3-估算网站的大小"><a href="#2-2-3-估算网站的大小" class="headerlink" title="2.2.3 估算网站的大小"></a>2.2.3 估算网站的大小</h3><p>可以使用搜索引擎来做，比如在百度中使用site:</p>
-<p>说明：这里只是通过百度搜索引擎大致来估算网站的大小，受到网站本身对搜索引擎爬虫的限制，及搜索引擎本身爬取数据技术的限制，所以这只是一个经验值，可以作为估算网站体量量级的一个经验值。</p>
-<h3 id="2-2-4-识别网站用了何种技术"><a href="#2-2-4-识别网站用了何种技术" class="headerlink" title="2.2.4 识别网站用了何种技术"></a>2.2.4 识别网站用了何种技术</h3><p>为了更好的了解网站，抓取该网站的信息，我们可以先了解一下该网站大致所使用的技术架构。<br>安装builtwith :<br>Windows： pip install bulitwith<br>Linux:     sudo pip install builtwith<br>使用：在Python交互环境下，输入：<br>import builtwith<br>builtwith.parse(“<a href="http://www.sina.com.cn&quot;" target="_blank" rel="noopener">http://www.sina.com.cn&quot;</a>)</p>
-<h3 id="2-2-5-寻找网站的所有者"><a href="#2-2-5-寻找网站的所有者" class="headerlink" title="2.2.5 寻找网站的所有者"></a>2.2.5 寻找网站的所有者</h3><p>有时候，我们需要知道网站的所有者是谁，这里在技术上有个简单的方法可以参考。<br>安装python-whois :<br>Windows： pip install python-whois<br>使用：在Python交互环境下，输入：<br>import whois<br>whois.whois(“<a href="http://www.sina.com.cn&quot;" target="_blank" rel="noopener">http://www.sina.com.cn&quot;</a>) </p>
-<h1 id="第三章-简单爬虫的实现"><a href="#第三章-简单爬虫的实现" class="headerlink" title="第三章 简单爬虫的实现"></a>第三章 简单爬虫的实现</h1><h2 id="3-1-可能是史上最简单的爬虫Demo"><a href="#3-1-可能是史上最简单的爬虫Demo" class="headerlink" title="3.1 可能是史上最简单的爬虫Demo"></a>3.1 可能是史上最简单的爬虫Demo</h2><p>最简单的爬虫Demo：<br>第一个爬虫程序，两行代码写一个爬虫：</p>
-<pre><code>import urllib2  #Python2
-print(urllib2.urlopen(&quot;http://example.webscraping.com&quot;).read())
-</code></pre><p>这两行代码在Python2.7下可以正常运行，获取<a href="http://example.webscraping.com" target="_blank" rel="noopener">http://example.webscraping.com</a><br>这个页面的内容；<br>备注：如果是Python3 ,则使用如下两行代码：</p>
-<pre><code>import requests #Python3
-print(requests.get(&apos;http://example.webscraping.com&apos;).text)
-</code></pre><p>如果没有requests 库，则需要使用命令pip install requests 安装一下；<br>说明：本讲义结合了Python2和Python3两种不同的环境。当看见#Python2 或者有些以p2结尾的文件，时说明此代码需要在Python2.7的环境下运行；看见#Python3或者有些以p3结尾的文件时说明此代码需要在Python3.5及以上的环境中运行。之所以会有这种情况出现是历史原因导致：Python3当然是大势所趋，但是目前有很多库还没有完全移植到Python3上，同时有些公司还在使用Python2进行开发。大家不用过于担心，在本讲义的附录A中会将Python2和Python3在爬虫这块最主要几个库的对照表收录进来，按照这张表就可以方便的实现Python2与Python3在爬虫这块代码的移植。</p>
-<h2 id="3-2-回顾一下HTTP，HTTPS协议"><a href="#3-2-回顾一下HTTP，HTTPS协议" class="headerlink" title="3.2    回顾一下HTTP，HTTPS协议"></a>3.2    回顾一下HTTP，HTTPS协议</h2><h3 id="3-2-1-关于URL："><a href="#3-2-1-关于URL：" class="headerlink" title="3.2.1.    关于URL："></a>3.2.1.    关于URL：</h3><p>URL（Uniform / Universal Resource Locator的缩写）：统一资源定位符，是用于完整地描述Internet上网页和其他资源的地址的一种标识方法。<br>基本格式：scheme://host[:port#]/path/…/[?query-string][#anchor]<br>scheme：协议(例如：http, https, ftp)<br>host：服务器的IP地址或者域名<br>port#：服务器的端口（如果是走协议默认端口，缺省端口80）<br>path：访问资源的路径<br>query-string：参数，发送给http服务器的数据<br>anchor：锚（跳转到网页的指定锚点位置）<br>例如：<br><a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a><br><a href="http://item.jd.com/11963485.html#product-detail" target="_blank" rel="noopener">http://item.jd.com/11963485.html#product-detail</a><br><a href="ftp://192.168.1.118:8081/index" target="_blank" rel="noopener">ftp://192.168.1.118:8081/index</a><br>URL是爬虫的入口，非常的重要。</p>
-<h3 id="3-2-2-HTTP协议，HTTPS协议："><a href="#3-2-2-HTTP协议，HTTPS协议：" class="headerlink" title="3.2.2.    HTTP协议，HTTPS协议："></a>3.2.2.    HTTP协议，HTTPS协议：</h3><p>HTTP协议（HyperText Transfer Protocol，超文本传输协议）：是一种发布和接收 HTML页面的方法。HTTP协议是一个应用层的协议，无连接（每次连接只处理一个请求），无状态（每次连接，传输都是独立的）<br>HTTPS（Hypertext Transfer Protocol over Secure Socket Layer）协议简单讲是HTTP的安全版，在HTTP下加入SSL层。HTTPS = HTTP+SSL（Secure Sockets Layer 安全套接层）主要用于Web的安全传输协议，在传输层对网络连接进行加密，保障在Internet上数据传输的安全<br>HTTP的端口号为80；HTTPS的端口号为443；</p>
-<h3 id="3-2-3-HTTP-Request请求常用的两种方法："><a href="#3-2-3-HTTP-Request请求常用的两种方法：" class="headerlink" title="3.2.3.    HTTP Request请求常用的两种方法："></a>3.2.3.    HTTP Request请求常用的两种方法：</h3><p>Get：是为了从服务器上获取信息，传输给服务器的数据的过程不够安全，数据大小有限制；<br>Post：向服务器传递数据，传输数据的过程是安全的，大小理论上没有限制；</p>
-<h3 id="3-2-4-关于-User-Agent"><a href="#3-2-4-关于-User-Agent" class="headerlink" title="3.2.4.    关于**User-Agent"></a>3.2.4.    关于<em>**</em>User-Agent</h3><p>User Agent中文名为用户代理，简称 UA，它是一个特殊字符串头，使得服务器能够识别客户使用的操作系统及版本、CPU 类型、浏览器及版本、浏览器渲染引擎、浏览器语言、浏览器插件等。</p>
-<p>我们来看下我们最简单的爬虫跑起来时告诉服务器的User-Agent是什么？</p>
-<p>通过这个例子，我们发现Python爬虫有个默认的带有版本号的User-Agent，由此很容易能识别出来这是一个Python写的爬虫程序。所以如果用默认的User-Agent，那些反爬虫的程序一眼就能识别出来我们是个Python爬虫，这对Python爬虫是不利的。<br>那么，我们如何修改这个User-Agent，来伪装我们的爬虫程序呢？<br>user_agent = “Mozilla/5.0 (Windows NT 10.0; WOW64; rv:58.0) Gecko/20100101 Firefox/58.0”<br>headers = {‘User-agent’: user_agent}<br>request = urllib2.Request(url, headers=headers)<br>SpiderCodes\ simplestSpiderp2.py<br>SpiderCodes\ simplestSpiderp3.py</p>
-<h3 id="3-2-5-HTTP-Response响应的状态码："><a href="#3-2-5-HTTP-Response响应的状态码：" class="headerlink" title="3.2.5.    HTTP Response响应的状态码："></a>3.2.5.    HTTP Response响应的状态码：</h3><p>200为成功，300是跳转；<br>400，500意味着有错误：</p>
-<p>说明：服务器返回给爬虫的信息可以用来判断我们爬虫当前是否正常在运行；<br>当出现异常错误时：一般来说如果是500的错误那么爬虫会进入休眠状态，说明服务器已经宕机；如果是400的错误，则需要考虑爬虫的抓取策略的修改，可能是网站更新了，或者是爬虫被禁了。如果在一个分布式的爬虫系统中，更容易发现和调整爬虫的策略。</p>
-<h3 id="3-2-6-HTTP-响应体是我们爬虫需要关心的协议部分的内容："><a href="#3-2-6-HTTP-响应体是我们爬虫需要关心的协议部分的内容：" class="headerlink" title="3.2.6.    HTTP 响应体是我们爬虫需要关心的协议部分的内容："></a>3.2.6.    HTTP 响应体是我们爬虫需要关心的协议部分的内容：</h3><p>通过Python的交互是环境，我们可以直观的方便的看到请求响应的信息，这也看出了Python瑞士军刀般的作用。</p>
-<pre><code>&gt;&gt;&gt; import requests  #Python3
-&gt;&gt;&gt; html = requests.get(&apos;http://example.webscraping.com&apos;)
-&gt;&gt;&gt; print(html.status_code)
-200
-&gt;&gt;&gt; print(html.elapsed)
-0:00:00.818880
-&gt;&gt;&gt; print(html.encoding)
-utf-8
-&gt;&gt;&gt; print(html.headers)
-{&apos;Server&apos;: &apos;nginx&apos;, &apos;Date&apos;: &apos;Thu, 01 Feb 2018 09:23:30 GMT&apos;, &apos;Content-Type&apos;: &apos;text/html; charset=utf-8&apos;, &apos;Transfer-Encoding&apos;: &apos;chunked&apos;, &apos;Connection&apos;: &apos;keep-alive&apos;, &apos;Vary&apos;: &apos;Accept-Encoding&apos;, &apos;X-Powered-By&apos;: &apos;web2py&apos;, &apos;Set-Cookie&apos;: &apos;session_id_places=True; httponly; Path=/, session_data_places=&quot;6853de2931bf0e3a629e019a5c352fca:1Ekg3FlJ7obeqV0rcDDmjBm3y4P4ykVgQojt-qrS33TLNlpfFzO2OuXnY4nyl5sDvdq7p78_wiPyNNUPSdT2ApePNAQdS4pr-gvGc0VvnXo3TazWF8EPT7DXoXIgHLJbcXoHpfleGTwrWJaHq1WuUk4yjHzYtpOhAbnrdBF9_Hw0OFm6-aDK_J25J_asQ0f7&quot;; Path=/&apos;, &apos;Expires&apos;: &apos;Thu, 01 Feb 2018 09:23:30 GMT&apos;, &apos;Pragma&apos;: &apos;no-cache&apos;, &apos;Cache-Control&apos;: &apos;no-store, no-cache, must-revalidate, post-check=0, pre-check=0&apos;, &apos;Content-Encoding&apos;: &apos;gzip&apos;}
-&gt;&gt;&gt; print(html.content)
-略，内容太多了
-</code></pre><p>在复习完HTTP协议之后，我们再来看看我们的爬虫程序：<br><em>**</em> \SpiderCodes\httpSpidersp2.py<br>练习：将httpSpidersp2.py中的代码用Python3重新实现一次；</p>
-<h2 id="3-3关于爬虫抓取的策略"><a href="#3-3关于爬虫抓取的策略" class="headerlink" title="3.3关于爬虫抓取的策略"></a>3.3关于爬虫抓取的策略</h2><p>一般在抓取爬虫数据时，我们不会只抓取一个入口的URL数据就停止了。当有多个URL链接需要抓取时，我们怎么办？</p>
-<h3 id="3-3-1-深度优先算法"><a href="#3-3-1-深度优先算法" class="headerlink" title="3.3.1 深度优先算法"></a>3.3.1 深度优先算法</h3><p>深度优先是指搜索引擎先从网站页面上的某个链接进行抓取，进入到这个链接的页面之后，抓取页面上的内容，然后继续顺着当前页面上的这个链接进行抓取下去，直到顺着这个页面上的链接全部抓取完，最深的页面上没有链接了，爬虫再回过头来顺着第一个网站页面上的另外一个链接进行抓取；如下图所示。</p>
-<h3 id="3-3-2-广度-宽度优先算法"><a href="#3-3-2-广度-宽度优先算法" class="headerlink" title="3.3.2 广度/宽度优先算法"></a>3.3.2 广度/宽度优先算法</h3><p>广度优先则是另一个过程，它先把该层次的都遍历完，再继续往下走。<br>如下图所示：</p>
-<p>练习： 构造一个完全二叉树，实现其深度优先和广度优先遍历算法。<br>一棵二叉树至多只有最下面的一层上的结点的度数可以小2，并且最下层上的结点都集中在该层最左边的若干位置上，而在最后一层上，右边的若干结点缺失的二叉树，则此二叉树成为完全二叉树。</p>
-<p>完全二叉树如下：</p>
-<p>深度优先遍历的结果：[1, 3, 5, 7, 9, 4, 12, 11, 2, 6, 14, 13, 8, 10]<br>广度优先遍历的结果：[1, 3, 2, 5, 4, 6, 8, 7, 9, 12, 11, 14, 13, 10]</p>
-<h3 id="3-3-3-实践中怎么来组合抓取策略"><a href="#3-3-3-实践中怎么来组合抓取策略" class="headerlink" title="3.3.3 实践中怎么来组合抓取策略"></a>3.3.3 实践中怎么来组合抓取策略</h3><ul>
-<li>1.一般来说，重要的网页距离入口站点的距离很近；</li>
-<li>2.宽度优先有利于多爬虫并行进行合作；</li>
-<li>3.可以考虑将深度与广度相结合的方式来实现抓取的策略：优先考虑广度优先，<br>对深度进行限制最大深度；</li>
-</ul>
-<p>总结：一个通用爬虫的流程如下：</p>
-<h1 id="第四章-提取网页中的信息"><a href="#第四章-提取网页中的信息" class="headerlink" title="第四章 提取网页中的信息"></a>第四章 提取网页中的信息</h1><h2 id="4-1-数据的类型"><a href="#4-1-数据的类型" class="headerlink" title="4.1 数据的类型"></a>4.1 数据的类型</h2><p>网页中数据的类型简单来说可以分成以下三类：</p>
-<h3 id="4-1-1结构化数据"><a href="#4-1-1结构化数据" class="headerlink" title="4.1.1结构化数据"></a>4.1.1结构化数据</h3><p>可以用统一的结构加以表示的数据。可以使用关系型数据库表示和存储，表现为二维形式的数据。一般特点是：数据以行为单位，一行数据表示一个实体的信息，每一行数据的属性是相同的。<br>比如MySQL数据库表中的数据：</p>
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>age</th>
-<th>gender</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>aid1</td>
-<td>马化腾</td>
-<td>46</td>
-<td>male</td>
-</tr>
-<tr>
-<td>aid2</td>
-<td>马云</td>
-<td>53</td>
-<td>male</td>
-</tr>
-<tr>
-<td>aid3</td>
-<td>李彦宏</td>
-<td>49</td>
-<td>male</td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-1-2半结构化数据"><a href="#4-1-2半结构化数据" class="headerlink" title="4.1.2半结构化数据"></a>4.1.2半结构化数据</h3><p>是结构化数据的一种形式，并不符合关系型数据库或其他数据表的形式关联起来的数据模型结构，但包含相关标记，用来分隔语义元素以及对记录和字段进行分层。因此，它也被称为自描述的结构。常见的半结构数据有HTML，XML和JSON等，实际上是以树或者图的结构来存储的。<br>比如，一个简单的XML表示：</p>
-<pre><code>&lt;person&gt;
-    &lt;name&gt;A&lt;/name&gt;
-&lt;age&gt;13&lt;/age&gt;
-&lt;class&gt;aid1710&lt;/class&gt;
-    &lt;gender&gt;female&lt;/gender&gt;
-&lt;/person&gt;
-</code></pre><p>或者</p>
-<pre><code>&lt;person&gt;
-    &lt;name&gt;B&lt;/name&gt;
-    &lt;gender&gt;male&lt;/gender&gt;
-&lt;/person&gt;
-</code></pre><p>结点中属性的顺序是不重要的，不同的半结构化数据的属性的个数是不一定一样的。这样的数据格式，可以自由地表达很多有用的信息，包括自描述信息（元数据）。所以，半结构化数据的扩展性很好，特别适合于在互联网中大规模传播。</p>
-<h3 id="4-1-3非结构化数据"><a href="#4-1-3非结构化数据" class="headerlink" title="4.1.3非结构化数据"></a>4.1.3非结构化数据</h3><p>就是没有固定结构的数据。各种文档、图片、视频/音频等都属于非结构化数据。对于这类数据，我们一般直接整体进行存储，而且一般存储为二进制的数据格式；<br>除了结构化和半结构数据之外的数据都是非结构化数据。</p>
-<h2 id="4-2-关于XML-HTML-DOM和JSON文件"><a href="#4-2-关于XML-HTML-DOM和JSON文件" class="headerlink" title="4.2 关于XML,HTML,DOM和JSON文件"></a>4.2 关于XML,HTML,DOM和JSON文件</h2><h3 id="4-2-1-XML-HTML-DOM"><a href="#4-2-1-XML-HTML-DOM" class="headerlink" title="4.2.1 XML, HTML, DOM"></a>4.2.1 XML, HTML, DOM</h3><p>XML即Extentsible Markup Language(可扩展标记语言)，是用来定义其它语言的一种元语言，其前身是SGML(标准通用标记语言)。它没有标签集(tagset)，也没有语法规则(grammatical rule)，但是它有句法规则(syntax rule)。任何XML文档对任何类型的应用以及正确的解析都必须是良构的(well-formed)，即每一个打开的标签都必须有匹配的结束标签，不得含有次序颠倒的标签，并且在语句构成上应符合技术规范的要求。XML文档可以是有效的(valid)，但并非一定要求有效。所谓有效文档是指其符合其文档类型定义(DTD)的文档。如果一个文档符合一个模式(schema)的规定，那么这个文档是模式有效的(schema valid)。<br>HTML(Hyper Text Mark-up Language)即超文本标记语言，是WWW的描述语言。HTML与XML的区别与联系：<br>  XML和HTML都是用于操作数据或数据结构，在结构上大致是相同的，但它们在本质上却存在着明显的区别。综合网上的各种资料总结如下。</p>
-<p><strong> 一.语法要求不同：</strong></p>
-<ul>
-<li>1.在HTML中不区分大小写，在XML中严格区分。</li>
-<li>2.在HTML中，有时不严格，如果上下文清楚地显示出段落或者列表键在何处结尾，那么你可以省略<p></p>或者</li>之类的结束标记。在XML中，是严格的树状结构，绝对不能省略掉结束标记。
-<li>3.在XML中，拥有单个标记而没有匹配的结束标记的元素必须用一个/ 字符作为结尾。这样分析器就知道不用查找结束标记了。</li>
-<li>4.在XML中，属性值必须分装在引号中。在HTML中,引号是可用可不用的。 </li>
-<li>5.在HTML中，可以拥有不带值的属性名。在XML中,所有的属性都必须带有相应的值。 </li>
-<li>6.在XML文档中，空白部分不会被解析器自动删除; 但是html是过滤掉空格的。<br>XML的语法要求比HTML严格。</li>
-</ul>
-<p><strong> 二.标记不同：</strong></p>
-<ul>
-<li>1.HTML使用固有的标记; 而XML没有固有的标记。</li>
-<li>2.HTML标签是预定义的; XML标签是免费的、自定义的、可扩展的。</li>
-</ul>
-<p><strong> 三.作用不同：</strong></p>
-<ul>
-<li>1.HTML是用来显示数据的; XML是用来描述数据、存放数据的，所以可以作为持久化的介质。HTML将数据和显示结合在一起，在页面中把这数据显示出来；xml则将数据和显示分开。 XML被设计用来描述数据，其焦点是数据的内容。HTML被设计用来显示数据，其焦点是数据的外观。</li>
-<li>2.XML不是HTML的替代品，XML和HTML是两种不同用途的语言。 XML 不是要替换 HTML；实际上XML 可以视作对 HTML 的补充。XML 和HTML 的目标不同HTML 的设计目标是显示数据并集中于数据外观，而XML的设计目标是描述数据并集中于数据的内容。</li>
-<li>3.没有任何行为的XML, 与HTML 相似, XML不进行任何操作（共同点）。</li>
-<li>4.对于XML最好的形容可能是: XML是一种跨平台的，与软、硬件无关的，处理与传输信息的工具。</li>
-<li>5.XML未来将会无所不在，XML将成为最普遍的数据处理和数据传输的工具。</li>
-</ul>
-<p><strong>关于DOM：</strong></p>
-<p>文档对象模型（Document Object Model，简称DOM），是W3C组织推荐的处理可扩展标志语言的标准编程接口。在网页上，组织页面（或文档）的对象被组织在一个树形结构中，用来表示文档中对象的标准模型就称为DOM。Document Object Model的历史可以追溯至1990年代后期微软与Netscape的“浏览器大战”，双方为了在JavaScript与JScript一决生死，于是大规模的赋予浏览器强大的功能。微软在网页技术上加入了不少专属事物，既有VBScript、ActiveX、以及微软自家的DHTML格式等，使不少网页使用非微软平台及浏览器无法正常显示。DOM即是当时蕴酿出来的杰作。<br>DOM= Document Object Model，文档对象模型，DOM可以以一种独立于平台和语言的方式访问和修改一个文档的内容和结构。换句话说，这是表示和处理一个HTML或XML文档的常用方法。DOM很重要，DOM的设计是以对象管理组织（OMG）的规约为基础的，因此可以用于任何编程语言。最初人们把它认为是一种让JavaScript在浏览器间可移植的方法，不过DOM的应用已经远远超出这个范围。DOM技术使得用户页面可以动态地变化，如可以动态地显示或隐藏一个元素，改变它们的属性，增加一个元素等，DOM技术使得页面的交互性大大地增强。<br>DOM实际上是以面向对象方式描述的文档模型。DOM定义了表示和修改文档所需的对象、这些对象的行为和属性以及这些对象之间的关系。可以把DOM认为是页面上数据和结构的一个树形表示，不过页面当然可能并不是以这种树的方式具体实现。</p>
-<p>通过 JavaScript，您可以重构整个 HTML 文档。您可以添加、移除、改变或重排页面上的项目。要改变页面的某个东西，JavaScript 就需要获得对 HTML 文档中所有元素进行访问的入口。这个入口，连同对 HTML 元素进行添加、移动、改变或移除的方法和属性，都是通过文档对象模型来获得的（DOM）。</p>
-<h3 id="4-2-2-JSON文件"><a href="#4-2-2-JSON文件" class="headerlink" title="4.2.2 JSON文件"></a>4.2.2 JSON文件</h3><p>JSON(JavaScript Object Notation, JS对象标记) 是一种轻量级的数据交换格式。它基于 ECMAScript (w3c制定的JS规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。</p>
-<p><strong>JSON 语法规则：</strong><br>在JS 语言中，一切都是对象。因此，任何支持的类型都可以通过 JSON 来表示，例如字符串、数字、对象、数组等。<br>但是对象和数组是比较特殊且常用的两种类型：</p>
-<ul>
-<li>1.对象表示为键值对</li>
-<li>2.数据由逗号分隔</li>
-<li>3.花括号保存对象</li>
-<li>4.方括号保存数组</li>
-</ul>
-<p>JSON键值对是用来保存 JS 对象的一种方式，和 JS 对象的写法也大同小异，<br>键/值对组合中的键名写在前面并用双引号 “” 包裹，使用冒号 : 分隔，然后紧接着值<br>{“firstName”: “Json”,”class”:”aid1710”}<br>这很容易理解，等价于这条 JavaScript 语句：<br>{firstName : “Json”,”class”:”aid1710”}</p>
-<p><strong>JSON与JS对象的关系：</strong></p>
-<p>很多人搞不清楚 JSON 和JS对象的关系，甚至连谁是谁都不清楚。其实，可以这么理解：JSON是 JS对象的字符串表示法，它使用文本表示一个 JS 对象的信息，本质是一个字符串。<br>如var obj = {a: ‘Hello’, b: ‘World’}; //这是一个对象，注意键名也是可以使用引号包裹的<br>var json = ‘{“a”: “Hello”, “b”: “World”}’; //这是一个 JSON 字符串，本质是一个字符串。<br>Python中关于JSON的操作简单演示：<br>SpiderCodes\ josnTest.py</p>
-<p><strong>JSON和XML的比较:</strong></p>
-<ul>
-<li>1.可读性：<br>JSON和XML的可读性可谓不相上下，一边是简易的语法，一边是规范的标签形式，很难分出胜负。</li>
-<li>2.可扩展性：<br>XML天生有很好的扩展性，JSON当然也有，没有什么是XML可以扩展而JSON却不能扩展的。不过JSON在Javascript主场作战，可以存储Javascript复合对象，有着xml不可比拟的优势。</li>
-<li>3.编码难度：<br>XML有丰富的编码工具，比如Dom4j、JDom等，JSON也有提供的工具。无工具的情况下，相信熟练的开发人员一样能很快的写出想要的xml文档和JSON字符串，不过，xml文档要多很多结构上的字符。</li>
-<li>4.解码难度</li>
-</ul>
-<p><strong>XML的解析方式有两种：</strong></p>
-<ul>
-<li><p>一是通过文档模型解析，也就是通过父标签索引出一组标记。例如：xmlData.getElementsByTagName(“tagName”)，但是这样是要在预先知道文档结构的情况下使用，无法进行通用的封装。</p>
-</li>
-<li><p>另外一种方法是遍历节点（document 以及 childNodes）。这个可以通过递归来实现，不过解析出来的数据仍旧是形式各异，往往也不能满足预先的要求。凡是这样可扩展的结构数据解析起来一定都很困难。JSON也同样如此。如果预先知道JSON结构的情况下，使用JSON进行数据传递简直是太美妙了，可以写出很实用美观可读性强的代码。</p>
-</li>
-</ul>
-<p>如果你是纯粹的前台开发人员，一定会非常喜欢JSON。但是如果你是一个应用开发人员，就不是那么喜欢了，毕竟xml才是真正的结构化标记语言，用于进行数据传递。而如果不知道JSON的结构而去解析JSON的话，那简直是噩梦。费时费力不说，代码也会变得冗余拖沓，得到的结果也不尽人意。<br>但是这样也不影响众多前台开发人员选择JSON。因为json.js中的toJSONString()就可以看到JSON的字符串结构。当然不是使用这个字符串，这样仍旧是噩梦。常用JSON的人看到这个字符串之后，就对JSON的结构很明了了，就更容易的操作JSON。以上是在Javascript中仅对于数据传递的xml与</p>
-<p><strong>JSON的解析。</strong><br>在Javascript地盘内，JSON毕竟是主场作战，其优势当然要远远优越于xml。<br>如果JSON中存储Javascript复合对象，而且不知道其结构的话，相信很多程序员也一样是哭着解析JSON的。除了上述之外，JSON和XML还有另外一个很大的区别在于有效数据率。JSON作为数据包格式传输的时候具有更高的效率，这是因为JSON不像XML那样需要有严格的闭合标签，这就让有效数据量与总数据包比大大提升，从而减少同等数据流量的情况下，网络的传输压力。</p>
-<p><strong>实例比较：</strong></p>
-<p>XML和JSON都使用结构化方法来标记数据，下面来做一个简单的比较。<br>用XML表示中国部分省市数据如下：</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;country&gt;
-    &lt;name&gt;中国&lt;/name&gt;
-    &lt;province&gt;
-        &lt;name&gt;黑龙江&lt;/name&gt;
-        &lt;cities&gt;
-            &lt;city&gt;哈尔滨&lt;/city&gt;
-            &lt;city&gt;大庆&lt;/city&gt;
-        &lt;/cities&gt;
-    &lt;/province&gt;
-    &lt;province&gt;
-        &lt;name&gt;广东&lt;/name&gt;
-        &lt;cities&gt;
-            &lt;city&gt;广州&lt;/city&gt;
-            &lt;city&gt;深圳&lt;/city&gt;
-            &lt;city&gt;珠海&lt;/city&gt;
-        &lt;/cities&gt;
-    &lt;/province&gt;
-    &lt;province&gt;
-        &lt;name&gt;台湾&lt;/name&gt;
-        &lt;cities&gt;
-            &lt;city&gt;台北&lt;/city&gt;
-            &lt;city&gt;高雄&lt;/city&gt;
-        &lt;/cities&gt;
-    &lt;/province&gt;
-    &lt;province&gt;
-        &lt;name&gt;新疆&lt;/name&gt;
-        &lt;cities&gt;
-            &lt;city&gt;乌鲁木齐&lt;/city&gt;
-        &lt;/cities&gt;
-    &lt;/province&gt;
-&lt;/country&gt;
-</code></pre><p>用JSON表示如下：</p>
-<pre><code>{
-    &quot;name&quot;: &quot;中国&quot;,
-    &quot;province&quot;: [{
-        &quot;name&quot;: &quot;黑龙江&quot;,
-        &quot;cities&quot;: {
-            &quot;city&quot;: [&quot;哈尔滨&quot;, &quot;大庆&quot;]
-        }
-    }, {
-        &quot;name&quot;: &quot;广东&quot;,
-        &quot;cities&quot;: {
-            &quot;city&quot;: [&quot;广州&quot;, &quot;深圳&quot;, &quot;珠海&quot;]
-        }
-    }, {
-        &quot;name&quot;: &quot;台湾&quot;,
-        &quot;cities&quot;: {
-            &quot;city&quot;: [&quot;台北&quot;, &quot;高雄&quot;]
-        }
-    }, {
-        &quot;name&quot;: &quot;新疆&quot;,
-        &quot;cities&quot;: {
-            &quot;city&quot;: [&quot;乌鲁木齐&quot;]
-        }
-    }]
-}
-</code></pre><p>可以看到：JSON简单的语法格式和清晰的层次结构明显要比XML容易阅读，并且在数据交换方面，由于JSON所使用的字符要比XML少得多，可以大大得节约传输数据所占用得带宽。</p>
-<h2 id="4-3-怎么提取网页中的信息"><a href="#4-3-怎么提取网页中的信息" class="headerlink" title="4.3 怎么提取网页中的信息"></a>4.3 怎么提取网页中的信息</h2><h3 id="4-3-1-XPath与lxml"><a href="#4-3-1-XPath与lxml" class="headerlink" title="4.3.1 XPath与lxml"></a>4.3.1 XPath与lxml</h3><p>XPath是一门在XML文档中查找信息的语言，对XPath的理解是很多高级XML应用的基础，XPath在XML中通过元素和属性进行导航。<br>lxml是一个用来处理XML的第三方 Python 库，它在底层封装了用 C 语言编写的 libxml2和libxslt，并以简单强大的Python API，兼容并加强了著名的Element Tree API。<br>安装：pip install lxml<br>使用：from lxml import etree</p>
-<p><strong> 1.XPath术语：</strong><br>在XPath语境中，XML 文档被视作节点树，节点树的根节点也被称作文档节点。 XPath 将节点树中的节点（Node）分为七类：元素（Element），属性（Attribute），文本（Text），命名空间（Namespace），处理指令（Processing-instruction），注释（Comment）和文档节点（Document nodes）。<br>看一下 XML 文档例子： </p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;
-&lt;bookstore&gt;
-&lt;book&gt;
-  &lt;title lang=&quot;en&quot;&gt;Harry Potter&lt;/title&gt;
-  &lt;author&gt;J K. Rowling&lt;/author&gt; 
-  &lt;year&gt;2005&lt;/year&gt;
-  &lt;price&gt;29.99&lt;/price&gt;
-&lt;/book&gt;
-&lt;/bookstore&gt;
-</code></pre><p>以上的XML文档中：</p>
-<pre><code>&lt;bookstore&gt; （这是一个“根”）
-&lt;author&gt;J K. Rowling&lt;/author&gt; （这是一个“元素”）
-lang=&quot;en&quot; （这是一个“属性”）
-</code></pre><p>从另一个视角来看它：</p>
-<pre><code>bookstore                      （根）
-book                         （元素）
-title                        （元素）
-lang  = en                   （属性）
-text = Harry Potter          （文本）
-author                       （元素）
-text = J K. Rowling          （文本）
-year                         （元素）
-text = 2005                  （文本）
-price                        （元素）
-text = 29.99                 （文本）
-</code></pre><p><strong> 2.节点之间的关系</strong><br>父（Parent）：每个元素都肯定有一个父节点，最顶层的元素父亲是根节点。同理每个属性必然有一个父，它们的父是元素。 上例XML文档中，根bookstore是元素 book 的父节点，book是元素title, author, year, price 的父节点，title是lang 的父节点。<br>子（Children）：元素可以有零或多个子。上例XML文档中，title, author, year, price是book的子节点。<br>同胞（Sibling）：父节点相同的节点之间互为同胞，也称彼此的兄弟节点。上例XM文档中，title, author, year, price 彼此互为同胞。<br>先辈（Ancestor）：某节点的父节点、父的父，以此类推一直追溯至根节点之间所有节点。上例XM文档中，title, author, year, price 的先辈就是 book, bookstore。<br>后代（Descendant）：某节点的子节点、子的子，以此类推至最后一个子节点之间所有节点。上例XM文档中，bookstore 的后代就是 title, author, year, price 。</p>
-<p><strong> 3.选取节点</strong><br>以下为基本路径的表达方式，记住XPath的路径表达式都是基于某个节点之上的，例如最初的当前节点一般是根节点，这与Linux下路径切换原理是一样的。<br>表达式描述：<br>nodename     选取已匹配节点下名为 nodename 的子元素节点<br>/            如果以 / 开头，表示从根节点作为选取起点。<br>//            在已匹配节点后代中选取节点，不考虑目标节点的位置。<br>.            选取当前节点。<br>..            选取当前节点的父元素节点。<br>@            选取属性。</p>
-<p><strong> 4.通配符</strong></p>
-<p>*          匹配任何元素。<br>@*        匹配任何属性。<br>node()      匹配任何类型的节点。</p>
-<p><strong> 5.预判（Predicates）或 条件选取</strong><br>预判是用来查找某个特定的节点或者符合某种条件的节点，预判表达式位于方括号中。使用 “|” 运算符，你可以选取符合“或”条件的若干路径。<br>具体例子见下面代码lxmlTest.py。</p>
-<p><strong> 6.坐标轴</strong></p>
-<p>XPath 坐标轴：坐标轴用于定义当对当前节点的节点集合。</p>
-<table>
-<thead>
-<tr>
-<th>坐标轴名称</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ancestor</td>
-<td>选取当前节点的所有先辈元素及根节点。</td>
-</tr>
-<tr>
-<td>ancestor-or-self</td>
-<td>选取当前节点的所有先辈以及当前节点本身。</td>
-</tr>
-<tr>
-<td>attibute</td>
-<td>选取当前节点的所有属性。</td>
-</tr>
-<tr>
-<td>child</td>
-<td>选取当前节点的所有子元素。</td>
-</tr>
-<tr>
-<td>descendant</td>
-<td>选取当前节点的所有后代元素。</td>
-</tr>
-<tr>
-<td>descendant-or-self</td>
-<td>选取当前节点的所有后代元素以及当前节点本身。</td>
-</tr>
-<tr>
-<td>following</td>
-<td>选取文档中当前节点的结束标签之后的所有节点。</td>
-</tr>
-<tr>
-<td>following-sibling</td>
-<td>选取当前节点之后的所有同级节点。</td>
-</tr>
-<tr>
-<td>namespace</td>
-<td>选取当前节点的所有命名空间节点。</td>
-</tr>
-<tr>
-<td>parent</td>
-<td>选取当前节点的父节点。</td>
-</tr>
-<tr>
-<td>preceding</td>
-<td>选取当前节点的开始标签之前的所有节点。</td>
-</tr>
-<tr>
-<td>preceding-sibling</td>
-<td>选取当前节点之前的所有同级节点。</td>
-</tr>
-<tr>
-<td>self</td>
-<td>选取当前节点。</td>
-</tr>
-</tbody>
-</table>
-<p><strong> 7.位置路径的表达式</strong></p>
-<p>位置路径可以是绝对路径，也可以是相对路径。绝对路径以 “/” 开头。每条路径包括一个或多个步，每步之间以“/”分隔。</p>
-<pre><code>绝对路径：/step/step/…
-相对路径：step/step/…
-</code></pre><p>每步根据当前节点集合中的节点计算。</p>
-<p>步（step）包括三部分：</p>
-<pre><code>坐标轴（axis）：      定义所选节点与当前节点之间的关系。
-节点测试（node-test）：识别某个坐标轴内部的节点。
-预判（predicate）：    提出预判条件对节点集合进行筛选。
-</code></pre><p>步的语法：坐标轴::节点测试[预判]<br>**代码例子：SpiderCodes \lxmlTest.py</p>
-<h3 id="4-3-2-BeautifulSoup4"><a href="#4-3-2-BeautifulSoup4" class="headerlink" title="4.3.2 BeautifulSoup4"></a>4.3.2 BeautifulSoup4</h3><p>Beautiful Soup是用Python写的一个HTML/XML的解析器，它可以很好的处理不规范标记并生成剖析树(parse tree)。 它提供简单又常用的导航（navigating），搜索以及修改剖析树的操作。它可以大大节省你的编程时间。<br>安装：(sudo) pip install beautifuilsoup4<br>使用：<br>在程序中导入 Beautiful Soup库:<br>from BeautifulSoup import BeautifulSoup          # For processing HTML<br>from BeautifulSoup import BeautifulStoneSoup     # For processing XML<br>import BeautifulSoup                             # To get everything</p>
-<p>//代码例子</p>
-<pre><code>from bs4 import BeautifulSoup
-import re
-doc = [&apos;&lt;html&gt;&lt;head&gt;&lt;title&gt;Page title&lt;/title&gt;&lt;/head&gt;&apos;,
-       &apos;&lt;body&gt;&lt;p id=&quot;firstpara&quot; align=&quot;center&quot;&gt;This is paragraph &lt;b&gt;one&lt;/b&gt;.&apos;,
-       &apos;&lt;p id=&quot;secondpara&quot; align=&quot;blah&quot;&gt;This is paragraph &lt;b&gt;two&lt;/b&gt;.&apos;,
-       &apos;&lt;/html&gt;&apos;]
-soup = BeautifulSoup(&apos;&apos;.join(doc))
-print soup.prettify()
-</code></pre><p>定位某些 soup元素很简单，比如上例：</p>
-<pre><code>    soup.contents[0].name
-
-    soup.contents[0].contents[0].name
-
-    head = soup.contents[0].contents[0]
-
-    head.parent.name
-
-    head.next
-
-    head.nextSibling.name
-
-    head.nextSibling.contents[0]
-
-    head.nextSibling.contents[0].nextSibling
-
-也可以利用soup，获得特定标签或有着特定属性的标签，修改soup也很简单；
-</code></pre><p>**代码例子：SpiderCodes \ testBS4.py<br>进一步阅读，可以参考：<br> <a href="https://www.crummy.com/software/BeautifulSoup/bs3/documentation.zh.html" target="_blank" rel="noopener">https://www.crummy.com/software/BeautifulSoup/bs3/documentation.zh.html</a></p>
-<p><strong>BS4 与 lxml的比较：</strong><br>lxml    C实现，只会局部遍历,快；        复杂，语法不太友好；<br>BS4     Python实现，会加载整个文档,慢； 简单，API人性化；</p>
-<h3 id="4-3-3-正则表达式re"><a href="#4-3-3-正则表达式re" class="headerlink" title="4.3.3 正则表达式re"></a>4.3.3 正则表达式re</h3><p>被用来检索\替换那些符合某个模式(规则)的文本,对于文本过滤或规则匹配,最强大的就是正则表达式,是python爬虫里必不可少的神兵利器。</p>
-<p>基本匹配规则：</p>
-<table>
-<thead>
-<tr>
-<th>符号</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>[0-9]</td>
-<td>任意一个数字，等价\d</td>
-</tr>
-<tr>
-<td>[a-z]</td>
-<td>任意一个小写字母</td>
-</tr>
-<tr>
-<td>[A-Z]</td>
-<td>任意一个大写字母</td>
-</tr>
-<tr>
-<td>[^0-9]</td>
-<td>匹配非数字，等价\D</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>等价[a-z0-9_]，字母数字下划线</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>等价对\w取非</td>
-</tr>
-<tr>
-<td>.</td>
-<td>任意字符</td>
-</tr>
-<tr>
-<td>[]</td>
-<td>匹配内部任意字符或子表达式</td>
-</tr>
-<tr>
-<td>[^]</td>
-<td>对字符集合取非</td>
-</tr>
-<tr>
-<td>*</td>
-<td>匹配前面的字符或者子表达式0次或多次</td>
-</tr>
-<tr>
-<td>+</td>
-<td>匹配前一个字符至少1次</td>
-</tr>
-<tr>
-<td>？</td>
-<td>匹配前一个字符0次或多次</td>
-</tr>
-<tr>
-<td>^</td>
-<td>匹配字符串开头</td>
-</tr>
-<tr>
-<td>$</td>
-<td>匹配字符串结束</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Python使用正则表达式</strong><br>Python的re模块<br>pattern 编译好的正则表达式<br><em>几个重要的方法：</em><br>match： 匹配一次从开头;<br>search： 匹配一次，从某位置；<br>findall: 匹配所有；<br>split: 分隔；<br>sub: 替换；</p>
-<p><em>需要注意的两种模式： </em><br>贪婪模式：(.<em>)<br>懒惰模式：(.</em>?)</p>
-<p>代码例子见： SpiderCodes\greedyRe.py</p>
-<p><strong>练习： </strong><br>1.使用一个正则表达式来匹配url链接；如<a href="http://www.baidu.com" target="_blank" rel="noopener">http://www.baidu.com</a><br>2.抓取<a href="http://example.webscraping.com/sitemap.xml下的数据" target="_blank" rel="noopener">http://example.webscraping.com/sitemap.xml下的数据</a><br>见：rePracticep2.py<br>3.用正则表达式实现下面的效果：<br>把 i=d%0A&amp;from=AUTO&amp;to=AUTO&amp;smartresult=dict<br>转换成下面的形式：<br>i:d%0A<br>from:AUTO<br>to:AUTO<br>smartresult:dict</p>
-<p>关于正则表达式，更多的细节，可以读下这篇文章：<br><a href="https://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html" target="_blank" rel="noopener">https://www.cnblogs.com/deerchao/archive/2006/08/24/zhengzhe30fengzhongjiaocheng.html</a></p>
-<p>总结：正则，BS，lxml的比较</p>
-<h1 id="第五章-动态网页的挑战"><a href="#第五章-动态网页的挑战" class="headerlink" title="第五章 动态网页的挑战"></a>第五章 动态网页的挑战</h1><p>很多网站的数据，比如电商网站商品的价格，评论等等会采用动态加载的方式来加载，这样可能在爬虫程序刚刚访问时无法直接获取到相关数据。那么怎么应对这样的问题呢？</p>
-<h2 id="5-1-动态网页的使用场景"><a href="#5-1-动态网页的使用场景" class="headerlink" title="5.1 动态网页的使用场景"></a>5.1 动态网页的使用场景</h2><p>先看下面一个例子：<br>     这是京东上看一本书的场景。我们发现打开一本书之后，书的价格，排名等信息及书的评论信息不是在我们第一次打开网站时就立即加载进来的。而是通过二次请求或多次的异步请求获取的。这样的页面就是动态页面。<br>关于动态页面使用的场景：<br>    希望异步刷新的场景。有些网页内容很多，一次加载完对服务器压力很大，而且有的用户不会去查看所有内容；</p>
-<h2 id="5-2-回到与HTTP服务器发送请求数据的原始方法"><a href="#5-2-回到与HTTP服务器发送请求数据的原始方法" class="headerlink" title="5.2 回到与HTTP服务器发送请求数据的原始方法"></a>5.2 回到与HTTP服务器发送请求数据的原始方法</h2><h3 id="5-2-1-GET方法"><a href="#5-2-1-GET方法" class="headerlink" title="5.2.1 GET方法"></a>5.2.1 GET方法</h3><p>GET把参数数据队列添加到URL中，Key和Value的各个字段一一对应；在URL中可以看到。<br>浏览器的URL中有些符号，字符不能被很好的识别。那么我们需要有一套编码的方式来传递信息。所以发送端需要做urlencode； 接收端需要做urldecode;<br><a href="https://www.baidu.com/s?ie=utf-8&amp;f=3&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=python%20%E7%88%AC%E8%99%AB&amp;oq=python%2520%25E7%2588%25AC%25E8%2599%25AB&amp;rsv_pq=ef9e51560000eca9&amp;rsv_t=db33UmQaiVre2ourDQMjsxtS03DJVCOUAc2AHonGCIhHT2or8zim%2F96kVGA&amp;rqlang=cn&amp;rsv_enter=0&amp;prefixsug=python%2520%25E7%2588%25AC%25E8%2599%25AB&amp;rsp=0&amp;rsv_sug=2" target="_blank" rel="noopener">https://www.baidu.com/s?ie=utf-8&amp;f=3&amp;rsv_bp=1&amp;rsv_idx=1&amp;tn=baidu&amp;wd=python%20%E7%88%AC%E8%99%AB&amp;oq=python%2520%25E7%2588%25AC%25E8%2599%25AB&amp;rsv_pq=ef9e51560000eca9&amp;rsv_t=db33UmQaiVre2ourDQMjsxtS03DJVCOUAc2AHonGCIhHT2or8zim%2F96kVGA&amp;rqlang=cn&amp;rsv_enter=0&amp;prefixsug=python%2520%25E7%2588%25AC%25E8%2599%25AB&amp;rsp=0&amp;rsv_sug=2</a><br>在线测试工具: <a href="http://tool.chinaz.com/tools/urlencode.aspx" target="_blank" rel="noopener">http://tool.chinaz.com/tools/urlencode.aspx</a></p>
-<p>1.<a href="https://www.baidu.com/s?wd=DNS?xxx=yyy&amp;time=zzz" target="_blank" rel="noopener">https://www.baidu.com/s?wd=DNS?xxx=yyy&amp;time=zzz</a> get 请求的标识<br>2.<a href="http://acb.com/login?name=zhangsan&amp;password=123" target="_blank" rel="noopener">http://acb.com/login?name=zhangsan&amp;password=123</a><br>login: name=zhangsan  password=123<br>示例代码：<br>          SpiderCodes\baiduSearch.py</p>
-<h3 id="5-2-2-POST方法"><a href="#5-2-2-POST方法" class="headerlink" title="5.2.2 POST方法"></a>5.2.2 POST方法</h3><p>通过一个例子来看POST方法的使用：</p>
-<p>这是有道翻译的页面，仔细观察会发现，当用户每次输入一个想要翻译的词语时，页面的URL信息并不发生任何改变。这是一个典型的异步使用Ajax的技术，用JSON格式进行数据的传递。<br>我们如何利用爬虫程序来实现一个自己的翻译器呢？<br>来看代码示例：SpiderCodes\youdaofanyip2.py</p>
-<h2 id="5-3-更加难以对付的动态网站"><a href="#5-3-更加难以对付的动态网站" class="headerlink" title="5.3 更加难以对付的动态网站"></a>5.3 更加难以对付的动态网站</h2><h3 id="5-3-1-应对需要多次数据的交互模拟的网站"><a href="#5-3-1-应对需要多次数据的交互模拟的网站" class="headerlink" title="5.3.1 应对需要多次数据的交互模拟的网站"></a>5.3.1 应对需要多次数据的交互模拟的网站</h3><p>我们有时会遇到像淘宝这样的大型网站，对数据版权看得特别重的，它们的网站有大量的工程师和技术人员去维护，它们也可能在技术手段上采用多次交互数据包的方式来完成网站服务器与用户浏览器之间的交互。如果此时还采用传统的分析数据包的方式会比较的复杂，难度较高。那么，有没有一劳永逸的方法，来解决此类问题呢？<br>我们的解决方案是：Selenium + PhantomJS。<br>     我们的爬虫其实就是在做模拟浏览器的行为。</p>
-<h3 id="5-3-2-Selenium"><a href="#5-3-2-Selenium" class="headerlink" title="5.3.2 Selenium"></a>5.3.2 Selenium</h3><p>一个Web自动化测试工具，最初是为了网站自动化测试而开发的；我们玩游戏有按键精灵；Selenium也可以做类似的事情，但是它是在浏览器中做这样的事情。<br>安装： sudo pip install selenium(pip install selenium)<br>在Python中 from selenium import webdriver 来测试是否装好<br>说明：想要用Python做自动化测试的童鞋们可以好好研究一下Selenium的使用。</p>
-<h3 id="5-3-3-PhantomJS"><a href="#5-3-3-PhantomJS" class="headerlink" title="5.3.3 PhantomJS"></a>5.3.3 PhantomJS</h3><p>一个基于webkit无界面(headless)的浏览器,它可以把网站加载到内存中并执行页面上的JS，但它没有图形用户界面，所以耗费的资源比较少；<br>安装：    sudo apt install phantomjs （此方法可能安装不完整,导致部分功能无法使用）<br><strong>Linux Ubuntu下完全安装的方法</strong>(参看<a href="http://blog.csdn.net/m0_38124502/article/details/79276499" target="_blank" rel="noopener">http://blog.csdn.net/m0_38124502/article/details/79276499</a><br>)<br>Wget<br><a href="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2" target="_blank" rel="noopener">https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2</a></p>
-<pre><code>cd 下载
-tar -xvf phantomjs-2.1.1-linux-x86_64.tar.bz2 
-cd phantomjs-2.1.1-linux-x86_64/
-cd bin/
-sudo cp phantomjs /usr/bin
-</code></pre><p>python -启动-&gt; 浏览器进程phantomjs，</p>
-<p><strong>测试：</strong><br>SpiderCodes\Phantomjs..  对其中的例子helloworld.js， pageload.js<br>进行测试；<br>注意：   <em>**</em>有可能造成资源泄漏；为了避免这种事的发生，需要有个策略适当的时候去kill phantomjs进程。</p>
-<h3 id="5-3-4-Selenium-PhantomJS"><a href="#5-3-4-Selenium-PhantomJS" class="headerlink" title="5.3.4 Selenium + PhantomJS"></a>5.3.4 Selenium + PhantomJS</h3><p>双剑合璧利用二者同时完成某个任务，示例代码如下：<br>SpiderCodes\testPhantomJS.py</p>
-<h2 id="5-4-关于动态网站信息抓取的总结"><a href="#5-4-关于动态网站信息抓取的总结" class="headerlink" title="5.4 关于动态网站信息抓取的总结"></a>5.4 关于动态网站信息抓取的总结</h2><p>总的来说，我们的爬虫要尽量模拟的看起来就像是真正的用户在浏览器上访问服务器网站的行为。如果我们使用GET或POST的方式来模拟浏览器与服务器间通信的行为，成本比较低，但是应对复杂的网站或者服务器精心防御的网站来说是很难骗过服务器的。Selenim+PhantomJS的方案则会让我们的程序看起来更像是普通的用户，但是它的效率相对而言会降低很多，速度也会慢很多。在大规模爬去数据时可能遇到许多新的挑战。（比如网站尺寸的设置，等待时间的设定等）</p>
-<p><strong>练习：</strong><br>抓取猫眼电影 <a href="http://maoyan.com/board/4?offset" target="_blank" rel="noopener">http://maoyan.com/board/4?offset</a> 中TOP100的电影榜单；</p>
-<h1 id="第六章-表单与爬虫登录问题"><a href="#第六章-表单与爬虫登录问题" class="headerlink" title="第六章 表单与爬虫登录问题"></a>第六章 表单与爬虫登录问题</h1><p>前面的章节中，我们介绍了如果在客户端与服务器之间进行数据交换。我们可以使用GET方法和POST方法与服务器进行交互，敏感数据只应使用POST请求进行发送，以避免将书暴露在URL中。当然，服务器还支持其他HTTP方法，比如PUT和DELETE等方法，但这些方法在表单中都不支持。</p>
-<h2 id="6-1-关于表单"><a href="#6-1-关于表单" class="headerlink" title="6.1 关于表单"></a>6.1 关于表单</h2><p>客户端的浏览器需要与网站服务器进行交互，服务器需要根据用户输入返回对应的信息。<br>来看w3c的一个例子：<br><a href="http://www.w3school.com.cn/html/html_forms.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/html/html_forms.asp</a><br>关于GET，POST与服务器的交互方法，可以见5.2节。<br>下面我们重点来看一个怎么处理登录表单的问题。</p>
-<h2 id="6-2-管理cookie"><a href="#6-2-管理cookie" class="headerlink" title="6.2 管理cookie"></a>6.2 管理cookie</h2><h3 id="6-2-1-使用cookie登录"><a href="#6-2-1-使用cookie登录" class="headerlink" title="6.2.1 使用cookie登录"></a>6.2.1 使用cookie登录</h3><p>HTTP协议本身是无状态的，怎么保存来过或登陆过网站的信息？<br>所以我们需要在HTTP协议之外通过某种机制来识别用户的身份。于是就有了Session和Cookie。</p>
-<p><strong>什么是Cookie，什么是Session？</strong><br><strong>会话(Session)跟踪</strong>是Web程序中常用的技术，用来跟踪用户的整个会话。常用的会话跟踪技术是Cookie与Session。Cookie通过在客户端记录信息确定用户身份，Session通过在服务器端记录信息确定用户身份。</p>
-<p><strong>Cookie</strong>意为“甜饼”，是由W3C组织提出，最早由Netscape社区发展的一种机制。目前Cookie已经成为标准，所有的主流浏览器如IE、Netscape、Firefox、Opera等都支持Cookie。由于HTTP是一种无状态的协议，服务器单从网络连接上无从知道客户身份。所以就给客户端们颁发一个通行证吧，每人一个，无论谁访问都必须携带自己通行证。这样服务器就能从通行证上确认客户身份了。这就是Cookie的工作原理。</p>
-<p><strong>Cookie</strong>实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie。客户端浏览器会把Cookie保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器检查该Cookie，<br>以此来辨认用户状态。服务器还可以根据需要修改Cookie的内容。</p>
-<p>我们通过一个实例来看一下怎么使用Cookie做登录的操作。有些时候爬虫只有登录之后才能抓取到网页中的信息。比如微博，知乎，人人网等。<br>关于Cookie的更详细信息，可以参看： <a href="https://www.w3cschool.cn/pegosu/skj81ozt.html" target="_blank" rel="noopener">https://www.w3cschool.cn/pegosu/skj81ozt.html</a><br>使用Cookie登录页面，见Demo: SpiderCodes\testRenrenLoginwithCookiep2.py</p>
-<h3 id="6-2-2-补充知识-cookiejar的使用"><a href="#6-2-2-补充知识-cookiejar的使用" class="headerlink" title="6.2.2 补充知识 cookiejar的使用"></a>6.2.2 补充知识 cookiejar的使用</h3><p>Cookie有时间限制，有域的限制，有编码问题等等。如果自己来管理Cookie，会很繁琐，特别是当有多个Cookie需要管理时，想要很好的管理Cookie很困难。<br>当遇到网页登录后，返回302跳转的情况下，urllib2的Response会丢失Set-Cookie的信息，导致登录不成功。<br>我们需要一个通用的能处理Cookie的工具来自动处理Set-Cookie请求；自动管理过期的Cookie，自动在对应域下发特殊Cookie；为了应对这些问题，我们引入了CookieJar；</p>
-<h2 id="6-3-关于验证码（CAPTCHA）"><a href="#6-3-关于验证码（CAPTCHA）" class="headerlink" title="6.3 关于验证码（CAPTCHA）"></a>6.3 关于验证码（CAPTCHA）</h2><p>网站为了防止黑客程序的恶意欺诈和攻击，采取的一种防御措施。据说最早是paypal这家公司引入的技术，现在已经在互联网网站中被广泛使用。</p>
-<p>一般处理验证码CAPTCHA有两种方式：<br> 1）在需要输入验证码时程序弹出图片让用户自己输入；<br> 2）使用图像识别技术来识别图中的信息；</p>
-<p>光学字符识别 OCR：OCR（Optical Character Recognition，光学字符识别）是指电子设备（例如扫描仪或数码相机）检查纸上打印的字符，通过检测暗、亮的模式确定其形状，然后用字符识别方法，将形状翻译成计算机文字的过程;<br>程序处理复杂验证码的方法：</p>
-<h3 id="6-3-1．使用Google的开源项目-Tesseract；"><a href="#6-3-1．使用Google的开源项目-Tesseract；" class="headerlink" title="6.3.1．使用Google的开源项目 Tesseract；"></a>6.3.1．使用Google的开源项目 Tesseract；</h3><p>安装Tesseract：<br>Ubuntu中安装：</p>
-<pre><code>sudo apt-get install tesseract-ocr
-pip install pytesseract
-</code></pre><p>训练与测试：<a href="https://www.cnblogs.com/cnlian/p/5765871.html" target="_blank" rel="noopener">https://www.cnblogs.com/cnlian/p/5765871.html</a></p>
-<p>简单的Python测试代码：</p>
-<pre><code>from PIL import Image
-from pytesseract import *
-
-image = Image.open(&apos;test1.jpg&apos;)
-
-text = image_to_string(image)
-print(text)
-</code></pre><p>Demo见SpiderCodes\TestOCR\</p>
-<h3 id="6-3-2-使用百度AI等等："><a href="#6-3-2-使用百度AI等等：" class="headerlink" title="6.3.2.使用百度AI等等："></a>6.3.2.使用百度AI等等：</h3><p>见Demo: TestBaiduAI.py<br>添加两个Demo：关于验证码识别的处理</p>
-<h1 id="第七章-爬虫的持久化问题"><a href="#第七章-爬虫的持久化问题" class="headerlink" title="第七章 爬虫的持久化问题"></a>第七章 爬虫的持久化问题</h1><p>爬虫抓取回来的数据，怎么储存？<br>直接存储在文件中吗，还是存成JSON文件的格式呢。如果数据量巨大呢。我们抓回来的数据是需要将来能够被很好的查询和使用的。那怎么办呢?</p>
-<h2 id="7-1-MySQL"><a href="#7-1-MySQL" class="headerlink" title="7.1 MySQL"></a>7.1 MySQL</h2><p>安装：<br>    pip install PyMySQL<br>使用：<br>   见PyMysql.py</p>
-<h2 id="7-2-MongoDB"><a href="#7-2-MongoDB" class="headerlink" title="7.2 MongoDB"></a>7.2 MongoDB</h2><h3 id="7-2-1-什么是MongoDB"><a href="#7-2-1-什么是MongoDB" class="headerlink" title="7.2.1 什么是MongoDB"></a>7.2.1 什么是MongoDB</h3><p><a href="https://qixinyue.github.io/2018/08/07/mongodb/" title="mongo" target="_blank" rel="noopener">https://qixinyue.github.io/2018/08/07/mongodb/</a></p>
-<h3 id="7-2-2-怎么在爬虫中使用MongoDB"><a href="#7-2-2-怎么在爬虫中使用MongoDB" class="headerlink" title="7.2.2 怎么在爬虫中使用MongoDB"></a>7.2.2 怎么在爬虫中使用MongoDB</h3><h3 id="7-3-HDFS-HBase"><a href="#7-3-HDFS-HBase" class="headerlink" title="7.3 HDFS, HBase"></a>7.3 HDFS, HBase</h3><h1 id="第八章-高效率的爬取数据"><a href="#第八章-高效率的爬取数据" class="headerlink" title="第八章 高效率的爬取数据"></a>第八章 高效率的爬取数据</h1><p>人多力量大，多人干事更快。多个爬虫一起干活效率也更高。<br>随着爬虫抓取数据的提速，及数据量抓取的庞大，问题也会凸显。对方也会尝试用各种手段来禁止爬虫的行为。</p>
-<h2 id="8-1-多进程爬虫"><a href="#8-1-多进程爬虫" class="headerlink" title="8.1 多进程爬虫"></a>8.1 多进程爬虫</h2><h2 id="8-2-多线程爬虫"><a href="#8-2-多线程爬虫" class="headerlink" title="8.2 多线程爬虫"></a>8.2 多线程爬虫</h2><h3 id="8-2-1-关于GIL"><a href="#8-2-1-关于GIL" class="headerlink" title="8.2.1 关于GIL"></a>8.2.1 关于GIL</h3><h3 id="8-2-2-线程池的出场"><a href="#8-2-2-线程池的出场" class="headerlink" title="8.2.2 线程池的出场"></a>8.2.2 线程池的出场</h3><h2 id="8-3-关于代理服务器的设置"><a href="#8-3-关于代理服务器的设置" class="headerlink" title="8.3 关于代理服务器的设置"></a>8.3 关于代理服务器的设置</h2><p>有过一定做爬虫经验的人应该都知道，抓的网站和数据多了，如果爬虫抓取速度过快，免不了触发网站的防爬机制，几乎用的同一招就是封IP。<br>解决方案有2个：</p>
-<pre><code>1、同一IP，放慢速度(爬取速度慢)
-2、使用代理IP访问(推荐)
-</code></pre><p>第一种方案牺牲的就是时间和速度，来换取数据，但是一般情况下我们的时间是很宝贵的，我们希望做到的是用最短的时间获取最多的数据，所以应该尽量使用第二种方案。<br>问题是从哪里能找到这么多代理IP呢？</p>
-<p>这个问题可以问问搜索引擎。当然如果能结合爬虫程序来问搜索引擎那效率会更高。<br>代码示例：<br>    SpiderCodes\testProxy.py</p>
-<p>练习：<a href="https://www.kuaidaili.com/ops/" target="_blank" rel="noopener">https://www.kuaidaili.com/ops/</a> 从这个网页中爬取代理服务器,<br>附录A中有100个代理服务器的地址，请写个程序测试一个看看有多少个是可以正常使用的。</p>
-<h1 id="第九章-大数据量时的去重"><a href="#第九章-大数据量时的去重" class="headerlink" title="第九章 大数据量时的去重"></a>第九章 大数据量时的去重</h1><p>随着抓取的数据量到一定程度，数据重复及爬取过程中的死链问题会凸显。怎么来解决这些问题呢？</p>
-<h2 id="9-1-怎么去重"><a href="#9-1-怎么去重" class="headerlink" title="9.1 怎么去重"></a>9.1 怎么去重</h2><h2 id="9-2-Redis数据库"><a href="#9-2-Redis数据库" class="headerlink" title="9.2 Redis数据库"></a>9.2 Redis数据库</h2><h3 id="9-2-1-关于Redis"><a href="#9-2-1-关于Redis" class="headerlink" title="9.2.1 关于Redis"></a>9.2.1 关于Redis</h3><h3 id="9-2-2-实际项目中使用Redis"><a href="#9-2-2-实际项目中使用Redis" class="headerlink" title="9.2.2 实际项目中使用Redis"></a>9.2.2 实际项目中使用Redis</h3><h3 id="9-3-BloomFilter"><a href="#9-3-BloomFilter" class="headerlink" title="9.3 BloomFilter"></a>9.3 BloomFilter</h3><h1 id="第十章-Scrapy框架"><a href="#第十章-Scrapy框架" class="headerlink" title="第十章 Scrapy框架"></a>第十章 Scrapy框架</h1><p>在了解了爬虫各种基础知识之后，我们有时需要快速搭建一个个爬虫的程序。有没有这么一个方便的工具或框架能让我们快速搭建起一个个爬虫程序呢？Scrapy呼之欲出。</p>
-<h2 id="10-1-什么是Scrapy"><a href="#10-1-什么是Scrapy" class="headerlink" title="10.1 什么是Scrapy"></a>10.1 什么是Scrapy</h2><p>纯Python实现的一个为了爬取网站数据，提取结构性数据而编写的应用框架。框架本身把一些重复性的工作给你做好了；你就可以轻轻松松的按照其框架本身写几个简单的模块或者简单的扩展一些模块就可以你个性化的功能；当然带来的问题是首先你要学习了解框架，还有，想突破框架本身的限制，比较困难；<br>Scrapy是基于Twisted(竞争对手Tornado)异步网络框架，Scrapy的组件及架构图如下：</p>
-<p>Scrapy Engine(引擎): 负责Spider、ItemPipeline、Downloader、Scheduler中间的通讯，信号、数据传递等。<br>Scheduler(调度器): 它负责接受引擎发送过来Request请求，并按照一定的方式进行整理排列，入队，当引擎需要时，交还给引擎。<br>Downloader（下载器）：负责下载Scrapy Engine(引擎)发送的所有Requests请求，并将其获取到的Responses交还给Scrapy Engine(引擎)，由引擎交给Spider来处理。<br>Spider（爬虫）：它负责处理所有Responses,从中分析提取数据，获取Item字段需要的数据，并将需要跟进的URL提交给引擎，再次进入Scheduler(调度器)。<br>Item Pipeline(管道)：它负责处理Spider中获取到的Item，并进行进行后期处理（详细分析、过滤、存储等）的地方。<br>Downloader Middlewares（下载中间件）：可以当作是一个可以自定义扩展下载功能的组件。<br>Spider Middlewares（Spider中间件）：可以理解为是一个可以自定扩展和操作引擎和Spider中间通信的功能组件（比如进入Spider的Responses; 和从Spider出去的Requests）</p>
-<h2 id="10-2-怎么安装使用Scrapy"><a href="#10-2-怎么安装使用Scrapy" class="headerlink" title="10.2 怎么安装使用Scrapy"></a>10.2 怎么安装使用Scrapy</h2><p>下面运行的环境是Ubuntu 17.04</p>
-<h3 id="10-2-1-安装"><a href="#10-2-1-安装" class="headerlink" title="10.2.1 安装"></a>10.2.1 安装</h3><p>安装Scrapy in Ubuntu：</p>
-<pre><code>sudo apt-get install python-dev python-pip libxml2-dev libxslt1-dev
-sudo pip install scrapy
-</code></pre><h3 id="10-2-2-制作一个Scrapy爬虫需要的四个步骤"><a href="#10-2-2-制作一个Scrapy爬虫需要的四个步骤" class="headerlink" title="10.2.2 制作一个Scrapy爬虫需要的四个步骤"></a>10.2.2 制作一个Scrapy爬虫需要的四个步骤</h3><ul>
-<li><p>新建项目 (scrapy startproject spiderName)新建一个新的爬虫项目，一个项目可能包含很多个爬虫;<br>scrapy startproject tencentSpider<br>查看项目结构：</p>
-<p>  tarena@tedu:~/Spider/tencentSpider$ tree.：<br>  ├── scrapy.cfg<br>  └── tencentSpider</p>
-<pre><code>├── __init__.py
-├── items.py
-├── middlewares.py
-├── pipelines.py
-├── settings.py
-└── spiders
-    └── __init__.py
-</code></pre><p>  2 directories, 7 files</p>
-</li>
-<li><p>明确目标：明确你想要抓取的目标，生产一个具体的爬虫</p>
-<p>  scrapy genspider tencent<br>  cd tencentSpider<br>  scrapy genspider tencent hr.tencent.com<br>  tarena@tedu:~/Spider/tencentSpider$ tree<br>  ├── scrapy.cfg<br>  ├── tecentLog.txt<br>  └── tencentSpider</p>
-<pre><code>├── __init__.py
-├── __init__.pyc
-├── items.py
-├── middlewares.py
-├── pipelines.py
-├── settings.py
-├── settings.pyc
-└── spiders
-    ├── __init__.py
-    ├── __init__.pyc
-    └── tecent.py
-</code></pre><p>  2 directories, 12 files</p>
-</li>
-</ul>
-<p>下面需要具体取修改代码逻辑，按照我们的需求去实现自己的爬虫逻辑：<br>修改setttings.py 设置</p>
-<pre><code>pipelines.py 保存的逻辑
-tecent.py,   抓取页面信息和继续跳转的逻辑
-items.py     保存item的映射
-</code></pre><ul>
-<li>制作爬虫 (spiders/spiderName.py)：制作爬虫开始爬取网页;</li>
-<li><p>存储内容 (pipelines.py)：设计管道存储爬取内容;</p>
-</li>
-<li><p>在Scrapy下启动爬虫：<br>scrapy crawl tencent</p>
-</li>
-</ul>
-<h1 id="第十一章-反爬及应对反爬的策略"><a href="#第十一章-反爬及应对反爬的策略" class="headerlink" title="第十一章 反爬及应对反爬的策略"></a>第十一章 反爬及应对反爬的策略</h1><p>随着抓取的数据量到一定程度，数据重复及爬取过程中的死链问题会凸显。怎么来解决反爬问题呢？</p>
-<h2 id="11-1-网站如何发现爬虫"><a href="#11-1-网站如何发现爬虫" class="headerlink" title="11.1 网站如何发现爬虫"></a>11.1 网站如何发现爬虫</h2><p>一般来说，网站会有以下一些简单的策略发现爬虫程序：<br>  1）单一IP非常规的访问频次；<br>  2）单一IP非常规的数据流量；<br>  3）大量重复简单的网站浏览行为，只下载网页，没有后续的JS,CSS请求；<br>  5）通过一些陷阱来发现爬虫，例如一些通过CSS对用户隐藏的链接，只有爬虫才会访问；</p>
-<h2 id="11-2-网站如何进行反爬"><a href="#11-2-网站如何进行反爬" class="headerlink" title="11.2 网站如何进行反爬"></a>11.2 网站如何进行反爬</h2><p>一般来说网站会采用下面两个简单的策略来防止爬虫：<br>1.大量使用动态网页，是的爬虫的爬取难度增加，重要数据都拿不到，即使爬虫采用了Web环境来渲染（内置浏览器），也会大大增加爬虫的负担和爬虫时间；（当然，采用动态加载的技术，对服务器的负担也会大大减轻）<br>2.基于流量的拒绝：<br>  开启带宽限制模块，限制每个IP最多连接数，最大带宽等；</p>
-<h2 id="11-3-爬虫如何发现自己可能被网站识别了"><a href="#11-3-爬虫如何发现自己可能被网站识别了" class="headerlink" title="11.3 爬虫如何发现自己可能被网站识别了"></a>11.3 爬虫如何发现自己可能被网站识别了</h2><p>如果爬取过程中出现以下情况，那么小心了，你的爬虫可能被网站发现了：<br>    1.验证码出现；<br>    2.Unusual content delivery delay 非常规的延时;<br>    3.Frequent response with HTTP 403, 404, 301 or 50x error;</p>
-<h2 id="11-4-爬虫应对反爬的策略"><a href="#11-4-爬虫应对反爬的策略" class="headerlink" title="11.4 爬虫应对反爬的策略"></a>11.4 爬虫应对反爬的策略</h2><p>我们可以从以下几个方面来考虑应对反爬：<br>1）User-Agent池；<br>2）代理服务器池；<br>3）CookieJar等的管理；<br>4）协议的细节考虑，如：需要大量的实践经验总结的<br>          抓取数据时不处理CSS，JS等；<br>          nofollow属性；css的display属性；探测陷阱；<br>          验证refer locator等；<br>5）使用分布式的多机策略；爬慢点，把爬虫放到访问频繁的主站IP子网下，如教育网；<br>6）使用了规则来批量爬取，需对规则进行组合；<br>7）验证码的搞定：机器学习，图像识别；<br>8）尽可能遵守Robots协议；</p>
-<p><strong>总结与进一步工作</strong><br><strong>这十一篇主要面对初级及中级爬虫工程师的参考资料。由于本人能力及知识有限，目前只能总结到这里。但是关于爬虫的知识和技术，互联网知识和技术更新换代非常快。后期本人会尽我所能，根据实际工程需要，增加新的实用的知识。</strong></p>
-<p>附录A 收集到的100个可能能用的代理服务器<br>106.39.179.236:80<br>23.94.191.219:1080<br>121.41.175.199:80<br>122.183.139.98:8080<br>118.193.107.182:80<br>92.42.109.45:1080<br>128.199.77.93:8080<br>46.101.60.239:8118<br>185.106.121.98:1080<br>185.82.203.81:1080<br>112.114.93.27:8118<br>104.131.69.203:80<br>138.201.0.184:1080<br>46.101.46.174:8118<br>178.62.123.38:8118<br>217.23.15.193:1080<br>60.168.207.208:8010<br>139.59.170.110:8118<br>223.241.118.228:8010<br>123.192.114.113:80<br>103.37.95.110:8000<br>180.179.43.250:80<br>185.117.74.81:1080<br>116.199.2.196:80<br>118.193.107.119:80<br>128.199.77.93:8000<br>170.246.114.213:8080<br>104.243.47.146:1080<br>111.3.108.44:8118<br>124.42.7.103:80<br>39.134.161.18:80<br>146.185.156.221:8118<br>47.89.249.110:80<br>118.193.107.192:80<br>124.232.163.10:3128<br>223.19.105.206:80<br>46.166.168.243:1080<br>118.114.77.47:8080<br>182.253.205.85:8090<br>45.55.132.29:9999<br>58.251.227.238:8118<br>118.193.107.142:80<br>118.193.107.135:80<br>118.193.107.219:80<br>46.101.45.212:8118<br>114.249.45.176:8118<br>80.152.201.116:8080<br>94.177.254.86:80<br>197.155.158.22:80<br>196.200.173.83:80<br>212.237.10.45:8080<br>188.166.144.173:8118<br>210.71.198.230:8118<br>177.114.228.112:8080<br>218.50.2.102:8080<br>198.204.251.158:1080<br>188.166.204.221:8118<br>185.117.74.126:1080<br>106.39.179.244:80<br>39.134.161.14:8080<br>85.10.247.136:1080<br>46.166.168.245:1080<br>5.167.50.35:3129<br>118.178.227.171:80<br>122.96.59.102:82<br>52.174.89.111:80<br>103.25.173.237:808<br>121.232.145.168:9000<br>103.251.167.8:1080<br>46.101.26.217:8118<br>171.37.178.175:9797<br>103.251.166.18:1080<br>186.225.176.93:8080<br>121.232.147.132:9000<br>104.224.168.178:8888<br>47.90.2.253:8118<br>121.232.145.82:9000<br>118.193.107.36:80<br>58.56.128.84:9001<br>139.59.153.59:80<br>122.183.139.101:8080<br>163.172.184.226:8118<br>198.204.251.146:1080<br>213.133.100.195:1080<br>42.104.84.106:8080<br>117.2.64.109:8888<br>121.232.144.229:9000<br>156.67.219.61:8080<br>138.36.106.90:80<br>1.179.233.66:80<br>222.33.192.238:8118<br>138.197.224.12:8118<br>151.106.10.6:1080<br>134.35.250.204:8080<br>58.251.227.233:8118<br>52.221.40.19:80<br>222.73.68.144:8090<br>46.166.168.247:1080<br>192.99.222.207:80<br>1.23.160.212:8080</p>
-<p>附录B Python2与3 urllib库对照表<br>参照 <a href="http://blog.csdn.net/whatday/article/details/54710403" target="_blank" rel="noopener">http://blog.csdn.net/whatday/article/details/54710403</a><br><strong>Python2    与     Python3   urllib库对照表：</strong></p>
-<table>
-<thead>
-<tr>
-<th>python2urllib库</th>
-<th>python3urllib库</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>urllib.urlretrieve()</td>
-<td>urllib.request.urlretrieve()</td>
-</tr>
-<tr>
-<td>urllib.urlcleanup()</td>
-<td>urllib.request.urlcleanup()</td>
-</tr>
-<tr>
-<td>urllib.quote()</td>
-<td>urllib.parse.quote() </td>
-</tr>
-<tr>
-<td>urllib.quote_plus()</td>
-<td>urllib.parse.quote_plus()</td>
-</tr>
-<tr>
-<td>urllib.unquote()</td>
-<td>urllib.parse.unquote()</td>
-</tr>
-<tr>
-<td>urllib.unquote_plus()</td>
-<td>urllib.parse.unquote_plus()</td>
-</tr>
-<tr>
-<td>urllib.urlencode()</td>
-<td>urllib.parse.urlencode()</td>
-</tr>
-<tr>
-<td>urllib.pathname2url()</td>
-<td>urllib.request.pathname2url()</td>
-</tr>
-<tr>
-<td>urllib.url2pathname()</td>
-<td>urllib.request.url2pathname()</td>
-</tr>
-<tr>
-<td>urllib.getproxies()</td>
-<td>urllib.request.getproxies()</td>
-</tr>
-<tr>
-<td>urllib.URLopener</td>
-<td>urllib.request.URLopener </td>
-</tr>
-<tr>
-<td>urllib.FancyURLopener</td>
-<td>urllib.request.FancyURLopener</td>
-</tr>
-<tr>
-<td>urllib.ContentTooShortError</td>
-<td>urllib.error.ContentTooShortError</td>
-</tr>
-<tr>
-<td>urllib2.urlopen()</td>
-<td>urllib.request.urlopen()</td>
-</tr>
-<tr>
-<td>urllib2.install_opener()</td>
-<td>urllib.request.install_opener()</td>
-</tr>
-<tr>
-<td>urllib2.build_opener()</td>
-<td>urllib.request.build_opener()</td>
-</tr>
-<tr>
-<td>urllib2.URLError</td>
-<td>urllib.error.URLError</td>
-</tr>
-<tr>
-<td>urllib2.HTTPError</td>
-<td>urllib.error.HTTPError</td>
-</tr>
-<tr>
-<td>urllib2.Request</td>
-<td>urllib.request.Request</td>
-</tr>
-<tr>
-<td>urllib2.OpenerDirector</td>
-<td>urllib.request.OpenerDirector</td>
-</tr>
-<tr>
-<td>urllib2.BaseHandler</td>
-<td>urllib.request.BaseHandler</td>
-</tr>
-<tr>
-<td>urllib2.HTTPDefaultErrorHandler</td>
-<td>urllib.request.HTTPDefaultErrorHandler</td>
-</tr>
-<tr>
-<td>urllib2.HTTPRedirectHandler</td>
-<td>urllib.request.HTTPRedirectHandler</td>
-</tr>
-<tr>
-<td>urllib2.HTTPCookieProcessor</td>
-<td>urllib.request.HTTPCookieProcessor</td>
-</tr>
-<tr>
-<td>urllib2.ProxyHandler</td>
-<td>urllib.request.ProxyHandler</td>
-</tr>
-<tr>
-<td>urllib2.HTTPPasswordMgr</td>
-<td>urllib.request.HTTPPasswordMgr</td>
-</tr>
-<tr>
-<td>urllib2.HTTPPasswordMgrWithDefaultRealm</td>
-<td>urllib.request.HTTPPasswordMgrWithDefaultReam</td>
-</tr>
-<tr>
-<td>urllib2.AbstractBasicAuthHandler</td>
-<td>urllib.request.AbstractBasicAuthHandler</td>
-</tr>
-<tr>
-<td>urllib2.HTTPBasicAuthHandler</td>
-<td>urllib.request.HTTPBasicAuthHandler</td>
-</tr>
-<tr>
-<td>urllib2.ProxyBasicAuthHandler</td>
-<td>urllib.request.ProxyBasicAuthHandler</td>
-</tr>
-<tr>
-<td>urllib2.AbstractDigestAuthHandler</td>
-<td>urllib.request.AbstractDigestAuthHandler</td>
-</tr>
-<tr>
-<td>urllib2.HTTPDigestAuthHandler</td>
-<td>urllib.request.HTTPDigestAuthHandler</td>
-</tr>
-<tr>
-<td>urllib2.ProxyDigestAuthHandler</td>
-<td>urllib.request.ProxyDigestAuthHandler</td>
-</tr>
-<tr>
-<td>urllib2.HTTPHandler</td>
-<td>urllib.request.HTTPHandler</td>
-</tr>
-<tr>
-<td>urllib2.HTTPSHandler</td>
-<td>urllib.request.HTTPSHandler</td>
-</tr>
-<tr>
-<td>urllib2.FileHandler</td>
-<td>urllib.request.FileHandler</td>
-</tr>
-<tr>
-<td>urllib2.FTPHandler</td>
-<td>urllib.request.FTPHandler</td>
-</tr>
-<tr>
-<td>urllib2.CacheFTPHandler</td>
-<td>urllib.request.CacheFTPHandler </td>
-</tr>
-<tr>
-<td>urllib2.UnknownHandler</td>
-<td>urllib.request.UnknownHandler</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -9184,7 +8726,7 @@ items.py     保存item的映射
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -9195,7 +8737,7 @@ items.py     保存item的映射
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -9206,7 +8748,7 @@ items.py     保存item的映射
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -9271,7 +8813,7 @@ items.py     保存item的映射
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">83.2k</span>
+    <span title="Site words total count">86.0k</span>
   
 </div>
 
