@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="前情知识 jQuery-事件 1、事件对象 - event     在绑定事件的时候，允许传递 event 参数来表示事件对象      1、         $obj.bind(&amp;quot;click&amp;quot;,function(event){             //event 表示的就是事件对象         });     2、         $obj.click(functio">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-17T12:37:49.001Z">
+<meta property="og:updated_time" content="2018-08-17T13:52:27.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django框架">
 <meta name="twitter:description" content="前情知识 jQuery-事件 1、事件对象 - event     在绑定事件的时候，允许传递 event 参数来表示事件对象      1、         $obj.bind(&amp;quot;click&amp;quot;,function(event){             //event 表示的就是事件对象         });     2、         $obj.click(functio">
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,819 字
+                  5,522 字
                 </span>
               
 
@@ -347,7 +347,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  11 分钟
+                  22 分钟
                 </span>
               
             </div>
@@ -660,6 +660,303 @@ dic = {
     书名：《西游记》
     作者：罗贯中
     主题：1个和尚和3个宠物的故事
+</code></pre><h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>1、什么是标签</p>
+<pre><code>允许将服务器端的功能嵌入到模板中
+</code></pre><p>2、语法</p>
+<pre><code>{% 标签内容 %}
+</code></pre><p>3、常用标签</p>
+<pre><code>1、for
+    1、语法
+        {% for 变量 in 列表|元组|字典 %}
+				<h3>{{变量}}</h3>
+				<h3>{{变量.方法}}</h3>
+				<h3>{{变量.属性}}</h3>
+			{% endfor %}
+
+        允许使用内置变量 - forloop 获取循环的信息
+            forloop在{%for%}中是免声明就可以直接使用的
+            forloop.counter : 获取当前循环的次数
+            forloop.counter0: 获取当前循环的下标
+            forloop.first : 是否为第一次循环
+            forloop.last : 是否为最后一次循环
+
+2、if
+    1、if 标签
+        语法：
+            {% if 条件 %}
+					满足条件时要运行的内容
+				{% endif %}
+    2、if ... else ... 标签
+        语法：
+            {% if 条件 %}
+					满足条件时要执行的操作
+				{% else %}
+					不满足条件时要执行的操作
+				{% endif %}
+    3、if ... elif ... else
+        语法：
+            {% if 条件1 %}
+					满足条件1运行的内容
+				{% elif 条件2 %}
+					满足条件2运行的内容
+				{% else %}
+					以上条件都不满足时运行的内容
+				{% endif %}
+</code></pre><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>1、作用<br>    在显示变量的数据之前，允许对数据进行筛选或改变</p>
+<p>2、过滤器的语法</p>
+<pre><code>{{变量|过滤器}}
+</code></pre><p>3、常用过滤器</p>
+<pre><code>1、{{value|upper}}
+    将value变为大写字符输出
+2、{{value|lower}}
+    将value变为小写字符输出
+3、{{value|floatformat:n}}
+    将value四舍五入到 n 位小数
+4、{{value|truncatechars:n}}
+    将字符串截取到n位字符(包含...)
+</code></pre><h3 id="url-中的name参数"><a href="#url-中的name参数" class="headerlink" title="url()中的name参数"></a>url()中的name参数</h3><pre><code>url(regex,views,kwargs=None,name=None)
+    name:允许为当前的url设置别名，可以在Template中使用别名找到对应的url
+语法：
+    url(regex,views,name=&quot;别名&quot;)
+    在模板中使用别名找到对应的url
+        {% url '别名' %}
+</code></pre><h3 id="静态文件"><a href="#静态文件" class="headerlink" title="静态文件"></a>静态文件</h3><p>1、什么是静态文件</p>
+<pre><code>不与用户发生动态交互的文件，称为静态文件
+如：css,js,image,audio,video,html
+</code></pre><p>2、Django中静态文件的处理</p>
+<pre><code>需要在settings.py中设置静态文件的访问路径 和 存储路径
+1、访问路径
+    STATIC_URL=&apos;/static/&apos;
+
+    作用：
+        当访问路径是 localhost:8000/static/****
+        一律去静态文件存储路径中搜索静态文件
+2、存储路径
+    STATICFILES_DIRS=(BASE_DIR,&apos;静态目录名称&apos;)
+
+    在项目中以及各个应用中，都可以创建对应名称一个目录，来表示项目或应用中所储存静态文件的目录
+</code></pre><p>3、访问静态文件</p>
+<pre><code>1、直接使用 localhost:8000/static/****
+    &lt;img src=&quot;http://localhost:8000/static/***&quot;&gt;
+    &lt;img src=&quot;/static/***&quot;&gt;
+2、使用 {% static %}访问静态文件
+    {% static %}表示的就是静态文件访问路径
+    1、在模板的最顶层增加
+        {% load static %}
+    2、在使用静态文件时
+        &lt;img src=&quot;{% static '具体路径'%}&quot;&gt;
+        ex:
+            &lt;img src=&quot;{% static 'images/huiyuan.jpg'%}&quot;&gt;
+</code></pre><h3 id="模板的继承"><a href="#模板的继承" class="headerlink" title="模板的继承"></a>模板的继承</h3><p>1、什么是模板的继承</p>
+<pre><code>当多个模板(网页)具备大部分相同的内容时，就可以使用继承的方式,
+将相同的内容继承过来，再增加/修改属于自己的内容即可。
+</code></pre><p>2、模板的继承的语法</p>
+<pre><code>1、在父模板中
+    必须要标识出来哪些内容在子模板中是允许被修改的
+    标签：
+        {% block 名称 %}
+				父模板中要显示的内容
+			{% endblock %}
+
+        block作用：
+            1、在父模板中，正常显示
+            2、在子模板中，如果不修改block中的内容的话则会按照父模板中的内容进行显示
+
+2、在子模板中
+    1、在最顶层增加一个标签，来表示继承关系
+        {% extends '父模板的名称' %}
+
+    2、增加 block 标签，改写属于自己的内容
+        {% block 名称 %}
+				子模板中的内容
+			{% endblock %}
+        在子模板中的block会覆盖父模板中的同名的block的内容
+</code></pre><h1 id="模型-Models"><a href="#模型-Models" class="headerlink" title="模型 - Models"></a>模型 - Models</h1><h2 id="什么是模型"><a href="#什么是模型" class="headerlink" title="什么是模型"></a>什么是模型</h2><p>模型，是根据数据库中表的结构来创建出来的class。<br>每一张表映射到编程语言中就是一个class，表中的每一个列，到编程语言中就是<br>class中的一个属性。在模型中还能完成对数据的CRUD操作</p>
+<h2 id="创建-和-使用模型-ORM"><a href="#创建-和-使用模型-ORM" class="headerlink" title="创建 和 使用模型 - ORM"></a>创建 和 使用模型 - ORM</h2><h3 id="什么是ORM"><a href="#什么是ORM" class="headerlink" title="什么是ORM"></a>什么是ORM</h3><p>ORM：Object Relational Mapping<br>简称：ORM,O/RM,O/R Mapping<br>中文：对象关系映射</p>
+<p><strong>ORM 的三大特征：</strong><br><strong>1、数据表(table) 到 类(class) 的映射</strong><br>    将数据表 自动 生成一个class类<br>    将class类 自动 生成一张表</p>
+<p><strong>2、数据类型的映射</strong><br>    允许将表中字段的数据类型 自动 映射成编程语言中的对应的数据类型<br>    允许将编程语言中的数据类型 自动 英社称表中字段的数据类型</p>
+<p><strong>3、关系映射</strong><br>    数据库中表的关联关系：<br>    一对一，一对多，多对多<br>    将表与表之间的关系也映射到编程语言中，通过创建类与类(对象与对象)之间的关系来完成</p>
+<h3 id="ORM的优点"><a href="#ORM的优点" class="headerlink" title="ORM的优点"></a>ORM的优点</h3><p>1、 提高了开发效率，能够自动完成表到对象的映射<br>2、 不用SQL编码，也能够完成对数据的CRUD操作，可以省略庞大的数据访问层</p>
+<h2 id="创建和配置数据库"><a href="#创建和配置数据库" class="headerlink" title="创建和配置数据库"></a>创建和配置数据库</h2><h3 id="创建一个数据库-支持中文"><a href="#创建一个数据库-支持中文" class="headerlink" title="创建一个数据库(支持中文)"></a>创建一个数据库(支持中文)</h3><pre><code>create database 数据库名 default charset utf8 collate utf8_general_ci;
+
+mysql 可视化开发工具 - Navicat
+
+创建一个数据库 - webdb
+</code></pre><h3 id="Django中的数据库配置"><a href="#Django中的数据库配置" class="headerlink" title="Django中的数据库配置"></a>Django中的数据库配置</h3><p>在 settings.py 中配置数据库的信息</p>
+<pre><code>DATATBASES = {
+    &apos;default&apos;:{
+        &apos;ENGINE&apos;:&apos;...&apos;,
+        &apos;NAME&apos;:&apos;...&apos;
+    }
+}
+</code></pre><p>连接MySQL的配置：</p>
+<pre><code>1、ENGINE:引擎
+    django.db.backends.mysql
+2、NAME:指定要连接到的数据库的名称
+3、USER:指定用户名称 ，通常为 root
+4、PASSWORD:指定密码，通常为 123456
+5、HOST:要连接的主机地址
+    本机：localhost 或 127.0.0.1
+6、PORT:指定端口号，通常为 3306
+</code></pre><p>**注意：在Django中连接MySQL的话依赖于 MySQLdb</p>
+<p>解决方案：**</p>
+<pre><code>在 主目录中的 __init__.py 中
+import pymysql
+pymysql.install_as_MySQLdb()
+</code></pre><h2 id="数据库的同步操作"><a href="#数据库的同步操作" class="headerlink" title="数据库的同步操作"></a>数据库的同步操作</h2><p>1、./manage.py makemigrations<br>作用：将每个应用下的 models.py 文件生成一个数据库的中间文件，并保存在migrations文件夹中</p>
+<p>2、./manage.py migrate<br>作用：将每个应用下的 migratioins 文件中的中间文件同步到数据库中</p>
+<h2 id="编写-Models-重点"><a href="#编写-Models-重点" class="headerlink" title="编写 Models(重点)"></a>编写 Models(重点)</h2><h3 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h3><pre><code>1、Models中的每个class都称为 模型类(Models类) 或 实体类(Entry)
+    实体：就是数据表中的一条记录
+    实体完整性：约束表中的记录不重复
+2、Models中的每个实体类，必须要继承自 models.Model
+</code></pre><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><pre><code>在 models.py 中 
+from django.db import models
+# 创建 Publisher 模型类
+# 表示 出版社的信息 ，并包含以下属性
+# 1. name ：表示出版社名称
+# 2. address ：表示出版社的地址
+# 3. city ：出版社所在城市名称
+# 4. country ：出版社所在国家名称
+# 5. website ：表示出版社的网址
+
+class Publisher(models.Model):
+    name=models.CharField(max_length=30)
+    address=models.CharField(max_length=50)
+    city=models.CharField(max_length=20)
+    country=models.CharField(max_length=20)
+    website=models.URLField()
+</code></pre><h3 id="Django中的字段类型-和-字段选项"><a href="#Django中的字段类型-和-字段选项" class="headerlink" title="Django中的字段类型 和 字段选项"></a>Django中的字段类型 和 字段选项</h3><pre><code>语法：
+    属性 = models.字段类型(字段选项1,字段选项2,...)
+
+1、字段类型(Field Type)
+    1、BooleanField()
+    2、CharField()
+    3、DateField()
+    4、DateTimeField()
+    5、DecimalField()
+    6、EmailField()
+    7、FloatField()
+    8、ImageField() #存图片的路径 - varchar
+    9、IntegerField() 
+    10、URLField() #存网址 - varchar
+    11、TextField() # 存大量数据 - text
+
+2、字段选项(Field Options)
+    1、max_length
+        在 models.CharField() 中是必选项
+        设置最大长度
+
+    2、default
+        为当前的属性指定默认值
+
+    3、null
+        指定当前的属性是否允许为空，默认为 False
+
+    4、unique
+        指定当前属性的值是否为唯一，默认为 False
+
+    5、blank
+        指定当前属性的值是否允许为空字符串，默认为 False
+</code></pre><h3 id="数据的版本切换"><a href="#数据的版本切换" class="headerlink" title="数据的版本切换"></a>数据的版本切换</h3><p>1、 ./manage.py migrate 执行所有应用中最新版本的数据库中间文件<br>2、 ./manage.py migrate 应用名称 版本号</p>
+<pre><code>./manage.py migrate index 0002
+执行 index 应用中的 版本号为0002的中间文件
+</code></pre><p>3、 通过数据库自动导出Models</p>
+<pre><code>./manage.py inspectdb &gt; 文件名.py
+</code></pre><h2 id="模型中的CRUD"><a href="#模型中的CRUD" class="headerlink" title="模型中的CRUD"></a>模型中的CRUD</h2><h3 id="通过ORM向DB中增加数据"><a href="#通过ORM向DB中增加数据" class="headerlink" title="通过ORM向DB中增加数据"></a>通过ORM向DB中增加数据</h3><p>1、Entry.objects.create(属性=值,属性=值,…)</p>
+<pre><code>ex:
+    Author.objects.create(name=&apos;zsf&apos;,age=85,email=&apos;zsf@163.com&apos;)
+</code></pre><p>2、创建一个Models对象，并通过 save() 完成增加</p>
+<pre><code>obj = Entry(属性=值,属性=值)
+obj.save()
+</code></pre><p>3、使用字典构建对象，并调用其 save() 完成增加</p>
+<pre><code>dic = {
+    &apos;属性1&apos;:&apos;值1&apos;,
+    &apos;属性2&apos;:&apos;值2&apos;,
+    ... ...
+}
+
+obj = Entry(**dic)
+obj.save()
+</code></pre><p>练习：<br>    使用三种方式，分别向 index_book,index_publisher 中，各增加三条数据</p>
+<h3 id="查询操作-重难点"><a href="#查询操作-重难点" class="headerlink" title="查询操作(重难点)"></a>查询操作(重难点)</h3><p>通过 Entry.objects 调用查询接口</p>
+<p>1、 基本查询操作</p>
+<p>语法：all()<br>用法：Entry.objects.all()<br>返回：QuerySet (封装了若干对象的列表)</p>
+<pre><code>ex:
+    authors = Author.objects.all();
+    等同于：select name,age,email from [index_author]
+</code></pre><p>2、 查询指定列的操作</p>
+<p>语法：values(‘列1’,’列2’)<br>用法：Entry.objects.values(‘列1’,’列2’)<br>返回：QuerySet (封装了若干字典的列表)<br>注意：values() 可以用在所有返回查询结果集的方法的后面的</p>
+<pre><code>Entry.objects.all().values()
+</code></pre><p>3、 指定排序效果</p>
+<p>语法：order_by(‘列1’,’列2’,…)<br>默认：升序排序<br>降序：在列前加 -</p>
+<pre><code>ex:
+    Author.objects.order_by(&apos;age&apos;)
+    Author.objects.all().order_by(&apos;age&apos;)
+
+注意：order_by()可以用在所有返回查询结果集的方法的后面
+</code></pre><p>4、 对条件取反</p>
+<p>语法：exclude(条件)<br>用法：Entry.objects.exclude(属性=值,属性=值)</p>
+<pre><code>ex:
+    1、Author.objects.exclude(id=3)
+        select * from author where not (id=3)
+    2、Author.objects.exclude(id=3,age=85)
+        select * from author where not (id=3 and age=85)
+</code></pre><p>5、 根据条件查询部分行数据(重难点)</p>
+<p>语法：filter(条件)<br>用法：Entry.objects.filter(条件)</p>
+<ul>
+<li><p>直接使用 Entry 中的属性作为查询条件<br>如果有多个查询条件，使用 , 隔开，映射到sql语句中，使用 and 进行关联的</p>
+<pre><code>1、Author.objects.filter(id=1)
+    select * from author where id=1
+
+2、Author.objects.filter(id=1,name=&apos;韩寒&apos;)
+    select * from author where id=1 and name=&apos;韩寒&apos;
+</code></pre></li>
+<li><p>通过 Field Lookups 完成复杂条件查询</p>
+<pre><code>Field Lookup ：查询表达式 (查询谓词)
+    每一个查询谓词都是一个独立的查询条件，可以用在所有的 有查询条件的位置处
+
+1、__exact
+    作用:等值判断
+    用法:Entry.objects.filter(属性__exact=值)
+    ex:
+        Author.objects.filter(id__exact=1)
+        Author.objects.filter(id=1)
+
+2、__contains
+    作用：判断属性中是否包含指定关键字
+    用法：Entry.objects.filter(属性__contains=值)
+
+3、__lt
+    作用：判断属性值是否小于指定的值
+    用法：Entry.objects.filter(属性__lt=值)
+
+4、__lte
+    作用：判断属性值是否小于等于指定的值
+
+5、__gt
+    作用：判断属性值是否大于指定的值
+
+6、__gte
+    作用：判断属性值是否大于等于指定的值
+
+7、__startswith
+    作用：判断属性值是以指定数值开头的数据
+
+8、__endswith
+    作用：判断属性值是以指定数值结尾的数据
+    ... ...
+</code></pre></li>
+</ul>
+<p>6、查询只返回一条记录</p>
+<pre><code>语法：get()
+用法：Entry.objects.get(查询条件/谓词)
+注意：
+    该函数只能用在查询返回一条记录时使用。如果返回多条数据 或 不返回数据时，都会报错
+</code></pre><p>7、查询结果集中记录数</p>
+<pre><code>语法：count()
+用法：
+    Entry.objects.count()
+    Entry.objects.filter(条件).count()
 </code></pre>
       
     </div>
@@ -892,7 +1189,7 @@ dic = {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前情知识"><span class="nav-number">1.</span> <span class="nav-text">前情知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django框架"><span class="nav-number">2.</span> <span class="nav-text">Django框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB-与-服务器"><span class="nav-number">2.1.</span> <span class="nav-text">WEB 与 服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#框架"><span class="nav-number">2.2.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-框架"><span class="nav-number">2.3.</span> <span class="nav-text">Django 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Django"><span class="nav-number">2.3.1.</span> <span class="nav-text">什么是Django</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django的框架模式-MTV"><span class="nav-number">2.3.2.</span> <span class="nav-text">Django的框架模式 - MTV</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-框架的使用"><span class="nav-number">2.4.</span> <span class="nav-text">Django 框架的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Django的安装"><span class="nav-number">2.4.1.</span> <span class="nav-text">Django的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django文档"><span class="nav-number">2.4.2.</span> <span class="nav-text">Django文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Django"><span class="nav-number">2.4.3.</span> <span class="nav-text">使用Django</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL的使用"><span class="nav-number">3.</span> <span class="nav-text">URL的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#urls-py"><span class="nav-number">3.1.</span> <span class="nav-text">urls.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">3.2.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#url函数详解"><span class="nav-number">3.3.</span> <span class="nav-text">url函数详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url函数的语法"><span class="nav-number">3.3.1.</span> <span class="nav-text">url函数的语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-url-向-views-传参"><span class="nav-number">3.3.2.</span> <span class="nav-text">通过 url 向 views 传参</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django中的应用"><span class="nav-number">4.</span> <span class="nav-text">Django中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是应用"><span class="nav-number">4.1.</span> <span class="nav-text">什么是应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建应用"><span class="nav-number">4.2.</span> <span class="nav-text">创建应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-指令-创建应用"><span class="nav-number">4.2.1.</span> <span class="nav-text">通过 指令 创建应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-settings-py-中注册应用"><span class="nav-number">4.2.2.</span> <span class="nav-text">在 settings.py 中注册应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用的结构组成"><span class="nav-number">4.2.3.</span> <span class="nav-text">应用的结构组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用中的-urls"><span class="nav-number">4.2.4.</span> <span class="nav-text">应用中的 urls</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django中的模板-Tempates"><span class="nav-number">5.</span> <span class="nav-text">Django中的模板(Tempates)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是模板"><span class="nav-number">5.1.</span> <span class="nav-text">什么是模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的设置"><span class="nav-number">5.2.</span> <span class="nav-text">模板的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的加载方式"><span class="nav-number">5.3.</span> <span class="nav-text">模板的加载方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的语法"><span class="nav-number">5.4.</span> <span class="nav-text">模板的语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">5.4.1.</span> <span class="nav-text">变量</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前情知识"><span class="nav-number">1.</span> <span class="nav-text">前情知识</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django框架"><span class="nav-number">2.</span> <span class="nav-text">Django框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WEB-与-服务器"><span class="nav-number">2.1.</span> <span class="nav-text">WEB 与 服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#框架"><span class="nav-number">2.2.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-框架"><span class="nav-number">2.3.</span> <span class="nav-text">Django 框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Django"><span class="nav-number">2.3.1.</span> <span class="nav-text">什么是Django</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django的框架模式-MTV"><span class="nav-number">2.3.2.</span> <span class="nav-text">Django的框架模式 - MTV</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Django-框架的使用"><span class="nav-number">2.4.</span> <span class="nav-text">Django 框架的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Django的安装"><span class="nav-number">2.4.1.</span> <span class="nav-text">Django的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django文档"><span class="nav-number">2.4.2.</span> <span class="nav-text">Django文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Django"><span class="nav-number">2.4.3.</span> <span class="nav-text">使用Django</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#URL的使用"><span class="nav-number">3.</span> <span class="nav-text">URL的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#urls-py"><span class="nav-number">3.1.</span> <span class="nav-text">urls.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">3.2.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#url函数详解"><span class="nav-number">3.3.</span> <span class="nav-text">url函数详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url函数的语法"><span class="nav-number">3.3.1.</span> <span class="nav-text">url函数的语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-url-向-views-传参"><span class="nav-number">3.3.2.</span> <span class="nav-text">通过 url 向 views 传参</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django中的应用"><span class="nav-number">4.</span> <span class="nav-text">Django中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是应用"><span class="nav-number">4.1.</span> <span class="nav-text">什么是应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建应用"><span class="nav-number">4.2.</span> <span class="nav-text">创建应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过-指令-创建应用"><span class="nav-number">4.2.1.</span> <span class="nav-text">通过 指令 创建应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在-settings-py-中注册应用"><span class="nav-number">4.2.2.</span> <span class="nav-text">在 settings.py 中注册应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用的结构组成"><span class="nav-number">4.2.3.</span> <span class="nav-text">应用的结构组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用中的-urls"><span class="nav-number">4.2.4.</span> <span class="nav-text">应用中的 urls</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Django中的模板-Tempates"><span class="nav-number">5.</span> <span class="nav-text">Django中的模板(Tempates)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是模板"><span class="nav-number">5.1.</span> <span class="nav-text">什么是模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的设置"><span class="nav-number">5.2.</span> <span class="nav-text">模板的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的加载方式"><span class="nav-number">5.3.</span> <span class="nav-text">模板的加载方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板的语法"><span class="nav-number">5.4.</span> <span class="nav-text">模板的语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">5.4.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标签"><span class="nav-number">5.4.2.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">5.4.3.</span> <span class="nav-text">{{变量}}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">5.4.4.</span> <span class="nav-text">{{变量.方法}}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">5.4.5.</span> <span class="nav-text">{{变量.属性}}</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤器"><span class="nav-number">5.4.6.</span> <span class="nav-text">过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url-中的name参数"><span class="nav-number">5.4.7.</span> <span class="nav-text">url()中的name参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静态文件"><span class="nav-number">5.4.8.</span> <span class="nav-text">静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模板的继承"><span class="nav-number">5.4.9.</span> <span class="nav-text">模板的继承</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型-Models"><span class="nav-number">6.</span> <span class="nav-text">模型 - Models</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是模型"><span class="nav-number">6.1.</span> <span class="nav-text">什么是模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建-和-使用模型-ORM"><span class="nav-number">6.2.</span> <span class="nav-text">创建 和 使用模型 - ORM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是ORM"><span class="nav-number">6.2.1.</span> <span class="nav-text">什么是ORM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ORM的优点"><span class="nav-number">6.2.2.</span> <span class="nav-text">ORM的优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建和配置数据库"><span class="nav-number">6.3.</span> <span class="nav-text">创建和配置数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个数据库-支持中文"><span class="nav-number">6.3.1.</span> <span class="nav-text">创建一个数据库(支持中文)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django中的数据库配置"><span class="nav-number">6.3.2.</span> <span class="nav-text">Django中的数据库配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的同步操作"><span class="nav-number">6.4.</span> <span class="nav-text">数据库的同步操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写-Models-重点"><span class="nav-number">6.5.</span> <span class="nav-text">编写 Models(重点)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要点"><span class="nav-number">6.5.1.</span> <span class="nav-text">要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">6.5.2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Django中的字段类型-和-字段选项"><span class="nav-number">6.5.3.</span> <span class="nav-text">Django中的字段类型 和 字段选项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据的版本切换"><span class="nav-number">6.5.4.</span> <span class="nav-text">数据的版本切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型中的CRUD"><span class="nav-number">6.6.</span> <span class="nav-text">模型中的CRUD</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过ORM向DB中增加数据"><span class="nav-number">6.6.1.</span> <span class="nav-text">通过ORM向DB中增加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询操作-重难点"><span class="nav-number">6.6.2.</span> <span class="nav-text">查询操作(重难点)</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -926,7 +1223,7 @@ dic = {
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">86.0k</span>
+    <span title="Site words total count">88.7k</span>
   
 </div>
 
