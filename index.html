@@ -317,7 +317,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,522 字
+                  8,684 字
                 </span>
               
 
@@ -333,7 +333,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  22 分钟
+                  35 分钟
                 </span>
               
             </div>
@@ -648,60 +648,26 @@ dic = {
     书名：《西游记》
     作者：罗贯中
     主题：1个和尚和3个宠物的故事
-</code></pre><h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>1、什么是标签</p>
-<pre><code>允许将服务器端的功能嵌入到模板中
-</code></pre><p>2、语法</p>
-<pre><code>{% 标签内容 %}
-</code></pre><p>3、常用标签</p>
-<pre><code>1、for
-    1、语法
-        {% for 变量 in 列表|元组|字典 %}
-				<h3>{{变量}}</h3>
-				<h3>{{变量.方法}}</h3>
-				<h3>{{变量.属性}}</h3>
-			{% endfor %}
+</code></pre><h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>标签是 允许将服务器端的功能嵌入到模板中</p>
+<p>语法 {\% 标签内容 \%}</p>
+<p>常用标签 for 语法 {\% for 变量 in 列表|元组|字典 \%}  if 语法 {\% if 条件 \%}</p>
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><pre><code>1、作用
+    在显示变量的数据之前，允许对数据进行筛选或改变
 
-        允许使用内置变量 - forloop 获取循环的信息
-            forloop在{%for%}中是免声明就可以直接使用的
-            forloop.counter : 获取当前循环的次数
-            forloop.counter0: 获取当前循环的下标
-            forloop.first : 是否为第一次循环
-            forloop.last : 是否为最后一次循环
+2、过滤器的语法
 
-2、if
-    1、if 标签
-        语法：
-            {% if 条件 %}
-					满足条件时要运行的内容
-				{% endif %}
-    2、if ... else ... 标签
-        语法：
-            {% if 条件 %}
-					满足条件时要执行的操作
-				{% else %}
-					不满足条件时要执行的操作
-				{% endif %}
-    3、if ... elif ... else
-        语法：
-            {% if 条件1 %}
-					满足条件1运行的内容
-				{% elif 条件2 %}
-					满足条件2运行的内容
-				{% else %}
-					以上条件都不满足时运行的内容
-				{% endif %}
-</code></pre><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>1、作用<br>    在显示变量的数据之前，允许对数据进行筛选或改变</p>
-<p>2、过滤器的语法</p>
-<pre><code>{{变量|过滤器}}
-</code></pre><p>3、常用过滤器</p>
-<pre><code>1、{{value|upper}}
-    将value变为大写字符输出
-2、{{value|lower}}
-    将value变为小写字符输出
-3、{{value|floatformat:n}}
-    将value四舍五入到 n 位小数
-4、{{value|truncatechars:n}}
-    将字符串截取到n位字符(包含...)
+    {{变量|过滤器}}
+
+3、常用过滤器
+
+    1、{{value|upper}}
+        将value变为大写字符输出
+    2、{{value|lower}}
+        将value变为小写字符输出
+    3、{{value|floatformat:n}}
+        将value四舍五入到 n 位小数
+    4、{{value|truncatechars:n}}
+        将字符串截取到n位字符(包含...)
 </code></pre><h3 id="url-中的name参数"><a href="#url-中的name参数" class="headerlink" title="url()中的name参数"></a>url()中的name参数</h3><pre><code>url(regex,views,kwargs=None,name=None)
     name:允许为当前的url设置别名，可以在Template中使用别名找到对应的url
 语法：
@@ -945,7 +911,404 @@ obj.save()
 用法：
     Entry.objects.count()
     Entry.objects.filter(条件).count()
-</code></pre>
+</code></pre><h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><p>1、 修改单个数据<br>口诀：1查2改3保存</p>
+<pre><code>1、通过 get() 得到要修改的数据
+2、再通过实体对象的属性修改属性值
+3、最后通过实体对象的save()保存回数据库
+
+au = Author.objects.get(id__exact=1)
+au.name = &apos;罗贯中&apos;
+au.age = 30
+au.save()
+</code></pre><p>2、 批量修改数据</p>
+<pre><code>调用QuerySet的update()即可
+Author.objects.filter(id__gt=1).update(属性=值,属性=值)
+</code></pre><h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><p>调用实体对象/查询结果集的delete()即可<br>1、删除单个对象</p>
+<pre><code>obj = Author.objects.get(id=1)
+obj.delete()
+</code></pre><p>2、删除多个对象(结果集)</p>
+<pre><code>Author.objects.all().delete()
+</code></pre><h2 id="转发-amp-重定向"><a href="#转发-amp-重定向" class="headerlink" title="转发 &amp; 重定向"></a>转发 &amp; 重定向</h2><h3 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h3><p>在一个视图中调用了另外一个视图，再将结果响应给浏览器<br>特点：浏览器地址栏的地址始终是第一个请求的地址</p>
+<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><p>1、什么是重定向<br>重新向新的访问地址发送一个请求(由服务器端通知客户端)</p>
+<p>2、语法</p>
+<pre><code>from django.http import HttpResponseRedirect
+
+return HttpResponseRedirect(&apos;重定向地址&apos;)
+</code></pre><h2 id="ORM操作"><a href="#ORM操作" class="headerlink" title="ORM操作"></a>ORM操作</h2><h3 id="1、F操作-和-Q操作"><a href="#1、F操作-和-Q操作" class="headerlink" title="1、F操作 和 Q操作"></a>1、F操作 和 Q操作</h3><p>1、F()</p>
+<p>更新Author表中数据，所有人的年龄+10岁</p>
+<pre><code>update Author set age=age+10
+
+Author.objects.all().update(age=age+10) # 错误
+</code></pre><p>作用：用于在执行中获取某列的值<br>语法：F(‘列名’)</p>
+<pre><code>from django.db.models import F
+Author.objects.all().update(age=F(&apos;age&apos;)+10)
+</code></pre><p>2、Q()</p>
+<pre><code>Author.objects.filter(id=1,age__gte=50)
+select * from Author where id=1 and age&gt;=50
+</code></pre><p>作用：在查询条件中，可以完成 或(or) 的操作<br>语法：</p>
+<pre><code>from django.db.models import Q
+Q(条件1)|Q(条件2)
+
+Author.objects.filter(Q(id=1)|Q(age__gte=50))
+select * from Author where id=1 or age &gt;= 50
+</code></pre><h3 id="2、原生的数据库操作方法"><a href="#2、原生的数据库操作方法" class="headerlink" title="2、原生的数据库操作方法"></a>2、原生的数据库操作方法</h3><p>1、查询</p>
+<pre><code>函数：raw(sql语句)
+语法：Entry.objects.raw(sql语句)
+返回：QuerySet
+</code></pre><p>2、增删改</p>
+<pre><code>def doSQL(request):
+    with connection.cursor() as cursor:
+        sql = &apos;delete from Author&apos;
+        cursor.execute(sql)
+        return ... ...;
+</code></pre><h2 id="使用后台管理Models"><a href="#使用后台管理Models" class="headerlink" title="使用后台管理Models"></a>使用后台管理Models</h2><h3 id="1、后台的配置"><a href="#1、后台的配置" class="headerlink" title="1、后台的配置"></a>1、后台的配置</h3><p>登录地址：<a href="http://localhost:8000/admin" target="_blank" rel="noopener">http://localhost:8000/admin</a></p>
+<p>创建后台管理员：</p>
+<pre><code>./manage.py createsuperuser
+Username:输入用户名，默认为 tarena
+Email Address:电子邮件
+Password:密码
+Password(again):重复密码
+</code></pre><h3 id="2、基本管理"><a href="#2、基本管理" class="headerlink" title="2、基本管理"></a>2、基本管理</h3><p>1、在应用中的 admin.py 中注册要管理的Models</p>
+<pre><code>1、admin.py
+    作用：注册需要管理的Models,只有在此注册了的Models才允许被后台管理
+
+2、注册Models
+    from .models import *
+
+    admin.site.register(Entry1)
+    admin.site.register(Entry2)
+</code></pre><p>2、修改 models.py 处理显示的内容</p>
+<pre><code>1、在 models.py 中的各个class追加
+    def __str__(self):
+        return self.xxx
+
+2、通过 Models 类的内部类 Meta 定义更多的展现形式
+    class Author(models.Model):
+        ... ... ...
+        ... ... ...
+        ... ... ...
+
+        class Meta:
+            1、db_table
+                指定该实体类对应到表的名字
+                取值：字符串
+                注意：需要同步数据库才能生效
+            2、verbose_name
+                定义该实体类在后台中的显示的名字(单数)
+            3、verbose_name_plural
+                效果同上(复数)
+            4、ordering
+                指定显示数据的排序规则
+                取值：一个列表，指定排序属性，默认是升序，如果需要降序的话，属性名前加 - 
+</code></pre><h3 id="3、高级管理"><a href="#3、高级管理" class="headerlink" title="3、高级管理"></a>3、高级管理</h3><p>1、在 admin.py 中创建高级管理类</p>
+<pre><code>1、定义高级管理类 - EntryAdmin
+    必须继承自 admin.ModelAdmin
+    ex:
+        class AuthorAdmin(admin.ModelAdmin):
+            pass
+
+2、注册高级管理类
+    admin.site.register(Entry,EntryAdmin)
+    ex:
+        admin.site.register(Author,AuthorAdmin)
+</code></pre><p>2、允许在 EntryAdmin 增加的属性(高级管理属性)</p>
+<pre><code>1、list_display
+    作用：指定在 列表页 中显示的字段们
+    取值：由属性名成组成的列表或元组
+    ex:
+        list_display=(&apos;name&apos;,&apos;age&apos;,&apos;email&apos;)
+
+2、list_display_links
+    作用：定义在列表页中也能够连接到详情页中的字段们
+    取值：由属性名成组成的列表或元组
+    注意：取值必须出现在 list_display 中
+
+3、list_editable
+    作用：指定在列表页中就允许修改的字段们
+    取值：由属性名成组成的列表或元组
+    注意：取值不能出现在 list_display_link 中
+
+4、search_fields
+    作用：指定在列表页中允许被搜索的字段们
+    取值：由属性名成组成的列表或元组
+
+5、list_filter
+    作用：在列表页的右侧增加一个过滤器，实现快速筛选
+    取值：由属性名成组成的列表或元组
+
+6、date_hierarchy
+    作用：在列表页的顶部增加一个时间选择器
+    取值：必须是DateField 或 DateTimeFiled的列
+
+7、fields
+    作用：在详情页面中，指定显示那些字段并按照什么样的顺序显示
+    取值：由属性名成组成的列表或元组
+
+8、fieldsets
+    作用：在详情页中，对字段们进行分组显示
+    注意：fieldsets 和 field 是不能共存的
+    语法：
+        fieldsets = (
+            # 分组1
+            (
+                &apos;分组名称&apos;,{
+                    &apos;fields&apos;:(&apos;属性1&apos;,&apos;属性2&apos;),
+                }
+            ),
+            # 分组2
+            ()
+        )
+</code></pre><h2 id="关系映射"><a href="#关系映射" class="headerlink" title="关系映射"></a>关系映射</h2><h3 id="1、一对一映射"><a href="#1、一对一映射" class="headerlink" title="1、一对一映射"></a>1、一对一映射</h3><p>1、什么是一对一</p>
+<p>A表中的一条记录只能与B表中的一条记录相关联<br>典型代表：一夫一妻制<br>数据库中实现：<br>    A表：设置 主键<br>    B表：增加一列，并引用自A表的主键，再增加一个唯一约束</p>
+<p>2、语法</p>
+<p>在关联的两个类的任何一个类中实现下列操作：<br>属性=models.OneToOneField(Entry)</p>
+<p>3、查询<br>假设有如下表</p>
+<pre><code>class Wife(models.Model):
+    ... ...
+    author = models.OneToOneField(Author)
+</code></pre><p>正向查询:通过 wife 找 author</p>
+<pre><code># 获取 id为1 的 wife 的信息
+wife = Wife.objects.get(id=1)
+# 再通过 wife 找到对应的 author
+author = wife.author
+</code></pre><p>反向查询:通过 author 找 wife</p>
+<pre><code># 获取 id为3 的 author 的信息
+author = Author.objects.get(id=3)
+# 再通过 author 找到对应的 wife
+wife = author.wife
+
+wife 是由Django通过OneToOneField在Author中默认增加的一个隐式属性
+</code></pre><h3 id="2、一对多映射-1-M"><a href="#2、一对多映射-1-M" class="headerlink" title="2、一对多映射(1:M)"></a>2、一对多映射(1:M)</h3><p>1、什么是一对多</p>
+<p>A表中的一条数据可以与B表中的任意多条数据关联<br>B表中的一条数据只能与A表中的一条数据关联</p>
+<p>2、在数据库中的实现</p>
+<p>通过 外键(Foreign Key) 来实现一对多<br>在 “多” 表中增加外键(Foreign Key)对”一”表的主键进行引用</p>
+<p>3、语法</p>
+<p>使用 外键(Foreign Key)<br>在 “多” 的实体中增加：<br>属性 = models.ForeignKey(Entry)</p>
+<pre><code>ex:
+    Book(多) 和 Publisher(一)
+    class Book(models.Model):
+        ... ...
+        ... ...
+        publisher = models.ForeignKey(Publisher)
+</code></pre><p>4、查询</p>
+<p>Book(多) 和 Publisher(一)<br>在多的实体中对一的实体进行引用</p>
+<pre><code>class Book(models.Model):
+    ... ...
+    ... ...
+    publisher = models.ForeignKey(Publisher)
+</code></pre><p>正向查询 - 通过Book查询Publisher</p>
+<pre><code>book=Book.objects.get(id=1)
+publisher = book.publisher
+</code></pre><p>反向查询 - 通过Publisher查询Book</p>
+<pre><code>Django默认会在Publisher中增加一个隐式属性 - book_set (多表类名全小写_set)
+
+# 查询id为1的出版社的信息
+pub = Publisher.objects.get(id=1)
+# 查询出版社所关联的所有书籍
+bookList = pub.book_set.all()
+</code></pre><h3 id="3、多对多映射-M-N"><a href="#3、多对多映射-M-N" class="headerlink" title="3、多对多映射(M:N)"></a>3、多对多映射(M:N)</h3><p>1、什么是多对多</p>
+<p>A表中的一条记录可以与B表中的任意多条记录匹配<br>B表中的一条记录可以与A表中的任意多条记录匹配</p>
+<p>2、在数据库中体现</p>
+<p>必须创建第三张表，关联 涉及到的两张数据表</p>
+<p>3、语法</p>
+<p>在任何一个实体类中，增加：entry = models.ManyToManyField(Entry)</p>
+<pre><code>ex:
+    class Author(models.Model):
+        ... ...
+        book = models.ManyToManyField(Book)
+</code></pre><p>4、查询</p>
+<pre><code>class Author(models.Model):
+    ... ...
+    book = models.ManyToManyField(Book)
+</code></pre><p>正向查询 - 通过 author 查询所有的 book</p>
+<pre><code># 先获取 author 
+author = Author.objects.get(id=1)
+# 再获取 对应的所有的 book
+bookList = author.book.all()
+
+通过 关联属性.查询方法() 查询关联数据
+</code></pre><p>反向查询 - 通过 book 查询所有的 author</p>
+<pre><code># Django 会在 Book 实体类中增加一个隐式属性 author_set (对应实体全小写_set)
+
+book = Book.objects.get(id=1)
+auList = book.author_set.all()
+</code></pre><h2 id="自定义查询对象-objects"><a href="#自定义查询对象-objects" class="headerlink" title="自定义查询对象 - objects"></a>自定义查询对象 - objects</h2><p>1、声明类 EntryManager,继承自 models.Manager</p>
+<pre><code>允许在 EntryManager 中添加自定义函数
+
+class EntryManager(models.Manager):
+    def 函数名(self,自定义参数列表)：
+        ... ...
+        return ... ...
+</code></pre><p>2、使用 EntryManager 覆盖 Models类中的 objects</p>
+<pre><code>class Entry(models.Model):
+    objects = EntryManager()
+</code></pre><h2 id="请求对象-HttpResquest"><a href="#请求对象-HttpResquest" class="headerlink" title="请求对象 - HttpResquest"></a>请求对象 - HttpResquest</h2><p>1、HTTP协议</p>
+<pre><code>1、请求
+2、响应
+</code></pre><h3 id="HttpRequest介绍"><a href="#HttpRequest介绍" class="headerlink" title="HttpRequest介绍"></a>HttpRequest介绍</h3><p>1 什么是HttpRequest<br>HttpRequest，在Django中就是请求对象的封装体现。封装了请求过程中的所有信息。在Django中，HttpRequest被化身成了 request 封装到了视图处理函数中作为参数，在调用视图时自动传入</p>
+<p>2 HttpRequest中的主要内容</p>
+<pre><code>1、request.scheme : 请求协议
+2、request.body : 请求主体
+3、request.path : 请求路径
+4、request.get_host() : 请求的主机地址/域名
+5、request.method : 请求方法
+6、request.GET : get请求方法所提交的数据
+7、request.POST : post请求方法所提交的数据
+8、request.COOKIES : cookies中的数据
+</code></pre><h3 id="获取-get-请求提交的数据"><a href="#获取-get-请求提交的数据" class="headerlink" title="获取 get 请求提交的数据"></a>获取 get 请求提交的数据</h3><p>1、form 表单提交</p>
+<pre><code>&lt;form action=&quot;{% url 'xxx' %}&quot; method=&quot;get&quot;&gt;
+    &lt;p&gt;
+        姓名:&lt;input type=&quot;text&quot; name=&quot;uname&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;input type=&quot;submit&quot;&gt;
+    &lt;/p&gt;
+&lt;/form&gt;
+</code></pre><p>服务器端：request.GET[‘uname’]</p>
+<p>2、通过地址发送请求</p>
+<p>在地址栏上拼 查询字符串(Query String)<br>http://请求地址/?参数名=值&amp;参数名=值<br><a href="http://localhost:8000/get/?name=a&amp;pwd=b&amp;email=c" target="_blank" rel="noopener">http://localhost:8000/get/?name=a&amp;pwd=b&amp;email=c</a><br>    参数1： name ，值：a<br>    参数2： pwd  ，值：b<br>    参数3： email，值：c</p>
+<h3 id="获取-post-请求提交的数据"><a href="#获取-post-请求提交的数据" class="headerlink" title="获取 post 请求提交的数据"></a>获取 post 请求提交的数据</h3><p>1、发送post的方式<br>只有在表单的 method 指定为 post 的时候，才能发送post请求</p>
+<p>2、获取 post 请求提交的数据</p>
+<pre><code>value = request.POST[&apos;key&apos;]
+</code></pre><p>3、403 - Forbidden - csrf</p>
+<p>csrf<br>    Cross-Site Request Forgery<br>    理解为：跨站点攻击</p>
+<p><strong>csrf 解决方案</strong></p>
+<ul>
+<li>settings.py<br>  删除 CsrfViewMiddleWare 中间件</li>
+<li>在处理视图上增加 @csrf_protect 装饰器</li>
+<li><p><strong>在 模板中 的 <form> 下的第一句话增加</form></strong></p>
+<pre><code>{% csrf_token %}
+</code></pre></li>
+</ul>
+<h2 id="使用-forms-处理表单"><a href="#使用-forms-处理表单" class="headerlink" title="使用 forms 处理表单"></a>使用 forms 处理表单</h2><h3 id="forms-模块的作用"><a href="#forms-模块的作用" class="headerlink" title="forms 模块的作用"></a>forms 模块的作用</h3><p>通过 forms 模块，允许将表单控件与 py 文件相结合，可以在网页中自动生成表单控件</p>
+<h3 id="使用-forms-模块"><a href="#使用-forms-模块" class="headerlink" title="使用 forms 模块"></a>使用 forms 模块</h3><p>1、在应用中创建 forms.py 文件<br>2、导入 forms</p>
+<pre><code>from django import forms
+</code></pre><p>3、创建class，一个class对应到页面上的一个表单<br>    该类必须继承自 forms.Form<br>4、在class中创建属性<br>    一个属性对应着一个表单控件<br>        (参考文档)</p>
+<h3 id="在模板中，解析-forms-对象"><a href="#在模板中，解析-forms-对象" class="headerlink" title="在模板中，解析 forms 对象"></a>在模板中，解析 forms 对象</h3><p>注意：<br>    1、需要自定义<form><br>    2、需要自定义 提交按钮<br>1、手动解析</form></p>
+<p>在 视图中，创建 forms.Form 对象，并发送到模板中<br>ex:</p>
+<pre><code>form = RemarkForm()
+return render(request,&apos;xx.html&apos;,locals())
+</code></pre><p>手动解析：<br>    模板中：</p>
+<pre><code>{% for field in form %}
+			{{field.label}}:表示的是 label属性值
+			{{field}} : 表示控件
+		{% endfor %}
+</code></pre><p>2、自动解析</p>
+<pre><code>1、{{form.as_p}}
+    将form中每个属性都解析成一个p标记，在p标记中再显示控件以及标签
+2、{{form.as_ul}}
+    将form中每个属性解析成一个li标记，再显示控件以及标签
+    注意：需要自定义 ul 或 ol 标记的
+3、{{as_table}}
+    将form中每个属性解析成一个tr以及td，再显示控件以及标签
+    注意：需要自定义 table 标记
+</code></pre><h3 id="在视图中，通过-forms-Form-快速获取表单数据"><a href="#在视图中，通过-forms-Form-快速获取表单数据" class="headerlink" title="在视图中，通过 forms.Form 快速获取表单数据"></a>在视图中，通过 forms.Form 快速获取表单数据</h3><p>1、通过 forms.Form 的构造函数，接收post数据</p>
+<pre><code>form = XXXForm(request.POST)
+</code></pre><p>2、需要让 form 通过验证后，再取值</p>
+<p>目的：防止数据错误提交</p>
+<pre><code>form.is_valid()
+</code></pre><p>返回true:通过验证<br>返回false:未通过验证，提交的数据与表单类型不匹配</p>
+<p>3、获取表单提交的数据</p>
+<pre><code>通过 form.cleaned_data(字典) 获取提交的数据
+
+cd = form.cleaned_data
+    value = cd[&apos;name&apos;]
+</code></pre><h2 id="forms-的高级处理"><a href="#forms-的高级处理" class="headerlink" title="forms 的高级处理"></a>forms 的高级处理</h2><p>将 Models 和 Forms 结合到一起使用</p>
+<ul>
+<li><p>在 forms.py 中，创建 class，继承自 forms.ModelForm </p>
+</li>
+<li><p>创建内部类 ：Meta</p>
+</li>
+</ul>
+<p>作用：关联 Form 和 Models 的<br>1、model : 指定要关联的Models类</p>
+<pre><code>ex: model = Users
+</code></pre><p>2、fields : 指定从Models类中取出哪些字段生成控件</p>
+<pre><code>1、取值 &quot;__all__&quot;,全部属性都要生成表单控件
+2、指定一个列表，声明允许生成表单控件的属性名
+    ex: fields = [&quot;uname&quot;,&quot;upwd&quot;]
+</code></pre><p>3、labels:指定每个属性要关联的label，取值为 字典</p>
+<pre><code>ex:
+    labels = {
+        &apos;属性名&apos;:&apos;label文本&apos;,
+        &apos;属性名&apos;:&apos;label文本&apos;,
+        }
+</code></pre><h2 id="内置小部件"><a href="#内置小部件" class="headerlink" title="内置小部件"></a>内置小部件</h2><h3 id="什么是小部件"><a href="#什么是小部件" class="headerlink" title="什么是小部件"></a>什么是小部件</h3><p>小部件(Widget),表示的是生成到页面中的控件的类型以及其他属性</p>
+<h3 id="常用小部件"><a href="#常用小部件" class="headerlink" title="常用小部件"></a>常用小部件</h3><p>1、TextInput : type=”text”<br>2、NumberInput : type=”number”<br>3、EmailInput : type=”email”<br>4、URLInput : type=”url”<br>5、PasswordInput : type=”password”<br>6、HiddenInput : type=”hidden”<br>7、CheckboxInput : type=”checkbox”<br>8、Textarea : <textarea></textarea><br>9、Select : <select></select></p>
+<h3 id="小部件的使用"><a href="#小部件的使用" class="headerlink" title="小部件的使用"></a>小部件的使用</h3><ul>
+<li>1、继承自 forms.Form</li>
+</ul>
+<p>基本版</p>
+<pre><code>属性 = forms.CharField(
+    label=&apos;xxx&apos;,
+    widget=forms.小部件类型
+)
+
+ex:
+    upwd = forms.CharField(
+        label=&apos;用户密码&apos;,
+        widget=forms.PasswordInput
+    )
+
+    age = forms.CharField(
+        label=&apos;用户年纪&apos;,
+        widget=forms.NumberInput
+    )
+</code></pre><p>高级版</p>
+<pre><code>属性 = forms.CharField(
+    label=&apos;标签&apos;,
+    widget=forms.小部件类型(
+        attrs={
+            &apos;属性名1&apos;:&apos;属性值1&apos;,
+            &apos;属性名2&apos;:&apos;属性值2&apos;,
+        }
+    )
+)
+
+ex:
+    upwd = forms.CharField(
+        label=&apos;用户密码&apos;,
+        widget=forms.PasswordInput(
+            attrs={
+                &apos;placeholder&apos;:&apos;请输入密码&apos;,
+                &apos;class&apos;:&apos;form-control&apos;,
+                &apos;max-length&apos;:&apos;26&apos;,
+            }
+        )
+    )
+</code></pre><ul>
+<li><p>2、继承自 forms.ModelForm</p>
+<pre><code>class WidForm2(forms.ModelForm):
+    class Meta:
+        model=Users
+        fields=&quot;__all__&quot;
+        labels={
+            &apos;属性1&apos;:&apos;标签1&apos;,
+            &apos;属性2&apos;:&apos;标签2&apos;,
+        }
+        widgets={
+            &apos;属性1&apos;:forms.小部件类型(
+                attrs={
+                    &apos;属性&apos;:&apos;值&apos;,
+                }
+            )
+        }
+</code></pre></li>
+</ul>
+<h2 id="cookies"><a href="#cookies" class="headerlink" title="cookies"></a>cookies</h2><h3 id="什么是cookies"><a href="#什么是cookies" class="headerlink" title="什么是cookies"></a>什么是cookies</h3><p>cookies 是一种数据存储技术<br>将一段文本数据保存在客户端(浏览器)的一种技术，并可以长时间保存</p>
+<h3 id="cookies的使用场合"><a href="#cookies的使用场合" class="headerlink" title="cookies的使用场合"></a>cookies的使用场合</h3><p>1、保存登录信息<br>2、保存需要长期使用的数据</p>
+<h3 id="django-中使用-cookies"><a href="#django-中使用-cookies" class="headerlink" title="django 中使用 cookies"></a>django 中使用 cookies</h3><p>1、设置 cookies(将数据保存到客户端)<br>cookies的设置，在服务器端是由响应对象发起的<br>语法：<br>    响应对象.set_cookie(key,value,expires)<br>        key:cookie的名字<br>        value:cookie的值<br>        expires:保存时间，以s为单位</p>
+<ul>
+<li><p>不使用模板 - HttpResponse<br>  resp = HttpResponse(‘给客户端一句话’)<br>  resp.set_cookie(‘key’,’value’,expires)<br>  return resp</p>
+</li>
+<li><p>使用模板 - render()<br>  resp = render(request,’xx.html’)<br>  resp.set_cookie(‘key’,’value’,expires)<br>  return resp</p>
+</li>
+<li><p>使用重定向 - HttpResponseRedirect()<br>  resp = HttpResponseRedirect(‘/地址/‘)<br>  resp.set_cookie(‘key’,’value’,expires)<br>  return resp</p>
+</li>
+</ul>
+<p>2、获取 cookies(从客户端获取数据)<br>注意：<br>    每次请求时，请求对象(request)会将当前路径下的所有的cookies都带到服务器<br>语法：<br>    request.COOKIES</p>
+<hr>
+<p>结束语：Django的内容还是很多的，接下来是通过实例操作来练习Django的使用。</p>
+
           
         
       
@@ -9110,7 +9473,7 @@ mgpath(1,1,8,8)
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">88.7k</span>
+    <span title="Site words total count">91.8k</span>
   
 </div>
 
