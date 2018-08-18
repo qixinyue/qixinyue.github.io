@@ -232,6 +232,305 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/Django论坛搭建完整版/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/18/Django论坛搭建完整版/" itemprop="url">Django论坛搭建完整版</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-18T15:19:20+08:00">
+                2018-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web框架/" itemprop="url" rel="index">
+                    <span itemprop="name">web框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,340 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>项目准备<br>1 linux环境（window下可以安装虚拟机或者venv）<br>2 Django安装，使用pip install django==1.11.8</p>
+<h1 id="创建第一个项目"><a href="#创建第一个项目" class="headerlink" title="创建第一个项目"></a>创建第一个项目</h1><p>创建一个用于保存自己项目的目录，打开该目录下的命令行，运行如下指令：</p>
+<p><strong>django-admin startproject myproject</strong><br>执行完之后没有任何改变，那么就是对了，执行cd myproject指令就可以进入到项目目录下，后面默认的指令都是在此目录下执行。</p>
+<p>在该目录下就会出现如下目录结构<br>myproject/<br>|- - myproject/<br>| |- - myproject/<br>| | |- - <strong>init</strong>.py<br>| | |- - settings.py<br>| | |- - urls.py<br>| | |- - wsgi.py<br>| +- - manage.py</p>
+<ul>
+<li>manage.py：使用django-admin命令行工具的快捷方式。它用于运行与我们项目相关的管理命令。我们将使用它来运行开发服务器，运行测试，创建迁移等等。</li>
+<li><strong>init</strong>.py：这个空文件告诉python这个文件夹是一个python包。</li>
+<li>settings.py：这个文件包含了所有的项目配置。将来我们会一直提到这个文件！</li>
+<li>urls.py：这个文件负责映射我们项目中的路由和路径。例如，如果你想在访问URL / about/ 时显示某些内容，则必须先在这里做映射关系。</li>
+<li>wsgi.py：该文件是用于部署的简单网关接口。你可以暂且先不用关心她的内容，就先让他在那里就好了。</li>
+</ul>
+<p>现在我们先不修改任何，试着运行一下该程序，进入到外层的myproject目录使用命令<strong> python3 manage.py runserver</strong>,程序正常情况下是可以运行的，此时我们去浏览器网址栏输入<a href="http://127.0.0.1:8000，就会出现如下提示信息，代表第一个项目成功了。" target="_blank" rel="noopener">http://127.0.0.1:8000，就会出现如下提示信息，代表第一个项目成功了。</a></p>
+<pre><code>It worked!
+Congratulations on your first Django-powered page.
+
+Next, start your first app by running python manage.py startapp [app_label].
+
+You&apos;re seeing this message because you have DEBUG = True in your Django settings file and you haven&apos;t configured any URLs. Get to work!
+</code></pre><h1 id="创建第一个应用"><a href="#创建第一个应用" class="headerlink" title="创建第一个应用"></a>创建第一个应用</h1><h2 id="应用是什么？"><a href="#应用是什么？" class="headerlink" title="应用是什么？"></a>应用是什么？</h2><p>举例来说明一下项目和应用的关系，项目就是网易新闻的主程序，新闻里面还分了很多不同的种类，比如体育 财经 八卦等，这些不同的模块，彼此之间是会存在很大的差异，在进行维护的时候，一般都会将彼此分开进行管理。所以体育 财经 八卦等模块多少一个个的应用。</p>
+<h2 id="应用可以做什么？"><a href="#应用可以做什么？" class="headerlink" title="应用可以做什么？"></a>应用可以做什么？</h2><p>1 应用可以处理相同类型的请求，比如sports类型的链接都是关于体育的,funs类型的链接都是关于娱乐八卦的<br>2 一个应用可以定义自己的主题模板，能够更加快速的编写内容<br>3 应用能够将对整体项目进行分开处理，使得整体的代码维护更加方便。</p>
+<h2 id="如何创建应用"><a href="#如何创建应用" class="headerlink" title="如何创建应用"></a>如何创建应用</h2><p>使用指令<strong> djanog-admin startapp boards</strong> 这里使用的是startapp指令，此时目录结构如下：</p>
+<pre><code>myproject/
+|- - myproject/
+| |- - boards/
+| | |- - migrations/
+| | | +- - __init__.py
+| | |- - __init__.py
+| | |- - admin.py
+| | |- - apps.py
+| | |- - models.py
+| | |- - tests.py
+| | +- - views.py
+| |- - myproject/
+| | |- - __init__.py
+| | |- - settings.py
+| | |- - urls.py
+| | |- - wsgi.py
+| +- - manage.py
+</code></pre><p>具体功能请参照我的另外一篇文章的4.2.3章节 <a href="https://qixinyue.github.io/2018/08/17/Django%E6%A1%86%E6%9E%B6/" target="_blank" rel="noopener">应用的结构组成</a> </p>
+<h2 id="如何让应用生效"><a href="#如何让应用生效" class="headerlink" title="如何让应用生效"></a>如何让应用生效</h2><p>1 打开settings.py，ctrl+f搜索找到INSTALLED_APPS，在列表里面添加刚刚添加的应用的名称，我们刚刚的应用名为boards,那么在下面添加即可</p>
+<p>INSTALLED_APPS = [<br>    ‘django.contrib.admin’,<br>    ‘django.contrib.auth’,<br>    ‘django.contrib.contenttypes’,<br>    ‘django.contrib.sessions’,<br>    ‘django.contrib.messages’,<br>    ‘django.contrib.staticfiles’,</p>
+<pre><code>&apos;boards&apos;,  #加上逗号&apos;,&apos;吧，避免后面添加，忘了这里，造成错误的情况
+</code></pre><p>]</p>
+<p>2 进入到</p>
+<pre><code>myproject/
+    |- - myproject/
+    | |- - boards/
+</code></pre><p>，（无则新建，有则）打开一个名为views.py的文件，当然名字最好就是这个，业内通用的。 在文件内<strong>添加</strong>如下代码</p>
+<pre><code>from django.http import HttpResponse
+
+def boards(request):
+    return HttpResponse(&apos;hello ,this is boards app!&apos;)
+</code></pre><p>3 告诉Django我们创建了这么一个视图，但是还需要填写什么时候调用。 前往myproject/myproject/urls.py中，添加如下代码：<br><strong>from boards import views</strong>  和  <strong>url(r’^boards$’, views.boards, name=’boards’),</strong><br>此时该文件中的内容为</p>
+<pre><code>from django.conf.urls import url
+from django.contrib import admin
+
+
+from boards import views
+
+urlpatterns = [
+    url(r&apos;^admin/&apos;, admin.site.urls),
+    url(r&apos;^boards$&apos;, views.boards, name=&apos;boards&apos;),
+]
+</code></pre><p>然后在myproject目录下运行指令 python3 manage.py runserver,打开浏览器，输入网站 <a href="http://127.0.0.1:8000/boards" target="_blank" rel="noopener">http://127.0.0.1:8000/boards</a> ，结果显示为</p>
+<pre><code>hello ,this is boards app!
+</code></pre><p>如果没有成功的，好好检查一下是否拼写错误，或者直接此处代码。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p> 好了，我们的第一个应用就这样可以根据自己心意修改内容展示在浏览器中了。</p>
+<hr>
+<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><p>模型是什么？<br>模型是根据数据库中的表创建出来的class（类）</p>
+<p>模型的作用是什么？<br>模块可以让我们快速的操作数据库中的数据，而不是通过负责的数据库操作语言才能进行数据库的CRUD操作。</p>
+<h2 id="如何使用模型操作"><a href="#如何使用模型操作" class="headerlink" title="如何使用模型操作"></a>如何使用模型操作</h2><p>我们创建的是一个论坛系统，那么肯定是需要有话题的模块了，是讨论C语言的还是讨论python的，这个使用board来表示。<br>另外肯定还要有论题了，这里叫做topic吧，需要有内容，最新更新时间，属于哪个模块的，发起者是谁等信息，后面根据需要进行扩充。<br>有人发起话题，自然需要有人评论吧，不然毫无意义了，所以需要一个评论类，这里用post来表示。<br>用户信息，可以通过admin来进行管理，所以不需要在models.py中单独建立一个类来处理。</p>
+<p>修改boards/models.py文件，<strong>增加</strong>如下内容</p>
+<pre><code>from django.contrib.auth.models import User
+
+
+class Board(models.Model):
+    name = models.CharField(max_length=30, unique=True)
+    description = models.CharField(max_length=100)
+
+
+class Topic(models.Model):
+    subject = models.CharField(max_length=255)
+    last_updated = models.DateTimeField(auto_now_add=True)
+    board = models.ForeignKey(Board, related_name=&apos;topics&apos;)
+    starter = models.ForeignKey(User, related_name=&apos;topics&apos;)
+
+
+class Post(models.Model):
+    message = models.TextField(max_length=4000)
+    topic = models.ForeignKey(Topic, related_name=&apos;posts&apos;)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(null=True)
+    created_by = models.ForeignKey(User, related_name=&apos;posts&apos;)
+    updated_by = models.ForeignKey(User, null=True, related_name=&apos;+&apos;)
+</code></pre><p>如果这段代码不是很懂的，可以Django框架找答案。</p>
+<h2 id="模型中的类怎么映射到数据库"><a href="#模型中的类怎么映射到数据库" class="headerlink" title="模型中的类怎么映射到数据库"></a>模型中的类怎么映射到数据库</h2><p>通过迁移模型来实现模型到数据库的迁移。<br>执行指令： <strong>python3 manage.py makemigrations</strong> 之后运行指令<strong> python3 manage.py migrate</strong><br>命令行都是现实的OK，则表示迁移成功。</p>
+<p><strong>这里可能有人会好奇，我们的类是迁移到哪个数据库，我怎么知道是否迁移成功了。</strong><br>这里告诉你答案，在myproject/myproject/settings.py文件中，有一段内容如下：</p>
+<pre><code>DATABASES = {
+    &apos;default&apos;: {
+        &apos;ENGINE&apos;: &apos;django.db.backends.sqlite3&apos;,
+        &apos;NAME&apos;: os.path.join(BASE_DIR, &apos;db.sqlite3&apos;),
+    }
+}
+</code></pre><p>这就代表了，django默认的数据库使用的sqlite3数据库，如果你的环境里面可以操作sqlite3，则你可以进入到该环境下进行查看是否有迁移的3张表。</p>
+<p><strong>如果没有sqlite3的环境，怎么知晓自己是否迁移成功，数据库中的表是否正确呢？</strong><br>不用担心，执行 <strong>python3 manage.py shell</strong> 从而进入到shell环境。<br>我们先导入Board类，执行如下指<strong>令 from boards.models import Board</strong><br>然后为board创建对象，执行指令<br><strong>board = Board(name=’Python’,description=’python is the best programming language.’)</strong><br>然后保存数据到数据库<br><strong>board.save()</strong><br>然后检查一下我们的数据库中是否有刚刚保存的数据，方法如下：<br><strong>board.name</strong><br>查询到的结果为<em>Python</em><br>查询描述信息 board.description<br>查询到的结果为 python is the best programming language.</p>
+<p>到此为止，模型中的数据迁移和查看迁移结果都完成了。</p>
+<hr>
+<h2 id="数据库中的数据操作"><a href="#数据库中的数据操作" class="headerlink" title="数据库中的数据操作"></a>数据库中的数据操作</h2><p>每个Django模型中都自带一个特殊的属性，称之为模型管理器(Model Manager).可以通过objects属性来访问这个管理器，它主要用于数据库操作。<br>以下是具体操作和运行结果</p>
+<pre><code>board = Board.objects.create(name=&apos;Java&apos;,description=&apos;programming language NO1.&apos;)
+
+board.id
+2
+
+board.name
+&apos;Java&apos;
+
+Board.objects.all()
+&lt;QuerySet [&lt;Board: Board object&gt;, &lt;Board: Board object&gt;]&gt;
+</code></pre><p>最后指令的结果是一个<strong>QuerySet</strong>，是一种对象列表的类型（但不是列表），但是有没有觉得这个结果很别扭呢，是的，就是我怎么知道结果是说的啥呢，都长的一样，要是来成百上千个，眼睛不得看花了，所以，需要告诉数据库，我们希望查询的时候显示什么。<br><strong>怎么做到显示需要的信息？</strong><br>进入到models.py文件中，<strong>增加</strong>一个函数，</p>
+<pre><code>def __str__(self):
+    return self.name
+</code></pre><p>该函数告诉数据库，在查询的时候显示的是该模块的名字而不是具体描述信息。<br>再次执行shell指令，查看一下结果，看看有没有变化吧。</p>
+<p><strong>QuerySet</strong>，是一种对象列表的类型，需要怎么遍历里面的内容呢？</p>
+<pre><code>boards_list = Board.objects.all()
+for board in boards_list:
+    print(board.description)
+</code></pre><p>另外有一个get()方法需要提一下，<strong>board = Board.objects.get(id=3)</strong> 这条指令是查询id=3的信息，但是目前数据库中没有id=3的信息，因此会报错，而且，如果是类似于这样一条指令 <strong>student = Student.objects.get(age=20)</strong> 那么这条指令因为有多个条件满足20岁，也会出现报错。<strong>只能在有且只有一个结果的时候才会正确返回结果，否则一律报错。</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/Django框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -8993,345 +9292,6 @@ if &quot;__main__&quot; == __name__:
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/算法和数据结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Godshion">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="响神的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/算法和数据结构/" itemprop="url">算法和数据结构</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T19:01:17+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/算法和数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">算法和数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,041 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Python中的数据结构"><a href="#Python中的数据结构" class="headerlink" title="Python中的数据结构"></a>Python中的数据结构</h1><p>巧用Python列表特性实现特定数据结构</p>
-<h2 id="栈实现"><a href="#栈实现" class="headerlink" title="栈实现"></a>栈实现</h2><pre><code>stack = []
-stack.push(x)
-stack.pop()
-stack[-1]
-</code></pre><h2 id="队列实现"><a href="#队列实现" class="headerlink" title="队列实现"></a>队列实现</h2><pre><code>from collections import deque
-queue = deque()
-</code></pre><h3 id="单向队列"><a href="#单向队列" class="headerlink" title="单向队列"></a>单向队列</h3><pre><code>queue.append(x)
-queue.popleft()
-</code></pre><h3 id="双向队列"><a href="#双向队列" class="headerlink" title="双向队列"></a>双向队列</h3><pre><code>queue.append(x)
-queue.popleft()
-queue.appendleft(x)
-queue.pop()
-</code></pre><h2 id="环形队列"><a href="#环形队列" class="headerlink" title="环形队列"></a>环形队列</h2><p><strong>初始</strong></p>
-<pre><code>dqueue = []
-rear = 0
-front = 0
-</code></pre><p><strong>添加一个数据</strong></p>
-<pre><code>front = (front + 1 ) % MaxSize
-</code></pre><p><strong>一个数据出队</strong></p>
-<pre><code>rear = (rear + 1 ) % MaxSize
-</code></pre><p><strong>空队条件</strong></p>
-<pre><code>rear == front 
-</code></pre><p><strong>满队条件</strong></p>
-<pre><code>(rear + 1 ) % MaxSize == front
-</code></pre><h2 id="链表实现"><a href="#链表实现" class="headerlink" title="链表实现"></a>链表实现</h2><pre><code>class Node(object):
-    def __init__(self,item=None):
-    　　self.item = item
-    　　self.next = None
-
-    def main():
-    　　head = Node(1)
-    　　b = Node(2)
-    　　head.next = b
-
-head -&gt; b -&gt; None
-
-head为链表首部,有无数据都可以
-</code></pre><p><strong>遍历链表</strong></p>
-<pre><code>def traversal(head):
-　　currNode = head
-　　while currNode is not None:
-　　　　print(currNode.item)
-　　　　currNode = currNode.next
-</code></pre><p><strong>插入</strong></p>
-<pre><code>p.next = currNode.next
-currNode.next = p
-</code></pre><p><strong>删除</strong></p>
-<pre><code>currNode.next = p
-currNode.next = currNode.next.next
-del p
-</code></pre><h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><pre><code>class Node(object):
-    def __init__(self,item=None):
-    　　self.item = itme
-    　　self.next = None
-    　　self.prev = None
-</code></pre><p><strong>插入</strong></p>
-<pre><code>p.next = currNode.next
-currNode.next.prev = p 
-p.prev = currNode
-currNode.next = p
-</code></pre><p><strong>删除</strong></p>
-<pre><code>p = currNode.next
-currNode.next = p.next
-p.next.prev = currNode
-del p
-</code></pre><p><strong>链表和列表的效率分析</strong></p>
-<p>按元素查找时间复杂度都为O(n)<br>按下标查找链表时间复杂度为O(n),列表为O(1)<br>在某元素后插入数据链表时间复杂度为O(1),列表的时间复杂度为O(n)<br>删除某元素链表时间复杂度为O(n),列表时间复杂度为O(1)</p>
-<h2 id="散列表（Hash表）实现"><a href="#散列表（Hash表）实现" class="headerlink" title="散列表（Hash表）实现"></a>散列表（Hash表）实现</h2><p>它是一种线性存储的表结构<br>首先根据关键字k，进过某Hash函数，获得一个索引值<br>然后将该关键字存储到索引值所在的位置</p>
-<p>这也是集合的存储原理</p>
-<p>对于字典也是类似的<br>字典是对每一个key求索引值，索引值对应的位置存放相应的value</p>
-<p>问题一：<br>索引值重复<br>解决一：线性表每个位置采用链表存储，相同索引值得关键字，依次链接起来（拉链法<br>解决二：通过哈希冲突函数得到新的地址（开放地址法）</p>
-<h2 id="利用栈解决迷宫问题"><a href="#利用栈解决迷宫问题" class="headerlink" title="利用栈解决迷宫问题"></a>利用栈解决迷宫问题</h2><p><strong>代码:</strong></p>
-<pre><code>maze = [
-    [1,1,1,1,1,1,1,1,1,1],
-    [1,0,0,1,0,0,0,1,0,1],
-    [1,0,0,1,0,0,0,1,0,1],
-    [1,0,0,0,0,1,1,0,0,1],
-    [1,0,1,1,1,0,0,0,0,1],
-    [1,0,0,0,1,0,0,0,0,1],
-    [1,0,1,0,0,0,1,0,0,1],
-    [1,0,1,1,1,0,1,1,0,1],
-    [1,1,0,0,0,0,0,1,0,1],
-    [1,1,1,1,1,1,1,1,1,1]
-]
-
-dirs = [lambda x, y: (x + 1, y),
-        lambda x, y: (x - 1, y),
-        lambda x, y: (x, y - 1),
-        lambda x, y: (x, y + 1)]
-
-def mpath(x1, y1, x2, y2):
-    stack = []
-    stack.append((x1, y1))
-    while len(stack) &gt; 0:
-        curNode = stack[-1]
-        if curNode[0] == x2 and curNode[1] == y2:
-            #到达终点
-            for p in stack:
-                print(p)
-            return True
-        for dir in dirs:
-            nextNode = dir(curNode[0], curNode[1])
-            if maze[nextNode[0]][nextNode[1]] == 0:
-                #找到了下一个
-                stack.append(nextNode)
-                maze[nextNode[0]][nextNode[1]] = -1  # 标记为已经走过，防止死循环
-                break
-        else:#四个方向都没找到
-            maze[curNode[0]][curNode[1]] = -1  # 死路一条,下次别走了
-            stack.pop() #回溯
-    print(&quot;没有路&quot;)
-    return False
-
-mpath(1,1,8,8)
-</code></pre><h2 id="利用队列解决迷宫问题"><a href="#利用队列解决迷宫问题" class="headerlink" title="利用队列解决迷宫问题"></a>利用队列解决迷宫问题</h2><p>代码:</p>
-<pre><code>from collections import  deque
-
-mg = [
-    [1,1,1,1,1,1,1,1,1,1],
-    [1,0,0,1,0,0,0,1,0,1],
-    [1,0,0,1,0,0,0,1,0,1],
-    [1,0,0,0,0,1,1,0,0,1],
-    [1,0,1,1,1,0,0,0,0,1],
-    [1,0,0,0,1,0,0,0,0,1],
-    [1,0,1,0,0,0,1,0,0,1],
-    [1,0,1,1,1,0,1,1,0,1],
-    [1,1,0,0,0,0,0,1,0,1],
-    [1,1,1,1,1,1,1,1,1,1]
-]
-
-dirs = [lambda x, y: (x + 1, y),
-        lambda x, y: (x - 1, y),
-        lambda x, y: (x, y - 1),
-        lambda x, y: (x, y + 1)]
-
-def print_p(path):
-    curNode = path[-1]
-    realpath = []
-    print(&apos;迷宫路径为：&apos;)
-    while curNode[2] != -1:
-        realpath.append(curNode[0:2])
-        curNode = path[curNode[2]]
-    realpath.append(curNode[0:2])
-    realpath.reverse()
-    print(realpath)
-
-def mgpath(x1, y1, x2, y2):
-    queue = deque()
-    path = []
-    queue.append((x1, y1, -1))
-    while len(queue) &gt; 0:
-        curNode = queue.popleft()
-        path.append(curNode)
-        if curNode[0] == x2 and curNode[1] == y2:
-            #到达终点
-            print_p(path)
-            return True
-        for dir in dirs:
-            nextNode = dir(curNode[0], curNode[1])
-            if mg[nextNode[0]][nextNode[1]] == 0:  # 找到下一个方块
-                queue.append((*nextNode, len(path) - 1))
-                mg[nextNode[0]][nextNode[1]] = -1  # 标记为已经走过
-    return False
-
-
-mgpath(1,1,8,8)
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -9386,7 +9346,7 @@ mgpath(1,1,8,8)
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -9473,7 +9433,7 @@ mgpath(1,1,8,8)
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">91.8k</span>
+    <span title="Site words total count">94.2k</span>
   
 </div>
 
