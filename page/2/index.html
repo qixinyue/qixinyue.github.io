@@ -232,6 +232,561 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/排序算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/09/排序算法/" itemprop="url">排序算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-09T19:23:55+08:00">
+                2018-08-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法和数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">算法和数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,553 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Python实现一些常用排序算法"><a href="#Python实现一些常用排序算法" class="headerlink" title="Python实现一些常用排序算法"></a>Python实现一些常用排序算法</h1><h2 id="系统内置排序算法"><a href="#系统内置排序算法" class="headerlink" title="系统内置排序算法"></a>系统内置排序算法</h2><p>list.sort()</p>
+<p>heapq模块</p>
+<pre><code>def sys_heap_sort(list):
+    import heapq
+    heap = []
+    for i in range(len(list)):
+        heapq.heappush(heap,list[i])
+    for i in range(len(heap)):
+        list[i] = heapq.heappop(heap)
+</code></pre><p>python操作列表的方法，它们的<strong>时间复杂度</strong></p>
+<pre><code>insert() ---&gt;  O(n)
+
+remove()  ---&gt; O(n)
+
+append()  -----&gt; O(1)
+
+in 　　　------&gt;  0(n)
+</code></pre><h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>规定无序列表元素要求有范围<br>统计每个元素出现次数，最后修改列表<br>对于年龄列表做大规模排序非常实用</p>
+<pre><code>def count_sort(list,maxNum):
+    print(&quot;\ncount_sort:&quot;)
+    counter = [0 for i in range(maxNum+1)]
+    for i in list:
+        counter[i] += 1
+    i = 0
+    for num,c in enumerate(counter):
+        for j in range(c):
+            list[i] = num
+            i += 1
+</code></pre><h3 id="找前n个大数"><a href="#找前n个大数" class="headerlink" title="找前n个大数"></a>找前n个大数</h3><ul>
+<li><p>方法一：<br>时间复杂度O(n^2)<br>将无序列表使用排序算法排序，取最后n个互异的数</p>
+</li>
+<li><p>方法二：<br>时间复杂度O(kn)<br>构造一个n个大小的列表，对这个列表使用插入排序，每次从无序列表获取一个元素，插入构造列表，淘汰构造列表最小数，直到无序列表取完</p>
+</li>
+<li><p>方法三：<br>时间复杂度O(nlogk)<br>将前n个数构造一个小根堆，每次从无序列表取一个元素和堆顶元素比较，小则淘汰，大则替换，然后调整堆，直至无序列表取完</p>
+</li>
+<li><p>方法四：<br>与方法三原理相同，只不过是使用系统heapq模块</p>
+</li>
+</ul>
+<p><strong>方法二代码</strong></p>
+<pre><code>def topk_search(list,k):
+    ltmp = list[0: k + 1]
+    insert_sort(ltmp)
+    ltmp.reverse()
+    print(&quot;get_topk:&quot;)
+    for i in range(k + 1,len(list)):
+        j = k - 1
+        while j &gt;= 0 and ltmp[j] &lt; list[i]:
+            ltmp[j + 1] = ltmp[j]
+            j -= 1
+        ltmp[j + 1] = list[i]
+    return ltmp[0: k]
+</code></pre><p><strong>方法三代码：</strong></p>
+<pre><code>def sift_small(list,low,high):
+    i = low
+    j = 2 * i + 1
+    temp = list[i]
+    while j &lt;= high:
+        if j &lt; high and list[j] &gt; list[j+1]:
+            j += 1
+        if temp &gt; list[j]:
+            list[i] = list[j]
+            i = j
+            j = 2 * i + 1
+        else:
+            break
+    list[i] = temp
+    list[low],list[high] = list[low],list[high]
+
+def topn_search(list,n):
+    print(&quot;\nget_topn:&quot;)
+    heap = list[0:n]
+    for i in range(n//2-1,-1,-1):
+        sift_small(heap, i, n - 1)
+    for i in range(n,len(list)):
+        if heap[0] &lt; list[i]:
+            heap[0] = list[i]
+            sift_small(heap, 0, n - 1)
+    for i in range(n-1, -1, -1):
+        heap[0],heap[i] = heap[i],heap[0]
+        sift_small(heap, 0, i - 1)
+    return heap
+</code></pre><p><strong>方法四代码：</strong></p>
+<pre><code>def sys_topn_search(list,n):
+    import heapq
+    return heapq.nlargest(n,list)
+</code></pre><h2 id="全部排序算法汇总"><a href="#全部排序算法汇总" class="headerlink" title="全部排序算法汇总"></a>全部排序算法汇总</h2><pre><code>import time
+import random
+import sys
+import copy
+
+def time_cost(func):
+    def wrapper(*args,**kwargs):
+        sTime = time.time()
+        func(*args,**kwargs)
+        print(&quot;Time cost:%s&quot;%(time.time()-sTime))
+        print(args[0])
+    return wrapper
+
+#-------------------系统自带排序-----------------------#
+@time_cost
+def sys_sort(list):
+    list.sort()
+
+
+#-------------------冒泡排序-----------------------#
+@time_cost
+def bubble_sort(list):
+    print(&quot;\nbubble_sort:&quot;)
+    for i in range(len(list)-1):
+        tag = 0
+        for j in range(len(list)-i-1):
+            if list[j] &gt; list[j+1]:
+                list[j],list[j+1] = list[j+1],list[j]
+                tag = 1
+        if not tag:
+            return
+
+#-------------------插入排序-----------------------#
+@time_cost
+def insert_sort(list):
+    print(&quot;\ninsert_sort:&quot;)
+    for i in range(len(list)):
+        tag = 0
+        for j in range(i,0,-1):
+            if list[j] &lt; list[j-1]:
+                list[j],list[j-1] = list[j-1],list[j]
+                tag = 1
+            if not tag:
+                break
+
+#-------------------选择排序-----------------------#
+@time_cost
+def select_sort(list):
+    print(&quot;\nselect_sort:&quot;)
+    for i in range(len(list)-1):
+        min = i
+        for j in range(i+1,len(list)):
+            if list[min] &gt; list[j]:
+                min = j
+        if min != i:
+            list[i],list[min] = list[min],list[i]
+
+#-------------------快速排序-----------------------#
+def part_sort(list,left,right):
+    temp = list[left]
+    while left &lt; right:
+        while left &lt; right and temp &lt;= list[right]:
+            right -= 1
+        list[left] = list[right]
+        while left &lt; right and temp &gt;= list[left]:
+            left += 1
+        list[right] = list[left]
+    list[left] = temp
+    return left
+
+
+def _quckly_sort(list,left,right):
+    if left &lt; right:
+        mid = part_sort(list,left,right)
+        _quckly_sort(list,left,mid-1)
+        _quckly_sort(list,mid+1,right)
+
+@time_cost
+def quckly_sort(list):
+    print(&quot;\nquckly_sort:&quot;)
+    return _quckly_sort(list,0,len(list)-1)
+
+#-------------------堆排序-----------------------#
+def sift(list,low,high):
+    i = low
+    j = 2 * i + 1
+    temp = list[i]
+    while j &lt;= high:
+        if j &lt; high and list[j] &lt; list[j+1]:
+            j += 1
+        if temp &lt; list[j]:
+            list[i] = list[j]
+            i = j
+            j = 2 * i + 1
+        else:
+            break
+    list[i] = temp
+    list[low],list[high] = list[low],list[high]
+
+
+
+@time_cost
+def heap_sort(list):
+    print(&quot;\nheap_sort:&quot;)
+    n = len(list)
+    for i in range(n // 2 - 1, -1, -1):
+        sift(list, i, n - 1)
+    for i in range(n-1, -1, -1):
+        list[0],list[i] = list[i],list[0]
+        sift(list, 0, i - 1)
+
+
+#-------------------系统自带堆排序------------------#
+@time_cost
+def sys_heap_sort(list):
+    import heapq
+    heap = []
+    for i in range(len(list)):
+        heapq.heappush(heap,list[i])
+    for i in range(len(heap)):
+        list[i] = heapq.heappop(heap)
+
+
+
+#-------------------归并排序-----------------------#
+def ont_megre_sort(list,low,mid,high):
+    i = low
+    j = mid + 1
+    ltmp = []
+    while i &lt;= mid and j &lt;= high:
+        if list[i] &lt; list[j]:
+            ltmp.append(list[i])
+            i += 1
+        else:
+            ltmp.append(list[j])
+            j += 1
+    while i &lt;= mid:
+        ltmp.append(list[i])
+        i += 1
+    while j &lt;= high:
+        ltmp.append(list[j])
+        j += 1
+    list[low:high+1] = ltmp
+
+
+def _megre_sort(list,low,high):
+    if low &lt; high:
+        mid = (low+high)//2
+        _megre_sort(list,low,mid)
+        _megre_sort(list,mid+1,high)
+        ont_megre_sort(list,low,mid,high)
+
+@time_cost
+def megre_sort(list):
+    print(&quot;\nmegre_sort:&quot;)
+    return _megre_sort(list,0,len(list)-1)
+
+
+#-------------------希尔排序-----------------------#
+@time_cost
+def shell_sort(list):
+    print(&quot;\nshell_sort:&quot;)
+    gap = len(list) // 2
+    while gap &gt; 0:
+        for i in range(gap,len(list)):
+            temp = list[i]
+            j = i - gap
+            while j &gt;= 0 and temp &lt; list[j]:
+                list[j + gap] = list[j]
+                j -= gap
+            list[j + gap] = temp
+        gap //= 2
+
+
+#-------------------统计排序-----------------------#
+@time_cost
+def count_sort(list,maxNum):
+    print(&quot;\ncount_sort:&quot;)
+    counter = [0 for i in range(maxNum+1)]
+    for i in list:
+        counter[i] += 1
+    i = 0
+    for num,c in enumerate(counter):
+        for j in range(c):
+            list[i] = num
+            i += 1
+
+
+
+#-------------------插入排序获取Top前n的数-----------------------#
+def topk_search(list,k):
+    ltmp = list[0: k + 1]
+    insert_sort(ltmp)
+    ltmp.reverse()
+    print(&quot;get_topk:&quot;)
+    for i in range(k + 1,len(list)):
+        j = k - 1
+        while j &gt;= 0 and ltmp[j] &lt; list[i]:
+            ltmp[j + 1] = ltmp[j]
+            j -= 1
+        ltmp[j + 1] = list[i]
+    return ltmp[0: k]
+
+#-------------------堆排序获取Top前n的数-----------------------#
+
+def sift_small(list,low,high):
+    i = low
+    j = 2 * i + 1
+    temp = list[i]
+    while j &lt;= high:
+        if j &lt; high and list[j] &gt; list[j+1]:
+            j += 1
+        if temp &gt; list[j]:
+            list[i] = list[j]
+            i = j
+            j = 2 * i + 1
+        else:
+            break
+    list[i] = temp
+    list[low],list[high] = list[low],list[high]
+
+def topn_search(list,n):
+    print(&quot;\nget_topn:&quot;)
+    heap = list[0:n]
+    for i in range(n//2-1,-1,-1):
+        sift_small(heap, i, n - 1)
+    for i in range(n,len(list)):
+        if heap[0] &lt; list[i]:
+            heap[0] = list[i]
+            sift_small(heap, 0, n - 1)
+    for i in range(n-1, -1, -1):
+        heap[0],heap[i] = heap[i],heap[0]
+        sift_small(heap, 0, i - 1)
+    return heap
+
+#-------------------系统堆排序获取Top前n的数-----------------------#
+# @time_cost
+def sys_topn_search(list,n):
+    import heapq
+    return heapq.nlargest(n,list)
+
+
+def main():
+    #生成列表
+    list0 = list(range(100))
+    first_name = [&quot;陈&quot;,&quot;张&quot;,&quot;李&quot;,&quot;王&quot;,&quot;赵&quot;]
+    second_name = [&quot;冰&quot;,&quot;鑫&quot;,&quot;程&quot;,&quot;爱&quot;,&quot;暖&quot;]
+    third_name = [&quot;强&quot;,&quot;国&quot;,&quot;明&quot;,&quot;风&quot;,&quot;芬&quot;]
+    listname = [
+        {&quot;id&quot;:&quot;1000&quot;+str(i),
+         &quot;name&quot;:random.choice(first_name)+
+                random.choice(second_name)+
+                random.choice(third_name),
+         &quot;age&quot;:random.randint(16,60)
+        } for i in range(10)
+    ]
+    random.shuffle(list0)
+    random.shuffle(listname)
+
+    #copy四份打乱后的列表
+    list1 = copy.deepcopy(list0)
+    list2 = copy.deepcopy(list0)
+    list3 = copy.deepcopy(list0)
+    list4 = copy.deepcopy(list0)
+    list5 = copy.deepcopy(list0)
+    list6 = copy.deepcopy(list0)
+    list7 = copy.deepcopy(list0)
+    list8 = copy.deepcopy(list0)
+    list9 = copy.deepcopy(list0)
+    list10 = copy.deepcopy(list0)
+    list11 = copy.deepcopy(list0)
+    list12 = copy.deepcopy(list0)
+
+    #设置递归深度
+    sys.setrecursionlimit(10000)
+
+
+    print(&quot;sort_list:&quot;)
+    print(list0)
+
+    # 排序算法
+    sys_sort(list0)
+    bubble_sort(list1)
+    select_sort(list2)
+    insert_sort(list3)
+    quckly_sort(list4)
+    heap_sort(list5)
+    sys_heap_sort(list11)
+    megre_sort(list6)
+    shell_sort(list7)
+    count_sort(list8,1000)
+    print(topk_search(list9,10))
+    print(topn_search(list10,10))
+    print(sys_topn_search(list12,10))
+
+
+if &quot;__main__&quot; == __name__:
+    main()
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/算法和数据结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -3964,7 +4519,7 @@ update_one()</code></p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3986,7 +4541,7 @@ update_one()</code></p>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -4051,7 +4606,7 @@ update_one()</code></p>
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">98.6k</span>
+    <span title="Site words total count">104.3k</span>
   
 </div>
 
