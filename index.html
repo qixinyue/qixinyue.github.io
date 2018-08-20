@@ -317,7 +317,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  10,647 字
+                  13,443 字
                 </span>
               
 
@@ -333,7 +333,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  43 分钟
+                  55 分钟
                 </span>
               
             </div>
@@ -1955,7 +1955,198 @@ r.pipelined {
 <li>用一个hash函数将key转换为一个数字，比如使用crc32 hash函数。对key foobar执行crc32(foobar)会输出类似93024922的整数。</li>
 <li>对这个整数取模，将其转化为0-3之间的数字，就可以将这个整数映射到4个Redis实例中的一个了。93024922 % 4 = 2，就是说key foobar应该被存到R2实例中。注意：取模操作是取除的余数，通常在多种编程语言中用%操作符实现。</li>
 </ul>
+<h1 id="Python操作redis"><a href="#Python操作redis" class="headerlink" title="Python操作redis"></a>Python操作redis</h1><h2 id="1、String-操作"><a href="#1、String-操作" class="headerlink" title="1、String 操作"></a>1、String 操作</h2><p>　　redis中的String在在内存中按照一个name对应一个value来存储</p>
+<p>set()</p>
+<pre><code>#在Redis中设置值，默认不存在则创建，存在则修改
+r.set(&apos;name&apos;, &apos;zhangsan&apos;)
+&apos;&apos;&apos;参数：
+     set(name, value, ex=None, px=None, nx=False, xx=False)
+     ex，过期时间（秒）
+     px，过期时间（毫秒）
+     nx，如果设置为True，则只有name不存在时，当前set操作才执行,同setnx(name, value)
+     xx，如果设置为True，则只有name存在时，当前set操作才执行&apos;&apos;&apos;
 
+
+setex(name, value, time)
+#设置过期时间（秒）
+
+psetex(name, time_ms, value)
+#设置过期时间（豪秒）
+</code></pre><p>mset()</p>
+<pre><code>#批量设置值
+r.mset(name1=&apos;zhangsan&apos;, name2=&apos;lisi&apos;)
+#或
+r.mget({&quot;name1&quot;:&apos;zhangsan&apos;, &quot;name2&quot;:&apos;lisi&apos;})
+</code></pre><p>get(name)</p>
+<p>　　获取值</p>
+<p>mget(keys, *args)</p>
+<pre><code>#批量获取
+print(r.mget(&quot;name1&quot;,&quot;name2&quot;))
+#或
+li=[&quot;name1&quot;,&quot;name2&quot;]
+print(r.mget(li))
+</code></pre><p>getset(name, value)</p>
+<pre><code>#设置新值，打印原值
+print(r.getset(&quot;name1&quot;,&quot;wangwu&quot;)) #输出:zhangsan
+print(r.get(&quot;name1&quot;)) #输出:wangwu
+</code></pre><p>getrange(key, start, end)</p>
+<pre><code>#根据字节获取子序列
+r.set(&quot;name&quot;,&quot;zhangsan&quot;)
+print(r.getrange(&quot;name&quot;,0,3))#输出:zhan
+</code></pre><p>setrange(name, offset, value)</p>
+<pre><code>#修改字符串内容，从指定字符串索引开始向后替换，如果新值太长时，则向后添加
+r.set(&quot;name&quot;,&quot;zhangsan&quot;)
+r.setrange(&quot;name&quot;,1,&quot;z&quot;)
+print(r.get(&quot;name&quot;)) #输出:zzangsan
+r.setrange(&quot;name&quot;,6,&quot;zzzzzzz&quot;)
+print(r.get(&quot;name&quot;)) #输出:zzangszzzzzzz
+</code></pre><p>setbit(name, offset, value)</p>
+<pre><code>#对二进制表示位进行操作
+&apos;&apos;&apos; name:redis的name
+    offset，位的索引（将值对应的ASCII码变换成二进制后再进行索引）
+    value，值只能是 1 或 0 &apos;&apos;&apos;
+
+str=&quot;345&quot;
+r.set(&quot;name&quot;,str)
+for i in str:
+    print(i,ord(i),bin(ord(i)))#输出 值、ASCII码中对应的值、对应值转换的二进制
+&apos;&apos;&apos;
+输出:
+    3 51 0b110011
+    4 52 0b110100
+    5 53 0b110101&apos;&apos;&apos;
+
+r.setbit(&quot;name&quot;,6,0)#把第7位改为0，也就是3对应的变成了0b110001
+print(r.get(&quot;name&quot;))#输出：145
+</code></pre><p>getbit(name, offset)</p>
+<pre><code>#获取name对应值的二进制中某位的值(0或1)
+r.set(&quot;name&quot;,&quot;3&quot;) # 对应的二进制0b110011
+print(r.getbit(&quot;name&quot;,5))   #输出:0
+print(r.getbit(&quot;name&quot;,6))   #输出:1
+</code></pre><p>bitcount(key, start=None, end=None)</p>
+<pre><code>#获取对应二进制中1的个数
+r.set(&quot;name&quot;,&quot;345&quot;)#0b110011 0b110100 0b110101
+print(r.bitcount(&quot;name&quot;,start=0,end=1)) #输出:7
+&apos;&apos;&apos; key:Redis的name
+    start:字节起始位置
+    end:字节结束位置&apos;&apos;&apos;
+</code></pre><p>strlen(name)</p>
+<pre><code>#返回name对应值的字节长度（一个汉字3个字节）
+r.set(&quot;name&quot;,&quot;zhangsan&quot;)
+print(r.strlen(&quot;name&quot;)) #输出:8
+</code></pre><p>incr(self, name, amount=1)</p>
+<pre><code>#自增mount对应的值，当mount不存在时，则创建mount＝amount，否则，则自增,amount为自增数(整数)
+print(r.incr(&quot;mount&quot;,amount=2))#输出:2
+print(r.incr(&quot;mount&quot;))#输出:3
+print(r.incr(&quot;mount&quot;,amount=3))#输出:6
+print(r.incr(&quot;mount&quot;,amount=6))#输出:12
+print(r.get(&quot;mount&quot;)) #输出:12
+</code></pre><p>incrbyfloat(self, name, amount=1.0)</p>
+<pre><code>#类似 incr() 自增,amount为自增数(浮点数)
+</code></pre><p>decr(self, name, amount=1)</p>
+<pre><code>#自减name对应的值,当name不存在时,则创建name＝amount，否则，则自减，amount为自增数(整数)
+</code></pre><p>append(name, value)</p>
+<pre><code>#在name对应的值后面追加内容
+r.set(&quot;name&quot;,&quot;zhangsan&quot;)
+print(r.get(&quot;name&quot;))    #输出:&apos;zhangsan
+r.append(&quot;name&quot;,&quot;lisi&quot;)
+print(r.get(&quot;name&quot;))    #输出:zhangsanlisi
+</code></pre><h2 id="2、Hash-操作"><a href="#2、Hash-操作" class="headerlink" title="2、Hash 操作"></a>2、Hash 操作</h2><p>redis中的Hash 在内存中类似于一个name对应一个dic来存储 </p>
+<p> hset(name, key, value)</p>
+<pre><code>#name对应的hash中设置一个键值对（不存在，则创建，否则，修改）
+r.hset(&quot;dic_name&quot;,&quot;a1&quot;,&quot;aa&quot;)
+</code></pre><p>hget(name,key)</p>
+<pre><code>r.hset(&quot;dic_name&quot;,&quot;a1&quot;,&quot;aa&quot;)
+#在name对应的hash中根据key获取value
+print(r.hget(&quot;dic_name&quot;,&quot;a1&quot;))#输出:aa
+</code></pre><p>hgetall(name)</p>
+<p>#获取name对应hash的所有键值<br>print(r.hgetall(“dic_name”))<br>hmset(name, mapping)</p>
+<p>#在name对应的hash中批量设置键值对,mapping:字典<br>dic={“a1”:”aa”,”b1”:”bb”}<br>r.hmset(“dic_name”,dic)<br>print(r.hget(“dic_name”,”b1”))#输出:bb<br>hmget(name, keys, *args)</p>
+<h1 id="在name对应的hash中获取多个key的值"><a href="#在name对应的hash中获取多个key的值" class="headerlink" title="在name对应的hash中获取多个key的值"></a>在name对应的hash中获取多个key的值</h1><p>li=[“a1”,”b1”]<br>print(r.hmget(“dic_name”,li))<br>print(r.hmget(“dic_name”,”a1”,”b1”))<br>hlen(name)、hkeys(name)、hvals(name)</p>
+<p>复制代码<br>dic={“a1”:”aa”,”b1”:”bb”}<br>r.hmset(“dic_name”,dic)</p>
+<p>#hlen(name) 获取hash中键值对的个数<br>print(r.hlen(“dic_name”))</p>
+<p>#hkeys(name) 获取hash中所有的key的值<br>print(r.hkeys(“dic_name”))</p>
+<p>#hvals(name) 获取hash中所有的value的值<br>print(r.hvals(“dic_name”))<br>复制代码<br>hexists(name, key)</p>
+<p>#检查name对应的hash是否存在当前传入的key<br>print(r.hexists(“dic_name”,”a1”))#输出:True<br>hdel(name,*keys)</p>
+<p>#删除指定name对应的key所在的键值对<br>r.hdel(“dic_name”,”a1”)<br>hincrby(name, key, amount=1)</p>
+<p>#自增hash中key对应的值，不存在则创建key=amount(amount为整数)<br>print(r.hincrby(“demo”,”a”,amount=2))<br>hincrbyfloat(name, key, amount=1.0)</p>
+<p>#自增hash中key对应的值，不存在则创建key=amount(amount为浮点数)</p>
+<p>hscan(name, cursor=0, match=None, count=None)</p>
+<p>hscan_iter(name, match=None, count=None)</p>
+<p>3、List 操作</p>
+<p>redis中的List在在内存中按照一个name对应一个List来存储 </p>
+<p>lpush(name,values)</p>
+<h1 id="在name对应的list中添加元素，每个新的元素都添加到列表的最左边"><a href="#在name对应的list中添加元素，每个新的元素都添加到列表的最左边" class="headerlink" title="在name对应的list中添加元素，每个新的元素都添加到列表的最左边"></a>在name对应的list中添加元素，每个新的元素都添加到列表的最左边</h1><p>r.lpush(“list_name”,2)<br>r.lpush(“list_name”,3,4,5)#保存在列表中的顺序为5，4，3，2<br>rpush(name,values)</p>
+<p>#同lpush，但每个新的元素都添加到列表的最右边<br>lpushx(name,value)</p>
+<p>#在name对应的list中添加元素，只有name已经存在时，值添加到列表的最左边<br>rpushx(name,value)</p>
+<p>#在name对应的list中添加元素，只有name已经存在时，值添加到列表的最右边<br>llen(name)</p>
+<h1 id="name对应的list元素的个数"><a href="#name对应的list元素的个数" class="headerlink" title="name对应的list元素的个数"></a>name对应的list元素的个数</h1><p>print(r.llen(“list_name”))<br>linsert(name, where, refvalue, value))</p>
+<p>复制代码</p>
+<h1 id="在name对应的列表的某一个值前或后插入一个新值"><a href="#在name对应的列表的某一个值前或后插入一个新值" class="headerlink" title="在name对应的列表的某一个值前或后插入一个新值"></a>在name对应的列表的某一个值前或后插入一个新值</h1><p>r.linsert(“list_name”,”BEFORE”,”2”,”SS”)#在列表内找到第一个元素2，在它前面插入SS</p>
+<p>‘’’参数：<br>     name: redis的name<br>     where: BEFORE（前）或AFTER（后）<br>     refvalue: 列表内的值<br>     value: 要插入的数据’’’<br>复制代码<br>r.lset(name, index, value)</p>
+<p>#对list中的某一个索引位置重新赋值<br>r.lset(“list_name”,0,”bbb”)<br>r.lrem(name, value, num)</p>
+<p>复制代码</p>
+<p>#删除name对应的list中的指定值<br>r.lrem(“list_name”,”SS”,num=0)</p>
+<p>‘’’ 参数：<br>    name:  redis的name<br>    value: 要删除的值<br>    num:   num=0 删除列表中所有的指定值；<br>           num=2 从前到后，删除2个；<br>           num=-2 从后向前，删除2个’’’<br>复制代码<br>lpop(name)</p>
+<p>#移除列表的左侧第一个元素，返回值则是第一个元素<br>print(r.lpop(“list_name”))<br>lindex(name, index)</p>
+<p>#根据索引获取列表内元素<br>print(r.lindex(“list_name”,1))<br>lrange(name, start, end)</p>
+<p>#分片获取元素<br>print(r.lrange(“list_name”,0,-1))<br>ltrim(name, start, end)</p>
+<p>#移除列表内没有在该索引之内的值<br>r.ltrim(“list_name”,0,2)<br>rpoplpush(src, dst)</p>
+<h1 id="从一个列表取出最右边的元素，同时将其添加至另一个列表的最左边"><a href="#从一个列表取出最右边的元素，同时将其添加至另一个列表的最左边" class="headerlink" title="从一个列表取出最右边的元素，同时将其添加至另一个列表的最左边"></a>从一个列表取出最右边的元素，同时将其添加至另一个列表的最左边</h1><p>#src 要取数据的列表</p>
+<p>#dst 要添加数据的列表<br>brpoplpush(src, dst, timeout=0)</p>
+<p>#同rpoplpush，多了个timeout, timeout：取数据的列表没元素后的阻塞时间，0为一直阻塞<br>r.brpoplpush(“list_name”,”list_name1”,timeout=0)<br>blpop(keys, timeout)</p>
+<p>复制代码</p>
+<p>#将多个列表排列,按照从左到右去移除各个列表内的元素<br>r.lpush(“list_name”,3,4,5)<br>r.lpush(“list_name1”,3,4,5)</p>
+<p>while True:<br>    print(r.blpop([“list_name”,”list_name1”],timeout=0))<br>    print(r.lrange(“list_name”,0,-1),r.lrange(“list_name1”,0,-1))</p>
+<p>‘’’keys: redis的name的集合<br>   timeout: 超时时间，获取完所有列表的元素之后，阻塞等待列表内有数据的时间（秒）, 0 表示永远阻塞’’’<br>复制代码<br>r.brpop(keys, timeout)</p>
+<p>#同blpop，将多个列表排列,按照从右像左去移除各个列表内的元素</p>
+<p>4、Set 操作</p>
+<p>Set集合就是不允许重复的列表</p>
+<p>sadd(name,values)</p>
+<p>#给name对应的集合中添加元素<br>r.sadd(“set_name”,”aa”)<br>r.sadd(“set_name”,”aa”,”bb”)<br>smembers(name)</p>
+<p>#获取name对应的集合的所有成员<br>scard(name)</p>
+<p>#获取name对应的集合中的元素个数<br>r.scard(“set_name”)<br>sdiff(keys, *args)</p>
+<p>#在第一个name对应的集合中且不在其他name对应的集合的元素集合<br>r.sadd(“set_name”,”aa”,”bb”)<br>r.sadd(“set_name1”,”bb”,”cc”)<br>r.sadd(“set_name2”,”bb”,”cc”,”dd”)</p>
+<p>print(r.sdiff(“set_name”,”set_name1”,”set_name2”))#输出:｛aa｝<br>sdiffstore(dest, keys, *args)</p>
+<p>#相当于把sdiff获取的值加入到dest对应的集合中<br>sinter(keys, *args)</p>
+<h1 id="获取多个name对应集合的并集"><a href="#获取多个name对应集合的并集" class="headerlink" title="获取多个name对应集合的并集"></a>获取多个name对应集合的并集</h1><p>r.sadd(“set_name”,”aa”,”bb”)<br>r.sadd(“set_name1”,”bb”,”cc”)<br>r.sadd(“set_name2”,”bb”,”cc”,”dd”)</p>
+<p>print(r.sinter(“set_name”,”set_name1”,”set_name2”))#输出:｛bb｝<br>sinterstore(dest, keys, *args)</p>
+<p>#获取多个name对应集合的并集，再讲其加入到dest对应的集合中<br>sismember(name, value)</p>
+<p>#检查value是否是name对应的集合内的元素<br>smove(src, dst, value)</p>
+<p>#将某个元素从一个集合中移动到另外一个集合<br>spop(name)</p>
+<p>#从集合的右侧移除一个元素，并将其返回<br>srandmember(name, numbers)</p>
+<h1 id="从name对应的集合中随机获取numbers个元素"><a href="#从name对应的集合中随机获取numbers个元素" class="headerlink" title="从name对应的集合中随机获取numbers个元素"></a>从name对应的集合中随机获取numbers个元素</h1><p>print(r.srandmember(“set_name2”,2))<br>srem(name, values)</p>
+<p>#删除name对应的集合中的某些值<br>print(r.srem(“set_name2”,”bb”,”dd”))<br>sunion(keys, *args)</p>
+<p>#获取多个name对应的集合的并集<br>r.sunion(“set_name”,”set_name1”,”set_name2”)<br>sunionstore(dest,keys, *args)</p>
+<p>#获取多个name对应的集合的并集，并将结果保存到dest对应的集合中<br>有序集合：</p>
+<p>　　在集合的基础上，为每元素排序，元素的排序需要根据另外一个值来进行比较，所以，对于有序集合，每一个元素有两个值，即：值和分数，分数专门用来做排序。</p>
+<p>zadd(name, *args, **kwargs)</p>
+<h1 id="在name对应的有序集合中添加元素"><a href="#在name对应的有序集合中添加元素" class="headerlink" title="在name对应的有序集合中添加元素"></a>在name对应的有序集合中添加元素</h1><p>r.zadd(“zset_name”, “a1”, 6, “a2”, 2,”a3”,5)</p>
+<p>#或<br>r.zadd(‘zset_name1’, b1=10, b2=5)<br>zcard(name)</p>
+<p>#获取有序集合内元素的数量<br>zcount(name, min, max)</p>
+<p>#获取有序集合中分数在[min,max]之间的个数<br>print(r.zcount(“zset_name”,1,5))<br>zincrby(name, value, amount)</p>
+<p>#自增有序集合内value对应的分数<br>r.zincrby(“zset_name”,”a1”,amount=2)#自增zset_name对应的有序集合里a1对应的分数<br>zrange( name, start, end, desc=False, withscores=False, score_cast_func=float)</p>
+<p>复制代码</p>
+<h1 id="按照索引范围获取name对应的有序集合的元素"><a href="#按照索引范围获取name对应的有序集合的元素" class="headerlink" title="按照索引范围获取name对应的有序集合的元素"></a>按照索引范围获取name对应的有序集合的元素</h1><p>aa=r.zrange(“zset_name”,0,1,desc=False,withscores=True,score_cast_func=int)<br>print(aa)<br>‘’’参数：<br>    name    redis的name<br>    start   有序集合索引起始位置<br>    end     有序集合索引结束位置<br>    desc    排序规则，默认按照分数从小到大排序<br>    withscores  是否获取元素的分数，默认只获取元素的值<br>    score_cast_func 对分数进行数据转换的函数’’’<br>复制代码<br>zrevrange(name, start, end, withscores=False, score_cast_func=float)</p>
+<p>#同zrange，集合是从大到小排序的<br>zrank(name, value)、zrevrank(name, value)</p>
+<p>#获取value值在name对应的有序集合中的排行位置（从0开始）<br>print(r.zrank(“zset_name”, “a2”))</p>
+<p>print(r.zrevrank(“zset_name”, “a2”))#从大到小排序<br>zscore(name, value)</p>
+<p>#获取name对应有序集合中 value 对应的分数<br>print(r.zscore(“zset_name”,”a1”))<br>zrem(name, values)</p>
+<p>#删除name对应的有序集合中值是values的成员<br>r.zrem(“zset_name”,”a1”,”a2”)<br>zremrangebyrank(name, min, max)</p>
+<p>#根据排行范围删除<br>zremrangebyscore(name, min, max)</p>
+<p>#根据分数范围删除<br>zinterstore(dest, keys, aggregate=None)</p>
+<p>复制代码<br>r.zadd(“zset_name”, “a1”, 6, “a2”, 2,”a3”,5)<br>r.zadd(‘zset_name1’, a1=7,b1=10, b2=5)</p>
+<h1 id="获取两个有序集合的交集并放入dest集合，如果遇到相同值不同分数，则按照aggregate进行操作"><a href="#获取两个有序集合的交集并放入dest集合，如果遇到相同值不同分数，则按照aggregate进行操作" class="headerlink" title="获取两个有序集合的交集并放入dest集合，如果遇到相同值不同分数，则按照aggregate进行操作"></a>获取两个有序集合的交集并放入dest集合，如果遇到相同值不同分数，则按照aggregate进行操作</h1><h1 id="aggregate的值为-SUM-MIN-MAX"><a href="#aggregate的值为-SUM-MIN-MAX" class="headerlink" title="aggregate的值为: SUM  MIN  MAX"></a>aggregate的值为: SUM  MIN  MAX</h1><p>r.zinterstore(“zset_name2”,(“zset_name1”,”zset_name”),aggregate=”MAX”)<br>print(r.zscan(“zset_name2”))<br>复制代码<br>zunionstore(dest, keys, aggregate=None)</p>
+<p>#获取两个有序集合的并集并放入dest集合，其他同zinterstore，<br>其他常用操作</p>
+<p>delete(*names)</p>
+<p>#根据name删除redis中的任意数据类型<br>exists(name)</p>
+<p>#检测redis的name是否存在<br>keys(pattern=’*’)</p>
+<p>#根据* ？等通配符匹配获取redis的name<br>expire(name ,time)</p>
+<h1 id="为某个name设置超时时间"><a href="#为某个name设置超时时间" class="headerlink" title="为某个name设置超时时间"></a>为某个name设置超时时间</h1><p>rename(src, dst)</p>
+<h1 id="重命名"><a href="#重命名" class="headerlink" title="重命名"></a>重命名</h1><p>move(name, db))</p>
+<h1 id="将redis的某个值移动到指定的db下"><a href="#将redis的某个值移动到指定的db下" class="headerlink" title="将redis的某个值移动到指定的db下"></a>将redis的某个值移动到指定的db下</h1><p>randomkey()</p>
+<p>#随机获取一个redis的name（不删除）<br>type(name)</p>
+<h1 id="获取name对应值的类型"><a href="#获取name对应值的类型" class="headerlink" title="获取name对应值的类型"></a>获取name对应值的类型</h1>
           
         
       
@@ -11195,7 +11386,7 @@ if __name__==&apos;__main__&apos;:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">109.3k</span>
+    <span title="Site words total count">112.1k</span>
   
 </div>
 
