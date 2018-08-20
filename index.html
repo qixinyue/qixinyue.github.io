@@ -1740,7 +1740,7 @@ ex:
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,120 字
+                  6,058 字
                 </span>
               
 
@@ -1756,7 +1756,7 @@ ex:
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  25 分钟
+                  31 分钟
                 </span>
               
             </div>
@@ -2543,7 +2543,182 @@ mp.plot(t, r_rose, c=&apos;orangered&apos;, label=r&apos;$\rho$ = sin($\theta$)&
 
 mp.legend()
 mp.show()
-</code></pre><h2 id="三维曲面"><a href="#三维曲面" class="headerlink" title="三维曲面"></a>三维曲面</h2><p>from mpl_tookits.mplot3d import axes3d<br>ax = mp.gca(projection=’3d’)<br>ax.set_xlabel(…)<br>ax.sety_label()<br>ax.set_zlabel()<br>ax.plot_surface(水平坐标 垂直坐标，直立坐标，rstride=行距，cstride=列距,cnap=颜色映射)<br>ax.plot_wireframe(水平坐标 垂直坐标，直立坐标，rstride=行距，cstride=列距,linewidth=线宽。color=颜色)</p>
+</code></pre><h2 id="三维曲面"><a href="#三维曲面" class="headerlink" title="三维曲面"></a>三维曲面</h2><p>from mpl_toolkits.mplot3d import axes3d<br>ax = mp.gca(projection=’3d’)<br>ax.set_xlabel(…)<br>ax.sety_label()<br>ax.set_zlabel()<br>ax.plot_surface(水平坐标 垂直坐标，直立坐标，rstride=行距，cstride=列距,cnap=颜色映射)<br>ax.plot_wireframe(水平坐标 垂直坐标，直立坐标，rstride=行距，cstride=列距,linewidth=线宽,color=颜色)</p>
+<p>代码如下：</p>
+<pre><code>from mpl_toolkits.mplot3d import axes3d
+import numpy as np
+import matplotlib.pyplot as mp
+
+n = 1000
+x, y = np.meshgrid(np.linspace(-3, 3, n), np.linspace(-3, 3, n))
+z = (1 - x / 2 + x**6 + y**3) * np.exp(-x**2 - y**2)
+
+mp.figure(&apos;3D&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;3D&apos;, fontsize=20)
+
+ax = mp.gca(projection=&apos;3d&apos;)
+ax.set_xlabel(&apos;x&apos;)
+ax.set_ylabel(&apos;y&apos;)
+ax.set_zlabel(&apos;z&apos;)
+mp.tick_params(labelsize=10)
+
+
+mp.xlabel(&apos;x&apos;)
+mp.ylabel(&apos;y&apos;)
+mp.xticks(np.linspace(0, 1000, 7), np.linspace(-3, 3, 7).astype(int))
+mp.yticks(np.linspace(0, 1000, 7), np.linspace(-3, 3, 7).astype(int))
+
+# ax.plot_surface(x, y, z, rstride=10, cstride=10, cmap=&apos;jet&apos;)
+# ax.plot_surface(x, y, z, rstride=10, cstride=10, cmap=&apos;gist_rainbow&apos;)
+
+ax.plot_wireframe(x, y, z, rstride=20, cstride=20,
+                  linewidth=0.5, color=&apos;orangered&apos;)
+
+mp.show()
+</code></pre><p>注释部分可以取消就会显示不同的效果。</p>
+<h2 id="三维散点图"><a href="#三维散点图" class="headerlink" title="三维散点图"></a>三维散点图</h2><p>代码如下：</p>
+<pre><code>from mpl_toolkits.mplot3d import axes3d
+import numpy as np
+import matplotlib.pyplot as mp
+
+n = 1000
+x = np.random.normal(0, 1, n)
+y = np.random.normal(0, 1, n)
+z = np.random.normal(0, 1, n)
+d = np.sqrt(x**2 + y**2 + z**2)
+
+
+mp.figure(&apos;3D scatter&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;3D scatter&apos;, fontsize=20)
+
+ax = mp.gca(projection=&apos;3d&apos;)
+ax.set_xlabel(&apos;x&apos;)
+ax.set_ylabel(&apos;y&apos;)
+ax.set_zlabel(&apos;z&apos;)
+mp.tick_params(labelsize=10)
+
+ax.scatter(x, y, z, s=60, c=d, cmap=&apos;jet&apos;)
+
+
+mp.show()
+</code></pre><h2 id="半对数坐标"><a href="#半对数坐标" class="headerlink" title="半对数坐标"></a>半对数坐标</h2><p>semilogy(参数同plot)<br>示例代码如下</p>
+<pre><code>from mpl_toolkits.mplot3d import axes3d
+import numpy as np
+import matplotlib.pyplot as mp
+
+y = np.array([1, 10, 100, 1000, 100, 10, 1])
+
+mp.figure(&apos;normal and log&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;normal and log&apos;, fontsize=20)
+mp.subplot(211)
+mp.ylabel(&apos;y&apos;)
+ax = mp.gca()
+ax.xaxis.set_major_locator(mp.MultipleLocator(1))
+ax.xaxis.set_minor_locator(mp.MultipleLocator(0.1))
+ax.yaxis.set_major_locator(mp.MultipleLocator(250))
+ax.yaxis.set_minor_locator(mp.MultipleLocator(50))
+mp.tick_params(labelsize=10)
+
+ax.grid(which=&apos;minor&apos;, axis=&apos;both&apos;, linewidth=0.25,
+        linestyle=&apos;-&apos;, color=&apos;orangered&apos;)
+ax.grid(which=&apos;major&apos;, axis=&apos;both&apos;, linewidth=0.25,
+        linestyle=&apos;-&apos;, color=&apos;orangered&apos;)
+mp.plot(y)
+mp.subplot(212)
+mp.semilogy(y)
+
+mp.legend()
+mp.show()
+</code></pre><h2 id="简单动画"><a href="#简单动画" class="headerlink" title="简单动画"></a>简单动画</h2><p>import matplotlib.animation as ma<br>ma.FuncAnimation(图形对象，更新函数，[生成器函数，]interval=间隔毫秒) 每间隔interval毫秒，调用一次更新函数</p>
+<p>生成气泡代码：<br>position x(float) y(float)<br>size 大小 (float)<br>growth  增速 (float)<br>color r g b颜色(float) 0-1之间的数 alpha</p>
+<pre><code>import matplotlib.animation as ma
+import numpy as np
+import matplotlib.pyplot as mp
+
+nbubbles = 100
+
+# 生成100个气泡
+bublles = np.zeros(nbubbles, dtype=[
+    (&apos;position&apos;, float, 2),
+    (&apos;size&apos;, float),
+    (&apos;growth&apos;, float),
+    (&apos;color&apos;, float, 4),
+])
+
+# 填充数据
+bublles[&apos;position&apos;] = np.random.uniform(0, 1, (nbubbles, 2))
+bublles[&apos;size&apos;] = np.random.uniform(50, 750, nbubbles)
+bublles[&apos;growth&apos;] = np.random.uniform(30, 150, nbubbles)
+bublles[&apos;color&apos;] = np.random.uniform(0, 1, (nbubbles, 4))
+
+mp.figure(&apos;Bubbles&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;Bubbles&apos;)
+mp.xticks(())
+mp.yticks(())
+sc = mp.scatter(bublles[&apos;position&apos;][:, 0], bublles[&apos;position&apos;]
+                [:, 1], s=bublles[&apos;size&apos;], c=bublles[&apos;color&apos;])
+
+
+def update(number):
+    bublles[&apos;size&apos;] += bublles[&apos;growth&apos;]
+    burst = number % nbubbles
+    bublles[&apos;position&apos;][burst] = np.random.uniform(0, 1, 2)
+    bublles[&apos;size&apos;][burst] = 0
+    bublles[&apos;growth&apos;][burst] = np.random.uniform(30, 150)
+    # bublles[&apos;size&apos;][burst] = 0
+    bublles[&apos;color&apos;][burst] = np.random.uniform(0, 1, 4)
+    # bublles[&apos;size&apos;][burst] = 0
+
+    sc.set_sizes(bublles[&apos;size&apos;])
+
+
+# 这里需要保证这个对象存在，必须增加变量保存
+anim = ma.FuncAnimation(mp.gcf(), update, interval=10)
+mp.show()
+</code></pre><p>关闭窗口的时候会抛出一个异常，如下：<br>AttributeError: ‘NoneType’ object has no attribute ‘attributes’</p>
+<p>使用生成器来画图：</p>
+<pre><code>import matplotlib.animation as ma
+import numpy as np
+import matplotlib.pyplot as mp
+
+
+mp.figure(&apos;signal&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;signal&apos;)
+mp.xlabel(&apos;Time&apos;)
+mp.ylabel(&apos;signal&apos;)
+
+ax = mp.gca()
+ax.set_ylim(-3, 3)
+ax.set_xlim(0, 10)
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=&apos;:&apos;)
+pl = mp.plot([], [], c=&apos;orangered&apos;)[0]  # 建立缓冲区
+pl.set_data([], [])  # 清理内部缓存内容
+
+
+def update(data):
+    # 得到数据之后，将数据添加到列表
+    t, v = data
+    x, y = pl.get_data()
+    x.append(t)
+    y.append(v)
+    # 如果当前的t大于最大值，坐标轴也需要进行更新
+    x_min, x_max = ax.get_xlim()
+    if t &gt; x_max:
+        ax.set_xlim(t - x_max + x_min, t)
+        ax.figure.canvas.draw()
+    pl.set_data(x, y)
+
+
+def generator():
+    t = 0
+    while 1:
+        v = np.sin(2 * np.pi * t) * np.exp(np.sin(0.2 * np.pi * t))
+        yield t, v
+        t += 0.05
+anim = ma.FuncAnimation(mp.gcf(), update, generator, interval=5)
+mp.show()
+</code></pre><h2 id="numpy的通用函数"><a href="#numpy的通用函数" class="headerlink" title="numpy的通用函数"></a>numpy的通用函数</h2><h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><p>loadtxt(文件名，delimiter=分割符,usecols=选择列，unpack=True/False是否列展开，dtype=目标类型,converters=转换器) 读取的内容需要是矩阵类型<br>返回值为 一维数组的元组，每个元素都是一个列 或者 二维数组</p>
 
           
         
@@ -9804,7 +9979,7 @@ if &quot;__main__&quot; == __name__:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">97.7k</span>
+    <span title="Site words total count">98.6k</span>
   
 </div>
 
