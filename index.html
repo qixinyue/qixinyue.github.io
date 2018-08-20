@@ -317,7 +317,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5,669 字
+                  9,055 字
                 </span>
               
 
@@ -333,7 +333,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  23 分钟
+                  37 分钟
                 </span>
               
             </div>
@@ -1190,6 +1190,691 @@ redis 127.0.0.1:6379&gt; &gt; ZRANGEBYSCORE runoob 0 1000
 </tr>
 </tbody>
 </table>
+<h1 id="Redis-HyperLogLog"><a href="#Redis-HyperLogLog" class="headerlink" title="Redis HyperLogLog"></a>Redis HyperLogLog</h1><p>Redis 在 2.8.9 版本添加了 HyperLogLog 结构。</p>
+<p><strong>HyperLogLog作用</strong><br>Redis HyperLogLog 是用来做基数统计的算法</p>
+<p><strong>HyperLogLog 的优点</strong><br>在输入元素的数量或者体积非常非常大时，计算基数所需的空间总是固定 的、并且是很小的。</p>
+<p>在 Redis 里面，每个 HyperLogLog 键只需要花费 12 KB 内存，就可以计算接近 2^64 个不同元素的基数。这和计算基数时，元素越多耗费内存就越多的集合形成鲜明对比。</p>
+<p>但是，因为 HyperLogLog 只会根据输入元素来计算基数，而不会储存输入元素本身，所以 HyperLogLog 不能像集合那样，返回输入的各个元素。</p>
+<p><strong>什么是基数?</strong><br>比如数据集 {1, 3, 5, 7, 5, 7, 8}， 那么这个数据集的基数集为 {1, 3, 5 ,7, 8}, 基数(不重复元素)为5。<br>基数估计就是在误差可接受的范围内，快速计算基数。</p>
+<p>实例<br>以下实例演示了 HyperLogLog 的工作过程：</p>
+<pre><code>redis 127.0.0.1:6379&gt; PFADD runoobkey &quot;redis&quot;
+
+1) (integer) 1
+
+redis 127.0.0.1:6379&gt; PFADD runoobkey &quot;mongodb&quot;
+
+1) (integer) 1
+
+redis 127.0.0.1:6379&gt; PFADD runoobkey &quot;mysql&quot;
+
+1) (integer) 1
+
+redis 127.0.0.1:6379&gt; PFCOUNT runoobkey
+
+(integer) 3
+</code></pre><p>Redis HyperLogLog 命令<br>下表列出了 redis HyperLogLog 的基本命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>PFADD key element [element …]</td>
+<td>添加指定元素到 HyperLogLog 中。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PFCOUNT key [key …]</td>
+<td>返回给定 HyperLogLog 的基数估算值。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PFMERGE destkey sourcekey [sourcekey …]</td>
+<td>将多个 HyperLogLog 合并为一个 HyperLogLog</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Redis-发布订阅"><a href="#Redis-发布订阅" class="headerlink" title="Redis 发布订阅"></a>Redis 发布订阅</h1><p>Redis 发布订阅(pub/sub)是一种消息通信模式：发送者(pub)发送消息，订阅者(sub)接收消息。</p>
+<p>Redis 客户端可以订阅任意数量的频道。</p>
+<p>频道 channel1 ， 以及订阅这个频道的三个客户端 —— client2 、 client5 和 client1 之间的关系如下：<br>channel1 -&gt;client2<br>channel1 -&gt;client5<br>channel1 -&gt;client1</p>
+<p>当有新消息通过 PUBLISH 命令发送给频道 channel1 时， 这个消息就会被发送给订阅它的三个客户端：<br>channel1（message） -&gt;client2<br>channel1（message） -&gt;client5<br>channel1（message） -&gt;client1</p>
+<p>实例<br>以下实例演示了发布订阅是如何工作的。在我们实例中我们创建了订阅频道名为 redisChat:</p>
+<pre><code>redis 127.0.0.1:6379&gt; SUBSCRIBE redisChat
+
+Reading messages... (press Ctrl-C to quit)
+1) &quot;subscribe&quot;
+2) &quot;redisChat&quot;
+3) (integer) 1
+</code></pre><p>现在，我们先重新开启个 redis 客户端，然后在同一个频道 redisChat 发布两次消息，订阅者就能接收到消息。</p>
+<pre><code>redis 127.0.0.1:6379&gt; PUBLISH redisChat &quot;Redis is a great caching technique&quot;
+
+(integer) 1
+
+redis 127.0.0.1:6379&gt; PUBLISH redisChat &quot;Learn redis by runoob.com&quot;
+
+(integer) 1
+
+# 订阅者的客户端会显示如下消息
+1) &quot;message&quot;
+2) &quot;redisChat&quot;
+3) &quot;Redis is a great caching technique&quot;
+1) &quot;message&quot;
+2) &quot;redisChat&quot;
+3) &quot;Learn redis by runoob.com&quot;
+</code></pre><p>Redis 发布订阅命令<br>下表列出了 redis 发布订阅常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>PSUBSCRIBE pattern [pattern …]</td>
+<td>订阅一个或多个符合给定模式的频道。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PUBSUB subcommand [argument [argument …]]</td>
+<td>查看订阅与发布系统状态。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PUBLISH channel message</td>
+<td>将信息发送到指定的频道。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PUNSUBSCRIBE [pattern [pattern …]]</td>
+<td>退订所有给定模式的频道。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SUBSCRIBE channel [channel …]</td>
+<td>订阅给定的一个或多个频道的信息。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>UNSUBSCRIBE [channel [channel …]]</td>
+<td>指退订给定的频道。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Redis-事务"><a href="#Redis-事务" class="headerlink" title="Redis 事务"></a>Redis 事务</h1><p>Redis 事务可以一次执行多个命令， 并且带有以下两个重要的保证：</p>
+<ul>
+<li>批量操作在发送 EXEC 命令前被放入队列缓存。</li>
+<li>收到 EXEC 命令后进入事务执行，事务中任意命令执行失败，其余的命令依然被执行。</li>
+<li>在事务执行过程，其他客户端提交的命令请求不会插入到事务执行命令序列中。</li>
+</ul>
+<p><strong>一个事务从开始到执行会经历以下三个阶段：</strong></p>
+<ul>
+<li>开始事务。</li>
+<li>命令入队。</li>
+<li>执行事务。</li>
+</ul>
+<p>实例<br>以下是一个事务的例子， 它先以 MULTI 开始一个事务， 然后将多个命令入队到事务中， 最后由 EXEC 命令触发事务， 一并执行事务中的所有命令：</p>
+<pre><code>redis 127.0.0.1:6379&gt; MULTI
+OK
+
+redis 127.0.0.1:6379&gt; SET book-name &quot;Mastering C++ in 21 days&quot;
+QUEUED
+
+redis 127.0.0.1:6379&gt; GET book-name
+QUEUED
+
+redis 127.0.0.1:6379&gt; SADD tag &quot;C++&quot; &quot;Programming&quot; &quot;Mastering Series&quot;
+QUEUED
+
+redis 127.0.0.1:6379&gt; SMEMBERS tag
+QUEUED
+
+redis 127.0.0.1:6379&gt; EXEC
+1) OK
+2) &quot;Mastering C++ in 21 days&quot;
+3) (integer) 3
+4) 1) &quot;Mastering Series&quot;
+   2) &quot;C++&quot;
+   3) &quot;Programming&quot;
+</code></pre><p>单个 Redis 命令的执行是原子性的，但 Redis 没有在事务上增加任何维持原子性的机制，所以 Redis 事务的执行并不是原子性的。</p>
+<p>事务可以理解为一个打包的批量执行脚本，但批量指令并非原子化的操作，中间某条指令的失败不会导致前面已做指令的回滚，也不会造成后续的指令不做。</p>
+<p>官网上的说明 :</p>
+<pre><code>It&apos;s important to note that even when a command fails, all the other commands in the queue are processed – Redis will not stop the processing of commands.
+</code></pre><p>比如：</p>
+<pre><code>redis 127.0.0.1:7000&gt; multi
+OK
+redis 127.0.0.1:7000&gt; set a aaa
+QUEUED
+redis 127.0.0.1:7000&gt; set b bbb
+QUEUED
+redis 127.0.0.1:7000&gt; set c ccc
+QUEUED
+redis 127.0.0.1:7000&gt; exec
+1) OK
+2) OK
+3) OK
+</code></pre><p>如果在 set b bbb 处失败，set a 已成功不会回滚，set c 还会继续执行。</p>
+<p>Redis 事务命令<br>下表列出了 redis 事务的相关命令：</p>
+<p>序号|    命令|描述<br>1    DISCARD 取消事务，放弃执行事务块内的所有命令。<br>2    |EXEC |执行所有事务块内的命令。<br>3    |MULTI |标记一个事务块的开始。<br>4    |UNWATCH |取消 WATCH 命令对所有 key 的监视。<br>5    |WATCH key [key …]| 监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断。</p>
+<h1 id="Redis-脚本"><a href="#Redis-脚本" class="headerlink" title="Redis 脚本"></a>Redis 脚本</h1><p>Redis 脚本使用 Lua 解释器来执行脚本。 Redis 2.6 版本通过内嵌支持 Lua 环境。执行脚本的常用命令为 EVAL。</p>
+<p>语法<br>Eval 命令的基本语法如下：</p>
+<pre><code>redis 127.0.0.1:6379&gt; EVAL script numkeys key [key ...] arg [arg ...]
+</code></pre><p>实例<br>以下实例演示了 redis 脚本工作过程：</p>
+<pre><code>redis 127.0.0.1:6379&gt; EVAL &quot;return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}&quot; 2 key1 key2 first second
+
+1) &quot;key1&quot;
+2) &quot;key2&quot;
+3) &quot;first&quot;
+4) &quot;second&quot;
+</code></pre><p><strong>Redis 脚本命令</strong><br>下表列出了 redis 脚本常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>EVAL script numkeys key [key …] arg [arg …]</td>
+<td>执行 Lua 脚本。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>EVALSHA sha1 numkeys key [key …] arg [arg …]</td>
+<td>执行 Lua 脚本。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SCRIPT EXISTS script [script …]</td>
+<td>查看指定的脚本是否已经被保存在缓存当中。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SCRIPT FLUSH</td>
+<td>从脚本缓存中移除所有脚本。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SCRIPT KILL</td>
+<td>杀死当前正在运行的 Lua 脚本。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SCRIPT LOAD script</td>
+<td>将脚本 script 添加到脚本缓存中，但并不立即执行这个脚本。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Redis-连接"><a href="#Redis-连接" class="headerlink" title="Redis 连接"></a>Redis 连接</h1><p>Redis 连接命令主要是用于连接 redis 服务。</p>
+<p>实例<br>以下实例演示了客户端如何通过密码验证连接到 redis 服务，并检测服务是否在运行：</p>
+<pre><code>redis 127.0.0.1:6379&gt; AUTH &quot;password&quot;
+OK
+redis 127.0.0.1:6379&gt; PING
+PONG
+</code></pre><p><strong>Redis 连接命令</strong><br>下表列出了 redis 连接的基本命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>AUTH password</td>
+<td>验证密码是否正确</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ECHO message</td>
+<td>打印字符串</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PING</td>
+<td>查看服务是否运行</td>
+</tr>
+<tr>
+<td>4</td>
+<td>QUIT</td>
+<td>关闭当前连接</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SELECT index</td>
+<td>切换到指定的数据库</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Redis服务器"><a href="#Redis服务器" class="headerlink" title="Redis服务器"></a>Redis服务器</h1><p>Redis服务器命令主要是用于管理redis服务。</p>
+<p>实例<br>以下实例演示了如何获取redis服务器的统计信息：</p>
+<pre><code>redis 127.0.0.1:6379&gt;信息
+
+#Server
+redis_version：2.8.13
+redis_git_sha1：00000000
+redis_git_dirty：0
+redis_build_id：c2238b38b1edb0e2
+redis_mode：独立
+os：Linux 3.5.0-48-generic x86_64
+arch_bits：64
+multiplexing_api：epoll的
+gcc_version：4.7.2
+PROCESS_ID：3856
+run_id：0e61abd297771de3fe812a3c21027732ac9f41fe
+TCP_PORT：6379
+uptime_in_seconds：11554
+uptime_in_days：0
+赫兹：10
+lru_clock：16651447
+CONFIG_FILE：
+
+＃客户
+connected_clients：1
+客户longest_output_list：0
+客户biggest_input_buf：0
+blocked_clients：0
+
+＃记忆
+used_memory：589016
+used_memory_human：575.21K
+used_memory_rss：2461696
+used_memory_peak：667312
+used_memory_peak_human：651.67K
+used_memory_lua：33792
+mem_fragmentation_ratio：4.18
+mem_allocator：jemalloc-3.6.0
+
+#Persistence
+负载：0
+rdb_changes_since_last_save：3
+rdb_bgsave_in_progress：0
+rdb_last_save_time：1409158561
+rdb_last_bgsave_status：OK
+rdb_last_bgsave_time_sec：0
+rdb_current_bgsave_time_sec：-1
+aof_enabled：0
+aof_rewrite_in_progress：0
+aof_rewrite_scheduled：0
+aof_last_rewrite_time_sec：-1
+aof_current_rewrite_time_sec：-1
+aof_last_bgrewrite_status：OK
+aof_last_write_status：OK
+
+#Stats
+total_connections_received：24
+total_commands_processed：294
+instantaneous_ops_per_sec：0
+rejected_connections：0
+sync_full：0
+sync_partial_ok：0
+sync_partial_err：0
+expired_keys：0
+evicted_keys：0
+keyspace_hits：41
+keyspace_misses：82
+pubsub_channels：0
+pubsub_patterns：0
+latest_fork_usec：264
+
+#Replication
+作用：主
+connected_slaves：0
+master_repl_offset：0
+repl_backlog_active：0
+repl_backlog_size：1048576
+repl_backlog_first_byte_offset：0
+repl_backlog_histlen：0
+
+＃ 中央处理器
+used_cpu_sys：10.49
+used_cpu_user：4.96
+used_cpu_sys_children：0.00
+used_cpu_user_children：0.01
+
+#Keyspace
+DB0：键= 94，期满= 1，avg_ttl = 41638810
+DB1：键= 1，过期= 0，avg_ttl = 0
+DB3：键= 1，过期= 0，avg_ttl = 0
+</code></pre><p><strong>Redis服务器命令</strong><br>下表列出了redis服务器的相关命令：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>BGREWRITEAOF</td>
+<td>异步执行一个AOF（AppendOnly File）文件重写操作</td>
+</tr>
+<tr>
+<td>2</td>
+<td>BGSAVE</td>
+<td>在后台异步保存当前数据库的数据到磁盘</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CLIENT KILL [ip：port] [ID client-id]</td>
+<td>关闭客户端连接</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CLIENT LIST</td>
+<td>获取连接到服务器的客户端连接列表</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CLIENT GETNAME</td>
+<td>获取连接的名称</td>
+</tr>
+<tr>
+<td>6</td>
+<td>客户端暂停超时</td>
+<td>在指定时间内终止运行来自客户端的命令</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CLIENT SETNAME connection-name</td>
+<td>设置当前连接的名称</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CLUSTER SLOTS</td>
+<td>获取集群节点的映射数组</td>
+</tr>
+<tr>
+<td>9</td>
+<td>COMMAND</td>
+<td>获取Redis命令详情数组</td>
+</tr>
+<tr>
+<td>10</td>
+<td>COMMAND COUNT</td>
+<td>获取Redis命令总数</td>
+</tr>
+<tr>
+<td>11</td>
+<td>COMMAND GETKEYS</td>
+<td>获取给定命令的所有键</td>
+</tr>
+<tr>
+<td>12</td>
+<td>TIME</td>
+<td>返回当前服务器时间</td>
+</tr>
+<tr>
+<td>13</td>
+<td>COMMAND INFO command-name [command-name …]</td>
+<td>获取指定Redis命令描述的数组</td>
+</tr>
+<tr>
+<td>14</td>
+<td>CONFIG GET参数</td>
+<td>获取指定配置参数的值</td>
+</tr>
+<tr>
+<td>15</td>
+<td>CONFIG REWRITE</td>
+<td>对启动Redis服务器时所指定的redis.conf配置文件进行改写</td>
+</tr>
+<tr>
+<td>16</td>
+<td>CONFIG SET参数值</td>
+<td>修改redis配置参数，无需重启</td>
+</tr>
+<tr>
+<td>17</td>
+<td>CONFIG RESETSTAT</td>
+<td>重置INFO命令中的某些统计数据</td>
+</tr>
+<tr>
+<td>18</td>
+<td>DBSIZE</td>
+<td>返回当前数据库的key的数量</td>
+</tr>
+<tr>
+<td>19</td>
+<td>DEBUG OBJECT键</td>
+<td>获取键的调试信息</td>
+</tr>
+<tr>
+<td>20</td>
+<td>DEBUG SEGFAULT</td>
+<td>让Redis服务崩溃</td>
+</tr>
+<tr>
+<td>21</td>
+<td>FLUSHALL</td>
+<td>删除所有数据库的所有关键</td>
+</tr>
+<tr>
+<td>22</td>
+<td>FLUSHDB</td>
+<td>删除当前数据库的所有关键</td>
+</tr>
+<tr>
+<td>23</td>
+<td>INFO [section]</td>
+<td>获取Redis服务器的各种信息和统计数值</td>
+</tr>
+<tr>
+<td>24</td>
+<td>LASTSAVE</td>
+<td>返回最近一次Redis成功将数据保存到磁盘上的时间，以UNIX时间戳格式表示</td>
+</tr>
+<tr>
+<td>25</td>
+<td>MONITOR</td>
+<td>实时打印出Redis服务器接收到的命令，调试用</td>
+</tr>
+<tr>
+<td>26</td>
+<td>ROLE</td>
+<td>返回主从实例所属的角色</td>
+</tr>
+<tr>
+<td>27</td>
+<td>SAVE</td>
+<td>同步保存数据到硬盘</td>
+</tr>
+<tr>
+<td>28</td>
+<td>SHUTDOWN [NOSAVE] [SAVE]</td>
+<td>异步保存数据到硬盘，并关闭服务器</td>
+</tr>
+<tr>
+<td>29</td>
+<td>SLAVEOF主机端口</td>
+<td>将当前服务器转变为指定服务器的从属服务器（从服务器）</td>
+</tr>
+<tr>
+<td>30</td>
+<td>SLOWLOG子命令[参数]</td>
+<td>管理redis的慢日志</td>
+</tr>
+<tr>
+<td>31</td>
+<td>SYNC</td>
+<td>用于复制功能（复制）的内部命令</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Redis-数据备份与恢复"><a href="#Redis-数据备份与恢复" class="headerlink" title="Redis 数据备份与恢复"></a>Redis 数据备份与恢复</h1><h2 id="备份数据"><a href="#备份数据" class="headerlink" title="备份数据"></a>备份数据</h2><p>Redis SAVE 命令用于创建当前数据库的备份。</p>
+<p>语法<br>redis Save 命令基本语法如下：</p>
+<pre><code>redis 127.0.0.1:6379&gt; SAVE 
+</code></pre><p>实例</p>
+<pre><code>redis 127.0.0.1:6379&gt; SAVE 
+OK
+</code></pre><p>该命令将在 redis 安装目录中创建dump.rdb文件。</p>
+<h2 id="恢复数据"><a href="#恢复数据" class="headerlink" title="恢复数据"></a>恢复数据</h2><p>如果需要恢复数据，只需将备份文件 (dump.rdb) 移动到 redis 安装目录并启动服务即可。获取 redis 目录可以使用 CONFIG 命令，如下所示：</p>
+<pre><code>redis 127.0.0.1:6379&gt; CONFIG GET dir
+1) &quot;dir&quot;
+2) &quot;/usr/local/redis/bin&quot;
+</code></pre><p>以上命令 CONFIG GET dir 输出的 redis 安装目录为 /usr/local/redis/bin。</p>
+<p>Bgsave<br>创建 redis 备份文件也可以使用命令 BGSAVE，该命令在后台执行。</p>
+<p>实例</p>
+<pre><code>127.0.0.1:6379&gt; BGSAVE
+
+Background saving started
+</code></pre><h1 id="Redis-安全"><a href="#Redis-安全" class="headerlink" title="Redis 安全"></a>Redis 安全</h1><p>我们可以通过 redis 的配置文件设置密码参数，这样客户端连接到 redis 服务就需要密码验证，这样可以让你的 redis 服务更安全。</p>
+<p>实例<br>我们可以通过以下命令查看是否设置了密码验证：</p>
+<pre><code>127.0.0.1:6379&gt; CONFIG get requirepass
+1) &quot;requirepass&quot;
+2) &quot;&quot;
+</code></pre><p>默认情况下 requirepass 参数是空的，这就意味着你无需通过密码验证就可以连接到 redis 服务。</p>
+<p>你可以通过以下命令来修改该参数：</p>
+<p>127.0.0.1:6379&gt; CONFIG set requirepass “qixinyue”<br>OK<br>127.0.0.1:6379&gt; CONFIG get requirepass<br>1) “requirepass”<br>2) “qixinyue”</p>
+<p>设置密码后，客户端连接 redis 服务就需要密码验证，否则无法执行命令。</p>
+<p>语法<br>AUTH 命令基本语法格式如下：</p>
+<pre><code>127.0.0.1:6379&gt; AUTH password
+</code></pre><p>实例</p>
+<pre><code>127.0.0.1:6379&gt; AUTH &quot;qixinyue&quot;
+OK
+127.0.0.1:6379&gt; SET mykey &quot;Test value&quot;
+OK
+127.0.0.1:6379&gt; GET mykey
+&quot;Test value&quot;
+</code></pre><h1 id="Redis-性能测试"><a href="#Redis-性能测试" class="headerlink" title="Redis 性能测试"></a>Redis 性能测试</h1><p>Redis 性能测试是通过同时执行多个命令实现的。</p>
+<p>语法<br>redis 性能测试的基本命令如下：</p>
+<pre><code>redis-benchmark [option] [option value]
+</code></pre><p>实例<br>以下实例同时执行 10000 个请求来检测性能：</p>
+<pre><code>$ redis-benchmark -n 10000  -q
+
+PING_INLINE: 141043.72 requests per second
+PING_BULK: 142857.14 requests per second
+SET: 141442.72 requests per second
+GET: 145348.83 requests per second
+INCR: 137362.64 requests per second
+LPUSH: 145348.83 requests per second
+LPOP: 146198.83 requests per second
+SADD: 146198.83 requests per second
+SPOP: 149253.73 requests per second
+LPUSH (needed to benchmark LRANGE): 148588.42 requests per second
+LRANGE_100 (first 100 elements): 58411.21 requests per second
+LRANGE_300 (first 300 elements): 21195.42 requests per second
+LRANGE_500 (first 450 elements): 14539.11 requests per second
+LRANGE_600 (first 600 elements): 10504.20 requests per second
+MSET (10 keys): 93283.58 requests per second
+</code></pre><p>redis 性能测试工具可选参数如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>选项</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>-h</td>
+<td>指定服务器主机名</td>
+<td>127.0.0.1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>-p</td>
+<td>指定服务器端口</td>
+<td>6379</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-s</td>
+<td>指定服务器 socket</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>-c</td>
+<td>指定并发连接数</td>
+<td>50</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-n</td>
+<td>指定请求数</td>
+<td>10000</td>
+</tr>
+<tr>
+<td>6</td>
+<td>-d</td>
+<td>以字节的形式指定</td>
+<td>SET/GET 值的数据大小</td>
+<td>2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>-k</td>
+<td>1=keep alive 0=reconnect</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8</td>
+<td>-r</td>
+<td>SET/GET/INCR 使用随机 key, SADD 使用随机值</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>-P</td>
+<td>通过管道传输 <numreq> 请求</numreq></td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td>-q</td>
+<td>强制退出 redis。仅显示 query/sec 值</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>–csv</td>
+<td>以 CSV 格式输出</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>-l</td>
+<td>生成循环，永久执行测试</td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>-t</td>
+<td>仅运行以逗号分隔的测试命令列表。</td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>-I</td>
+<td>Idle 模式。仅打开 N 个 idle 连接并等待。</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>实例<br>以下实例我们使用了多个参数来测试 redis 性能：</p>
+<pre><code>$ redis-benchmark -h 127.0.0.1 -p 6379 -t set,lpush -n 10000 -q
+
+SET: 146198.83 requests per second
+LPUSH: 145560.41 requests per second
+</code></pre><p>以上实例中主机为 127.0.0.1，端口号为 6379，执行的命令为 set,lpush，请求数为 10000，通过 -q 参数让结果只显示每秒执行的请求数。</p>
 
           
         
@@ -10430,7 +11115,7 @@ if __name__==&apos;__main__&apos;:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">104.3k</span>
+    <span title="Site words total count">107.7k</span>
   
 </div>
 
