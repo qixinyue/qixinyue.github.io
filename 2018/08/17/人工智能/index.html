@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="数据分析常用工具matlab matfor pythonnumpy数据分析+scipy建模+matplotlib可视化+pandas数据清洗scikit-learn机器学习工具包+tensorflow深度学习（google） numpy的特点1 擅长数字计算2 足够高的运算性能3 支持矢量化运算4 完全免费的 开源的 代码： vector.py import time  n = 100000  s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-17T10:49:09.829Z">
+<meta property="og:updated_time" content="2018-08-20T07:39:47.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据分析">
 <meta name="twitter:description" content="数据分析常用工具matlab matfor pythonnumpy数据分析+scipy建模+matplotlib可视化+pandas数据清洗scikit-learn机器学习工具包+tensorflow深度学习（google） numpy的特点1 擅长数字计算2 足够高的运算性能3 支持矢量化运算4 完全免费的 开源的 代码： vector.py import time  n = 100000  s">
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,251 字
+                  5,120 字
                 </span>
               
 
@@ -347,7 +347,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  16 分钟
+                  25 分钟
                 </span>
               
             </div>
@@ -830,7 +830,310 @@ mp.annotate(r&apos;$sin(\pi/2)=1$&apos;,
             )
 mp.legend(loc=&apos;upper left&apos;)
 mp.show()  # 窗口不关闭的情况下，后面的代码是不执行的
-</code></pre>
+</code></pre><hr>
+<h2 id="图形对象"><a href="#图形对象" class="headerlink" title="图形对象"></a>图形对象</h2><p>figure(对象名(窗口标题)，figsize=大小,dpi=分辨率，facecolor=颜色)  -&gt; 图形窗口对象（不存在则创建，存在则设置为当前窗口）</p>
+<p>代码：</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as mp
+
+x = np.linspace(-np.pi, np.pi, 1000)
+cos_y = np.cos(x) / 2
+sin_y = np.sin(x)
+mp.figure(&apos;Sin&apos;, figsize=(6, 4), dpi=120, facecolor=&apos;dodgerblue&apos;)
+mp.title(&apos;Sin&apos;, fontsize=20)  # 设置窗体内部的标签
+mp.xlabel(&apos;x&apos;, fontsize=14)  # 设置坐标轴的标签
+mp.ylabel(&apos;y&apos;, fontsize=14)
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=&apos;:&apos;)
+
+
+mp.figure(&apos;Cos&apos;, figsize=(6, 4), dpi=120, facecolor=&apos;limegreen&apos;)
+mp.title(&apos;Cos&apos;, fontsize=20)
+mp.xlabel(&apos;x&apos;, fontsize=14)
+mp.ylabel(&apos;y&apos;, fontsize=14)
+mp.tick_params(labelsize=10)
+mp.grid()
+mp.figure(&apos;Sin&apos;)
+mp.plot(x, sin_y, label=r&apos;$y=sin(x)$&apos;)
+mp.legend()
+mp.figure(&apos;Cos&apos;)
+mp.plot(x, cos_y, label=r&apos;$y=cos(x)$&apos;)
+mp.legend()
+mp.show()
+</code></pre><h2 id="子图"><a href="#子图" class="headerlink" title="子图"></a>子图</h2><p>subplot(总行数，总列数，图号）<br>subplot(总行数总列数图号的连写，如223代表两行2列的第三张图）<br>代码：</p>
+<pre><code>import matplotlib.pyplot as mp
+
+mp.figure(&apos;Subplot&apos;, figsize=(6, 4), dpi=120, facecolor=&apos;lightgray&apos;)
+mp.subplot(221)
+mp.xticks(())
+mp.yticks(())
+# 在中间显示数字1，字体大小和透明度
+mp.text(0.5, 0.5, &apos;1&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+mp.subplot(222)
+mp.xticks(())
+mp.yticks(())
+mp.text(0.5, 0.5, &apos;2&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+mp.subplot(223)
+mp.xticks(())
+mp.yticks(())
+mp.text(0.5, 0.5, &apos;3&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+mp.subplot(224)
+mp.xticks(())
+mp.yticks(())
+mp.text(0.5, 0.5, &apos;4&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+# 设置几个子图更加紧凑一些
+mp.tight_layout()
+mp.show()
+</code></pre><h2 id="栅格布局"><a href="#栅格布局" class="headerlink" title="栅格布局"></a>栅格布局</h2><p>import matplotlib.gridspec as mg<br>gs = mg.GridSpec(行数，列数）<br>subplot(gs[切片])</p>
+<p>实现如下布局的4个区域块</p>
+<pre><code>！！！！！！！！！！！
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;##########
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;@@@@@@@@@@
+</code></pre><p>代码如下：</p>
+<pre><code>import matplotlib.pyplot as mp
+import matplotlib.gridspec as mg
+mp.figure(&apos;gridspec&apos;, facecolor=&apos;lightgray&apos;)
+gs = mg.GridSpec(3, 2)
+mp.subplot(gs[0, :])
+mp.xticks(())
+mp.yticks(())
+mp.text(0.5, 0.5, &apos;1&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+mp.subplot(gs[1:, 0])
+mp.xticks(())
+mp.yticks(())
+mp.text(0.5, 0.5, &apos;2&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+mp.subplot(gs[1, 1])
+mp.xticks(())
+mp.yticks(())
+mp.text(0.5, 0.5, &apos;3&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+mp.subplot(gs[2, 1])
+mp.xticks(())
+mp.yticks(())
+mp.text(0.5, 0.5, &apos;4&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+mp.tight_layout()
+mp.show()
+</code></pre><h2 id="自由布局"><a href="#自由布局" class="headerlink" title="自由布局"></a>自由布局</h2><p>axes([左，底，宽度，高度)  宽度和高度都是比例，0-1之间</p>
+<p>画一个图中的矩形图，边框左右：3% 上下：4%，则宽到为 94% 92%<br>代码如下：</p>
+<pre><code>import matplotlib.pyplot as mp
+mp.figure(&apos;axes&apos;, facecolor=&apos;lightgray&apos;)
+mp.axes([0.03, 0.04, 0.94, 0.92])
+mp.xticks(())
+mp.yticks(())
+mp.text(0.5, 0.5, &apos;N.O.1!&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+mp.axes([0.70, 0.06, 0.25, 0.25])
+mp.xticks(())
+mp.yticks(())
+mp.text(0.5, 0.5, &apos;N.O.2!&apos;, ha=&apos;center&apos;, va=&apos;center&apos;, size=36, alpha=0.5)
+
+mp.show()
+</code></pre><h2 id="坐标刻度"><a href="#坐标刻度" class="headerlink" title="坐标刻度"></a>坐标刻度</h2><p>xxxLocator(参数) -&gt; 坐标定位器对象<br>ax = mp.gca()<br>设置水平轴主刻度定位器<br>ax.xaxis.set_major_locator(坐标定位器对象)<br>设置垂直轴次刻度定位器<br>ax.yaxis.set_minor_locator(坐标定位器对象)</p>
+<h2 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h2><p>scatter(水平坐标，垂直坐标，s=大小，c=颜色，cmap=颜色映射，marker=点型，alpha=透明度,label=标签)</p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>y</th>
+<th>z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>40</td>
+<td>1</td>
+</tr>
+<tr>
+<td>20</td>
+<td>30</td>
+<td>2</td>
+</tr>
+<tr>
+<td>30</td>
+<td>20</td>
+<td>3</td>
+</tr>
+<tr>
+<td>40</td>
+<td>10</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>scatter([10,20,30,40,[40,30,20,10].c=[1,2,3,4],cmap=’jet’)<br>实现正态分布的散点图代码如下：</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as mp
+n = 1000
+x = np.random.normal(0, 1, n)  # 平均值0 1标准差的正态分布图
+y = np.random.normal(0, 1, n)
+z = np.sqrt(x**2 + y**2)  # 每个点到原点的距离
+mp.figure(&apos;scatter&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;scatter&apos;, fontsize=20)
+mp.xlabel(&apos;x&apos;)
+mp.xlabel(&apos;y&apos;)
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=&apos;:&apos;)
+mp.scatter(x, y, s=60, c=z, cmap=&apos;jet_r&apos;, alpha=0.5)
+mp.axis(&apos;equal&apos;)
+mp.show()
+</code></pre><h2 id="区域填充"><a href="#区域填充" class="headerlink" title="区域填充"></a>区域填充</h2><p>fill_between(水平坐标，起始垂直坐标，终止垂直坐标，填充条件，color=颜色，alpha=透明度）<br>示例代码如下：</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as mp
+n = 1000
+x = np.linspace(0, 8 * np.pi, n)  # 平均值0 1标准差的正态分布图
+sin_y = np.sin(x)
+cos_y = np.cos(x) / 2
+
+
+mp.figure(&apos;Fill&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;Fill&apos;, fontsize=20)
+mp.xlabel(&apos;x&apos;)
+mp.xlabel(&apos;y&apos;)
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=&apos;:&apos;)
+
+mp.plot(x, sin_y, c=&apos;dodgerblue&apos;, label=r&apos;$y=sin(x)$&apos;)
+mp.plot(x, cos_y, c=&apos;orangered&apos;, label=r&apos;$y=cos(x)/2$&apos;)
+
+mp.fill_between(x, cos_y, sin_y, cos_y &lt; sin_y, color=&apos;dodgerblue&apos;, alpha=0.5)
+mp.fill_between(x, cos_y, sin_y, cos_y &gt; sin_y, color=&apos;orangered&apos;, alpha=0.5)
+
+mp.legend()
+mp.show()
+</code></pre><h2 id="条形图"><a href="#条形图" class="headerlink" title="条形图"></a>条形图</h2><p>bar（水平坐标，高度(可以负数)，ec=边颜色，fc=填充色，label=标签）<br>高度为负数的时候，矩形图会画在0轴下方<br>示例代码如下：</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as mp
+n = 12
+x = np.arange(n) 
+y1 = (1 - x / n) * np.random.uniform(0.5, 1.0)  # 最小值 最大值
+y2 = (1 - x / n) * np.random.uniform(0.5, 1.0)
+
+
+mp.figure(&apos;Bar&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;Bar&apos;, fontsize=20)
+mp.ylim(-1.25, 1.25)
+mp.xlabel(&apos;x&apos;)
+mp.xlabel(&apos;y&apos;)
+mp.tick_params(labelsize=10)
+mp.grid(axis=&apos;y&apos;, linestyle=&apos;:&apos;)  # 只在y方向画线
+mp.xticks(x, x + 1)
+mp.bar(x, y1, ec=&apos;orangered&apos;, fc=&apos;dodgerblue&apos;, label=&apos;y1&apos;)
+for _x, _y in zip(x, y1):
+    mp.text(_x, _y, &apos;%.2f&apos; % _y, ha=&apos;center&apos;, va=&apos;center&apos;, alpha=0.5)
+
+mp.bar(x, -y2, ec=&apos;orangered&apos;, fc=&apos;dodgerblue&apos;, label=&apos;y2&apos;, alpha=0.5)
+for _x, _y in zip(x, y2):
+    mp.text(_x, -_y, &apos;%.2f&apos; % _y, alpha=0.5)
+
+
+mp.legend()
+mp.show()
+</code></pre><h2 id="等高线"><a href="#等高线" class="headerlink" title="等高线"></a>等高线</h2><p>contour画等高线<br>contourf(点阵水平坐标，点阵垂直坐标，点阵直立坐标，高差份数，colors=颜色，linewidths=线宽）<br>contourf 画等高线，而且用指定颜色填充<br>contourf(点阵水平坐标，点阵垂直坐标，点阵直立坐标，高差份数，cmap=颜色映射）</p>
+<p>加标签<br>clabel(等高线图对象，inline_spacing=线内空白，fmt=格式化串，fontsize=字体大小)<br>代码如下：</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as mp
+
+n = 1000
+x, y = np.meshgrid(np.linspace(-3, 3, n), np.linspace(-3, 3, n))
+z = (1 - x / 2 + x**5 + y**3) * np.exp(-x**2 - y**2)
+
+mp.figure(&apos;contourf&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;contourf&apos;, fontsize=20)
+mp.xlabel(&apos;x&apos;)
+mp.ylabel(&apos;y&apos;)
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=&apos;:&apos;)  # 只在y方向画线
+
+cont = mp.contourf(x, y, z, 8, cmap=&apos;jet&apos;)
+mp.clabel(cont, inline_spacing=1, fmt=&apos;%.2f&apos;, fontsize=12)
+
+mp.legend()
+mp.show()
+</code></pre><h2 id="热成像图"><a href="#热成像图" class="headerlink" title="热成像图"></a>热成像图</h2><p>mp.imshow(矩阵，cmap=颜色映射，origin=纵轴方向)</p>
+<h2 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h2><p>pie(值，间隙，标签，颜色，格式，shadow=阴影，startangle=起始角度<br>代码如下：</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as mp
+
+values = [26, 17, 21, 29, 11]
+spaces = [0, 0, 0, 0, 0]
+labels = [&apos;python&apos;, &apos;java&apos;, &apos;c++&apos;, &apos;c&apos;, &apos;js&apos;]
+colors = [&apos;dodgerblue&apos;, &apos;orangered&apos;, &apos;limegreen&apos;, &apos;violet&apos;, &apos;gold&apos;]
+
+
+n = 1000
+x, y = np.meshgrid(np.linspace(-3, 3, n), np.linspace(-3, 3, n))
+z = (1 - x / 2 + x**6 + y**4) * np.exp(-x**2 - y**2)
+
+mp.figure(&apos;pie&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;pie&apos;, fontsize=20)
+mp.pie(values, spaces, labels, colors, &apos;%d%%&apos;, shadow=True, startangle=90)
+
+mp.legend()
+mp.show()
+</code></pre><h2 id="坐标线"><a href="#坐标线" class="headerlink" title="坐标线"></a>坐标线</h2><p>grid(which=’major/minor’,axis=’x,y,both’,linewidths=线宽,linestyle=线型,color=颜色）<br>示例代码：</p>
+<pre><code>import matplotlib.pyplot as mp
+
+
+mp.figure(&apos;grid&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;grid&apos;, fontsize=20)
+mp.xlabel(&apos;x&apos;)
+mp.ylabel(&apos;y&apos;)
+
+ax = mp.gca()
+# ax.xaxis.set_major_locator(mp.MultipleLocator(20))
+ax.xaxis.set_major_locator(mp.MultipleLocator(1.0))
+ax.xaxis.set_minor_locator(mp.MultipleLocator(0.1))
+ax.yaxis.set_major_locator(mp.MultipleLocator(1.0))
+ax.yaxis.set_minor_locator(mp.MultipleLocator(0.1))
+
+
+# mp.xticks(np.linspace(0, 1000, 7), np.linspace(-3, 3, 7).astype(int))
+# mp.yticks(np.linspace(0, 1000, 7), np.linspace(-3, 3, 7).astype(int))
+mp.tick_params(labelsize=10)
+
+mp.grid(which=&apos;major&apos;, axis=&apos;both&apos;, linewidth=0.75,
+        linestyle=&apos;:&apos;, color=&apos;lightgray&apos;)
+mp.grid(which=&apos;minor&apos;, axis=&apos;both&apos;, linewidth=0.75,
+        linestyle=&apos;-&apos;, color=&apos;lightgray&apos;)
+
+mp.legend()
+mp.show()
+</code></pre><h2 id="极坐标"><a href="#极坐标" class="headerlink" title="极坐标"></a>极坐标</h2><p>mp.gca(projection=’polar’)<br>mp.plot/scatter(极角，极径）<br>代码如下：</p>
+<pre><code>import numpy as np
+import matplotlib.pyplot as mp
+
+t = np.linspace(0, 2 * np.pi, 1000)
+r_spiral = 0.8 * t
+r_rose = 5 * np.sin(6 * t)  # 6元玫瑰线
+
+
+mp.figure(&apos;polar&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;polar&apos;, fontsize=20)
+mp.xlabel(r&apos;$\theta$&apos;)
+mp.ylabel(r&apos;$\rho$&apos;)
+
+ax = mp.gca(projection=&apos;polar&apos;)
+# ax.xaxis.set_major_locator(mp.MultipleLocator(20))
+
+
+mp.tick_params(labelsize=10)
+
+mp.grid(linestyle=&apos;:&apos;)
+mp.plot(t, r_spiral, c=&apos;dodgerblue&apos;, label=r&apos;$\rho$ = 0.8$\theta$&apos;)
+mp.plot(t, r_rose, c=&apos;orangered&apos;, label=r&apos;$\rho$ = sin($\theta$)&apos;)
+
+mp.legend()
+mp.show()
+</code></pre><h2 id="三维曲面"><a href="#三维曲面" class="headerlink" title="三维曲面"></a>三维曲面</h2><p>from mpl_tookits.mplot3d import axes3d<br>ax = mp.gca(projection=’3d’)<br>ax.set_xlabel(…)<br>ax.sety_label()<br>ax.set_zlabel()<br>ax.plot_surface(水平坐标 垂直坐标，直立坐标，rstride=行距，cstride=列距,cnap=颜色映射)<br>ax.plot_wireframe(水平坐标 垂直坐标，直立坐标，rstride=行距，cstride=列距,linewidth=线宽。color=颜色)</p>
+
       
     </div>
     
@@ -1066,7 +1369,7 @@ mp.show()  # 窗口不关闭的情况下，后面的代码是不执行的
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据分析"><span class="nav-number">1.</span> <span class="nav-text">数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用工具"><span class="nav-number">1.1.</span> <span class="nav-text">常用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy的特点"><span class="nav-number">1.2.</span> <span class="nav-text">numpy的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy的数组"><span class="nav-number">1.3.</span> <span class="nav-text">Numpy的数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy内置的数据类型"><span class="nav-number">1.4.</span> <span class="nav-text">numpy内置的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-布尔"><span class="nav-number">1.4.1.</span> <span class="nav-text">1 布尔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-整数"><span class="nav-number">1.4.2.</span> <span class="nav-text">2 整数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-浮点"><span class="nav-number">1.4.3.</span> <span class="nav-text">3 浮点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-复数"><span class="nav-number">1.4.4.</span> <span class="nav-text">4 复数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-字符串"><span class="nav-number">1.4.5.</span> <span class="nav-text">5 字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显式使用数据类型"><span class="nav-number">1.5.</span> <span class="nav-text">显式使用数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-number">1.6.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变维度"><span class="nav-number">1.7.</span> <span class="nav-text">改变维度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#视图变维"><span class="nav-number">1.7.1.</span> <span class="nav-text">视图变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制变维"><span class="nav-number">1.7.2.</span> <span class="nav-text">复制变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#就地变维"><span class="nav-number">1.7.3.</span> <span class="nav-text">就地变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转置"><span class="nav-number">1.7.4.</span> <span class="nav-text">转置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并与拆分"><span class="nav-number">1.8.</span> <span class="nav-text">合并与拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直合分"><span class="nav-number">1.8.1.</span> <span class="nav-text">垂直合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平合分"><span class="nav-number">1.8.2.</span> <span class="nav-text">水平合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度合分"><span class="nav-number">1.8.3.</span> <span class="nav-text">深度合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行列合并"><span class="nav-number">1.8.4.</span> <span class="nav-text">行列合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ndarray对象的属性"><span class="nav-number">1.9.</span> <span class="nav-text">ndarray对象的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据可视化-matplotlib"><span class="nav-number">1.10.</span> <span class="nav-text">数据可视化 matplotlib</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据分析"><span class="nav-number">1.</span> <span class="nav-text">数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用工具"><span class="nav-number">1.1.</span> <span class="nav-text">常用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy的特点"><span class="nav-number">1.2.</span> <span class="nav-text">numpy的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy的数组"><span class="nav-number">1.3.</span> <span class="nav-text">Numpy的数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy内置的数据类型"><span class="nav-number">1.4.</span> <span class="nav-text">numpy内置的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-布尔"><span class="nav-number">1.4.1.</span> <span class="nav-text">1 布尔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-整数"><span class="nav-number">1.4.2.</span> <span class="nav-text">2 整数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-浮点"><span class="nav-number">1.4.3.</span> <span class="nav-text">3 浮点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-复数"><span class="nav-number">1.4.4.</span> <span class="nav-text">4 复数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-字符串"><span class="nav-number">1.4.5.</span> <span class="nav-text">5 字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显式使用数据类型"><span class="nav-number">1.5.</span> <span class="nav-text">显式使用数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-number">1.6.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变维度"><span class="nav-number">1.7.</span> <span class="nav-text">改变维度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#视图变维"><span class="nav-number">1.7.1.</span> <span class="nav-text">视图变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制变维"><span class="nav-number">1.7.2.</span> <span class="nav-text">复制变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#就地变维"><span class="nav-number">1.7.3.</span> <span class="nav-text">就地变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转置"><span class="nav-number">1.7.4.</span> <span class="nav-text">转置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并与拆分"><span class="nav-number">1.8.</span> <span class="nav-text">合并与拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直合分"><span class="nav-number">1.8.1.</span> <span class="nav-text">垂直合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平合分"><span class="nav-number">1.8.2.</span> <span class="nav-text">水平合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度合分"><span class="nav-number">1.8.3.</span> <span class="nav-text">深度合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行列合并"><span class="nav-number">1.8.4.</span> <span class="nav-text">行列合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ndarray对象的属性"><span class="nav-number">1.9.</span> <span class="nav-text">ndarray对象的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据可视化-matplotlib"><span class="nav-number">1.10.</span> <span class="nav-text">数据可视化 matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形对象"><span class="nav-number">1.11.</span> <span class="nav-text">图形对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子图"><span class="nav-number">1.12.</span> <span class="nav-text">子图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栅格布局"><span class="nav-number">1.13.</span> <span class="nav-text">栅格布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自由布局"><span class="nav-number">1.14.</span> <span class="nav-text">自由布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标刻度"><span class="nav-number">1.15.</span> <span class="nav-text">坐标刻度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散点图"><span class="nav-number">1.16.</span> <span class="nav-text">散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区域填充"><span class="nav-number">1.17.</span> <span class="nav-text">区域填充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条形图"><span class="nav-number">1.18.</span> <span class="nav-text">条形图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#等高线"><span class="nav-number">1.19.</span> <span class="nav-text">等高线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热成像图"><span class="nav-number">1.20.</span> <span class="nav-text">热成像图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#饼图"><span class="nav-number">1.21.</span> <span class="nav-text">饼图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标线"><span class="nav-number">1.22.</span> <span class="nav-text">坐标线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极坐标"><span class="nav-number">1.23.</span> <span class="nav-text">极坐标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三维曲面"><span class="nav-number">1.24.</span> <span class="nav-text">三维曲面</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1100,7 +1403,7 @@ mp.show()  # 窗口不关闭的情况下，后面的代码是不执行的
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">94.2k</span>
+    <span title="Site words total count">97.7k</span>
   
 </div>
 
