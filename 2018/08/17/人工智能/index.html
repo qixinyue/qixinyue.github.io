@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="数据分析常用工具matlab matfor pythonnumpy数据分析+scipy建模+matplotlib可视化+pandas数据清洗scikit-learn机器学习工具包+tensorflow深度学习（google） numpy的特点1 擅长数字计算2 足够高的运算性能3 支持矢量化运算4 完全免费的 开源的 代码： vector.py import time  n = 100000  s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-21T06:28:19.104Z">
+<meta property="og:updated_time" content="2018-08-21T07:35:51.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据分析">
 <meta name="twitter:description" content="数据分析常用工具matlab matfor pythonnumpy数据分析+scipy建模+matplotlib可视化+pandas数据清洗scikit-learn机器学习工具包+tensorflow深度学习（google） numpy的特点1 擅长数字计算2 足够高的运算性能3 支持矢量化运算4 完全免费的 开源的 代码： vector.py import time  n = 100000  s">
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  7,944 字
+                  8,348 字
                 </span>
               
 
@@ -347,7 +347,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  41 分钟
+                  43 分钟
                 </span>
               
             </div>
@@ -1584,7 +1584,49 @@ max_highest, min_highest, max_lowest, min_lowest = np.max(highest_price), np.min
 print(max_highest, min_highest, max_lowest, min_lowest, sep=&apos;\n&apos;)
 print(max_highest - min_highest, max_lowest - min_lowest, sep=&apos;\n&apos;)
 print(np.ptp(highest_price), np.ptp(lowest_price), sep=&apos;\n&apos;)
-</code></pre>
+</code></pre><h3 id="中位数"><a href="#中位数" class="headerlink" title="中位数"></a>中位数</h3><p>将多个样本按照大小顺序排列，居于中间位置的元素即为中位数<br>奇数个元素就是中间的，如果是偶数个元素则求最中间的2个算术平均数作为中位数<br>L:序列长度<br>M：(A[(L-1)//2]+A[L//2])/2 得到中位数<br>numpy.median(A) -&gt; M<br>代码：</p>
+<pre><code>import numpy as np
+
+closing_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(6),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;f8&apos;),  # 运行后类型为datetime64[D]
+)
+# median函数不需要排序就可以直接运算出中位数结果
+median = np.median(closing_price)
+print(median)
+
+# 手动计算需要先排序
+closing_price = np.sort(closing_price)
+print(closing_price)
+
+l = closing_price.size
+median = (closing_price[(l - 1) // 2] + closing_price[(l) // 2]) / 2
+print(median)
+</code></pre><h3 id="标准差"><a href="#标准差" class="headerlink" title="标准差"></a>标准差</h3><p>样本 a = [5.0,5.1,5.1,4.9,4.9]<br>算术平均值为 m = 5<br>离差 D= [a1-m,a2-m…]<br>离差方： Q=[(a1-m)^2,(a2-m)^2,…]<br>方差: v = sum((a[i]-m)^2)/a.size<br>标准差计算方式<br>std = sqrt(v) = sqrt( ((5.0-5.0)^2 + (5.1-5.0)^ 2 + (5.1-5.0)^ 2 +(4.9-5.0)^ 2 +(4.9-5.0)^ 2)/5  )<br>^代表幂运算</p>
+<p>numpy.std(a,ddof=非自由因子) -&gt; std   非自由因子 默认为0，如果为1，则表示n-1个样本是自由的<br>代码：</p>
+<pre><code>import numpy as np
+
+closing_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(6),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;f8&apos;),  # 运行后类型为datetime64[D]
+)
+
+mean = closing_price.mean()  # 平均值
+devs = closing_price - mean  # 离差
+devs2 = devs ** 2  # 离差方
+pvar = devs2.mean()  # 总体方差
+svar = devs2.sum() / (devs2.size - 1)  # 样本方差
+
+sstd = np.sqrt(svar)  # 样本标准差
+pstd = np.sqrt(pvar)  # 总体标准差
+print(sstd, pstd, sep=&apos;\n&apos;)
+</code></pre><h3 id="时间数据"><a href="#时间数据" class="headerlink" title="时间数据"></a>时间数据</h3>
       
     </div>
     
@@ -1820,7 +1862,7 @@ print(np.ptp(highest_price), np.ptp(lowest_price), sep=&apos;\n&apos;)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据分析"><span class="nav-number">1.</span> <span class="nav-text">数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用工具"><span class="nav-number">1.1.</span> <span class="nav-text">常用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy的特点"><span class="nav-number">1.2.</span> <span class="nav-text">numpy的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy的数组"><span class="nav-number">1.3.</span> <span class="nav-text">Numpy的数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy内置的数据类型"><span class="nav-number">1.4.</span> <span class="nav-text">numpy内置的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-布尔"><span class="nav-number">1.4.1.</span> <span class="nav-text">1 布尔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-整数"><span class="nav-number">1.4.2.</span> <span class="nav-text">2 整数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-浮点"><span class="nav-number">1.4.3.</span> <span class="nav-text">3 浮点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-复数"><span class="nav-number">1.4.4.</span> <span class="nav-text">4 复数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-字符串"><span class="nav-number">1.4.5.</span> <span class="nav-text">5 字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显式使用数据类型"><span class="nav-number">1.5.</span> <span class="nav-text">显式使用数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-number">1.6.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变维度"><span class="nav-number">1.7.</span> <span class="nav-text">改变维度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#视图变维"><span class="nav-number">1.7.1.</span> <span class="nav-text">视图变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制变维"><span class="nav-number">1.7.2.</span> <span class="nav-text">复制变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#就地变维"><span class="nav-number">1.7.3.</span> <span class="nav-text">就地变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转置"><span class="nav-number">1.7.4.</span> <span class="nav-text">转置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并与拆分"><span class="nav-number">1.8.</span> <span class="nav-text">合并与拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直合分"><span class="nav-number">1.8.1.</span> <span class="nav-text">垂直合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平合分"><span class="nav-number">1.8.2.</span> <span class="nav-text">水平合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度合分"><span class="nav-number">1.8.3.</span> <span class="nav-text">深度合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行列合并"><span class="nav-number">1.8.4.</span> <span class="nav-text">行列合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ndarray对象的属性"><span class="nav-number">1.9.</span> <span class="nav-text">ndarray对象的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据可视化-matplotlib"><span class="nav-number">1.10.</span> <span class="nav-text">数据可视化 matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形对象"><span class="nav-number">1.11.</span> <span class="nav-text">图形对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子图"><span class="nav-number">1.12.</span> <span class="nav-text">子图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栅格布局"><span class="nav-number">1.13.</span> <span class="nav-text">栅格布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自由布局"><span class="nav-number">1.14.</span> <span class="nav-text">自由布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标刻度"><span class="nav-number">1.15.</span> <span class="nav-text">坐标刻度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散点图"><span class="nav-number">1.16.</span> <span class="nav-text">散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区域填充"><span class="nav-number">1.17.</span> <span class="nav-text">区域填充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条形图"><span class="nav-number">1.18.</span> <span class="nav-text">条形图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#等高线"><span class="nav-number">1.19.</span> <span class="nav-text">等高线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热成像图"><span class="nav-number">1.20.</span> <span class="nav-text">热成像图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#饼图"><span class="nav-number">1.21.</span> <span class="nav-text">饼图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标线"><span class="nav-number">1.22.</span> <span class="nav-text">坐标线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极坐标"><span class="nav-number">1.23.</span> <span class="nav-text">极坐标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三维曲面"><span class="nav-number">1.24.</span> <span class="nav-text">三维曲面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三维散点图"><span class="nav-number">1.25.</span> <span class="nav-text">三维散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#半对数坐标"><span class="nav-number">1.26.</span> <span class="nav-text">半对数坐标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单动画"><span class="nav-number">1.27.</span> <span class="nav-text">简单动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy的通用函数"><span class="nav-number">1.28.</span> <span class="nav-text">numpy的通用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文件"><span class="nav-number">1.28.1.</span> <span class="nav-text">读取文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术平均值"><span class="nav-number">1.28.2.</span> <span class="nav-text">算术平均值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加权平均值"><span class="nav-number">1.28.3.</span> <span class="nav-text">加权平均值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大值最小值"><span class="nav-number">1.28.4.</span> <span class="nav-text">最大值最小值</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据分析"><span class="nav-number">1.</span> <span class="nav-text">数据分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用工具"><span class="nav-number">1.1.</span> <span class="nav-text">常用工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy的特点"><span class="nav-number">1.2.</span> <span class="nav-text">numpy的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy的数组"><span class="nav-number">1.3.</span> <span class="nav-text">Numpy的数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy内置的数据类型"><span class="nav-number">1.4.</span> <span class="nav-text">numpy内置的数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-布尔"><span class="nav-number">1.4.1.</span> <span class="nav-text">1 布尔</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-整数"><span class="nav-number">1.4.2.</span> <span class="nav-text">2 整数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-浮点"><span class="nav-number">1.4.3.</span> <span class="nav-text">3 浮点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-复数"><span class="nav-number">1.4.4.</span> <span class="nav-text">4 复数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-字符串"><span class="nav-number">1.4.5.</span> <span class="nav-text">5 字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显式使用数据类型"><span class="nav-number">1.5.</span> <span class="nav-text">显式使用数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-number">1.6.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变维度"><span class="nav-number">1.7.</span> <span class="nav-text">改变维度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#视图变维"><span class="nav-number">1.7.1.</span> <span class="nav-text">视图变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制变维"><span class="nav-number">1.7.2.</span> <span class="nav-text">复制变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#就地变维"><span class="nav-number">1.7.3.</span> <span class="nav-text">就地变维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转置"><span class="nav-number">1.7.4.</span> <span class="nav-text">转置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合并与拆分"><span class="nav-number">1.8.</span> <span class="nav-text">合并与拆分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#垂直合分"><span class="nav-number">1.8.1.</span> <span class="nav-text">垂直合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#水平合分"><span class="nav-number">1.8.2.</span> <span class="nav-text">水平合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度合分"><span class="nav-number">1.8.3.</span> <span class="nav-text">深度合分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行列合并"><span class="nav-number">1.8.4.</span> <span class="nav-text">行列合并</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ndarray对象的属性"><span class="nav-number">1.9.</span> <span class="nav-text">ndarray对象的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据可视化-matplotlib"><span class="nav-number">1.10.</span> <span class="nav-text">数据可视化 matplotlib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图形对象"><span class="nav-number">1.11.</span> <span class="nav-text">图形对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子图"><span class="nav-number">1.12.</span> <span class="nav-text">子图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栅格布局"><span class="nav-number">1.13.</span> <span class="nav-text">栅格布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自由布局"><span class="nav-number">1.14.</span> <span class="nav-text">自由布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标刻度"><span class="nav-number">1.15.</span> <span class="nav-text">坐标刻度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#散点图"><span class="nav-number">1.16.</span> <span class="nav-text">散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区域填充"><span class="nav-number">1.17.</span> <span class="nav-text">区域填充</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条形图"><span class="nav-number">1.18.</span> <span class="nav-text">条形图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#等高线"><span class="nav-number">1.19.</span> <span class="nav-text">等高线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#热成像图"><span class="nav-number">1.20.</span> <span class="nav-text">热成像图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#饼图"><span class="nav-number">1.21.</span> <span class="nav-text">饼图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坐标线"><span class="nav-number">1.22.</span> <span class="nav-text">坐标线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极坐标"><span class="nav-number">1.23.</span> <span class="nav-text">极坐标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三维曲面"><span class="nav-number">1.24.</span> <span class="nav-text">三维曲面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三维散点图"><span class="nav-number">1.25.</span> <span class="nav-text">三维散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#半对数坐标"><span class="nav-number">1.26.</span> <span class="nav-text">半对数坐标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单动画"><span class="nav-number">1.27.</span> <span class="nav-text">简单动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#numpy的通用函数"><span class="nav-number">1.28.</span> <span class="nav-text">numpy的通用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文件"><span class="nav-number">1.28.1.</span> <span class="nav-text">读取文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术平均值"><span class="nav-number">1.28.2.</span> <span class="nav-text">算术平均值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加权平均值"><span class="nav-number">1.28.3.</span> <span class="nav-text">加权平均值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大值最小值"><span class="nav-number">1.28.4.</span> <span class="nav-text">最大值最小值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中位数"><span class="nav-number">1.28.5.</span> <span class="nav-text">中位数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准差"><span class="nav-number">1.28.6.</span> <span class="nav-text">标准差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间数据"><span class="nav-number">1.28.7.</span> <span class="nav-text">时间数据</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1854,7 +1896,7 @@ print(np.ptp(highest_price), np.ptp(lowest_price), sep=&apos;\n&apos;)
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">117.1k</span>
+    <span title="Site words total count">117.5k</span>
   
 </div>
 

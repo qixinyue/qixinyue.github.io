@@ -3702,7 +3702,7 @@ ex:
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  7,944 字
+                  8,348 字
                 </span>
               
 
@@ -3718,7 +3718,7 @@ ex:
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  41 分钟
+                  43 分钟
                 </span>
               
             </div>
@@ -4957,7 +4957,49 @@ max_highest, min_highest, max_lowest, min_lowest = np.max(highest_price), np.min
 print(max_highest, min_highest, max_lowest, min_lowest, sep=&apos;\n&apos;)
 print(max_highest - min_highest, max_lowest - min_lowest, sep=&apos;\n&apos;)
 print(np.ptp(highest_price), np.ptp(lowest_price), sep=&apos;\n&apos;)
-</code></pre>
+</code></pre><h3 id="中位数"><a href="#中位数" class="headerlink" title="中位数"></a>中位数</h3><p>将多个样本按照大小顺序排列，居于中间位置的元素即为中位数<br>奇数个元素就是中间的，如果是偶数个元素则求最中间的2个算术平均数作为中位数<br>L:序列长度<br>M：(A[(L-1)//2]+A[L//2])/2 得到中位数<br>numpy.median(A) -&gt; M<br>代码：</p>
+<pre><code>import numpy as np
+
+closing_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(6),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;f8&apos;),  # 运行后类型为datetime64[D]
+)
+# median函数不需要排序就可以直接运算出中位数结果
+median = np.median(closing_price)
+print(median)
+
+# 手动计算需要先排序
+closing_price = np.sort(closing_price)
+print(closing_price)
+
+l = closing_price.size
+median = (closing_price[(l - 1) // 2] + closing_price[(l) // 2]) / 2
+print(median)
+</code></pre><h3 id="标准差"><a href="#标准差" class="headerlink" title="标准差"></a>标准差</h3><p>样本 a = [5.0,5.1,5.1,4.9,4.9]<br>算术平均值为 m = 5<br>离差 D= [a1-m,a2-m…]<br>离差方： Q=[(a1-m)^2,(a2-m)^2,…]<br>方差: v = sum((a[i]-m)^2)/a.size<br>标准差计算方式<br>std = sqrt(v) = sqrt( ((5.0-5.0)^2 + (5.1-5.0)^ 2 + (5.1-5.0)^ 2 +(4.9-5.0)^ 2 +(4.9-5.0)^ 2)/5  )<br>^代表幂运算</p>
+<p>numpy.std(a,ddof=非自由因子) -&gt; std   非自由因子 默认为0，如果为1，则表示n-1个样本是自由的<br>代码：</p>
+<pre><code>import numpy as np
+
+closing_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(6),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;f8&apos;),  # 运行后类型为datetime64[D]
+)
+
+mean = closing_price.mean()  # 平均值
+devs = closing_price - mean  # 离差
+devs2 = devs ** 2  # 离差方
+pvar = devs2.mean()  # 总体方差
+svar = devs2.sum() / (devs2.size - 1)  # 样本方差
+
+sstd = np.sqrt(svar)  # 样本标准差
+pstd = np.sqrt(pvar)  # 总体标准差
+print(sstd, pstd, sep=&apos;\n&apos;)
+</code></pre><h3 id="时间数据"><a href="#时间数据" class="headerlink" title="时间数据"></a>时间数据</h3>
           
         
       
@@ -12011,7 +12053,7 @@ if __name__==&apos;__main__&apos;:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">117.1k</span>
+    <span title="Site words total count">117.5k</span>
   
 </div>
 
