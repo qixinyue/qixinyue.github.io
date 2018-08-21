@@ -3702,7 +3702,7 @@ ex:
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  7,752 字
+                  7,944 字
                 </span>
               
 
@@ -3718,7 +3718,7 @@ ex:
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  40 分钟
+                  41 分钟
                 </span>
               
             </div>
@@ -4919,6 +4919,44 @@ print(b, c)
 d = np.argmax(a)
 e = np.argmin(a)
 print(d, e)
+
+f = np.random.randint(10, 100, 9).reshape(3, 3)
+print(a, f, sep=&apos;\n&apos;)
+g, h = np.maximum(a, f), np.minimum(a, f)
+print(g, h, sep=&apos;\n&apos;)
+</code></pre><p>价格波动范围：</p>
+<pre><code>import numpy as np
+
+highest_price, lowest_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(4, 5),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;f8,f8&apos;),  # 运行后类型为datetime64[D]
+)
+
+print(highest_price, lowest_price, sep=&apos;\n&apos;)
+max_highest, min_lowest = np.max(highest_price), np.min(lowest_price)
+
+print(max_highest, min_lowest, sep=&apos;\n&apos;)
+</code></pre><p>ptp 返回一个数组中的最大值与最小值的差，称为极差</p>
+<pre><code>import numpy as np
+
+highest_price, lowest_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(4, 5),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;f8,f8&apos;),  # 运行后类型为datetime64[D]
+)
+
+print(highest_price, lowest_price, sep=&apos;\n&apos;)
+max_highest, min_highest, max_lowest, min_lowest = np.max(highest_price), np.min(
+    highest_price), np.max(lowest_price), np.min(lowest_price)
+
+print(max_highest, min_highest, max_lowest, min_lowest, sep=&apos;\n&apos;)
+print(max_highest - min_highest, max_lowest - min_lowest, sep=&apos;\n&apos;)
+print(np.ptp(highest_price), np.ptp(lowest_price), sep=&apos;\n&apos;)
 </code></pre>
           
         
@@ -11973,7 +12011,7 @@ if __name__==&apos;__main__&apos;:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">116.9k</span>
+    <span title="Site words total count">117.1k</span>
   
 </div>
 

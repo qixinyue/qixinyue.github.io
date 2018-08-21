@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="数据分析常用工具matlab matfor pythonnumpy数据分析+scipy建模+matplotlib可视化+pandas数据清洗scikit-learn机器学习工具包+tensorflow深度学习（google） numpy的特点1 擅长数字计算2 足够高的运算性能3 支持矢量化运算4 完全免费的 开源的 代码： vector.py import time  n = 100000  s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-21T04:01:09.127Z">
+<meta property="og:updated_time" content="2018-08-21T06:28:19.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据分析">
 <meta name="twitter:description" content="数据分析常用工具matlab matfor pythonnumpy数据分析+scipy建模+matplotlib可视化+pandas数据清洗scikit-learn机器学习工具包+tensorflow深度学习（google） numpy的特点1 擅长数字计算2 足够高的运算性能3 支持矢量化运算4 完全免费的 开源的 代码： vector.py import time  n = 100000  s">
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  7,752 字
+                  7,944 字
                 </span>
               
 
@@ -347,7 +347,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  40 分钟
+                  41 分钟
                 </span>
               
             </div>
@@ -1546,6 +1546,44 @@ print(b, c)
 d = np.argmax(a)
 e = np.argmin(a)
 print(d, e)
+
+f = np.random.randint(10, 100, 9).reshape(3, 3)
+print(a, f, sep=&apos;\n&apos;)
+g, h = np.maximum(a, f), np.minimum(a, f)
+print(g, h, sep=&apos;\n&apos;)
+</code></pre><p>价格波动范围：</p>
+<pre><code>import numpy as np
+
+highest_price, lowest_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(4, 5),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;f8,f8&apos;),  # 运行后类型为datetime64[D]
+)
+
+print(highest_price, lowest_price, sep=&apos;\n&apos;)
+max_highest, min_lowest = np.max(highest_price), np.min(lowest_price)
+
+print(max_highest, min_lowest, sep=&apos;\n&apos;)
+</code></pre><p>ptp 返回一个数组中的最大值与最小值的差，称为极差</p>
+<pre><code>import numpy as np
+
+highest_price, lowest_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(4, 5),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;f8,f8&apos;),  # 运行后类型为datetime64[D]
+)
+
+print(highest_price, lowest_price, sep=&apos;\n&apos;)
+max_highest, min_highest, max_lowest, min_lowest = np.max(highest_price), np.min(
+    highest_price), np.max(lowest_price), np.min(lowest_price)
+
+print(max_highest, min_highest, max_lowest, min_lowest, sep=&apos;\n&apos;)
+print(max_highest - min_highest, max_lowest - min_lowest, sep=&apos;\n&apos;)
+print(np.ptp(highest_price), np.ptp(lowest_price), sep=&apos;\n&apos;)
 </code></pre>
       
     </div>
@@ -1816,7 +1854,7 @@ print(d, e)
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">116.9k</span>
+    <span title="Site words total count">117.1k</span>
   
 </div>
 
