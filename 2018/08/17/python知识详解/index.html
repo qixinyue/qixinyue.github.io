@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="绪论python由荷兰人Guido于1989编写 python2.x   python3.x最新版本是2.7  3.7版本2.x 和3.x是不兼容的，2.x在2020年将不再维护，所以本站所以内容都是基于3.6的环境来说的。（3.7版本已出，但是稳定性待测） 官网： www.python.org  查看文档，下载第三方包，下载python 第一章 python介绍python特点1 简单 简洁2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-21T13:06:41.945Z">
+<meta property="og:updated_time" content="2018-08-21T13:29:36.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python知识详解">
 <meta name="twitter:description" content="绪论python由荷兰人Guido于1989编写 python2.x   python3.x最新版本是2.7  3.7版本2.x 和3.x是不兼容的，2.x在2020年将不再维护，所以本站所以内容都是基于3.6的环境来说的。（3.7版本已出，但是稳定性待测） 官网： www.python.org  查看文档，下载第三方包，下载python 第一章 python介绍python特点1 简单 简洁2">
@@ -789,7 +789,7 @@ x *= &apos;123&apos; # x = &apos;123123123&apos;
 &apos;AD&apos; &lt; &apos;ABC&apos;   # False
 &apos;ABC&apos; == &apos;abc&apos; # False
 </code></pre><h2 id="in-not-in-运算符"><a href="#in-not-in-运算符" class="headerlink" title="in / not in 运算符"></a>in / not in 运算符</h2><p>作用: in 用于序列，字典，集合中，用于判断某个值是否存在于容器中，如果存在则返回True, 否则返回False<br>格式: 对象 in 容器<br>示例:</p>
-<pre><code>s = &apos;welcome to tarena!&apos;
+<pre><code>s = &apos;welcome to qixinyue!&apos;
 &apos;to&apos; in s  # True
 &apos;weimingze&apos; in s  # False
 </code></pre><h2 id="字符串的索引操作"><a href="#字符串的索引操作" class="headerlink" title="字符串的索引操作"></a>字符串的索引操作</h2><p>  python 字符串str是不可以改变的字符序列</p>
@@ -869,7 +869,7 @@ print(str(s) + &apos;456&apos;)  # 123456
 </code></pre><p>练习:<br>  1.　用字符串<em> 运算符打印三角形<br>    要求输入一个整数，此整数代表此三角形离左侧的字节数<br>    如:<br>      $ python3 tri_angle.py<br>      请输入离左侧的距离: 3<br>      则打印:
           </em><br>         <strong><em><br>        **</em></strong><br>       <strong>***</strong></p>
 <ol start="2">
-<li>输入三行文字，让这三行文字在一个方框居中显示<br>如输入(不要输入中文):<br>hello tarena!<br>my name is weimingze<br>python<br>显示如下:<br>+———————-+<br>|    hello tarena!     |<br>| my name is weimingze |<br>|        python        |<br>+———————-+</li>
+<li>输入三行文字，让这三行文字在一个方框居中显示<br>如输入(不要输入中文):<br>hello qixinyue!<br>my name is weimingze<br>python<br>显示如下:<br>+———————-+<br>|    hello qixinyue!     |<br>| my name is weimingze |<br>|        python        |<br>+———————-+</li>
 </ol>
 <h2 id="常用的字符串方法"><a href="#常用的字符串方法" class="headerlink" title="常用的字符串方法:"></a>常用的字符串方法:</h2><p>字符串方法的调用语法<br>对象.方法名(方法传参)<br>注:<br>  方法的调用属于表达式，通常可以返回一个值或None</p>
 <p><strong>字符串中反斜杠字符表</strong></p>
@@ -1084,7 +1084,7 @@ print(str(s) + &apos;456&apos;)  # 123456
 </table>
 <p>字符串的格式化表达式<br>作用:<br>生成一定格式的字符串<br>运算符 %<br>语法格式<br>格式字符串 % 参数值<br>格式字符串 % (参数值1, 参数值2, …)<br>说明:<br>格式化字符串中以%开头的为占位符,占位符的位置将用参数值替换<br>% 右侧为参数值，当有多个参数值时用括号() 括起来，之间用逗号(,) 分隔<br>示例:</p>
 <pre><code>fmt = &quot;姓名: %s, 年龄: %d&quot;  
-name = &apos;tarena&apos;
+name = &apos;qixinyue&apos;
 age = 15
 print(fmt % (name, age))
 </code></pre><p>占位符和类型码之间的格式语法<br> % [格式语法] 类型码<br>   格式语法：</p>
@@ -1406,23 +1406,23 @@ print(L)  # 保持不变
 </ol>
 <h2 id="字典的字面值表示方式"><a href="#字典的字面值表示方式" class="headerlink" title="字典的字面值表示方式:"></a>字典的字面值表示方式:</h2><p>  用 {} 括起来，以冒号(:) 分隔键-值对, 各键值对用分号分隔开</p>
 <h3 id="创建空字典"><a href="#创建空字典" class="headerlink" title="创建空字典"></a>创建空字典</h3><p>  d = {}</p>
-<h3 id="创建非空的字典"><a href="#创建非空的字典" class="headerlink" title="创建非空的字典"></a>创建非空的字典</h3><p>  d = {‘name’: ‘tarena’, ‘age’: 15}<br>  d = {‘姓名’: ‘小张’}<br>  d = {1:’壹’, 2:’贰’}</p>
+<h3 id="创建非空的字典"><a href="#创建非空的字典" class="headerlink" title="创建非空的字典"></a>创建非空的字典</h3><p>  d = {‘name’: ‘qixinyue’, ‘age’: 15}<br>  d = {‘姓名’: ‘小张’}<br>  d = {1:’壹’, 2:’贰’}</p>
 <h2 id="字典的构造函数-dict"><a href="#字典的构造函数-dict" class="headerlink" title="字典的构造函数 dict"></a>字典的构造函数 dict</h2><p>  dict()  创建一个空字典,等同于 {}<br>  dict(iterable)  用可迭代对象初始化一个字典<br>  dict(**kwargs)  关键字传参形式生成一个字典</p>
 <p>示例:</p>
 <pre><code>d = dict()
-d = dict([(&apos;name&apos;, &apos;tarena&apos;), (&apos;age&apos;,15)])
-d = dict(name=&apos;tarena&apos;, age=15)
+d = dict([(&apos;name&apos;, &apos;qixinyue&apos;), (&apos;age&apos;,15)])
+d = dict(name=&apos;qixinyue&apos;, age=15)
 </code></pre><p>不可变类型：</p>
 <p>  int,float,complex,bool,str,tuple,frozenset(固定集合), bytes(字节串)(后面会讲)</p>
 <p>可变类型:</p>
 <p>  list, dict, set(集合), bytearray(字节数组)</p>
 <h2 id="字典的键索引"><a href="#字典的键索引" class="headerlink" title="字典的键索引"></a>字典的键索引</h2><p>用[] 运算符可以获取字典内’键’所对应的’值’<br>语法:<br>  字典[键]</p>
-<h3 id="获取数据元素"><a href="#获取数据元素" class="headerlink" title="获取数据元素"></a>获取数据元素</h3><pre><code>d = dict(name=&apos;tarena&apos;, age=15)
+<h3 id="获取数据元素"><a href="#获取数据元素" class="headerlink" title="获取数据元素"></a>获取数据元素</h3><pre><code>d = dict(name=&apos;qixinyue&apos;, age=15)
 print(d[&apos;age&apos;])  # 15
 </code></pre><h3 id="添加-修改字典元素"><a href="#添加-修改字典元素" class="headerlink" title="添加/修改字典元素"></a>添加/修改字典元素</h3><p>字典[键] = 表达式</p>
 <p>示例:</p>
 <pre><code>d = {}
-d[&apos;name&apos;] = &apos;tarena&apos;  # 创建一个新的键值对
+d[&apos;name&apos;] = &apos;qixinyue&apos;  # 创建一个新的键值对
 d[&apos;age&apos;] = 15  # 创建键值对
 d[&apos;age&apos;] = 16  # 修改键值对
 </code></pre><h3 id="del-语句删除字典的元素"><a href="#del-语句删除字典的元素" class="headerlink" title="del 语句删除字典的元素"></a>del 语句删除字典的元素</h3><p>语法:<br>    del 字典[键]<br>示例:</p>
@@ -1439,7 +1439,7 @@ print(d)   # {}
 100 not in d # True
 2 not in d   # True
 </code></pre><h2 id="字典的迭代访问"><a href="#字典的迭代访问" class="headerlink" title="字典的迭代访问"></a>字典的迭代访问</h2><p>字典是可迭代对象，字典只能对键进行迭代访问</p>
-<pre><code>d = {&apos;name&apos;: &apos;tarena&apos;, (2002, 1, 1): &apos;生日&apos;}
+<pre><code>d = {&apos;name&apos;: &apos;qixinyue&apos;, (2002, 1, 1): &apos;生日&apos;}
 for x in d:
     print(x)
 </code></pre><p>可以用于字典的内建函数</p>
@@ -1494,7 +1494,7 @@ for x in d:
 <pre><code>d = {x : x**2 for x in range(10)}
 </code></pre><p>练习:</p>
 <ol>
-<li><p>有字符串列表如下:<br>L = [‘tarena’, ‘xiaozhang’, ‘xiaowang’]<br>生成如下字典:<br>d = {‘tarena’: 6, ‘xiaozhang’: 9, ‘xiaowang’: 8}<br>d = {‘tarena’: 6, ‘xiaowang’: 9, ‘xiaowang’: 8}<br>注: 字典的值是键的长度</p>
+<li><p>有字符串列表如下:<br>L = [‘qixinyue’, ‘xiaozhang’, ‘xiaowang’]<br>生成如下字典:<br>d = {‘qixinyue’: 6, ‘xiaozhang’: 9, ‘xiaowang’: 8}<br>d = {‘qixinyue’: 6, ‘xiaowang’: 9, ‘xiaowang’: 8}<br>注: 字典的值是键的长度</p>
 <ol start="2">
 <li>编号列表如下:<br>Nos = [1001, 1002, 1003, 1004]<br>names = [‘Tom’, ‘Jerry’, ‘Spike’, ‘Tyke’]<br>生成用Nos数据为键，以names为值的字典，如下:<br>{1001: ‘Tom’, 1002: ‘Jerry’, ……}</li>
 </ol>
@@ -1785,7 +1785,7 @@ print(...)
 
 def say_hello():
     print(&quot;hello world!&quot;)
-    print(&quot;hello tarena!&quot;)
+    print(&quot;hello qixinyue!&quot;)
     print(&apos;hello everyone!!!&apos;)
 
 # 调用say_hello() 函数
@@ -1880,7 +1880,7 @@ myfun(b=2, c=3, 1)  # 错误,不能确定1给谁?
 <pre><code>def info(name, age=1, address=&quot;未填写&quot;):
     print(name, &quot;今年&quot;,
           age, &apos;岁, 家庭地址是:&apos;, address)
-info(&apos;tarena&apos;, 15)
+info(&apos;qixinyue&apos;, 15)
 info(&apos;小魏&apos;, 20, &apos;北京市朝阳区&apos;)
 info(&apos;小李&apos;)
 </code></pre><p>说明<br>1  缺省参数必须自右至左依次存在,如果一个参数有缺省参数，则其右侧的所有参数都必须有缺省参数<br>  如:</p>
@@ -3141,7 +3141,7 @@ B&apos;&apos;&apos;&apos;&apos;&apos;
 B&quot;&quot;&quot;&quot;&quot;&quot;
 </code></pre><h3 id="创建非空字节串的字面值"><a href="#创建非空字节串的字面值" class="headerlink" title="创建非空字节串的字面值"></a>创建非空字节串的字面值</h3><pre><code>b&apos;ABCD&apos;
 b&apos;\x41\x42&apos;
-b&apos;hello tarena&apos;
+b&apos;hello qixinyue&apos;
 </code></pre><h3 id="字节串的构造函数-bytes"><a href="#字节串的构造函数-bytes" class="headerlink" title="字节串的构造函数 bytes"></a>字节串的构造函数 bytes</h3><p>   bytes()  生成一个空的字节串 等同于 b’’<br>   bytes(整型可迭代对象)  用可迭代对象初始化一个字节串<br>   bytes(整数n)  生成n个值为零的字节串<br>   bytes(字符串, encoding=’utf-8’) 用字符串的转换编码生成一个字节串</p>
 <h3 id="字节串的运算"><a href="#字节串的运算" class="headerlink" title="字节串的运算"></a>字节串的运算</h3><ul>
 <li>+=  <em>  </em>=<br>&lt; &lt;= &gt; &gt;= == !=<br>in / not in<br>索引/切片</li>
@@ -5657,7 +5657,7 @@ if 2 in s1:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">148.0k</span>
+    <span title="Site words total count">148.3k</span>
   
 </div>
 
