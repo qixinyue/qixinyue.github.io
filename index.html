@@ -3702,7 +3702,7 @@ ex:
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8,348 字
+                  9,323 字
                 </span>
               
 
@@ -3718,7 +3718,7 @@ ex:
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  43 分钟
+                  48 分钟
                 </span>
               
             </div>
@@ -4999,7 +4999,165 @@ svar = devs2.sum() / (devs2.size - 1)  # 样本方差
 sstd = np.sqrt(svar)  # 样本标准差
 pstd = np.sqrt(pvar)  # 总体标准差
 print(sstd, pstd, sep=&apos;\n&apos;)
-</code></pre><h3 id="时间数据"><a href="#时间数据" class="headerlink" title="时间数据"></a>时间数据</h3>
+</code></pre><h3 id="时间数据"><a href="#时间数据" class="headerlink" title="时间数据"></a>时间数据</h3><p>通过布尔型掩码数组过滤数组中满足特点条件的元素：数组[掩码数组]。<br>只有与掩码数组中值为True的元素相对应的元素可被访问<br>numpy.where(关系表达式) -&gt; 满足关系表达式的元素的下标数组<br>numpy.take(数组，下标数组)-&gt;提取数组中由下标数组所指示的元素<br>代码示例：</p>
+<pre><code>import numpy as np
+import datetime as dt
+
+
+def dmy2wday(dmy):
+    dmy = str(dmy, encoding=&apos;utf-8&apos;)
+    date = dt.datetime.strptime(dmy, &apos;%d-%m-%Y&apos;).date()
+    wday = date.weekday()
+    return wday
+
+weeks, closing_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(1, 6),
+    unpack=True,  # 对列进行展开
+    converters={1: dmy2wday}
+)
+
+print(weeks)
+
+avg_closing_price = np.zeros(5)
+for wday in range(avg_closing_price.size):
+    # avg_closing_price[wday] = closing_price[weeks == wday].mean() #2种都可以
+    avg_closing_price[wday] = closing_price[np.where(weeks == wday)].mean()
+
+
+for wday, avg_price in zip([&apos;MON&apos;, &apos;TUE&apos;, &apos;WEF&apos;, &apos;THU&apos;, &apos;FRI&apos;], avg_closing_price):
+    print(wday, np.round(avg_price, 2))
+</code></pre><p>numpy.apply_along_axis(函数，轴向，N维数组)<br>将N维数组按照轴向拆分成若干N-1维数组作为参数传递给N-1维函数，并将该函数的返回值按照相同的轴向重新组合成数组，返回给调用者</p>
+<pre><code>import numpy as np
+
+
+def foo(x):
+    print(&apos;foo&apos;, x)
+    return x.sum(), x.mean(),  x.std()
+
+a = np.array([1, 2, 3, 4, 5])
+print(foo(a))
+
+b = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print(&apos;----------------&apos;)
+print(np.apply_along_axis(foo, 0, b))  # 0表示x不变，取y值，改为1的时候显示的是原来的
+&quot;&quot;&quot;
+foo [1 4 7]
+foo [2 5 8]
+foo [3 6 9]
+[[ 12.          15.          18.        ]
+ [  4.           5.           6.        ]
+ [  2.44948974   2.44948974   2.44948974]]
+&quot;&quot;&quot;
+
+b = np.array([[[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+              [[11, 12, 13], [14, 15, 16], [17, 18, 19]],
+              [[21, 22, 23], [24, 25, 26], [27, 28, 29]]
+              ])
+
+print(&apos;*****************&apos;)
+print(np.apply_along_axis(foo, 2, b))
+foo [1 2 3]
+foo [4 5 6]
+foo [7 8 9]
+foo [11 12 13]
+foo [14 15 16]
+foo [17 18 19]
+foo [21 22 23]
+foo [24 25 26]
+foo [27 28 29]
+
+print(np.apply_along_axis(foo, 1, b))
+foo [1 4 7]
+foo [2 5 8]
+foo [3 6 9]
+foo [11 14 17]
+foo [12 15 18]
+foo [13 16 19]
+foo [21 24 27]
+foo [22 25 28]
+foo [23 26 29]
+
+print(np.apply_along_axis(foo, 0, b))
+foo [ 1 11 21]
+foo [ 2 12 22]
+foo [ 3 13 23]
+foo [ 4 14 24]
+foo [ 5 15 25]
+foo [ 6 16 26]
+foo [ 7 17 27]
+foo [ 8 18 28]
+foo [ 9 19 29]
+</code></pre><p>将开盘价 收盘价 最高价 最低价按周显示和保存</p>
+<pre><code>import numpy as np
+import datetime as dt
+
+
+def dmy2wday(dmy):
+    dmy = str(dmy, encoding=&apos;utf-8&apos;)
+    date = dt.datetime.strptime(dmy, &apos;%d-%m-%Y&apos;).date()
+    wday = date.weekday()
+    return wday
+
+weeks, opening_prices, highest_price, lowest_price, closing_price = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(1, 3, 4, 5, 6),
+    unpack=True,  # 对列进行展开
+    converters={1: dmy2wday}
+)
+
+weeks = weeks[:16]
+opening_prices = opening_prices[:16]
+highest_price = highest_price[:16]
+lowest_price = lowest_price[:16]
+closing_price = closing_price[:16]
+
+first_monday = np.where(weeks == 0)[0][0]  # 第一个星期一
+last_friday = np.where(weeks == 4)[0][-1]  # 最后一个星期五
+indoces = np.arange(first_monday, last_friday + 1)  # 下标
+
+indoces = np.split(indoces, 3)
+print(indoces)
+
+
+def week_summary(indoces):
+    # 返回每周的开盘价 最高价 最低价 收盘价
+    open_price = opening_prices[indoces[0]]
+    high_price = np.max(np.take(highest_price, indoces))
+    low_price = np.min(np.take(lowest_price, indoces))
+    close_price = closing_price[indoces[-1]]
+    return open_price, high_price, low_price, close_price
+
+
+summaries = np.apply_along_axis(week_summary, 1, indoces)
+print(summaries)
+np.savetxt(&apos;./data/summary.csv&apos;, summaries, delimiter=&apos;,&apos;, fmt=&apos;%g&apos;)
+</code></pre><h3 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h3><p>激励函数： f(t)<br>单位响应函数： g(t)<br>则该激励函数作用下的响应函数为以上二者的卷积：<br>f(t)g(t)dt<br>在已知瞬间激励下的响应的条件下，求持续激励下的响应<br>a = [1,2,3,4,5] 被卷积数组 激励强度<br>b = [6,7,8]  卷积核数组 单位激励下的响应因数<br>numpy.convolve(a,b)</p>
+<pre><code>import numpy as np
+a = [1, 2, 3, 4, 5]  # 被卷积数组 激励强度
+b = [6, 7, 8]  # 卷积核数组 单位激励下的响应因数
+print(np.convolve(a, b))
+
+&quot;&quot;&quot;
+0 0 1 2 3 4 5
+8 7 6   -&gt; 1*6=6
+  8 7 6 -&gt; 1*7 + 2*6 =19
+    8 7 6 -&gt; 8+14+18=40
+      8 7 6 -&gt; 16+21+24=61
+        8 7 6 -&gt;24+28+30=82
+          8 7 6-&gt; 32+ 35=67
+            8 7 6 -&gt; 40
+
+所以返回结果为
+[ 6 19 40 61 82 67 40] -&gt;完全卷积 full
+[19 40 61 82 67] -&gt;同维卷积 same
+[40 61 82] -&gt;有效卷积,不需要补0 valid
+
+print(np.convolve(a, b,&apos;full/same/valid&apos;))，默认是full
+&quot;&quot;&quot;
+</code></pre>
           
         
       
@@ -5132,7 +5290,7 @@ print(sstd, pstd, sep=&apos;\n&apos;)
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  12,077 字
+                  16,928 字
                 </span>
               
 
@@ -5148,7 +5306,7 @@ print(sstd, pstd, sep=&apos;\n&apos;)
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  48 分钟
+                  68 分钟
                 </span>
               
             </div>
@@ -6290,7 +6448,481 @@ for x in d:
 </tr>
 </tbody>
 </table>
+<p>练习:<br>  写程序，实现以下需求:<br>    将如下数据形成一个字典seasons<br>       ‘键’    ‘值’<br>       1       ‘春季有1,2,3月’<br>       2       ‘夏季有4,5,6月’<br>       3       ‘秋季有7,8,9月’<br>       4       ‘冬季有10,11,12月’<br>    让用户输入一个整数代表这个季度，打印这个季度的信息，如果用户输入的信息不在字典的键内，则打印信息不存在</p>
+<p>练习:<br>  写程序，输入一段字符串，打印出这个字符串中出现过的字符及出现过的次数:<br>    如:<br>      输入: ABCDABCABA<br>    输出:<br>      A : 4次<br>      C : 2次<br>      B : 3次<br>      D : 1次<br>    注: 不要求打印的顺序</p>
+<h2 id="字典推导式"><a href="#字典推导式" class="headerlink" title="字典推导式"></a>字典推导式</h2><p>字典推导式是用可迭代对象依次生成字典内元素的表达式</p>
+<p>语法：<br> {键表达式 : 值表达式 for 变量 in 可迭代对象 [if 真值表达式]}<br> 注: []的内容代表可省略<br>示例:</p>
+<pre><code>d = {x : x**2 for x in range(10)}
+</code></pre><p>练习:</p>
+<ol>
+<li><p>有字符串列表如下:<br>L = [‘tarena’, ‘xiaozhang’, ‘xiaowang’]<br>生成如下字典:<br>d = {‘tarena’: 6, ‘xiaozhang’: 9, ‘xiaowang’: 8}<br>d = {‘tarena’: 6, ‘xiaowang’: 9, ‘xiaowang’: 8}<br>注: 字典的值是键的长度</p>
+<ol start="2">
+<li>编号列表如下:<br>Nos = [1001, 1002, 1003, 1004]<br>names = [‘Tom’, ‘Jerry’, ‘Spike’, ‘Tyke’]<br>生成用Nos数据为键，以names为值的字典，如下:<br>{1001: ‘Tom’, 1002: ‘Jerry’, ……}</li>
+</ol>
+</li>
+</ol>
+<p>练习:</p>
+<ol>
+<li>写一个程序，输入一些单词和解释，将单词作为键，将解释作为值，将这些数据存入字典中.</li>
+</ol>
+<p>然后:<br>  输入查询的单词，显示出此单词的解释 </p>
+<ol start="2">
+<li><p>学生管理项目准备工作:</p>
+<p>  写一个程序，任意输入n个学生的信息,形成字典后存于列表中:</p>
+<pre><code>学生的信息包括:
+   姓名(字符串)
+   年龄(整数)
+   成绩(整数)
+</code></pre><p>  循环输入学生信息，直到输入学生姓名为空时结束输入,<br>  最后形成字典列表如下:</p>
+<pre><code>L = [
+     {&apos;name&apos;:&apos;xiaozhang&apos;, &apos;age&apos;:20, &apos;score&apos;: 100},
+     {&apos;name&apos;:&apos;xiaoli&apos;, &apos;age&apos;:21, &apos;score&apos;: 98},
+     {&apos;name&apos;:&apos;xiaowang&apos;, &apos;age&apos;:19, &apos;score&apos;: 89},
+     ...
+]
+</code></pre><p> 2) 将以上列表显示为如下的表格: (右边是对齐的，显示在html时多个空格变成一个了)<br> +————+——+——-+<br> |   name     | age  | score |<br> +————+——+——-+<br> | xiaozhang  |  20  |  100  |<br> |  xiaoli    |  21  |   98  |<br> | xiaowang   |  19  |   89  |<br> +————+——+——-+</p>
+</li>
+</ol>
+<h1 id="集合-set"><a href="#集合-set" class="headerlink" title="集合 set"></a>集合 set</h1><h2 id="集合的特性"><a href="#集合的特性" class="headerlink" title="集合的特性"></a>集合的特性</h2><p>集合是可变的容器<br>集合内的数据对象是唯一的（不能重复多次的)<br>集合是无序的存储结构，集合中的数据没有先后关系<br>集合内的元素必须是不可变对象<br>集合是可迭代的<br>集合是相当于只有键没有值的字典(键则是集合的数据)</p>
+<h2 id="集合的创建"><a href="#集合的创建" class="headerlink" title="集合的创建"></a>集合的创建</h2><h3 id="创建空的集合"><a href="#创建空的集合" class="headerlink" title="创建空的集合"></a>创建空的集合</h3><pre><code>s = set()  # set() 创建一个空的集合
+</code></pre><h3 id="创建非空集合"><a href="#创建非空集合" class="headerlink" title="创建非空集合"></a>创建非空集合</h3><pre><code>s = {1, 2, 3}  # 集合中的三个整数1,2,3
+</code></pre><h3 id="集合的构造函数-set"><a href="#集合的构造函数-set" class="headerlink" title="集合的构造函数 set"></a>集合的构造函数 set</h3><pre><code>set() 创建空集合
+set(iterable)  用可迭代对象创建一个新的集合对象
+</code></pre><p>示例:</p>
+<pre><code>s = set(&quot;ABC&quot;)
+s = set(&apos;ABCCBA&apos;)
+s = set({1:&quot;一&quot;, 2:&apos;二&apos;, 5:&apos;五&apos;})
+s = set([1, 3.14, False])
+s = set((2,3,5,7))
+# s = set([1, 2, [3.1, 3.2], 4])  # 错的[3.1, 3.2]是可变对象
+</code></pre><h2 id="集合的运算"><a href="#集合的运算" class="headerlink" title="集合的运算"></a>集合的运算</h2><p>交集，并集，补集，子集，超集</p>
+<p>&amp; 生成两个集合的交集</p>
+<pre><code>s1 = {1,2,3}
+s2 = {2,3,4}
+s3 = s1 &amp; s2  # s3 = {2, 3}
+</code></pre><p>| 生成两个集合的并集</p>
+<pre><code>s1 = {1,2,3}
+s2 = {2,3,4}
+s3 = s1 | s2  # s3 = {1,2,3,4}
+</code></pre><p>-  生成两个集合的补集</p>
+<pre><code>s1 = {1,2,3}
+s2 = {2,3,4}
+# 生成属于s1,但不属于s2的所有元素的集合
+s3 = s1 - s2
+</code></pre><p>\^ 生成两个集合的对称补集</p>
+<pre><code>s1 = {1,2,3}
+s2 = {2,3,4}
+s3 = s1 ^ s2  # s3 = {1, 4}
+# 等同于 s3 = (s1 - s2) | (s2 -s1)
+</code></pre><p>&lt; 判断一个集合是另一个集合的子集</p>
+<p>> 判断一个集合是另一个集合的超集</p>
+<pre><code>s1 = {1, 2, 3}
+s2 = {2, 3}
+s2 &lt; s1  # True  判断子集
+s1 &gt; s2  # True  判断超集
+</code></pre><p>==  != 集合相同/不同</p>
+<pre><code>s1 = {1, 2, 3}
+s2 = {2, 3, 1}
+s1 == s2  # True
+s1 != s2  # False  # 集合的数据没有先后关系
+</code></pre><h2 id="in-not-in-运算符-1"><a href="#in-not-in-运算符-1" class="headerlink" title="in / not in 运算符"></a>in / not in 运算符</h2><p>  等同于字典，in 运算符用于集合中，当某个值存在于集合中，则为真，否则为假<br>  not in 与 in 返回值相反<br>  示例:</p>
+<pre><code>s = {1, &apos;Two&apos;, 3.14}
+1 in s  # True
+2 in s  # False
+3.14 not in s  # False
+4 not in s   # True
+</code></pre><p>python3中可用于集合的函数:</p>
+<p>len(x) max(x), min(x), sum(x), any(x), all(x)</p>
+<h2 id="集合的遍历"><a href="#集合的遍历" class="headerlink" title="集合的遍历"></a>集合的遍历</h2><pre><code>s = {1, 2, 3}
+for x in s:
+    print(x)
+</code></pre><p>练习:<br>  经理有: 曹操， 刘备， 周瑜<br>  技术员有: 曹操， 周瑜， 张飞，赵云<br>  用集合求:</p>
+<pre><code>1. 即是经理也是技术员的有谁?
+2. 是经理，但不是技术员的有谁?
+3. 是技术员，不是经理的都有谁?
+4. 张飞是经理吗？
+5. 身兼一职的人有谁?
+6. 经理和技术员共有几个人?
+</code></pre><p>思考:<br>  集合是可变对象，有方法能添加，删除集合的数据吗？<br>  s.add(3) 向集合中添加元素3<br>  s.pop() 从集合中删除一个元素，返回删除的元素的内容</p>
+<h2 id="集合的方法"><a href="#集合的方法" class="headerlink" title="集合的方法"></a>集合的方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S.add(e)</td>
+<td>在集合中添加一个新的元素e；如果元素已经存在，则不添加</td>
+</tr>
+<tr>
+<td>S.remove(e)</td>
+<td>从集合中删除一个元素，如果元素不存在于集合中，则会产生一个KeyError错误</td>
+</tr>
+<tr>
+<td>S.discard(e)</td>
+<td>从集合S中移除一个元素e,在元素e不存在时什么都不做;</td>
+</tr>
+<tr>
+<td>S.clear()</td>
+<td>清空集合内的所有元素</td>
+</tr>
+<tr>
+<td>S.copy()</td>
+<td>将集合进行一次浅拷贝</td>
+</tr>
+<tr>
+<td>S.pop()</td>
+<td>从集合S中删除一个随机元素;如果此集合为空，则引发KeyError异常</td>
+</tr>
+<tr>
+<td>S.update(s2)</td>
+<td>用 S与s2得到的全集更新变量S</td>
+</tr>
+<tr>
+<td>S.difference(s2)</td>
+<td>用S - s2 运算，返回存在于在S中，但不在s2中的所有元素的集合</td>
+</tr>
+<tr>
+<td>S.difference_update(s2)</td>
+<td>等同于 S = S - s2</td>
+</tr>
+<tr>
+<td>S.intersection(s2)</td>
+<td>等同于 S &amp; s2</td>
+</tr>
+<tr>
+<td>S.intersection_update(s2)</td>
+<td>等同于S = S &amp; s2</td>
+</tr>
+<tr>
+<td>S.isdisjoint(s2)</td>
+<td>如果S与s2交集为空返回True,非空则返回False</td>
+</tr>
+<tr>
+<td>S.issubset(s2)</td>
+<td>如果S与s2交集为非空返回True,空则返回False</td>
+</tr>
+<tr>
+<td>S.issuperset(…)</td>
+<td>如果S为s2的子集返回True,否则返回False</td>
+</tr>
+<tr>
+<td>S.symmetric_difference(s2)</td>
+<td>返回对称补集,等同于 S ^ s2</td>
+</tr>
+<tr>
+<td>S.symmetric_difference_update(s2)</td>
+<td>用 S 与 s2 的对称补集更新 S</td>
+</tr>
+<tr>
+<td>S.union(s2)</td>
+<td>生成 S 与 s2的全集</td>
+</tr>
+</tbody>
+</table>
+<p><strong>对于不可变对象,  有时复合赋值运算符不同于 运算后再赋值</strong><br>如:<br>        s1 = s1 | s2  s1和s2并集产生的结果，然后将s1指向该结果存放的地址<br>        不等同于<br>        s1 |= s2  将s2中的内容合并到s1中，改的是s1中的内容，s1地址没有改变</p>
+<pre><code>s1 = {1,2,3}
+s2 = {2,3,4}
+s = s1
 
+if True:  # if False
+    s1 = s1 | s2  # 对于可变对象，不等同于 s1 += s2
+    print(s)  # {1, 2, 3}
+else:
+    s1 |= s2
+    print(s)  # {1, 2, 3, 4}
+</code></pre><p>练习:<br>  任意输入一个单词，存入集合中，当输入空字符串时结束输入，<br>    1) 打印您输入的单词的种类数(去重)<br>    2) 每个单词都打印到终端上显示<br>      思考:<br>        如何让打印的次序和输入的次序一致?</p>
+<h2 id="集合推导式"><a href="#集合推导式" class="headerlink" title="集合推导式"></a>集合推导式</h2><p>用可迭代对象来创建(生成)集合的表达式</p>
+<p>语法:<br>{表达式 for 变量 in 可迭代对象 [if 真值表达式]}<br>[] 括号部分内容代表可省略</p>
+<p>示例:</p>
+<pre><code>L = [2, 3, 5, 7, 3, 5, 7, 11]
+s = {x**2 for x in L}  # s={4,9,25,49,121}
+</code></pre><p><strong>集合推导式的嵌套规则与列表推导式相同</strong></p>
+<p>练习:</p>
+<ol>
+<li>模拟一个点名系统，已知全班学生名单，随机打印学生的姓名进行点名，并得到此学生是否已到信息，输入’y’代表已到，其它输入代表未到场<br>点名结束后打印未到者名单</li>
+</ol>
+<p>问题:<br>  能用集合作为字典的键吗?</p>
+<h2 id="固定集合-frozenset"><a href="#固定集合-frozenset" class="headerlink" title="固定集合 frozenset"></a>固定集合 frozenset</h2><p>固定集合是不可变的，无序的，含有唯一元素的集合</p>
+<p>作用：<br>  固定集合可以作为字典的键，也可以作为集合的值（元素)</p>
+<p>创建空的固定集合</p>
+<pre><code>fs = frozenset()
+</code></pre><p>创建非空的固定集合</p>
+<pre><code>fs = frozenset([2,3,5,7])
+</code></pre><p>构造函数:</p>
+<pre><code>frozenset()
+frozenset(可迭代对象) # 同set函数一致,返回固定集合
+</code></pre><p>固定集合的运算:</p>
+<pre><code>&amp; 交集
+| 并集
+- 补集
+^ 对称补集
+&gt; &gt;= &lt; &lt;= == !=
+in / not in 
+(以上运算规则等同于set中的用法)
+</code></pre><p>固定集合的方法:<br>  相当于集合的全部方法去掉修改集合的方法</p>
+<h1 id="阶段总结"><a href="#阶段总结" class="headerlink" title="阶段总结"></a>阶段总结</h1><p>数据类型</p>
+<p>  不可变数据类型</p>
+<pre><code>bool, int, float, complex, str, tuple,
+frozenset, bytes(以后再讲)
+</code></pre><p>  可变数据类型:</p>
+<pre><code>list, dict, set, bytearray(字节数组，后面再讲)
+</code></pre><p>值:</p>
+<pre><code>None, True, False ....
+</code></pre><p>运算符:</p>
+<pre><code>+ - * / // % **
+&gt; &gt;= &lt; &lt;= == !=
+is   is not
+in   not in
+not   and    or
+&amp;  |  ^
++(正号) -(负号)
+</code></pre><p>表达式</p>
+<pre><code>1
+1 + 2
+len([1,2,3]) 
+条件表达式 x if x &gt; y else y
+全部的推导式:
+ 列表，字典，集合推导式(三种)
+</code></pre><p>语句:</p>
+<pre><code>表达式语句:
+    print(&quot;abc&quot;)
+    &apos;hello&apos;
+
+赋值语句
+    a = 100
+    a = b = c = 200
+    x, y = 100, 200
+
+if 语句
+while 语句
+for 语句
+break 语句
+continue 语句
+pass 语句
+del 语句
+</code></pre><p>内建函数:</p>
+<pre><code>len(x)
+max(x)
+min(x)
+sum(x)
+any(x)
+all(x)
+------------
+bool(x)
+int(x)
+float(x)
+complex(x)
+str(x)
+list(x)
+tuple(x)
+dict(x)
+set(x)
+frozenset(x)
+--------------
+abs(x)
+round(x)
+pow(x, y,...)
+----------------
+bin(x)
+oct(x)
+hex(x)
+chr(x)
+ord(x)
+---------------
+range([start, ]stop[, step])
+---------------
+input(x)
+print(...)
+</code></pre><h1 id="函数-function"><a href="#函数-function" class="headerlink" title="函数 function"></a>函数 function</h1><h2 id="什么是函数"><a href="#什么是函数" class="headerlink" title="什么是函数"></a>什么是函数</h2><p>函数是可以重复执行的语句块,可以重复使用<br>作用：</p>
+<pre><code>1. 用于封装语句块，提高代码的重用性
+2. 定义用户级别的函数
+</code></pre><p>函数定义(创建)语句 def 语句的语法:<br>    def 函数名(形参列表):<br>        语句块</p>
+<h2 id="函数说明"><a href="#函数说明" class="headerlink" title="函数说明"></a>函数说明</h2><p>1  函数的名字就是语句块的名称<br>2  函数名的命名规则与变量名相同(函数名必须为标识符)<br>3  函数有自己的名字空间，在函数外部不可以访问函数内部的变量，在函数内部可以访问函数外部的变量,通常让函数处理外部数据需要用参数给函数传入一些数据<br>4  函数的参数列表可以为空<br>5  语句部分不能为空。如果为空需要填充pass语句</p>
+<pre><code># 此示例用于示意用def语句来创建函数 
+# 及 自定义函数的调用
+
+def say_hello():
+    print(&quot;hello world!&quot;)
+    print(&quot;hello tarena!&quot;)
+    print(&apos;hello everyone!!!&apos;)
+
+# 调用say_hello() 函数
+say_hello()
+</code></pre><h2 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h2><p>函数名(实际调用传递参数列表)<br>注: 实际调用传递参数以后称为实参</p>
+<p>说明:</p>
+<ul>
+<li>函数调用是一个表达式</li>
+<li>如果没有return语句，此函数执行完毕后返回None 对象</li>
+<li>如果函数需要返回其它的对象需要用到return语句</li>
+</ul>
+<p>练习 ：</p>
+<ol>
+<li><p>写一个函数myfun, 此函数用显示两个参数的相关信息<br>函数:<br>  def myfun(a, b):</p>
+<pre><code>此处自己实现
+</code></pre><p>此函数给定两个参数，打印关于两个参数的信息:<br>   1) 打印两个参数的最大值<br>   2) 打印两个参数的和<br>   3) 打印两个参数的积(相乘)<br>   4) 打印从a开始到b结束的所有偶数:<br>如:<br> myfun(3, 10)<br>打印如下:<br> 最大值是: 10<br> 和是: 13<br> 积是: 30<br> 3到10之间的偶数是: 4 6 8<br>myfun(10, 20)<br>打印…</p>
+<p>2 猴子吃桃<br>有一只小猴子，摘了很多桃<br> 第1天吃了全部桃子的一半，感觉不饱又吃了一个<br> 第2天吃了剩下的一半，感觉不饱又吃了一个<br> … 以此类推<br> 到第10天，发现只剩一个了<br>请问第一天摘了多少桃?</p>
+</li>
+<li><p>完全数:<br>1 + 2 + 3 = 6 (6为完全数)<br>1, 2, 3 都为 6的因数(能被一个数x整数的数为y,则y为x的因数)<br>1 x 6 = 6<br>2 x 3 = 6<br>完全数是指除自身以外，所有的因数相加之和等于自身的数<br>求 4 ~ 5个完全数并打印<br>答案:<br> 6<br> 28<br> 496<br> ….</p>
+</li>
+</ol>
+<h2 id="return-语句"><a href="#return-语句" class="headerlink" title="return 语句"></a>return 语句</h2><p>语法:<br>    return [表达式]<br>    [] 代表可以省略<br>作用：<br>    用于函数中，结束当前函数的执行，返回到调用该函数的地方，同时返回一个对象的引用关系<br>说明:<br>1  return语句后跟的表达式可以省略，省略后相当于 return None<br>2  如果函数没有return语句，则函数执行完最后一条语句后返回None(相当于在最后加了一条return None语句)<br>3  函数调用一定会返回一个对象的引用</p>
+<p>练习:<br>  写一个函数 mymax, 实现返回两个数的最大值:<br>     如:<br>        def mymax(a, b):<br>           … 此处自己填写<br>        print(mymax(100, 200))  # 200<br>        print(mymax(50, 10))    # 50<br>        print(mymax(‘ABC’, ‘ABCD’)) # ABCD</p>
+<ol start="2">
+<li>写一个函数 input_number<br> def input_number():<pre><code>....
+</code></pre> 此函数用来获取用户循环输入的整数，当用户输入负数时结束输入<br> 将用户输入数以列表的形式返回，再用内建函数max, min, sum 示出用户输入的最大值，最小值及和:<br> 如:<br>   L = input_number()<br>   print(L)  # 打印此列表<br>   print(“用户输入的最大数是:”, max(L))<br>   print(“用户输入的最小数是:”, min(L))<br>   print(“用户输入的和是:”, sum(L))</li>
+</ol>
+<h2 id="python-函数的参数传递"><a href="#python-函数的参数传递" class="headerlink" title="python 函数的参数传递"></a>python 函数的参数传递</h2><p>传递方式有如下4种</p>
+<ul>
+<li>位置传递</li>
+<li>序列传参</li>
+<li>关键字传参</li>
+<li>字典关键字传参</li>
+</ul>
+<h3 id="位置传参"><a href="#位置传参" class="headerlink" title="位置传参"></a>位置传参</h3><p>实际参数(实参)的对应关系与形式参数(形参)的对应关系是按位置来依次对应的<br>  示意</p>
+<pre><code>def myfun(a, b, c):
+    pass
+
+myfun(1, 2, 3)
+</code></pre><p>说明:</p>
+<ul>
+<li>实际参数和形式参数通过位置进行传递的匹配</li>
+<li>实参个数必须与形参个数相同</li>
+</ul>
+<h3 id="序列传参"><a href="#序列传参" class="headerlink" title="序列传参"></a>序列传参</h3><p>序列传参是指在函数调用过程中，用 * 将序列拆解后按位置传参的方式进行参数传递</p>
+<p>示例:</p>
+<pre><code>def myfun(a, b, c):
+  pass
+s = [1, 2, 3]
+myfun(*s)  # * 表示把s拆开
+s2 = &quot;ABC&quot;
+myfun(*s2)
+</code></pre><h3 id="关键字传参"><a href="#关键字传参" class="headerlink" title="关键字传参"></a>关键字传参</h3><p>关键字传参是指传参时，按着形参的名称给形参赋值<br>实参和形参按名称进行匹配</p>
+<p>示例:</p>
+<pre><code>def myfun(a, b, c):
+    pass
+
+myfun(b=22, c=33, a=11)  # 等同于myfun(11,22,33)
+myfun(c=3, b=2, a=1)
+</code></pre><p>说明:<br> 实参和形参可以不按位置匹配</p>
+<h3 id="字典关键字传参"><a href="#字典关键字传参" class="headerlink" title="字典关键字传参"></a>字典关键字传参</h3><p>是指实参为字典，将字典用 ** 拆解后进行关键字传参</p>
+<p>示例:</p>
+<pre><code>def myfun(a, b, c):
+    pass
+d = {&apos;c&apos;: 33, &apos;b&apos;: 22, &apos;a&apos;: 11}
+myfun(**d)  # 拆解字典后再传参
+</code></pre><p>说明:</p>
+<ul>
+<li>字典的键名和形参名必须一致</li>
+<li>字典键名必须为字符串</li>
+<li>字典的键名要在形参中存在</li>
+</ul>
+<h3 id="函数的综合传参"><a href="#函数的综合传参" class="headerlink" title="函数的综合传参"></a>函数的综合传参</h3><p>函数传参方式，在能确定形参能唯一匹配到相应实参的情况下可以任意组合</p>
+<p>示例:</p>
+<pre><code>def myfun(a, b, c):
+    pass
+myfun(100, *[200, 300])  # 正确
+myfun(*&apos;AB&apos;, 300)        # 正确
+myfun(100, c=300, b=200) # 正确 
+myfun(1, **{&apos;c&apos;: 3, &apos;b&apos;: 2}) # 正确
+myfun(**{&apos;c&apos;: 3, &apos;b&apos;: 2}, a=1) # 正确
+myfun(b=2, c=3, 1)  # 错误,不能确定1给谁?
+</code></pre><p>说明:<br>  <strong>传参时先位置传参，后关键字传参</strong></p>
+<p>练习：</p>
+<ol>
+<li><p>写一个函数sum3(a, b, c):<br>用于返回三个数的和<br>写一个函数pow3(x) 用于返回x的三次方(立方)</p>
+<p>1) 用以上函数计算<br>   1<strong>3 + 2 </strong> 3 + 3**3的和<br>2)  计算 1 + 2 + 3 的和的立方</p>
+<pre><code>即(1+2+3)**3
+</code></pre></li>
+</ol>
+<h2 id="以下讲的是函数的形参（如何接收实参"><a href="#以下讲的是函数的形参（如何接收实参" class="headerlink" title="以下讲的是函数的形参（如何接收实参)"></a>以下讲的是函数的形参（如何接收实参)</h2><p>函数的缺省参数<br>语法:<br>    def 函数名(形参名1=默认实参1, 形参名2=默认实参2, …):<br>        …<br>示例:</p>
+<pre><code>def info(name, age=1, address=&quot;未填写&quot;):
+    print(name, &quot;今年&quot;,
+          age, &apos;岁, 家庭地址是:&apos;, address)
+info(&apos;tarena&apos;, 15)
+info(&apos;小魏&apos;, 20, &apos;北京市朝阳区&apos;)
+info(&apos;小李&apos;)
+</code></pre><p>说明<br>1  缺省参数必须自右至左依次存在,如果一个参数有缺省参数，则其右侧的所有参数都必须有缺省参数<br>  如:</p>
+<pre><code>def test(a, b=10, c):  # &lt;---是错的
+     pass
+</code></pre><p>2  缺省参数可以有0个或多个,甚至全部都有缺省参数</p>
+<p>练习 ：</p>
+<ol>
+<li><p>写一个函数 mysum(), 可以传入两个实参或三个实参.<br>1) 如果传入两个实参，则返回两个实参的和<br>2) 如果传入三个实参，则返回前两个实参的和对第三个实参求余的结果</p>
+<p>print(mysum(1, 100))    # 101<br>print(mysum(2, 10, 7))  # 5 返回:(2+10) % 7</p>
+</li>
+</ol>
+<h2 id="函数的形参定义方式"><a href="#函数的形参定义方式" class="headerlink" title="函数的形参定义方式"></a>函数的形参定义方式</h2><ul>
+<li>位置形参</li>
+<li>星号元组形参</li>
+<li>命名关键字形参</li>
+<li>双星号字典形参</li>
+</ul>
+<h3 id="位置形参"><a href="#位置形参" class="headerlink" title="位置形参"></a>位置形参</h3><p>语法:<br>def 函数名(形参名1, 形参名2, …):<br>    语句块</p>
+<h3 id="星号元组形参"><a href="#星号元组形参" class="headerlink" title="星号元组形参"></a>星号元组形参</h3><p>语法<br>def 函数名(*元组形参名):<br>    语句<br>作用：<br>收集多合的位置传参<br>说明:<br>元组形参名通常用: ‘args’<br>示例:</p>
+<pre><code>def func(*args):
+    print(&quot;参数个数是:&quot;, len(args))
+    print(&apos;args =&apos;, args)
+
+func(1,2,3,4)
+func(&quot;hello&quot;, &quot;world&quot;, 1, 2, 3)
+</code></pre><p>练习:<br>  写一个函数，mysum , 可以传入任意个实参的数字，返回所有实参的和<br>    def mysum(…..):<br>        ……<br>    print(mysum(1, 2, 3, 4))  # 10<br>    print(mysum(2,4,6))  # 12</p>
+<h3 id="命名关键字形参"><a href="#命名关键字形参" class="headerlink" title="命名关键字形参"></a>命名关键字形参</h3><p>语法:<br> def 函数名(<em>, 命名关键字形参):<br>    语句<br>或<br> def 函数名(</em>args, 命名关键字形参):<br>    语句<br>作用：<br> 所有的参数都必须用关键字传参或字典关键字传参传递</p>
+<p>示例见:</p>
+<pre><code>def fn(*, d, e):
+    print(&quot;d=&quot;, d)
+    print(&quot;e=&quot;, e)
+
+fn(d=100, e=200)  # 合法调用
+# fn(1, 2)  # 不合法，不能用位置传参
+# fn(1, 2, d=100, e=200)
+
+def fm(*args, d, e):
+    print(args)
+    print(&apos;d=&apos;, d)
+    print(&apos;e=&apos;, e)
+
+fm(1, 2, d=100, e=200)
+fm(*&quot;AB&quot;, **{&apos;e&apos;: 20, &apos;d&apos;:10})
+</code></pre><h3 id="双星号字典形参"><a href="#双星号字典形参" class="headerlink" title="双星号字典形参"></a>双星号字典形参</h3><p>语法:<br>def 函数名(**字典形参名):<br>    语句<br>作用：<br>收集多合的关键字传参<br>说明:<br> 通常字典形参名定为: “kwargs”<br>示例见:</p>
+<pre><code>def func(**kwargs):
+    print(&quot;关键字参数个数是:&quot;, len(kwargs))
+    print(&quot;kwargs =&quot;, kwargs)
+
+
+func(name=&apos;qixinyue&apos;, age=15)
+func()
+</code></pre><p>函数的参数说明:<br>  缺省参数，位置形参，星号元组形参，命名关键字形参和双号星字典形参可以混合使用</p>
+<h3 id="函数参数自左至右的顺序为"><a href="#函数参数自左至右的顺序为" class="headerlink" title="函数参数自左至右的顺序为"></a>函数参数自左至右的顺序为</h3><p>  位置形参<br>  星号元组形参<br>  命名关键字形参<br>  双星号字典形参</p>
+<p>综合示例:</p>
+<pre><code>def f1(a, b, *args, c, **kwargs):
+  pass
+f1(1, 2, 3, 4, d=6, c=5, e=7)
+</code></pre><h3 id="函数的不定长参数"><a href="#函数的不定长参数" class="headerlink" title="函数的不定长参数"></a>函数的不定长参数</h3><pre><code>def fn(*args, **kwargs):
+  pass
+# 可以接收任意的位置传参和关键字传参
+</code></pre><p>练习:<br>  写一个myrange函数，此函数返回一个符合range规则的整数列表<br>  如:<br>    L = myrange(3)<br>    print(L)  # [0,1,2]<br>    L = myrange(3, 6)<br>    print(L)  # [3, 4, 5]<br>    L = myrange(1, 10, 3)<br>    print(L)  # [1, 4, 7]</p>
+<p>练习：<br>　　　1. 素数prime函数练习<br>      1)  写一个函数isprime(x)  判断x是否为素数，如果是素数，返回True,否则返回False<br>      2) 写一个函数prime_m2n(m, n), 返回从m开始到n结束(不包含n)的范围内的素数列表<br>        如:<br>          L = prime_m2n(1, 10)<br>          print(L) # [2,3,5,7]<br>      3) 写一个函数primes(n), 返回指定范围内素数(不包含n)的全部素数的列表,并打印这些素数<br>        如:<br>          L = prime(20)<br>          print(L)  # [2,3,5,7,11,13,17,19]<br>        1) 打印 100以内的全部素数<br>        2) 打印 100以内全部素数的和</p>
+<pre><code>2. 修改之前的学生信息管理程序:
+  编写两个函数用于封装 录入学生信息　和　打印学生信 息的功能
+    1) 
+    def input_student():
+    　　　　#此函数获取学生信息，并返回学生信息的字典的列表
+        ....
+    2. 
+    def output_student(L):
+        # 以表格形式再打印学生信息
+        ...
+  验证测试：
+  　　L = input_studnet()
+    output_student(L)
+    print(&quot;再添加几个学生信息&quot;)
+    L += input_student()
+    print(&quot;添加学生后的学生信息如下:&quot;)
+    output_student(L)
+</code></pre>
           
         
       
@@ -12053,7 +12685,7 @@ if __name__==&apos;__main__&apos;:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">117.5k</span>
+    <span title="Site words total count">123.3k</span>
   
 </div>
 
