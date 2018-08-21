@@ -5290,7 +5290,7 @@ print(np.convolve(a, b,&apos;full/same/valid&apos;))，默认是full
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  16,928 字
+                  41,643 字
                 </span>
               
 
@@ -5306,7 +5306,7 @@ print(np.convolve(a, b,&apos;full/same/valid&apos;))，默认是full
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  68 分钟
+                  168 分钟
                 </span>
               
             </div>
@@ -5483,7 +5483,7 @@ Out[140]: float
 <pre><code>n = input(&apos;please input a number: &apos;)
 含义是从命令行输入一个数字，用变量n保存，保存格式为字符串，如果需要变为数字可以强制转换。
 </code></pre><h3 id="基本输出函数-print"><a href="#基本输出函数-print" class="headerlink" title="基本输出函数　print"></a>基本输出函数　print</h3><p>  作用：<br>  　　将一系列的值以字符串形式输出到标准输出设备上，默认为终端<br>  格式<br>    print(value, …, sep=’ ‘, end=’\n’)<br>  选项的关键字参数为:<br>    sep 两个值之间的分隔符，默认为一个空格<br>    end 输出完毕后在流末尾自动追加一个字符，默认为换行符’\n’</p>
-<h1 id="python流程控制语句-part1"><a href="#python流程控制语句-part1" class="headerlink" title="python流程控制语句 part1"></a>python流程控制语句 part1</h1><h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><ul>
+<h1 id="python流程控制语句"><a href="#python流程控制语句" class="headerlink" title="python流程控制语句"></a>python流程控制语句</h1><h2 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h2><ul>
 <li>作用：<br>　　让程序根据条件选择性的执行某条语句或某些语句</li>
 <li>说明：<br>　　if 语句又叫条件语句，也叫分支语句</li>
 <li><p>语法:</p>
@@ -6922,6 +6922,3432 @@ f1(1, 2, 3, 4, d=6, c=5, e=7)
     L += input_student()
     print(&quot;添加学生后的学生信息如下:&quot;)
     output_student(L)
+</code></pre><h2 id="全局变量和局部变量"><a href="#全局变量和局部变量" class="headerlink" title="全局变量和局部变量"></a>全局变量和局部变量</h2><h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>定义在函数内部的变量称为局部变量(函数的形参也是局部变量)<br>局部变量只能在函数内部使用<br>局部变量在函数调用时才能够被创建，在函数调用之后会自动销毁</p>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>  定义在函数外部，模块内部的变量称为全局变量<br>  全局变量，所有的函数都可以直接访问（但函数内部不能将其直接赋值)</p>
+<p>示例:</p>
+<pre><code>a = 100
+b = 200
+def fx(c):
+    d = 400
+    print(a, b, c, d)
+
+fx(300)
+print(&apos;a =&apos;, a)
+print(&apos;b =&apos;, b)
+# print(&apos;c =&apos;, c)  # 出错，不能访问局部变量
+# print(&apos;d =&apos;, d)
+
+def fy(c):
+    d = 40
+    a = 10  # 此时会创建局部变量a，不会修改全局变量a
+    print(a, b, c, d)
+
+print(&quot;-------------------&quot;)
+fy(30)
+print(&apos;a =&apos;, a)
+</code></pre><p>局部变量说明:</p>
+<p>1 在函数内首次对变量赋值是创建局部变量,再次为变量赋值是修改局部变量的绑定关系<br>2 在函数内部的赋值语句不会对全局变量造成影响<br>3 局部变量只能在其被声明的函数内部访问，而全局变量可以在整个模块范围内访问</p>
+<h3 id="globals-和-locals-函数"><a href="#globals-和-locals-函数" class="headerlink" title="globals 和 locals 函数"></a>globals 和 locals 函数</h3><p>globals()  返回当前全局作用域内变量的字典<br>locals()  返回当前局部作用域内为量的字典  django中会用到该方法</p>
+<p>示例:</p>
+<pre><code>a = 1
+b = 2
+c = 3
+def f1(c, d):
+    e = 300
+    print(&quot;locals()返回: &quot;, locals())
+    print(&apos;globals()返回&apos;, globals())
+
+f1(100, 200)
+</code></pre><h2 id="函数变量"><a href="#函数变量" class="headerlink" title="函数变量"></a>函数变量</h2><p>函数名是变量，它在创建函数时绑定一个函数</p>
+<p>示例:</p>
+<pre><code>def f1():
+  print(&quot;f1被调用&quot;)
+fx = f1
+fx()  # 等同于 f1()
+</code></pre><p>示例2:</p>
+<pre><code>def f1():
+  print(&quot;hello&quot;)
+def f2():
+  print(&quot;world&quot;)
+f1, f2 = f2, f1  # 交换两个变量的绑定关系
+f1()  # 请问打印结果是什么？ world?
+</code></pre><p>一个函数可以作为另一个函数的参数传递<br>示例:</p>
+<pre><code>def f1():
+    print(&quot;hello&quot;)
+def f2():
+    print(&apos;world&apos;)
+
+def fx(fn):
+    print(fn)
+    fn()  # 调用谁?
+fx(f1)  # 此语句在做什么？
+fx(f2)
+</code></pre><p>示例见:</p>
+<pre><code>def fx(a, fn):
+    return fn(a)
+
+L = [5, 9, 4, 6]
+print(&apos;最大值是:&apos;, fx(L, max))
+print(&apos;最小值是:&apos;, fx(L, min))
+print(&apos;和是:&apos;, fx(L, sum))
+</code></pre><p>函数可以返回另一个函数(即:另一个函数可以返回一个函数)</p>
+<p>示例见:</p>
+<pre><code>def get_fx():
+    s = input(&apos;请输入您要做的操作: &apos;)
+    if s == &apos;求最大&apos;:
+        return max
+    elif s == &apos;求最小&apos;:
+        return min
+    elif s == &apos;求和&apos;:
+        return sum
+
+L = [2,4,6,8,10]
+print(L)
+f1 = get_fx()
+print(f1(L))
+</code></pre><p>练习：<br>  写一个计算器解释执行器:<br>    已知有如下函数:<br>      def myadd(x, y):  # 计算两个数相加<br>          return x + y<br>      def mymul(x, y):  # 计算两个数相乘<br>          return x * y</p>
+<pre><code>  def get_op(s): # s 代表操作字符串:&apos;加&apos;,&apos;乘&apos;
+      此处自己实现
+
+主函数:
+  def main():
+     while True:
+        s = input(&apos;请输入计算公式: &apos;)#如:10 加 20
+        L = s.split()
+        a, s, b = L
+        a, b = int(a), int(b)
+        fn = get_op(s)
+        print(&quot;结果是: &quot;, fn(a, b))  # 结果是30
+</code></pre><h2 id="函数嵌套定义"><a href="#函数嵌套定义" class="headerlink" title="函数嵌套定义"></a>函数嵌套定义</h2><p>  函数的嵌套定义是指一个函数里用def语句来创建其它的函数</p>
+<p>示例:</p>
+<pre><code>def fn_outer():
+    print(&quot;fn_outer被调用!&quot;)
+    def fn_inner():
+        print(&quot;fn_inner被调用&quot;)
+    fn_inner()
+    fn_inner()
+    print(&apos;fn_outter调用结束&apos;)
+
+fn_outer()
+</code></pre><h2 id="python-作用域"><a href="#python-作用域" class="headerlink" title="python 作用域"></a>python 作用域</h2><p>作用域也叫名字空间，是访问变量时，查找变量名的范围空间</p>
+<h3 id="python的四个作用域-LEGB"><a href="#python的四个作用域-LEGB" class="headerlink" title="python的四个作用域 LEGB"></a>python的四个作用域 LEGB</h3><p>局部作用域         Local function             L<br>外部嵌套函数作用域  Enclosing Function Locals  E<br>函数定义所在模块(文件)的作用域  Global(Mudule)  G<br>python 内置模块的作用域       Builtin(python) B</p>
+<p>示例:</p>
+<pre><code>v = 100  # 全局作用域
+
+def fun1():
+    v = 200  # 外部嵌套函数的作用域
+    print(&apos;fun1内的v=&apos;, v)
+    def fun2():
+        v = 300  # 局部作用域
+        print(&quot;fun2内的v=&quot;, v)
+    fun2()
+
+fun1()
+
+print(&quot;v =&quot;, v)
+</code></pre><h3 id="变量名的查找规则"><a href="#变量名的查找规则" class="headerlink" title="变量名的查找规则"></a>变量名的查找规则</h3><p>　　L –&gt; E  –&gt; G  –&gt; B<br>  在默认情况下，对变量名赋值会创建或改变本作用域内的变量</p>
+<p>问题:</p>
+<p>  v = 100<br>  def f():<br>      v = 200  希望此赋值语句操作的是全局变量v<br>  f()<br>  print(v)  # 200 怎么办？</p>
+<h3 id="global语句"><a href="#global语句" class="headerlink" title="global语句"></a>global语句</h3><p>作用:<br> 1 告诉解释器, global语句声明的一个或多个变量，这些变量的作用域为模块级的作用域，也称作全局变量<br> 2 全局声明(global)将赋值变量映身到模块文内部的作用域<br>语法<br> global 变量1, 变量2, …<br>示例:</p>
+<pre><code>v = 100
+def fn():
+    global v
+    v = 200
+fn()
+print(v)  # 200 
+</code></pre><p><strong>global说明</strong><br>1  全局变量如果要在函数内部被赋值，则必须经过全局声明（否则会被认为是局部变量)<br>2  全局变量在函数内部不经过声明就可以直接访问<br>3  不能先声明局部的变量，再用global声明为全局变量，此做法不附合规则<br>4  global 变量列表里的变量不能出现在此作用域内的形参列表里</p>
+<h3 id="nonlocal-语句"><a href="#nonlocal-语句" class="headerlink" title="nonlocal  语句"></a>nonlocal  语句</h3><p>作用:<br>    告诉解释器,　nonlocal声明的变量不是局部变量，也不是全局变量，而是外部嵌套函数内的变量<br>语法:<br>    nonlocal 变量名1, 变量名2, …<br>示例见:</p>
+<pre><code>var = 100
+def f1():
+    var = 200
+    print(&quot;f1里的var=&quot;, var)
+
+    def f2():
+        nonlocal var
+        var = 300  # 此处要想修改f1里的var变量怎么办？
+        print(&quot;f2里的var=&quot;, var)
+    f2()
+
+    print(&quot;f2调用结束后f1里的var值为&quot;, var)
+
+f1()
+print(&apos;全局的var =&apos;, var)
+</code></pre><p><strong>nonlocal 说明</strong></p>
+<ol>
+<li>nonlocal语句只能在被嵌套函数内部进行使用</li>
+<li>访问nonlocal变量将对外部嵌套函数的作用域的变量进行操作</li>
+<li>当有两层或两层以上的函数嵌套时，访问nonlocal变量只对最近一层的变量进行操作</li>
+<li>nonlocal语句的变量列表里的变量名，不能出现在此函数的参数列表中</li>
+</ol>
+<h2 id="lambda-表达式-又称匿名函数"><a href="#lambda-表达式-又称匿名函数" class="headerlink" title="lambda　表达式(又称匿名函数)"></a>lambda　表达式(又称匿名函数)</h2><p>作用:<br>    创建一个匿名函数对象<br>    同 def 类似，但不提供函数名<br>语法:<br>    lambda [参数1, 参数2, …]: 表达式<br>    [] 里的内容可以省略<br>示例:</p>
+<pre><code>def myadd(x, y):
+    return x + y
+# 以上函数可以改写为:
+myadd = lambda x, y: x + y
+print(&apos;2 + 3 =&apos;, myadd(2, 3))
+</code></pre><p><strong>lambda语法说明</strong><br>  1  lambda 只是一个表达式，它用来创建一个函数对象<br>  2  当lambda表达式调用时，先执行冒号后(:)的表达式，并返回表达式的结果的引用<br>  3  lambda 表达式创建的函数只能包含一条”表达式”<br>  4  lambda 比函数简单，且可以随时创建和销毁，有利于减少程序的偶合度</p>
+<p>练习:<br>  １．写一个lambda表达式，判断这个数的2次方+1是否能被5整除,如果能整除返回True, 否则返回False</p>
+<p>  fx = lambda n: ….<br>  print(fx(3)) # True<br>  print(fx(4)) # False</p>
+<ol start="2">
+<li><p>写一个lambda表达式，求两个变量的最大值:</p>
+<pre><code>def mymax(x, y):
+    ....
+# 或用lambda
+mymax = lambda ....
+print(mymax(100, 200))  # 200
+</code></pre></li>
+</ol>
+<p>看懂下面的程序在做什么？</p>
+<pre><code>def fx(f, x, y):
+  print(f(x, y))
+fx((lambda a, b: a + b), 100, 200) # 300
+fx((lambda a, b: a ** b), 3, 4) # 81
+</code></pre><h2 id="eval-和-exec-函数"><a href="#eval-和-exec-函数" class="headerlink" title="eval()  和 exec()函数"></a>eval()  和 exec()函数</h2><h3 id="eval-函数"><a href="#eval-函数" class="headerlink" title="eval()  函数"></a>eval()  函数</h3><p>格式:<br>    eval(source, global=None, locals=None)<br>作用:<br>    把一个字符串当成一个表达式来执行，返回表达式执行后的结果<br>示例:<br>    x = 100<br>    y = 200<br>    a = eval(‘x+y’)<br>    print(a)</p>
+<h3 id="exec-函数"><a href="#exec-函数" class="headerlink" title="exec() 函数"></a>exec() 函数</h3><p>作用:<br>    把一个字符串当成程序来执行<br>格式:<br>    exec(source, globals=None, locals=None)<br>示例:</p>
+<pre><code>x = 100
+y = 200
+s = &apos;z = x+y; print(z); del z; print(&quot;删除成功&quot;&apos;
+exec(s)  # 执行s绑定的语句
+</code></pre><p>eval 和 exec的两个参数globals 和 locals</p>
+<p>此两个参数是用来设置’表达式’或’程序’运行的全局变量和局部变量</p>
+<p>示例:</p>
+<pre><code>x = 100
+y = 200
+s = &apos;print(x, y, x + y)&apos;
+exec(s)  # 100 200, 300
+exec(s, {&apos;x&apos;: 10, &apos;y&apos;: 20})  # 10, 20, 30
+exec(s, {&apos;x&apos;: 10}, {&apos;x&apos;: 1, &apos;y&apos;: 2})  # 1 2 3
+exec(s, {&apos;x&apos;: 10}, {&apos;y&apos;: 2})  # 10 2 12
+</code></pre><p>练习:</p>
+<ol>
+<li><p>写一个函数mysum(n),要求给出一个数n,求<br>1 + 2 +3 + 4 + ….. + n 的和<br>如:<br> print(mysum(100))  # 5050<br> print(mysum(10))  # 55</p>
+</li>
+<li><p>写一个函数myfac(n)来计算n!(n的阶乘)<br>n! = 1<em>2</em>3<em>4</em>….*n<br>如:<br> print(myfac(5))  # 120<br> print(myfac(4))  # 24</p>
+</li>
+<li><p>写一个函数，求<br> 1 + 2<strong>3 + 3</strong>3 + … + n**n的和<br> (n给个小点的数)</p>
+</li>
+<li><p>修改之前的学生信息管理程序，实现添加菜单和选择菜单操作功能:</p>
+<p>   菜单:<br>   +—————————–+<br>   |  1) 添加学生信息&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;            |<br>   |  2) 查看所有学生信息 &nbsp;&nbsp;&nbsp;         |<br>   |  3) 修改学生的成绩 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;          |<br>   |  4) 删除学生信息  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;          |<br>   |  q) 退出 &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;|<br>   +—————————–+<br>   请选择: 1<br>   请输入姓名:….<br>   请选择: 3<br>   请输入修改学生的姓名: ….<br>   (要求每个功能都对应一个函数)</p>
+</li>
+</ol>
+<h1 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h1><p>函数式编程是指用一系列函数决定问题</p>
+<p>函数是一等公民</p>
+<p>  函数本身可以赋值给变量，赋值后变量绑定函数<br>  允许将函数本身作为参数传入另一个函数<br>  允许返回一个函数</p>
+<h2 id="函数的可重入性"><a href="#函数的可重入性" class="headerlink" title="函数的可重入性"></a>函数的可重入性</h2><p>可重入是指一个函数传的参数一定，则结果必须一定<br>要求:<br>    def定义的函数不要访问除局部变量以外的变量</p>
+<p>示例:</p>
+<pre><code># 以下是不可重入的函数myadd
+  y = 200
+  def myadd(x):
+      return x + y
+  print(myadd(10))  # 210
+  y = 300
+  print(myadd(10))  # 310
+# 以下是可重入的函数 myadd
+def myadd(x, y):
+    return x + y
+print(myadd(10, 20))
+</code></pre><h2 id="高阶函数-High-Order-Function"><a href="#高阶函数-High-Order-Function" class="headerlink" title="高阶函数 High Order Function"></a>高阶函数 High Order Function</h2><p>什么是高阶函数:<br>满足下列一个条件的函数即为高阶函数:</p>
+<ol>
+<li>函数接受一个或多个函数作为参数传入</li>
+<li>函数返回一个函数</li>
+</ol>
+<h3 id="python中内建（builtins-的高阶函数"><a href="#python中内建（builtins-的高阶函数" class="headerlink" title="python中内建（builtins)的高阶函数"></a>python中内建（builtins)的高阶函数</h3><p>map, filter, sorted</p>
+<h3 id="map函数"><a href="#map函数" class="headerlink" title="map函数"></a>map函数</h3><p>map(func, *iterables) 用函数和对可迭代对象中的每一个元素作为参数计算出新的可迭代对象，当最短的一个可迭代对象不再提供数据时，此可迭代对象生成结束</p>
+<p>示例:</p>
+<pre><code>def pow2(x):
+    return x**2
+for x in map(pow2, range(1, 10)):
+    print(x)
+
+内建的pow(x, y, z=None)
+# 生成  1 ** 4 , 2**3 , 3 ** 2, 4 ** 1
+for x in map(pow, range(1, 10), range(4,0,-1)):
+    print(x)
+
+for x in map(pow, [2,3,5,7],
+             [4,3,2,1], range(5, 10)):
+    print(x)
+</code></pre><p>练习:</p>
+<ol>
+<li>求 1 <strong> 2 + 2 </strong> 2 + 3 <strong> 2 + … + 9</strong>2 的和</li>
+<li>求 1 <strong> 3 + 2 </strong> 3 + 3 <strong> 3 + … + 9</strong>3 的和</li>
+<li>求 1<strong>9 + 2</strong>8 + 3<strong>7 + … + 9</strong>1的和  # 11377</li>
+</ol>
+<h3 id="filter-函数"><a href="#filter-函数" class="headerlink" title="filter 函数"></a>filter 函数</h3><p>格式:<br>    filter(func, iterable)<br>作用:<br>    筛选可迭代对象iterable中的数据，返回一个可迭代对象，此可迭代对象将对iterable进行筛选<br>说明:<br>    函数func将对每个元素进行求值，返回False则将此数据丢弃，返回True则保留此数据<br>示例:</p>
+<pre><code>def isodd(x):  # 此函数判断x是否为奇数
+    return x % 2 == 1
+for x in filter(isodd, range(10)):
+    print(x)
+even = [x for x in 
+          filter(lambda x: x%2==0, range(10))]
+</code></pre><p>练习:</p>
+<ol>
+<li>将 1 ~20 内的偶数用filter筛选出来，形成列表</li>
+<li>用filter函数将1~100之间的所有素数(prime) 放入到列表中</li>
+</ol>
+<h3 id="sorted-函数"><a href="#sorted-函数" class="headerlink" title="sorted 函数"></a>sorted 函数</h3><p>作用:<br>    将原可迭代对象的数据进行排序，生成排序后的列表<br>格式:<br>    sorted(iterable, key=None, reverse=False)<br>说明:<br>    iterable 可迭代对象<br>    key 函数是用来提供一个参考值，这个值将作为排序的依据<br>    reverse 标志用来设置是否降序排序<br>示例:</p>
+<pre><code>L = [5, -2, -4, 0, 3, 1]
+L2 = sorted(L)  # L2 = [-4, -2, 0, 1, 3, 5]
+L2 = sorted(L, reverse=True)
+L3 = sorted(L, key=abs) # L3 = [0, 1, -2, 3, -4, 5]
+# 思考:
+names = [&apos;Tom&apos;, &apos;Jerry&apos;, &apos;Spike&apos;, &apos;Tyke&apos;]
+sorted(names)
+# 要想按名字的长度升序排序怎么办？
+L4 = sorted(names, key=len)
+</code></pre><p>练习:</p>
+<pre><code>names = [&apos;Tom&apos;, &apos;Jerry&apos;, &apos;Spike&apos;, &apos;Tyke&apos;]
+让names排序
+  排序的依据是字符串的反序
+         &apos;moT&apos;    &apos;yrreJ&apos;  &apos;ekipS&apos;  &apos;keyT&apos;
+L2 = sorted(names, ....) 
+排序后:
+L2 = [&apos;Spike&apos;, &apos;Tyke&apos;, &apos;Tom&apos;, &apos;Jerry&apos;]
+</code></pre><p>练习:<br>   写函数input_student() 得到学生的姓名,成绩，年龄<br>   output_student(L) 打印学生信息<br>   (可以把以前的input_student/output_student函数直接拿过来用)</p>
+<p>   L = input_student()  # 输入一些学生信息<br>   print(“按年龄从大到小排序后”)<br>   L2 = sorted(L, …..)<br>   output_student(L2)<br>   print(“按成绩从高到低排序后”)<br>   L3 = sorted(L, …..)<br>   output_student(L3)</p>
+<h2 id="递归函数-recursion"><a href="#递归函数-recursion" class="headerlink" title="递归函数 recursion"></a>递归函数 recursion</h2><h3 id="递归格式"><a href="#递归格式" class="headerlink" title="递归格式"></a>递归格式</h3><p>函数直接或间接的调用自身</p>
+<p>示例:</p>
+<pre><code>import time
+def story():
+    # time.sleep(1)
+    print(&quot;从前有座山&quot;)
+    print(&quot;山上有座庙&quot;)
+    print(&apos;庙里有人老和尚讲故事:&apos;)
+    story()  # 直接调用自身
+stroy()
+
+# 函数间接调用自身的递归
+def fa():
+    fb()
+def fb():
+    fa()
+fa()
+print(&quot;递归结束&quot;)
+</code></pre><p>递归说明:</p>
+<ol>
+<li>递归一定要控制递归的层数,当符合某一条件时要终止递归</li>
+<li>几乎所有的递归都能用while循环来代替</li>
+</ol>
+<h3 id="控制递归层数"><a href="#控制递归层数" class="headerlink" title="控制递归层数"></a>控制递归层数</h3><p>示例 ：</p>
+<pre><code>def fx(n):
+    print(&quot;递归进入第&quot;, n, &quot;层&quot;)
+    if n == 4:
+        return
+    fx(n + 1)
+    print(&quot;递归退出第&quot;, n, &apos;层&apos;)
+
+fx(1)
+print(&quot;程序结束&quot;)
+</code></pre><p>递归的调用顺序转换为如下代码，缩进代表转换关系</p>
+<pre><code>print(&quot;递归进入第&quot;, 1, &quot;层&quot;)
+if n == 4:
+    return
+    print(&quot;递归进入第&quot;, 2, &quot;层&quot;)
+    if n == 4:
+        return
+        print(&quot;递归进入第&quot;, 3, &quot;层&quot;)
+        if n == 4:
+            return
+            print(&quot;递归进入第&quot;, 4, &quot;层&quot;)
+            if n == 4:
+                return
+        print(&quot;递归退出第&quot;, 3, &apos;层&apos;)
+    print(&quot;递归退出第&quot;, 2, &apos;层&apos;)
+print(&quot;递归退出第&quot;, 1, &apos;层&apos;)
+</code></pre><h3 id="递归的优缺点"><a href="#递归的优缺点" class="headerlink" title="递归的优缺点"></a>递归的优缺点</h3><p>优点：<br>    递归可以把问题简单化，让思路更为清晰，代码更简洁<br>缺点:<br>    递归因系统环境影响大，当递归深度太大时，可能会得到不可预知的结果</p>
+<p>递归函数的实现方法:<br>  先假设函数已经实现</p>
+<p>示例见:</p>
+<pre><code>def mysum(x):
+    if x &lt;= 1:  # 设置递归的终止点
+        return 1
+    return x + mysum(x-1)
+
+
+v = mysum(100)
+print(v)
+</code></pre><p>练习:<br>  编写程序用递归求阶乘:</p>
+<pre><code>def myfac(x):
+    ....
+
+print(myfac(5))  # 120
+print(myfac(4))  # 24
+</code></pre><h2 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包 closure"></a>闭包 closure</h2><p>将内嵌函数的语句和这些语句的执行环境打包在一起时，得到的对象称为闭包(closure)</p>
+<h3 id="闭包必须满足三个条件"><a href="#闭包必须满足三个条件" class="headerlink" title="闭包必须满足三个条件"></a>闭包必须满足三个条件</h3><ol>
+<li>必须有一个内嵌函数</li>
+<li>内嵌函数必须引用外部函数中的变量</li>
+<li>外部函数返回值必须是内嵌函数</li>
+</ol>
+<p>示例:</p>
+<pre><code>def make_power(y):
+  def fx(arg):
+      return arg ** y
+  return fx
+
+pow2 = make_power(2)
+print(&apos;3的平方是: &apos;, pow2(3))
+</code></pre><p>示例:</p>
+<pre><code># 用 参数返回相应的数学函数的示例 
+#  y = a*x**2 + b*x + c
+def make_function(a, b, c):
+    def fx(x):
+        return a*x**2 + b*x + c
+    return fx
+# 创建一个 y = 4x2 + 5x + 6 的函数用fx1绑定
+fx1 = make_function(4, 5, 6)
+print(fx1(2))  # 求在x等2时y的值
+</code></pre><p>练习:</p>
+<ol>
+<li>编写函数求阶乘 myfac(x), 用什么方法都可以</li>
+<li>写程序算出1~20的阶乘的和<br>1!+2!+3!+…..+20!</li>
+<li>改写之前学生信息管理程序，添加如下四个功能<br>5)  按成绩从高至低打印学生信息<br>6)  按成绩从低至高打印学生信息<br>7)  按年龄从大到小打印学生信息<br>8)  按年龄从小到大打印学生信息<br>(要求原来输入的列表顺序保持不变)</li>
+<li>已知有列表:<br>L = [[3,5,8], 10, [[13, 14], 15, 18], 20]<br> 1) 写一个函数print_list(lst) 打印出所有元素<br>   print_list(L)  # 打印 ….<br> 2) 写一个函数 sum_list(lst) 返回这个列表中所有元素的和<br>注:<br>type(x) 可以返回一个变量的类型<br>如:<pre><code>type(20) is int        # 返回True
+type([1,2,3]) is list  # 返回True
+</code></pre></li>
+</ol>
+<h2 id="装饰器-decorators"><a href="#装饰器-decorators" class="headerlink" title="装饰器 decorators"></a>装饰器 decorators</h2><p>问题:<br>  def say(x):<br>      print(“您好:”, x)</p>
+<p>  say(‘老魏’)  # 您好: 老魏<br>  say(‘小张’)<br>   希望打印:<br>    开始问候:<br>    您好： 老魏<br>    结束问候</p>
+<h3 id="函数装饰器"><a href="#函数装饰器" class="headerlink" title="函数装饰器"></a>函数装饰器</h3><p>函数装饰器是指装饰的是一个函数，传入的是一个函数，返回的也是一个函数的函数</p>
+<p>函数装饰器的语法:<br>    def 装饰器函数名(参数):<br>        语句块<br>        return 函数对象</p>
+<p>被装饰函数的语法<br>    @装饰器函数名<br>    def 函数名(形参列表):<br>        语句块</p>
+<p>示例:</p>
+<pre><code># 此示例示意函数装饰器的用法
+
+# 定义一个装饰器函数解决上述问题
+def mydeco(fn):
+    def fx():
+        print(&apos;++++++++++++&apos;)
+        fn()
+        print(&apos;------------&apos;)
+    return fx
+# 定义函数的地方(可能是小张写的)
+# @mydeco
+def myfunc():
+    print(&quot;myfunc被调用&quot;)
+
+myfunc = mydeco(myfunc)
+
+# 调用函数的地方可能是小李写的
+myfunc()
+# myfunc()
+# # 调用函数的地方可能是小王写的
+# myfunc()
+</code></pre><p>带有参数的装饰器及应用案例</p>
+<pre><code># 此示例示意带有参数的装饰器及应用案例
+# 银行业务:
+#    存钱:
+#      savemoney
+#    取钱:
+#      withdraw
+
+# 1. 添加一个余额变动提醒短消息功能
+def messend_send(fn):
+    def fx(name, x):
+        print(&quot;发送消息:&quot;, name, &apos;来银行办理业务...&apos;)
+        fn(name, x)
+        print(&quot;发送消息:&quot;, name, &apos;办了&apos;, x,
+              &apos;元的业务...&apos;)
+    return fx
+
+# 2. 加一个权限验证功能的装饰器
+def privileged_check(fn):
+    def fx(name, x):
+        print(&quot;正在检查权限.....&quot;)
+        if True:
+            fn(name, x)
+    return fx
+
+@privileged_check
+@messend_send
+def savemoney(name, x):
+    print(name, &quot;存钱&quot;, x, &apos;元&apos;)
+
+@messend_send
+def withdraw(name, x):
+    print(name, &apos;取钱&apos;, x, &apos;元&apos;)
+
+# 以下是调用者小张写的程序
+savemoney(&apos;小李&apos;, 200)
+savemoney(&apos;小赵&apos;, 500)
+
+withdraw(&apos;小王&apos;, 300)
+</code></pre><h2 id="函数的文档字符串"><a href="#函数的文档字符串" class="headerlink" title="函数的文档字符串"></a>函数的文档字符串</h2><p>函数内部，第一个没有赋值给任何变量的字符串为文档字符串<br>语法:<br>    def 函数名(形参列表):<br>        ‘’’函数的文档字符串’’’<br>        函数语句块<br>示例:</p>
+<pre><code>def cba():
+    &apos;这是一块文档字符串...&apos;
+    pass
+&gt;&gt;&gt; help(cba)
+</code></pre><h2 id="函数的-doc属性"><a href="#函数的-doc属性" class="headerlink" title="函数的 doc属性"></a>函数的 <strong>doc</strong>属性</h2><p><strong>doc</strong>属性用于绑定该函数的文档字符串</p>
+<p>示例:</p>
+<pre><code>def fx(a, b):
+    &apos;&apos;&apos;这是函数的文档字符串
+    这是第二行...
+    &apos;&apos;&apos;
+print(fx.__doc__)
+</code></pre><h2 id="函数的name属性"><a href="#函数的name属性" class="headerlink" title="函数的name属性"></a>函数的<strong>name</strong>属性</h2><p><strong>name</strong>属性用于绑定函数名的字符串<br>示例:</p>
+<pre><code>def fx():
+  pass
+f1 = fx
+print(f1.__name__)
+</code></pre><h2 id="函数定义语句-def语句的语法"><a href="#函数定义语句-def语句的语法" class="headerlink" title="函数定义语句(def语句的语法)"></a>函数定义语句(def语句的语法)</h2><pre><code>[@装饰器名1]
+[@装饰器名2]
+...
+def 函数名([位置形参],[*[元组形参名]], [命名关键字形参], [**字典形参]):
+  &apos;&apos;&apos;文档字符串&apos;&apos;&apos;
+  语句块
+注: []里的内容代表可省略
+</code></pre><p>面试题:<br>  L = [1, 2, 3]<br>  def f(n, lst=[]):<br>      lst.append(n)<br>      print(lst)<br>  f(4, L)  # 请问结果是[1, 2, 3, 4]<br>  f(5, L)  # 请问结果是[1, 2, 3, 4, 5]<br>  f(100)   # 请问打印结果是[100]<br>  f(200)   # 请问打印结果是[100, 200]<br>说明:<br>  默认参数(缺省参数)绑定在函数对象内部，具随函数的生命一直存在</p>
+<p>解决办法:</p>
+<pre><code>L = [1, 2, 3]
+def f(n, lst=None):
+    if lst is None:
+        lst = []
+    lst.append(n)
+    print(lst)
+f(4, L)  # 请问结果是[1, 2, 3, 4]
+f(5, L)  # 请问结果是[1, 2, 3, 4, 5]
+f(100)   # 请问打印结果是[100]
+f(200)   # 请问打印结果是[200]
+</code></pre><h1 id="模块-Module"><a href="#模块-Module" class="headerlink" title="模块 Module"></a>模块 Module</h1><p>问题:多人写一个程序时该怎么做?</p>
+<h2 id="什么是模块"><a href="#什么是模块" class="headerlink" title="什么是模块"></a>什么是模块</h2><p>模块是一个包含有一系列数据，函数，类等组成的程序组<br>模块是一个文件，模块文件名通常以.py结尾</p>
+<h2 id="模块的作用"><a href="#模块的作用" class="headerlink" title="模块的作用"></a>模块的作用</h2><pre><code>让一些相关的数据，函数，类等有逻辑的组织在一起，使逻辑结构更加清晰
+模块中的数据，函数和类等可提供给其它模块或程序使用
+</code></pre><h2 id="模块的分类"><a href="#模块的分类" class="headerlink" title="模块的分类"></a>模块的分类</h2><ol>
+<li>内置模块(builtins)，在解析器的内部可以直接使用</li>
+<li>标准库模块，安装python时已安装且可直接使用</li>
+<li>第三方模块(通常为开源),需要自己安装</li>
+<li><p>用户自己完成的模块(可以作为其它人的第三方模块)</p>
+<h2 id="模块的导入语句"><a href="#模块的导入语句" class="headerlink" title="模块的导入语句"></a>模块的导入语句</h2></li>
+</ol>
+<h3 id="import-语句"><a href="#import-语句" class="headerlink" title="import 语句"></a>import 语句</h3><p>语法:<br>    import 模块名1[as 模块新名1][,模块名2 [as 模块新名2]], …</p>
+<p>示例:</p>
+<pre><code># 导入数学模块
+import math
+# 导入系统模块sys和 os模块
+import sys, os
+</code></pre><p>作用:<br>    将某模块整体导入到当前模块<br>用法:<br>    模块.属性名</p>
+<p>dir(obj)  函数返回模块所有属性的字符串列表<br>help(obj)  可以查看模块相关的文档字符串</p>
+<p>练习 ：</p>
+<ol>
+<li>输入一个正方形的周长，输出正方形的面积</li>
+<li>输入一个圆的半径，打印出这个圆的面积</li>
+<li>输入一个正方型的面积，打印这个正方型的周长<br>( 要求: 用math模块内的函数和数据)</li>
+</ol>
+<h3 id="from-import-语句"><a href="#from-import-语句" class="headerlink" title="from import 语句"></a>from import 语句</h3><p>语法:<br>    from 模块名 import 模块属性名1 [as 属性新名1][,模块属性名2[as 属性新名2], …]<br>作用：<br>    将某模块内的一个或多个属性导入到当前模块的作用域</p>
+<p>示例:<br>    from math import pi<br>    from math import pow, sqrt<br>    from math import factorial as fac<br>    …</p>
+<h3 id="from-import-语句-1"><a href="#from-import-语句-1" class="headerlink" title="from import *语句"></a>from import *语句</h3><p>语法:<br>    from 模块名 import *<br>作用:<br>    将某模块的所有属性都导入到当前模块<br>示例:</p>
+<pre><code>from math import *
+</code></pre><h2 id="dir-函数"><a href="#dir-函数" class="headerlink" title="dir 函数"></a>dir 函数</h2><p>dir([对象])  返回一个字符串列表<br>作用:</p>
+<ul>
+<li>如果没有参数调用，则返回当前作用域内的所有变量的列表</li>
+<li>如果给定一个对象作为参数，则返回这个对象的所有变量的列表<pre><code>1. 对于一个模块，返回这个模块的全部属性
+2. 对于一个类对象,返回类对象的所有变量，亲递归基类对象的所有变量
+3. 对于其它对象，返回所有的变量，类变量，基类变量
+</code></pre></li>
+</ul>
+<h2 id="数学模块-math"><a href="#数学模块-math" class="headerlink" title="数学模块 math"></a>数学模块 math</h2><p>模块名math</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>math.ceil(x)</td>
+<td>对x向上取整，比如x=1.2，返回2</td>
+</tr>
+<tr>
+<td>math.floor(x)</td>
+<td>对x向下取整，比如x=1.2，返回1</td>
+</tr>
+<tr>
+<td>math.sqrt(x)</td>
+<td>返回x的平方根</td>
+</tr>
+<tr>
+<td>math.factorial(x)</td>
+<td>求x的阶乘</td>
+</tr>
+<tr>
+<td>math.log(x[, base])</td>
+<td>返回以base为底x的对数, 如果不给出base,则以自然对数e为底</td>
+</tr>
+<tr>
+<td>math.log10(x)</td>
+<td>求以10为底x的对数</td>
+</tr>
+<tr>
+<td>math.pow(x, y)</td>
+<td>返回 x**y (x的y次方)</td>
+</tr>
+<tr>
+<td>math.fabs(x)</td>
+<td>返回浮点数x的绝对值</td>
+</tr>
+<tr>
+<td>角度和弧度degrees互换</td>
+<td></td>
+</tr>
+<tr>
+<td>math.degree(x)</td>
+<td>将弧度x转换为角度</td>
+</tr>
+<tr>
+<td>math.radians(x)</td>
+<td>将角度x转换为弧度</td>
+</tr>
+<tr>
+<td>三角函数</td>
+<td></td>
+</tr>
+<tr>
+<td>math.sin(x)</td>
+<td>返回x的正弦(x为弧度)</td>
+</tr>
+<tr>
+<td>math.cos(x)</td>
+<td>返回x的余弦(x为弧度)</td>
+</tr>
+<tr>
+<td>math.tan(x)</td>
+<td>返回x的正切(x为弧度)</td>
+</tr>
+<tr>
+<td>math.asin(x)</td>
+<td>返回x的反正弦(返回值为为弧度)</td>
+</tr>
+<tr>
+<td>math.acos(x)</td>
+<td>返回x的反余弦(返回值为为弧度)</td>
+</tr>
+<tr>
+<td>math.atan(x)</td>
+<td>返回x的反正切(返回值为为弧度)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="时间模块-time"><a href="#时间模块-time" class="headerlink" title="时间模块 time"></a>时间模块 time</h2><p>此模块提供了时间相关的函数，且一直可用</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time.altzone</td>
+<td>夏令时时间与UTC时间差(秒为单位)</td>
+</tr>
+<tr>
+<td>time.daylight</td>
+<td>夏令时校正时间</td>
+</tr>
+<tr>
+<td>time.timezone</td>
+<td>本地区时间与UTC时间差(秒为单位)</td>
+</tr>
+<tr>
+<td>time.tzname</td>
+<td>时区名字的元组， 第一个名字为未经夏令时修正的时区名,第一个名字为经夏令时修正后的时区名</td>
+</tr>
+<tr>
+<td>time.time()</td>
+<td>返回从计算机元年至当前时间的秒数的浮点数(UTC时间为准)</td>
+</tr>
+<tr>
+<td>time.sleep(secs)</td>
+<td>让程序按给定秒数的浮点数睡眠一段时间</td>
+</tr>
+<tr>
+<td>time.gmtime([secs])</td>
+<td>用给定秒数转换为用UTC表达的时间元组(缺省返回当前时间元组)</td>
+</tr>
+<tr>
+<td>time.asctime([tuple])</td>
+<td>将时间元组转换为日期时间字符串</td>
+</tr>
+<tr>
+<td>time.mktime(tuple)</td>
+<td>将本地日期时间元组转换为新纪元秒数时间(UTC为准)</td>
+</tr>
+<tr>
+<td>time.localtime([secs])</td>
+<td>将UTC秒数时间转换为日期元组（以本地时间为准)</td>
+</tr>
+</tbody>
+</table>
+<p>练习：<br>  写一个程序，输入你的出生日期<br>    1) 算出你已经出生了多少天?<br>    2) 算出你出生那天是星期几?</p>
+<p>练习:</p>
+<ol>
+<li><p>写一个程序，以电子时钟格式打印时间:<br> 时间格式为:</p>
+<pre><code>HH:MM:SS
+</code></pre><p> 时间每隔一秒刷新一次</p>
+</li>
+<li><p>编写一个闹钟程序，启动时设置定时时间，到时候后打印出一句语，然后程序退出</p>
+</li>
+<li><p>请编写函数fun,其功能是计算下列多项式的和<br>sn = 1 + 1/1! + 2/2! + 3/3! + … n/n!<br>计算n为100时的值<br>看一下求出来的和是什么?<br>(建议用math.factorial)</p>
+</li>
+</ol>
+<h2 id="系统模块-sys"><a href="#系统模块-sys" class="headerlink" title="系统模块 sys"></a>系统模块 sys</h2><p>此模块全部是运行时系统相关的信息</p>
+<p><strong>sys模块的变量</strong></p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sys.path</td>
+<td>模块搜索路径 path[0] 是当前脚本程序的路径名，否则为 ‘’</td>
+</tr>
+<tr>
+<td>sys.modules</td>
+<td>已加载模块的字典</td>
+</tr>
+<tr>
+<td>sys.version</td>
+<td>版本信息字符串</td>
+</tr>
+<tr>
+<td>sys.version_info</td>
+<td>版本信息的命名元组</td>
+</tr>
+<tr>
+<td>sys.platform</td>
+<td>操作系统平台名称信息</td>
+</tr>
+<tr>
+<td>sys.argv</td>
+<td>命令行参数 argv[0] 代表当前脚本程序路径名</td>
+</tr>
+<tr>
+<td>sys.copyright</td>
+<td>获得Python版权相关的信息</td>
+</tr>
+<tr>
+<td>sys.builtin_module_names</td>
+<td>获得Python内建模块的名称（字符串元组）标准输入输出时会用到</td>
+</tr>
+<tr>
+<td>sys.stdin</td>
+<td>标准输入文件对象，多用于input()</td>
+</tr>
+<tr>
+<td>sys.stdout</td>
+<td>标准输出文件对象,多用于print()</td>
+</tr>
+<tr>
+<td>sys.stderr</td>
+<td>标准错误输出文件对象, 用于输出错误信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>sys模块的方法</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sys.exit([arg])</td>
+<td>退出程序，正常退出时sys.exit(0)</td>
+</tr>
+<tr>
+<td>sys.getrecursionlimit()</td>
+<td></td>
+</tr>
+<tr>
+<td>sys.getrecursionlimit()</td>
+<td>得到递归嵌套层次限制（栈的深度）</td>
+</tr>
+<tr>
+<td>sys.setrecursionlimit(n)</td>
+<td>得到和修改递归嵌套层次限制（栈的深度）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h2><h3 id="自定义模块示例"><a href="#自定义模块示例" class="headerlink" title="自定义模块示例"></a>自定义模块示例</h3><p>mymod1.py</p>
+<pre><code>def myfun1():
+    print(&apos;正在调用mymod1里的 myfun1()&apos;)
+
+def myfun2():
+    print(&quot;mymod1里的myfun2()&quot;)
+
+name1 = &apos;audi&apos;
+name2 = &apos;tesla&apos;
+</code></pre><p>testmymod1.py</p>
+<pre><code>import mymod1  # 导入模块 mymod1.py
+mymod1.myfun1()  # 调用mymod1里的myfun1() 函数
+print(mymod1.name1)  # audi
+
+
+from mymod1 import name2
+print(&quot;mymod1里的name2为: &quot;, name2)
+
+
+from mymod1 import *
+myfun2()
+</code></pre><p>在引入包的时候，会出现一个<strong>pycache</strong>的文件夹，不要删除了，这里面存放了mymod1.pyc文件，该文件是mymod1.py运行产生的一个执行文件，后面调用的时候，直接调用的是该文件。</p>
+<p><strong>自定义的模块的模块名必须符合”标识符”的命名规则（同变量名)</strong></p>
+<p>模块有各自独立的作用域<br>  示例见:<br>    mymod2.py<br>    mymod1.py<br>    06_test_mymod.py</p>
+<h3 id="模块化编程的优点"><a href="#模块化编程的优点" class="headerlink" title="模块化编程的优点"></a>模块化编程的优点</h3><ol>
+<li>有利于多人合作开发</li>
+<li>使代码更易于维护</li>
+<li>提高代码的复用率</li>
+<li>有利于解决变量名冲突问题</li>
+</ol>
+<h3 id="import-语句-搜索模块的路径顺序"><a href="#import-语句-搜索模块的路径顺序" class="headerlink" title="import 语句 搜索模块的路径顺序"></a>import 语句 搜索模块的路径顺序</h3><ol>
+<li>搜索程序运行时的路径(当前路径)</li>
+<li>sys.path 提供的路径</li>
+<li>搜索内置模块</li>
+</ol>
+<p><strong>sys.path 是一个存储模块搜索路径的列表</strong></p>
+<ol>
+<li>可以把自定义的模块放在相应的路径下可以导入</li>
+<li>可以把自己模块的路径添加在sys.path列表中</li>
+</ol>
+<h3 id="模块的加载过程"><a href="#模块的加载过程" class="headerlink" title="模块的加载过程"></a>模块的加载过程</h3><ol>
+<li>在模块导入时，模块的所有语句会执行</li>
+<li>如果一个模块已经以导入，则再次导入时不会重新执行模块内的语句</li>
+</ol>
+<h3 id="模块的重新加载"><a href="#模块的重新加载" class="headerlink" title="模块的重新加载"></a>模块的重新加载</h3><pre><code>import mymod3
+import imp
+imp.reload(mymod3)  # 重新加载 mymod3模块
+</code></pre><h3 id="模块导入和执行的过程"><a href="#模块导入和执行的过程" class="headerlink" title="模块导入和执行的过程"></a>模块导入和执行的过程</h3><ol>
+<li>先搜索相关的路径找模块(.py)</li>
+<li>判断是否有此模块对应的.pyc文件，如果存在pyc文件且比.py文件新，则直接加载.pyc文件</li>
+<li>否则用.py文件生成.pyc后再进行加载</li>
+</ol>
+<p>pyc 模块的编译文件<br>            编译              解释执行<br>  mymod1.py —-&gt; mymod1.pyc ——–&gt; python3</p>
+<h3 id="模块的属性"><a href="#模块的属性" class="headerlink" title="模块的属性"></a>模块的属性</h3><p>  属性的实质是变量(是模块内的全局变量)</p>
+<p>模块内预置的属性</p>
+<ul>
+<li><p><strong>doc</strong>属性<br> 作用:<br>   用来绑定模块的文档字符串</p>
+<p>模块内第一个没有赋值给任何变量的字符串为模块的文档字符串</p>
+</li>
+<li><p><strong>file</strong>属性<br> <strong>file</strong> 绑定模块对应的文档路径名</p>
+<ol>
+<li>对于内建模块，不绑定路径(没有<strong>file</strong>属性)</li>
+<li>对于其它模块，绑定路径名的字符串  </li>
+</ol>
+</li>
+<li><p><strong>name</strong>属性<br>  此属性用来记录模块的自身名字<br>作用：</p>
+<ol>
+<li>记录模块名</li>
+<li>用来判断是否为主模块(最先运行的模块)<br>说明:<br>当此模块为主模块时，<strong>name</strong>绑定 ‘<strong>main</strong>‘<br>当此模块不是主模块时，此属性绑定模块名</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>模块的<strong>all</strong>列表<br>模块中的 <strong>all</strong>列表是一个用来存放可导出属性的 字符串列表</p>
+<p>作用:<br>  当用 from import *语句导入时，只导入 <strong>all</strong> 列表内的属性</p>
+</li>
+</ul>
+<ul>
+<li>模块的隐藏属性<br>模块中以’_’开头的属性，在from import * 语句导入时，将不被导入，通常称这些属性为隐藏属性</li>
+</ul>
+<h2 id="随机模块-random"><a href="#随机模块-random" class="headerlink" title="随机模块 random"></a>随机模块 random</h2><p>作用:<br>    用于模拟或生成随机输出的模块</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R.random()</td>
+<td>返回一个[0, 1) 之间的随机实数</td>
+</tr>
+<tr>
+<td>R.uniform(a,b)</td>
+<td>返回[a,b) 区间内的随机实数</td>
+</tr>
+<tr>
+<td>R.randrange([start,] stop[, step])</td>
+<td>返回range(start,stop,step)中的随机数</td>
+</tr>
+<tr>
+<td>R.choice(seq)</td>
+<td>从序列中返回随意元素</td>
+</tr>
+<tr>
+<td>R.shuffle(seq[, random])</td>
+<td>随机指定序列的顺序(乱序序列）</td>
+</tr>
+<tr>
+<td>R.sample(seq,n)</td>
+<td>从序列中选择n个随机且不重复的元素</td>
+</tr>
+<tr>
+<td>R.getrandbits(nbit)</td>
+<td>以长整型的形式返回用nbit位来表示的随机数</td>
+</tr>
+<tr>
+<td>R.seed(a=None)</td>
+<td>用给定的数a设置随机种子,不给参数a则用当前时间设置随机种子</td>
+</tr>
+</tbody>
+</table>
+<p>练习：<br>  猜数字游戏:<br>    写程序，随机生成一个0~100之间的数用变量x绑定<br>    循环让用户输入一个数用y绑定,<br>       输出猜数字的结果</p>
+<pre><code>     1. 如果y等于生成的数x,则提示&quot;您猜对了&quot;, 打印出猜测的次数并退出
+     2. 如果y 小于x则提示&quot;您猜小了&quot;，然后继续猜
+     3. 如果y 大于x则提示&quot;您猜大了&quot;，然后继续猜
+猜对后程序退出并打印次数
+</code></pre><p>  原理: 二分查找</p>
+<p>包 （模块包) package<br>  包是将模块以文件夹的组织形式进行分组管理的方法</p>
+<p>  作用:<br>    将一系列模块进行分类管理，有利于防止命名冲突<br>    可以在需要时加载一个或部分模块而不是全部模块<br>  包示例:<br>    mypack/<br>        <strong>init</strong>.py<br>        menu.py<br>        games/<br>            <strong>init</strong>.py<br>            contra.py<br>            supermario.py<br>            tanks.py<br>        office/<br>            <strong>init</strong>.py<br>            excel.py<br>            word.py</p>
+<p><strong>init</strong>.py 文件<br>  常规包内必须存在的文件<br>  <strong>init</strong>.py 会在包加载时被自动调用</p>
+<p>  作用<br>    编写此包的内容<br>    在内部填写文档字符串<br>    在<strong>init</strong>.py 内可以加载此包所依懒的一些其它模块</p>
+<p>练习:</p>
+<ol>
+<li><p>把学生管理系统划分为模块（把相关操作放在一个模块内）:<br>建议:<br>  main.py 放主事件循环<br>  menu.py 放show_menu函数<br>  student_info.py 放学生信息相关的操作</p>
+</li>
+<li><p>模拟斗地主发牌,牌共54张<br>黑桃(‘\u2660’), 梅花(‘\u2663’),方块(‘\u2665’),红桃(‘\u2666’)<br>大小王<br>A2-10JQK<br>三个人玩，每个人发17张牌，底牌留三张<br>操作:<br> 输入回车: 打印第一个人的17张牌<br> 输入回车: …..二………..<br> 输入回车: …..三………..<br> 输入回车: 打印三张底牌</p>
+</li>
+</ol>
+<h1 id="包"><a href="#包" class="headerlink" title="包"></a>包</h1><h2 id="包的导入"><a href="#包的导入" class="headerlink" title="包的导入"></a>包的导入</h2><p>用三条import语句可以导入包（同模块的导入规则)</p>
+<pre><code>import 包名 [as 包别名]
+import 包名.模块名 [as 模块新名]
+import 包名.子包名.模块名
+
+from 包名 import 模块名 [as 模块新名]
+from 包名.子包名 import 模块名 [as 模块新名]
+from 包名.子包名.模块名 import 属性名 [as 属性新名]
+
+from 包名 import *
+from 包名.模块名 import *
+...
+</code></pre><p>包的 <strong>init</strong>.py 内的 <strong>all</strong> 列表<br>作用:<br>     用来记录此包中有哪儿些子包或模块在用from 包 import <em><br>    语句导入时是否被调导入<br>说明:<br>    <strong>all</strong>列表只对 from import </em>语句起作用</p>
+<p>示例见:</p>
+<pre><code>mypack/games/__init__.py
+
+    __all__ = [&apos;contra&apos;, &apos;tanks&apos;]
+
+    print(&quot;mypack.games子包被加载&quot;)
+</code></pre><p>包的相对导入<br>  包的相对导入是指包内模块的相互导入</p>
+<p>语法:<br>  from 相对路径包或模块 import 属性或模块名<br>  或<br>  from 相对路径包或模块 import *</p>
+<p>相对路径:<br>  . 代表当前目录<br>  .. 代表上一级目录<br>  … 代表上二级目录<br>  …. 以此类推<br>  注: 相对导入时不能超出包的外部<br>示例:</p>
+<pre><code>def play():
+    print(&quot;正在玩contra&quot;)
+
+print(&apos;contra 模块被加载&apos;)
+
+def gameover():
+    # 用绝对路径导入
+    # from mypack.menu import show_menu
+    # 用相对导入
+    from ..menu import show_menu
+    show_menu()
+
+    # 绝对导入
+    # from mypack.games.tanks import play
+    # 相对导入
+    # from .tanks import play
+    from ..games.tanks import play
+
+    # from ...mypack.games.tanks import play 出错...超出了包的外部
+    play()
+</code></pre><p>包的加载路径:<br>  同模块的加载路径相同</p>
+<pre><code>1. 当前文件夹
+2. sys.path给出的路径
+</code></pre><h1 id="异常-exception"><a href="#异常-exception" class="headerlink" title="异常 exception"></a>异常 exception</h1><p>什么是错误<br>  错误是指由于逻辑或语法等导致一个程序无法正常执行的问题</p>
+<p>  特点：<br>    有些错误是无法预知的</p>
+<h2 id="什么是异常"><a href="#什么是异常" class="headerlink" title="什么是异常"></a>什么是异常</h2><p>  异常是程序出错时标识的一种状态<br>  当异常发生时，程序不会再向下执行，而转去调用此函数的地方待处理此错误并恢复为正常状态</p>
+<h2 id="异常的作用"><a href="#异常的作用" class="headerlink" title="异常的作用"></a>异常的作用</h2><ol>
+<li>通知上层调用者有错误产生需要处理</li>
+<li>用作信号</li>
+</ol>
+<h2 id="异常语句"><a href="#异常语句" class="headerlink" title="异常语句"></a>异常语句</h2><h3 id="try-except语句"><a href="#try-except语句" class="headerlink" title="try-except语句"></a>try-except语句</h3><p>语法：</p>
+<pre><code>try:
+    可能触发异常的语句
+except 错误类型1 [as 变量1]:
+    异常处理语句1
+except 错误类型2 [as 变量2]:
+    异常处理语句2
+except (错误类型3, 错误类型4, ...) [as 变量3]:
+    异常处理语句3
+...
+except:
+    异常处理语句other
+else:
+    末发生异常时执行的语句
+finally:
+    最终执行语句
+</code></pre><p>作用：<br>  偿试捕获异常，将程序转为正常状态并继续执行</p>
+<p>语法说明:<br>   as 子句是用于绑定错误对象的变量，可以省略不写<br>   except子句可以有一个或多个，但至少要有一个<br>   else子句最多只能有一个，也可以省略不写<br>   finally子句最多只能有一个，也可以省略不写</p>
+<p>示例见:</p>
+<pre><code>def div_apple(n):
+    print(&apos;%d个苹果您想分给几个人?&apos; % n)
+    s = input(&apos;请输入人数: &apos;)
+    cnt = int(s)  # &lt;&lt;= 可能触发ValueError错误异常
+    # 以下一行可能触发ZeroDivisionError错误异常
+    result = n / cnt
+    print(&quot;每人个分了&quot;, result, &apos;个苹果&apos;)
+
+# 以下是调用者
+# 我try-except语句来捕获并处理 ValueError类型的错误
+try:
+    print(&quot;开始分苹果&quot;)
+    div_apple(10)
+    print(&quot;分苹果完成&quot;)
+except ValueError:
+    print(&apos;div_apple内出现了ValueError错误，已处理&apos;)
+    print(&apos;用户输入不合法，苹果退回来不分了&apos;)
+except ZeroDivisionError:
+    print(&apos;出现被零除的错误！，苹果不分了&apos;)
+
+print(&quot;程序正常退出&quot;)
+</code></pre><p>练习:<br>  与一个函数 get_score() 来获取学生的成绩(0~100), 如果输入出现异常，则此函数返回0,否则返回用户输入的成绩</p>
+<pre><code>def get_score():
+  ....
+score = get_score()
+print(&quot;学生的成绩是:&quot;, score)
+</code></pre><h3 id="try-finally语句"><a href="#try-finally语句" class="headerlink" title="try-finally语句"></a>try-finally语句</h3><p>语法:<br>    try:<br>        可能触发异常的语句<br>    finally:<br>        最终语句<br>说明:<br>    finally 子句不可以省略<br>    一定不存在except子句<br>作用:<br>    通常用try-finally语句来做触发异常时必须要处理的事情,无论异常是否发生，finally子句都会被执行<br>注:<br>    try-finally语句不会改变程序的(正常/异常)状态</p>
+<p>示例:</p>
+<pre><code>def fry_egg():
+    print(&quot;打开天燃气点燃...&quot;)
+    try:
+        count = int(input(&quot;请输入鸡蛋个数:&quot;))
+        print(&quot;煎蛋完成,共煎了%d个鸡蛋&quot; % count)
+    finally:
+        print(&quot;关闭天燃气&quot;)
+
+try:
+    fry_egg()
+except:
+    print(&quot;程序已转为正常状态!&quot;)
+</code></pre><p>问题:<br>  try-except 语句干什么用?<br>  请问错误通知是谁发出的?怎么发出?</p>
+<h3 id="raise-语句"><a href="#raise-语句" class="headerlink" title="raise 语句"></a>raise 语句</h3><p>作用:<br>    触发一个错误,让程序进入异常状态<br>语法:<br>    raise 异常类型<br>    或<br>    raise 异常对象<br>示例见:</p>
+<pre><code>def make_except():
+    print(&quot;开始...&quot;)
+    # raise ZeroDivisionError  # 手动发生一个错误通知
+    e = ZeroDivisionError(&quot;被零除啦!!!!!&quot;)
+    raise e  # 触发e绑定的错误,进入异常状态
+    print(&quot;结束&quot;)
+
+try:
+    make_except()
+    print(&quot;make_except调用完毕!&quot;)
+except ZeroDivisionError as err:
+    print(&apos;出现了被零除的错误,已处理并转为正常状态!&apos;)
+    print(&apos;err 绑定的对象是:&apos;, err)
+
+
+def get_age():
+    a = int(input(&quot;请输入年龄(0~140): &quot;))
+    if 0 &lt;= a &lt;= 140:
+        return a
+    if a &gt; 140:
+        raise OverflowError(&quot;人的年龄不可能大于140&quot;)
+
+
+# 乙用户调用get_age()
+try:
+    age = get_age()
+except ValueError as err:
+    print(&quot;用户输入的不是数字.已做出相应的处理&quot;)
+    age = 0
+except OverflowError as err:
+    print(&quot;用户输入的年龄过大&quot;)
+    age = 0
+
+print(&quot;得到的年龄是:&quot;, age)
+</code></pre><h3 id="assert-语句-断言语句"><a href="#assert-语句-断言语句" class="headerlink" title="assert 语句(断言语句)"></a>assert 语句(断言语句)</h3><p>语法:<br>    assert 真值表达式, 错误数据(通常是字符串)<br>作用:<br>    当真值表达式为False时,用错误数据创建一个 AssertionError 类型的错误,并进入异常状态<br>类似于:<br>    if 真值表达式 == False:<br>        raise AssertionError(错误数据)<br>示例见:</p>
+<pre><code>def get_age():
+    a = int(input(&quot;请输入年龄: &quot;))
+    # 以下语句会在a不在 [0,140]时触发AssertionError错误
+    assert 0 &lt;= a &lt;= 140, &apos;年龄不在合法的范围内&apos;
+    return a
+
+try:
+    age = get_age()
+except AssertionError as e:
+    print(&quot;错误原因是:&quot;, e)
+    age = 0
+print(&quot;年龄是:&quot;, age)
+</code></pre><p>小结:<br>  接收错误消息:<br>    try-except<br>  做必须要处理的事情的语句:<br>    try-finally<br>  发错误消息的语句:<br>    raise 语句<br>    assert 语句</p>
+<p>为什么要用异常处理机制<br>  在程序调用层数较深时,向主调函数传递错误信息需要用return语句层层传递比较麻烦,所以用异常处理机制</p>
+<p>练习:</p>
+<ol>
+<li>一个球100米高空落下,每次落下后反弹高度是原高度的一半,再落下,<br>写程序<br>1) 算出皮球在第10次落地后反弹高度是多少,<br>2) 打印出球共经过了多少米的路程</li>
+</ol>
+<ol start="2">
+<li>分解质因数,输入一个正整数，分解质因数:<br>如:<br>  输入: 90<br>  打印:<pre><code>90=2*3*3*5
+</code></pre>(质因数是指最小能被原数整数的素数(不包括1))</li>
+</ol>
+<h1 id="可迭代对象"><a href="#可迭代对象" class="headerlink" title="可迭代对象"></a>可迭代对象</h1><p>前面接触到很多可迭代对象，但是具体怎么样才能生成和迭代该对象呢？<br>这里就需要用到 <strong>迭代器 iterator 和 生成器 generator</strong></p>
+<h2 id="什么是迭代器"><a href="#什么是迭代器" class="headerlink" title="什么是迭代器"></a>什么是迭代器</h2><p>  迭代器是指用iter(可迭代对象) 函数返回的对象(实例)<br>  迭代器可以用next(it) 函数获取可迭代对象的数据</p>
+<p>迭代器函数:<br>  iter(iterable) 从可迭代对象中返回一个迭代器,iterable必须是一个能提供迭代器的可迭代对象<br>  next(iterator)  从迭代器iterator中获取下一条记录,如果无法获取下一条记录,则触发StopIteration 异常</p>
+<p>说明:<br>  迭代器是访问可迭代对象的一种方式<br>  迭代器只能向前取值,不会后退<br>  用iter函数可以返回一个可迭代对象的迭代器</p>
+<p>问题:<br>  能否用迭代器访问 range(100, 10000) 中的前三个数?<br>      (要求不用for 循环)</p>
+<p>r = range(100, 10000)<br>it = iter(r)<br>print(“第一个数是:”, next(it))  # 100<br>print(“第二个数是:”, next(it))  # 101<br>print(“第三个数是:”, next(it))  # 102</p>
+<p>迭代器的用途<br>  代迭器对象能用next函数获取下一个元素</p>
+<p>示例:<br>用while循环语句来访问如下列表<br>L = [2, 3, 5, 7]<br>详见:</p>
+<pre><code>L = [2, 3, 5, 7]
+for x in L:
+    print(x)
+
+print(&apos;--------以下是while语句访问L--------&apos;)
+# 用while循环语句来访问如下列表
+it = iter(L)  # 用L来生成一个迭代器
+while True:
+    try:
+        x = next(it)
+        print(x)
+    except StopIteration:
+        print(&quot;迭代终止,迭代器不能提供任何数据&quot;)
+        break
+</code></pre><p>练习：<br>　　有一个集合:<br>    s = {‘唐僧’, ‘悟空’, ‘八戒’, ‘沙僧’}<br>　　用for 语句来打印集合内的信息:<br>    for x in s:<br>        print(x)<br>    else:<br>        print(“遍历结束”)<br>  请将上面的for语句改写为while,next,iter函数组合方式实现上述功能</p>
+<h2 id="生成器-Generator-python2-5-及之后"><a href="#生成器-Generator-python2-5-及之后" class="headerlink" title="生成器 Generator (python2.5 及之后)"></a>生成器 Generator (python2.5 及之后)</h2><p>什么是生成器:<br>  生成器是能够动态提供数据的对象,生成器对象也是可迭代对象(实例)</p>
+<p>生成器有两种:<br>  生成器函数<br>  生成器表达式</p>
+<h3 id="生成器函数定义"><a href="#生成器函数定义" class="headerlink" title="生成器函数定义"></a>生成器函数定义</h3><p>  含有 yield 语句的函数是生成器函数，此函数被调用时将返回 一个生成器对象<br>   注: yield 翻译为产生（或生成)</p>
+<p>yield 语句<br>  语法:<br>    yield 表达式<br>　　说明:<br>    yield用于def函数中，目的是将此函数作为生成器函数使用<br>    yield用来生成数据，供迭代器 next(it) 函数使用</p>
+<p>补充说明：后面协程也会经常用到yield语句。</p>
+<p>示例见:</p>
+<pre><code>def myyield():
+    &apos;&apos;&apos;此函数为生成器函数&apos;&apos;&apos;
+    print(&quot;即将生成2&quot;)
+    yield 2  # 生成2
+    print(&apos;即将生成3&apos;)
+    yield 3  # 生成3
+    print(&apos;即将生成5&apos;)
+    yield 5
+    print(&quot;myield函数返回&quot;)
+
+#　用 for语句访问　myyield函数
+# for x in myyield():
+#     print(x)
+
+gen = myyield() # gen绑定生成器(生成器一定是可迭代对象)
+it = iter(gen)  # it 绑定迭代器
+
+print(next(it))  # 2
+</code></pre><p>生成器函数说明:<br>  生成器函数的调用将返回一个生成器对象，生成器对象是一个可迭代对象<br>  在生成器函数调用return时会出生一个　StopIteration　异常来通知next(it) 函数不再能提供数据</p>
+<p>练习：<br>　　写一个生成器函数:<br>    def myinteger(n):<br>        ….<br>    此生成器函数可以生成从0开始，的一系列的整数,到n结束(不包含n)</p>
+<pre><code>for x in myinteger(3):
+    print(x)   # 打印 0, 1, 2
+it = iter(myinteger(2))
+print(next(it))  # 0
+print(next(it))  # 1
+print(next(it))  # StopIteration异常
+</code></pre><p>练习：<br>　　写一个生成器函数myodd(x) 来生成一系列奇数<br>  如:<br>    myodd(10) 可以生成 1 3 5 7 9</p>
+<h3 id="生成器表达式"><a href="#生成器表达式" class="headerlink" title="生成器表达式"></a>生成器表达式</h3><p>语法:<br>    (表达式 for 变量　in 可迭代对象 [if 真值表达式])<br>    注: []里的内容可以省略<br>　　作用:<br>    用推导式的形式生成一个新的生成器<br>示例:</p>
+<pre><code>gen = (x**2 for x in range(1, 4))
+it = iter(gen)
+next(it)　　# 1
+next(it)　　# 4
+next(it)　　# 9
+next(it)　　# StopIteration
+</code></pre><p>优点：<br>  　　不占用内存空间</p>
+<h3 id="列表推导式-和-生成表达式的区别"><a href="#列表推导式-和-生成表达式的区别" class="headerlink" title="列表推导式 和　生成表达式的区别"></a>列表推导式 和　生成表达式的区别</h3><pre><code>L = [1,2,3,4]
+
+gen = (x for x in L)  # gen绑定生成器　
+lst = [x for x in L]　　＃　lst 绑定列表
+L[1] = 222  # 改变原列表的第二个元素
+for x in lst:
+    print(x)  # 1 2 3 4 不变
+    for x in gen:
+    print(x)  # 1 222 3 4 ,第二个数是 222
+</code></pre><h3 id="迭代工具函数"><a href="#迭代工具函数" class="headerlink" title="迭代工具函数"></a>迭代工具函数</h3><p>  迭代工具函数的作用是生成一个个性化的可迭代对象</p>
+<p>函数</p>
+<p>  <strong>zip(iter1 [,iter2, iter3,…])</strong> 返回一个zip对象此对象用于生成一个元组，此元组的个数由最小的可迭代对象决定</p>
+<p>  <strong>enumerate(iterable[,start])</strong>  生成带索引的枚举对象，返回迭代类型为索引-值对(index,value)对, 默认索引从零开始,也可以使用start绑定</p>
+<p>示例:</p>
+<pre><code>numbers = [10086, 10000, 10010, 95588]
+names = [&apos;中国移动&apos;, &apos;中国电信&apos;, &apos;中国联通&apos;]
+for n, a in zip(numbers, names):
+    print(a, &apos;的客服号码是:&apos;, n)
+
+for x in zip(numbers, names):
+    print(x)
+
+# 以下用zip函数生成一个字典
+d = dict(zip(names, numbers))
+
+for x in zip(range(10), numbers, names):
+    print(x)
+
+# zip函数的实现机制:
+def myzip(iter1, iter2):
+it1 = iter(iter1)
+it2 = iter(iter2)
+while True:
+    x = next(it1)  # 可能会触发StopIteration
+    y = next(it2)  # 可能会触发StopIteration
+    yield (x, y)
+</code></pre><p><strong>enumerate函数(枚举函数)</strong><br>格式<br>    enumerate(iterable[,start])<br>示例:</p>
+<pre><code>names = [&apos;中国移动&apos;, &apos;中国电信&apos;, &apos;中国联通&apos;]
+for x in enumerate(names):
+    print(x)  # (0, &apos;中国移动&apos;), (1, &apos;中国电信&apos;).
+
+for x in enumerate(names, start=100):
+    print(x)  # (100, &apos;中国移动&apos;), (101, &apos;中国电信&apos;), (102, &apos;中国联通&apos;)
+</code></pre><p>练习:<br>  写一个程序，读入任意行的文字，当输入空行时结束输入．<br>  打印带有行号的输入结果:<br>  如:<br>    $ python3 mytest.py<br>    请输入: hello&lt;回车&gt;<br>    请输入: world&lt;回车&gt;<br>    请输入: bye&lt;回车&gt;<br>    请输入: &lt;回车&gt;<br>    打印如下:<br>    第1行: hello<br>    第2行: world<br>    第3行: bye</p>
+<p>问题:<br>  之前学的容器类型:<br>    str, list, tuple, dict, set, frozenset</p>
+<h1 id="字节串-bytes-和-字节数组-bytearray"><a href="#字节串-bytes-和-字节数组-bytearray" class="headerlink" title="字节串 bytes 和 字节数组 bytearray"></a>字节串 bytes 和 字节数组 bytearray</h1><h2 id="字节串-bytes"><a href="#字节串-bytes" class="headerlink" title="字节串 bytes"></a>字节串 bytes</h2><p>作用:<br>    存储以字节为单位的数据<br>说明:<br>    字节串是不可变的字节序列<br>    字节是0~255之间的整数</p>
+<h3 id="创建空字节串的字面值"><a href="#创建空字节串的字面值" class="headerlink" title="创建空字节串的字面值"></a>创建空字节串的字面值</h3><pre><code>b&apos;&apos; 
+b&quot;&quot;
+b&apos;&apos;&apos;&apos;&apos;&apos;
+b&quot;&quot;&quot;&quot;&quot;&quot;
+B&apos;&apos;
+B&quot;&quot;
+B&apos;&apos;&apos;&apos;&apos;&apos;
+B&quot;&quot;&quot;&quot;&quot;&quot;
+</code></pre><h3 id="创建非空字节串的字面值"><a href="#创建非空字节串的字面值" class="headerlink" title="创建非空字节串的字面值"></a>创建非空字节串的字面值</h3><pre><code>b&apos;ABCD&apos;
+b&apos;\x41\x42&apos;
+b&apos;hello tarena&apos;
+</code></pre><h3 id="字节串的构造函数-bytes"><a href="#字节串的构造函数-bytes" class="headerlink" title="字节串的构造函数 bytes"></a>字节串的构造函数 bytes</h3><p>   bytes()  生成一个空的字节串 等同于 b’’<br>   bytes(整型可迭代对象)  用可迭代对象初始化一个字节串<br>   bytes(整数n)  生成n个值为零的字节串<br>   bytes(字符串, encoding=’utf-8’) 用字符串的转换编码生成一个字节串</p>
+<h3 id="字节串的运算"><a href="#字节串的运算" class="headerlink" title="字节串的运算"></a>字节串的运算</h3><ul>
+<li>+=  <em>  </em>=<br>&lt; &lt;= &gt; &gt;= == !=<br>in / not in<br>索引/切片</li>
+</ul>
+<p>示例:<br>   b = b’abc’ + b’123’  # b=b’abc123’<br>   b += b’ABC’    # b=b’abc123ABC’<br>   b’ABD’ &gt; b’ABC’  # True<br>   b = b’ABCD’<br>   65 in b    # True<br>   b’A’ in b  # True</p>
+<p>用于序列函数:<br>   len(x), max(x), min(x), sum(x), all(x), any(x)   </p>
+<h3 id="bytes-与-str的区别"><a href="#bytes-与-str的区别" class="headerlink" title="bytes 与 str的区别"></a>bytes 与 str的区别</h3><p>   bytes 存储字节(0-255)<br>   str  存储Unicode字符(0-65535)</p>
+<h3 id="bytes-与-str-转换"><a href="#bytes-与-str-转换" class="headerlink" title="bytes 与 str 转换"></a>bytes 与 str 转换</h3><pre><code>编码(encode)
+</code></pre><p>   str    ——&gt;   bytes<br>        b = s.encode(‘utf-8’)<br>        解码(decode)<br>   bytes  ——&gt;   str<br>        s = b.decode(‘utf-8’)</p>
+<h2 id="字节数组-bytearray"><a href="#字节数组-bytearray" class="headerlink" title="字节数组 bytearray"></a>字节数组 bytearray</h2><p>  可变的字节序列</p>
+<p>创建字节数组的构造函数:</p>
+<p>   bytearray() 创建空的字节数组<br>   bytearray(整数)<br>   bytearray(整型可迭代对象)<br>   bytearray(字符串,encoding=’utf-8’)<br>       注: 以上参数等同于字节串</p>
+<p>字节数组的运算:</p>
+<ul>
+<li>+=  <em>  </em>=<br>比较运算:  &lt;  &lt;= &gt; &gt;= == !=<br>in / not in<br>索引　/ 切片(字节数组支持索引和切片赋值，规则与列表相同)</li>
+</ul>
+<h3 id="bytearray的方法"><a href="#bytearray的方法" class="headerlink" title="bytearray的方法"></a>bytearray的方法</h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B.clear()</td>
+<td>清空字节数组</td>
+</tr>
+<tr>
+<td>B.append(n)</td>
+<td>追加一个字节(n为0-255的整数)</td>
+</tr>
+<tr>
+<td>B.remove(value)</td>
+<td>删除第一个出现的字节，如果没有出现，则产生ValueError错误</td>
+</tr>
+<tr>
+<td>B.reverse()</td>
+<td>字节的顺序进行反转</td>
+</tr>
+<tr>
+<td>B.decode(encoding=’utf-8’)</td>
+<td>解码</td>
+</tr>
+<tr>
+<td>B.find(sub[, start[, end]])</td>
+<td>查找</td>
+</tr>
+</tbody>
+</table>
+<p>小结:<br>  迭代器<br>    用来访问可迭代对象的数据　<br>　　　　iter(iterable)  # 返回迭代器<br>    next(iterator)  # 获取可迭代对象的数据<br>  生成器函数<br>    根据需要动态创建一些数据(数据原来不存在，用yield现用现生成)<br>    range()<br>  生成器表达式</p>
+<p>  字节串　和　字节数组</p>
+<p>练习:<br>  １．　用生成器函数primes(begin, end)生成素数，给出起始值begin和终止值stop,　生成此范围内的全部素数，不包含(stop)</p>
+<p>  如:<br>  　　　L = [x for x in primes(10, 20)]<br>  　　　将得到列表L = [11, 13, 17, 19]
+  　　　</p>
+<ol start="2">
+<li>仿制range函数的功能，写一个生成器函数myrange,要求功能与range功能相近，能实现一个，两个，三个参数传参,生成正向的整数<br>如:<br> for x in myrange(1, 10, 3):<pre><code>print(x)   # 1, 4, 7
+</code></pre></li>
+</ol>
+<h1 id="文件-file"><a href="#文件-file" class="headerlink" title="文件　　file"></a>文件　　file</h1><h2 id="什么是文件"><a href="#什么是文件" class="headerlink" title="什么是文件"></a>什么是文件</h2><p>文件是数据存储的单位<br>文件通常用来长期存储数据<br>文件中的数据是以字节为单位进行顺序存储的</p>
+<h2 id="文件的操作流程"><a href="#文件的操作流程" class="headerlink" title="文件的操作流程"></a>文件的操作流程</h2><ol>
+<li>打开文件</li>
+<li>读写文件</li>
+<li>关闭文件<br>任何的操作系统，一个应用程序同时打开文件的数量有最大数限制</li>
+</ol>
+<h2 id="文件的打开函数-open"><a href="#文件的打开函数-open" class="headerlink" title="文件的打开函数 open"></a>文件的打开函数 open</h2><p>  open(file, mode=’rt’) 用于打开一个文件，返回此文件对应的文件流对象，如果打开失败，则会触发OSError错误！</p>
+<h2 id="文件关闭方法"><a href="#文件关闭方法" class="headerlink" title="文件关闭方法"></a>文件关闭方法</h2><p>  F.close()  关闭，释放系统资源<br>示例见:</p>
+<pre><code>try:
+    # f = open(&apos;/etc/passwd&apos;)  # 此时能成功打开
+
+    # f = open(&apos;/root/abc.txt&apos;)  # 此文件不存在
+    f = open(&quot;./abc.txt&quot;)
+    print(&quot;文件打开成功!&quot;)
+
+    # 在此外进行文件的读写操作
+
+    f.close()  # 关闭文件
+except OSError:
+    print(&quot;打开文件失败！&quot;)
+</code></pre><p>python文件读写的类型有两种:<br>   文本文件　(text file)<br>   二进制文件 (binary file)</p>
+<p>文本文件的操作<br>   默认文件中存储的都为字符数据，以行为单位进行分隔，在python内部统一用’\n’作为换行进行分隔<br>   对文本文件读写需要用字符串(str)进行数据读取和写入</p>
+<p>各种操作系统的换行符:<br>  Linux换行符       : ‘\n’<br>  Window换行符      : ‘\r\n’<br>  旧的Macintosh换行符: ‘\r’<br>  新的Mac Os 换行符  : ‘\n’</p>
+<p>练习:<br>  自己写一个文件’info.txt’ 内部存一些文字信息<br>       张三 20 100<br>       李四 21 96<br>       小王 22 98<br>  写程序将这些数据读取出来，打印在屏幕终端上</p>
+<p>F.readlines 示例见:</p>
+<pre><code>try:
+    f = open(&apos;../exercise/info.txt&apos;)
+    L = f.readlines()  # 返回所有行文字的列表
+    print(L)
+    f.close()
+except OSError:
+    print(&quot;打开文件文件&quot;)
+</code></pre><p>文本文件的写操作<br>  文档见:</p>
+<p><strong>mode 模式字符的含义</strong><br>字符|含义<br>–|–<br>‘r’|以只读方式打开(默认)<br>‘w’|以只写方式打开，删除原有文件内容(如果文件不存在，则创建该文件并以只写方式打开)<br>‘x’|创建一个新文件, 并以写模式打开这个文件,如果文件存在则会产生”FileExistsError”错误<br>‘a’|以只写文件打开一个文件，如果有原文件则追加到文件末尾<br>‘b’|用二进制模式打开<br>‘t’|文本文件模式打开 (默认)<br>‘+’|为更新内容打开一个磁盘文件 (可读可写)</p>
+<ul>
+<li>缺省模式是 ‘rt’|</li>
+<li>‘w+b’ 可以实现二进制随机读写，当打开文件时，文件内容将被清零</li>
+<li>‘r+b’ 以二进制读和更新模式打开文件,打开文件时不会清空文件内容</li>
+<li>‘r+’ 以文本模式读和更新模式打开文件,打开文件时不会清空文件内容</li>
+</ul>
+<h2 id="python-文件常用方法"><a href="#python-文件常用方法" class="headerlink" title="python 文件常用方法"></a>python 文件常用方法</h2><p>方法|说明<br>F.close()|关闭文件(关闭后文件不能再读写会发生ValueError错误)<br>F.readline()|读取一行数据, 如果到达文件尾则返回空行<br>F.readlines(max_chars=-1)|返回每行字符串的列表,max_chars为最大字符(或字节)数<br>F.writelines(lines)|每行字符串的列表<br>F.flush()|把写入文件对象的缓存内容写入到磁盘<br>F.read(size = -1)|从一个文件流中最多读取size个字符<br>F.write(text)|写一个字符串到文件流中，返回写入的字符数<br>二进制文件操作方法|<br>F.tell()|返回当前文件流的绝对位置<br>F.seek(offset, whence=0)|改变数据流的位置，返回新的绝对位置<br>F.readable()|判断这个文件是否可读,可读返回True,否则返回False<br>F.writable()|判断这个文件是否可写,可写返回True,否则返回False<br>F.seekable()|返回这个文件对象是否支持随机定位<br>F.truncate(pos = None)|剪掉 自pos位置之后的数据，返回新的文件长度(字节为单位)</p>
+<h2 id="文本文件的迭代读取"><a href="#文本文件的迭代读取" class="headerlink" title="文本文件的迭代读取"></a>文本文件的迭代读取</h2><p>   open()函数返回来的文件流对象是可迭代对象</p>
+<p>示例:</p>
+<pre><code>f = open(&apos;abc.txt&apos;)
+# 每次取出一行,相当于line = f.readline()
+for line in f:
+  print(line)
+f.close()
+</code></pre><h2 id="标准输入输出文件"><a href="#标准输入输出文件" class="headerlink" title="标准输入输出文件"></a>标准输入输出文件</h2><p>模块名: sys<br>sys.stdin  (默认为标准键盘输入设备) ctrl + d 输入文件末尾标识<br>sys.stdout (默认为屏幕终端)<br>sys.stderr (默认为屏幕终端)</p>
+<p>标准文件不需要打开和关闭就可以使用</p>
+<p>F.flush 用法:</p>
+<pre><code>import time
+
+f = open(&apos;infos.txt&apos;, &apos;w&apos;)
+f.write(&apos;hello&apos;)
+f.flush()  # 强制清空缓冲区
+
+# for i in range(10000):
+#     f.write(&apos;helloooooo&apos;)
+#     time.sleep(0.01)
+
+print(&quot;程序开始睡觉...zzz&quot;)
+time.sleep(15)
+print(&quot;程序睡醒了,继续执行&quot;)
+
+f.close()
+</code></pre><h2 id="二进制文件操作"><a href="#二进制文件操作" class="headerlink" title="二进制文件操作"></a>二进制文件操作</h2><p>‘b’ 二进制(binary)文件操作</p>
+<p>对于二进制文件的读写通常需要用字节串(bytes)进行操作</p>
+<p>示例:</p>
+<pre><code>f =  open(&quot;infos.txt&quot;, &apos;rb&apos;)  # 以二进制模式打开
+# 在此处对f绑定的对象以bytes为单位进行读写
+# ...
+f.close()
+</code></pre><p>示例:</p>
+<pre><code>try:
+    f = open(&apos;infos.txt&apos;, &apos;rb&apos;)
+    # 读取数据,常用f.read读取
+    b = f.read(5)  # &lt;&lt;== 5 代表5个字节(bytes)
+    print(b)
+    b = f.read(2)
+    print(b)
+    b = f.read()  # 不加实参读取全部字节,直至文件尾
+    print(b)
+    f.close()
+except OSError:
+    print(&quot;打开文件失败!&quot;)
+</code></pre><p>F.seek()  方法<br>  F.seek(偏移量, whence=相对位置)<br>    偏移量:<br>      大于0代表向文件末尾方向移动<br>      小于0代表向文件头方向移动<br>    相对位置:<br>      0 代表人文件头开始<br>      1 代表从当前读写位置开始偏移<br>      2 代表从文件尾开始偏移</p>
+<p>  示例见:</p>
+<pre><code>f = open(&apos;data.txt&apos;, &apos;rb&apos;)
+# 方法1
+# f.seek(5, 0)  # 相对于文件头向后移动5个字节
+# 方法2
+# f.seek(-15, 2)  # 相对于文件尾向前移动15个字节
+# 方法3
+b = f.read(2)  # 先读取2个字节
+f.seek(3, 1)  # 相对于当前位置向后移动3个字节
+
+b = f.read(5)
+print(b)  # b&apos;abcde&apos;
+
+f.close()
+</code></pre><p>问题:<br>  十个汉字占多少个字节<br>    答案:  GBK占20个字节  , UTF-8 占 30个字节</p>
+<h2 id="汉字编码"><a href="#汉字编码" class="headerlink" title="汉字编码"></a>汉字编码</h2><h3 id="国标系列"><a href="#国标系列" class="headerlink" title="国标系列"></a>国标系列</h3><pre><code>GB18030 (二字节或四字节编码)
+    GBK (二字节编码)
+        GB2312 (二字节编码)
+(Windows 常用)
+</code></pre><h3 id="国际标准"><a href="#国际标准" class="headerlink" title="国际标准"></a>国际标准</h3><pre><code>UNICODE(2/4字节)  &lt;---&gt; UTF-8 (1~6字节)
+  (Linux / Mac OS X / IOS / Android 常用)
+</code></pre><p>python 编码(encode) 字符串<br>  ‘gb2312’<br>  ‘gbk’<br>  ‘gb18030’<br>  ‘utf-8’<br>  ‘ascii’<br>  … 以下略</p>
+<h3 id="编码注释"><a href="#编码注释" class="headerlink" title="编码注释"></a>编码注释</h3><pre><code>在源文件的第一行或第二行写入如下内容为编码注释
+# -*- coding:gbk -*-
+# 设置源文件编码为:gbk
+或
+# -*- coding:utf-8 -*-
+# 设置源文件编码为:utf-8
+</code></pre><p>练习:</p>
+<ol>
+<li><p>写程序让用户输入一系列整数,当输入小于零的数时结束输入<br>1) 将输入的数字存于列表中<br>2) 将列表中的数字写入到文件numbers.txt中<br>(提示: 需要将整数转为字符串或字节串才能存入文件中)</p>
+</li>
+<li><p>写程序,将文件numbers.txt中的整数读入到内存中,重新形成数字组成的列表.计算这些数的最大值,最小值,和他们的和</p>
+</li>
+<li><p>为学生信息管理项目添加两个功能:<br> 9)  保存信息到文件(si.txt)<br> 10) 从文件中读取数据(si.txt)<br>(建议: 以行为单位存储数据, 用空格或逗号作为姓名,年龄和成绩的分隔符)</p>
+</li>
+</ol>
+<h1 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h1><p>   object(对象) </p>
+<p>什么是对象<br>  对象是指现实中的物体或实体</p>
+<p>什么是面向对象<br>  把一切看成对象(实例), 让对象和对象之建立关联关系</p>
+<p>对象都有什么特征<br>   对象有很多属性(名词)<br>      姓名, 年龄, 性别,<br>   对象有很多行为(动作,动词)<br>      学习,吃饭,睡觉,踢球, 工作</p>
+<h2 id="什么是类-class"><a href="#什么是类-class" class="headerlink" title="什么是类 class"></a>什么是类 class</h2><p>拥有相同属性和行为的对象分为一组,即为一个类<br>类是用来描述对象的工具,用类可以创建同类对象</p>
+<pre><code>车(类)  -------&gt; BYD E6(京A.88888)  实例
+       \
+        \.----&gt; BMW  X5(京B.00000)  实例
+
+狗(类) --------&gt; 小京巴 (户籍号: 000001)
+      \
+       \------&gt; 导盲犬 (户籍号: 000002)
+
+int(类)  ------&gt; 100(对象/实例)
+        \
+         \-----&gt; 200(对象/实例)
+</code></pre><h3 id="类的创建语句"><a href="#类的创建语句" class="headerlink" title="类的创建语句"></a>类的创建语句</h3><p>语法:<br>    class 类名(继承列表):<br>       ‘’’类的文档字符串’’’<br>       实例方法定义(类内的函数称为方法method)<br>       类变量定义<br>       类方法定义<br>       静态方法定义<br>作用:<br>    创建一个类<br>    用于描述此类对象的行为和属性<br>    类用于创建此类的一个或多个对象(实例)</p>
+<p>示例:<br>class Dog:<br>    pass<br>示例:</p>
+<pre><code>class Dog:  # 定义一个类,类名为Dog
+    pass
+
+
+dog1 = Dog()  # 创建Dog类的对象
+print(id(dog1))
+dog2 = Dog()  # 创建Dog类的另一个对象
+print(id(dog2))
+
+# 类似于如下语句:
+int1 = int()
+int2 = int()
+</code></pre><p>类 和 对象<br>  类    |   对象       实例<br>class   |  object  instance</p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>表达式:<br>    类名([创建传参列表])<br>作用:<br>    创建这个类的实例对象,并返回此实例对象的引用关系</p>
+<p>实例(对象)说明<br>  实例有自己的作用域和名字空间,可以为该实例添加实例变量(属性)<br>  实例可以调用类方法和实例方法<br>  实例可以访问类变量和实例变量</p>
+<p>示例:</p>
+<pre><code>class Dog:
+    pass
+dog1 = Dog()
+</code></pre><h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><p>  语法:<br>    class 类名(继承列表):<br>        def 实例方法名(self, 参数1, 参数2, …):<br>            ‘’’实例方法的文档字符串’’’<br>            语句块<br>  作用:<br>    用于描述一个对象的行为,让此类型的全部对象都拥有相同的行为<br>  说明:<br>    实例方法实质是函数,是定义在类内的函数<br>    实例方法至少有一个形参,第一个形参代表调用这个方法的实例,一般命名为’self’</p>
+<p>  实例方法的调用语法:<br>    实例.实例方法名(调用传参)<br>    或<br>    类名.实例方法名(实例, 调用传参)</p>
+<p>  示例:</p>
+<pre><code>class Dog:
+    def eat(self, food):
+        &apos;&apos;&apos;此方法用来描述小狗吃东西的行为&apos;&apos;&apos;
+        print(&quot;小狗正在吃:&quot;, food)
+
+    def sleep(self, hour):
+        print(&quot;小狗睡了&quot;, hour, &quot;小时&quot;)
+
+    def play(self, obj):
+        print(&quot;小狗正在玩&quot;, obj)
+
+# 创建一个Dog的类的实例:
+dog1 = Dog()
+dog1.eat(&apos;狗粮&apos;)
+dog1.sleep(1)
+dog1.play(&quot;球&quot;)  # 对象不能调用类内不存在的实例方法
+
+
+# 创建另一个Dog对象
+dog2 = Dog()
+dog2.play(&quot;飞盘&quot;)
+dog2.eat(&quot;骨头&quot;)
+dog2.sleep(2)
+# dog2.play(&apos;杂技&apos;)  # 此调用方法可以用如下方法代替
+Dog.play(dog2, &apos;杂技&apos;)
+</code></pre><h3 id="属性-attribute-也叫实例变量"><a href="#属性-attribute-也叫实例变量" class="headerlink" title="属性 attribute(也叫实例变量)"></a>属性 attribute(也叫实例变量)</h3><p>  每个实例都可以有自己的变量,此变量称为实例变量(也叫属性)</p>
+<h4 id="属性的使用语法"><a href="#属性的使用语法" class="headerlink" title="属性的使用语法:"></a>属性的使用语法:</h4><p>  实例.属性名</p>
+<h4 id="赋值规则"><a href="#赋值规则" class="headerlink" title="赋值规则:"></a>赋值规则:</h4><p>  首次为属性赋值则创建此属性<br>  再次为属性赋值则必变属性的绑定关系<br>作用:<br>  用来记录对象自身的数据<br>示例见:</p>
+<pre><code>class Dog:
+    pass
+
+# 创建第一个对象
+dog1 = Dog()
+dog1.kinds = &apos;京巴&apos;  # 添加属性kinds
+dog1.color = &apos;白色&apos;  # 添加属性color
+dog1.color = &apos;黃色&apos;  # 改变属性的绑定关系
+
+print(dog1.color, &apos;的&apos;, dog1.kinds)  # 访问属性
+
+dog2 = Dog()
+dog2.kinds = &apos;牧羊犬&apos;
+dog2.color = &apos;灰色&apos;
+print(dog2.color, &apos;的&apos;, dog2.kinds)  # 访问属性
+</code></pre><p>实例方法和实例变量(属性)结合在一起用:<br>  见:</p>
+<pre><code>class Dog:
+    def eat(self, food):
+        print(self.color, &apos;的&apos;,
+              self.kinds, &apos;正在吃&apos;, food)
+
+
+# 创建第一个对象
+dog1 = Dog()
+dog1.kinds = &apos;京巴&apos;  # 添加属性kinds
+dog1.color = &apos;白色&apos;  # 添加属性color
+# print(dog1.color, &apos;的&apos;, dog1.kinds)  # 访问属性
+dog1.eat(&quot;骨头&quot;)
+
+dog2 = Dog()
+dog2.kinds = &apos;牧羊犬&apos;
+dog2.color = &apos;灰色&apos;
+# print(dog2.color, &apos;的&apos;, dog2.kinds)  # 访问属性
+dog2.eat(&apos;包子&apos;)
+</code></pre><p>练习:<br>  定义一个学生类:</p>
+<pre><code> class Student:
+    def set_info(self, name, age):
+        &apos;&apos;&apos;此方法用来给学生对象添加&apos;姓名&apos;和&apos;年龄&apos;属性
+        # 此处自己实现
+    def show_info(self):
+        &apos;&apos;&apos;此处显示此学生的信息&apos;&apos;&apos;
+
+如:
+
+  s1 = Student()
+  s1.set_info(&apos;小张&apos;, 20)
+  s2 = Student()
+  s2.set_info(&apos;小李&apos;, 18)
+  s1.show_info()  # 小张 今年 20 岁
+  s2.show_info()  # 小李 今年 18 岁
+</code></pre><h4 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h4><p>  用del语句可以删除一个对象的实例变量</p>
+<p>  语法:<br>    del 对象.实例变量名<br>  示例:<br>    class Cat:<br>        pass</p>
+<pre><code>c1 = Cat()  # 创建变量
+c1.color = &quot;白色&quot;  # 添加属性 
+print(c1.color)   # 白色
+del c1.color     # 删除属性
+print(c1.color)  # 属性错误
+</code></pre><p>问题:<br>  class Dog:<br>      pass<br>  dog1 = Dog()  # 对的<br>  dog2 = Dog(‘京巴’, ‘白色’)  # 出错</p>
+<h3 id="初始化方法"><a href="#初始化方法" class="headerlink" title="初始化方法"></a>初始化方法</h3><p>  作用:<br>    对新创建的对象添加实例变量(属性)或相应的资源<br>  语法格式:<br>    class 类名(继承列表):<br>        def <strong>init</strong>(self [,形参列表]):<br>            语句块<br>  说明:</p>
+<pre><code>1. 初始化方法名必须为__init__ 不可改变
+2. 初始化方法会在构造函数创建实例后自动调用,且将实例自身通过第一个参数self传入__init__方法
+3. 构造函数的实参将通过__init__方法的形参列表传入 __init__ 方法中
+4. 初始化方法内部如果需要返回则只能返回None
+</code></pre><p>  示例:</p>
+<pre><code>class Car:
+    def __init__(self, c, b, m):
+        # print(&quot;__init__方法被调用&quot;)
+        self.color = c  # 颜色
+        self.brand = b  # 品牌
+        self.model = m  # 型号
+
+    def run(self, speed):
+        print(self.color, &apos;的&apos;,
+              self.brand, self.model,
+              &apos;正在以&apos;, speed, &apos;公里/小时的速度行驶!&apos;)
+
+    def set_color(self, clr):
+        &apos;&apos;&apos;此方法用来修改车的颜色信息&apos;&apos;&apos;
+        self.color = clr
+
+
+a4 = Car(&apos;红色&apos;, &apos;奥迪&apos;, &apos;A4&apos;)  # 创建了一辆车
+a4.run(179)  # 上路跑
+# a4.color = &apos;黑色&apos;
+a4.set_color(&apos;黑色&apos;)
+a4.run(300)  # 
+
+t1 = Car(&apos;蓝色&apos;, &apos;TESLA&apos;, &apos;Modle S&apos;)
+t1.run(299)
+</code></pre><p>练习:<br>  修改前的Student 类,<br>   1) 为该类添加初始化方法,实现在创建对象时自动设置 ‘姓名’, ‘年龄’, ‘成绩’ 属性<br>   2) 添加set_score方法能为对象修改成绩信息<br>   3) 添加show_info方法打印学生对象的信息</p>
+<h3 id="析构方法"><a href="#析构方法" class="headerlink" title="析构方法"></a>析构方法</h3><p>  语法:<br>    class 类名(继承列表):<br>        def <strong>del</strong>(self):<br>           语句块<br>  说明:<br>    析构方法在对象销毁时被自动调用<br>  作用:<br>    清理此对象所占用的资源<br>  示例见:</p>
+<pre><code>class Car:
+    def __init__(self, name):
+        self.name = name
+        print(&apos;汽车&apos;, name, &apos;对象已经创建!&apos;)
+
+    def __del__(self):
+        print(self.name, &quot;对象已经销毁!&quot;)
+
+c1 = Car(&apos;BYD E6&apos;)
+# del c1
+c1 = Car(&apos;BMW x5&apos;)
+
+while True:  # 死循环阻止程序退出
+    pass
+</code></pre><p>  python不建议在析构方法内做任何事情,因为对象销毁的时间难以确定</p>
+<h3 id="预置实例属性"><a href="#预置实例属性" class="headerlink" title="预置实例属性"></a>预置实例属性</h3><h4 id="dict-属性"><a href="#dict-属性" class="headerlink" title="dict 属性"></a><strong>dict</strong> 属性</h4><pre><code>此属性绑定一个存储此实例自身实例变量(属性)的字典
+</code></pre><p>  示例:</p>
+<pre><code>class Dog:
+    pass
+dog1 = Dog()
+print(dog1.__dict__)
+dog1.kinds = &apos;京巴&apos;
+print(dog1.__dict__)
+</code></pre><h4 id="class-属性"><a href="#class-属性" class="headerlink" title="class 属性"></a><strong>class</strong> 属性</h4><pre><code>此属性用来绑定创建此实例的类
+作用:
+  可以借助此属性来访问创建此实例的类
+</code></pre><p>  示例:</p>
+<pre><code>class Dog:
+    pass
+dog1 = Dog()
+dog2 = Dog()
+dog3 = dog1.__class__()  # 创建dog1的同类对象
+</code></pre><p><strong>面向对象的综合示例</strong><br>  有两个人:<br>    1.<br>      姓名: 张三<br>      年龄: 35<br>    2.<br>      姓名: 李四<br>      年龄: 8<br>    行为:</p>
+<pre><code>1. 教别人学东西 teach
+2. 赚钱
+3. 借钱
+</code></pre><p>  事情:<br>     张三 教 李四 学 python<br>     李四 教 张三 学 跳皮筋<br>     张三 上班赚了 1000元钱<br>     李四向张三借了 200元<br>  示例见:</p>
+<pre><code>class Human:
+    &apos;&apos;&apos;人类,用于描述人的行为和属性&apos;&apos;&apos;
+    def __init__(self, n, a):
+        self.name = n  # 姓名
+        self.age = a  # 年龄
+        self.money = 0  # 钱数为0
+
+    def teach(self, other, skill):
+        print(self.name, &quot;教&quot;, other.name,
+              &apos;学&apos;, skill)
+
+    def works(self, money):
+        self.money += money
+        print(self.name, &apos;工作赚了&apos;, money, &apos;元钱&apos;)
+
+    def borrow(self, other, money):
+        &apos;描述一个人向其它人借钱的行为,它人有钱必借,不够不借&apos;
+        if other.money &gt; money:
+            print(other.name, &quot;借给&quot;, self.name,
+                money, &apos;元钱&apos;)
+            other.money -= money
+            self.money += money
+        else:
+            print(other.name, &apos;不借给&apos;, self.name)
+
+    def show_info(self):
+        print(self.age, &apos;岁的&apos;, self.name,
+            &apos;存有&apos;, self.money, &apos;元线&apos;)
+
+# 以下的类的使用
+zhang3 = Human(&apos;张三&apos;, 35)
+li4 = Human(&apos;李四&apos;, 8)
+zhang3.teach(li4, &apos;Python&apos;)
+li4.teach(zhang3, &apos;跳皮筋&apos;)
+zhang3.works(1000)
+li4.borrow(zhang3, 200)
+zhang3.show_info()
+li4.show_info()
+</code></pre><p>用于类的函数:<br>  isinstance(obj, class_or_tuple) 返回这个对象obj 是否某个类class或某些类的实例,如果是则返回True, 否则返回False<br>  type(obj)  返回对象的类型</p>
+<p>示例:</p>
+<pre><code>class Dog:
+  pass
+class Cat:
+  pass
+animal = Dog()
+isinstance(animal, Dog)  # True
+isinstance(animal, Cat)  # False
+isinstance(animal, (Cat, int, list))  # False
+isinstance(animal, (Cat, int, Dog))  # True
+</code></pre><h3 id="类变量-class-variable-也叫类属性"><a href="#类变量-class-variable-也叫类属性" class="headerlink" title="类变量 class variable(也叫类属性)"></a>类变量 class variable(也叫类属性)</h3><p>  类变量是类的属性,此属性属于类</p>
+<p>  作用:<br>    用来记录类相关的数据</p>
+<p>  说明:<br>    类变量可以通过类直接访问<br>    类变量可以通过类的实例直接访问<br>    类变量可以通过此类的实例的<strong>class</strong>属性间接访问<br>  示例:<br>    class Human:<br>        count = 0  # 创建类变量<br>    详见:</p>
+<pre><code>class Human:
+    count = 0  # 创建一个类变量
+
+print(&quot;Human的类变量count=&quot;, Human.count)  # 0
+Human.count = 100
+print(Human.count)  # 100
+
+
+class Human:
+    count = 0  # 创建一个类变量
+
+print(&quot;Human的类变量count=&quot;, Human.count)  # 0
+h1 = Human()
+print(&quot;用h1对象访问Human的count变量&quot;, h1.count)  # 0
+h1.count = 100
+print(h1.count)  # 100
+print(Human.count) # 0
+
+h1.__class__.count += 1
+print(&quot;h1.count=&quot;, h1.count)  # 100
+print(&apos;Human.count=&apos;, Human.count)  # 1
+</code></pre><p>  类变量的应用案例:</p>
+<pre><code>- 用类变量来记录对象的个数
+见:
+
+   class Car:
+       count = 0  # 创建类变量, 用来记录汽车对象的总数
+       def __init__(self, info):
+           print(info, &quot;被创建&quot;)
+           self.data = info  # 记录传入数据
+           self.__class__.count += 1  # 让车的总数加1
+
+       def __del__(self):
+           print(self.data, &apos;被销毁&apos;)
+           # 当车被销毁时总数自动减1
+           self.__class__.count -= 1  
+
+   print(&apos;当前汽车总数是:&apos;, Car.count)
+   b1 = Car(&quot;BYD 京A.88888&quot;)
+   print(Car.count)
+   b2 = Car(&apos;TESLA 京B.00000&apos;)
+   b3 = Car(&apos;Audi, 京C.66666&apos;)
+   print(&apos;当前汽车总数是:&apos;, Car.count)
+   del b1
+   del b2
+   print(&quot;当前汽车数是:&quot;, Car.count)
+</code></pre><h3 id="类的文档字符串"><a href="#类的文档字符串" class="headerlink" title="类的文档字符串"></a>类的文档字符串</h3><p>  类内第一个没有赋值给任何变量的字符串是类的文档字符串</p>
+<p>  说明:<br>    类的文档字符串用类的<strong>doc</strong>属性可以访问<br>    类的文档字符串可以用help()函数查看<br>  示例:</p>
+<pre><code>class Car:
+    &apos;&apos;&apos;此类用来描述车的对象的行为
+    这是Car类的文档字符串&apos;&apos;&apos;
+    def run(self, speed):
+        &apos;&apos;&apos;车的run方法&apos;&apos;&apos;
+        pass
+</code></pre><h3 id="类的slots列表"><a href="#类的slots列表" class="headerlink" title="类的slots列表"></a>类的<strong>slots</strong>列表</h3><p>  作用:<br>    限定一个类的实例只能有固定的属性(实例变量)<br>    通常为防止错写属性名而发生运行时错误</p>
+<p>  示例:</p>
+<pre><code>class Student:
+    __slots__ = [&apos;name&apos;, &apos;score&apos;]
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+s1 = Student(&apos;小张&apos;, 58)
+print(s1.score)
+# s1.socre = 100  # 此处错写了属性名,但在运行时不会报错!
+s1.score = 100
+print(s1.score)  # 请问打印的值是多少?
+</code></pre><p>  说明:<br>    含有<strong>slots</strong>列表的类创建的实例对象没有<strong>dict</strong>属性,即此实例不用字典来保存对象的属性(实例变量)</p>
+<p>问题:</p>
+<ol>
+<li>对象内可以有:<br>实例变量<br>实例方法</li>
+<li>类内可以有:<br>类变量<br>类方法 # 这个可以有</li>
+</ol>
+<h3 id="类方法-classmethod"><a href="#类方法-classmethod" class="headerlink" title="类方法 @classmethod"></a>类方法 @classmethod</h3><p>类方法是描述类的行为的方法,类方法属于类</p>
+<p>  说明:</p>
+<pre><code>1. 类方法需要用@classmethod装饰器定义
+2. 类方法至少有一个形参,第一个形参用于绑定类,约定写为&apos;cls&apos;
+3. 类和该类的实例都可以调用类方法
+4. 类方法不能访问此类创建的实例的属性(只能访问类变量)
+</code></pre><p>  示例:</p>
+<pre><code>class Car:
+    count = 0  # 类变量
+
+    @classmethod
+    def getTotalCount(cls):
+        &apos;&apos;&apos;此方法为类方法,
+        第一个参数为cls,代表调用此方法的类&apos;&apos;&apos;
+        return cls.count
+
+    @classmethod
+    def updateCount(cls, number):
+        cls.count += number
+
+print(Car.getTotalCount()) # 用类来调用类方法
+# Car.count += 1  # 面向对象思想不提倡直接操作属性
+Car.updateCount(1)
+print(Car.getTotalCount())  # 1
+
+c1 = Car()  # 创建一个对象
+c1.updateCount(100)  # Car类的实例也可以调用类方法
+print(c1.getTotalCount())  # 101
+#--------------------------#
+class Car:
+    count = 0  # 类变量
+
+    @classmethod
+    def getInfo(cls):
+        return cls.count
+
+c1 = Car()  # 创建一个对象
+c1.count = 100
+v = c1.getInfo()  # 0/100
+print(v)
+</code></pre><p>问题:</p>
+<ol>
+<li>类方法属于类</li>
+<li>实例方法属于该类的实例</li>
+<li>请问: 类内能不能有函数,这个函数不属于类,也不属于实例</li>
+</ol>
+<p>静态方法 @staticmethod<br>  静态方法不属于类,也不属于类的实例,它相当于定义在类内普通函数,只是它的作用域属于类</p>
+<p>  示例见:</p>
+<pre><code>class A:
+    @staticmethod
+    def myadd(x, y):
+        &apos;&apos;&apos;此方法为静态方法
+        此方法的形参不需要传入类或实例
+        &apos;&apos;&apos;
+        return x + y
+
+print(&apos;1+2=&apos;, A.myadd(1, 2))
+a = A()
+print(&apos;100+200=&apos;, a.myadd(100, 200))
+</code></pre><p>练习</p>
+<ol>
+<li><p>用类来描述一个学生的信息(可以修改之前的写的Student类)<br>class Student:</p>
+<pre><code># 此处自己实现
+</code></pre><p>要求该类的对象用于存储学生信息:</p>
+<pre><code>姓名,年龄,成绩
+</code></pre><p>将这些对象存于列表中.可以任意添加和删除学生信息</p>
+<ol>
+<li>打印出学生的个数</li>
+<li>打印出所有学生的平均成绩<br>(建议用类变量存储学生的个数,也可以把列表当作类变量)</li>
+</ol>
+<p>答案见:<br>exercise/student.py</p>
+</li>
+</ol>
+<h2 id="继承-inheritance-和-派生-derived"><a href="#继承-inheritance-和-派生-derived" class="headerlink" title="继承 inheritance 和 派生 derived"></a>继承 inheritance 和 派生 derived</h2><h3 id="什么是继承-派生"><a href="#什么是继承-派生" class="headerlink" title="什么是继承/派生"></a>什么是继承/派生</h3><ol>
+<li>继承是指从已有的类中衍生出新类,新类具有原类的行为,并能扩展新的行为</li>
+<li>派生就是从一个已有类中衍生(创建)新类,在新类上可以添加新的属性和行为</li>
+</ol>
+<h3 id="继承和派生的目的"><a href="#继承和派生的目的" class="headerlink" title="继承和派生的目的"></a>继承和派生的目的</h3><p>  继承是延续旧类的功能<br>  派生是为了在旧类的基础上添加新的功能</p>
+<p>作用:<br>  1.用继承派生机制,可以将一些共有功能加在基类中,实现代码的共享</p>
+<ol start="2">
+<li>在不改变基类的基础上改变原有功能</li>
+</ol>
+<p>继承/派生的名词<br>  基类(base class), 超类(super class), 父类(father class)<br>  派生类(derived class) / 子类(child class)</p>
+<h3 id="单继承"><a href="#单继承" class="headerlink" title="单继承"></a>单继承</h3><p>  语法:<br>    class 类名(基类名):<br>        语句块<br>  说明<br>    单继承是指派生类由一个基类衍生出来的类</p>
+<p>示例见:</p>
+<pre><code>class Human:
+    &apos;&apos;&apos;此类用来描述人类的共性行为&apos;&apos;&apos;
+    def say(self, that):  # 说话
+        print(&quot;say:&quot;, that)
+    def walk(self, distance):  # 走路
+        print(&quot;走了&quot;, distance, &apos;公里&apos;)
+
+
+class Student(Human):
+    def study(self, subject):
+        print(&quot;正在学习&quot;, subject)
+
+
+class Teacher(Human):
+    def teach(self, subject):
+        print(&quot;正在教:&quot;, subject)
+
+
+
+h1 = Human()
+h1.say(&apos;今天天气真热&apos;)
+h1.walk(5)
+
+print(&apos;-------以下是学生对象的行为-----------&apos;)
+s1 = Student()
+s1.say(&apos;学习有点累&apos;)
+s1.walk(3)
+s1.study(&apos;python&apos;)
+
+
+t1 = Teacher()
+t1.say(&apos;明天就星期六了&apos;)
+t1.walk(6)
+t1.teach(&apos;面向对象&apos;)
+</code></pre><p>继承说明:<br>  任何类都直接或间接的继承自object类<br>  object类是一切类的超类(祖类)</p>
+<p>类的<strong>base</strong> 属性<br>  <strong>base</strong>属性用来记录此类的基类</p>
+<h3 id="多继承-multiple-inheritance"><a href="#多继承-multiple-inheritance" class="headerlink" title="多继承 multiple inheritance"></a>多继承 multiple inheritance</h3><p>  多继承是指一个子类继承自两个或两个以上的基类</p>
+<p>  语法:<br>    class 类名(基类名1, 基类名2, ….):<br>        语句块<br>  说明:</p>
+<pre><code>1. 一个子类同时继承自多个父类,父类中的方法可以同时被继承下来
+2. 如果两个父类中有同名的方法,而在子类中又没有覆盖此方法时,调用结果难以确定
+</code></pre><p>  示例见:</p>
+<pre><code>class Car:
+    def run(self, speed):
+        print(&quot;汽车以&quot;, speed, &apos;公里/小时的速度行驶&apos;)
+
+class Plane:
+    def fly(self, height):
+        print(&quot;飞机以海拔&quot;, height, &apos;的高度飞行&apos;)
+
+class PlaneCar(Car, Plane):
+    &apos;&apos;&apos;PlaneCar同时继承自汽车类和飞机类&apos;&apos;&apos;
+
+p1 = PlaneCar()
+p1.fly(10000)
+p1.run(300)
+</code></pre><p><strong>多继承的问题(缺陷)</strong><br>  标识符(名字空间冲突的问题)<br>    要谨慎使用多继承</p>
+<p>  示例见:</p>
+<pre><code>class A:
+    def m(self):
+        print(&quot;A.m()被调用&quot;)
+
+# 小李写了一个类B:
+class B:
+    def m(self):
+        print(&apos;B.m()被调用&apos;)
+
+# 小王感觉小张和小李写的两个类自己可以用
+class AB(A, B):
+    pass
+
+ab = AB()
+ab.m()  # 请问调用谁?
+</code></pre><p><strong>继承的MRO(Method Resolution Order)问题</strong><br>  类内的<strong>mro</strong>属性用来记录继承方法的查找顺序</p>
+<p>示例:1:</p>
+<pre><code>class A:
+    def m(self):
+        print(&quot;A.m&quot;)
+class B(A):
+    def m(self):
+        print(&quot;B.m&quot;)
+class C(A):
+    def m(self):
+        print(&quot;C.m&quot;)
+class D(B, C):
+    &apos;&apos;&apos;d类继承自B,C&apos;&apos;&apos;
+    def m(self):
+        print(&quot;D.m&quot;)
+d = D()
+# print(D.__mro__)
+for x in D.__mro__:
+    print(x)
+d.m()  # 调用方法的顺序是什么?
+</code></pre><p>示例2：</p>
+<pre><code>class A:
+    def m(self):
+        print(&quot;A.m&quot;)
+
+class B(A):
+    def m(self):
+        print(&quot;B.m&quot;)
+        super().m()
+
+class C(A):
+    def m(self):
+        print(&quot;C.m&quot;)
+        super().m()
+
+class D(B, C):
+    &apos;&apos;&apos;d类继承自B,C&apos;&apos;&apos;
+    def m(self):
+        print(&quot;D.m&quot;)
+        super().m()
+
+d = D()
+d.m()  # 调用方法的顺序是什么?
+
+for x in D.__mro__:
+    print(x)
+</code></pre><h3 id="覆盖-override"><a href="#覆盖-override" class="headerlink" title="覆盖 override"></a>覆盖 override</h3><p>什么覆盖<br>    覆盖是指在有继承关系的类中,子类中实现了与基类同名的方法,在子类实例调用该方法时,实例调用的是子类中的覆盖版本的方法,这种现象叫做覆盖</p>
+<p>  示例见:</p>
+<pre><code>class A:
+    def work(self):
+        print(&quot;A.work()被调用&quot;)
+
+class B(A):
+    &apos;&apos;&apos;B类继承自A类&apos;&apos;&apos;
+    def work(self):
+        print(&quot;B.work()被调用&quot;)
+
+b = B()
+
+a = A()
+a.work()  # 请问结果是什么?
+</code></pre><p>问题:<br>  当覆盖发生时,子类对象能否访问父类中的方法?</p>
+<p>子类对象显式调用基类方法的方式:<br>  基类名.方法名(实例, 实际调用传参)</p>
+<h3 id="super函数"><a href="#super函数" class="headerlink" title="super函数"></a>super函数</h3><p>  super(type, obj) 返回绑定超类的实例<br>  super()  返回绑定超类的实例,等同于:<br>           super(<strong>class</strong>, 实例方法的第一个参数)<br>           (必须在方法内调用)<br>示例:</p>
+<pre><code>class A:
+    def work(self):
+        print(&quot;A.work()被调用&quot;)
+
+class B(A):
+    &apos;&apos;&apos;B类继承自A类&apos;&apos;&apos;
+    def work(self):
+        print(&quot;B.work()被调用&quot;)
+
+    def super_work(self):
+        # 此处能调用父类的work方法吗?
+        # self.work()  # B.work()
+        # super(B, self).work()  # A.work()
+        # super(__class__, self).work()  # A.work()
+        super().work()  # A.work()
+
+b = B()
+# 调用父类的work方法
+# b.__class__.__base__.work(b)
+super(B, b).work()  # 调用超类的方法
+
+b.super_work()
+</code></pre><p>显式调用基类的初始化方法：<br>  当子类中实现了<strong>init</strong>方法时，基类的<strong>init</strong>方法并不会被自动调用，此时需要显式调用</p>
+<p>示例见:</p>
+<pre><code>class Human:
+    def __init__(self, n, a):
+        &apos;&apos;&apos;此方法为人的对象添加，姓名和年龄属性&apos;&apos;&apos;
+        self.name = n
+        self.age = a
+    def infos(self):
+        print(&quot;姓名:&quot;, self.name)
+        print(&quot;年龄:&quot;, self.age)
+
+class Student(Human):
+    def __init__(self, n, a, s=0):
+        super().__init__(n, a)
+        self.score = s
+
+    def infos(self):
+        super().infos()
+        # print(&quot;姓名:&quot;, self.name)
+        # print(&quot;年龄:&quot;, self.age)
+        print(&quot;成绩:&quot;, self.score)
+
+
+s1 = Student(&apos;小张&apos;, 18, 100)
+s1.infos()
+</code></pre><p>练习：<br> 写一个类Bicycle(自行车)类,有run方法,调用时显示骑行里程km</p>
+<pre><code>class Bicycle:
+    def run(self, km):
+        print(&quot;自行车骑行了&quot;, km, &quot;公里&quot;)
+</code></pre><p>  再写一个类EBicycle(电动自行车)类,在Bicycle类的基础上添加电池电量volume属性,有两个方法:</p>
+<pre><code>1. file_charge(self, vol) 用来充电,vol为电量
+2. run(km) 方法每骑行10km消耗电量1度, 同时显示当前电量,当电量耗尽时,则调用Bicycle的run方法骑行
+
+   class EBicycle(Bicycle):
+        ...
+   b = Bicycle()
+   b.run(10)  # 自行车骑行了 10 公里
+   e = EBicycle(5)
+   e.run(10)  # 电动骑行了 10 公里
+   e.run(100) # 电动骑行了 40 公里, 自行车骑行了 60 公里
+   e.fill_charge(10)
+   e.run(100)
+</code></pre><h3 id="用于类的函数"><a href="#用于类的函数" class="headerlink" title="用于类的函数"></a>用于类的函数</h3><p> issubclass(cls, class_or_tuple)   判断一个类是否继承自其它的类,如果此类cls是class或 tuple中的一个派生子类则返回True,否则返回False</p>
+<p>示例:</p>
+<pre><code>class A:
+  pass
+class B(A):
+  pass
+class C(B):
+  pass
+issubclass(C, (A, B))  # True
+issubclass(C, (int, str)) # False
+</code></pre><p>查看python内建类的继承关系的方法:</p>
+<pre><code>help(__builtins__)  
+</code></pre><h2 id="封装-enclosure"><a href="#封装-enclosure" class="headerlink" title="封装 enclosure"></a>封装 enclosure</h2><p>  封装是指隐藏类的实现细节,让使用者不用关心这些细节<br>  封装的目的是让使用者尽可能少的实例变量(属性)进行操作</p>
+<p>私有属性:<br>  python类中,以双下划线’__’开头,不以双下划线结尾的标识符为私有成员,在类的外部无法直接访问</p>
+<p>示例:</p>
+<pre><code>class A:
+    def __init__(self):
+        self.__p1 = 100  #__p1为私有属性,在类的外部不可访问
+
+    def test(self):
+        print(self.__p1)  # 可以访问
+        self.__m1()  # A类的方法可以调用A类的私有方法
+
+    def __m1(self):
+        &apos;&apos;&apos;我是私有方法,只有我自己的类中的方法才能调用我哦&apos;&apos;&apos;
+        print(&quot;我是A类的__m1方法!&quot;)
+
+a = A()  # 创建对象
+# print(a.__p1)  # 在类外看不到__p1属性,访问失败!
+a.test()
+# a.__m1()  # 出错.无法调用私有方法
+</code></pre><h2 id="多态-polymorphic"><a href="#多态-polymorphic" class="headerlink" title="多态 polymorphic"></a>多态 polymorphic</h2><p>  字面意思: “多种状态”<br>  多态是指在继承/派生关系的类中,调用基类对象的方法,实际能调用子类的覆盖版本方法的现象叫多态</p>
+<p>说明:<br>  多态调用的方法与对象相关,不与类型相关<br>  Python的全部对象都只有”运行时状态(动态)”, 没有”C++/Java”里的”编译时状态(静态)”</p>
+<p>示例:</p>
+<pre><code>class Shape:
+    def draw(self):
+        print(&quot;Shape.draw被调用&quot;)
+
+class Point(Shape)
+    def draw(self):
+        print(&apos;正在画一个点&apos;)
+
+class Circle(Point):
+    def draw(self):
+        print(&quot;正在画一个圆&quot;)
+
+def my_draw(s):
+    s.draw()  # 此处显示出多态中的动态
+
+s1 = Circle()
+s2 = Point()
+my_draw(s1)  # 调用Circle里的draw
+my_draw(s2)  # 调用Point里的draw
+</code></pre><p>面向对象的编程语言的特征:<br>  继承<br>  封装<br>  多态<br>  如:<br>    C++ / Java / Python / Swift / C#</p>
+<p>练习:<br>  已知list 列表类中没有insert_head方法,<br>    写一个自定义的类MyList,继承自list类,在MyList类内添加</p>
+<pre><code>class MyList(list):
+  def insert_head(self, value):
+      &apos;&apos;&apos;以下自己实现,将Value插入到列表的开始处&apos;&apos;&apos;
+
+如:
+  L = MyList(range(1,5))
+  print(L)  # [1,2,3,4]
+  L.insert_head(0)
+  print(L)  # [0,1,2,3,4]
+  L.append(5)
+  print(L)  # [0,1,2,3,4,5]
+</code></pre><h2 id="函数重写-overwrite"><a href="#函数重写-overwrite" class="headerlink" title="函数重写 overwrite"></a>函数重写 overwrite</h2><p>  重写是在自定义的类内添加相应的方法,让自定义的类生成的对象(实例)像内建对象一样进行内建的函数操作</p>
+<p>对象转字符串函数重写<br>  repr(obj)  返回一个能代表此对象的表达式字符串,通常:<br>    eval(repr(obj)) == obj<br>  str(obj)  通过给定的对象返回一个字符串(这个字符串通常是给人看的)</p>
+<p>问题:</p>
+<pre><code>class MyNumber:
+    pass
+    # def __len__(self):
+    #     return 100
+
+n1 = MyNumber()
+
+x = len(n1)  # 重写了__len__方法才可以
+print(&apos;x =&apos;, x)
+</code></pre><p>示例见:</p>
+<pre><code>class MyNumber:
+    def __init__(self, value):
+        self.data = value
+    def __str__(self):
+        print(&quot;__str__被调用&quot;)
+        return &quot;数字: %d&quot; % self.data
+    def __repr__(self):
+        print(&quot;__repr__被调用&quot;)
+        return &apos;MyNumber(%d)&apos; % self.data
+
+n1 = MyNumber(100)
+# print(str(n1))  # 调用 n1.__str__(self)
+# print(repr(n1))
+print(n1)
+</code></pre><h3 id="对象转字符串函数重写方法"><a href="#对象转字符串函数重写方法" class="headerlink" title="对象转字符串函数重写方法"></a>对象转字符串函数重写方法</h3><p>  repr() 函数的重写方法:<br>      def <strong>repr</strong>(self):<br>           return 能够表达self内容的字符串</p>
+<p>  str() 函数的重写方法:<br>      def <strong>str</strong>(self):<br>          return 人能看懂的字符串<br>  说明:</p>
+<pre><code>1. str(obj) 函数优先调用obj.__str__()方法返回字符串
+2. 如果obj没有__str__()方法,则调用obj.__repr__()方法返回的字符串
+3. 如果obj没有__repr__()方法,则调用object类的 __repr__() 实例方法显示 &lt;xxxx&gt; 格式的字答鼓足 
+</code></pre><h3 id="数值转换函数的重写"><a href="#数值转换函数的重写" class="headerlink" title="数值转换函数的重写"></a>数值转换函数的重写</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>def <strong>complex</strong>(self)</td>
+<td>complex(obj) 函数调用</td>
+</tr>
+<tr>
+<td>def <strong>int</strong>(self)</td>
+<td>int(obj) 函数调用</td>
+</tr>
+<tr>
+<td>def <strong>float</strong>(self)</td>
+<td>float(obj) 函数调用</td>
+</tr>
+<tr>
+<td>def <strong>bool</strong>(self)</td>
+<td>bool(obj) 函数调用</td>
+</tr>
+</tbody>
+</table>
+<p>示例见:</p>
+<pre><code>class MyNumber:
+    def __init__(self, v):
+        self.data = v
+    def __repr__(self):
+        return &quot;MyNumber(%d)&quot; % self.data
+    def __int__(self):
+        &apos;&apos;&apos;此方法用于int(obj) 函数重载,必须返回整数
+        此方法通常用于制订自义定对象如何转为整数的规则
+        &apos;&apos;&apos;
+        return 10000
+
+
+n1 = MyNumber(100)
+print(type(n1))
+# if n1 == 100:
+#     print(&quot;n1 == 100&quot;)
+n  = int(n1)
+print(type(n))
+print(n)
+</code></pre><h3 id="内建函数的重写"><a href="#内建函数的重写" class="headerlink" title="内建函数的重写"></a>内建函数的重写</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>abs</strong></td>
+<td>abs(obj)</td>
+</tr>
+<tr>
+<td><strong>len</strong></td>
+<td>len(obj)</td>
+</tr>
+<tr>
+<td><strong>reversed</strong></td>
+<td>reversed(obj)</td>
+</tr>
+<tr>
+<td><strong>round</strong></td>
+<td>round(obj)</td>
+</tr>
+</tbody>
+</table>
+<p>示例见:</p>
+<pre><code>class MyList:
+    &apos;&apos;&apos;自定义列表类&apos;&apos;&apos;
+    def __init__(self, iterator=[]):
+        self.data = [x for x in iterator]
+
+    def __repr__(self):
+        return &quot;MyList(%r)&quot; % self.data
+
+    def __abs__(self):
+        # return MyList([abs(x) for x in self.data])
+        # 上一句语句可以用如下生成表达式代替已防止过多占内存
+        return MyList((abs(x) for x in self.data))
+
+    def __len__(self):
+        # return self.data.__len__()
+        return len(self.data)
+
+myl = MyList([1, -2, 3, -4])
+print(myl)
+print(abs(myl))  # MyList([1, +2, 3, +4])
+print(&quot;原来的列表是:&quot;, myl)
+
+myl2 = MyList(range(10))
+print(myl2)
+print(&apos;myl2的长度是:&apos;, len(myl2))
+print(&apos;myl的长度是: &apos;, len(myl))
+</code></pre><h3 id="布尔测试函数的重写"><a href="#布尔测试函数的重写" class="headerlink" title="布尔测试函数的重写"></a>布尔测试函数的重写</h3><p>  格式 def <strong>bool</strong>(self):<br>      …<br>  作用:<br>    用于bool(obj) 函数取值<br>    用于if语句真值表达式中<br>    用于while语句真值表达式中<br>  说明:</p>
+<pre><code>1. 优先调用__bool__方法取值
+2. **如果不存在__bool__方激动 ,则用__len__()方法取值后判断是否为零值,如果不为零返回True,否则返回False**
+3. 如果再没有__len__方法,则直接返回True
+
+    class MyList:
+        &apos;&apos;&apos;自定义列表类&apos;&apos;&apos;
+        def __init__(self, iterator=[]):
+            self.data = [x for x in iterator]
+
+        def __repr__(self):
+            return &quot;MyList(%r)&quot; % self.data
+
+        def __bool__(self):
+            print(&quot;__bool__方法被调用!&quot;)
+            return False
+
+        # def __len__(self):
+        #     print(&quot;__len__被调用&quot;)
+        #     return len(self.data)
+
+    myl = MyList([1, -2, 3, -4])
+    print(bool(myl))  # True
+    if myl:
+        print(&quot;myl 是真值&quot;)
+    else:
+        print(&quot;myl 是假值&quot;)
+</code></pre><h3 id="迭代器-高级"><a href="#迭代器-高级" class="headerlink" title="迭代器(高级)"></a>迭代器(高级)</h3><p>  什么是迭代器<br>    可以通过next(it) 函数取值的对象就是迭代器<br>  迭代器协议:<br>    迭代器协议是指对象能够使用next函数获取下一项数据,在没有下一项数据时触发一个StopIterator来终止迭代的约定<br>  实现方法:<br>    类内需要有 <strong>next</strong>(self) 方法来实现迭代器协议<br>  语法形式:</p>
+<pre><code>class MyIterator
+    def __next__(self):
+        迭代器协议的实现
+        return 数据
+</code></pre><p>  什么是可迭代对象<br>     是指能用iter(obj) 函数返回迭代器的对象(实例)<br>     可迭代对象内部一定要定义<strong>iter</strong>(self)方法来返回迭代器</p>
+<p>  可迭代对象的语法形式:</p>
+<pre><code>class MyIterable:
+    def __iter__(self):
+        语句块
+        return 迭代器
+</code></pre><p>  示例见:</p>
+<pre><code>class MyList:
+    def __init__(self, iterator):
+        &apos;&apos;&apos;自定义列表类的初始化方法,此方法创建一个data实例
+        变量来绑定一个用来存储数据的列表&apos;&apos;&apos;
+        self.data = list(iterator)
+
+    def __repr__(self):
+        &apos;&apos;&apos;此方法了为打印此列表的数据&apos;&apos;&apos;
+        return &apos;MyList(%r)&apos; % self.data
+
+    def __iter__(self):
+        &apos;&apos;&apos;有此方法就是可迭代对象,但要求必须返回迭代器&apos;&apos;&apos;
+        print(&quot;__iter__方法被调用!&quot;)
+        return MyListIterator(self.data)
+
+class MyListIterator:
+    &apos;&apos;&apos;此类用来创建一个迭代器对象,用此迭代器对象可以迭代访问
+    MyList类型的数据&apos;&apos;&apos;
+    def __init__(self, iter_data):
+        self.cur = 0  # 设置迭代器的初始值为0代表列表下标
+        # it_data 绑定要迭代的列表
+        self.it_data = iter_data
+
+    def __next__(self):
+        &apos;&apos;&apos;有此方法的对象才叫迭代器, 
+        此方法一定要实现迭代器协议&apos;&apos;&apos;
+        print(&quot;__next__方法被调用!&quot;)
+        # 如果self.cur已经超出了列表的索引范围就报迭代结束
+        if self.cur &gt;= len(self.it_data):
+            raise StopIteration
+        # 否则尚未迭代完成,需要返回数据
+        r = self.it_data[self.cur]  # 拿到要送回去的数
+        self.cur += 1  # 将当前值向后移动一个单位
+        return r
+
+myl = MyList([2, 3, 5, 7])
+print(myl)
+
+for x in myl:
+    print(x)  # 此处可以这样做吗?
+
+# it = iter(myl)
+# x = next(it)
+# print(x)
+# x = next(it)
+# print(x)
+# x = next(it)
+# print(x)
+</code></pre><p>练习1:<br>  把学生信息管理系统中的学生信息:姓名,年龄,成绩 改为私有属性,不让此类以外的函数访问来实现封装<br>   (需要修改Student类)</p>
+<p>练习2:<br>   写一个类,Fibonacci 实现迭代器协议,此类的对象可以作为可迭代对象生成相应的斐波那契数<br>     1 1 2 3 5 8 ….</p>
+<pre><code>class Fibonacci:
+    def __init__(self, n):
+       ...
+
+实现如下操作:
+for x in Fibonacci(10):
+    print(x)
+L = [ x for x in Fibonacci(30)]
+print(sum(Fibonacci(25)))
+  (需要实现迭代器协议)
+</code></pre><p>提示: 可以用一个类来实现,也可以用两个类实现<br>    class Fibonacci:<br>        def <strong>init</strong>(self, n):<br>           …</p>
+<pre><code>def __iter__(self):
+    ....
+
+def __next__(self):
+    ....
+</code></pre><h2 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h2><p>  语法:<br>    with 表达式1 [as 变量1], 表达式2 [as 变量2]:<br>        语句块<br>  作用:<br>    使用于对资源进行访问的场合,确保使用过程中不管是否发生异常,都会执行必须的’清理’操作,并释放资源<br>       如: 文件使用后自动关闭, 线程中锁的自动获取和释放等<br>  示例见:</p>
+<pre><code>def read_from_file(filename=&apos;info.txt&apos;):
+    try:
+        f = open(filename)
+        try:
+            print(&quot;正在读取文件&quot;)
+            n = int(f.read())
+            print(&quot;n=&quot;, n)
+        finally:
+            f.close()
+            print(&quot;文件已经关闭&quot;)
+    except OSError:
+        print(&quot;文件打开失败&quot;)
+
+
+read_from_file()
+</code></pre><p>  说明:<br>    能够用于with语句进行管理的对象必须是环境管理器</p>
+<h2 id="环境管理器"><a href="#环境管理器" class="headerlink" title="环境管理器"></a>环境管理器</h2><ol>
+<li>类内有<strong>enter</strong> 和 <strong>exit</strong>实例方法的类被称为环境管理器</li>
+<li>能够用with语句管理的对象必须是环境管理器</li>
+<li><strong>enter</strong>方法将在进入with语句时被调用,并返回由 as变量管理的对象</li>
+<li><strong>exit</strong>将在离开with语句时被调用,且可以用参数来判断在离开with语句时是否有异常发生并做出相应的处理</li>
+</ol>
+<p>示例:</p>
+<pre><code>class A:
+    def __enter__(self):
+        print(&quot;已进入with语句&quot;)
+        return self  # 返回的对象将由 as绑定
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(&quot;已离开with语句&quot;)
+</code></pre><p>  详见:</p>
+<pre><code>class A:
+    def __enter__(self):
+        print(&quot;已进入with语句&quot;)
+        return self  # 返回的对象将由 as绑定
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print(&quot;已离开with语句&quot;)
+
+# a = A()
+with A() as a:
+    print(&quot;这是with语句内的一条语句&quot;)
+    int(input(&quot;请输入整数: &quot;))
+</code></pre><h3 id="对象的属性管理函数"><a href="#对象的属性管理函数" class="headerlink" title="对象的属性管理函数"></a>对象的属性管理函数</h3><ol>
+<li>getattr(obj, name[, default])  从一个对象得到对象的属性；getattr(x, ‘y’) 等同于x.y; 当属性不存在时,如果给<br>出default参数,则返回default,如果没有给出default 则产生一个AttributeError错误</li>
+<li>hasattr(obj, name)  用给定的name返回对象obj是否有此属性,此种做法可以避免在getattr(obj, name)时引发错误</li>
+<li>setattr(obj, name, value)   给对象obj的名为name的属性设置相应的值value, set(x, ‘y’, v) 等同于 x.y = v</li>
+<li><p>delattr(obj, name)  删除对象obj中的name属性, delattr(x, ‘y’) 等同于 del x.y</p>
+<p>文档参见:python_base_docs_html/内建函数(builtins).html</p>
+</li>
+</ol>
+<h3 id="数值对象的构造-创建-函数"><a href="#数值对象的构造-创建-函数" class="headerlink" title="数值对象的构造(创建)函数"></a><strong>数值对象的构造(创建)函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float(obj)</td>
+<td>用字符串或数字转换为浮点数, 如果不给出参数，则返回0.0</td>
+</tr>
+<tr>
+<td>int(x, base=10) int(x=0)</td>
+<td>用数字或字符串转换为整数,如果不给出参数，则返回0</td>
+</tr>
+<tr>
+<td>complex(r=0.0, i=0.0)</td>
+<td>用数字创建一个复数(实部为r,虚部为i)</td>
+</tr>
+<tr>
+<td>bool(x)</td>
+<td>用x创建一个布尔值(True/False)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="预置-内建-的数值型函数"><a href="#预置-内建-的数值型函数" class="headerlink" title="预置(内建)的数值型函数"></a><strong>预置(内建)的数值型函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abs(x)</td>
+<td>取x的绝对值</td>
+</tr>
+<tr>
+<td>round(number[, ndigits])</td>
+<td>对数值进行四舍五入, ndigits是小数向右取整的位数, 负数表示向左取整</td>
+</tr>
+<tr>
+<td>pow(x, y, z=None)</td>
+<td>相当于x <strong> y 或 x</strong>y % z</td>
+</tr>
+</tbody>
+</table>
+<p>help() 查看函数帮助：</p>
+<pre><code>help函数
+&gt;&gt;&gt; help(abs)  # 查看abs函数的帮助
+</code></pre><h3 id="基本输入输出-1"><a href="#基本输入输出-1" class="headerlink" title="基本输入输出"></a><strong>基本输入输出</strong></h3><p>基本输入 input</p>
+<p>input(‘提示字符串’) 返回输入的字符串(仅Python3,’提示字符串’ 可以是空)<br>基本输出函数 print</p>
+<p>print(value, …, sep=’ ‘, end=’\n’, file=sys.stdout, flush=False)<br>将一系列的值以字符串形式输出到<br>标准输出设备上,默认为终端.<br>参数选项<br>选项的关键字参数为:<br>sep:   两个值之间的分隔符，默认为一个空格’ ‘<br>end:   输出完毕后在流末尾自动追加一个字符串,默认为换行符’\n’<br>file:  流对象，默认为sys.stdout.<br>flush: 是否立即将流进行输出</p>
+<h3 id="字符串编码转换函数"><a href="#字符串编码转换函数" class="headerlink" title="字符串编码转换函数"></a><strong>字符串编码转换函数</strong></h3><p>函数|说明<br>ord(c)|返回一个字符的Unicode值<br>chr(i)|返回i这个值所对应的 字符</p>
+<h3 id="整数转换为字符串函数"><a href="#整数转换为字符串函数" class="headerlink" title="整数转换为字符串函数"></a><strong>整数转换为字符串函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hex(i)</td>
+<td>将整数转换为十六进制字符串</td>
+</tr>
+</tbody>
+</table>
+<p>oct(i)将整数转换为八进制字符串<br>bin(i)|将整数转换为二进制字符串</p>
+<h3 id="字符串构造函数"><a href="#字符串构造函数" class="headerlink" title="字符串构造函数"></a><strong>字符串构造函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>str(obj=’’)</td>
+<td>将对象转换为字符串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="range-函数"><a href="#range-函数" class="headerlink" title="range()函数"></a><strong>range()函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>range(stop)</td>
+<td>从零开始，每次生成一个整数后加1操作，直到stop为止（不包含stop)</td>
+</tr>
+<tr>
+<td>range(start,stop[,step])</td>
+<td>从start开始，每次生成一个整数后移动step，直到stop为止（不包含stop，且step可以是负数)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="列表的构造函数"><a href="#列表的构造函数" class="headerlink" title="列表的构造函数"></a><strong>列表的构造函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>list()</td>
+<td>生成一个空的列表 等同于 []</td>
+</tr>
+<tr>
+<td>list(iterable)</td>
+<td>用可迭代对象创建一个列表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="元组的构造-创建-函数tuple"><a href="#元组的构造-创建-函数tuple" class="headerlink" title="元组的构造(创建)函数tuple"></a><strong>元组的构造(创建)函数tuple</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tuple()</td>
+<td>生成一个空的元组，等同于 ()</td>
+</tr>
+<tr>
+<td>tuple(iterable)</td>
+<td>用可迭代对象生成一个元组</td>
+</tr>
+</tbody>
+</table>
+<h3 id="序列相关函数"><a href="#序列相关函数" class="headerlink" title="序列相关函数"></a><strong>序列相关函数</strong></h3><p>–|–<br>函数|说明<br>len(seq)|返回序列的长度<br>max(x)|返回序列的最大值的元素<br>min(x)|返回序列的最小值的元素<br>sum(x)|返回序列中所有元素的和<br>any(x)真值测试，如果列表中其中一个值为真值则返回True<br>all(x)|真值测试，如果列表中所有值为真值则返回True<br>reversed(seq)|返回反向顺序的迭代器对象<br>sorted(iterable, key=None, reverse=False)|返回已排序的列表</p>
+<h3 id="dict的构造-创建-函数dict"><a href="#dict的构造-创建-函数dict" class="headerlink" title="dict的构造(创建)函数dict"></a><strong>dict的构造(创建)函数dict</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dict()</td>
+<td>生成一个空的字典 等同于 {}</td>
+</tr>
+<tr>
+<td>dict(iterable)</td>
+<td>用可迭代对象初始化一个字典</td>
+</tr>
+<tr>
+<td>dict(**kwargs)</td>
+<td>命名关键字传参形式生成一个字典</td>
+</tr>
+</tbody>
+</table>
+<h3 id="集合构造-创建-函数-set"><a href="#集合构造-创建-函数-set" class="headerlink" title="集合构造(创建)函数 set"></a><strong>集合构造(创建)函数 set</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>set()</td>
+<td>创建一个空的集合对象(不能用{}来创建空集合)</td>
+</tr>
+<tr>
+<td>set(iterable)</td>
+<td>用可迭代对象创建一个新的集合对象</td>
+</tr>
+</tbody>
+</table>
+<h3 id="固定集合构造-创建-函数-frozenset"><a href="#固定集合构造-创建-函数-frozenset" class="headerlink" title="固定集合构造(创建)函数 frozenset"></a><strong>固定集合构造(创建)函数 frozenset</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>frozenset()</td>
+<td>创建一个空的固定集合对象</td>
+</tr>
+<tr>
+<td>frozenset(iterable)</td>
+<td>用可迭代对象创建一个新的固定集合对象</td>
+</tr>
+</tbody>
+</table>
+<p><strong>### globals() / locals() 函数 ###</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>globals()</td>
+<td>返回当前全局作用域内变量的字典</td>
+</tr>
+<tr>
+<td>locals()</td>
+<td>返回当前局部作用域内变量的字典</td>
+</tr>
+</tbody>
+</table>
+<p><strong>### eval(), exec() 函数 ###</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eval(source, globals=None, locals=None)</td>
+<td>把一个字符串source当成一个表达式来执行，返回表达式执行后的结果</td>
+</tr>
+<tr>
+<td>exec(source, globals=None, locals=None)</td>
+<td>把一个字符串source当成程序来执行．</td>
+</tr>
+</tbody>
+</table>
+<p><strong>### 高阶函数 High Order Function ###</strong></p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map(func, *iterables)</td>
+<td>用函数和对可迭代对象中的每一个元素作为参数计算出新的可迭代对象,当最短的一个可迭代对象不再提供数据时此可迭代对象生成结束</td>
+</tr>
+<tr>
+<td>filter(function, iterable)</td>
+<td>筛选可迭代对象iterable中的数据,返回一个可迭代器对象，此可迭代对象将对iterable进行筛选.函数function 将对iterable中的每个元素进行求值，返回False则将此数据丢弃，返回True，则保留此数据</td>
+</tr>
+<tr>
+<td>sorted(iterable, key=None, reverse=False)</td>
+<td>将原可迭代对象的数据进行排序，生成排序后的列表iterable 可迭代对象key 函数是用来提供一个值,这个值将作为排序的依据reverse 标志用来设置是否降序排序</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dir函数"><a href="#dir函数" class="headerlink" title="dir函数"></a><strong>dir函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dir([对象])</td>
+<td>返回一个字符串列表</td>
+</tr>
+</tbody>
+</table>
+<p><strong>dir函数函数说明</strong><br>如果没有参数调用，则返回当前作用域内的所有变量的列表<br>如果给定一个对象作用参数，则返回这个对象的所有变量的列表<br>对于一个模块,返回这个模块的全部变量<br>对于一个类对象，返回类对象的所有变量，并递归的基类对象的所有变量<br>对于其它对象返回所有变量、类变量和基类变量</p>
+<h3 id="迭代器函数iter和next"><a href="#迭代器函数iter和next" class="headerlink" title="迭代器函数iter和next"></a><strong>迭代器函数iter和next</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iter(iterable)</td>
+<td>从可迭代对象中返回一个迭代器,iterable必须是能提供一个迭代器的对象</td>
+</tr>
+<tr>
+<td>next(iterator)</td>
+<td>从迭代器iterator中获取一下个记录，如果无法获取一下条记录，则触发 StopIteration 异常</td>
+</tr>
+</tbody>
+</table>
+<h3 id="迭代工具函数-1"><a href="#迭代工具函数-1" class="headerlink" title="迭代工具函数"></a><strong>迭代工具函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zip(iter1 [,iter2 […]])</td>
+<td>返回一个zip对象, 此对象用于生成一个元组，此元组的个数由最小的可迭代对象决定</td>
+</tr>
+<tr>
+<td>enumerate(iterable[, start])</td>
+<td>生成带索引的枚举对象，返回的迭代类型为索引-值对(index-value)对,默认索引从零开始，也可以用start指定</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字节串的生成函数-bytes"><a href="#字节串的生成函数-bytes" class="headerlink" title="字节串的生成函数 bytes"></a><strong>字节串的生成函数 bytes</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bytes()</td>
+<td>生成一个空的字节串 等同于 b’’</td>
+</tr>
+<tr>
+<td>bytes(整型可迭代对象)</td>
+<td>用可迭代对象初始化一个字节串</td>
+</tr>
+<tr>
+<td>bytes(整数n)</td>
+<td>生成n个值为0的字节串</td>
+</tr>
+<tr>
+<td>bytes(字符串, encoding=’utf-8’)</td>
+<td>用字符串的转换编码生成一个字节串</td>
+</tr>
+</tbody>
+</table>
+<h3 id="字节数组的生成函数-bytearray"><a href="#字节数组的生成函数-bytearray" class="headerlink" title="字节数组的生成函数 bytearray"></a><strong>字节数组的生成函数 bytearray</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bytearray()</td>
+<td>创建空的字节数组</td>
+</tr>
+<tr>
+<td>bytearray(整数)</td>
+<td>用可迭代对象初始化一个字节数组</td>
+</tr>
+<tr>
+<td>bytearray(整型可迭代对象)</td>
+<td>生成n个值为0的字节数组</td>
+</tr>
+<tr>
+<td>bytearray(字符串, encoding=’utf-8’)</td>
+<td>用字符串的转换编码生成一个字节数组</td>
+</tr>
+</tbody>
+</table>
+<h3 id="文件的打开函数"><a href="#文件的打开函数" class="headerlink" title="文件的打开函数"></a><strong>文件的打开函数</strong></h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>open(file, mode=’rt’)</td>
+<td>用于打开一个文件，返回此文件流对象. 如果打开文件失败，则会触发OSError 错误! 如果要打开的文件不存在，则会触发FileNotFoundError 错误!</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mode-模式字符的含义"><a href="#mode-模式字符的含义" class="headerlink" title="mode 模式字符的含义"></a><strong>mode 模式字符的含义</strong></h3><table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘r’</td>
+<td>以只读方式打开(默认)</td>
+</tr>
+<tr>
+<td>‘w’</td>
+<td>以只写方式打开，删除原有文件内容(如果文件不存在，则创建该文件并以只写方式打开)</td>
+</tr>
+<tr>
+<td>‘x’</td>
+<td>创建一个新文件, 并以写模式打开这个文件,如果文件存在则会产生”FileExistsError”错误</td>
+</tr>
+<tr>
+<td>‘a’</td>
+<td>以只写文件打开一个文件，如果有原文件则追加到文件末尾</td>
+</tr>
+<tr>
+<td>‘b’</td>
+<td>用二进制模式打开</td>
+</tr>
+<tr>
+<td>‘t’</td>
+<td>文本文件模式打开 (默认)</td>
+</tr>
+<tr>
+<td>‘+’</td>
+<td>为更新内容打开一个磁盘文件 (可读可写)</td>
+</tr>
+<tr>
+<td>‘rt’</td>
+<td>缺省模式是</td>
+</tr>
+<tr>
+<td>‘w+b’</td>
+<td>可以实现二进制随机读写，当打开文件时，文件内容将被清零</td>
+</tr>
+<tr>
+<td>‘r+b’</td>
+<td>以二进制读和更新模式打开文件,打开文件时不会清空文件内容</td>
+</tr>
+<tr>
+<td>‘r+’</td>
+<td>以文本模式读和更新模式打开文件,打开文件时不会清空文件内容</td>
+</tr>
+</tbody>
+</table>
+<h3 id="用于类型判断的函数"><a href="#用于类型判断的函数" class="headerlink" title="用于类型判断的函数"></a><strong>用于类型判断的函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isinstance(obj, class_or_tuple)</td>
+<td>返回这个对象obj 是否是 某个类的对象,或者某些类中的一个类的对象,如果是返回True,否则返回False</td>
+</tr>
+<tr>
+<td>type(obj)</td>
+<td>返回对象的类型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="super函数-1"><a href="#super函数-1" class="headerlink" title="super函数"></a><strong>super函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>super(type, obj)</td>
+<td>返回绑定超类的实例(要求obj必须为type类型的实例)</td>
+</tr>
+<tr>
+<td>super()</td>
+<td>返回绑定超类的实例,等同于:super(class, 实例方法的第一个参数)，必须用在方法内</td>
+</tr>
+</tbody>
+</table>
+<h3 id="用于类的函数-1"><a href="#用于类的函数-1" class="headerlink" title="用于类的函数"></a><strong>用于类的函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>issubclass(cls, class_or_tuple)</td>
+<td>判断一个类是否继承自其它的类,如果此类cls是class 或tuple中的一个派生子类则返回True,否则返回False</td>
+</tr>
+</tbody>
+</table>
+<h3 id="对象的属性管理函数-1"><a href="#对象的属性管理函数-1" class="headerlink" title="对象的属性管理函数"></a><strong>对象的属性管理函数</strong></h3><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getattr(obj, name[, default])</td>
+<td>从一个对象得到对象的属性；getattr(x, ‘y’) 等同于x.y; 当属性不存在时,如果给出default参数,则返回default,如果没有给出default 则产生一个AttributeError错误</td>
+</tr>
+<tr>
+<td>hasattr(obj, name)</td>
+<td>用给定的name返回对象obj是否有此属性,此种做法可以避免在getattr(obj, name)时引发错误</td>
+</tr>
+<tr>
+<td>setattr(obj, name, value)</td>
+<td>给对象obj的名为name的属性设置相应的值value, set(x, ‘y’, v) 等同于 x.y = v</td>
+</tr>
+<tr>
+<td>delattr(obj, name)</td>
+<td>删除对象obj中的name属性, delattr(x, ‘y’) 等同于 del x.y</td>
+</tr>
+</tbody>
+</table>
+<p>练习:</p>
+<pre><code>写一个Car类,属性有:
+   颜色 color
+   品牌 brand
+class Car:
+    def __init__(self, c, b):
+        ...
+    # 添加一个方法
+    def get_car_attr(self, attr_name):
+        &apos;&apos;&apos;此方法用于获取对象的属性,如果属性名attr_name在此对象内不存在则返回 None
+        &apos;&apos;&apos;
+  示例:
+    c1 = Car(&apos;黑色&apos;, &apos;Benz&apos;)
+    v = c1.get_car_attr(&apos;color&apos;)
+    if v is None:
+        print(&quot;没有颜色属性&quot;)
+    else:
+        print(&quot;颜色是:&quot;, v)
+</code></pre><h2 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h2><p>  什么是运算符重载<br>    让自定义的类生成的对象(实例)能够使用运算符进行操作</p>
+<p>  作用:<br>    让自定义的类的实例像内建对象一样运行运算符操作<br>    让程序简洁易读<br>    对自定义的对象,将运算符赋予新的运算规则</p>
+<h3 id="算术运算符的重载"><a href="#算术运算符的重载" class="headerlink" title="算术运算符的重载"></a>算术运算符的重载</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>add</strong>(self, rhs)</td>
+<td>self + rhs</td>
+<td>加法</td>
+</tr>
+<tr>
+<td><strong>sub</strong>(self, rhs)</td>
+<td>self - rhs</td>
+<td>减法</td>
+</tr>
+<tr>
+<td><strong>mul</strong>(self, rhs)</td>
+<td>self * rhs</td>
+<td>乘法</td>
+</tr>
+<tr>
+<td><strong>truediv</strong>(self, rhs)</td>
+<td>self / rhs</td>
+<td>除法</td>
+</tr>
+<tr>
+<td><strong>floordiv</strong>(self, rhs)</td>
+<td>self // rhs</td>
+<td>地板除法</td>
+</tr>
+<tr>
+<td><strong>mod</strong>(self, rhs)</td>
+<td>self % rhs</td>
+<td>求余</td>
+</tr>
+<tr>
+<td><strong>pow</strong>(self, rhs)</td>
+<td>self ** rhs</td>
+<td>冪</td>
+</tr>
+</tbody>
+</table>
+<p> 注: rhs (right hands side)  右手边</p>
+<p>示例:</p>
+<pre><code>class MyNumber:
+    def __init__(self, v):
+        self.data = v
+
+    def __repr__(self):
+        return &apos;MyNumber(%d)&apos; % self.data
+
+    # def myadd(self, other):
+    #     v = self.data + other.data
+    #     return MyNumber(v)
+
+    def __add__(self, other):
+        print(&quot;__add__被调用&quot;)
+        v = self.data + other.data
+        return MyNumber(v)
+
+    def __sub__(self, rhs):
+        v = self.data - rhs.data
+        return MyNumber(v)
+
+n1 = MyNumber(100)
+n2 = MyNumber(200)
+# n3 = n1.myadd(n2)
+# n3 = n1.__add__(n2)
+n3 = n1 + n2  # &lt;&lt;&lt;---这样可以吗?
+print(n3)
+n4 = n3 - n2
+print(n4)
+</code></pre><p>练习:<br>  实现两个自定义列表相加:</p>
+<pre><code>class MyList:
+    def __init__(self, iterable):
+        self.data = list(iterable)
+    .... 以下自己实现
+
+L1 = MyList([1, 2, 3])
+L2 = MyList([4, 5, 6])
+L3 = L1 + L2
+print(L3)  # MyList([1,2,3,4,5,6])
+L4 = L2 + L1
+print(L4)  # MyList([4,5,6,1,2,3])
+L5 = L1 * 2
+print(L5)  # MyList([1,2,3,1,2,3])
+</code></pre><p>反向算术运算符的重载<br>  当左手边的类型为内建类型,右手边为自定义类型时,要实现运算必须用以下方法重载</p>
+<h3 id="反向算术运算符的重载"><a href="#反向算术运算符的重载" class="headerlink" title="反向算术运算符的重载"></a>反向算术运算符的重载</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>radd</strong>(self, lhs)</td>
+<td>lhs + self</td>
+<td>加法</td>
+</tr>
+<tr>
+<td><strong>rsub</strong>(self, lhs)</td>
+<td>lhs - self</td>
+<td>减法</td>
+</tr>
+<tr>
+<td><strong>rmul</strong>(self, lhs)</td>
+<td>lhs * self</td>
+<td>乘法</td>
+</tr>
+<tr>
+<td><strong>rtruediv</strong>(self, lhs)</td>
+<td>lhs / self</td>
+<td>除法</td>
+</tr>
+<tr>
+<td><strong>rfloordiv</strong>(self, lhs)</td>
+<td>lhs // self</td>
+<td>地板除法</td>
+</tr>
+<tr>
+<td><strong>rmod</strong>(self, lhs)</td>
+<td>lhs % self</td>
+<td>求余</td>
+</tr>
+<tr>
+<td><strong>rpow</strong>(self, lhs)</td>
+<td>lhs ** self</td>
+<td>冪</td>
+</tr>
+</tbody>
+</table>
+<p>示例见:</p>
+<pre><code>class MyList:
+    def __init__(self, iterable):
+        self.data = list(iterable)
+
+    def __add__(self, rhs):
+        return MyList(self.data + rhs.data)
+
+    def __repr__(self):
+        return &apos;MyList(%r)&apos; % self.data
+
+    def __mul__(self, rhs):  # rhs 绑定整数
+        print(&apos;__mul__被调用&apos;)
+        return MyList(self.data * rhs)
+    def __rmul__(self, lhs):
+        print(&apos;__rmul__被调用&apos;)
+        return MyList(self.data * lhs)
+
+L1 = MyList([1, 2, 3])
+L2 = MyList([4, 5, 6])
+L5 = L1 * 2  # L1.__mul__(2)
+print(L5)  # MyList([1,2,3,1,2,3])
+
+L6 = 2 * L1  # 2.__mul__(L1)
+print(L6)
+</code></pre><h3 id="复合赋值算术运算符的重载"><a href="#复合赋值算术运算符的重载" class="headerlink" title="复合赋值算术运算符的重载"></a>复合赋值算术运算符的重载</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>iadd</strong>(self, rhs)</td>
+<td>self += rhs</td>
+<td>加法</td>
+</tr>
+<tr>
+<td><strong>isub</strong>(self, rhs)</td>
+<td>self -= rhs</td>
+<td>减法</td>
+</tr>
+<tr>
+<td><strong>imul</strong>(self, rhs)</td>
+<td>self *= rhs</td>
+<td>乘法</td>
+</tr>
+<tr>
+<td><strong>itruediv</strong>(self, rhs)</td>
+<td>self /= rhs</td>
+<td>除法</td>
+</tr>
+<tr>
+<td><strong>ifloordiv</strong>(self, rhs)</td>
+<td>self //= rhs</td>
+<td>地板除法</td>
+</tr>
+<tr>
+<td><strong>imod</strong>(self, rhs)</td>
+<td>self %= rhs</td>
+<td>求余</td>
+</tr>
+<tr>
+<td><strong>ipow</strong>(self, rhs)</td>
+<td>self **= rhs</td>
+<td>冪</td>
+</tr>
+</tbody>
+</table>
+<p>示例见:</p>
+<pre><code>class MyList:
+    def __init__(self, iterable):
+        print(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;)
+        self.data = list(iterable)
+
+    def __add__(self, rhs):
+        print(&apos;__add__被调用&apos;)
+        return MyList(self.data + rhs.data)
+
+    def __repr__(self):
+        return &apos;MyList(%r)&apos; % self.data
+
+    def __iadd__(self, rhs):
+        print(&quot;__iadd__被调用！！！！&quot;)
+        self.data.extend(rhs.data)
+        return self
+
+L1 = MyList([1, 2, 3])
+L2 = MyList([4, 5, 6])
+L1 += L2  # 当没有__iadd__方法时，等同于调用L1 = L1 + L2
+print(L1)
+</code></pre><p>如下:</p>
+<pre><code>L = [1,2,3]
+# 问题1
+def f1():
+   global L  # 为什么这里必须加global L
+   L = L + [4,5,6]　　# 等同于 L = L.__add__([4,5,6])
+f1()
+print(L)
+# 问题2
+def f2():
+   # 为什么以下就不加 global　L
+   L += [4,5, 6]  # L.__iadd__([4,5,6])
+f2()
+print(L)
+</code></pre><h3 id="比较运算符的重载"><a href="#比较运算符的重载" class="headerlink" title="比较运算符的重载"></a>比较运算符的重载</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>lt</strong>(self, rhs)</td>
+<td>self &lt;  rhs</td>
+<td>小于</td>
+</tr>
+<tr>
+<td><strong>le</strong>(self, rhs)</td>
+<td>self &lt;= rhs</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td><strong>gt</strong>(self, rhs)</td>
+<td>self &gt;  rhs</td>
+<td>大于</td>
+</tr>
+<tr>
+<td><strong>ge</strong>(self, rhs)</td>
+<td>self &gt;= rhs</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td><strong>eq</strong>(self, rhs)</td>
+<td>self == rhs</td>
+<td>等于</td>
+</tr>
+<tr>
+<td><strong>ne</strong>(self, rhs)</td>
+<td>self != rhs</td>
+<td>不等于</td>
+</tr>
+</tbody>
+</table>
+<p>注:<br>  比较运算符通常返回True或False</p>
+<h3 id="位运算符重载"><a href="#位运算符重载" class="headerlink" title="位运算符重载"></a>位运算符重载</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>invert</strong>(self)</td>
+<td>　 ~ self   　　　</td>
+<td>　取反(一元运算符)</td>
+</tr>
+<tr>
+<td><strong>and</strong>(self, rhs)</td>
+<td>self &amp; 　rhs</td>
+<td>位与</td>
+</tr>
+<tr>
+<td><strong>or</strong>(self, rhs)</td>
+<td>self \</td>
+<td>　rhs</td>
+<td>位或</td>
+</tr>
+<tr>
+<td><strong>xor</strong>(self, rhs)</td>
+<td>self ^ 　rhs</td>
+<td>位异或</td>
+</tr>
+<tr>
+<td><strong>lshift</strong>(self, rhs)</td>
+<td>self &lt;&lt; rhs</td>
+<td>左移</td>
+</tr>
+<tr>
+<td><strong>rshift</strong>(self, rhs)</td>
+<td>self &gt;&gt; rhs</td>
+<td>右移</td>
+</tr>
+</tbody>
+</table>
+<h3 id="反向位运算符重载"><a href="#反向位运算符重载" class="headerlink" title="反向位运算符重载"></a>反向位运算符重载</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  <strong>rand</strong>(self, lhs)</td>
+<td>lhs &amp; 　self</td>
+<td>位与</td>
+</tr>
+<tr>
+<td>  <strong>ror</strong>(self, lhs)</td>
+<td>lhs \</td>
+<td>　self</td>
+<td>位或</td>
+</tr>
+<tr>
+<td>  <strong>rxor</strong>(self, lhs)</td>
+<td>lhs ^ 　self</td>
+<td>位异或</td>
+</tr>
+<tr>
+<td>  <strong>rlshift</strong>(self, lhs)</td>
+<td>lhs &lt;&lt; self</td>
+<td>左移</td>
+</tr>
+<tr>
+<td>  <strong>rrshift</strong>(self, lhs)</td>
+<td>lhs &gt;&gt; self</td>
+<td>右移</td>
+</tr>
+</tbody>
+</table>
+<h3 id="复合赋值位运算符重载"><a href="#复合赋值位运算符重载" class="headerlink" title="复合赋值位运算符重载"></a>复合赋值位运算符重载</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  <strong>iand</strong>(self, rhs)</td>
+<td>self &amp;= 　rhs</td>
+<td>位与</td>
+</tr>
+<tr>
+<td>  <strong>ior</strong>(self, rhs)</td>
+<td>self \</td>
+<td>= 　rhs</td>
+<td>位或</td>
+</tr>
+<tr>
+<td>  <strong>ixor</strong>(self, rhs)</td>
+<td>self ^= 　rhs</td>
+<td>位异或</td>
+</tr>
+<tr>
+<td>  <strong>ilshift</strong>(self, rhs)</td>
+<td>self &lt;&lt;= rhs</td>
+<td>左移</td>
+</tr>
+<tr>
+<td>  <strong>irshift</strong>(self, rhs)</td>
+<td>self &gt;&gt;= rhs</td>
+<td>右移</td>
+</tr>
+</tbody>
+</table>
+<h3 id="一元运算符的重载"><a href="#一元运算符的重载" class="headerlink" title="一元运算符的重载"></a>一元运算符的重载</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>  <strong>neg</strong>(self)</td>
+<td>- self</td>
+<td>负号</td>
+</tr>
+<tr>
+<td>  <strong>pos</strong>(self)　　　　</td>
+<td>　　　　+ self</td>
+<td>正号</td>
+</tr>
+<tr>
+<td>  <strong>invert</strong>(self)</td>
+<td>~ self</td>
+<td>取反</td>
+</tr>
+</tbody>
+</table>
+<p>一元运算符的重载方法:<br>  class 类名:<br>      def <strong>xxx</strong>(self):<br>          …<br>示例:</p>
+<pre><code>class MyList:
+    def __init__(self, iterable):
+        print(&quot;__init__被调用&quot;)
+        self.data = list(iterable)
+
+    def __repr__(self):
+        return &apos;MyList(%r)&apos; % self.data
+
+    def __neg__(self):
+        &apos;&apos;&apos;此方法用来制定 - self 返回的规则&apos;&apos;&apos;
+        # L = [-x for x in self.data]
+        L = (-x for x in self.data)
+        return MyList(L)
+
+L1 = MyList([1, -2, 3, -4])
+L2 = -L1
+print(L2)
+</code></pre><p>运算符重载说明:<br>    运算符重载不能改变运算符的优先级</p>
+<p>Python类名最好用驼峰命名法:<br>  MyList  MyRange  大驼峰(所有单词首字母大写,其余小写)<br>  getStudentAge    小驼峰(第一个单词首字母小写，其它首字母大写)</p>
+<h3 id="in-not-in-运算符的重载"><a href="#in-not-in-运算符的重载" class="headerlink" title="in / not in 运算符的重载"></a>in / not in 运算符的重载</h3><p>  重载方法:<br>    <strong>contains</strong>(self, e)      e in self 成员运算</p>
+<p>示例见:</p>
+<pre><code>class MyList:
+    def __init__(self, iterable):
+        print(&quot;__init__被调用&quot;)
+        self.data = list(iterable)
+
+    def __repr__(self):
+        return &apos;MyList(%r)&apos; % self.data
+
+    def __contains__(self, e):
+        &apos;&apos;&apos;此方法用来实现 in　/ not in 运算符的重载&apos;&apos;&apos;
+        print(&quot;__contains__被调用&quot;)
+        for x in self.data:
+            if x == e:
+                return True
+        return False
+
+
+L1 = MyList([1, -2, 3, -4])
+if -2 in L1:
+    print(&apos;-2 在 L1 中&apos;)
+else:
+    print(&apos;-2 不在 L1中&apos;)
+
+
+# 当MyList的类内重载了__contains__方法，则not in也同时可用
+if -3 not in L1:
+    print(&quot;-3 不在 L1中&quot;)
+else:
+    print(&apos;-3 在 L2中&apos;)
+</code></pre><h3 id="索引和切片运算符的重载"><a href="#索引和切片运算符的重载" class="headerlink" title="索引和切片运算符的重载"></a>索引和切片运算符的重载</h3><table>
+<thead>
+<tr>
+<th>函数定义</th>
+<th>函数操作</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>getitem</strong>(self, i)</td>
+<td>x = self[i]</td>
+<td>索引/切片取值</td>
+</tr>
+<tr>
+<td><strong>setitem</strong>(self, i, v)</td>
+<td>self[i] = v</td>
+<td>索引/切片赋值</td>
+</tr>
+<tr>
+<td><strong>delitem</strong>(self, i)</td>
+<td>del self[i]</td>
+<td>del语句删除索引等</td>
+</tr>
+</tbody>
+</table>
+<p>　　作用:<br>    让自定义的类型的对象能够支持索引和切片操作</p>
+<p>  示例:</p>
+<pre><code>class MyList:
+    def __init__(self, iterable):
+        print(&quot;__init__被调用&quot;)
+        self.data = list(iterable)
+
+    def __repr__(self):
+        return &apos;MyList(%r)&apos; % self.data
+
+    def __getitem__(self, i):
+        print(&quot;__getitem__被调用, i=&quot;, i)
+        # if type(i) is not int:
+        #     raise TypeError
+        return self.data[i]
+
+    def __setitem__(self, i, v):
+        print(&quot;__setitem__被调用, i=&quot;, i, &apos;v =&apos;, v)
+        self.data[i] = v  # 修改data绑定的列表
+
+
+L1 = MyList([1, -2, 3, -4])
+v = L1[-1]
+print(v)
+
+L1[1] = 2  # 等同于调用 L1.__setitem__(1, 2)
+print(L1)
+
+# 以下操作会出错
+# print(L1[100000000000])
+# print(L1[&apos;hello&apos;])
+</code></pre><h3 id="slice-构造函数"><a href="#slice-构造函数" class="headerlink" title="slice 构造函数"></a>slice 构造函数</h3><p>  作用:<br>    用于创建一个Slice切片对象, 此对象存储一个切片的起始值，终止值和步长信息<br>  slice(start, stop=None, step=None)  创建一个切片对象</p>
+<p>  slice的对象的属性:<br>  　　s.start  切片起始值,默认为None<br>  　　s.stop   切片终止值,默认为None<br>  　　s.step   切片步长  ,默认为None</p>
+<p>示例见:</p>
+<pre><code>class MyList:
+    def __init__(self, iterable):
+        print(&quot;__init__被调用&quot;)
+        self.data = list(iterable)
+
+    def __repr__(self):
+        return &apos;MyList(%r)&apos; % self.data
+
+    def __getitem__(self, i):
+        print(&quot;__getitem__被调用, i=&quot;, i)
+        if type(i) is int:
+            print(&quot;正在做索引操作&quot;)
+        elif type(i) is slice:
+            print(&quot;正在做切片操作&quot;)
+            print(&quot;切片的起始值:&quot;, i.start)
+            print(&quot;切片的终止值:&quot;, i.stop)
+            print(&quot;切片的步长:&quot;, i.step)
+        else:
+            raise KeyError
+        return self.data[i]
+
+
+L1 = MyList([1, -2, 3, -4, 5, -6])
+
+print(L1[::2])  # 等同于调用L1[slice(None, None, 2)]
+</code></pre><p>练习:</p>
+<pre><code>实现有序集合 OrderSet 类 能实现两个集合的交集 &amp;, 并集 |, 补集 -, 对称补集 ^, ==, != , in / not in集合操作
+(要求集合内用 list 存储数据)
+s1 = OrderSet([1, 2, 3, 4])
+s2 = OrderSet([3, 4, 5])
+print(s1 &amp; s2)  # OrderSet([3, 4])
+print(s1 | s2)  # OrderSet([1, 2, 3, 4, 5])
+print(s1 ^ s2)  # OrderSet([1, 2, 5])
+if OrderSet([1,2,3]) != OrderSet([1,2,3,4]):
+    print(&quot;不相等&quot;)
+if s2 == OrderSet(3,4,5):
+   print(&quot;s2 和 OrderSet(3,4,5)相等&quot;)
+if 2 in s1:
+    print(&quot;2 in s1&quot;)
 </code></pre>
           
         
@@ -12685,7 +16111,7 @@ if __name__==&apos;__main__&apos;:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">123.3k</span>
+    <span title="Site words total count">148.0k</span>
   
 </div>
 
