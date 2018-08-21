@@ -4862,7 +4862,7 @@ mp.show()
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8,600 字
+                  12,077 字
                 </span>
               
 
@@ -4878,7 +4878,7 @@ mp.show()
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  34 分钟
+                  48 分钟
                 </span>
               
             </div>
@@ -5642,35 +5642,384 @@ print(fmt % (name, age))
 <p>python中的序列类型简介(sequence)<br>  字符串 str<br>  列表 list<br>  元组 tuple<br>  字节串 bytes<br>  字节数组 bytearray</p>
 <h2 id="列表的创建"><a href="#列表的创建" class="headerlink" title="列表的创建"></a>列表的创建</h2><p>创建空列表的字面值<br>  L = []  # L绑定空列表</p>
 <p>创建非空列表:<br>  L = [1, 2, 3, 4]<br>  L = [“北京”, “上海”, “重庆”]<br>  L = [1, ‘two’, 3, ‘四’]<br>  L = [1, 2, [3.1, 3.2, 3.3], 4] </p>
-<p>列表的构造(创建)函数list<br>  list()  生成一个空的列表 等同于[]<br>  list(iterable)  用可迭代对象创建一个列表<br>示例:<br>  L = list()  L 为空列表,等同于 L = []<br>  L = list(“ABCD”)  # L-&gt;[‘A’,’B’,’C’,’D’]<br>  L = list(range(1, 10, 2))</p>
-<p>列表的运算:<br>  算术运算</p>
-<pre><code>+ += * *= 
-</code></pre><ul>
-<li>用于拼接列表<br>x = [1,2,3]<br>y = [4,5,6]<br>z = x + y  # z = [1,2,3,4,5,6]<br>+=用于原列表与左侧可迭代对象进行拼接,生成新的列表<br>x = [1,2,3]<br>x += [4,5,6]  # x = [1,2,3,4,5,6]<br>x = [1,2,3]<br>x += ‘ABC’  # += 右侧必须是可迭代对象</li>
-</ul>
-<ul>
-<li><p>生成重复的列表<br>x = [1,2,3] <em> 2  # x = [1,2,3,1,2,3]
-</em>= 用于生成重复的列表，同时用变量绑定新列表<br>x = [1, 2]<br>x *= 3  # x = [1,2,1,2,1,2]</p>
-<p>列表的比较运算:<br>运算符:<br>  &lt; &lt;= &gt; &gt;= == !=<br>示例:<br>  x = [1,2,3]<br>  y = [2,3,4]<br>  x != y     # True<br>  x &gt; [1,2]  # True<br>  x &lt; y      # True<br>  [1,3,2] &gt; [1,2,3] # True<br>  [‘AB’, ‘CD’] &gt; [‘AC’, ‘BD’]  # False<br>  [1, ‘two’] &gt; [‘two’, 1]  # TypeError</p>
-</li>
-</ul>
-<p>练习:</p>
+<h2 id="列表的构造-创建-函数list"><a href="#列表的构造-创建-函数list" class="headerlink" title="列表的构造(创建)函数list"></a>列表的构造(创建)函数list</h2><p>  list()  生成一个空的列表 等同于[]<br>  list(iterable)  用可迭代对象创建一个列表<br>示例:<br>  L = list()  L 为空列表,等同于 L = []<br>  L = list(“ABCD”)  # L-&gt;[‘A’,’B’,’C’,’D’]<br>  L = list(range(1, 10, 2))</p>
+<h2 id="列表的运算"><a href="#列表的运算" class="headerlink" title="列表的运算:"></a>列表的运算:</h2><h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h3><p>+ += <em> </em>=<br>+ 用于拼接列表</p>
+<pre><code>x = [1,2,3]
+y = [4,5,6]
+z = x + y  # z = [1,2,3,4,5,6]
+</code></pre><p>+=用于原列表与左侧可迭代对象进行拼接,生成新的列表</p>
+<pre><code>x = [1,2,3]
+x += [4,5,6]  # x = [1,2,3,4,5,6]
+x = [1,2,3]
+x += &apos;ABC&apos;  # += 右侧必须是可迭代对象
+</code></pre><p>* 生成重复的列表</p>
+<pre><code>x = [1,2,3] * 2  # x = [1,2,3,1,2,3]
+</code></pre><p>*= 用于生成重复的列表，同时用变量绑定新列表</p>
+<pre><code>x = [1, 2]
+x *= 3  # x = [1,2,1,2,1,2]
+</code></pre><h3 id="列表的比较运算"><a href="#列表的比较运算" class="headerlink" title="列表的比较运算:"></a>列表的比较运算:</h3><p>运算符:</p>
+<pre><code>&lt; &lt;= &gt; &gt;= == !=
+</code></pre><p>示例:</p>
+<pre><code>x = [1,2,3]
+y = [2,3,4]
+x != y     # True
+x &gt; [1,2]  # True
+x &lt; y      # True
+[1,3,2] &gt; [1,2,3] # True
+[&apos;AB&apos;, &apos;CD&apos;] &gt; [&apos;AC&apos;, &apos;BD&apos;]  # False
+[1, &apos;two&apos;] &gt; [&apos;two&apos;, 1]  # TypeError
+</code></pre><p>练习:</p>
 <ol>
-<li>输入一个整数，代表树干的高度.<br>打印一棵”圣诞树”<br>如:<br>输入:2<br>打印<br> *<hr>
- <em>
- </em><br>输入:3<br>打印<br>  *<hr>
-<hr>
-  *<ul>
-<li>*</li>
-</ul>
-</li>
-<li><p>用循环语句生成如下字符串<br>‘ABC…..XYZ’<br>‘AaBbCc……XxYyZz’<br>提示:<br>  用ord和chr函数结合循环语句实现</p>
-</li>
-<li><p>算出 100 ~ 999 以内的水仙花数(Narcissistic number)<br>水仙花数是指百位的3次方加上十位的3次方加上个位的3次方等于原数的数字<br>  例如:</p>
+<li><p>输入一个整数，代表树干的高度.</p>
+<p>   打印一棵”圣诞树”<br>   如:</p>
+<pre><code>输入:2
+</code></pre><p>   打印</p>
+<pre><code> *
+***
+ *
+ *
+输入:3
+</code></pre><p>   打印</p>
+<pre><code>  *
+ ***
+*****
+  *
+  *    
+  *
+</code></pre></li>
+<li><p>用循环语句生成如下字符串</p>
+<p>   ‘ABC…..XYZ’<br>   ‘AaBbCc……XxYyZz’<br>   提示:</p>
+<pre><code>用ord和chr函数结合循环语句实现
+</code></pre></li>
+<li><p>算出 100 ~ 999 以内的水仙花数(Narcissistic number)</p>
+<p>   水仙花数是指百位的3次方加上十位的3次方加上个位的3次方等于原数的数字<br>   例如:</p>
 <pre><code>153 等于 1**3 + 5**3 + 3**3
-</code></pre><p>参考答案:<br>  153, 370, …</p>
+</code></pre><p>   参考答案:<br>   153, 370, …</p>
 </li>
 </ol>
+<h2 id="列表的-in-not-in"><a href="#列表的-in-not-in" class="headerlink" title="列表的 in / not in"></a>列表的 in / not in</h2><ol>
+<li>判断一个数据元素是否存在于容器(列表)内，如果存在返回True, 否则返回False</li>
+<li>not in 的返回值与 in运算符相反</li>
+</ol>
+<p>示例:</p>
+<pre><code>x = [1, &apos;Two&apos;, 3.14, &apos;四&apos;]
+1 in x        # True
+2 in x        # False
+3 not in x    # True
+&apos;四&apos; not in x # False
+</code></pre><h2 id="列表的-索引-index-切片-slice"><a href="#列表的-索引-index-切片-slice" class="headerlink" title="列表的 索引 index / 切片 slice"></a>列表的 索引 index / 切片 slice</h2><p>列表的索引语句:<br>    列表[整数表达式]<br>用法:<br>    列表的索引取值与字符串的索引取值规则完全相同<br>    列表的索引为分正向索引和反向索引<br>示例:</p>
+<pre><code>L = [&apos;A&apos;, 2, &apos;B&apos;, 3]
+print(L[1])  # 2
+x = L[2]   # x = &apos;B&apos;
+</code></pre><h2 id="列表的索引赋值"><a href="#列表的索引赋值" class="headerlink" title="列表的索引赋值"></a>列表的索引赋值</h2><p>列表是可变的序列，可以通过索引赋值改变列表中的元素<br>语法:<br>  列表[索引] = 表达式</p>
+<p>示例:</p>
+<pre><code>x = [1,2,3,4]
+x[2] = 3.14  # 改变了第三个元素的值
+</code></pre><h2 id="列表的切片"><a href="#列表的切片" class="headerlink" title="列表的切片"></a>列表的切片</h2><p>  列表[:]<br>  列表的[::]<br>  列表的切片取值返回一个列表，规则等同于字符串的切片规则</p>
+<p>  示例:<br>    x = list(range(9))<br>    y = x[1:9:2]  # y = [1,3,5,7]</p>
+<h3 id="列表的切片赋值语法"><a href="#列表的切片赋值语法" class="headerlink" title="列表的切片赋值语法:"></a>列表的切片赋值语法:</h3><p>列表[切片] = 可迭代对象<br>说明:<br>  切片赋值的赋值运算符的右侧必须是一个可迭代对象<br>示例:</p>
+<pre><code>L = [2,3,4]
+L[0:1] = [1.1, 2.2]
+print(L)  # [1.1, 2.2, 3, 4]
+L = [2,3,4]
+L[:] = [7,8]
+L = [2,3,4]
+L[1:2] = [3.1, 3.2, 3.3]
+          # [2,3.1, 3.2, 3.3,4]
+L = [2,3,4]
+L[1:1] = [2.1, 2.2]  # [2, 2.1, 2.2, 3, 4]
+L = [2,3,4] 
+L[0:0] = [0, 1]   # L=[0, 1, 2,3,4]   
+L = [2,3,4] 
+L[3:3] = [5,6]  # L=[2,3,4, 5,6]
+L = [2,3,4]
+L[1:2] = []
+</code></pre><h3 id="切片步长不为1的切片赋值"><a href="#切片步长不为1的切片赋值" class="headerlink" title="切片步长不为1的切片赋值"></a>切片步长不为1的切片赋值</h3><pre><code>L = list(range(1, 9))
+L[1::2] = [2.2, 4.4, 6.6, 8.8]
+print(L)  # 
+</code></pre><h3 id="切片注意事项"><a href="#切片注意事项" class="headerlink" title="切片注意事项"></a>切片注意事项</h3><p>对于步长不等于1的切片赋值，赋值运算符的右侧的可迭代对象提供元素的个数一定要等于切片切出的段数<br>如:</p>
+<pre><code>L = [1,2,3,4,5,6]
+L[::2] = &apos;ABCD&apos;  # 错的
+L[::2] = &apos;ABC&apos;   # 对的
+</code></pre><h3 id="del-语句用于删除列表元素"><a href="#del-语句用于删除列表元素" class="headerlink" title="del 语句用于删除列表元素"></a>del 语句用于删除列表元素</h3><p>语法:<br>    del 列表[索引]<br>    del 列表[切片]<br>  示例:</p>
+<pre><code>L = [1,2,3,4,5,6]
+del L[0]  # L = [2,3,4,5,6]
+del L[-1]  # L = [2,3,4,5]
+L = [1,2,3,4,5,6]
+del L[::2]  # L = [2, 4, 6]
+</code></pre><p><strong>注意事项：这里一定不能这样操作来删除列表元素</strong></p>
+<pre><code>l = [1,2,3,5,4]
+for x in l:
+    if x == 5:
+        del x #删除不删除都一样，下一个循环的时候x指向了4
+</code></pre><p>这段代码从字面上来看，就是遍历列表，查找每个元素是否与5相等，如果相等，则删除该元素，但是此写法删除的只是变量x，并不是列表中的元素，所以操作完之后列表中元素不变。 另外，for循环的时候，内部变量在for循环结束的时候本身就会被系统回收掉.</p>
+<h2 id="python3中常用的序列函数"><a href="#python3中常用的序列函数" class="headerlink" title="python3中常用的序列函数"></a>python3中常用的序列函数</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len(x)</td>
+<td>返回序列的长度</td>
+</tr>
+<tr>
+<td>max(x)</td>
+<td>返回序列的最大值元素</td>
+</tr>
+<tr>
+<td>min(x)</td>
+<td>返回序列中最小值元素</td>
+</tr>
+<tr>
+<td>sum(x)</td>
+<td>返回序列中所有元素的和(元素必须是数值类型)</td>
+</tr>
+<tr>
+<td>any(x)</td>
+<td>真值测试, 如果列表中其中一个值为真值则返回True,否则返回False</td>
+</tr>
+<tr>
+<td>all(x)</td>
+<td>真值测试，如果列表中所有值为真值，则返回True,只要有一个为假，则返回False</td>
+</tr>
+</tbody>
+</table>
+<p>练习:<br>  1.已知有列表<br>    L = [3, 5]<br>    用索引和切片操作，将列表改为:<br>    L = [1,2,3,4,5,6]<br>    将列表反转(前后对调), 然后删除最后一个元素<br>    print(L)  # [6,5,4,3,2]</p>
+<ol start="2">
+<li>写程序，让用户循环输入一些整数，当输入-1时结束输入，将这些整数存于列表L中<br>1) 打印您共输入了几个有效的数?<br>2) 打印您输入的数的最大数是多少?<br>3) 打印您输入的数的最小数是多少?<br>4) 打印您输入这些数的平均值</li>
+</ol>
+<h2 id="Python3中常用的列表方法"><a href="#Python3中常用的列表方法" class="headerlink" title="Python3中常用的列表方法"></a>Python3中常用的列表方法</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L.index(v [, begin[, end]])</td>
+<td>返回对应元素的索引下标, begin为开始索引，end为结束索引,当 value 不存在时触发ValueError错误</td>
+</tr>
+<tr>
+<td>L.insert(index, obj)</td>
+<td>将某个元素插放到列表中指定的位置</td>
+</tr>
+<tr>
+<td>L.count(x)</td>
+<td>返回列表中元素的个数</td>
+</tr>
+<tr>
+<td>L.remove(x)</td>
+<td>从列表中删除第一次出现在列表中的值</td>
+</tr>
+<tr>
+<td>L.copy()</td>
+<td>复制此列表（只复制一层，不会复制深层对象)</td>
+</tr>
+<tr>
+<td>L.append(x)</td>
+<td>向列表中追加单个元素</td>
+</tr>
+<tr>
+<td>L.extend(lst)</td>
+<td>向列表追加另一个列表</td>
+</tr>
+<tr>
+<td>L.clear()</td>
+<td>清空列表,等同于 L[:] = []</td>
+</tr>
+<tr>
+<td>L.sort(reverse=False)</td>
+<td>将列表中的元素进行排序，默认顺序按值的小到大的顺序排列</td>
+</tr>
+<tr>
+<td>L.reverse()</td>
+<td>列表的反转，用来改变原列表的先后顺序</td>
+</tr>
+<tr>
+<td>L.pop([index])</td>
+<td>删除索引对应的元素，如果不加索引，默认删除最后元素，同时返回删除元素的引用关系</td>
+</tr>
+</tbody>
+</table>
+<h2 id="字符串文本解析方法-split-和-join"><a href="#字符串文本解析方法-split-和-join" class="headerlink" title="字符串文本解析方法 split 和 join"></a>字符串文本解析方法 split 和 join</h2><p>S.split(sep=None)  将字符串，使用sep作用为隔符分割S字符串，返回分割后的字符串的列表，当不给定参数时，用空白字符作为分隔符进行分割<br>S.join(iterable)  用可迭代对象中的字符串，返回一个中间用S进行分隔的字符串</p>
+<p>为什么在列表中说字符串的函数？<br>因为这2个函数往往是跟列表进行组合使用的，将一个特定格式的字符串，通过L=s.split(‘ ‘)进行分割，得到每个元素组成的列表。<br>然后将得到的列表经过一系列运算，形成新的列表，再通过s=’ ‘.join(L),这样就得到了字符串经过一定运算后得到的新字符串。</p>
+<h2 id="深拷贝-deep-copy-和-浅拷贝-shallow-copy"><a href="#深拷贝-deep-copy-和-浅拷贝-shallow-copy" class="headerlink" title="深拷贝 deep copy 和 浅拷贝 shallow copy"></a>深拷贝 deep copy 和 浅拷贝 shallow copy</h2><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><p>是指在复制过程中只复制一层变量，不会复制深层变量绑定的对象的复制过程</p>
+<pre><code>L = [3.1, 3.2]
+L1 = [1, 2, L]
+L2 = L1.copy()  # 等同于 L1[:]  浅拷贝
+print(L1)  # [1, 2, [3.1, 3.2]]
+print(L2)  # [1, 2, [3.1, 3.2]]
+L2[2][0] = 3.14
+print(L1)  # [1, 2, [3.14, 3.2]]
+print(L2)  # [1, 2, [3.14, 3.2]]
+</code></pre><h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><pre><code>import copy  # 导入copy模块
+L = [3.1, 3.2]
+L1 = [1, 2, L]
+L2 = copy.deepcopy(L1) # 深拷贝
+print(L1)  # [1, 2, [3.1, 3.2]]
+print(L2)  # [1, 2, [3.1, 3.2]]
+L2[2][0] = 3.14
+print(L1)  # [1, 2, [3.1, 3.2]]
+print(L2)  # [1, 2, [3.14, 3.2]]
+</code></pre><p>注:<br>  深拷贝通常只对可变对象进行复制，不可变对象通常不变</p>
+<h2 id="列表推导式-list-comprehension"><a href="#列表推导式-list-comprehension" class="headerlink" title="列表推导式 list comprehension"></a>列表推导式 list comprehension</h2><p>列表推导式是用可迭代对象依次生成带有多个元素的列表的表达式<br>作用：<br>  用简易方法生成列表<br>语法:<br>  [表达式 for 变量 in 可迭代对象]<br>或<br>  [表达式 for 变量 in 可迭代对象 if 真值表达式]</p>
+<p>示例:</p>
+<pre><code># 以下生成一个数值为1~9的平方的列表 
+L = [x*x for x in range(1, 10)]
+</code></pre><p>练习:<br>  用列表推导式生成 1~100内的奇数的列表<br>    结果 [1,3,5,7,…. 99]</p>
+<p>  示例:</p>
+<pre><code># 以上练习可以改写为:
+L = [x for x in range(1, 
+                  100) if x % 2 == 1]
+</code></pre><h2 id="列表推导式的嵌套"><a href="#列表推导式的嵌套" class="headerlink" title="列表推导式的嵌套"></a>列表推导式的嵌套</h2><p>  语法:<br>   [ 表达式1<br>    for 变量1 in 可迭代对象1 if 真值表达式1<br>     for 变量2 in 可迭代对象2 if 真值表达式2<br>      …]<br>  示例:</p>
+<pre><code>L1 = [2, 3, 5]
+L2 = [7, 11, 13]
+# 将L1中的全部元素与L2中的全部元素依次相乘后放到列表L3中
+L3 = [x * y for x in L1 for y in L2] #生成一维列表的 3*3 矩阵
+print(L3)
+</code></pre><p>练习:</p>
+<ol>
+<li><p>用字符串s = “ABC” 和 s2 = “123” 生成如下列表:<br>[‘A1’, ‘A2’, ‘A3’, ‘B1’, ‘B2’, ‘B3’, ‘C1’, ‘C2’, ‘C3’, ]</p>
+</li>
+<li><p>有一些数存在于列表L 中,如:<br>L = [1,3,2,1,6,4,2,…. 98, 82]<br>  (此数据自己定义)<br>将列表L中的数存入于另一个列表L2中（要求,重复出现多次的数字只在L2列表中保留一份)</p>
+</li>
+<li>生成前40个斐波那契数(Fibonacci)<br>1 1 2 3 5 8 13….<br>(自第三个起，之后的所有数为前两个数之和)<br>要求，将这些数保存在列表中，最后打印列表中的这些数<br>  提示: 用循环、列表和变量组合可以实现</li>
+</ol>
+<h1 id="元组-tuple"><a href="#元组-tuple" class="headerlink" title="元组 tuple"></a>元组 tuple</h1><p>元组是不可改变的序列。同list一样，元组可以存放任意类型的元素，一但元组生成，则它不可以改变。<br><strong>但是有一点，元组内部的元素如果是可变元素，比如t=(0,[1,2,3],4,5,6) t[1].append(4)是可以改变t的内容的</strong></p>
+<pre><code>&gt;&gt;&gt; t=(0,[1,2,3],4,5,6)
+&gt;&gt;&gt; t[1].append(4)
+&gt;&gt;&gt; t
+(0, [1, 2, 3, 4], 4, 5, 6)
+</code></pre><p>元组的个数不会被改变，元组的内存地址不会改变，内部每个元素的数据类型也不会改变，但是单个元素的值是可能改变的</p>
+<h2 id="元组的表示方式"><a href="#元组的表示方式" class="headerlink" title="元组的表示方式"></a>元组的表示方式</h2><p>  用小括号()括起来，单个元素括起来用逗号(,)区分是单个对象还是元组</p>
+<h3 id="创建空元组的字符值"><a href="#创建空元组的字符值" class="headerlink" title="创建空元组的字符值"></a>创建空元组的字符值</h3><p>  t = ()</p>
+<h3 id="创建非空元组的字面值"><a href="#创建非空元组的字面值" class="headerlink" title="创建非空元组的字面值"></a>创建非空元组的字面值</h3><pre><code>t = 200,
+t = (20,) #一个元素的元组，后面一定要加逗号,  否则会被解释器认为是 (20) ，这样的一个表达式传递的信息是整型数据 20，而并不是元组。
+t = (1,2,3)
+t = 100, 200, 300
+x, y, z = 100, 200, 300  #  序列赋值
+x, y, z = &apos;ABC&apos;
+x, y, z = [10, 20, 30]
+</code></pre><p><strong>元组的错误示例:</strong></p>
+<pre><code>t = (20)  # t 绑定整数
+</code></pre><h2 id="元组的构造函数-tuple"><a href="#元组的构造函数-tuple" class="headerlink" title="元组的构造函数 tuple"></a>元组的构造函数 tuple</h2><p>tuple() 生成一个空的元组，等同于()<br>tuple(iterable)  用可迭代对象生成一个元组<br>示例:</p>
+<pre><code>t = tuple()
+t = tuple(range(10))
+t = tuple(&apos;hello&apos;)
+t = tuple([1,2,3,4])
+</code></pre><p>元组的算术运算:<br>        +  +=  <em>  </em>= </p>
+<p>用法与列表的用法完全相同</p>
+<p>元组的比较运算:</p>
+<pre><code>&lt; &lt;= &gt; &gt;= == != 
+</code></pre><p>规则与列表完全相同</p>
+<h2 id="in-not-in"><a href="#in-not-in" class="headerlink" title="in/ not in"></a>in/ not in</h2><p><strong>索引取值<br>切片取值<br>  规则与列表完全相同</strong></p>
+<p><strong>区别:<br>  元组是不可变对象，不支持索引赋值和切片赋值</strong></p>
+<p>元组的方法:<br>  见: &gt;&gt;&gt; help(tuple)<br>   T.index(v[,begin[,end]]) 用于获取元组中v所在的索引位置<br>   T.count(v)  用于获取元组中v的个数<br>1<br>   (以上方法同list中的index,count方法)</p>
+<p>可以用于序列的函数:<br>  len, max, min, sum, all, any<br>三个构造函数:<br>  str(obj)<br>  list(iterable)<br>  tuple(iterable)<br>  用于创建相应的对象</p>
+<p>其它函数:<br>  reversed(seq) 返回反向顺序的可迭代对象<br>  sorted(iterable, reversed=False)  返回已排序的列表</p>
+<p>示例:</p>
+<pre><code>for x in reversed(&quot;ABCD&quot;):
+    print(x)  # D C B A
+L = [8, 6, 3, 5, 7]
+L2 = sorted(L)
+print(L2)  # [3, 5, 6, 7, 8]
+L3 = sorted(L, reversed=True)
+print(L3)  # [8, 7, 6, 5, 3]
+print(L)  # 保持不变
+</code></pre><h1 id="字典-dict"><a href="#字典-dict" class="headerlink" title="字典 dict"></a>字典 dict</h1><ol>
+<li>字典是一种可变的容器，可以存储任意类型的数据</li>
+<li>字典中的每个数据都是用’键’(key) 进行索引，而不像序列可以用下标来进行索引</li>
+<li>字典的数据没有先后顺序关系，字典的存储是无序的</li>
+<li>字典中的数据以键(key)-值(value)对进行映射存储</li>
+<li>字典的键不能重复，且只能用不可变类型作为字典的键。</li>
+</ol>
+<h2 id="字典的字面值表示方式"><a href="#字典的字面值表示方式" class="headerlink" title="字典的字面值表示方式:"></a>字典的字面值表示方式:</h2><p>  用 {} 括起来，以冒号(:) 分隔键-值对, 各键值对用分号分隔开</p>
+<h3 id="创建空字典"><a href="#创建空字典" class="headerlink" title="创建空字典"></a>创建空字典</h3><p>  d = {}</p>
+<h3 id="创建非空的字典"><a href="#创建非空的字典" class="headerlink" title="创建非空的字典"></a>创建非空的字典</h3><p>  d = {‘name’: ‘tarena’, ‘age’: 15}<br>  d = {‘姓名’: ‘小张’}<br>  d = {1:’壹’, 2:’贰’}</p>
+<h2 id="字典的构造函数-dict"><a href="#字典的构造函数-dict" class="headerlink" title="字典的构造函数 dict"></a>字典的构造函数 dict</h2><p>  dict()  创建一个空字典,等同于 {}<br>  dict(iterable)  用可迭代对象初始化一个字典<br>  dict(**kwargs)  关键字传参形式生成一个字典</p>
+<p>示例:</p>
+<pre><code>d = dict()
+d = dict([(&apos;name&apos;, &apos;tarena&apos;), (&apos;age&apos;,15)])
+d = dict(name=&apos;tarena&apos;, age=15)
+</code></pre><p>不可变类型：</p>
+<p>  int,float,complex,bool,str,tuple,frozenset(固定集合), bytes(字节串)(后面会讲)</p>
+<p>可变类型:</p>
+<p>  list, dict, set(集合), bytearray(字节数组)</p>
+<h2 id="字典的键索引"><a href="#字典的键索引" class="headerlink" title="字典的键索引"></a>字典的键索引</h2><p>用[] 运算符可以获取字典内’键’所对应的’值’<br>语法:<br>  字典[键]</p>
+<h3 id="获取数据元素"><a href="#获取数据元素" class="headerlink" title="获取数据元素"></a>获取数据元素</h3><pre><code>d = dict(name=&apos;tarena&apos;, age=15)
+print(d[&apos;age&apos;])  # 15
+</code></pre><h3 id="添加-修改字典元素"><a href="#添加-修改字典元素" class="headerlink" title="添加/修改字典元素"></a>添加/修改字典元素</h3><p>字典[键] = 表达式</p>
+<p>示例:</p>
+<pre><code>d = {}
+d[&apos;name&apos;] = &apos;tarena&apos;  # 创建一个新的键值对
+d[&apos;age&apos;] = 15  # 创建键值对
+d[&apos;age&apos;] = 16  # 修改键值对
+</code></pre><h3 id="del-语句删除字典的元素"><a href="#del-语句删除字典的元素" class="headerlink" title="del 语句删除字典的元素"></a>del 语句删除字典的元素</h3><p>语法:<br>    del 字典[键]<br>示例:</p>
+<pre><code>d = {&apos;name&apos;: &apos;china&apos;, &apos;pos&apos;: &apos;asia&apos;}
+del d[&apos;pos&apos;]
+print(d)
+del d[&apos;name&apos;]
+print(d)   # {}
+</code></pre><h2 id="字典的-in-not-in-运算符"><a href="#字典的-in-not-in-运算符" class="headerlink" title="字典的 in / not in 运算符"></a>字典的 in / not in 运算符</h2><p>可以用 in 运算符来判断一个’键’是否存在于字典中,如果存在则返回True, 否则返回False<br>not in 与 in 返回值相反</p>
+<p>示例:</p>
+<pre><code>d = {&apos;a&apos;: 1, &apos;b&apos;: 2}
+&apos;a&apos; in d     # True
+1 in d       # False
+100 not in d # True
+2 not in d   # True
+</code></pre><h2 id="字典的迭代访问"><a href="#字典的迭代访问" class="headerlink" title="字典的迭代访问"></a>字典的迭代访问</h2><p>字典是可迭代对象，字典只能对键进行迭代访问</p>
+<pre><code>d = {&apos;name&apos;: &apos;tarena&apos;, (2002, 1, 1): &apos;生日&apos;}
+for x in d:
+    print(x)
+</code></pre><p>可以用于字典的内建函数</p>
+<p>  len(x)  返回字典键-值对的个数<br>  max(x)  返回字典的键的最大值<br>  min(x)  返回字典的键的最小值<br>  sum(x)  返回字典所有键的和<br>  any(x)  真值测试，只对键测试,如果其中一个键为True,结果为True<br>  all(x)  真值测试，全部键为True时，结果才为True</p>
+<p>字典的方法:<br>D代表字典对象</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D.clear()</td>
+<td>清空字典</td>
+</tr>
+<tr>
+<td>D.pop(key)</td>
+<td>移除键，同时返回此键所对应的值</td>
+</tr>
+<tr>
+<td>D.copy()</td>
+<td>返回字典D的副本,只复制一层(浅拷贝)</td>
+</tr>
+<tr>
+<td>D.update(D2)</td>
+<td>将字典 D2 合并到D中，如果键相同，则此键的值取D2的值作为新值</td>
+</tr>
+<tr>
+<td>D.get(key, default)</td>
+<td>返回键key所对应的值,如果没有此键，则返回default</td>
+</tr>
+<tr>
+<td>D.keys()</td>
+<td>返回可迭代的 dict_keys 集合对象</td>
+</tr>
+<tr>
+<td>D.values()</td>
+<td>返回可迭代的 dict_values 值对象</td>
+</tr>
+<tr>
+<td>D.items()</td>
+<td>返回可迭代的 dict_items 对象</td>
+</tr>
+</tbody>
+</table>
 
           
         
@@ -11434,7 +11783,7 @@ if __name__==&apos;__main__&apos;:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">112.1k</span>
+    <span title="Site words total count">115.5k</span>
   
 </div>
 
