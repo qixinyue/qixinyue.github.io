@@ -3702,7 +3702,7 @@ ex:
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6,852 字
+                  6,865 字
                 </span>
               
 
@@ -4810,6 +4810,7 @@ mp.bar(dates, highest_price - lowest_price, 0,
        lowest_price, color=fc, edgecolor=ec)  # 画引线
 mp.bar(dates, closing_price - opening_prices, 0.8,
        opening_prices, color=fc, edgecolor=ec)  # 画实体
+mp.gcf().autofmt_xdate()  # 设置下面日期倾斜显示
 mp.show()
 </code></pre>
           
