@@ -5290,7 +5290,7 @@ print(np.convolve(a, b,&apos;full/same/valid&apos;))，默认是full
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  41,643 字
+                  41,596 字
                 </span>
               
 
@@ -5530,7 +5530,7 @@ True
 <p>练习：<br>  输入一个学生的成绩(0~100),<br>  判断这个学生的成绩是优（90~100），良(80~89)，及格(60~79)，不及格，成绩不合法5种状态<br>  (建议使用if语句嵌套)</p>
 <h3 id="条件表达式"><a href="#条件表达式" class="headerlink" title="条件表达式"></a>条件表达式</h3><p>  语法:<br>    表达式1 if 真值表达式 else 表达式2<br>  作用：<br>    如果真值表达式的布尔环境值为True,则执行表达式1并返回结果的引用，否则执行表达式2并返回结果的引用</p>
 <p>练习：<br>  写程序，输入一个数<br>    1) 用if语句计算出这个数的绝对值并打印出来<br>    2) 用条件表达式计算出这个数的绝对值并打印出来</p>
-<h3 id="pass-语句"><a href="#pass-语句" class="headerlink" title="pass 语句"></a>pass 语句</h3><p>  作用：<br>    通常用来填充语法空白<br>    pass 语句又名空语句<br>  语法:<br>    pass<br>  示例见:<br>    code/07_pass.py</p>
+<h3 id="pass-语句"><a href="#pass-语句" class="headerlink" title="pass 语句"></a>pass 语句</h3><p>  作用：<br>    通常用来填充语法空白<br>    pass 语句又名空语句<br>  语法:<br>    pass</p>
 <h3 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算:"></a>布尔运算:</h3><p>  运算符:<br>    not   and    or</p>
 <ul>
 <li><p>布尔非操作 not<br>语法:<br>  not x<br>作用：<br>  对 x进行布尔取值,如 bool(x) 为True,则返回False, 否则返回True<br>示例:<br>  not True  # False<br>  not False  # True<br>  not 100  # False</p>
@@ -6870,7 +6870,7 @@ func(1,2,3,4)
 func(&quot;hello&quot;, &quot;world&quot;, 1, 2, 3)
 </code></pre><p>练习:<br>  写一个函数，mysum , 可以传入任意个实参的数字，返回所有实参的和<br>    def mysum(…..):<br>        ……<br>    print(mysum(1, 2, 3, 4))  # 10<br>    print(mysum(2,4,6))  # 12</p>
 <h3 id="命名关键字形参"><a href="#命名关键字形参" class="headerlink" title="命名关键字形参"></a>命名关键字形参</h3><p>语法:<br> def 函数名(<em>, 命名关键字形参):<br>    语句<br>或<br> def 函数名(</em>args, 命名关键字形参):<br>    语句<br>作用：<br> 所有的参数都必须用关键字传参或字典关键字传参传递</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>def fn(*, d, e):
     print(&quot;d=&quot;, d)
     print(&quot;e=&quot;, e)
@@ -6886,7 +6886,7 @@ def fm(*args, d, e):
 
 fm(1, 2, d=100, e=200)
 fm(*&quot;AB&quot;, **{&apos;e&apos;: 20, &apos;d&apos;:10})
-</code></pre><h3 id="双星号字典形参"><a href="#双星号字典形参" class="headerlink" title="双星号字典形参"></a>双星号字典形参</h3><p>语法:<br>def 函数名(**字典形参名):<br>    语句<br>作用：<br>收集多合的关键字传参<br>说明:<br> 通常字典形参名定为: “kwargs”<br>示例见:</p>
+</code></pre><h3 id="双星号字典形参"><a href="#双星号字典形参" class="headerlink" title="双星号字典形参"></a>双星号字典形参</h3><p>语法:<br>def 函数名(**字典形参名):<br>    语句<br>作用：<br>收集多合的关键字传参<br>说明:<br> 通常字典形参名定为: “kwargs”<br>示例:</p>
 <pre><code>def func(**kwargs):
     print(&quot;关键字参数个数是:&quot;, len(kwargs))
     print(&quot;kwargs =&quot;, kwargs)
@@ -6982,7 +6982,7 @@ def fx(fn):
     fn()  # 调用谁?
 fx(f1)  # 此语句在做什么？
 fx(f2)
-</code></pre><p>示例见:</p>
+</code></pre><p>示例:</p>
 <pre><code>def fx(a, fn):
     return fn(a)
 
@@ -6991,7 +6991,7 @@ print(&apos;最大值是:&apos;, fx(L, max))
 print(&apos;最小值是:&apos;, fx(L, min))
 print(&apos;和是:&apos;, fx(L, sum))
 </code></pre><p>函数可以返回另一个函数(即:另一个函数可以返回一个函数)</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>def get_fx():
     s = input(&apos;请输入您要做的操作: &apos;)
     if s == &apos;求最大&apos;:
@@ -7056,7 +7056,7 @@ def fn():
 fn()
 print(v)  # 200 
 </code></pre><p><strong>global说明</strong><br>1  全局变量如果要在函数内部被赋值，则必须经过全局声明（否则会被认为是局部变量)<br>2  全局变量在函数内部不经过声明就可以直接访问<br>3  不能先声明局部的变量，再用global声明为全局变量，此做法不附合规则<br>4  global 变量列表里的变量不能出现在此作用域内的形参列表里</p>
-<h3 id="nonlocal-语句"><a href="#nonlocal-语句" class="headerlink" title="nonlocal  语句"></a>nonlocal  语句</h3><p>作用:<br>    告诉解释器,　nonlocal声明的变量不是局部变量，也不是全局变量，而是外部嵌套函数内的变量<br>语法:<br>    nonlocal 变量名1, 变量名2, …<br>示例见:</p>
+<h3 id="nonlocal-语句"><a href="#nonlocal-语句" class="headerlink" title="nonlocal  语句"></a>nonlocal  语句</h3><p>作用:<br>    告诉解释器,　nonlocal声明的变量不是局部变量，也不是全局变量，而是外部嵌套函数内的变量<br>语法:<br>    nonlocal 变量名1, 变量名2, …<br>示例:</p>
 <pre><code>var = 100
 def f1():
     var = 200
@@ -7256,7 +7256,7 @@ if n == 4:
 print(&quot;递归退出第&quot;, 1, &apos;层&apos;)
 </code></pre><h3 id="递归的优缺点"><a href="#递归的优缺点" class="headerlink" title="递归的优缺点"></a>递归的优缺点</h3><p>优点：<br>    递归可以把问题简单化，让思路更为清晰，代码更简洁<br>缺点:<br>    递归因系统环境影响大，当递归深度太大时，可能会得到不可预知的结果</p>
 <p>递归函数的实现方法:<br>  先假设函数已经实现</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>def mysum(x):
     if x &lt;= 1:  # 设置递归的终止点
         return 1
@@ -7695,7 +7695,7 @@ from mymod1 import *
 myfun2()
 </code></pre><p>在引入包的时候，会出现一个<strong>pycache</strong>的文件夹，不要删除了，这里面存放了mymod1.pyc文件，该文件是mymod1.py运行产生的一个执行文件，后面调用的时候，直接调用的是该文件。</p>
 <p><strong>自定义的模块的模块名必须符合”标识符”的命名规则（同变量名)</strong></p>
-<p>模块有各自独立的作用域<br>  示例见:<br>    mymod2.py<br>    mymod1.py<br>    06_test_mymod.py</p>
+<p>模块有各自独立的作用域</p>
 <h3 id="模块化编程的优点"><a href="#模块化编程的优点" class="headerlink" title="模块化编程的优点"></a>模块化编程的优点</h3><ol>
 <li>有利于多人合作开发</li>
 <li>使代码更易于维护</li>
@@ -7825,7 +7825,7 @@ from 包名 import *
 from 包名.模块名 import *
 ...
 </code></pre><p>包的 <strong>init</strong>.py 内的 <strong>all</strong> 列表<br>作用:<br>     用来记录此包中有哪儿些子包或模块在用from 包 import <em><br>    语句导入时是否被调导入<br>说明:<br>    <strong>all</strong>列表只对 from import </em>语句起作用</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>mypack/games/__init__.py
 
     __all__ = [&apos;contra&apos;, &apos;tanks&apos;]
@@ -7882,7 +7882,7 @@ finally:
     最终执行语句
 </code></pre><p>作用：<br>  偿试捕获异常，将程序转为正常状态并继续执行</p>
 <p>语法说明:<br>   as 子句是用于绑定错误对象的变量，可以省略不写<br>   except子句可以有一个或多个，但至少要有一个<br>   else子句最多只能有一个，也可以省略不写<br>   finally子句最多只能有一个，也可以省略不写</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>def div_apple(n):
     print(&apos;%d个苹果您想分给几个人?&apos; % n)
     s = input(&apos;请输入人数: &apos;)
@@ -7924,7 +7924,7 @@ try:
 except:
     print(&quot;程序已转为正常状态!&quot;)
 </code></pre><p>问题:<br>  try-except 语句干什么用?<br>  请问错误通知是谁发出的?怎么发出?</p>
-<h3 id="raise-语句"><a href="#raise-语句" class="headerlink" title="raise 语句"></a>raise 语句</h3><p>作用:<br>    触发一个错误,让程序进入异常状态<br>语法:<br>    raise 异常类型<br>    或<br>    raise 异常对象<br>示例见:</p>
+<h3 id="raise-语句"><a href="#raise-语句" class="headerlink" title="raise 语句"></a>raise 语句</h3><p>作用:<br>    触发一个错误,让程序进入异常状态<br>语法:<br>    raise 异常类型<br>    或<br>    raise 异常对象<br>示例:</p>
 <pre><code>def make_except():
     print(&quot;开始...&quot;)
     # raise ZeroDivisionError  # 手动发生一个错误通知
@@ -7959,7 +7959,7 @@ except OverflowError as err:
     age = 0
 
 print(&quot;得到的年龄是:&quot;, age)
-</code></pre><h3 id="assert-语句-断言语句"><a href="#assert-语句-断言语句" class="headerlink" title="assert 语句(断言语句)"></a>assert 语句(断言语句)</h3><p>语法:<br>    assert 真值表达式, 错误数据(通常是字符串)<br>作用:<br>    当真值表达式为False时,用错误数据创建一个 AssertionError 类型的错误,并进入异常状态<br>类似于:<br>    if 真值表达式 == False:<br>        raise AssertionError(错误数据)<br>示例见:</p>
+</code></pre><h3 id="assert-语句-断言语句"><a href="#assert-语句-断言语句" class="headerlink" title="assert 语句(断言语句)"></a>assert 语句(断言语句)</h3><p>语法:<br>    assert 真值表达式, 错误数据(通常是字符串)<br>作用:<br>    当真值表达式为False时,用错误数据创建一个 AssertionError 类型的错误,并进入异常状态<br>类似于:<br>    if 真值表达式 == False:<br>        raise AssertionError(错误数据)<br>示例:</p>
 <pre><code>def get_age():
     a = int(input(&quot;请输入年龄: &quot;))
     # 以下语句会在a不在 [0,140]时触发AssertionError错误
@@ -8010,7 +8010,7 @@ while True:
 <h3 id="生成器函数定义"><a href="#生成器函数定义" class="headerlink" title="生成器函数定义"></a>生成器函数定义</h3><p>  含有 yield 语句的函数是生成器函数，此函数被调用时将返回 一个生成器对象<br>   注: yield 翻译为产生（或生成)</p>
 <p>yield 语句<br>  语法:<br>    yield 表达式<br>　　说明:<br>    yield用于def函数中，目的是将此函数作为生成器函数使用<br>    yield用来生成数据，供迭代器 next(it) 函数使用</p>
 <p>补充说明：后面协程也会经常用到yield语句。</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>def myyield():
     &apos;&apos;&apos;此函数为生成器函数&apos;&apos;&apos;
     print(&quot;即将生成2&quot;)
@@ -8169,7 +8169,7 @@ b&apos;hello tarena&apos;
 <li>关闭文件<br>任何的操作系统，一个应用程序同时打开文件的数量有最大数限制</li>
 </ol>
 <h2 id="文件的打开函数-open"><a href="#文件的打开函数-open" class="headerlink" title="文件的打开函数 open"></a>文件的打开函数 open</h2><p>  open(file, mode=’rt’) 用于打开一个文件，返回此文件对应的文件流对象，如果打开失败，则会触发OSError错误！</p>
-<h2 id="文件关闭方法"><a href="#文件关闭方法" class="headerlink" title="文件关闭方法"></a>文件关闭方法</h2><p>  F.close()  关闭，释放系统资源<br>示例见:</p>
+<h2 id="文件关闭方法"><a href="#文件关闭方法" class="headerlink" title="文件关闭方法"></a>文件关闭方法</h2><p>  F.close()  关闭，释放系统资源<br>示例:</p>
 <pre><code>try:
     # f = open(&apos;/etc/passwd&apos;)  # 此时能成功打开
 
@@ -8186,7 +8186,7 @@ except OSError:
 <p>文本文件的操作<br>   默认文件中存储的都为字符数据，以行为单位进行分隔，在python内部统一用’\n’作为换行进行分隔<br>   对文本文件读写需要用字符串(str)进行数据读取和写入</p>
 <p>各种操作系统的换行符:<br>  Linux换行符       : ‘\n’<br>  Window换行符      : ‘\r\n’<br>  旧的Macintosh换行符: ‘\r’<br>  新的Mac Os 换行符  : ‘\n’</p>
 <p>练习:<br>  自己写一个文件’info.txt’ 内部存一些文字信息<br>       张三 20 100<br>       李四 21 96<br>       小王 22 98<br>  写程序将这些数据读取出来，打印在屏幕终端上</p>
-<p>F.readlines 示例见:</p>
+<p>F.readlines 示例:</p>
 <pre><code>try:
     f = open(&apos;../exercise/info.txt&apos;)
     L = f.readlines()  # 返回所有行文字的列表
@@ -8249,7 +8249,7 @@ f.close()
 except OSError:
     print(&quot;打开文件失败!&quot;)
 </code></pre><p>F.seek()  方法<br>  F.seek(偏移量, whence=相对位置)<br>    偏移量:<br>      大于0代表向文件末尾方向移动<br>      小于0代表向文件头方向移动<br>    相对位置:<br>      0 代表人文件头开始<br>      1 代表从当前读写位置开始偏移<br>      2 代表从文件尾开始偏移</p>
-<p>  示例见:</p>
+<p>  示例:</p>
 <pre><code>f = open(&apos;data.txt&apos;, &apos;rb&apos;)
 # 方法1
 # f.seek(5, 0)  # 相对于文件头向后移动5个字节
@@ -8353,7 +8353,7 @@ dog2.sleep(2)
 Dog.play(dog2, &apos;杂技&apos;)
 </code></pre><h3 id="属性-attribute-也叫实例变量"><a href="#属性-attribute-也叫实例变量" class="headerlink" title="属性 attribute(也叫实例变量)"></a>属性 attribute(也叫实例变量)</h3><p>  每个实例都可以有自己的变量,此变量称为实例变量(也叫属性)</p>
 <h4 id="属性的使用语法"><a href="#属性的使用语法" class="headerlink" title="属性的使用语法:"></a>属性的使用语法:</h4><p>  实例.属性名</p>
-<h4 id="赋值规则"><a href="#赋值规则" class="headerlink" title="赋值规则:"></a>赋值规则:</h4><p>  首次为属性赋值则创建此属性<br>  再次为属性赋值则必变属性的绑定关系<br>作用:<br>  用来记录对象自身的数据<br>示例见:</p>
+<h4 id="赋值规则"><a href="#赋值规则" class="headerlink" title="赋值规则:"></a>赋值规则:</h4><p>  首次为属性赋值则创建此属性<br>  再次为属性赋值则必变属性的绑定关系<br>作用:<br>  用来记录对象自身的数据<br>示例:</p>
 <pre><code>class Dog:
     pass
 
@@ -8444,7 +8444,7 @@ a4.run(300)  #
 t1 = Car(&apos;蓝色&apos;, &apos;TESLA&apos;, &apos;Modle S&apos;)
 t1.run(299)
 </code></pre><p>练习:<br>  修改前的Student 类,<br>   1) 为该类添加初始化方法,实现在创建对象时自动设置 ‘姓名’, ‘年龄’, ‘成绩’ 属性<br>   2) 添加set_score方法能为对象修改成绩信息<br>   3) 添加show_info方法打印学生对象的信息</p>
-<h3 id="析构方法"><a href="#析构方法" class="headerlink" title="析构方法"></a>析构方法</h3><p>  语法:<br>    class 类名(继承列表):<br>        def <strong>del</strong>(self):<br>           语句块<br>  说明:<br>    析构方法在对象销毁时被自动调用<br>  作用:<br>    清理此对象所占用的资源<br>  示例见:</p>
+<h3 id="析构方法"><a href="#析构方法" class="headerlink" title="析构方法"></a>析构方法</h3><p>  语法:<br>    class 类名(继承列表):<br>        def <strong>del</strong>(self):<br>           语句块<br>  说明:<br>    析构方法在对象销毁时被自动调用<br>  作用:<br>    清理此对象所占用的资源<br>  示例:</p>
 <pre><code>class Car:
     def __init__(self, name):
         self.name = name
@@ -8481,7 +8481,7 @@ dog3 = dog1.__class__()  # 创建dog1的同类对象
 <pre><code>1. 教别人学东西 teach
 2. 赚钱
 3. 借钱
-</code></pre><p>  事情:<br>     张三 教 李四 学 python<br>     李四 教 张三 学 跳皮筋<br>     张三 上班赚了 1000元钱<br>     李四向张三借了 200元<br>  示例见:</p>
+</code></pre><p>  事情:<br>     张三 教 李四 学 python<br>     李四 教 张三 学 跳皮筋<br>     张三 上班赚了 1000元钱<br>     李四向张三借了 200元<br>  示例:</p>
 <pre><code>class Human:
     &apos;&apos;&apos;人类,用于描述人的行为和属性&apos;&apos;&apos;
     def __init__(self, n, a):
@@ -8654,7 +8654,7 @@ print(v)
 <li>请问: 类内能不能有函数,这个函数不属于类,也不属于实例</li>
 </ol>
 <p>静态方法 @staticmethod<br>  静态方法不属于类,也不属于类的实例,它相当于定义在类内普通函数,只是它的作用域属于类</p>
-<p>  示例见:</p>
+<p>  示例:</p>
 <pre><code>class A:
     @staticmethod
     def myadd(x, y):
@@ -8691,7 +8691,7 @@ print(&apos;100+200=&apos;, a.myadd(100, 200))
 </ol>
 <p>继承/派生的名词<br>  基类(base class), 超类(super class), 父类(father class)<br>  派生类(derived class) / 子类(child class)</p>
 <h3 id="单继承"><a href="#单继承" class="headerlink" title="单继承"></a>单继承</h3><p>  语法:<br>    class 类名(基类名):<br>        语句块<br>  说明<br>    单继承是指派生类由一个基类衍生出来的类</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>class Human:
     &apos;&apos;&apos;此类用来描述人类的共性行为&apos;&apos;&apos;
     def say(self, that):  # 说话
@@ -8732,7 +8732,7 @@ t1.teach(&apos;面向对象&apos;)
 <p>  语法:<br>    class 类名(基类名1, 基类名2, ….):<br>        语句块<br>  说明:</p>
 <pre><code>1. 一个子类同时继承自多个父类,父类中的方法可以同时被继承下来
 2. 如果两个父类中有同名的方法,而在子类中又没有覆盖此方法时,调用结果难以确定
-</code></pre><p>  示例见:</p>
+</code></pre><p>  示例:</p>
 <pre><code>class Car:
     def run(self, speed):
         print(&quot;汽车以&quot;, speed, &apos;公里/小时的速度行驶&apos;)
@@ -8748,7 +8748,7 @@ p1 = PlaneCar()
 p1.fly(10000)
 p1.run(300)
 </code></pre><p><strong>多继承的问题(缺陷)</strong><br>  标识符(名字空间冲突的问题)<br>    要谨慎使用多继承</p>
-<p>  示例见:</p>
+<p>  示例:</p>
 <pre><code>class A:
     def m(self):
         print(&quot;A.m()被调用&quot;)
@@ -8811,7 +8811,7 @@ d.m()  # 调用方法的顺序是什么?
 for x in D.__mro__:
     print(x)
 </code></pre><h3 id="覆盖-override"><a href="#覆盖-override" class="headerlink" title="覆盖 override"></a>覆盖 override</h3><p>什么覆盖<br>    覆盖是指在有继承关系的类中,子类中实现了与基类同名的方法,在子类实例调用该方法时,实例调用的是子类中的覆盖版本的方法,这种现象叫做覆盖</p>
-<p>  示例见:</p>
+<p>  示例:</p>
 <pre><code>class A:
     def work(self):
         print(&quot;A.work()被调用&quot;)
@@ -8851,7 +8851,7 @@ super(B, b).work()  # 调用超类的方法
 
 b.super_work()
 </code></pre><p>显式调用基类的初始化方法：<br>  当子类中实现了<strong>init</strong>方法时，基类的<strong>init</strong>方法并不会被自动调用，此时需要显式调用</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>class Human:
     def __init__(self, n, a):
         &apos;&apos;&apos;此方法为人的对象添加，姓名和年龄属性&apos;&apos;&apos;
@@ -8970,7 +8970,7 @@ n1 = MyNumber()
 
 x = len(n1)  # 重写了__len__方法才可以
 print(&apos;x =&apos;, x)
-</code></pre><p>示例见:</p>
+</code></pre><p>示例:</p>
 <pre><code>class MyNumber:
     def __init__(self, value):
         self.data = value
@@ -9016,7 +9016,7 @@ print(n1)
 </tr>
 </tbody>
 </table>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>class MyNumber:
     def __init__(self, v):
         self.data = v
@@ -9062,7 +9062,7 @@ print(n)
 </tr>
 </tbody>
 </table>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>class MyList:
     &apos;&apos;&apos;自定义列表类&apos;&apos;&apos;
     def __init__(self, iterator=[]):
@@ -9127,7 +9127,7 @@ print(&apos;myl的长度是: &apos;, len(myl))
     def __iter__(self):
         语句块
         return 迭代器
-</code></pre><p>  示例见:</p>
+</code></pre><p>  示例:</p>
 <pre><code>class MyList:
     def __init__(self, iterator):
         &apos;&apos;&apos;自定义列表类的初始化方法,此方法创建一个data实例
@@ -9194,7 +9194,7 @@ print(sum(Fibonacci(25)))
 
 def __next__(self):
     ....
-</code></pre><h2 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h2><p>  语法:<br>    with 表达式1 [as 变量1], 表达式2 [as 变量2]:<br>        语句块<br>  作用:<br>    使用于对资源进行访问的场合,确保使用过程中不管是否发生异常,都会执行必须的’清理’操作,并释放资源<br>       如: 文件使用后自动关闭, 线程中锁的自动获取和释放等<br>  示例见:</p>
+</code></pre><h2 id="with-语句"><a href="#with-语句" class="headerlink" title="with 语句"></a>with 语句</h2><p>  语法:<br>    with 表达式1 [as 变量1], 表达式2 [as 变量2]:<br>        语句块<br>  作用:<br>    使用于对资源进行访问的场合,确保使用过程中不管是否发生异常,都会执行必须的’清理’操作,并释放资源<br>       如: 文件使用后自动关闭, 线程中锁的自动获取和释放等<br>  示例:</p>
 <pre><code>def read_from_file(filename=&apos;info.txt&apos;):
     try:
         f = open(filename)
@@ -9907,7 +9907,7 @@ print(L5)  # MyList([1,2,3,1,2,3])
 </tr>
 </tbody>
 </table>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>class MyList:
     def __init__(self, iterable):
         self.data = list(iterable)
@@ -9978,7 +9978,7 @@ print(L6)
 </tr>
 </tbody>
 </table>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>class MyList:
     def __init__(self, iterable):
         print(&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;)
@@ -10219,7 +10219,7 @@ print(L2)
 </code></pre><p>运算符重载说明:<br>    运算符重载不能改变运算符的优先级</p>
 <p>Python类名最好用驼峰命名法:<br>  MyList  MyRange  大驼峰(所有单词首字母大写,其余小写)<br>  getStudentAge    小驼峰(第一个单词首字母小写，其它首字母大写)</p>
 <h3 id="in-not-in-运算符的重载"><a href="#in-not-in-运算符的重载" class="headerlink" title="in / not in 运算符的重载"></a>in / not in 运算符的重载</h3><p>  重载方法:<br>    <strong>contains</strong>(self, e)      e in self 成员运算</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>class MyList:
     def __init__(self, iterable):
         print(&quot;__init__被调用&quot;)
@@ -10308,7 +10308,7 @@ print(L1)
 # print(L1[&apos;hello&apos;])
 </code></pre><h3 id="slice-构造函数"><a href="#slice-构造函数" class="headerlink" title="slice 构造函数"></a>slice 构造函数</h3><p>  作用:<br>    用于创建一个Slice切片对象, 此对象存储一个切片的起始值，终止值和步长信息<br>  slice(start, stop=None, step=None)  创建一个切片对象</p>
 <p>  slice的对象的属性:<br>  　　s.start  切片起始值,默认为None<br>  　　s.stop   切片终止值,默认为None<br>  　　s.step   切片步长  ,默认为None</p>
-<p>示例见:</p>
+<p>示例:</p>
 <pre><code>class MyList:
     def __init__(self, iterable):
         print(&quot;__init__被调用&quot;)

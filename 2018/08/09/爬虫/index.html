@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="内容简介第一章：爬虫简介，简单介绍了什么是爬虫，爬虫的作用，及如何实现一个爬虫，爬虫所需要的先决知识及关键核心技术等等，分级别的告诉大家初级爬虫工程师，中级爬虫工程师及高级爬虫工程师所需要的知识体系及技能。第二章：介绍了关于爬虫的一些基本常识，包括爬虫的法律风险等，之后介绍了怎么对需要爬取的网站进行背景调研：网站的Robots协议，Sitemap，怎么估算网站的大小，怎么识别网站用了什么技术架构，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-11T09:34:44.978Z">
+<meta property="og:updated_time" content="2018-08-21T13:08:43.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬虫">
 <meta name="twitter:description" content="内容简介第一章：爬虫简介，简单介绍了什么是爬虫，爬虫的作用，及如何实现一个爬虫，爬虫所需要的先决知识及关键核心技术等等，分级别的告诉大家初级爬虫工程师，中级爬虫工程师及高级爬虫工程师所需要的知识体系及技能。第二章：介绍了关于爬虫的一些基本常识，包括爬虫的法律风险等，之后介绍了怎么对需要爬取的网站进行背景调研：网站的Robots协议，Sitemap，怎么估算网站的大小，怎么识别网站用了什么技术架构，">
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  16,338 字
+                  16,340 字
                 </span>
               
 
@@ -907,7 +907,7 @@ print(text)
 sudo pip install scrapy
 </code></pre><h3 id="10-2-2-制作一个Scrapy爬虫需要的四个步骤"><a href="#10-2-2-制作一个Scrapy爬虫需要的四个步骤" class="headerlink" title="10.2.2 制作一个Scrapy爬虫需要的四个步骤"></a>10.2.2 制作一个Scrapy爬虫需要的四个步骤</h3><ul>
 <li><p>新建项目 (scrapy startproject spiderName)新建一个新的爬虫项目，一个项目可能包含很多个爬虫;<br>scrapy startproject tencentSpider<br>查看项目结构：</p>
-<p>  tarena@tedu:~/Spider/tencentSpider$ tree.：<br>  ├── scrapy.cfg<br>  └── tencentSpider</p>
+<p>  qixinyue.github.io:~/Spider/tencentSpider$ tree.：<br>  ├── scrapy.cfg<br>  └── tencentSpider</p>
 <pre><code>├── __init__.py
 ├── items.py
 ├── middlewares.py
@@ -918,7 +918,7 @@ sudo pip install scrapy
 </code></pre><p>  2 directories, 7 files</p>
 </li>
 <li><p>明确目标：明确你想要抓取的目标，生产一个具体的爬虫</p>
-<p>  scrapy genspider tencent<br>  cd tencentSpider<br>  scrapy genspider tencent hr.tencent.com<br>  tarena@tedu:~/Spider/tencentSpider$ tree<br>  ├── scrapy.cfg<br>  ├── tecentLog.txt<br>  └── tencentSpider</p>
+<p>  scrapy genspider tencent<br>  cd tencentSpider<br>  scrapy genspider tencent hr.tencent.com<br>  qixinyue.github.io:~/Spider/tencentSpider$ tree<br>  ├── scrapy.cfg<br>  ├── tecentLog.txt<br>  └── tencentSpider</p>
 <pre><code>├── __init__.py
 ├── __init__.pyc
 ├── items.py
