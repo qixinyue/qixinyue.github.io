@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Tornado," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Tornado项目简单创建 Tornado是使用Python编写的一个强大的、可扩展的Web服务器。它在处理严峻的网络流量时表现得足够强健，但却在创建和编写时有着足够的轻量级，并能够被用在大量的应用和工具中。 tornado技术文档：Tornado文档中文翻译版 ubuntu下安装tornado： pip install tarnado  (其他安装方式自行百度) Tornado 主要服务分为">
+<meta name="keywords" content="Tornado">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tornado">
+<meta property="og:url" content="https://qixinyue.github.io/2018/08/22/Tornado/index.html">
+<meta property="og:site_name" content="响神的博客">
+<meta property="og:description" content="Tornado项目简单创建 Tornado是使用Python编写的一个强大的、可扩展的Web服务器。它在处理严峻的网络流量时表现得足够强健，但却在创建和编写时有着足够的轻量级，并能够被用在大量的应用和工具中。 tornado技术文档：Tornado文档中文翻译版 ubuntu下安装tornado： pip install tarnado  (其他安装方式自行百度) Tornado 主要服务分为">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-22T13:47:46.601Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tornado">
+<meta name="twitter:description" content="Tornado项目简单创建 Tornado是使用Python编写的一个强大的、可扩展的Web服务器。它在处理严峻的网络流量时表现得足够强健，但却在创建和编写时有着足够的轻量级，并能够被用在大量的应用和工具中。 tornado技术文档：Tornado文档中文翻译版 ubuntu下安装tornado： pip install tarnado  (其他安装方式自行百度) Tornado 主要服务分为">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://qixinyue.github.io/2018/08/22/Tornado/"/>
+
+
+
+
+
+  <title>Tornado | 响神的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">响神的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">计算机编程-python入门到精通</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/22/Tornado/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Tornado</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T21:29:59+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web框架/" itemprop="url" rel="index">
+                    <span itemprop="name">web框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/08/22/Tornado/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/08/22/Tornado/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,673 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Tornado项目简单创建</p>
+<p>Tornado是使用Python编写的一个强大的、可扩展的Web服务器。它在处理严峻的网络流量时表现得足够强健，但却在创建和编写时有着足够的轻量级，并能够被用在大量的应用和工具中。</p>
+<p>tornado技术文档：Tornado文档中文翻译版</p>
+<p>ubuntu下安装tornado： pip install tarnado  (其他安装方式自行百度)</p>
+<p>Tornado 主要服务分为  服务器模块（httpserver）    IO接口模块（ioloop）    web模块（web）</p>
+<p>TORNADO 项目的简单创建<br>初步使用这三大模块来建立一个简易的 web 服务</p>
+<pre><code> 1 #导入相关服务模块
+ 2 
+ 3 import tornado.httpserver
+ 4 
+ 5 import tornado.ioloop
+ 6 
+ 7 import tornado.web
+ 8 
+ 9 
+10 
+11 class IndexHandler(tornado.web.RequestHandler):
+12     def get(self):
+13         greeting = self.get_argument(&apos;greeting&apos;, &apos;Hello&apos;)
+14         self.write(greeting + &apos;, friendly user!&apos;)
+15 
+16 
+17 if __name__ == &quot;__main__&quot;:
+18 
+19     app = tornado.web.Application(
+20          handlers=[(r&quot;/&quot;, IndexHandler)]
+21 )
+22     http_server = tornado.httpserver.HTTPServer(app)
+23     http_server.listen(8000)
+24     tornado.ioloop.IOLoop.current().start()
+</code></pre><p>以上就是一个简单的web服务，通过访问该 ip 的8000端口 就能访问到设置的相关信息或界面！</p>
+<p>我们来认识一下上面的相关代码：</p>
+<p>类 IndexHandler 是一个句柄：描述控制器操作过程的一个动作</p>
+<p>在app中设置路由及其他一些操作,参数handlers非常重要，它应该是一个元组组成的列表，其中每个元组的第一个元素是一个用于匹配的正则表达式，第二个元素是一个RequestHanlder类(即句柄)。你可以按你的需要指定任意多个。</p>
+<p>通过 tornado.httpserver.HTTPServer 绑定 Application 对象</p>
+<p>通过 tornado.httpserver.HTTPServer().listen() 设置监听端口</p>
+<p>通过 tornado.ioloop.IOLoop.current().start() 开始循环监听端口</p>
+<p>TORNADO 框架的初步应用<br>下面开始真正探讨 Tornado 的一些模块与功能：</p>
+<p>全局变量的定义：</p>
+<pre><code>1 import  tornado.options
+2 
+3 tornado.options.define(“port” , default = 8888,type = int, help = “程序启动端口”)
+4 
+5 tornado.options.define(“msg”,default = “这是一条测试信息”）
+</code></pre><p>以上就是全局变量的定义方法，我们定义了一个端口与一个“msg”测试信息。</p>
+<p>使用全局变量：我们已经定义好了一个端口变量，现在我们来使用它，例如;</p>
+<pre><code>1 port = tornado.options.options.port
+2 
+3 http_server.listen(port)
+</code></pre><p>接受命令行参数：</p>
+<pre><code>1 tornado.options.parse_command_line()
+</code></pre><p>加载配置文件到程序中：</p>
+<p>如：创建一个配置文件，文件名：config    文件内容：port = 8000</p>
+<p>加载文件： tornado.options.parse_config_file(“./config”)</p>
+<p>配置文件中的变量一定确保已经被 define 定义过！<br>指定网页模板目录和指定静态文件目录：</p>
+<pre><code>1 import os
+2 
+3 BASE_DIR = os.path.dirname(__file__)
+4 
+5 template_path = os.path.join(BASE_DIR,“templates”）
+6 
+7 static_path = os.path.join(BASE_DIR,“static”）
+</code></pre><p>定义路径的语句app中，模板与静态文件为同级目录下的 templates 与 static 文件夹</p>
+<pre><code>1 app = tornado.web.Application(
+2 handlers=[(r&quot;/&quot;, IndexHandler)]， debug = True #开启开发调试模式template_path = os.path.join(BASE_DIR,“templates”）
+3 static_path = os.path.join(BASE_DIR,“static”）
+4 )
+</code></pre><p>使用static_url生成静态URL：</p>
+<pre><code>1 &lt;link rel=&quot;stylesheet&quot; href=&quot;[[ static_url(&quot;style.css&quot;) ]]&quot;&gt;
+2 #生成了类似下面的代码
+3 &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/style.css?v=ab12&quot;&gt;
+</code></pre><p>数据的传输：</p>
+<pre><code>get方式接收 –&gt;
+
+         单个数据：get_query_argument()     多个数据：get_query_arguments()
+
+post方式接收 –&gt;
+
+          单个数据：get_body_argument()     多个数据：get_body_arguments()
+
+未指定方式接收 –&gt;
+
+          单个数据：get_argument()     多个数据：get_arguments()
+</code></pre><p>HTTP状态码：</p>
+<p>404 Not Found<br>Tornado会在HTTP请求的路径无法匹配任何RequestHandler类相对应的模式时返回404（Not Found）响应码。</p>
+<p>400 Bad Request<br>如果你调用了一个没有默认值的get_argument函数，并且没有发现给定名称的参数，Tornado将自动返回一个400（Bad Request）响应码。</p>
+<p>405 Method Not Allowed<br>如果传入的请求使用了RequestHandler中没有定义的HTTP方法（比如，一个POST请求，但是处理函数中只有定义了get方法），Tornado将返回一个405（Methos Not Allowed）响应码。</p>
+<p>500 Internal Server Error<br>当程序遇到任何不能让其退出的错误时，Tornado将返回500（Internal Server Error）响应码。你代码中任何没有捕获的异常也会导致500响应码。</p>
+<p>200 OK<br>如果响应成功，并且没有其他返回码被设置，Tornado将默认返回一个200（OK）响应码。</p>
+<p>使用自己的方法代替默认的错误响应，你可以重写write_error方法在你的RequestHandler类中。</p>
+<pre><code>1 def write_error(self, status_code, **kwargs):
+2         self.write(&quot;Gosh darnit, user! You caused a %d error.&quot; % status_code)
+</code></pre><p>cookies设置：</p>
+<p>Cookie 是由 Web 服务器保存在用户浏览器（客户端）上的小文本文件，它可以包含有关用户的信息。无论何时用户链接到服务器，Web 站点都可以访问 Cookie 信息 。</p>
+<p>会话跟踪是一种灵活、轻便的机制，它使Web上的状态编程变为可能。<br>HTTP是一种无状态协议，每当用户发出请求时，服务器就会做出响应，客户端与服务器之间的联系是离散的、非连续的。<br>当用户在同一网站的多个页面之间转换时，根本无法确定是否是同一个客户，会话跟踪技术就可以解决这个问题。<br>当一个客户在多个页面间切换时，服务器会保存该用户的信息。<br>有四种方法可以实现会话跟踪技术：URL重写、隐藏表单域、Cookie、Session。</p>
+<p>存入数据：</p>
+<pre><code> 1 self.set_cookie(“msg”:”这是一条测试信息！”)                #一般安全cookie
+ 2 
+ 3 ————————————————————————————————————————
+ 4 
+ 5 self.set_secure_cookie(“msg”:”这是一条安全cookie测试信息！”)            #安全cookie
+ 6 
+ 7 #！！！设置安全cookie前必须具有混淆码    设置方式如下
+ 8 
+ 9 # 1.生成一个混淆码
+10 
+11 # import uuid，base64
+12 
+13 # code =  base64.b64encode(uuid.uuid4().bytes+uuid.uuid4().bytes)
+14 
+15 # 2.将混淆码加入cookie设置（在app里添加以下代码）
+16 
+17 # cookie_secret = “%s”%code
+18 
+19 ————————————————————————————————————————
+20 
+21 #可以向set_cookie和set_secure_cookie方法传递关键字参数。比如，一个安全的HTTP-only cookie（上面的安全cookie其实是签名cookie）可以调用self.set_cookie(&apos;foo&apos;, &apos;bar&apos;, httponly=True, secure=True)发送。
+</code></pre><p>设置过期时间的 cookie 为永久 cookie ， 没有设置的为临时 cookie，如：</p>
+<pre><code>self.set_cookie(“msg”:”这是一条测试信息！”，expires_day = 1)
+</code></pre><p>读取数据：</p>
+<pre><code>1 self.get_cookie(“msg”)
+2 
+3 self.get_secure_cookie()
+</code></pre><p>cookie认证装饰器：</p>
+<p>引入装饰器    -&gt; –&gt;      from tornado.web import authenticated<br>在需要装饰的方法前加     -&gt; –&gt;     @authenticated<br>在 app 中添加认证失败的跳转地址    -&gt; –&gt;       login_url = “/login”<br>重写装饰器中获取数据函数</p>
+<pre><code>1 def  get_current_user(self):
+2 
+3         status = self.get_secure_cookies(“login_user”)
+4 
+5         if status:
+6 
+7                 return True
+8 
+9          return  False
+</code></pre><p>跨域请求伪造防范：</p>
+<p>跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。</p>
+<p>任何Web应用所面临的一个主要安全漏洞是跨站请求伪造，通常被简写为CSRF或XSRF，发音为”sea surf”。这个漏洞利用了浏览器的一个允许恶意攻击者在受害者网站注入脚本使未授权请求代表一个已登录用户的安全漏洞。</p>
+<p>app 中添加 xsrf——cookies = True</p>
+<p>html页面提交表单中加入 [\% module xsrf_form_html( ) \%]</p>
+<p>XSRF令牌和AJAX请求：<br>AJAX请求也需要一个_xsrf参数，但不是必须显式地在渲染页面时包含一个_xsrf值，而是通过脚本在客户端查询浏览器获得cookie值。下面的两个函数透明地添加令牌值给AJAX POST请求。第一个函数通过名字获取cookie，而第二个函数是一个添加_xsrf参数到传递给postJSON函数数据对象的便捷函数。</p>
+<pre><code> 1 function getCookie(name) [
+ 2     var c = document.cookie.match(&quot;\\b&quot; + name + &quot;=([^;]*)\\b&quot;);
+ 3     return c ? c[1] : undefined;
+ 4 ]
+ 5 
+ 6 jQuery.postJSON = function(url, data, callback) [
+ 7     data._xsrf = getCookie(&quot;_xsrf&quot;);
+ 8     jQuery.ajax([
+ 9         url: url,
+10         data: jQuery.param(data),
+11         dataType: &quot;json&quot;,
+12         type: &quot;POST&quot;,
+13         success: callback
+14     ]);
+15 ]
+</code></pre><p>同步与异步：<br>大部分Web应用（包括我们之前的例子）都是阻塞性质的，也就是说当一个请求被处理时，这个进程就会被挂起直至请求完成。在大多数情况下，Tornado处理的Web请求完成得足够快使得这个问题并不需要被关注。然而，对于那些需要一些时间来完成的操作（像大数据库的请求或外部API），这意味着应用程序被有效的锁定直至处理结束，Tornado给了我们更好的方法来处理这种情况。应用程序在等待第一个处理完成的过程中，让I/O循环打开以便服务于其他客户端，直到处理完成时启动一个请求并给予反馈，而不再是等待请求完成的过程中挂起进程。</p>
+<p>这里用一个简单的例子来实现同步与异步：</p>
+<p>Eg：向淘宝发起搜索请求：<a href="https://suggest.taobao.com/sug?code=utf-8&amp;q=（关键字）" target="_blank" rel="noopener">https://suggest.taobao.com/sug?code=utf-8&amp;q=（关键字）</a></p>
+<p>先写一个同步的简例</p>
+<pre><code> 1 import  tornado.web
+ 2 
+ 3 import tornado.httpserver
+ 4 
+ 5 import tornado.httpclient
+ 6 
+ 7 import tornado.ioloop
+ 8 
+ 9 import urllib,json
+10 
+11 
+12 
+13 class IndexHandler(tornado.web.RequestHandler):
+14 
+15         def    get(self):
+16 
+17                 query = “iphonex”
+18 
+19                 client = tornado.httpclient.HTTPClient()
+20 
+21                 response = client.fetch(“https://suggest.taobao.com/sug?code=utf-8&amp;”+urllib.parse.urlencode([“q”:query]))
+22 
+23 
+24 
+25         def deal_response(self,response):
+26 
+27                 content = response.body
+28 
+29                 self.write(response.body)
+30 
+31 
+32 
+33 if __name__  ==  “__main__”:
+34 
+35         app  =  tornado.web.Application(handlers  =  [(r”/”,IndexHandler)])
+36 
+37         app.listen(8000)
+38 
+39         tornado.ioloop.IOLoop.current().start()
+</code></pre><p>再用异步的方式写一下：</p>
+<pre><code> 1 import  tornado.web
+ 2 
+ 3 import tornado.httpserver
+ 4 
+ 5 import tornado.httpclient
+ 6 
+ 7 import tornado.ioloop
+ 8 
+ 9 import urllib,json
+10 
+11 from tornado.httpclient  import AsyncHTTPClient
+12 
+13 
+14 
+15 class IndexHandler(tornado.web.RequestHandler):
+16 
+17         #异步请求装饰器，如果不添加，get函数会自动生成一个return，程序会报错
+18 
+19        @tornado.web.asynchronous
+20 
+21         def    get(self):
+22 
+23                 query = “iphonex”
+24 
+25                 client = tornado.httpclient.HTTPClient()
+26 
+27                 response = client.fetch(“https://suggest.taobao.com/sug?code=utf-8&amp;”+urllib.parse.urlencode([“q”:query])，callback = self.deal_response)
+28 
+29                 self.write(response.body)
+30 
+31                 self.finish()         #回调函数结束时需要
+32 
+33 
+34 
+35 if __name__  ==  “__main__”:
+36 
+37         app  =  tornado.web.Application(handlers  =  [(r”/”,IndexHandler)])
+38 
+39         app.listen(8000)
+40 
+41         tornado.ioloop.IOLoop.current().start()
+</code></pre><p>在运行程序过程中，从浏览器上感觉不出同步异步有什么不同，可以用 siege 压力测试一下：<br>（siege 安装方式：sudo apt-get install siege）</p>
+<p>image         image</p>
+<p>上图左边是同步测试，右边是异步测试（连接量10，时间10s）。可以看出相同环境下，异步的连接处理数是同步的六倍，异步平均每秒18.32，同步平均每秒只有3.58</p>
+<p>模板语法<br>填充表达式：</p>
+<pre><code>1 &gt;&gt;&gt; from tornado.template import Template
+2 &gt;&gt;&gt; print Template(&quot;[[ 1+1 ]]&quot;).generate()
+3 2
+4 &gt;&gt;&gt; print Template(&quot;[[ &apos;scrambled eggs&apos;[-4:] ]]&quot;).generate()
+5 eggs
+6 &gt;&gt;&gt; print Template(&quot;[[ &apos;, &apos;.join([str(x*x) for x in range(10)]) ]]&quot;).generate()
+7 0, 1, 4, 9, 16, 25, 36, 49, 64, 81
+</code></pre><p>控制流语句：</p>
+<pre><code>在Tornado模板中使用Python条件和循环语句。控制语句以[\%和\%]包围
+
+[\% if page is None \%]    或      [\% if len(entries) == 3 \%]
+控制语句的大部分就像对应的Python语句一样工作，支持if、for、while和try。在这些情况下，语句块以[%开始，并以%]结束。
+
+1 &lt;h1&gt;[a[ header ]a]&lt;/h1&gt;
+2 &lt;ul&gt;
+3   [\% for book in books \%]
+4    &lt;li&gt;[a[ book ]a]&lt;/li&gt;
+5   [\% end \%]
+6 &lt;/ul&gt;
+</code></pre><p>模板函数：</p>
+<p>escape(s)<br>替换字符串s中的&amp;、&lt;、&gt;为他们对应的HTML字符。<br>url_escape(s)<br>使用urllib.quote_plus替换字符串s中的字符为URL编码形式。</p>
+<p>json_encode(val)<br>将val编码成JSON格式。（在系统底层，这是一个对json库的dumps函数的调用。查阅相关的文档以获得更多关于该函数接收和返回参数的信息。）</p>
+<p>squeeze(s)<br>过滤字符串s，把连续的多个空白字符替换成一个空格。</p>
+<p>模板扩展<br>块和替换：</p>
+<pre><code>为了扩展一个已经存在的模板，你只需要在新的模板文件的顶部放上一句[% extends &quot;filename.html&quot; %]
+</code></pre><p>比如在一个新模板中扩展一个父模板（main.html）：</p>
+<pre><code>[\% extends &quot;main.html&quot; \%]
+</code></pre><p>块基础：<br>为了使用一个能够根据不同页覆写的动态header块，在父模板main.html中添加如下代码：</p>
+<pre><code>1 &lt;header&gt;
+2     [\% block header \%][\% end \%]
+3 &lt;/header&gt;
+</code></pre><p>然后，为了在子模板index.html中覆写[% block header %][% end %]部分，你可以使用块的名字引用，并把任何你想要的内容放到其中。</p>
+<pre><code>1 [\% block header \%][\% end \%]
+2 
+3 [\% block header \%]
+4     &lt;h1&gt;Hello world!&lt;/h1&gt;
+5 [\% end \%]
+</code></pre><p>任何继承这个模板的文件都可以包含它自己的[% block header %]和[% end %]，然后把一些不同的东西加进去。</p>
+<p>可以为每个页面使用多个块，此时像header和footer这样的动态元素将会被包含在同一个流程中。</p>
+<p>父模板main.html：</p>
+<pre><code> 1 &lt;html&gt;
+ 2 &lt;body&gt;
+ 3     &lt;header&gt;
+ 4         [\% block header \%][\% end \%]
+ 5     &lt;/header&gt;
+ 6     &lt;content&gt;
+ 7         [\% block body \%][\% end \%]
+ 8     &lt;/content&gt;
+ 9     &lt;footer&gt;
+10         [\% block footer \%][\% end \%]
+11     &lt;/footer&gt;
+12 &lt;/body&gt;
+13 &lt;/html&gt;
+</code></pre><p>当我们扩展父模板main.html时，可以在子模板index.html中引用这些块。</p>
+<pre><code> 1 [\% extends &quot;main.html&quot; \%]
+ 2 
+ 3 [\% block header \%]
+ 4     &lt;h1&gt;[a[ header_text ]a]&lt;/h1&gt;
+ 5 [\% end \%]
+ 6 
+ 7 [\% block body \%]
+ 8     &lt;p&gt;Hello from the child template!&lt;/p&gt;
+ 9 [\% end \%]
+10 
+11 [\% block footer \%]
+12     &lt;p&gt;[[ footer_text ]]&lt;/p&gt;
+13 [\% end \%]
+</code></pre><p>自动转义：<br>Tornado默认会自动转义模板中的内容，把标签转换为相应的HTML实体。</p>
+<p>当不需要转义时，你可以禁用自动转义，一种方法是在Application构造函数中传递autoescape=None，另一种方法是在每页的基础上修改自动转义行为，如下所示：</p>
+<pre><code>1 [\% autoescape None \%]
+2 [a[ mailLink ]a]
+</code></pre><p>这些autoescape块不需要结束标签，并且可以设置xhtml_escape来开启自动转义（默认行为），或None来关闭。</p>
+<p>然而，在理想的情况下，你希望保持自动转义开启以便继续防护你的网站。因此，你可以使用[% raw %]指令来输出不转义的内容。</p>
+<p>[% raw mailLink %]<br>需要特别注意的是，当你使用诸如Tornado的linkify()和xsrf_form_html()函数时，自动转义的设置被改变了。所以如果你希望在前面代码的footer中使用linkify()来包含链接，你可以使用一个[% raw %]块：</p>
+<pre><code> 1 [\% block footer \%]
+ 2     &lt;p&gt;
+ 3         For more information about our selection, hours or events, please email us at
+ 4         &lt;a href=&quot;mailto:[email protected]&quot;&gt;[email protected]&lt;/a&gt;.
+ 5     &lt;/p&gt;
+ 6 
+ 7     &lt;p class=&quot;small&quot;&gt;
+ 8         Follow us on Facebook at
+ 9         [\% raw linkify(&quot;https://fb.me/burtsbooks&quot;, extra_params=&apos;ref=website&apos;) \%].
+10     &lt;/p&gt;
+11 [\% end \%]
+</code></pre><p>这样，你可以既利用linkify()简记的好处，又可以保持在其他地方自动转义的好处。</p>
+<p>嵌入JavaScript和CSS：<br>Tornado允许你使用embedded_css和embedded_javascript方法嵌入其他的CSS和JavaScript文件。</p>
+<p>例如，你想在调用模块时给DOM添加一行文字，你可以通过从模块中嵌入JavaScript来做到：</p>
+<pre><code>1 class BookModule(tornado.web.UIModule):
+2     def render(self, book):
+3         return self.render_string(
+4             &quot;modules/book.html&quot;,
+5             book=book,
+6         )
+7 
+8     def embedded_javascript(self):
+9         return &quot;document.write(\&quot;hi!\&quot;)&quot;
+</code></pre><p>当调用模块时，document.write(\”hi!\”)将被<script>包围，并被插入到<body>的闭标签中：</p>
+<pre><code>1 &lt;script type=&quot;text/javascript&quot;&gt;
+2 //&lt;![CDATA[
+3 document.write(&quot;hi!&quot;)
+4 //]]&gt;
+5 &lt;/script&gt;
+</code></pre><p>你也可以把只在这些模块被调用时加载的额外的CSS规则放进来：</p>
+<pre><code>1 def embedded_css(self):
+2     return &quot;.book [background-color:#F5F5F5]&quot;
+</code></pre><p>在这种情况下，.book [background-color:#555]这条CSS规则被包裹在<style>中，并被直接添加到<head>的闭标签之前。</p>
+<pre><code>1 &lt;style type=&quot;text/css&quot;&gt;
+2 .book [background-color:#F5F5F5]
+3 &lt;/style&gt;
+</code></pre><p>甚至可以简单地使用html_body()来在闭合的</body>标签前添加完整的HTML标记：</p>
+<pre><code>1 def html_body(self):
+2     return &quot;&lt;script&gt;document.write(\&quot;Hello!\&quot;)&lt;/script&gt;&quot;
+</code></pre><p>为了更严谨的包含（以及更整洁的代码！），添加样式表和脚本文件会显得更好。他们的工作方式基本相同，所以你可以使用javascript_files()和css_files()来包含完整的文件，不论是本地的还是外部的。</p>
+<pre><code>1 #添加个本地的css文件
+2 def css_files(self):
+3     return &quot;/static/css/newreleases.css&quot;
+4 
+5 #添加一个外部的JavaScript文件：
+6 def javascript_files(self):
+7     return &quot;https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js&quot;
+</code></pre><p>因为模块的内嵌JavaScript和内嵌HTML函数的目标都是紧邻</body>标签，html_body()、javascript_files()和embedded_javascript()都会将内容渲染后插到页面底部，那么它们出现的顺序正好是你指定它们的顺序的倒序。</p>
+<pre><code> 1 class SampleModule(tornado.web.UIModule):
+ 2     def render(self, sample):
+ 3         return self.render_string(
+ 4             &quot;modules/sample.html&quot;,
+ 5             sample=sample
+ 6         )
+ 7 
+ 8     def html_body(self):
+ 9         return &quot;&lt;div class=\&quot;addition\&quot;&gt;&lt;p&gt;html_body()&lt;/p&gt;&lt;/div&gt;&quot;
+10 
+11     def embedded_javascript(self):
+12         return &quot;document.write(\&quot;&lt;p&gt;embedded_javascript()&lt;/p&gt;\&quot;)&quot;
+13 
+14     def embedded_css(self):
+15         return &quot;.addition [color: #A1CAF1]&quot;
+16 
+17     def css_files(self):
+18         return &quot;/static/css/sample.css&quot;
+19 
+20     def javascript_files(self):
+21         return &quot;/static/js/sample.js&quot;
+</code></pre><p>html_body()最先被编写，它紧挨着出现在</body>标签的上面。embedded_javascript()接着被渲染，最后是javascript_files()。</p>
+<p>不能包括一个需要其他地方东西的方法（比如依赖其他文件的JavaScript函数），因为此时他们可能会按照和你期望不同的顺序进行渲染。</p>
+<p>WebSockets：</p>
+<p>WebSockets是HTML5规范中新提出的客户-服务器通讯协议。WebSocket协议提供了在客户端和服务器间持久连接的双向通信。协议本身使用新的ws://URL格式，但它是在标准HTTP上实现的。通过使用HTTP和HTTPS端口，它避免了从Web代理后的网络连接站点时引入的各种问题。HTML5规范不只描述了协议本身，还描述了使用WebSockets编写客户端代码所需要的浏览器API。</p>
+<p>Tornado的WebSocket模块：<br>Tornado在websocket模块中提供了一个WebSocketHandler类。这个类提供了和已连接的客户端通信的WebSocket事件和方法的钩子。当一个新的WebSocket连接打开时，open方法被调用，而on_message和on_close方法分别在连接接收到新的消息和客户端关闭时被调用。</p>
+<pre><code>1 class IndexHandler(tornado.websocket.WebSocketHandler):
+2     def open(self):
+3         self.write_message(&apos;connected!&apos;)
+4 
+5     def on_message(self, message):
+6         self.write_message(message)
+</code></pre></script></p>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Tornado/" rel="tag"># Tornado</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/22/python-设计模式/" rel="next" title="python-设计模式">
+                <i class="fa fa-chevron-left"></i> python-设计模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js'];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Godshion</p>
+              <p class="site-description motion-element" itemprop="description">本站主要提供python教学的系列知识汇总</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                主页
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/weixin_41661393" title="csdn_blog" target="_blank">csdn_blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Godshion</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">164.7k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

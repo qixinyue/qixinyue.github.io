@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="python-设计模式," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="本站主要提供python教学的系列知识汇总">
+<meta name="description" content="设计模式是什么设计模式是经过总结、优化的，对我们经常会碰到的一些编程问题的可重用解决方案。一个设计模式并不像一个类或一个库那样能够直接作用于我们的代码。反之，设计模式更为高级，它是一种必须在特定情形下实现的一种方法模板。设计模式不会绑定具体的编程语言。一个好的设计模式应该能够用大部分编程语言实现(如果做不到全部的话，具体取决于语言特性)。最为重要的是，设计模式也是一把双刃剑，如果设计模式被用在不恰">
+<meta name="keywords" content="python-设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-设计模式">
-<meta property="og:url" content="http://yoursite.com/2018/08/22/python-设计模式/index.html">
+<meta property="og:url" content="https://qixinyue.github.io/2018/08/22/python-设计模式/index.html">
 <meta property="og:site_name" content="响神的博客">
-<meta property="og:description" content="本站主要提供python教学的系列知识汇总">
+<meta property="og:description" content="设计模式是什么设计模式是经过总结、优化的，对我们经常会碰到的一些编程问题的可重用解决方案。一个设计模式并不像一个类或一个库那样能够直接作用于我们的代码。反之，设计模式更为高级，它是一种必须在特定情形下实现的一种方法模板。设计模式不会绑定具体的编程语言。一个好的设计模式应该能够用大部分编程语言实现(如果做不到全部的话，具体取决于语言特性)。最为重要的是，设计模式也是一把双刃剑，如果设计模式被用在不恰">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-22T02:50:31.512Z">
+<meta property="og:updated_time" content="2018-08-22T13:14:17.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-设计模式">
-<meta name="twitter:description" content="本站主要提供python教学的系列知识汇总">
+<meta name="twitter:description" content="设计模式是什么设计模式是经过总结、优化的，对我们经常会碰到的一些编程问题的可重用解决方案。一个设计模式并不像一个类或一个库那样能够直接作用于我们的代码。反之，设计模式更为高级，它是一种必须在特定情形下实现的一种方法模板。设计模式不会绑定具体的编程语言。一个好的设计模式应该能够用大部分编程语言实现(如果做不到全部的话，具体取决于语言特性)。最为重要的是，设计模式也是一把双刃剑，如果设计模式被用在不恰">
 
 
 
@@ -119,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/22/python-设计模式/"/>
+  <link rel="canonical" href="https://qixinyue.github.io/2018/08/22/python-设计模式/"/>
 
 
 
@@ -232,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/python-设计模式/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/22/python-设计模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -272,6 +273,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -308,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  9,000 字
                 </span>
               
 
@@ -324,7 +347,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  39 分钟
                 </span>
               
             </div>
@@ -345,7 +368,936 @@
       
 
       
-        
+        <h1 id="设计模式是什么"><a href="#设计模式是什么" class="headerlink" title="设计模式是什么"></a>设计模式是什么</h1><p><strong>设计模式是经过总结、优化的，对我们经常会碰到的一些编程问题的可重用解决方案。</strong><br>一个设计模式并不像一个类或一个库那样能够直接作用于我们的代码。反之，设计模式更为高级，它是一种必须在特定情形下实现的一种方法模板。设计模式不会绑定具体的编程语言。一个好的设计模式应该能够用大部分编程语言实现(如果做不到全部的话，具体取决于语言特性)。最为重要的是，设计模式也是一把双刃剑，如果设计模式被用在不恰当的情形下将会造成灾难，进而带来无穷的麻烦。然而如果设计模式在正确的时间被用在正确地地方，它将是你的救星。</p>
+<p>起初，你会认为“模式”就是为了解决一类特定问题而特别想出来的明智之举。说的没错，看起来的确是通过很多人一起工作，从不同的角度看待问题进而形成的一个最通用、最灵活的解决方案。也许这些问题你曾经见过或是曾经解决过，但是你的解决方案很可能没有模式这么完备。</p>
+<p>虽然被称为“设计模式”，但是它们同“设计“领域并非紧密联系。设计模式同传统意义上的分析、设计与实现不同，事实上设计模式将一个完整的理念根植于程序中，所以它可能出现在分析阶段或是更高层的设计阶段。很有趣的是因为设计模式的具体体现是程序代码，因此可能会让你认为它不会在具体实现阶段之前出现(事实上在进入具体实现阶段之前你都没有意识到正在使用具体的设计模式)。</p>
+<p>可以通过程序设计的基本概念来理解模式：增加一个抽象层。抽象一个事物就是隔离任何具体细节，这么做的目的是为了将那些不变的核心部分从其他细节中分离出来。当你发现你程序中的某些部分经常因为某些原因改动，而你不想让这些改动的部分引发其他部分的改动，这时候你就需要思考那些不会变动的设计方法了。这么做不仅会使代码可维护性更高，而且会让代码更易于理解，从而降低开发成本。</p>
+<p>这里列举了三种最基本的设计模式：</p>
+<p>创建模式，提供实例化的方法，为适合的状况提供相应的对象创建方法。<br>结构化模式，通常用来处理实体之间的关系，使得这些实体能够更好地协同工作。<br>行为模式，用于在不同的实体建进行通信，为实体之间的通信提供更容易，更灵活的通信方法。</p>
+<p><strong>创建型</strong></p>
+<ol>
+<li><p>Factory Method（工厂方法）</p>
+</li>
+<li><p>Abstract Factory（抽象工厂）</p>
+</li>
+<li><p>Builder（建造者）</p>
+</li>
+<li><p>Prototype（原型）</p>
+</li>
+<li><p>Singleton（单例）</p>
+</li>
+</ol>
+<p><strong>结构型</strong></p>
+<ol start="6">
+<li><p>Adapter Class/Object（适配器）</p>
+</li>
+<li><p>Bridge（桥接）</p>
+</li>
+<li><p>Composite（组合）</p>
+</li>
+<li><p>Decorator（装饰）</p>
+</li>
+<li><p>Facade（外观）</p>
+</li>
+<li><p>Flyweight（享元）</p>
+</li>
+<li><p>Proxy（代理）</p>
+</li>
+</ol>
+<p><strong>行为型</strong></p>
+<ol start="13">
+<li><p>Interpreter（解释器）</p>
+</li>
+<li><p>Template Method（模板方法）</p>
+</li>
+<li><p>Chain of Responsibility（责任链）</p>
+</li>
+<li><p>Command（命令）</p>
+</li>
+<li><p>Iterator（迭代器）</p>
+</li>
+<li><p>Mediator（中介者）</p>
+</li>
+<li><p>Memento（备忘录）</p>
+</li>
+<li><p>Observer（观察者）</p>
+</li>
+<li><p>State（状态）</p>
+</li>
+<li><p>Strategy（策略）</p>
+</li>
+<li><p>Visitor（访问者）</p>
+</li>
+</ol>
+<h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><p>意图：<br>定义一个用于创建对象的接口，让子类决定实例化哪一个类。<br>Factory Method使一个类的实例化延迟到其子类。</p>
+<p>适用性：<br>当一个类不知道它所必须创建的对象的类的时候<br>当一个类希望由它的子类来指定它所创建的对象的时候<br>当类将创建对象的职责委托给多个帮助子类中的某一个，并且希望将哪一个帮助子类是代理者这一信息局部化的时候</p>
+<pre><code>#!/usr/bin/python
+#coding:utf8
+&apos;&apos;&apos;
+Factory Method
+&apos;&apos;&apos;
+
+class ChinaGetter:
+    &quot;&quot;&quot;A simple localizer a la gettext&quot;&quot;&quot;
+    def __init__(self):
+        self.trans= dict(dog=u&quot;小狗&quot;, cat=u&quot;小猫&quot;)
+
+    def get(self, msgid):
+        &quot;&quot;&quot;We&apos;ll punt if we don&apos;t have a translation&quot;&quot;&quot;
+        try:
+            return self.trans[msgid]
+        except KeyError:
+            return str(msgid)
+
+
+class EnglishGetter:
+    &quot;&quot;&quot;Simply echoes the msg ids&quot;&quot;&quot;
+    def get(self, msgid):
+        return str(msgid)
+
+
+def get_localizer(language=&quot;English&quot;):
+    &quot;&quot;&quot;The factory method&quot;&quot;&quot;
+    languages= dict(English=EnglishGetter, China=ChinaGetter)
+    return languages[language]()
+
+# Create our localizers
+e, g =get_localizer(&quot;English&quot;), get_localizer(&quot;China&quot;)
+# Localize some text
+for msgid in &quot;dog parrot cat bear&quot;.split():
+    print(e.get(msgid), g.get(msgid))
+</code></pre><h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>单例模式即一个类有且仅有一个实例，那么通过python怎么实现一个类只能有一个实例呢<br>通过重写 <strong>new</strong>(cls)方法去实现类只创建一个实例</p>
+<pre><code>class Earth(object):
+    __instance=None #定义一个类属性做判断
+
+    def __new__(cls):
+
+        if cls.__instance==None:
+            #如果__instance为空证明是第一次创建实例
+            #通过父类的__new__(cls)创建实例
+            cls.__instance = object.__new__(cls)
+            return  cls.__instance
+        else:
+            #返回上一个对象的引用
+            return cls.__instance
+
+a = Earth()
+print(id(a))
+b = Earth()
+print(id(b))
+</code></pre><h1 id="Abstract-Factory（抽象工厂）"><a href="#Abstract-Factory（抽象工厂）" class="headerlink" title="Abstract Factory（抽象工厂）"></a>Abstract Factory（抽象工厂）</h1><p>意图：</p>
+<p>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。<br>适用性：</p>
+<p> 一个系统要独立于它的产品的创建、组合和表示时。</p>
+<p> 一个系统要由多个产品系列中的一个来配置时。</p>
+<p> 当你要强调一系列相关的产品对象的设计以便进行联合使用时。</p>
+<p> 当你提供一个产品类库，而只想显示它们的接口而不是实现时。</p>
+<pre><code>#!/usr/bin/python
+#coding:utf8
+&apos;&apos;&apos;
+Abstract Factory
+&apos;&apos;&apos;
+
+import random
+
+class PetShop:
+    &quot;&quot;&quot;A pet shop&quot;&quot;&quot;
+
+    def __init__(self, animal_factory=None):
+        &quot;&quot;&quot;pet_factory is our abstract factory.
+        We can set it at will.&quot;&quot;&quot;
+
+        self.pet_factory= animal_factory
+
+    def show_pet(self):
+        &quot;&quot;&quot;Creates and shows a pet using the
+        abstract factory&quot;&quot;&quot;
+
+        pet= self.pet_factory.get_pet()
+        print(&quot;This is a lovely&quot;,str(pet))
+        print(&quot;It says&quot;, pet.speak())
+        print(&quot;It eats&quot;,self.pet_factory.get_food())
+
+
+# Stuff that our factory makes
+
+classDog:
+    def speak(self):
+        return &quot;woof&quot;
+
+    def __str__(self):
+        return &quot;Dog&quot;
+
+
+classCat:
+    def speak(self):
+        return &quot;meow&quot;
+
+    def __str__(self):
+        return &quot;Cat&quot;
+
+
+# Factory classes
+
+classDogFactory:
+    def get_pet(self):
+        return Dog()
+
+    def get_food(self):
+        return &quot;dog food&quot;
+
+
+classCatFactory:
+    def get_pet(self):
+        return Cat()
+
+    def get_food(self):
+        return &quot;cat food&quot;
+
+
+# Create the proper family
+def get_factory():
+    &quot;&quot;&quot;Let&apos;s be dynamic!&quot;&quot;&quot;
+    return random.choice([DogFactory, CatFactory])()
+
+
+# Show pets with various factories
+if __name__ ==&quot;__main__&quot;:
+    shop= PetShop()
+    for i in range(3):
+        shop.pet_factory= get_factory()
+        shop.show_pet()
+        print(&quot;=&quot;* 20)
+</code></pre><h1 id="3-Builder（建造者）"><a href="#3-Builder（建造者）" class="headerlink" title="3. Builder（建造者）"></a>3. Builder（建造者）</h1><p>意图：</p>
+<p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+<p>适用性：</p>
+<p>当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。</p>
+<p>当构造过程必须允许被构造的对象有不同的表示时。</p>
+<pre><code>#!/usr/bin/python
+#coding:utf8
+
+&quot;&quot;&quot;
+    Builder
+&quot;&quot;&quot;
+
+# Director
+class Director(object):
+    def __init__(self):
+        self.builder= None
+
+    def construct_building(self):
+        self.builder.new_building()
+        self.builder.build_floor()
+        self.builder.build_size()
+
+    def get_building(self):
+        return self.builder.building
+
+
+# Abstract Builder
+classBuilder(object):
+    def __init__(self):
+        self.building= None
+
+    def new_building(self):
+        self.building= Building()
+
+
+# Concrete Builder
+classBuilderHouse(Builder):
+    def build_floor(self):
+        self.building.floor= &apos;One&apos;
+
+    def build_size(self):
+        self.building.size= &apos;Big&apos;
+
+
+classBuilderFlat(Builder):
+    def build_floor(self):
+        self.building.floor= &apos;More than One&apos;
+
+    defbuild_size(self):
+        self.building.size= &apos;Small&apos;
+
+
+# Product
+classBuilding(object):
+    def __init__(self):
+        self.floor= None
+        self.size= None
+
+    def __repr__(self):
+        return &apos;Floor: %s | Size: %s&apos; % (self.floor,self.size)
+
+
+# Client
+if __name__ ==&quot;__main__&quot;:
+    director= Director()
+    director.builder= BuilderHouse()
+    director.construct_building()
+    building= director.get_building()
+    print(building)
+    director.builder= BuilderFlat()
+    director.construct_building()
+    building= director.get_building()
+    print(building)
+</code></pre><h1 id="4-Prototype（原型）"><a href="#4-Prototype（原型）" class="headerlink" title="4. Prototype（原型）"></a>4. Prototype（原型）</h1><p>意图：</p>
+<p>用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。</p>
+<p>适用性：</p>
+<p>当要实例化的类是在运行时刻指定时，例如，通过动态装载；或者为了避免创建一个与产品类层次平行的工厂类层次时；或者当一个类的实例只能有几个不同状态组合中的一种时。建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些。</p>
+<pre><code>#!/usr/bin/python
+#coding:utf8
+&apos;&apos;&apos;
+Prototype
+&apos;&apos;&apos;
+
+import copy
+
+class Prototype:
+    def__init__(self):
+        self._objects= {}
+
+    defregister_object(self, name, obj):
+        &quot;&quot;&quot;Register an object&quot;&quot;&quot;
+        self._objects[name]= obj
+
+    defunregister_object(self, name):
+        &quot;&quot;&quot;Unregister an object&quot;&quot;&quot;
+        delself._objects[name]
+
+    defclone(self, name,**attr):
+        &quot;&quot;&quot;Clone a registered object and update inner attributes dictionary&quot;&quot;&quot;
+        obj= copy.deepcopy(self._objects.get(name))
+        obj.__dict__.update(attr)
+        return obj
+
+
+def main():
+    classA:
+        def__str__(self):
+            return &quot;I am A&quot;
+
+    a= A()
+    prototype= Prototype()
+    prototype.register_object(&apos;a&apos;, a)
+    b= prototype.clone(&apos;a&apos;, a=1, b=2, c=3)
+
+    print(a)
+    print(b.a, b.b, b.c)
+
+
+if __name__ ==&apos;__main__&apos;:
+    main()
+</code></pre><p>　</p>
+<ol start="5">
+<li>Singleton（单例）<br>意图：</li>
+</ol>
+<p>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+<p>适用性：</p>
+<p>当类只能有一个实例而且客户可以从一个众所周知的访问点访问它时。</p>
+<p>当这个唯一实例应该是通过子类化可扩展的，并且客户应该无需更改代码就能使用一个扩展的实例时。</p>
+<p>实现：　</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Singleton<br>‘’’</p>
+<p>class Singleton(object):<br>    ‘’’’’ A python style singleton ‘’’</p>
+<pre><code>def__new__(cls,*args, **kw):
+    ifnot hasattr(cls,&apos;_instance&apos;):
+        org= super(Singleton,cls)
+        cls._instance= org.__new__(cls,*args, **kw)
+    return cls._instance
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    classSingleSpam(Singleton):<br>        def__init__(self, s):<br>            self.s= s</p>
+<pre><code>    def__str__(self):
+        return self.s
+
+
+s1= SingleSpam(&apos;spam&apos;)
+printid(s1), s1
+s2= SingleSpam(&apos;spa&apos;)
+printid(s2), s2
+printid(s1), s1
+</code></pre><p>结构型</p>
+<ol start="6">
+<li>Adapter Class/Object（适配器）</li>
+</ol>
+<p>意图：</p>
+<p> 将一个类的接口转换成客户希望的另外一个接口。Adapter 模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。 </p>
+<p>适用性：</p>
+<p> 你想使用一个已经存在的类，而它的接口不符合你的需求。</p>
+<p>你想创建一个可以复用的类，该类可以与其他不相关的类或不可预见的类（即那些接口可能不一定兼容的类）协同工作。</p>
+<p>（仅适用于对象Adapter ）你想使用一些已经存在的子类，但是不可能对每一个都进行子类化以匹配它们的接口。对象适配器可以适配它的父类接口。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Adapter<br>‘’’</p>
+<p>import os</p>
+<p>class Dog(object):<br>    def__init__(self):<br>        self.name= “Dog”</p>
+<pre><code>defbark(self):
+    return &quot;woof!&quot;
+</code></pre><p>classCat(object):<br>    def__init__(self):<br>        self.name= “Cat”</p>
+<pre><code>defmeow(self):
+    return &quot;meow!&quot;
+</code></pre><p>classHuman(object):<br>    def__init__(self):<br>        self.name= “Human”</p>
+<pre><code>defspeak(self):
+    return &quot;&apos;hello&apos;&quot;
+</code></pre><p>classCar(object):<br>    def__init__(self):<br>        self.name= “Car”</p>
+<pre><code>defmake_noise(self, octane_level):
+    return &quot;vroom%s&quot; %(&quot;!&quot; * octane_level)
+</code></pre><p>classAdapter(object):<br>    “””<br>    Adapts an object by replacing methods.<br>    Usage:<br>    dog = Dog<br>    dog = Adapter(dog, dict(make_noise=dog.bark))<br>    “””<br>    def__init__(self, obj, adapted_methods):<br>        “””We set the adapted methods in the object’s dict”””<br>        self.obj= obj<br>        self.<strong>dict</strong>.update(adapted_methods)</p>
+<pre><code>def__getattr__(self, attr):
+    &quot;&quot;&quot;All non-adapted calls are passed to the object&quot;&quot;&quot;
+    return getattr(self.obj, attr)
+</code></pre><p>def main():<br>    objects= []<br>    dog= Dog()<br>    objects.append(Adapter(dog,dict(make_noise=dog.bark)))<br>    cat= Cat()<br>    objects.append(Adapter(cat,dict(make_noise=cat.meow)))<br>    human= Human()<br>    objects.append(Adapter(human,dict(make_noise=human.speak)))<br>    car= Car()<br>    car_noise= lambda: car.make_noise(3)<br>    objects.append(Adapter(car,dict(make_noise=car_noise)))</p>
+<pre><code>forobj in objects:
+    print&quot;A&quot;, obj.name, &quot;goes&quot;, obj.make_noise()
+</code></pre><p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    main()</p>
+<ol start="7">
+<li>Bridge（桥接）</li>
+</ol>
+<p>意图：</p>
+<p> 将抽象部分与它的实现部分分离，使它们都可以独立地变化。</p>
+<p> 适用性：</p>
+<p> 你不希望在抽象和它的实现部分之间有一个固定的绑定关系。例如这种情况可能是因为，在程序运行时刻实现部分应可以被选择或者切换。</p>
+<p> 类的抽象以及它的实现都应该可以通过生成子类的方法加以扩充。这时Bridge 模式使你可以对不同的抽象接口和实现部分进行组合，并分别对它们进行扩充。</p>
+<p> 对一个抽象的实现部分的修改应对客户不产生影响，即客户的代码不必重新编译。</p>
+<p> （C++）你想对客户完全隐藏抽象的实现部分。在C++中，类的表示在类接口中是可见的。</p>
+<p> 有许多类要生成。这样一种类层次结构说明你必须将一个对象分解成两个部分。Rumbaugh 称这种类层次结构为“嵌套的普化”（nested generalizations ）。</p>
+<p> 你想在多个对象间共享实现（可能使用引用计数），但同时要求客户并不知道这一点。一个简单的例子便是Coplien 的String 类[ Cop92 ]，在这个类中多个对象可以共享同一个字符串表示（StringRep）。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Bridge<br>‘’’</p>
+<h1 id="ConcreteImplementor-1-2"><a href="#ConcreteImplementor-1-2" class="headerlink" title="ConcreteImplementor 1/2"></a>ConcreteImplementor 1/2</h1><p>class DrawingAPI1(object):<br>    defdraw_circle(self, x, y, radius):<br>        print(‘API1.circle at {}:{} radius {}’.format(x, y, radius))</p>
+<h1 id="ConcreteImplementor-2-2"><a href="#ConcreteImplementor-2-2" class="headerlink" title="ConcreteImplementor 2/2"></a>ConcreteImplementor 2/2</h1><p>classDrawingAPI2(object):<br>    defdraw_circle(self, x, y, radius):<br>        print(‘API2.circle at {}:{} radius {}’.format(x, y, radius))</p>
+<h1 id="Refined-Abstraction"><a href="#Refined-Abstraction" class="headerlink" title="Refined Abstraction"></a>Refined Abstraction</h1><p>classCircleShape(object):<br>    def__init__(self, x, y, radius, drawing_api):<br>        self._x= x<br>        self._y= y<br>        self._radius= radius<br>        self._drawing_api= drawing_api</p>
+<pre><code># low-level i.e. Implementation specific
+defdraw(self):
+    self._drawing_api.draw_circle(self._x,self._y, self._radius)
+
+# high-level i.e. Abstraction specific
+defscale(self, pct):
+    self._radius*=pct
+</code></pre><p>def main():<br>    shapes= (<br>        CircleShape(1,2, 3, DrawingAPI1()),<br>        CircleShape(5,7, 11, DrawingAPI2())<br>    )</p>
+<pre><code>forshape in shapes:
+    shape.scale(2.5)
+    shape.draw()
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    main()</p>
+<ol start="8">
+<li>Composite（组合）</li>
+</ol>
+<p>意图：</p>
+<p> 将对象组合成树形结构以表示“部分-整体”的层次结构。C o m p o s i t e 使得用户对单个对象和组合对象的使用具有一致性。 </p>
+<p>适用性：</p>
+<p> 你想表示对象的部分-整体层次结构。</p>
+<p>你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8</p>
+<p>“””<br>Composite<br>“””</p>
+<p>class Component:<br>    def__init__(self,strName):<br>        self.m_strName= strName<br>    defAdd(self,com):<br>        pass<br>    defDisplay(self,nDepth):<br>        pass</p>
+<p>classLeaf(Component):<br>    defAdd(self,com):<br>        print”leaf can’t add”<br>    defDisplay(self,nDepth):<br>        strtemp= “-“* nDepth<br>        strtemp=strtemp+self.m_strName<br>        printstrtemp</p>
+<p>classComposite(Component):<br>    def__init__(self,strName):<br>        self.m_strName= strName<br>        self.c= []<br>    defAdd(self,com):<br>        self.c.append(com)<br>    defDisplay(self,nDepth):<br>        strtemp= “-“*nDepth<br>        strtemp=strtemp+self.m_strName<br>        printstrtemp<br>        forcom in self.c:<br>            com.Display(nDepth+2)</p>
+<p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    p= Composite(“Wong”)<br>    p.Add(Leaf(“Lee”))<br>    p.Add(Leaf(“Zhao”))<br>    p1= Composite(“Wu”)<br>    p1.Add(Leaf(“San”))<br>    p.Add(p1)<br>    p.Display(1);</p>
+<ol start="9">
+<li>Decorator（装饰）</li>
+</ol>
+<p>意图：<br>动态地给一个对象添加一些额外的职责。就增加功能来说，Decorator 模式相比生成子类更为灵活。<br>适用性：</p>
+<p> 在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。</p>
+<p> 处理那些可以撤消的职责。</p>
+<p>当不能采用生成子类的方法进行扩充时。一种情况是，可能有大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长。另一种情况可能是因为类定义被隐藏，或类定义不能用于生成子类。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Decorator<br>‘’’</p>
+<p>class foo(object):<br>    deff1(self):<br>        print(“original f1”)</p>
+<pre><code>deff2(self):
+    print(&quot;original f2&quot;)
+</code></pre><p>classfoo_decorator(object):<br>    def__init__(self, decoratee):<br>        self._decoratee= decoratee</p>
+<pre><code>deff1(self):
+    print(&quot;decorated f1&quot;)
+    self._decoratee.f1()
+
+def__getattr__(self, name):
+    return getattr(self._decoratee, name)
+</code></pre><p>u =foo()<br>v =foo_decorator(u)<br>v.f1()<br>v.f2()</p>
+<ol start="10">
+<li>Facade（外观）</li>
+</ol>
+<p>意图：</p>
+<p> 为子系统中的一组接口提供一个一致的界面，Facade模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。</p>
+<p>适用性：</p>
+<p>当你要为一个复杂子系统提供一个简单接口时。子系统往往因为不断演化而变得越来越复杂。大多数模式使用时都会产生更多更小的类。这使得子系统更具可重用性，也更容易对子系统进行定制，但这也给那些不需要定制子系统的用户带来一些使用上的困难。Facade 可以提供一个简单的缺省视图，这一视图对大多数用户来说已经足够，而那些需要更多的可定制性的用户可以越过facade层。</p>
+<p>客户程序与抽象类的实现部分之间存在着很大的依赖性。引入facade 将这个子系统与客户以及其他的子系统分离，可以提高子系统的独立性和可移植性。</p>
+<p>当你需要构建一个层次结构的子系统时，使用facade模式定义子系统中每层的入口点。如果子系统之间是相互依赖的，你可以让它们仅通过facade进行通讯，从而简化了它们之间的依赖关系。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Decorator<br>‘’’<br>import time</p>
+<p>SLEEP =0.5</p>
+<h1 id="Complex-Parts"><a href="#Complex-Parts" class="headerlink" title="Complex Parts"></a>Complex Parts</h1><p>classTC1:<br>    defrun(self):<br>        print(“###### In Test 1 ######”)<br>        time.sleep(SLEEP)<br>        print(“Setting up”)<br>        time.sleep(SLEEP)<br>        print(“Running test”)<br>        time.sleep(SLEEP)<br>        print(“Tearing down”)<br>        time.sleep(SLEEP)<br>        print(“Test Finished\n”)</p>
+<p>classTC2:<br>    defrun(self):<br>        print(“###### In Test 2 ######”)<br>        time.sleep(SLEEP)<br>        print(“Setting up”)<br>        time.sleep(SLEEP)<br>        print(“Running test”)<br>        time.sleep(SLEEP)<br>        print(“Tearing down”)<br>        time.sleep(SLEEP)<br>        print(“Test Finished\n”)</p>
+<p>classTC3:<br>    defrun(self):<br>        print(“###### In Test 3 ######”)<br>        time.sleep(SLEEP)<br>        print(“Setting up”)<br>        time.sleep(SLEEP)<br>        print(“Running test”)<br>        time.sleep(SLEEP)<br>        print(“Tearing down”)<br>        time.sleep(SLEEP)<br>        print(“Test Finished\n”)</p>
+<h1 id="Facade"><a href="#Facade" class="headerlink" title="Facade"></a>Facade</h1><p>classTestRunner:<br>    def__init__(self):<br>        self.tc1= TC1()<br>        self.tc2= TC2()<br>        self.tc3= TC3()<br>        self.tests= [i for i in(self.tc1,self.tc2, self.tc3)]</p>
+<pre><code>defrunAll(self):
+    [i.run()for i in self.tests]
+</code></pre><h1 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h1><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    testrunner= TestRunner()<br>    testrunner.runAll()</p>
+<ol start="11">
+<li>Flyweight（享元）</li>
+</ol>
+<p>意图：</p>
+<p>运用共享技术有效地支持大量细粒度的对象。</p>
+<p>适用性：</p>
+<p>一个应用程序使用了大量的对象。</p>
+<p>完全由于使用大量的对象，造成很大的存储开销。</p>
+<p>对象的大多数状态都可变为外部状态。</p>
+<p>如果删除对象的外部状态，那么可以用相对较少的共享对象取代很多组对象。 </p>
+<p>应用程序不依赖于对象标识。由于Flyweight 对象可以被共享，对于概念上明显有别的对象，标识测试将返回真值。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Flyweight<br>‘’’</p>
+<p>import weakref </p>
+<p>class Card(object):<br>    “””The object pool. Has builtin reference counting”””<br>    _CardPool= weakref.WeakValueDictionary()</p>
+<pre><code>&quot;&quot;&quot;Flyweight implementation. If the object exists in the
+pool just return it (instead of creating a new one)&quot;&quot;&quot;
+def__new__(cls, value, suit):        
+    obj= Card._CardPool.get(value+ suit, None)        
+    ifnot obj:            
+        obj= object.__new__(cls)            
+        Card._CardPool[value+ suit] = obj            
+        obj.value, obj.suit= value, suit         
+    return obj
+
+# def __init__(self, value, suit):        
+#     self.value, self.suit = value, suit     
+
+def__repr__(self):        
+    return &quot;&lt;Card: %s%s&gt;&quot; %(self.value,self.suit)     
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:</p>
+<pre><code># comment __new__ and uncomment __init__ to see the difference
+c1= Card(&apos;9&apos;,&apos;h&apos;)
+c2= Card(&apos;9&apos;,&apos;h&apos;)
+print(c1, c2)
+print(c1==c2)
+print(id(c1),id(c2))
+</code></pre><ol start="12">
+<li>Proxy（代理）</li>
+</ol>
+<p>意图：</p>
+<p>为其他对象提供一种代理以控制对这个对象的访问。</p>
+<p>适用性：</p>
+<p> 在需要用比较通用和复杂的对象指针代替简单的指针的时候，使用Proxy模式。下面是一 些可以使用Proxy 模式常见情况： </p>
+<p>1) 远程代理（Remote Proxy ）为一个对象在不同的地址空间提供局部代表。 NEXTSTEP[Add94] 使用NXProxy 类实现了这一目的。Coplien[Cop92] 称这种代理为“大使” （Ambassador ）。<br>2 )虚代理（Virtual Proxy ）根据需要创建开销很大的对象。在动机一节描述的ImageProxy 就是这样一种代理的例子。<br>3) 保护代理（Protection Proxy ）控制对原始对象的访问。保护代理用于对象应该有不同 的访问权限的时候。例如，在Choices 操作系统[ CIRM93]中KemelProxies为操作系统对象提供 了访问保护。<br>4 )智能指引（Smart Reference ）取代了简单的指针，它在访问对象时执行一些附加操作。 它的典型用途包括：对指向实际对象的引用计数，这样当该对象没有引用时，可以自动释放它(也称为SmartPointers[Ede92 ] )。</p>
+<p> 当第一次引用一个持久对象时，将它装入内存。</p>
+<p> 在访问一个实际对象前，检查是否已经锁定了它，以确保其他对象不能改变它。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Proxy<br>‘’’</p>
+<p>import time</p>
+<p>class SalesManager:<br>    defwork(self):<br>        print(“Sales Manager working…”)</p>
+<pre><code>deftalk(self):
+    print(&quot;Sales Manager ready to talk&quot;)
+</code></pre><p>classProxy:<br>    def__init__(self):<br>        self.busy= ‘No’<br>        self.sales= None</p>
+<pre><code>defwork(self):
+    print(&quot;Proxy checking for Sales Manager availability&quot;)
+    ifself.busy ==&apos;No&apos;:
+        self.sales= SalesManager()
+        time.sleep(2)
+        self.sales.talk()
+    else:
+        time.sleep(2)
+        print(&quot;Sales Manager is busy&quot;)
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    p= Proxy()<br>    p.work()<br>    p.busy= ‘Yes’<br>    p.work()</p>
+<p>行为型</p>
+<ol start="13">
+<li>Interpreter（解释器）</li>
+</ol>
+<p>意图：</p>
+<p>给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。</p>
+<p>适用性：</p>
+<p>当有一个语言需要解释执行, 并且你可将该语言中的句子表示为一个抽象语法树时，可使用解释器模式。而当存在以下情况时该模式效果最好：</p>
+<p>该文法简单对于复杂的文法, 文法的类层次变得庞大而无法管理。此时语法分析程序生成器这样的工具是更好的选择。它们无需构建抽象语法树即可解释表达式, 这样可以节省空间而且还可能节省时间。</p>
+<p>效率不是一个关键问题最高效的解释器通常不是通过直接解释语法分析树实现的, 而是首先将它们转换成另一种形式。例如，正则表达式通常被转换成状态机。但即使在这种情况下, 转换器仍可用解释器模式实现, 该模式仍是有用的。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Interpreter<br>‘’’</p>
+<p>class Context:<br>    def__init__(self):<br>        self.input=””<br>        self.output=””</p>
+<p>classAbstractExpression:<br>    defInterpret(self,context):<br>        pass</p>
+<p>classExpression(AbstractExpression):<br>    defInterpret(self,context):<br>        print”terminal interpret”</p>
+<p>classNonterminalExpression(AbstractExpression):<br>    defInterpret(self,context):<br>        print”Nonterminal interpret”</p>
+<p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    context=””<br>    c= []<br>    c= c + [Expression()]<br>    c= c + [NonterminalExpression()]<br>    c= c + [Expression()]<br>    c= c + [Expression()]<br>    fora in c:<br>        a.Interpret(context)</p>
+<ol start="14">
+<li>Template Method（模板方法）</li>
+</ol>
+<p>意图：</p>
+<p>定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。TemplateMethod 使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
+<p>适用性：</p>
+<p>一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现。</p>
+<p>各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。这是Opdyke 和Johnson所描述过的“重分解以一般化”的一个很好的例子[ OJ93 ]。首先识别现有代码中的不同之处，并且将不同之处分离为新的操作。最后，用一个调用这些新的操作的模板方法来替换这些不同的代码。</p>
+<p>控制子类扩展。模板方法只在特定点调用“hook ”操作（参见效果一节），这样就只允许在这些点进行扩展。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Template Method<br>‘’’</p>
+<p>ingredients = “spam eggs apple”<br>line =’-‘ * 10</p>
+<h1 id="Skeletons"><a href="#Skeletons" class="headerlink" title="Skeletons"></a>Skeletons</h1><p>def iter_elements(getter, action):<br>    “””Template skeleton that iterates items”””<br>    forelement in getter():<br>        action(element)<br>        print(line) </p>
+<p>def rev_elements(getter, action):<br>    “””Template skeleton that iterates items in reverse order”””<br>    forelement in getter()[::-1]:<br>        action(element)<br>        print(line) </p>
+<h1 id="Getters"><a href="#Getters" class="headerlink" title="Getters"></a>Getters</h1><p>def get_list():<br>    returningredients.split() </p>
+<p>def get_lists():<br>    return [list(x)for x in ingredients.split()] </p>
+<h1 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h1><p>def print_item(item):<br>    print(item) </p>
+<p>def reverse_item(item):<br>    print(item[::-1]) </p>
+<h1 id="Makes-templates"><a href="#Makes-templates" class="headerlink" title="Makes templates"></a>Makes templates</h1><p>def make_template(skeleton, getter, action):<br>    “””Instantiate a template method with getter and action”””<br>    deftemplate():<br>        skeleton(getter, action)<br>    return template </p>
+<h1 id="Create-our-template-functions"><a href="#Create-our-template-functions" class="headerlink" title="Create our template functions"></a>Create our template functions</h1><p>templates = [make_template(s, g, a)<br>             forg in (get_list, get_lists)<br>             fora in (print_item, reverse_item)<br>             fors in (iter_elements, rev_elements)] </p>
+<h1 id="Execute-them"><a href="#Execute-them" class="headerlink" title="Execute them"></a>Execute them</h1><p>for template in templates:<br>    template()</p>
+<ol start="15">
+<li>Chain of Responsibility（责任链）</li>
+</ol>
+<p>意图：</p>
+<p> 使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。</p>
+<p> 适用性：</p>
+<p> 有多个的对象可以处理一个请求，哪个对象处理该请求运行时刻自动确定。</p>
+<p> 你想在不明确指定接收者的情况下，向多个对象中的一个提交一个请求。</p>
+<p> 可处理一个请求的对象集合应被动态指定。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8</p>
+<p>“””<br>Chain<br>“””<br>class Handler:<br>    defsuccessor(self, successor):<br>        self.successor= successor</p>
+<p>classConcreteHandler1(Handler):<br>    defhandle(self, request):<br>        ifrequest &gt; 0 and request &lt;=10:<br>            print(“in handler1”)<br>        else:<br>            self.successor.handle(request)</p>
+<p>classConcreteHandler2(Handler):<br>    defhandle(self, request):<br>        ifrequest &gt; 10 and request &lt;=20:<br>            print(“in handler2”)<br>        else:<br>            self.successor.handle(request)</p>
+<p>classConcreteHandler3(Handler):<br>    defhandle(self, request):<br>        ifrequest &gt; 20 and request &lt;=30:<br>            print(“in handler3”)<br>        else:<br>            print(‘end of chain, no handler for {}’.format(request))</p>
+<p>classClient:<br>    def__init__(self):<br>        h1= ConcreteHandler1()<br>        h2= ConcreteHandler2()<br>        h3= ConcreteHandler3()</p>
+<pre><code>h1.successor(h2)
+h2.successor(h3)
+
+requests= [2,5, 14,22, 18,3, 35,27, 20]
+forrequest in requests:
+    h1.handle(request)
+</code></pre><p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    client= Client()</p>
+<ol start="16">
+<li>Command（命令）</li>
+</ol>
+<p>意图：</p>
+<p>将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤消的操作。</p>
+<p>适用性：</p>
+<p>抽象出待执行的动作以参数化某对象，你可用过程语言中的回调（call back）函数表达这种参数化机制。所谓回调函数是指函数先在某处注册，而它将在稍后某个需要的时候被调用。Command 模式是回调机制的一个面向对象的替代品。</p>
+<p>在不同的时刻指定、排列和执行请求。一个Command对象可以有一个与初始请求无关的生存期。如果一个请求的接收者可用一种与地址空间无关的方式表达，那么就可将负责该请求的命令对象传送给另一个不同的进程并在那儿实现该请求。</p>
+<p>支持取消操作。Command的Excute 操作可在实施操作前将状态存储起来，在取消操作时这个状态用来消除该操作的影响。Command 接口必须添加一个Unexecute操作，该操作取消上一次Execute调用的效果。执行的命令被存储在一个历史列表中。可通过向后和向前遍历这一列表并分别调用Unexecute和Execute来实现重数不限的“取消”和“重做”。</p>
+<p>支持修改日志，这样当系统崩溃时，这些修改可以被重做一遍。在Command接口中添加装载操作和存储操作，可以用来保持变动的一个一致的修改日志。从崩溃中恢复的过程包括从磁盘中重新读入记录下来的命令并用Execute操作重新执行它们。</p>
+<p>用构建在原语操作上的高层操作构造一个系统。这样一种结构在支持事务( transaction)的信息系统中很常见。一个事务封装了对数据的一组变动。Command模式提供了对事务进行建模的方法。Command有一个公共的接口，使得你可以用同一种方式调用所有的事务。同时使用该模式也易于添加新事务以扩展系统。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8</p>
+<p>“””<br>Command<br>“””<br>import os</p>
+<p>class MoveFileCommand(object):<br>    def__init__(self, src, dest):<br>        self.src= src<br>        self.dest= dest</p>
+<pre><code>defexecute(self):
+    self()
+
+def__call__(self):
+    print(&apos;renaming {} to {}&apos;.format(self.src,self.dest))
+    os.rename(self.src,self.dest)
+
+defundo(self):
+    print(&apos;renaming {} to {}&apos;.format(self.dest,self.src))
+    os.rename(self.dest,self.src)
+</code></pre><p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    command_stack= []</p>
+<pre><code># commands are just pushed into the command stack
+command_stack.append(MoveFileCommand(&apos;foo.txt&apos;,&apos;bar.txt&apos;))
+command_stack.append(MoveFileCommand(&apos;bar.txt&apos;,&apos;baz.txt&apos;))
+
+# they can be executed later on
+forcmd in command_stack:
+    cmd.execute()
+
+# and can also be undone at will
+forcmd in reversed(command_stack):
+    cmd.undo()
+</code></pre><p>　　</p>
+<ol start="17">
+<li>Iterator（迭代器）</li>
+</ol>
+<p>意图：</p>
+<p>提供一种方法顺序访问一个聚合对象中各个元素, 而又不需暴露该对象的内部表示。</p>
+<p>适用性：</p>
+<p>访问一个聚合对象的内容而无需暴露它的内部表示。</p>
+<p>支持对聚合对象的多种遍历。</p>
+<p>为遍历不同的聚合结构提供一个统一的接口(即, 支持多态迭代)。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Interator<br>‘’’<br>def count_to(count):<br>    “””Counts by word numbers, up to a maximum of five”””<br>    numbers= [“one”,”two”, “three”, “four”,”five”]</p>
+<pre><code># enumerate() returns a tuple containing a count (from start which
+# defaults to 0) and the values obtained from iterating over sequence
+forpos, number inzip(range(count), numbers):
+    yield number
+</code></pre><h1 id="Test-the-generator"><a href="#Test-the-generator" class="headerlink" title="Test the generator"></a>Test the generator</h1><p>count_to_two = lambda: count_to(2)<br>count_to_five = lambda: count_to(5)</p>
+<p>print(‘Counting to two…’)<br>for number in count_to_two():<br>    print number</p>
+<p>print” “</p>
+<p>print(‘Counting to five…’)<br>for number in count_to_five():<br>    print number</p>
+<p>print” “</p>
+<ol start="18">
+<li>Mediator（中介者）</li>
+</ol>
+<p>意图：</p>
+<p>用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。</p>
+<p>适用性：</p>
+<p>一组对象以定义良好但是复杂的方式进行通信。产生的相互依赖关系结构混乱且难以理解。</p>
+<p>一个对象引用其他很多对象并且直接与这些对象通信,导致难以复用该对象。</p>
+<p>想定制一个分布在多个类中的行为，而又不想生成太多的子类。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Mediator<br>‘’’<br>“””<a href="http://dpip.testingperspective.com/?p=28&quot;&quot;&quot;" target="_blank" rel="noopener">http://dpip.testingperspective.com/?p=28&quot;&quot;&quot;</a></p>
+<p>import time</p>
+<p>class TC:<br>    def__init__(self):<br>        self._tm= tm<br>        self._bProblem= 0</p>
+<pre><code>defsetup(self):
+    print(&quot;Setting up the Test&quot;)
+    time.sleep(1)
+    self._tm.prepareReporting()
+
+defexecute(self):
+    ifnot self._bProblem:
+        print(&quot;Executing the test&quot;)
+        time.sleep(1)
+    else:
+        print(&quot;Problem in setup. Test not executed.&quot;)
+
+deftearDown(self):
+    ifnot self._bProblem:
+        print(&quot;Tearing down&quot;)
+        time.sleep(1)
+        self._tm.publishReport()
+    else:
+        print(&quot;Test not executed. No tear down required.&quot;)
+
+defsetTM(self, TM):
+    self._tm= tm
+
+defsetProblem(self, value):
+    self._bProblem= value
+</code></pre><p>classReporter:<br>    def__init__(self):<br>        self._tm= None</p>
+<pre><code>defprepare(self):
+    print(&quot;Reporter Class is preparing to report the results&quot;)
+    time.sleep(1)
+
+defreport(self):
+    print(&quot;Reporting the results of Test&quot;)
+    time.sleep(1)
+
+defsetTM(self, TM):
+    self._tm= tm
+</code></pre><p>classDB:<br>    def__init__(self):<br>        self._tm= None</p>
+<pre><code>definsert(self):
+    print(&quot;Inserting the execution begin status in the Database&quot;)
+    time.sleep(1)
+    #Following code is to simulate a communication from DB to TC
+    importrandom
+    ifrandom.randrange(1,4) ==3:
+        return -1
+
+defupdate(self):
+    print(&quot;Updating the test results in Database&quot;)
+    time.sleep(1)
+
+defsetTM(self, TM):
+    self._tm= tm
+</code></pre><p>classTestManager:<br>    def__init__(self):<br>        self._reporter= None<br>        self._db= None<br>        self._tc= None</p>
+<pre><code>defprepareReporting(self):
+    rvalue= self._db.insert()
+    ifrvalue ==-1:
+        self._tc.setProblem(1)
+        self._reporter.prepare()
+
+defsetReporter(self, reporter):
+    self._reporter= reporter
+
+defsetDB(self, db):
+    self._db= db
+
+defpublishReport(self):
+    self._db.update()
+    rvalue= self._reporter.report()
+
+defsetTC(self, tc):
+    self._tc= tc
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    reporter= Reporter()<br>    db= DB()<br>    tm= TestManager()<br>    tm.setReporter(reporter)<br>    tm.setDB(db)<br>    reporter.setTM(tm)<br>    db.setTM(tm)</p>
+<pre><code># For simplification we are looping on the same test.
+# Practically, it could be about various unique test classes and their
+# objects
+while(True):
+    tc= TC()
+    tc.setTM(tm)
+    tm.setTC(tc)
+    tc.setup()
+    tc.execute()
+    tc.tearDown()
+</code></pre><ol start="19">
+<li>Memento（备忘录）</li>
+</ol>
+<p>意图：</p>
+<p>在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态。</p>
+<p>适用性：</p>
+<p>必须保存一个对象在某一个时刻的(部分)状态, 这样以后需要时它才能恢复到先前的状态。</p>
+<p>如果一个用接口来让其它对象直接得到这些状态，将会暴露对象的实现细节并破坏对象的封装性。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Memento<br>‘’’</p>
+<p>import copy</p>
+<p>def Memento(obj, deep=False):<br>    state= (copy.copy, copy.deepcopy)<a href="obj.__dict__">bool(deep)</a></p>
+<pre><code>defRestore():
+    obj.__dict__.clear()
+    obj.__dict__.update(state)
+return Restore
+</code></pre><p>classTransaction:<br>    “””A transaction guard. This is really just<br>      syntactic suggar arount a memento closure.<br>      “””<br>    deep= False</p>
+<pre><code>def__init__(self,*targets):
+    self.targets= targets
+    self.Commit()
+
+defCommit(self):
+    self.states= [Memento(target,self.deep) for target in self.targets]
+
+defRollback(self):
+    forst in self.states:
+        st()
+</code></pre><p>classtransactional(object):<br>    “””Adds transactional semantics to methods. Methods decorated  with<br>    @transactional will rollback to entry state upon exceptions.<br>    “””<br>    def__init__(self, method):<br>        self.method= method</p>
+<pre><code>def__get__(self, obj, T):
+    deftransaction(*args,**kwargs):
+        state= Memento(obj)
+        try:
+            returnself.method(obj, *args, **kwargs)
+        except:
+            state()
+            raise
+    return transaction
+</code></pre><p>classNumObj(object):<br>    def__init__(self, value):<br>        self.value= value</p>
+<pre><code>def__repr__(self):
+    return&apos;&lt;%s: %r&gt;&apos; %(self.__class__.__name__,self.value)
+
+defIncrement(self):
+    self.value+=1
+
+@transactional
+defDoStuff(self):
+    self.value= &apos;1111&apos; # &lt;- invalid value
+    self.Increment()    # &lt;- will fail and rollback
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    n= NumObj(-1)<br>    print(n)<br>    t= Transaction(n)<br>    try:<br>        fori in range(3):<br>            n.Increment()<br>            print(n)<br>        t.Commit()<br>        print(‘– commited’)<br>        fori in range(3):<br>            n.Increment()<br>            print(n)<br>        n.value+=’x’  # will fail<br>        print(n)<br>    except:<br>        t.Rollback()<br>        print(‘– rolled back’)<br>    print(n)<br>    print(‘– now doing stuff …’)<br>    try:<br>        n.DoStuff()<br>    except:<br>        print(‘-&gt; doing stuff failed!’)<br>        importtraceback<br>        traceback.print_exc(0)<br>        pass<br>    print(n)</p>
+<ol start="20">
+<li>Observer（观察者）</li>
+</ol>
+<p>意图：</p>
+<p>定义对象间的一种一对多的依赖关系,当一个对象的状态发生改变时, 所有依赖于它的对象都得到通知并被自动更新。</p>
+<p>适用性：</p>
+<p>当一个抽象模型有两个方面, 其中一个方面依赖于另一方面。将这二者封装在独立的对象中以使它们可以各自独立地改变和复用。</p>
+<p>当对一个对象的改变需要同时改变其它对象, 而不知道具体有多少对象有待改变。</p>
+<p>当一个对象必须通知其它对象，而它又不能假定其它对象是谁。换言之, 你不希望这些对象是紧密耦合的。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Observer<br>‘’’</p>
+<p>class Subject(object):<br>    def__init__(self):<br>        self._observers= []</p>
+<pre><code>defattach(self, observer):
+    ifnot observer in self._observers:
+        self._observers.append(observer)
+
+defdetach(self, observer):
+    try:
+        self._observers.remove(observer)
+    except ValueError:
+        pass
+
+defnotify(self, modifier=None):
+    forobserver inself._observers:
+        ifmodifier !=observer:
+            observer.update(self)
+</code></pre><h1 id="Example-usage"><a href="#Example-usage" class="headerlink" title="Example usage"></a>Example usage</h1><p>classData(Subject):<br>    def__init__(self, name=’’):<br>        Subject.<strong>init</strong>(self)<br>        self.name= name<br>        self._data= 0</p>
+<pre><code>@property
+defdata(self):
+    returnself._data
+
+@data.setter
+defdata(self, value):
+    self._data= value
+    self.notify()
+</code></pre><p>classHexViewer:<br>    defupdate(self, subject):<br>        print(‘HexViewer: Subject %s has data 0x%x’%<br>              (subject.name, subject.data))</p>
+<p>classDecimalViewer:<br>    defupdate(self, subject):<br>        print(‘DecimalViewer: Subject %s has data %d’%<br>              (subject.name, subject.data))</p>
+<h1 id="Example-usage…"><a href="#Example-usage…" class="headerlink" title="Example usage…"></a>Example usage…</h1><p>def main():<br>    data1= Data(‘Data 1’)<br>    data2= Data(‘Data 2’)<br>    view1= DecimalViewer()<br>    view2= HexViewer()<br>    data1.attach(view1)<br>    data1.attach(view2)<br>    data2.attach(view2)<br>    data2.attach(view1)</p>
+<pre><code>print(&quot;Setting Data 1 = 10&quot;)
+data1.data= 10
+print(&quot;Setting Data 2 = 15&quot;)
+data2.data= 15
+print(&quot;Setting Data 1 = 3&quot;)
+data1.data= 3
+print(&quot;Setting Data 2 = 5&quot;)
+data2.data= 5
+print(&quot;Detach HexViewer from data1 and data2.&quot;)
+data1.detach(view2)
+data2.detach(view2)
+print(&quot;Setting Data 1 = 10&quot;)
+data1.data= 10
+print(&quot;Setting Data 2 = 15&quot;)
+data2.data= 15
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    main()
+　</p>
+<ol start="21">
+<li>State（状态）</li>
+</ol>
+<p>意图：</p>
+<p> 允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类。</p>
+<p> 适用性：</p>
+<p> 一个对象的行为取决于它的状态, 并且它必须在运行时刻根据状态改变它的行为。</p>
+<p> 一个操作中含有庞大的多分支的条件语句，且这些分支依赖于该对象的状态。这个状态通常用一个或多个枚举常量表示。通常, 有多个操作包含这一相同的条件结构。State模式将每一个条件分支放入一个独立的类中。这使得你可以根据对象自身的情况将对象的状态作为一个对象，这一对象可以不依赖于其他对象而独立变化。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>State<br>‘’’</p>
+<p>class State(object):<br>    “””Base state. This is to share functionality”””</p>
+<pre><code>defscan(self):
+    &quot;&quot;&quot;Scan the dial to the next station&quot;&quot;&quot;
+    self.pos+=1
+    ifself.pos ==len(self.stations):
+        self.pos= 0
+    print(&quot;Scanning... Station is&quot;,self.stations[self.pos],self.name)
+</code></pre><p>classAmState(State):<br>    def__init__(self, radio):<br>        self.radio= radio<br>        self.stations= [“1250”,”1380”, “1510”]<br>        self.pos= 0<br>        self.name= “AM”</p>
+<pre><code>deftoggle_amfm(self):
+    print(&quot;Switching to FM&quot;)
+    self.radio.state= self.radio.fmstate
+</code></pre><p>classFmState(State):<br>    def__init__(self, radio):<br>        self.radio= radio<br>        self.stations= [“81.3”,”89.1”, “103.9”]<br>        self.pos= 0<br>        self.name= “FM”</p>
+<pre><code>deftoggle_amfm(self):
+    print(&quot;Switching to AM&quot;)
+    self.radio.state= self.radio.amstate
+</code></pre><p>classRadio(object):<br>    “””A radio.     It has a scan button, and an AM/FM toggle switch.”””<br>    def__init__(self):<br>        “””We have an AM state and an FM state”””<br>        self.amstate= AmState(self)<br>        self.fmstate= FmState(self)<br>        self.state= self.amstate</p>
+<pre><code>deftoggle_amfm(self):
+    self.state.toggle_amfm()
+
+defscan(self):
+    self.state.scan()
+</code></pre><h1 id="Test-our-radio-out"><a href="#Test-our-radio-out" class="headerlink" title="Test our radio out"></a>Test our radio out</h1><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    radio= Radio()<br>    actions= [radio.scan]<em> 2 + [radio.toggle_amfm] +[radio.scan] </em>2<br>    actions= actions * 2</p>
+<pre><code>foraction in actions:
+    action()
+</code></pre><ol start="22">
+<li>Strategy（策略）</li>
+</ol>
+<p>意图：</p>
+<p> 定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。本模式使得算法可独立于使用它的客户而变化。</p>
+<p> 适用性：</p>
+<p> 许多相关的类仅仅是行为有异。“策略”提供了一种用多个行为中的一个行为来配置一个类的方法。</p>
+<p> 需要使用一个算法的不同变体。例如，你可能会定义一些反映不同的空间/时间权衡的算法。当这些变体实现为一个算法的类层次时[H087] ,可以使用策略模式。</p>
+<p> 算法使用客户不应该知道的数据。可使用策略模式以避免暴露复杂的、与算法相关的数据结构。</p>
+<p> 一个类定义了多种行为, 并且这些行为在这个类的操作中以多个条件语句的形式出现。将相关的条件分支移入它们各自的Strategy类中以代替这些条件语句。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>“””<br>Strategy<br>In most of other languages Strategy pattern is implemented via creating some base strategy interface/abstract class and<br>subclassing it with a number of concrete strategies (as we can see at <a href="http://en.wikipedia.org/wiki/Strategy_pattern)" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Strategy_pattern)</a>,<br>however Python supports higher-order functions and allows us to have only one class and inject functions into it’s<br>instances, as shown in this example.<br>“””<br>importtypes</p>
+<p>classStrategyExample:<br>    def__init__(self, func=None):<br>        self.name= ‘Strategy Example 0’<br>        iffunc is not None:<br>            self.execute= types.MethodType(func,self)     </p>
+<pre><code>defexecute(self):        
+    print(self.name)  
+</code></pre><p>def execute_replacement1(self):<br>    print(self.name+ ‘ from execute 1’)  </p>
+<p>def execute_replacement2(self):<br>    print(self.name+ ‘ from execute 2’) </p>
+<p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    strat0= StrategyExample()    </p>
+<pre><code>strat1= StrategyExample(execute_replacement1)
+strat1.name= &apos;Strategy Example 1&apos;    
+
+strat2= StrategyExample(execute_replacement2)
+strat2.name= &apos;Strategy Example 2&apos;
+
+strat0.execute()
+strat1.execute()    
+strat2.execute()
+</code></pre><ol start="23">
+<li>Visitor（访问者）</li>
+</ol>
+<p>意图：</p>
+<p> 定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。TemplateMethod 使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
+<p> 适用性：</p>
+<p> 一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现。</p>
+<p> 各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。这是Opdyke和Johnson所描述过的“重分解以一般化”的一个很好的例子[OJ93]。首先识别现有代码中的不同之处，并且将不同之处分离为新的操作。最后，用一个调用这些新的操作的模板方法来替换这些不同的代码。</p>
+<p> 控制子类扩展。模板方法只在特定点调用“hook ”操作（参见效果一节），这样就只允许在这些点进行扩展。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Visitor<br>‘’’<br>class Node(object):<br>    pass</p>
+<p>class A(Node):<br>    pass</p>
+<p>classB(Node):<br>    pass</p>
+<p>classC(A, B):<br>    pass</p>
+<p>classVisitor(object):<br>    defvisit(self, node,*args, **kwargs):<br>        meth= None<br>        forcls in node.<strong>class</strong>.<strong>mro</strong>:<br>            meth_name= ‘visit_’+cls.<strong>name</strong><br>            meth= getattr(self, meth_name,None)<br>            ifmeth:<br>                break</p>
+<pre><code>    ifnot meth:
+        meth= self.generic_visit
+    return meth(node, *args,**kwargs)
+
+defgeneric_visit(self, node,*args, **kwargs):
+    print(&apos;generic_visit &apos;+node.__class__.__name__)
+
+defvisit_B(self, node,*args, **kwargs):
+    print(&apos;visit_B &apos;+node.__class__.__name__)
+</code></pre><p>a =A()<br>b =B()<br>c =C()<br>visitor = Visitor()<br>visitor.visit(a)<br>visitor.visit(b)<br>visitor.visit(c)</p>
+
       
     </div>
     
@@ -359,6 +1311,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python-设计模式/" rel="tag"># python-设计模式</a>
+          
+        </div>
       
 
       
@@ -378,6 +1336,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/22/Tornado/" rel="prev" title="Tornado">
+                Tornado <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -477,8 +1439,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -493,7 +1464,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -515,7 +1486,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -553,6 +1524,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设计模式是什么"><span class="nav-number">1.</span> <span class="nav-text">设计模式是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工厂模式"><span class="nav-number">2.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式"><span class="nav-number">3.</span> <span class="nav-text">单例模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Abstract-Factory（抽象工厂）"><span class="nav-number">4.</span> <span class="nav-text">Abstract Factory（抽象工厂）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Builder（建造者）"><span class="nav-number">5.</span> <span class="nav-text">3. Builder（建造者）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Prototype（原型）"><span class="nav-number">6.</span> <span class="nav-text">4. Prototype（原型）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ConcreteImplementor-1-2"><span class="nav-number">7.</span> <span class="nav-text">ConcreteImplementor 1/2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ConcreteImplementor-2-2"><span class="nav-number">8.</span> <span class="nav-text">ConcreteImplementor 2/2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Refined-Abstraction"><span class="nav-number">9.</span> <span class="nav-text">Refined Abstraction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Complex-Parts"><span class="nav-number">10.</span> <span class="nav-text">Complex Parts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Facade"><span class="nav-number">11.</span> <span class="nav-text">Facade</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Client"><span class="nav-number">12.</span> <span class="nav-text">Client</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Skeletons"><span class="nav-number">13.</span> <span class="nav-text">Skeletons</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Getters"><span class="nav-number">14.</span> <span class="nav-text">Getters</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Actions"><span class="nav-number">15.</span> <span class="nav-text">Actions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Makes-templates"><span class="nav-number">16.</span> <span class="nav-text">Makes templates</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Create-our-template-functions"><span class="nav-number">17.</span> <span class="nav-text">Create our template functions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Execute-them"><span class="nav-number">18.</span> <span class="nav-text">Execute them</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Test-the-generator"><span class="nav-number">19.</span> <span class="nav-text">Test the generator</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Example-usage"><span class="nav-number">20.</span> <span class="nav-text">Example usage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Example-usage…"><span class="nav-number">21.</span> <span class="nav-text">Example usage…</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Test-our-radio-out"><span class="nav-number">22.</span> <span class="nav-text">Test our radio out</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -580,7 +1567,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">152.0k</span>
+    <span title="Site words total count">164.7k</span>
   
 </div>
 

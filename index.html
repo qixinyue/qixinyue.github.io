@@ -80,9 +80,10 @@
 
 
 <meta name="description" content="本站主要提供python教学的系列知识汇总">
+<meta name="keywords" content="python 人工智能 AI">
 <meta property="og:type" content="website">
 <meta property="og:title" content="响神的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="https://qixinyue.github.io/index.html">
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="本站主要提供python教学的系列知识汇总">
 <meta property="og:locale" content="zh-Hans">
@@ -118,7 +119,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="https://qixinyue.github.io/"/>
 
 
 
@@ -232,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/python-设计模式/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/22/Tornado/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -251,7 +252,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/22/python-设计模式/" itemprop="url">python-设计模式</a></h1>
+                <a class="post-title-link" href="/2018/08/22/Tornado/" itemprop="url">Tornado</a></h1>
         
 
         <div class="post-meta">
@@ -263,7 +264,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T10:50:31+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T21:29:59+08:00">
                 2018-08-22
               </time>
             
@@ -273,6 +274,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web框架/" itemprop="url" rel="index">
+                    <span itemprop="name">web框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -295,7 +318,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0 字
+                  3,673 字
                 </span>
               
 
@@ -311,7 +334,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  15 分钟
                 </span>
               
             </div>
@@ -334,7 +357,405 @@
       
         
           
-            
+            <p>Tornado项目简单创建</p>
+<p>Tornado是使用Python编写的一个强大的、可扩展的Web服务器。它在处理严峻的网络流量时表现得足够强健，但却在创建和编写时有着足够的轻量级，并能够被用在大量的应用和工具中。</p>
+<p>tornado技术文档：Tornado文档中文翻译版</p>
+<p>ubuntu下安装tornado： pip install tarnado  (其他安装方式自行百度)</p>
+<p>Tornado 主要服务分为  服务器模块（httpserver）    IO接口模块（ioloop）    web模块（web）</p>
+<p>TORNADO 项目的简单创建<br>初步使用这三大模块来建立一个简易的 web 服务</p>
+<pre><code> 1 #导入相关服务模块
+ 2 
+ 3 import tornado.httpserver
+ 4 
+ 5 import tornado.ioloop
+ 6 
+ 7 import tornado.web
+ 8 
+ 9 
+10 
+11 class IndexHandler(tornado.web.RequestHandler):
+12     def get(self):
+13         greeting = self.get_argument(&apos;greeting&apos;, &apos;Hello&apos;)
+14         self.write(greeting + &apos;, friendly user!&apos;)
+15 
+16 
+17 if __name__ == &quot;__main__&quot;:
+18 
+19     app = tornado.web.Application(
+20          handlers=[(r&quot;/&quot;, IndexHandler)]
+21 )
+22     http_server = tornado.httpserver.HTTPServer(app)
+23     http_server.listen(8000)
+24     tornado.ioloop.IOLoop.current().start()
+</code></pre><p>以上就是一个简单的web服务，通过访问该 ip 的8000端口 就能访问到设置的相关信息或界面！</p>
+<p>我们来认识一下上面的相关代码：</p>
+<p>类 IndexHandler 是一个句柄：描述控制器操作过程的一个动作</p>
+<p>在app中设置路由及其他一些操作,参数handlers非常重要，它应该是一个元组组成的列表，其中每个元组的第一个元素是一个用于匹配的正则表达式，第二个元素是一个RequestHanlder类(即句柄)。你可以按你的需要指定任意多个。</p>
+<p>通过 tornado.httpserver.HTTPServer 绑定 Application 对象</p>
+<p>通过 tornado.httpserver.HTTPServer().listen() 设置监听端口</p>
+<p>通过 tornado.ioloop.IOLoop.current().start() 开始循环监听端口</p>
+<p>TORNADO 框架的初步应用<br>下面开始真正探讨 Tornado 的一些模块与功能：</p>
+<p>全局变量的定义：</p>
+<pre><code>1 import  tornado.options
+2 
+3 tornado.options.define(“port” , default = 8888,type = int, help = “程序启动端口”)
+4 
+5 tornado.options.define(“msg”,default = “这是一条测试信息”）
+</code></pre><p>以上就是全局变量的定义方法，我们定义了一个端口与一个“msg”测试信息。</p>
+<p>使用全局变量：我们已经定义好了一个端口变量，现在我们来使用它，例如;</p>
+<pre><code>1 port = tornado.options.options.port
+2 
+3 http_server.listen(port)
+</code></pre><p>接受命令行参数：</p>
+<pre><code>1 tornado.options.parse_command_line()
+</code></pre><p>加载配置文件到程序中：</p>
+<p>如：创建一个配置文件，文件名：config    文件内容：port = 8000</p>
+<p>加载文件： tornado.options.parse_config_file(“./config”)</p>
+<p>配置文件中的变量一定确保已经被 define 定义过！<br>指定网页模板目录和指定静态文件目录：</p>
+<pre><code>1 import os
+2 
+3 BASE_DIR = os.path.dirname(__file__)
+4 
+5 template_path = os.path.join(BASE_DIR,“templates”）
+6 
+7 static_path = os.path.join(BASE_DIR,“static”）
+</code></pre><p>定义路径的语句app中，模板与静态文件为同级目录下的 templates 与 static 文件夹</p>
+<pre><code>1 app = tornado.web.Application(
+2 handlers=[(r&quot;/&quot;, IndexHandler)]， debug = True #开启开发调试模式template_path = os.path.join(BASE_DIR,“templates”）
+3 static_path = os.path.join(BASE_DIR,“static”）
+4 )
+</code></pre><p>使用static_url生成静态URL：</p>
+<pre><code>1 &lt;link rel=&quot;stylesheet&quot; href=&quot;[[ static_url(&quot;style.css&quot;) ]]&quot;&gt;
+2 #生成了类似下面的代码
+3 &lt;link rel=&quot;stylesheet&quot; href=&quot;/static/style.css?v=ab12&quot;&gt;
+</code></pre><p>数据的传输：</p>
+<pre><code>get方式接收 –&gt;
+
+         单个数据：get_query_argument()     多个数据：get_query_arguments()
+
+post方式接收 –&gt;
+
+          单个数据：get_body_argument()     多个数据：get_body_arguments()
+
+未指定方式接收 –&gt;
+
+          单个数据：get_argument()     多个数据：get_arguments()
+</code></pre><p>HTTP状态码：</p>
+<p>404 Not Found<br>Tornado会在HTTP请求的路径无法匹配任何RequestHandler类相对应的模式时返回404（Not Found）响应码。</p>
+<p>400 Bad Request<br>如果你调用了一个没有默认值的get_argument函数，并且没有发现给定名称的参数，Tornado将自动返回一个400（Bad Request）响应码。</p>
+<p>405 Method Not Allowed<br>如果传入的请求使用了RequestHandler中没有定义的HTTP方法（比如，一个POST请求，但是处理函数中只有定义了get方法），Tornado将返回一个405（Methos Not Allowed）响应码。</p>
+<p>500 Internal Server Error<br>当程序遇到任何不能让其退出的错误时，Tornado将返回500（Internal Server Error）响应码。你代码中任何没有捕获的异常也会导致500响应码。</p>
+<p>200 OK<br>如果响应成功，并且没有其他返回码被设置，Tornado将默认返回一个200（OK）响应码。</p>
+<p>使用自己的方法代替默认的错误响应，你可以重写write_error方法在你的RequestHandler类中。</p>
+<pre><code>1 def write_error(self, status_code, **kwargs):
+2         self.write(&quot;Gosh darnit, user! You caused a %d error.&quot; % status_code)
+</code></pre><p>cookies设置：</p>
+<p>Cookie 是由 Web 服务器保存在用户浏览器（客户端）上的小文本文件，它可以包含有关用户的信息。无论何时用户链接到服务器，Web 站点都可以访问 Cookie 信息 。</p>
+<p>会话跟踪是一种灵活、轻便的机制，它使Web上的状态编程变为可能。<br>HTTP是一种无状态协议，每当用户发出请求时，服务器就会做出响应，客户端与服务器之间的联系是离散的、非连续的。<br>当用户在同一网站的多个页面之间转换时，根本无法确定是否是同一个客户，会话跟踪技术就可以解决这个问题。<br>当一个客户在多个页面间切换时，服务器会保存该用户的信息。<br>有四种方法可以实现会话跟踪技术：URL重写、隐藏表单域、Cookie、Session。</p>
+<p>存入数据：</p>
+<pre><code> 1 self.set_cookie(“msg”:”这是一条测试信息！”)                #一般安全cookie
+ 2 
+ 3 ————————————————————————————————————————
+ 4 
+ 5 self.set_secure_cookie(“msg”:”这是一条安全cookie测试信息！”)            #安全cookie
+ 6 
+ 7 #！！！设置安全cookie前必须具有混淆码    设置方式如下
+ 8 
+ 9 # 1.生成一个混淆码
+10 
+11 # import uuid，base64
+12 
+13 # code =  base64.b64encode(uuid.uuid4().bytes+uuid.uuid4().bytes)
+14 
+15 # 2.将混淆码加入cookie设置（在app里添加以下代码）
+16 
+17 # cookie_secret = “%s”%code
+18 
+19 ————————————————————————————————————————
+20 
+21 #可以向set_cookie和set_secure_cookie方法传递关键字参数。比如，一个安全的HTTP-only cookie（上面的安全cookie其实是签名cookie）可以调用self.set_cookie(&apos;foo&apos;, &apos;bar&apos;, httponly=True, secure=True)发送。
+</code></pre><p>设置过期时间的 cookie 为永久 cookie ， 没有设置的为临时 cookie，如：</p>
+<pre><code>self.set_cookie(“msg”:”这是一条测试信息！”，expires_day = 1)
+</code></pre><p>读取数据：</p>
+<pre><code>1 self.get_cookie(“msg”)
+2 
+3 self.get_secure_cookie()
+</code></pre><p>cookie认证装饰器：</p>
+<p>引入装饰器    -&gt; –&gt;      from tornado.web import authenticated<br>在需要装饰的方法前加     -&gt; –&gt;     @authenticated<br>在 app 中添加认证失败的跳转地址    -&gt; –&gt;       login_url = “/login”<br>重写装饰器中获取数据函数</p>
+<pre><code>1 def  get_current_user(self):
+2 
+3         status = self.get_secure_cookies(“login_user”)
+4 
+5         if status:
+6 
+7                 return True
+8 
+9          return  False
+</code></pre><p>跨域请求伪造防范：</p>
+<p>跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。</p>
+<p>任何Web应用所面临的一个主要安全漏洞是跨站请求伪造，通常被简写为CSRF或XSRF，发音为”sea surf”。这个漏洞利用了浏览器的一个允许恶意攻击者在受害者网站注入脚本使未授权请求代表一个已登录用户的安全漏洞。</p>
+<p>app 中添加 xsrf——cookies = True</p>
+<p>html页面提交表单中加入 [\% module xsrf_form_html( ) \%]</p>
+<p>XSRF令牌和AJAX请求：<br>AJAX请求也需要一个_xsrf参数，但不是必须显式地在渲染页面时包含一个_xsrf值，而是通过脚本在客户端查询浏览器获得cookie值。下面的两个函数透明地添加令牌值给AJAX POST请求。第一个函数通过名字获取cookie，而第二个函数是一个添加_xsrf参数到传递给postJSON函数数据对象的便捷函数。</p>
+<pre><code> 1 function getCookie(name) [
+ 2     var c = document.cookie.match(&quot;\\b&quot; + name + &quot;=([^;]*)\\b&quot;);
+ 3     return c ? c[1] : undefined;
+ 4 ]
+ 5 
+ 6 jQuery.postJSON = function(url, data, callback) [
+ 7     data._xsrf = getCookie(&quot;_xsrf&quot;);
+ 8     jQuery.ajax([
+ 9         url: url,
+10         data: jQuery.param(data),
+11         dataType: &quot;json&quot;,
+12         type: &quot;POST&quot;,
+13         success: callback
+14     ]);
+15 ]
+</code></pre><p>同步与异步：<br>大部分Web应用（包括我们之前的例子）都是阻塞性质的，也就是说当一个请求被处理时，这个进程就会被挂起直至请求完成。在大多数情况下，Tornado处理的Web请求完成得足够快使得这个问题并不需要被关注。然而，对于那些需要一些时间来完成的操作（像大数据库的请求或外部API），这意味着应用程序被有效的锁定直至处理结束，Tornado给了我们更好的方法来处理这种情况。应用程序在等待第一个处理完成的过程中，让I/O循环打开以便服务于其他客户端，直到处理完成时启动一个请求并给予反馈，而不再是等待请求完成的过程中挂起进程。</p>
+<p>这里用一个简单的例子来实现同步与异步：</p>
+<p>Eg：向淘宝发起搜索请求：<a href="https://suggest.taobao.com/sug?code=utf-8&amp;q=（关键字）" target="_blank" rel="noopener">https://suggest.taobao.com/sug?code=utf-8&amp;q=（关键字）</a></p>
+<p>先写一个同步的简例</p>
+<pre><code> 1 import  tornado.web
+ 2 
+ 3 import tornado.httpserver
+ 4 
+ 5 import tornado.httpclient
+ 6 
+ 7 import tornado.ioloop
+ 8 
+ 9 import urllib,json
+10 
+11 
+12 
+13 class IndexHandler(tornado.web.RequestHandler):
+14 
+15         def    get(self):
+16 
+17                 query = “iphonex”
+18 
+19                 client = tornado.httpclient.HTTPClient()
+20 
+21                 response = client.fetch(“https://suggest.taobao.com/sug?code=utf-8&amp;”+urllib.parse.urlencode([“q”:query]))
+22 
+23 
+24 
+25         def deal_response(self,response):
+26 
+27                 content = response.body
+28 
+29                 self.write(response.body)
+30 
+31 
+32 
+33 if __name__  ==  “__main__”:
+34 
+35         app  =  tornado.web.Application(handlers  =  [(r”/”,IndexHandler)])
+36 
+37         app.listen(8000)
+38 
+39         tornado.ioloop.IOLoop.current().start()
+</code></pre><p>再用异步的方式写一下：</p>
+<pre><code> 1 import  tornado.web
+ 2 
+ 3 import tornado.httpserver
+ 4 
+ 5 import tornado.httpclient
+ 6 
+ 7 import tornado.ioloop
+ 8 
+ 9 import urllib,json
+10 
+11 from tornado.httpclient  import AsyncHTTPClient
+12 
+13 
+14 
+15 class IndexHandler(tornado.web.RequestHandler):
+16 
+17         #异步请求装饰器，如果不添加，get函数会自动生成一个return，程序会报错
+18 
+19        @tornado.web.asynchronous
+20 
+21         def    get(self):
+22 
+23                 query = “iphonex”
+24 
+25                 client = tornado.httpclient.HTTPClient()
+26 
+27                 response = client.fetch(“https://suggest.taobao.com/sug?code=utf-8&amp;”+urllib.parse.urlencode([“q”:query])，callback = self.deal_response)
+28 
+29                 self.write(response.body)
+30 
+31                 self.finish()         #回调函数结束时需要
+32 
+33 
+34 
+35 if __name__  ==  “__main__”:
+36 
+37         app  =  tornado.web.Application(handlers  =  [(r”/”,IndexHandler)])
+38 
+39         app.listen(8000)
+40 
+41         tornado.ioloop.IOLoop.current().start()
+</code></pre><p>在运行程序过程中，从浏览器上感觉不出同步异步有什么不同，可以用 siege 压力测试一下：<br>（siege 安装方式：sudo apt-get install siege）</p>
+<p>image         image</p>
+<p>上图左边是同步测试，右边是异步测试（连接量10，时间10s）。可以看出相同环境下，异步的连接处理数是同步的六倍，异步平均每秒18.32，同步平均每秒只有3.58</p>
+<p>模板语法<br>填充表达式：</p>
+<pre><code>1 &gt;&gt;&gt; from tornado.template import Template
+2 &gt;&gt;&gt; print Template(&quot;[[ 1+1 ]]&quot;).generate()
+3 2
+4 &gt;&gt;&gt; print Template(&quot;[[ &apos;scrambled eggs&apos;[-4:] ]]&quot;).generate()
+5 eggs
+6 &gt;&gt;&gt; print Template(&quot;[[ &apos;, &apos;.join([str(x*x) for x in range(10)]) ]]&quot;).generate()
+7 0, 1, 4, 9, 16, 25, 36, 49, 64, 81
+</code></pre><p>控制流语句：</p>
+<pre><code>在Tornado模板中使用Python条件和循环语句。控制语句以[\%和\%]包围
+
+[\% if page is None \%]    或      [\% if len(entries) == 3 \%]
+控制语句的大部分就像对应的Python语句一样工作，支持if、for、while和try。在这些情况下，语句块以[%开始，并以%]结束。
+
+1 &lt;h1&gt;[a[ header ]a]&lt;/h1&gt;
+2 &lt;ul&gt;
+3   [\% for book in books \%]
+4    &lt;li&gt;[a[ book ]a]&lt;/li&gt;
+5   [\% end \%]
+6 &lt;/ul&gt;
+</code></pre><p>模板函数：</p>
+<p>escape(s)<br>替换字符串s中的&amp;、&lt;、&gt;为他们对应的HTML字符。<br>url_escape(s)<br>使用urllib.quote_plus替换字符串s中的字符为URL编码形式。</p>
+<p>json_encode(val)<br>将val编码成JSON格式。（在系统底层，这是一个对json库的dumps函数的调用。查阅相关的文档以获得更多关于该函数接收和返回参数的信息。）</p>
+<p>squeeze(s)<br>过滤字符串s，把连续的多个空白字符替换成一个空格。</p>
+<p>模板扩展<br>块和替换：</p>
+<pre><code>为了扩展一个已经存在的模板，你只需要在新的模板文件的顶部放上一句[% extends &quot;filename.html&quot; %]
+</code></pre><p>比如在一个新模板中扩展一个父模板（main.html）：</p>
+<pre><code>[\% extends &quot;main.html&quot; \%]
+</code></pre><p>块基础：<br>为了使用一个能够根据不同页覆写的动态header块，在父模板main.html中添加如下代码：</p>
+<pre><code>1 &lt;header&gt;
+2     [\% block header \%][\% end \%]
+3 &lt;/header&gt;
+</code></pre><p>然后，为了在子模板index.html中覆写[% block header %][% end %]部分，你可以使用块的名字引用，并把任何你想要的内容放到其中。</p>
+<pre><code>1 [\% block header \%][\% end \%]
+2 
+3 [\% block header \%]
+4     &lt;h1&gt;Hello world!&lt;/h1&gt;
+5 [\% end \%]
+</code></pre><p>任何继承这个模板的文件都可以包含它自己的[% block header %]和[% end %]，然后把一些不同的东西加进去。</p>
+<p>可以为每个页面使用多个块，此时像header和footer这样的动态元素将会被包含在同一个流程中。</p>
+<p>父模板main.html：</p>
+<pre><code> 1 &lt;html&gt;
+ 2 &lt;body&gt;
+ 3     &lt;header&gt;
+ 4         [\% block header \%][\% end \%]
+ 5     &lt;/header&gt;
+ 6     &lt;content&gt;
+ 7         [\% block body \%][\% end \%]
+ 8     &lt;/content&gt;
+ 9     &lt;footer&gt;
+10         [\% block footer \%][\% end \%]
+11     &lt;/footer&gt;
+12 &lt;/body&gt;
+13 &lt;/html&gt;
+</code></pre><p>当我们扩展父模板main.html时，可以在子模板index.html中引用这些块。</p>
+<pre><code> 1 [\% extends &quot;main.html&quot; \%]
+ 2 
+ 3 [\% block header \%]
+ 4     &lt;h1&gt;[a[ header_text ]a]&lt;/h1&gt;
+ 5 [\% end \%]
+ 6 
+ 7 [\% block body \%]
+ 8     &lt;p&gt;Hello from the child template!&lt;/p&gt;
+ 9 [\% end \%]
+10 
+11 [\% block footer \%]
+12     &lt;p&gt;[[ footer_text ]]&lt;/p&gt;
+13 [\% end \%]
+</code></pre><p>自动转义：<br>Tornado默认会自动转义模板中的内容，把标签转换为相应的HTML实体。</p>
+<p>当不需要转义时，你可以禁用自动转义，一种方法是在Application构造函数中传递autoescape=None，另一种方法是在每页的基础上修改自动转义行为，如下所示：</p>
+<pre><code>1 [\% autoescape None \%]
+2 [a[ mailLink ]a]
+</code></pre><p>这些autoescape块不需要结束标签，并且可以设置xhtml_escape来开启自动转义（默认行为），或None来关闭。</p>
+<p>然而，在理想的情况下，你希望保持自动转义开启以便继续防护你的网站。因此，你可以使用[% raw %]指令来输出不转义的内容。</p>
+<p>[% raw mailLink %]<br>需要特别注意的是，当你使用诸如Tornado的linkify()和xsrf_form_html()函数时，自动转义的设置被改变了。所以如果你希望在前面代码的footer中使用linkify()来包含链接，你可以使用一个[% raw %]块：</p>
+<pre><code> 1 [\% block footer \%]
+ 2     &lt;p&gt;
+ 3         For more information about our selection, hours or events, please email us at
+ 4         &lt;a href=&quot;mailto:[email protected]&quot;&gt;[email protected]&lt;/a&gt;.
+ 5     &lt;/p&gt;
+ 6 
+ 7     &lt;p class=&quot;small&quot;&gt;
+ 8         Follow us on Facebook at
+ 9         [\% raw linkify(&quot;https://fb.me/burtsbooks&quot;, extra_params=&apos;ref=website&apos;) \%].
+10     &lt;/p&gt;
+11 [\% end \%]
+</code></pre><p>这样，你可以既利用linkify()简记的好处，又可以保持在其他地方自动转义的好处。</p>
+<p>嵌入JavaScript和CSS：<br>Tornado允许你使用embedded_css和embedded_javascript方法嵌入其他的CSS和JavaScript文件。</p>
+<p>例如，你想在调用模块时给DOM添加一行文字，你可以通过从模块中嵌入JavaScript来做到：</p>
+<pre><code>1 class BookModule(tornado.web.UIModule):
+2     def render(self, book):
+3         return self.render_string(
+4             &quot;modules/book.html&quot;,
+5             book=book,
+6         )
+7 
+8     def embedded_javascript(self):
+9         return &quot;document.write(\&quot;hi!\&quot;)&quot;
+</code></pre><p>当调用模块时，document.write(\”hi!\”)将被<script>包围，并被插入到<body>的闭标签中：</p>
+<pre><code>1 &lt;script type=&quot;text/javascript&quot;&gt;
+2 //&lt;![CDATA[
+3 document.write(&quot;hi!&quot;)
+4 //]]&gt;
+5 &lt;/script&gt;
+</code></pre><p>你也可以把只在这些模块被调用时加载的额外的CSS规则放进来：</p>
+<pre><code>1 def embedded_css(self):
+2     return &quot;.book [background-color:#F5F5F5]&quot;
+</code></pre><p>在这种情况下，.book [background-color:#555]这条CSS规则被包裹在<style>中，并被直接添加到<head>的闭标签之前。</p>
+<pre><code>1 &lt;style type=&quot;text/css&quot;&gt;
+2 .book [background-color:#F5F5F5]
+3 &lt;/style&gt;
+</code></pre><p>甚至可以简单地使用html_body()来在闭合的</body>标签前添加完整的HTML标记：</p>
+<pre><code>1 def html_body(self):
+2     return &quot;&lt;script&gt;document.write(\&quot;Hello!\&quot;)&lt;/script&gt;&quot;
+</code></pre><p>为了更严谨的包含（以及更整洁的代码！），添加样式表和脚本文件会显得更好。他们的工作方式基本相同，所以你可以使用javascript_files()和css_files()来包含完整的文件，不论是本地的还是外部的。</p>
+<pre><code>1 #添加个本地的css文件
+2 def css_files(self):
+3     return &quot;/static/css/newreleases.css&quot;
+4 
+5 #添加一个外部的JavaScript文件：
+6 def javascript_files(self):
+7     return &quot;https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js&quot;
+</code></pre><p>因为模块的内嵌JavaScript和内嵌HTML函数的目标都是紧邻</body>标签，html_body()、javascript_files()和embedded_javascript()都会将内容渲染后插到页面底部，那么它们出现的顺序正好是你指定它们的顺序的倒序。</p>
+<pre><code> 1 class SampleModule(tornado.web.UIModule):
+ 2     def render(self, sample):
+ 3         return self.render_string(
+ 4             &quot;modules/sample.html&quot;,
+ 5             sample=sample
+ 6         )
+ 7 
+ 8     def html_body(self):
+ 9         return &quot;&lt;div class=\&quot;addition\&quot;&gt;&lt;p&gt;html_body()&lt;/p&gt;&lt;/div&gt;&quot;
+10 
+11     def embedded_javascript(self):
+12         return &quot;document.write(\&quot;&lt;p&gt;embedded_javascript()&lt;/p&gt;\&quot;)&quot;
+13 
+14     def embedded_css(self):
+15         return &quot;.addition [color: #A1CAF1]&quot;
+16 
+17     def css_files(self):
+18         return &quot;/static/css/sample.css&quot;
+19 
+20     def javascript_files(self):
+21         return &quot;/static/js/sample.js&quot;
+</code></pre><p>html_body()最先被编写，它紧挨着出现在</body>标签的上面。embedded_javascript()接着被渲染，最后是javascript_files()。</p>
+<p>不能包括一个需要其他地方东西的方法（比如依赖其他文件的JavaScript函数），因为此时他们可能会按照和你期望不同的顺序进行渲染。</p>
+<p>WebSockets：</p>
+<p>WebSockets是HTML5规范中新提出的客户-服务器通讯协议。WebSocket协议提供了在客户端和服务器间持久连接的双向通信。协议本身使用新的ws://URL格式，但它是在标准HTTP上实现的。通过使用HTTP和HTTPS端口，它避免了从Web代理后的网络连接站点时引入的各种问题。HTML5规范不只描述了协议本身，还描述了使用WebSockets编写客户端代码所需要的浏览器API。</p>
+<p>Tornado的WebSocket模块：<br>Tornado在websocket模块中提供了一个WebSocketHandler类。这个类提供了和已连接的客户端通信的WebSocket事件和方法的钩子。当一个新的WebSocket连接打开时，open方法被调用，而on_message和on_close方法分别在连接接收到新的消息和客户端关闭时被调用。</p>
+<pre><code>1 class IndexHandler(tornado.websocket.WebSocketHandler):
+2     def open(self):
+3         self.write_message(&apos;connected!&apos;)
+4 
+5     def on_message(self, message):
+6         self.write_message(message)
+</code></pre></script></p>
           
         
       
@@ -382,7 +803,1108 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/python插件tools/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/22/python-设计模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/22/python-设计模式/" itemprop="url">python-设计模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-22T10:50:31+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  9,000 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  39 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="设计模式是什么"><a href="#设计模式是什么" class="headerlink" title="设计模式是什么"></a>设计模式是什么</h1><p><strong>设计模式是经过总结、优化的，对我们经常会碰到的一些编程问题的可重用解决方案。</strong><br>一个设计模式并不像一个类或一个库那样能够直接作用于我们的代码。反之，设计模式更为高级，它是一种必须在特定情形下实现的一种方法模板。设计模式不会绑定具体的编程语言。一个好的设计模式应该能够用大部分编程语言实现(如果做不到全部的话，具体取决于语言特性)。最为重要的是，设计模式也是一把双刃剑，如果设计模式被用在不恰当的情形下将会造成灾难，进而带来无穷的麻烦。然而如果设计模式在正确的时间被用在正确地地方，它将是你的救星。</p>
+<p>起初，你会认为“模式”就是为了解决一类特定问题而特别想出来的明智之举。说的没错，看起来的确是通过很多人一起工作，从不同的角度看待问题进而形成的一个最通用、最灵活的解决方案。也许这些问题你曾经见过或是曾经解决过，但是你的解决方案很可能没有模式这么完备。</p>
+<p>虽然被称为“设计模式”，但是它们同“设计“领域并非紧密联系。设计模式同传统意义上的分析、设计与实现不同，事实上设计模式将一个完整的理念根植于程序中，所以它可能出现在分析阶段或是更高层的设计阶段。很有趣的是因为设计模式的具体体现是程序代码，因此可能会让你认为它不会在具体实现阶段之前出现(事实上在进入具体实现阶段之前你都没有意识到正在使用具体的设计模式)。</p>
+<p>可以通过程序设计的基本概念来理解模式：增加一个抽象层。抽象一个事物就是隔离任何具体细节，这么做的目的是为了将那些不变的核心部分从其他细节中分离出来。当你发现你程序中的某些部分经常因为某些原因改动，而你不想让这些改动的部分引发其他部分的改动，这时候你就需要思考那些不会变动的设计方法了。这么做不仅会使代码可维护性更高，而且会让代码更易于理解，从而降低开发成本。</p>
+<p>这里列举了三种最基本的设计模式：</p>
+<p>创建模式，提供实例化的方法，为适合的状况提供相应的对象创建方法。<br>结构化模式，通常用来处理实体之间的关系，使得这些实体能够更好地协同工作。<br>行为模式，用于在不同的实体建进行通信，为实体之间的通信提供更容易，更灵活的通信方法。</p>
+<p><strong>创建型</strong></p>
+<ol>
+<li><p>Factory Method（工厂方法）</p>
+</li>
+<li><p>Abstract Factory（抽象工厂）</p>
+</li>
+<li><p>Builder（建造者）</p>
+</li>
+<li><p>Prototype（原型）</p>
+</li>
+<li><p>Singleton（单例）</p>
+</li>
+</ol>
+<p><strong>结构型</strong></p>
+<ol start="6">
+<li><p>Adapter Class/Object（适配器）</p>
+</li>
+<li><p>Bridge（桥接）</p>
+</li>
+<li><p>Composite（组合）</p>
+</li>
+<li><p>Decorator（装饰）</p>
+</li>
+<li><p>Facade（外观）</p>
+</li>
+<li><p>Flyweight（享元）</p>
+</li>
+<li><p>Proxy（代理）</p>
+</li>
+</ol>
+<p><strong>行为型</strong></p>
+<ol start="13">
+<li><p>Interpreter（解释器）</p>
+</li>
+<li><p>Template Method（模板方法）</p>
+</li>
+<li><p>Chain of Responsibility（责任链）</p>
+</li>
+<li><p>Command（命令）</p>
+</li>
+<li><p>Iterator（迭代器）</p>
+</li>
+<li><p>Mediator（中介者）</p>
+</li>
+<li><p>Memento（备忘录）</p>
+</li>
+<li><p>Observer（观察者）</p>
+</li>
+<li><p>State（状态）</p>
+</li>
+<li><p>Strategy（策略）</p>
+</li>
+<li><p>Visitor（访问者）</p>
+</li>
+</ol>
+<h1 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h1><p>意图：<br>定义一个用于创建对象的接口，让子类决定实例化哪一个类。<br>Factory Method使一个类的实例化延迟到其子类。</p>
+<p>适用性：<br>当一个类不知道它所必须创建的对象的类的时候<br>当一个类希望由它的子类来指定它所创建的对象的时候<br>当类将创建对象的职责委托给多个帮助子类中的某一个，并且希望将哪一个帮助子类是代理者这一信息局部化的时候</p>
+<pre><code>#!/usr/bin/python
+#coding:utf8
+&apos;&apos;&apos;
+Factory Method
+&apos;&apos;&apos;
+
+class ChinaGetter:
+    &quot;&quot;&quot;A simple localizer a la gettext&quot;&quot;&quot;
+    def __init__(self):
+        self.trans= dict(dog=u&quot;小狗&quot;, cat=u&quot;小猫&quot;)
+
+    def get(self, msgid):
+        &quot;&quot;&quot;We&apos;ll punt if we don&apos;t have a translation&quot;&quot;&quot;
+        try:
+            return self.trans[msgid]
+        except KeyError:
+            return str(msgid)
+
+
+class EnglishGetter:
+    &quot;&quot;&quot;Simply echoes the msg ids&quot;&quot;&quot;
+    def get(self, msgid):
+        return str(msgid)
+
+
+def get_localizer(language=&quot;English&quot;):
+    &quot;&quot;&quot;The factory method&quot;&quot;&quot;
+    languages= dict(English=EnglishGetter, China=ChinaGetter)
+    return languages[language]()
+
+# Create our localizers
+e, g =get_localizer(&quot;English&quot;), get_localizer(&quot;China&quot;)
+# Localize some text
+for msgid in &quot;dog parrot cat bear&quot;.split():
+    print(e.get(msgid), g.get(msgid))
+</code></pre><h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>单例模式即一个类有且仅有一个实例，那么通过python怎么实现一个类只能有一个实例呢<br>通过重写 <strong>new</strong>(cls)方法去实现类只创建一个实例</p>
+<pre><code>class Earth(object):
+    __instance=None #定义一个类属性做判断
+
+    def __new__(cls):
+
+        if cls.__instance==None:
+            #如果__instance为空证明是第一次创建实例
+            #通过父类的__new__(cls)创建实例
+            cls.__instance = object.__new__(cls)
+            return  cls.__instance
+        else:
+            #返回上一个对象的引用
+            return cls.__instance
+
+a = Earth()
+print(id(a))
+b = Earth()
+print(id(b))
+</code></pre><h1 id="Abstract-Factory（抽象工厂）"><a href="#Abstract-Factory（抽象工厂）" class="headerlink" title="Abstract Factory（抽象工厂）"></a>Abstract Factory（抽象工厂）</h1><p>意图：</p>
+<p>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类。<br>适用性：</p>
+<p> 一个系统要独立于它的产品的创建、组合和表示时。</p>
+<p> 一个系统要由多个产品系列中的一个来配置时。</p>
+<p> 当你要强调一系列相关的产品对象的设计以便进行联合使用时。</p>
+<p> 当你提供一个产品类库，而只想显示它们的接口而不是实现时。</p>
+<pre><code>#!/usr/bin/python
+#coding:utf8
+&apos;&apos;&apos;
+Abstract Factory
+&apos;&apos;&apos;
+
+import random
+
+class PetShop:
+    &quot;&quot;&quot;A pet shop&quot;&quot;&quot;
+
+    def __init__(self, animal_factory=None):
+        &quot;&quot;&quot;pet_factory is our abstract factory.
+        We can set it at will.&quot;&quot;&quot;
+
+        self.pet_factory= animal_factory
+
+    def show_pet(self):
+        &quot;&quot;&quot;Creates and shows a pet using the
+        abstract factory&quot;&quot;&quot;
+
+        pet= self.pet_factory.get_pet()
+        print(&quot;This is a lovely&quot;,str(pet))
+        print(&quot;It says&quot;, pet.speak())
+        print(&quot;It eats&quot;,self.pet_factory.get_food())
+
+
+# Stuff that our factory makes
+
+classDog:
+    def speak(self):
+        return &quot;woof&quot;
+
+    def __str__(self):
+        return &quot;Dog&quot;
+
+
+classCat:
+    def speak(self):
+        return &quot;meow&quot;
+
+    def __str__(self):
+        return &quot;Cat&quot;
+
+
+# Factory classes
+
+classDogFactory:
+    def get_pet(self):
+        return Dog()
+
+    def get_food(self):
+        return &quot;dog food&quot;
+
+
+classCatFactory:
+    def get_pet(self):
+        return Cat()
+
+    def get_food(self):
+        return &quot;cat food&quot;
+
+
+# Create the proper family
+def get_factory():
+    &quot;&quot;&quot;Let&apos;s be dynamic!&quot;&quot;&quot;
+    return random.choice([DogFactory, CatFactory])()
+
+
+# Show pets with various factories
+if __name__ ==&quot;__main__&quot;:
+    shop= PetShop()
+    for i in range(3):
+        shop.pet_factory= get_factory()
+        shop.show_pet()
+        print(&quot;=&quot;* 20)
+</code></pre><h1 id="3-Builder（建造者）"><a href="#3-Builder（建造者）" class="headerlink" title="3. Builder（建造者）"></a>3. Builder（建造者）</h1><p>意图：</p>
+<p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+<p>适用性：</p>
+<p>当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。</p>
+<p>当构造过程必须允许被构造的对象有不同的表示时。</p>
+<pre><code>#!/usr/bin/python
+#coding:utf8
+
+&quot;&quot;&quot;
+    Builder
+&quot;&quot;&quot;
+
+# Director
+class Director(object):
+    def __init__(self):
+        self.builder= None
+
+    def construct_building(self):
+        self.builder.new_building()
+        self.builder.build_floor()
+        self.builder.build_size()
+
+    def get_building(self):
+        return self.builder.building
+
+
+# Abstract Builder
+classBuilder(object):
+    def __init__(self):
+        self.building= None
+
+    def new_building(self):
+        self.building= Building()
+
+
+# Concrete Builder
+classBuilderHouse(Builder):
+    def build_floor(self):
+        self.building.floor= &apos;One&apos;
+
+    def build_size(self):
+        self.building.size= &apos;Big&apos;
+
+
+classBuilderFlat(Builder):
+    def build_floor(self):
+        self.building.floor= &apos;More than One&apos;
+
+    defbuild_size(self):
+        self.building.size= &apos;Small&apos;
+
+
+# Product
+classBuilding(object):
+    def __init__(self):
+        self.floor= None
+        self.size= None
+
+    def __repr__(self):
+        return &apos;Floor: %s | Size: %s&apos; % (self.floor,self.size)
+
+
+# Client
+if __name__ ==&quot;__main__&quot;:
+    director= Director()
+    director.builder= BuilderHouse()
+    director.construct_building()
+    building= director.get_building()
+    print(building)
+    director.builder= BuilderFlat()
+    director.construct_building()
+    building= director.get_building()
+    print(building)
+</code></pre><h1 id="4-Prototype（原型）"><a href="#4-Prototype（原型）" class="headerlink" title="4. Prototype（原型）"></a>4. Prototype（原型）</h1><p>意图：</p>
+<p>用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。</p>
+<p>适用性：</p>
+<p>当要实例化的类是在运行时刻指定时，例如，通过动态装载；或者为了避免创建一个与产品类层次平行的工厂类层次时；或者当一个类的实例只能有几个不同状态组合中的一种时。建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些。</p>
+<pre><code>#!/usr/bin/python
+#coding:utf8
+&apos;&apos;&apos;
+Prototype
+&apos;&apos;&apos;
+
+import copy
+
+class Prototype:
+    def__init__(self):
+        self._objects= {}
+
+    defregister_object(self, name, obj):
+        &quot;&quot;&quot;Register an object&quot;&quot;&quot;
+        self._objects[name]= obj
+
+    defunregister_object(self, name):
+        &quot;&quot;&quot;Unregister an object&quot;&quot;&quot;
+        delself._objects[name]
+
+    defclone(self, name,**attr):
+        &quot;&quot;&quot;Clone a registered object and update inner attributes dictionary&quot;&quot;&quot;
+        obj= copy.deepcopy(self._objects.get(name))
+        obj.__dict__.update(attr)
+        return obj
+
+
+def main():
+    classA:
+        def__str__(self):
+            return &quot;I am A&quot;
+
+    a= A()
+    prototype= Prototype()
+    prototype.register_object(&apos;a&apos;, a)
+    b= prototype.clone(&apos;a&apos;, a=1, b=2, c=3)
+
+    print(a)
+    print(b.a, b.b, b.c)
+
+
+if __name__ ==&apos;__main__&apos;:
+    main()
+</code></pre><p>　</p>
+<ol start="5">
+<li>Singleton（单例）<br>意图：</li>
+</ol>
+<p>保证一个类仅有一个实例，并提供一个访问它的全局访问点。</p>
+<p>适用性：</p>
+<p>当类只能有一个实例而且客户可以从一个众所周知的访问点访问它时。</p>
+<p>当这个唯一实例应该是通过子类化可扩展的，并且客户应该无需更改代码就能使用一个扩展的实例时。</p>
+<p>实现：　</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Singleton<br>‘’’</p>
+<p>class Singleton(object):<br>    ‘’’’’ A python style singleton ‘’’</p>
+<pre><code>def__new__(cls,*args, **kw):
+    ifnot hasattr(cls,&apos;_instance&apos;):
+        org= super(Singleton,cls)
+        cls._instance= org.__new__(cls,*args, **kw)
+    return cls._instance
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    classSingleSpam(Singleton):<br>        def__init__(self, s):<br>            self.s= s</p>
+<pre><code>    def__str__(self):
+        return self.s
+
+
+s1= SingleSpam(&apos;spam&apos;)
+printid(s1), s1
+s2= SingleSpam(&apos;spa&apos;)
+printid(s2), s2
+printid(s1), s1
+</code></pre><p>结构型</p>
+<ol start="6">
+<li>Adapter Class/Object（适配器）</li>
+</ol>
+<p>意图：</p>
+<p> 将一个类的接口转换成客户希望的另外一个接口。Adapter 模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。 </p>
+<p>适用性：</p>
+<p> 你想使用一个已经存在的类，而它的接口不符合你的需求。</p>
+<p>你想创建一个可以复用的类，该类可以与其他不相关的类或不可预见的类（即那些接口可能不一定兼容的类）协同工作。</p>
+<p>（仅适用于对象Adapter ）你想使用一些已经存在的子类，但是不可能对每一个都进行子类化以匹配它们的接口。对象适配器可以适配它的父类接口。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Adapter<br>‘’’</p>
+<p>import os</p>
+<p>class Dog(object):<br>    def__init__(self):<br>        self.name= “Dog”</p>
+<pre><code>defbark(self):
+    return &quot;woof!&quot;
+</code></pre><p>classCat(object):<br>    def__init__(self):<br>        self.name= “Cat”</p>
+<pre><code>defmeow(self):
+    return &quot;meow!&quot;
+</code></pre><p>classHuman(object):<br>    def__init__(self):<br>        self.name= “Human”</p>
+<pre><code>defspeak(self):
+    return &quot;&apos;hello&apos;&quot;
+</code></pre><p>classCar(object):<br>    def__init__(self):<br>        self.name= “Car”</p>
+<pre><code>defmake_noise(self, octane_level):
+    return &quot;vroom%s&quot; %(&quot;!&quot; * octane_level)
+</code></pre><p>classAdapter(object):<br>    “””<br>    Adapts an object by replacing methods.<br>    Usage:<br>    dog = Dog<br>    dog = Adapter(dog, dict(make_noise=dog.bark))<br>    “””<br>    def__init__(self, obj, adapted_methods):<br>        “””We set the adapted methods in the object’s dict”””<br>        self.obj= obj<br>        self.<strong>dict</strong>.update(adapted_methods)</p>
+<pre><code>def__getattr__(self, attr):
+    &quot;&quot;&quot;All non-adapted calls are passed to the object&quot;&quot;&quot;
+    return getattr(self.obj, attr)
+</code></pre><p>def main():<br>    objects= []<br>    dog= Dog()<br>    objects.append(Adapter(dog,dict(make_noise=dog.bark)))<br>    cat= Cat()<br>    objects.append(Adapter(cat,dict(make_noise=cat.meow)))<br>    human= Human()<br>    objects.append(Adapter(human,dict(make_noise=human.speak)))<br>    car= Car()<br>    car_noise= lambda: car.make_noise(3)<br>    objects.append(Adapter(car,dict(make_noise=car_noise)))</p>
+<pre><code>forobj in objects:
+    print&quot;A&quot;, obj.name, &quot;goes&quot;, obj.make_noise()
+</code></pre><p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    main()</p>
+<ol start="7">
+<li>Bridge（桥接）</li>
+</ol>
+<p>意图：</p>
+<p> 将抽象部分与它的实现部分分离，使它们都可以独立地变化。</p>
+<p> 适用性：</p>
+<p> 你不希望在抽象和它的实现部分之间有一个固定的绑定关系。例如这种情况可能是因为，在程序运行时刻实现部分应可以被选择或者切换。</p>
+<p> 类的抽象以及它的实现都应该可以通过生成子类的方法加以扩充。这时Bridge 模式使你可以对不同的抽象接口和实现部分进行组合，并分别对它们进行扩充。</p>
+<p> 对一个抽象的实现部分的修改应对客户不产生影响，即客户的代码不必重新编译。</p>
+<p> （C++）你想对客户完全隐藏抽象的实现部分。在C++中，类的表示在类接口中是可见的。</p>
+<p> 有许多类要生成。这样一种类层次结构说明你必须将一个对象分解成两个部分。Rumbaugh 称这种类层次结构为“嵌套的普化”（nested generalizations ）。</p>
+<p> 你想在多个对象间共享实现（可能使用引用计数），但同时要求客户并不知道这一点。一个简单的例子便是Coplien 的String 类[ Cop92 ]，在这个类中多个对象可以共享同一个字符串表示（StringRep）。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Bridge<br>‘’’</p>
+<h1 id="ConcreteImplementor-1-2"><a href="#ConcreteImplementor-1-2" class="headerlink" title="ConcreteImplementor 1/2"></a>ConcreteImplementor 1/2</h1><p>class DrawingAPI1(object):<br>    defdraw_circle(self, x, y, radius):<br>        print(‘API1.circle at {}:{} radius {}’.format(x, y, radius))</p>
+<h1 id="ConcreteImplementor-2-2"><a href="#ConcreteImplementor-2-2" class="headerlink" title="ConcreteImplementor 2/2"></a>ConcreteImplementor 2/2</h1><p>classDrawingAPI2(object):<br>    defdraw_circle(self, x, y, radius):<br>        print(‘API2.circle at {}:{} radius {}’.format(x, y, radius))</p>
+<h1 id="Refined-Abstraction"><a href="#Refined-Abstraction" class="headerlink" title="Refined Abstraction"></a>Refined Abstraction</h1><p>classCircleShape(object):<br>    def__init__(self, x, y, radius, drawing_api):<br>        self._x= x<br>        self._y= y<br>        self._radius= radius<br>        self._drawing_api= drawing_api</p>
+<pre><code># low-level i.e. Implementation specific
+defdraw(self):
+    self._drawing_api.draw_circle(self._x,self._y, self._radius)
+
+# high-level i.e. Abstraction specific
+defscale(self, pct):
+    self._radius*=pct
+</code></pre><p>def main():<br>    shapes= (<br>        CircleShape(1,2, 3, DrawingAPI1()),<br>        CircleShape(5,7, 11, DrawingAPI2())<br>    )</p>
+<pre><code>forshape in shapes:
+    shape.scale(2.5)
+    shape.draw()
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    main()</p>
+<ol start="8">
+<li>Composite（组合）</li>
+</ol>
+<p>意图：</p>
+<p> 将对象组合成树形结构以表示“部分-整体”的层次结构。C o m p o s i t e 使得用户对单个对象和组合对象的使用具有一致性。 </p>
+<p>适用性：</p>
+<p> 你想表示对象的部分-整体层次结构。</p>
+<p>你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8</p>
+<p>“””<br>Composite<br>“””</p>
+<p>class Component:<br>    def__init__(self,strName):<br>        self.m_strName= strName<br>    defAdd(self,com):<br>        pass<br>    defDisplay(self,nDepth):<br>        pass</p>
+<p>classLeaf(Component):<br>    defAdd(self,com):<br>        print”leaf can’t add”<br>    defDisplay(self,nDepth):<br>        strtemp= “-“* nDepth<br>        strtemp=strtemp+self.m_strName<br>        printstrtemp</p>
+<p>classComposite(Component):<br>    def__init__(self,strName):<br>        self.m_strName= strName<br>        self.c= []<br>    defAdd(self,com):<br>        self.c.append(com)<br>    defDisplay(self,nDepth):<br>        strtemp= “-“*nDepth<br>        strtemp=strtemp+self.m_strName<br>        printstrtemp<br>        forcom in self.c:<br>            com.Display(nDepth+2)</p>
+<p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    p= Composite(“Wong”)<br>    p.Add(Leaf(“Lee”))<br>    p.Add(Leaf(“Zhao”))<br>    p1= Composite(“Wu”)<br>    p1.Add(Leaf(“San”))<br>    p.Add(p1)<br>    p.Display(1);</p>
+<ol start="9">
+<li>Decorator（装饰）</li>
+</ol>
+<p>意图：<br>动态地给一个对象添加一些额外的职责。就增加功能来说，Decorator 模式相比生成子类更为灵活。<br>适用性：</p>
+<p> 在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。</p>
+<p> 处理那些可以撤消的职责。</p>
+<p>当不能采用生成子类的方法进行扩充时。一种情况是，可能有大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长。另一种情况可能是因为类定义被隐藏，或类定义不能用于生成子类。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Decorator<br>‘’’</p>
+<p>class foo(object):<br>    deff1(self):<br>        print(“original f1”)</p>
+<pre><code>deff2(self):
+    print(&quot;original f2&quot;)
+</code></pre><p>classfoo_decorator(object):<br>    def__init__(self, decoratee):<br>        self._decoratee= decoratee</p>
+<pre><code>deff1(self):
+    print(&quot;decorated f1&quot;)
+    self._decoratee.f1()
+
+def__getattr__(self, name):
+    return getattr(self._decoratee, name)
+</code></pre><p>u =foo()<br>v =foo_decorator(u)<br>v.f1()<br>v.f2()</p>
+<ol start="10">
+<li>Facade（外观）</li>
+</ol>
+<p>意图：</p>
+<p> 为子系统中的一组接口提供一个一致的界面，Facade模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。</p>
+<p>适用性：</p>
+<p>当你要为一个复杂子系统提供一个简单接口时。子系统往往因为不断演化而变得越来越复杂。大多数模式使用时都会产生更多更小的类。这使得子系统更具可重用性，也更容易对子系统进行定制，但这也给那些不需要定制子系统的用户带来一些使用上的困难。Facade 可以提供一个简单的缺省视图，这一视图对大多数用户来说已经足够，而那些需要更多的可定制性的用户可以越过facade层。</p>
+<p>客户程序与抽象类的实现部分之间存在着很大的依赖性。引入facade 将这个子系统与客户以及其他的子系统分离，可以提高子系统的独立性和可移植性。</p>
+<p>当你需要构建一个层次结构的子系统时，使用facade模式定义子系统中每层的入口点。如果子系统之间是相互依赖的，你可以让它们仅通过facade进行通讯，从而简化了它们之间的依赖关系。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Decorator<br>‘’’<br>import time</p>
+<p>SLEEP =0.5</p>
+<h1 id="Complex-Parts"><a href="#Complex-Parts" class="headerlink" title="Complex Parts"></a>Complex Parts</h1><p>classTC1:<br>    defrun(self):<br>        print(“###### In Test 1 ######”)<br>        time.sleep(SLEEP)<br>        print(“Setting up”)<br>        time.sleep(SLEEP)<br>        print(“Running test”)<br>        time.sleep(SLEEP)<br>        print(“Tearing down”)<br>        time.sleep(SLEEP)<br>        print(“Test Finished\n”)</p>
+<p>classTC2:<br>    defrun(self):<br>        print(“###### In Test 2 ######”)<br>        time.sleep(SLEEP)<br>        print(“Setting up”)<br>        time.sleep(SLEEP)<br>        print(“Running test”)<br>        time.sleep(SLEEP)<br>        print(“Tearing down”)<br>        time.sleep(SLEEP)<br>        print(“Test Finished\n”)</p>
+<p>classTC3:<br>    defrun(self):<br>        print(“###### In Test 3 ######”)<br>        time.sleep(SLEEP)<br>        print(“Setting up”)<br>        time.sleep(SLEEP)<br>        print(“Running test”)<br>        time.sleep(SLEEP)<br>        print(“Tearing down”)<br>        time.sleep(SLEEP)<br>        print(“Test Finished\n”)</p>
+<h1 id="Facade"><a href="#Facade" class="headerlink" title="Facade"></a>Facade</h1><p>classTestRunner:<br>    def__init__(self):<br>        self.tc1= TC1()<br>        self.tc2= TC2()<br>        self.tc3= TC3()<br>        self.tests= [i for i in(self.tc1,self.tc2, self.tc3)]</p>
+<pre><code>defrunAll(self):
+    [i.run()for i in self.tests]
+</code></pre><h1 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h1><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    testrunner= TestRunner()<br>    testrunner.runAll()</p>
+<ol start="11">
+<li>Flyweight（享元）</li>
+</ol>
+<p>意图：</p>
+<p>运用共享技术有效地支持大量细粒度的对象。</p>
+<p>适用性：</p>
+<p>一个应用程序使用了大量的对象。</p>
+<p>完全由于使用大量的对象，造成很大的存储开销。</p>
+<p>对象的大多数状态都可变为外部状态。</p>
+<p>如果删除对象的外部状态，那么可以用相对较少的共享对象取代很多组对象。 </p>
+<p>应用程序不依赖于对象标识。由于Flyweight 对象可以被共享，对于概念上明显有别的对象，标识测试将返回真值。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Flyweight<br>‘’’</p>
+<p>import weakref </p>
+<p>class Card(object):<br>    “””The object pool. Has builtin reference counting”””<br>    _CardPool= weakref.WeakValueDictionary()</p>
+<pre><code>&quot;&quot;&quot;Flyweight implementation. If the object exists in the
+pool just return it (instead of creating a new one)&quot;&quot;&quot;
+def__new__(cls, value, suit):        
+    obj= Card._CardPool.get(value+ suit, None)        
+    ifnot obj:            
+        obj= object.__new__(cls)            
+        Card._CardPool[value+ suit] = obj            
+        obj.value, obj.suit= value, suit         
+    return obj
+
+# def __init__(self, value, suit):        
+#     self.value, self.suit = value, suit     
+
+def__repr__(self):        
+    return &quot;&lt;Card: %s%s&gt;&quot; %(self.value,self.suit)     
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:</p>
+<pre><code># comment __new__ and uncomment __init__ to see the difference
+c1= Card(&apos;9&apos;,&apos;h&apos;)
+c2= Card(&apos;9&apos;,&apos;h&apos;)
+print(c1, c2)
+print(c1==c2)
+print(id(c1),id(c2))
+</code></pre><ol start="12">
+<li>Proxy（代理）</li>
+</ol>
+<p>意图：</p>
+<p>为其他对象提供一种代理以控制对这个对象的访问。</p>
+<p>适用性：</p>
+<p> 在需要用比较通用和复杂的对象指针代替简单的指针的时候，使用Proxy模式。下面是一 些可以使用Proxy 模式常见情况： </p>
+<p>1) 远程代理（Remote Proxy ）为一个对象在不同的地址空间提供局部代表。 NEXTSTEP[Add94] 使用NXProxy 类实现了这一目的。Coplien[Cop92] 称这种代理为“大使” （Ambassador ）。<br>2 )虚代理（Virtual Proxy ）根据需要创建开销很大的对象。在动机一节描述的ImageProxy 就是这样一种代理的例子。<br>3) 保护代理（Protection Proxy ）控制对原始对象的访问。保护代理用于对象应该有不同 的访问权限的时候。例如，在Choices 操作系统[ CIRM93]中KemelProxies为操作系统对象提供 了访问保护。<br>4 )智能指引（Smart Reference ）取代了简单的指针，它在访问对象时执行一些附加操作。 它的典型用途包括：对指向实际对象的引用计数，这样当该对象没有引用时，可以自动释放它(也称为SmartPointers[Ede92 ] )。</p>
+<p> 当第一次引用一个持久对象时，将它装入内存。</p>
+<p> 在访问一个实际对象前，检查是否已经锁定了它，以确保其他对象不能改变它。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Proxy<br>‘’’</p>
+<p>import time</p>
+<p>class SalesManager:<br>    defwork(self):<br>        print(“Sales Manager working…”)</p>
+<pre><code>deftalk(self):
+    print(&quot;Sales Manager ready to talk&quot;)
+</code></pre><p>classProxy:<br>    def__init__(self):<br>        self.busy= ‘No’<br>        self.sales= None</p>
+<pre><code>defwork(self):
+    print(&quot;Proxy checking for Sales Manager availability&quot;)
+    ifself.busy ==&apos;No&apos;:
+        self.sales= SalesManager()
+        time.sleep(2)
+        self.sales.talk()
+    else:
+        time.sleep(2)
+        print(&quot;Sales Manager is busy&quot;)
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    p= Proxy()<br>    p.work()<br>    p.busy= ‘Yes’<br>    p.work()</p>
+<p>行为型</p>
+<ol start="13">
+<li>Interpreter（解释器）</li>
+</ol>
+<p>意图：</p>
+<p>给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。</p>
+<p>适用性：</p>
+<p>当有一个语言需要解释执行, 并且你可将该语言中的句子表示为一个抽象语法树时，可使用解释器模式。而当存在以下情况时该模式效果最好：</p>
+<p>该文法简单对于复杂的文法, 文法的类层次变得庞大而无法管理。此时语法分析程序生成器这样的工具是更好的选择。它们无需构建抽象语法树即可解释表达式, 这样可以节省空间而且还可能节省时间。</p>
+<p>效率不是一个关键问题最高效的解释器通常不是通过直接解释语法分析树实现的, 而是首先将它们转换成另一种形式。例如，正则表达式通常被转换成状态机。但即使在这种情况下, 转换器仍可用解释器模式实现, 该模式仍是有用的。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Interpreter<br>‘’’</p>
+<p>class Context:<br>    def__init__(self):<br>        self.input=””<br>        self.output=””</p>
+<p>classAbstractExpression:<br>    defInterpret(self,context):<br>        pass</p>
+<p>classExpression(AbstractExpression):<br>    defInterpret(self,context):<br>        print”terminal interpret”</p>
+<p>classNonterminalExpression(AbstractExpression):<br>    defInterpret(self,context):<br>        print”Nonterminal interpret”</p>
+<p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    context=””<br>    c= []<br>    c= c + [Expression()]<br>    c= c + [NonterminalExpression()]<br>    c= c + [Expression()]<br>    c= c + [Expression()]<br>    fora in c:<br>        a.Interpret(context)</p>
+<ol start="14">
+<li>Template Method（模板方法）</li>
+</ol>
+<p>意图：</p>
+<p>定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。TemplateMethod 使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
+<p>适用性：</p>
+<p>一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现。</p>
+<p>各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。这是Opdyke 和Johnson所描述过的“重分解以一般化”的一个很好的例子[ OJ93 ]。首先识别现有代码中的不同之处，并且将不同之处分离为新的操作。最后，用一个调用这些新的操作的模板方法来替换这些不同的代码。</p>
+<p>控制子类扩展。模板方法只在特定点调用“hook ”操作（参见效果一节），这样就只允许在这些点进行扩展。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Template Method<br>‘’’</p>
+<p>ingredients = “spam eggs apple”<br>line =’-‘ * 10</p>
+<h1 id="Skeletons"><a href="#Skeletons" class="headerlink" title="Skeletons"></a>Skeletons</h1><p>def iter_elements(getter, action):<br>    “””Template skeleton that iterates items”””<br>    forelement in getter():<br>        action(element)<br>        print(line) </p>
+<p>def rev_elements(getter, action):<br>    “””Template skeleton that iterates items in reverse order”””<br>    forelement in getter()[::-1]:<br>        action(element)<br>        print(line) </p>
+<h1 id="Getters"><a href="#Getters" class="headerlink" title="Getters"></a>Getters</h1><p>def get_list():<br>    returningredients.split() </p>
+<p>def get_lists():<br>    return [list(x)for x in ingredients.split()] </p>
+<h1 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h1><p>def print_item(item):<br>    print(item) </p>
+<p>def reverse_item(item):<br>    print(item[::-1]) </p>
+<h1 id="Makes-templates"><a href="#Makes-templates" class="headerlink" title="Makes templates"></a>Makes templates</h1><p>def make_template(skeleton, getter, action):<br>    “””Instantiate a template method with getter and action”””<br>    deftemplate():<br>        skeleton(getter, action)<br>    return template </p>
+<h1 id="Create-our-template-functions"><a href="#Create-our-template-functions" class="headerlink" title="Create our template functions"></a>Create our template functions</h1><p>templates = [make_template(s, g, a)<br>             forg in (get_list, get_lists)<br>             fora in (print_item, reverse_item)<br>             fors in (iter_elements, rev_elements)] </p>
+<h1 id="Execute-them"><a href="#Execute-them" class="headerlink" title="Execute them"></a>Execute them</h1><p>for template in templates:<br>    template()</p>
+<ol start="15">
+<li>Chain of Responsibility（责任链）</li>
+</ol>
+<p>意图：</p>
+<p> 使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。</p>
+<p> 适用性：</p>
+<p> 有多个的对象可以处理一个请求，哪个对象处理该请求运行时刻自动确定。</p>
+<p> 你想在不明确指定接收者的情况下，向多个对象中的一个提交一个请求。</p>
+<p> 可处理一个请求的对象集合应被动态指定。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8</p>
+<p>“””<br>Chain<br>“””<br>class Handler:<br>    defsuccessor(self, successor):<br>        self.successor= successor</p>
+<p>classConcreteHandler1(Handler):<br>    defhandle(self, request):<br>        ifrequest &gt; 0 and request &lt;=10:<br>            print(“in handler1”)<br>        else:<br>            self.successor.handle(request)</p>
+<p>classConcreteHandler2(Handler):<br>    defhandle(self, request):<br>        ifrequest &gt; 10 and request &lt;=20:<br>            print(“in handler2”)<br>        else:<br>            self.successor.handle(request)</p>
+<p>classConcreteHandler3(Handler):<br>    defhandle(self, request):<br>        ifrequest &gt; 20 and request &lt;=30:<br>            print(“in handler3”)<br>        else:<br>            print(‘end of chain, no handler for {}’.format(request))</p>
+<p>classClient:<br>    def__init__(self):<br>        h1= ConcreteHandler1()<br>        h2= ConcreteHandler2()<br>        h3= ConcreteHandler3()</p>
+<pre><code>h1.successor(h2)
+h2.successor(h3)
+
+requests= [2,5, 14,22, 18,3, 35,27, 20]
+forrequest in requests:
+    h1.handle(request)
+</code></pre><p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    client= Client()</p>
+<ol start="16">
+<li>Command（命令）</li>
+</ol>
+<p>意图：</p>
+<p>将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤消的操作。</p>
+<p>适用性：</p>
+<p>抽象出待执行的动作以参数化某对象，你可用过程语言中的回调（call back）函数表达这种参数化机制。所谓回调函数是指函数先在某处注册，而它将在稍后某个需要的时候被调用。Command 模式是回调机制的一个面向对象的替代品。</p>
+<p>在不同的时刻指定、排列和执行请求。一个Command对象可以有一个与初始请求无关的生存期。如果一个请求的接收者可用一种与地址空间无关的方式表达，那么就可将负责该请求的命令对象传送给另一个不同的进程并在那儿实现该请求。</p>
+<p>支持取消操作。Command的Excute 操作可在实施操作前将状态存储起来，在取消操作时这个状态用来消除该操作的影响。Command 接口必须添加一个Unexecute操作，该操作取消上一次Execute调用的效果。执行的命令被存储在一个历史列表中。可通过向后和向前遍历这一列表并分别调用Unexecute和Execute来实现重数不限的“取消”和“重做”。</p>
+<p>支持修改日志，这样当系统崩溃时，这些修改可以被重做一遍。在Command接口中添加装载操作和存储操作，可以用来保持变动的一个一致的修改日志。从崩溃中恢复的过程包括从磁盘中重新读入记录下来的命令并用Execute操作重新执行它们。</p>
+<p>用构建在原语操作上的高层操作构造一个系统。这样一种结构在支持事务( transaction)的信息系统中很常见。一个事务封装了对数据的一组变动。Command模式提供了对事务进行建模的方法。Command有一个公共的接口，使得你可以用同一种方式调用所有的事务。同时使用该模式也易于添加新事务以扩展系统。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8</p>
+<p>“””<br>Command<br>“””<br>import os</p>
+<p>class MoveFileCommand(object):<br>    def__init__(self, src, dest):<br>        self.src= src<br>        self.dest= dest</p>
+<pre><code>defexecute(self):
+    self()
+
+def__call__(self):
+    print(&apos;renaming {} to {}&apos;.format(self.src,self.dest))
+    os.rename(self.src,self.dest)
+
+defundo(self):
+    print(&apos;renaming {} to {}&apos;.format(self.dest,self.src))
+    os.rename(self.dest,self.src)
+</code></pre><p>if <strong>name</strong> ==”<strong>main</strong>“:<br>    command_stack= []</p>
+<pre><code># commands are just pushed into the command stack
+command_stack.append(MoveFileCommand(&apos;foo.txt&apos;,&apos;bar.txt&apos;))
+command_stack.append(MoveFileCommand(&apos;bar.txt&apos;,&apos;baz.txt&apos;))
+
+# they can be executed later on
+forcmd in command_stack:
+    cmd.execute()
+
+# and can also be undone at will
+forcmd in reversed(command_stack):
+    cmd.undo()
+</code></pre><p>　　</p>
+<ol start="17">
+<li>Iterator（迭代器）</li>
+</ol>
+<p>意图：</p>
+<p>提供一种方法顺序访问一个聚合对象中各个元素, 而又不需暴露该对象的内部表示。</p>
+<p>适用性：</p>
+<p>访问一个聚合对象的内容而无需暴露它的内部表示。</p>
+<p>支持对聚合对象的多种遍历。</p>
+<p>为遍历不同的聚合结构提供一个统一的接口(即, 支持多态迭代)。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Interator<br>‘’’<br>def count_to(count):<br>    “””Counts by word numbers, up to a maximum of five”””<br>    numbers= [“one”,”two”, “three”, “four”,”five”]</p>
+<pre><code># enumerate() returns a tuple containing a count (from start which
+# defaults to 0) and the values obtained from iterating over sequence
+forpos, number inzip(range(count), numbers):
+    yield number
+</code></pre><h1 id="Test-the-generator"><a href="#Test-the-generator" class="headerlink" title="Test the generator"></a>Test the generator</h1><p>count_to_two = lambda: count_to(2)<br>count_to_five = lambda: count_to(5)</p>
+<p>print(‘Counting to two…’)<br>for number in count_to_two():<br>    print number</p>
+<p>print” “</p>
+<p>print(‘Counting to five…’)<br>for number in count_to_five():<br>    print number</p>
+<p>print” “</p>
+<ol start="18">
+<li>Mediator（中介者）</li>
+</ol>
+<p>意图：</p>
+<p>用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。</p>
+<p>适用性：</p>
+<p>一组对象以定义良好但是复杂的方式进行通信。产生的相互依赖关系结构混乱且难以理解。</p>
+<p>一个对象引用其他很多对象并且直接与这些对象通信,导致难以复用该对象。</p>
+<p>想定制一个分布在多个类中的行为，而又不想生成太多的子类。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Mediator<br>‘’’<br>“””<a href="http://dpip.testingperspective.com/?p=28&quot;&quot;&quot;" target="_blank" rel="noopener">http://dpip.testingperspective.com/?p=28&quot;&quot;&quot;</a></p>
+<p>import time</p>
+<p>class TC:<br>    def__init__(self):<br>        self._tm= tm<br>        self._bProblem= 0</p>
+<pre><code>defsetup(self):
+    print(&quot;Setting up the Test&quot;)
+    time.sleep(1)
+    self._tm.prepareReporting()
+
+defexecute(self):
+    ifnot self._bProblem:
+        print(&quot;Executing the test&quot;)
+        time.sleep(1)
+    else:
+        print(&quot;Problem in setup. Test not executed.&quot;)
+
+deftearDown(self):
+    ifnot self._bProblem:
+        print(&quot;Tearing down&quot;)
+        time.sleep(1)
+        self._tm.publishReport()
+    else:
+        print(&quot;Test not executed. No tear down required.&quot;)
+
+defsetTM(self, TM):
+    self._tm= tm
+
+defsetProblem(self, value):
+    self._bProblem= value
+</code></pre><p>classReporter:<br>    def__init__(self):<br>        self._tm= None</p>
+<pre><code>defprepare(self):
+    print(&quot;Reporter Class is preparing to report the results&quot;)
+    time.sleep(1)
+
+defreport(self):
+    print(&quot;Reporting the results of Test&quot;)
+    time.sleep(1)
+
+defsetTM(self, TM):
+    self._tm= tm
+</code></pre><p>classDB:<br>    def__init__(self):<br>        self._tm= None</p>
+<pre><code>definsert(self):
+    print(&quot;Inserting the execution begin status in the Database&quot;)
+    time.sleep(1)
+    #Following code is to simulate a communication from DB to TC
+    importrandom
+    ifrandom.randrange(1,4) ==3:
+        return -1
+
+defupdate(self):
+    print(&quot;Updating the test results in Database&quot;)
+    time.sleep(1)
+
+defsetTM(self, TM):
+    self._tm= tm
+</code></pre><p>classTestManager:<br>    def__init__(self):<br>        self._reporter= None<br>        self._db= None<br>        self._tc= None</p>
+<pre><code>defprepareReporting(self):
+    rvalue= self._db.insert()
+    ifrvalue ==-1:
+        self._tc.setProblem(1)
+        self._reporter.prepare()
+
+defsetReporter(self, reporter):
+    self._reporter= reporter
+
+defsetDB(self, db):
+    self._db= db
+
+defpublishReport(self):
+    self._db.update()
+    rvalue= self._reporter.report()
+
+defsetTC(self, tc):
+    self._tc= tc
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    reporter= Reporter()<br>    db= DB()<br>    tm= TestManager()<br>    tm.setReporter(reporter)<br>    tm.setDB(db)<br>    reporter.setTM(tm)<br>    db.setTM(tm)</p>
+<pre><code># For simplification we are looping on the same test.
+# Practically, it could be about various unique test classes and their
+# objects
+while(True):
+    tc= TC()
+    tc.setTM(tm)
+    tm.setTC(tc)
+    tc.setup()
+    tc.execute()
+    tc.tearDown()
+</code></pre><ol start="19">
+<li>Memento（备忘录）</li>
+</ol>
+<p>意图：</p>
+<p>在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样以后就可将该对象恢复到原先保存的状态。</p>
+<p>适用性：</p>
+<p>必须保存一个对象在某一个时刻的(部分)状态, 这样以后需要时它才能恢复到先前的状态。</p>
+<p>如果一个用接口来让其它对象直接得到这些状态，将会暴露对象的实现细节并破坏对象的封装性。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Memento<br>‘’’</p>
+<p>import copy</p>
+<p>def Memento(obj, deep=False):<br>    state= (copy.copy, copy.deepcopy)<a href="obj.__dict__">bool(deep)</a></p>
+<pre><code>defRestore():
+    obj.__dict__.clear()
+    obj.__dict__.update(state)
+return Restore
+</code></pre><p>classTransaction:<br>    “””A transaction guard. This is really just<br>      syntactic suggar arount a memento closure.<br>      “””<br>    deep= False</p>
+<pre><code>def__init__(self,*targets):
+    self.targets= targets
+    self.Commit()
+
+defCommit(self):
+    self.states= [Memento(target,self.deep) for target in self.targets]
+
+defRollback(self):
+    forst in self.states:
+        st()
+</code></pre><p>classtransactional(object):<br>    “””Adds transactional semantics to methods. Methods decorated  with<br>    @transactional will rollback to entry state upon exceptions.<br>    “””<br>    def__init__(self, method):<br>        self.method= method</p>
+<pre><code>def__get__(self, obj, T):
+    deftransaction(*args,**kwargs):
+        state= Memento(obj)
+        try:
+            returnself.method(obj, *args, **kwargs)
+        except:
+            state()
+            raise
+    return transaction
+</code></pre><p>classNumObj(object):<br>    def__init__(self, value):<br>        self.value= value</p>
+<pre><code>def__repr__(self):
+    return&apos;&lt;%s: %r&gt;&apos; %(self.__class__.__name__,self.value)
+
+defIncrement(self):
+    self.value+=1
+
+@transactional
+defDoStuff(self):
+    self.value= &apos;1111&apos; # &lt;- invalid value
+    self.Increment()    # &lt;- will fail and rollback
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    n= NumObj(-1)<br>    print(n)<br>    t= Transaction(n)<br>    try:<br>        fori in range(3):<br>            n.Increment()<br>            print(n)<br>        t.Commit()<br>        print(‘– commited’)<br>        fori in range(3):<br>            n.Increment()<br>            print(n)<br>        n.value+=’x’  # will fail<br>        print(n)<br>    except:<br>        t.Rollback()<br>        print(‘– rolled back’)<br>    print(n)<br>    print(‘– now doing stuff …’)<br>    try:<br>        n.DoStuff()<br>    except:<br>        print(‘-&gt; doing stuff failed!’)<br>        importtraceback<br>        traceback.print_exc(0)<br>        pass<br>    print(n)</p>
+<ol start="20">
+<li>Observer（观察者）</li>
+</ol>
+<p>意图：</p>
+<p>定义对象间的一种一对多的依赖关系,当一个对象的状态发生改变时, 所有依赖于它的对象都得到通知并被自动更新。</p>
+<p>适用性：</p>
+<p>当一个抽象模型有两个方面, 其中一个方面依赖于另一方面。将这二者封装在独立的对象中以使它们可以各自独立地改变和复用。</p>
+<p>当对一个对象的改变需要同时改变其它对象, 而不知道具体有多少对象有待改变。</p>
+<p>当一个对象必须通知其它对象，而它又不能假定其它对象是谁。换言之, 你不希望这些对象是紧密耦合的。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Observer<br>‘’’</p>
+<p>class Subject(object):<br>    def__init__(self):<br>        self._observers= []</p>
+<pre><code>defattach(self, observer):
+    ifnot observer in self._observers:
+        self._observers.append(observer)
+
+defdetach(self, observer):
+    try:
+        self._observers.remove(observer)
+    except ValueError:
+        pass
+
+defnotify(self, modifier=None):
+    forobserver inself._observers:
+        ifmodifier !=observer:
+            observer.update(self)
+</code></pre><h1 id="Example-usage"><a href="#Example-usage" class="headerlink" title="Example usage"></a>Example usage</h1><p>classData(Subject):<br>    def__init__(self, name=’’):<br>        Subject.<strong>init</strong>(self)<br>        self.name= name<br>        self._data= 0</p>
+<pre><code>@property
+defdata(self):
+    returnself._data
+
+@data.setter
+defdata(self, value):
+    self._data= value
+    self.notify()
+</code></pre><p>classHexViewer:<br>    defupdate(self, subject):<br>        print(‘HexViewer: Subject %s has data 0x%x’%<br>              (subject.name, subject.data))</p>
+<p>classDecimalViewer:<br>    defupdate(self, subject):<br>        print(‘DecimalViewer: Subject %s has data %d’%<br>              (subject.name, subject.data))</p>
+<h1 id="Example-usage…"><a href="#Example-usage…" class="headerlink" title="Example usage…"></a>Example usage…</h1><p>def main():<br>    data1= Data(‘Data 1’)<br>    data2= Data(‘Data 2’)<br>    view1= DecimalViewer()<br>    view2= HexViewer()<br>    data1.attach(view1)<br>    data1.attach(view2)<br>    data2.attach(view2)<br>    data2.attach(view1)</p>
+<pre><code>print(&quot;Setting Data 1 = 10&quot;)
+data1.data= 10
+print(&quot;Setting Data 2 = 15&quot;)
+data2.data= 15
+print(&quot;Setting Data 1 = 3&quot;)
+data1.data= 3
+print(&quot;Setting Data 2 = 5&quot;)
+data2.data= 5
+print(&quot;Detach HexViewer from data1 and data2.&quot;)
+data1.detach(view2)
+data2.detach(view2)
+print(&quot;Setting Data 1 = 10&quot;)
+data1.data= 10
+print(&quot;Setting Data 2 = 15&quot;)
+data2.data= 15
+</code></pre><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    main()
+　</p>
+<ol start="21">
+<li>State（状态）</li>
+</ol>
+<p>意图：</p>
+<p> 允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类。</p>
+<p> 适用性：</p>
+<p> 一个对象的行为取决于它的状态, 并且它必须在运行时刻根据状态改变它的行为。</p>
+<p> 一个操作中含有庞大的多分支的条件语句，且这些分支依赖于该对象的状态。这个状态通常用一个或多个枚举常量表示。通常, 有多个操作包含这一相同的条件结构。State模式将每一个条件分支放入一个独立的类中。这使得你可以根据对象自身的情况将对象的状态作为一个对象，这一对象可以不依赖于其他对象而独立变化。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>State<br>‘’’</p>
+<p>class State(object):<br>    “””Base state. This is to share functionality”””</p>
+<pre><code>defscan(self):
+    &quot;&quot;&quot;Scan the dial to the next station&quot;&quot;&quot;
+    self.pos+=1
+    ifself.pos ==len(self.stations):
+        self.pos= 0
+    print(&quot;Scanning... Station is&quot;,self.stations[self.pos],self.name)
+</code></pre><p>classAmState(State):<br>    def__init__(self, radio):<br>        self.radio= radio<br>        self.stations= [“1250”,”1380”, “1510”]<br>        self.pos= 0<br>        self.name= “AM”</p>
+<pre><code>deftoggle_amfm(self):
+    print(&quot;Switching to FM&quot;)
+    self.radio.state= self.radio.fmstate
+</code></pre><p>classFmState(State):<br>    def__init__(self, radio):<br>        self.radio= radio<br>        self.stations= [“81.3”,”89.1”, “103.9”]<br>        self.pos= 0<br>        self.name= “FM”</p>
+<pre><code>deftoggle_amfm(self):
+    print(&quot;Switching to AM&quot;)
+    self.radio.state= self.radio.amstate
+</code></pre><p>classRadio(object):<br>    “””A radio.     It has a scan button, and an AM/FM toggle switch.”””<br>    def__init__(self):<br>        “””We have an AM state and an FM state”””<br>        self.amstate= AmState(self)<br>        self.fmstate= FmState(self)<br>        self.state= self.amstate</p>
+<pre><code>deftoggle_amfm(self):
+    self.state.toggle_amfm()
+
+defscan(self):
+    self.state.scan()
+</code></pre><h1 id="Test-our-radio-out"><a href="#Test-our-radio-out" class="headerlink" title="Test our radio out"></a>Test our radio out</h1><p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    radio= Radio()<br>    actions= [radio.scan]<em> 2 + [radio.toggle_amfm] +[radio.scan] </em>2<br>    actions= actions * 2</p>
+<pre><code>foraction in actions:
+    action()
+</code></pre><ol start="22">
+<li>Strategy（策略）</li>
+</ol>
+<p>意图：</p>
+<p> 定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。本模式使得算法可独立于使用它的客户而变化。</p>
+<p> 适用性：</p>
+<p> 许多相关的类仅仅是行为有异。“策略”提供了一种用多个行为中的一个行为来配置一个类的方法。</p>
+<p> 需要使用一个算法的不同变体。例如，你可能会定义一些反映不同的空间/时间权衡的算法。当这些变体实现为一个算法的类层次时[H087] ,可以使用策略模式。</p>
+<p> 算法使用客户不应该知道的数据。可使用策略模式以避免暴露复杂的、与算法相关的数据结构。</p>
+<p> 一个类定义了多种行为, 并且这些行为在这个类的操作中以多个条件语句的形式出现。将相关的条件分支移入它们各自的Strategy类中以代替这些条件语句。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>“””<br>Strategy<br>In most of other languages Strategy pattern is implemented via creating some base strategy interface/abstract class and<br>subclassing it with a number of concrete strategies (as we can see at <a href="http://en.wikipedia.org/wiki/Strategy_pattern)" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Strategy_pattern)</a>,<br>however Python supports higher-order functions and allows us to have only one class and inject functions into it’s<br>instances, as shown in this example.<br>“””<br>importtypes</p>
+<p>classStrategyExample:<br>    def__init__(self, func=None):<br>        self.name= ‘Strategy Example 0’<br>        iffunc is not None:<br>            self.execute= types.MethodType(func,self)     </p>
+<pre><code>defexecute(self):        
+    print(self.name)  
+</code></pre><p>def execute_replacement1(self):<br>    print(self.name+ ‘ from execute 1’)  </p>
+<p>def execute_replacement2(self):<br>    print(self.name+ ‘ from execute 2’) </p>
+<p>if <strong>name</strong> ==’<strong>main</strong>‘:<br>    strat0= StrategyExample()    </p>
+<pre><code>strat1= StrategyExample(execute_replacement1)
+strat1.name= &apos;Strategy Example 1&apos;    
+
+strat2= StrategyExample(execute_replacement2)
+strat2.name= &apos;Strategy Example 2&apos;
+
+strat0.execute()
+strat1.execute()    
+strat2.execute()
+</code></pre><ol start="23">
+<li>Visitor（访问者）</li>
+</ol>
+<p>意图：</p>
+<p> 定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。TemplateMethod 使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤。</p>
+<p> 适用性：</p>
+<p> 一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现。</p>
+<p> 各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。这是Opdyke和Johnson所描述过的“重分解以一般化”的一个很好的例子[OJ93]。首先识别现有代码中的不同之处，并且将不同之处分离为新的操作。最后，用一个调用这些新的操作的模板方法来替换这些不同的代码。</p>
+<p> 控制子类扩展。模板方法只在特定点调用“hook ”操作（参见效果一节），这样就只允许在这些点进行扩展。</p>
+<p>#!/usr/bin/python</p>
+<p>#coding:utf8<br>‘’’<br>Visitor<br>‘’’<br>class Node(object):<br>    pass</p>
+<p>class A(Node):<br>    pass</p>
+<p>classB(Node):<br>    pass</p>
+<p>classC(A, B):<br>    pass</p>
+<p>classVisitor(object):<br>    defvisit(self, node,*args, **kwargs):<br>        meth= None<br>        forcls in node.<strong>class</strong>.<strong>mro</strong>:<br>            meth_name= ‘visit_’+cls.<strong>name</strong><br>            meth= getattr(self, meth_name,None)<br>            ifmeth:<br>                break</p>
+<pre><code>    ifnot meth:
+        meth= self.generic_visit
+    return meth(node, *args,**kwargs)
+
+defgeneric_visit(self, node,*args, **kwargs):
+    print(&apos;generic_visit &apos;+node.__class__.__name__)
+
+defvisit_B(self, node,*args, **kwargs):
+    print(&apos;visit_B &apos;+node.__class__.__name__)
+</code></pre><p>a =A()<br>b =B()<br>c =C()<br>visitor = Visitor()<br>visitor.visit(a)<br>visitor.visit(b)<br>visitor.visit(c)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/22/python插件tools/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -467,7 +1989,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  672 字
+                  693 字
                 </span>
               
 
@@ -507,6 +2029,7 @@
         
           
             <h1 id="hexo搭建个人博客系统"><a href="#hexo搭建个人博客系统" class="headerlink" title="hexo搭建个人博客系统"></a>hexo搭建个人博客系统</h1><p>搭建个人博客系统请移步：<br><a href="https://www.jianshu.com/p/189fd945f38f" target="_blank" rel="noopener">https://www.jianshu.com/p/189fd945f38f</a></p>
+<p>创建后设置next主题的方法：（可省）<br><a href="https://blog.csdn.net/qq_32454537/article/details/79482896" target="_blank" rel="noopener">https://blog.csdn.net/qq_32454537/article/details/79482896</a></p>
 <p>里面的内容讲述的还是相当详细的。</p>
 <p>Hexo添加字数统计、阅读时长、友情链接<br><a href="https://blog.csdn.net/wangxw725/article/details/71602256?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">https://blog.csdn.net/wangxw725/article/details/71602256?utm_source=itdadao&amp;utm_medium=referral</a></p>
 <p>添加访问统计<br><a href="https://www.jianshu.com/p/8a8f880f40c0" target="_blank" rel="noopener">https://www.jianshu.com/p/8a8f880f40c0</a></p>
@@ -525,7 +2048,7 @@
 <h1 id="jieba"><a href="#jieba" class="headerlink" title="jieba"></a>jieba</h1><p>中文分词工具</p>
 <h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><p>项目部署</p>
 <h1 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h1><p>爬虫有介绍，请移步：</p>
-<p><a href="https://qixinyue.github.io/2018/08/09/%E7%88%AC%E8%99%AB/" target="_blank" rel="noopener">https://qixinyue.github.io/2018/08/09/%E7%88%AC%E8%99%AB/</a></p>
+<p><a href="https://qixinyue.github.io/2018/08/09/%E7%88%AC%E8%99%AB/">https://qixinyue.github.io/2018/08/09/%E7%88%AC%E8%99%AB/</a></p>
 <p>Web框架</p>
 <pre><code>Django  开源web开发框架，它鼓励快速开发,并遵循MVC设计，我以前用过很多次，比较好用，开发周期短
 ActiveGrid  企业级的Web2.0解决方案
@@ -602,7 +2125,7 @@ pefile  Windows PE文件解析器
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/20/redis/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/20/redis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -2564,7 +4087,7 @@ print(r.hget(&quot;dic_name&quot;,&quot;a1&quot;))#输出:aa
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/Django论坛搭建完整版/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/18/Django论坛搭建完整版/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -2863,7 +4386,7 @@ for board in boards_list:
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/Django框架/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/17/Django框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -3987,7 +5510,7 @@ ex:
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/人工智能/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/17/人工智能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -6205,7 +7728,7 @@ mp.show()
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/17/python知识详解/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/17/python知识详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -11396,7 +12919,7 @@ if 2 in s1:
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/14/julia/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/14/julia/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -13053,7 +14576,7 @@ julia&gt; m.offsets
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/11/web前端/">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/11/web前端/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Godshion">
@@ -14282,1993 +15805,6 @@ ex:
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/10/网络通信/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Godshion">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="响神的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/10/网络通信/" itemprop="url">网络通信</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-10T18:53:02+08:00">
-                2018-08-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  17,530 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  71 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h1><p>网络起源 （了解）</p>
-<p>网络目的 ： 数据的传输</p>
-<p>ISO ： 国际标准化组织</p>
-<h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><p>—-》 网络通信的标准化流程</p>
-<p><strong>应用层 ： 提供用户服务，具体的内容由特定程序规定<br>表示层 ： 数据的压缩优化加密<br>会话层 ： 建立应用连接，选择传输层服务<br>传输层 ： 提供数据传输服务，流量控制<br>网络层 ： 路由选择，网络互连<br>链路层 ： 提供链路交换，具体的消息的发送<br>物理层 ： 物理硬件，接口 网卡的规定 </strong></p>
-<p><strong>osi模型优点</strong> ：<br> 将功能分开，降低网络传输中的耦合度每一部分完成自己的功能，开发更加清晰专一</p>
-<p><strong>四层模型</strong></p>
-<ul>
-<li>应用层 ：  应用层 表示层  会话层</li>
-<li>传输层 ：  传输层</li>
-<li>网络层 ：  网络层</li>
-<li>物理链路层：   链路层  物理层</li>
-</ul>
-<p><strong>五层模型（tcp/ip模型）</strong></p>
-<ul>
-<li>应用层 ：  应用层 表示层  会话层</li>
-<li>传输层 ：  传输层</li>
-<li>网络层 ：  网络层</li>
-<li>链路层 ：  链路层  </li>
-<li>物理层 ：  物理层</li>
-</ul>
-<p><strong>要求 ： </strong></p>
-<p>能够按顺序说出七层模型 五层和四层模型<br>知道每一层是什么作用<br>对网络消息传输流程有基本了解</p>
-<p><strong>协议 ：</strong><br>网络通信中，各方必须遵守的规定。包括建立什么样的连接，消息结构等。</p>
-<ul>
-<li>应用层 ： TFTP  HTTP  DNS  SMTP</li>
-<li>传输层 ： TCP  UDP</li>
-<li>网络层 ： IP</li>
-<li>物理层 ： IEEE</li>
-</ul>
-<p>网络相关概念</p>
-<p><strong>主机 ：</strong> host  表示一台计算机</p>
-<p>本地使用 ：  ‘localhost’<br> ‘’<br> ‘127.0.0.1’<br>网络使用 ： ‘0.0.0.0’<br> ‘172.60.50.60’  本机ip地址，自己的电脑可以ipconfig或者ifconfig查看</p>
-<p><strong>获取计算机名：</strong><br>In [2]: socket.gethostname()<br>Out[2]: ‘godshion’</p>
-<p>通过计算机名获取地址：<br>In [3]: socket.gethostbyname(‘godshion’)<br>Out[3]: ‘127.0.1.1’</p>
-<p><strong>IP地址</strong></p>
-<p>在网络上确定一台主机的地址<br>IPv4 ：点分十进制 比如 192.168.1.72  0–255<br>   32位二级制表示</p>
-<p>IPv6 ： 128位二进制</p>
-<p>查看本机Ip方法<br>windows    cmd.exe 窗口 –&gt; ipconfig<br>linux      查看本机地址 ifconfig</p>
-<p><strong>网络连接测试</strong><br>ping  172.60.50.60</p>
-<p>特殊IP<br>127.0.0.1   本地测试IP<br>0.0.0.0    使用局域网内可用的IP<br>192.168.1.0  表示当前网段<br>192.168.1.1  通常是网络节点设备的IP （网关）<br>192.168.1.255  广播地址</p>
-<p>通过域名获取服务器信息<br> socket.gethostbyaddr(‘<a href="http://www.baidu.com&#39;" target="_blank" rel="noopener">www.baidu.com&#39;</a>)<br>(‘127.0.0.1’, [],    [‘119.75.213.61’])<br>   主机     主机别名   主机IP</p>
-<p>将点分十进制IP转换为二进制<br>In [11]: socket.inet_aton(‘192.168.1.2’)<br>Out[11]: b’\xc0\xa8\x01\x02’<br>将二进制转换为点分十进制IP<br>In [12]: socket.inet_ntoa(b’\xc0\xa8\x01\x02’)<br>Out[12]: ‘192.168.1.2’</p>
-<p>功能 ： 同上面两个完全相同。只是可以选择地址类型<br>inet_pton（socket.AF_INET,’192.168.1.2’）<br>inet_ntop（）</p>
-<p>域名： 网络服务器地址的网络名称</p>
-<p>端口号 ： 端口号是网络地址的一部分，在一个系统中 每个网络应用都会有一个端口号相对应。用来在接收消息时确定由谁来接收</p>
-<p>范围 ： 1–65535<br>1–255 一些通用的众所周知程序占用<br>256-1023  系统应用端口<br>1024 — 65535   自用   &gt;10000 </p>
-<p><strong>获取应用端口：</strong><br>In [16]: socket.getservbyname(‘mysql’)<br>Out[16]: 3306</p>
-<p>字节序<br>数据在内存中的存储解析方式，不同操作系统可能不同</p>
-<p>网络字节序 ： 不同的操作系统在消息收发时均按照该标准操作。</p>
-<p>传输层服务</p>
-<p>面向连接的传输服务  —-&gt; </p>
-<h2 id="tcp协议-面向连接的传输服务"><a href="#tcp协议-面向连接的传输服务" class="headerlink" title="tcp协议   面向连接的传输服务"></a>tcp协议   面向连接的传输服务</h2><p><strong>传输特征：</strong></p>
-<ul>
-<li>可靠的数据传输</li>
-<li>可靠性指数据传输中 无失序 无差错 无丢失  无重复</li>
-<li>所有消息传输前一定会建立连接，传输后一定会断开连接</li>
-</ul>
-<p><strong>三次握手：</strong><br>在进行面向连接的数据传输前进行传输连接的过程</p>
-<ol>
-<li>客户端向服务器发送连接请求（问是否可以连接）</li>
-<li>服务器接收到连接请求进行确认，返回报文</li>
-<li>客户端收到回复，进行连接建立</li>
-</ol>
-<p><strong>四次挥手：</strong><br>在进行面向连接的数据传输时，断开连接的过程</p>
-<ol>
-<li>主动方发送报文 告知被动方要断开连接</li>
-<li>被动方返回报文，告知收到请求，准备断开</li>
-<li>被动方再次发送报文给主动方，告知准备完毕可以断开</li>
-<li>主动方发送报文进行断开</li>
-</ol>
-<p>应用情况 ：适用于传输较大的内容或文件，网络情况良好，需要保证传输可靠性的情况<br>比如 ： 聊天信息，文件的上传下载，邮件传输 网页获取</p>
-<h2 id="udp协议-面向无连接的传输服务"><a href="#udp协议-面向无连接的传输服务" class="headerlink" title="udp协议  面向无连接的传输服务"></a>udp协议  面向无连接的传输服务</h2><p><strong>传输特点：</strong></p>
-<ul>
-<li>不保证可靠的数据传输</li>
-<li>没有连接过程</li>
-<li>数据的收发都比较自由，不会受另一端制约</li>
-</ul>
-<p>适用情况： 网络情况较差，对传输可靠情形要求不高。需要提升传输效率的情况<br>比如 ： 网络视频，群聊，发送广播</p>
-<p><strong>问题总结：</strong></p>
-<ol>
-<li>osi模型问题</li>
-<li>三次握手四次挥手问题</li>
-<li>tcp和udp的区别</li>
-</ol>
-<h2 id="socket套接字编程"><a href="#socket套接字编程" class="headerlink" title="socket套接字编程"></a>socket套接字编程</h2><p>目的 : 通过编程语言提供的函数接口进行组合，更简单的完成基于 tcp 或者udp通信的网路编程</p>
-<p>套接字 ： 完成上述目标的一种编程方法</p>
-<p>套接字分类</p>
-<p>流式套接字（SOCK_STREAM）: 传输层基于tcp的协议进行通信</p>
-<p>数据报套接字 （SOCK_DGRAM）：传输层基于udp协议进行通信</p>
-<p>底层套接字 （SOCK_RAM）:访问底层协议的套接字</p>
-<h2 id="TCP服务端"><a href="#TCP服务端" class="headerlink" title="TCP服务端"></a>TCP服务端</h2><h3 id="1-创建套接字"><a href="#1-创建套接字" class="headerlink" title="1. 创建套接字"></a>1. 创建套接字</h3><pre><code>import  socket
-socket.socket(socket_family = AF_INET，
-              socket_type = SOCK_STREAM,
-                            proto = 0)
-</code></pre><p>功能 ： 创建一个套接字<br>参数 ： socket_family  : 选择地址族类型 AF_INET<br>socket_type ：套接字类型 SOCK_STREAM 流式 SOCK_DGRAM 数据报<br>proto ：子协议类型，没有子协议选择 0<br>返回值 ： 套接字对象</p>
-<h3 id="2-绑定地址（IP-端口号）"><a href="#2-绑定地址（IP-端口号）" class="headerlink" title="2. 绑定地址（IP 端口号）"></a>2. 绑定地址（IP 端口号）</h3><pre><code>sockfd.bind()
-</code></pre><p>功能 ： 绑定地址<br>参数 ：<br>一个元组包含两项<br>第一项为IP<br>第二项为端口号（’172.60.50.50’,8888）</p>
-<h3 id="3-将套接字设置可监听"><a href="#3-将套接字设置可监听" class="headerlink" title="3. 将套接字设置可监听"></a>3. 将套接字设置可监听</h3><pre><code>sockfd.listen(n)
-</code></pre><p>功能 ： 将套接字设置为监听套接字<br>参数 ： n是一个正整数 表示监听等待队列的大小</p>
-<h3 id="4-等待接收连接请求"><a href="#4-等待接收连接请求" class="headerlink" title="4. 等待接收连接请求"></a>4. 等待接收连接请求</h3><pre><code>connfd,addr = sockfd.accept()
-</code></pre><p>功能： 阻塞等待处理客户端连接<br>返回值 ：<br>第一个 ： 一个新的套接字用来和客户端通信<br>第二个 ： 连接的客户端的地址</p>
-<p><strong>阻塞函数：</strong>程序运行到阻塞函数的位置，如果某种期待条件没有达成则暂停继续运行。当条件达成后会结束阻塞继续运行。</p>
-<h3 id="5-收发消息"><a href="#5-收发消息" class="headerlink" title="5. 收发消息"></a>5. 收发消息</h3><pre><code>data = connfd.recv(buffersize)
-</code></pre><p>功能 ： 流式套接字接收消息<br>参数 ： 一次最多接收多大的消息  字节<br>返回值 ： 返回接收到的内容</p>
-<pre><code>n = connfd.send(data)
-</code></pre><p>功能 ： 流式套接字发送消息<br>参数 ： 要发送的内容  要求bytes格式<br>返回值 ： 返回实际发送的字节数</p>
-<h3 id="6-关闭套接字"><a href="#6-关闭套接字" class="headerlink" title="6. 关闭套接字"></a>6. 关闭套接字</h3><pre><code>close（）
-</code></pre><p>功能：关闭套接字 tcp套接字连接断开</p>
-<h2 id="tcp-客户端"><a href="#tcp-客户端" class="headerlink" title="tcp 客户端"></a>tcp 客户端</h2><h3 id="1-创建套接字-1"><a href="#1-创建套接字-1" class="headerlink" title="1. 创建套接字"></a>1. 创建套接字</h3><pre><code>socket()
-</code></pre><h3 id="2-请求连接"><a href="#2-请求连接" class="headerlink" title="2. 请求连接"></a>2. 请求连接</h3><pre><code>connect()
-</code></pre><p>功能： 发起连接请求<br>参数： 是一个元组，表示服务器的地址</p>
-<h3 id="3-消息收发"><a href="#3-消息收发" class="headerlink" title="3. 消息收发"></a>3. 消息收发</h3><pre><code>recv()  send()
-</code></pre><h3 id="4-关闭套接字"><a href="#4-关闭套接字" class="headerlink" title="4. 关闭套接字"></a>4. 关闭套接字</h3><pre><code>close()
-</code></pre><p>服务器端示例代码<br>        import socket</p>
-<pre><code># from select_word import *
-
-HOST  = &apos;127.0.0.1&apos;
-PORT = 10889
-
-# 创建套接字
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)#param3: proto = 0
-#这里设置端口重用，不然每次按ctrl+c取消程序的时候会出现端口被占用的错误
-s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-# socket_family = socket.AF_INET 选择地址族类型，AF_INET 是选择的ipv4
-# socket_type = socket.SOCK_STREAM　套接字类型　　SOCK_STREAM是tcp协议
-# proto 通常为０　子协议类型
-# 返回一个套接字对象
-
-# 绑定地址
-s.bind((HOST,PORT))
-# 参数只有一个，是二个元素的元组，分别为ip port
-
-# 将套接字设置可监听
-s.listen(1)
-# 参数ｎ表示将听扽该队列的大小
-
-# 等待接收请求
-conn,addr = s.accept()
-# 阻塞等待处理客户端连接，如果某种期待条件没有达成则暂停运行，条件达成继续运行
-# 返回一个新的套接字用来和客户端通讯
-# 连接的客户端的地址
-print(&quot;client&apos;s Address:&quot;,addr)
-# 收发消息
-# while True:
-    # 流式套接字接收消息，依次最多接收多大字节的消息，返回接收到的内容
-while True:
-    data = conn.recv(1024).decode(&quot;utf-8&quot;) 
-    #recv函数在一方断开连接的情况下，会立即结束阻塞状态，并返回一个空字符串
-    if not data :
-        break
-    print(&quot;Receive data: &quot;,data)
-    # 流式套接字发送消息，参数是发送的内容，要求是bytes格式，返回发送的字节数量
-
-    # result = searchword(data)
-    # print(result)
-    # conn.send(str(result).encode(&quot;utf-8&quot;)) 
-    conn.send(data.encode(&quot;utf-8&quot;)) 
-    #broken pipe　管道破裂．　
-    #1,如果一端不存在，另一方还在企图发送消息时产生brokenpipeerrot
-# 关闭套接字，连接断开
-conn.close()
-</code></pre><p>客户端代码：<br>        import socket<br>        HOST = “127.0.0.1”<br>        PORT = 10889</p>
-<pre><code># 创建套接字
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-#这里设置端口重用，不然每次按ctrl+c取消程序的时候会出现端口被占用的错误
-s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-
-# 创建连接
-s.connect((HOST,PORT))
-# 发起连接请求，参数是一个元组，表示服务器的地址　
-
-data = &quot;hello&quot;
-# s.send(&apos;aaa&apos;.encode(&quot;utf-8&quot;))
-while data:
-    # 消息收发
-    s.send(data.encode(&quot;utf-8&quot;))
-    data = s.recv(512)
-    print(&apos;recv data is: &apos;,data)
-    data = input(&apos;please input:  &apos;)
-
-
-# 关闭套接字
-s.close()
-</code></pre><p>运行结果<br>        ~/桌面/web/tcp$ python3 server.py<br>        client’s Address: (‘127.0.0.1’, 52826)<br>        Receive data:  hello<br>        Receive data:  aaa<br>        Receive data:  bbb<br>        Receive data:  ccc<br>        Receive data:  ddd</p>
-<pre><code>~/桌面/web/tcp$ python3 client.py 
-recv data is:  b&apos;hello&apos;
-please input:  aaa
-recv data is:  b&apos;aaa&apos;
-please input:  bbb
-recv data is:  b&apos;bbb&apos;
-please input:  ccc
-recv data is:  b&apos;ccc&apos;
-please input:  ddd
-recv data is:  b&apos;ddd&apos;
-please input:
-</code></pre><p>作业 ： </p>
-<ol>
-<li>口述 什么是七层模型，tcp/ip模型<br>三次握手和四次挥手的过程<br>tcp协议的传输和udp协议的传输有何区别</li>
-<li>将tcp程序改写为一个通过循环可连续收发消息的程序</li>
-</ol>
-<h3 id="recv-特性"><a href="#recv-特性" class="headerlink" title="recv() 特性"></a>recv() 特性</h3><ol>
-<li>如果连接双方断开连接，则recv会立即结束阻塞返回空字符串</li>
-<li>当接收缓冲区为空的时候会阻塞</li>
-<li>如果recv一次接收不完缓存去内容，下一次会继续接收</li>
-</ol>
-<h3 id="send（）特性"><a href="#send（）特性" class="headerlink" title="send（）特性"></a>send（）特性</h3><ol>
-<li>如果一段不存在，另一端还在试图send操作时会产生BrokenPipeError异常</li>
-<li>当发送缓冲区慢的时候会阻塞</li>
-</ol>
-<h3 id="网络收发缓冲区"><a href="#网络收发缓冲区" class="headerlink" title="网络收发缓冲区"></a>网络收发缓冲区</h3><p>发送和接收消息均先放到缓冲区中，在进行处理<br>即 recv和send实际是从缓冲区接收内容，向缓冲区发送消息</p>
-<h3 id="tcp粘包"><a href="#tcp粘包" class="headerlink" title="tcp粘包"></a>tcp粘包</h3><p><strong>产生原因：</strong><br>tcp传输中以字节流的方式发送内容，发送的消息之间没有明显的边界，此时如果发送和接收速度不匹配就会产生粘包</p>
-<p>影响 ： 如果每次发送的内容表示一个独立的意思此时可能需要处理粘包。如果发送的内容本身就是连续的整体，此时不需要处理粘包</p>
-<p><strong>如何处理：</strong></p>
-<ol>
-<li>每次发送后加一个结尾标志</li>
-<li>发送一个数据结构</li>
-<li>每次发送中间有一个短暂的延迟</li>
-</ol>
-<h2 id="基于udp的服务端"><a href="#基于udp的服务端" class="headerlink" title="基于udp的服务端"></a>基于udp的服务端</h2><ol>
-<li>创建套接字 —》 数据报套接字<br> sockfd = socket(AF_INET,SOCK_DGRAM)</li>
-<li>绑定服务端地址<br> sockfd.bind()</li>
-<li><p>消息的收发<br> data，addr = recvfrom(buffersize)<br> 功能 ： 接收UDP消息<br> 参数 ： 每次最多接收消息的大小<br> 返回值 ： 接收到的内容 </p>
-<pre><code>接收到的消息的发送者
-</code></pre><p> recvfrom 一次接收一个数据包，如果数据包超出了一次能够接收的大小则会丢失没有收到的内容</p>
-<p> sendto(data，addr)<br> 功能 ： udp发送消息<br> 参数 ： data  要发送的内容  bytes</p>
-<pre><code>addr  消息要发送给谁
-</code></pre><p> 返回值 ： 发送的字节</p>
-</li>
-<li><p>关闭套接字<br> sockfd.close()</p>
-</li>
-</ol>
-<p><em>小贴士： </em><br><em>sys.argv<br>功能 ： 获取来自命令行的参数，形成一个列表<br>argv[0]是命令本身 其他内容默认以空格分割放到列表中</em></p>
-<h3 id="tcp流式套接字和udp数据报套接字使用区别"><a href="#tcp流式套接字和udp数据报套接字使用区别" class="headerlink" title="tcp流式套接字和udp数据报套接字使用区别"></a>tcp流式套接字和udp数据报套接字使用区别</h3><ol>
-<li>流式套接字采用字节流的方式传输，而数据报套接字以数据包形式传输</li>
-<li>tcp会产生粘包现象，udp不会</li>
-<li>tcp编程保证传输的可靠性，udp则不保证</li>
-<li>tcp需要listren accept ，udp不需要</li>
-<li>tcp使用recv  send进行消息收发，udp使用recvfrom和sendto</li>
-</ol>
-<p>补充：<br><strong>sendall（）</strong><br>功能参数： 同send<br>返回值 ： 发送成功返回None  发送失败返回异常</p>
-<h2 id="套接字对象"><a href="#套接字对象" class="headerlink" title="套接字对象"></a>套接字对象</h2><p>(s表示一个套接字对象)</p>
-<ul>
-<li><p>s.fileno()<br>功能 ： 获取套接字的文件描述符<br>文件描述符 ：每一个IO 事件操作系统都会分配一个不同的正数与之匹配，该正数即为此IO操作的文件描述符<br>sys.stdin    0<br>sys.stdout   1<br>sys.stderr   2</p>
-</li>
-<li><p>s.type : 获取套接字类型</p>
-</li>
-<li><p>s.family: 地址类型</p>
-</li>
-<li><p>s.getsockname()<br>功能 ： 获取套接字绑定的地址</p>
-</li>
-<li><p>s.getpeername()<br>功能 ： 用户连接套接字，获取连接端的地址</p>
-</li>
-<li><p>s.setsockopt(level,optname,value)<br>功能 ： 设置套接字选项 丰富修改原有套接字功能<br>参数：<br>level ： 设置选项的类型 IPPROTP_TCP  IPPROTO_IP  SOL_SOCKET<br>optname： 选项类型中的子选项<br>value ： 为选定的选项设置值</p>
-</li>
-<li><p>s.getsockopt(level,optname)<br>功能 ： 获取套接字选项值<br>参数：  level ： 获取选项的类型 IPPROTP_TCP  IPPROTO_IP SOL_SOCKET<br>optname： 选项类型中的子选项<br>返回值 ： 获取到的值</p>
-</li>
-</ul>
-<h2 id="udp套接字应用之广播"><a href="#udp套接字应用之广播" class="headerlink" title="udp套接字应用之广播"></a>udp套接字应用之广播</h2><p>特点：一点发送多点接收<br>目标地址 ：广播地址 一个网段内最大的地址<br>172.60.50.<strong>255</strong></p>
-<p><em>小贴士：<br>format()<br>功能 ： 字符串属性函数 用来组合字符串</em></p>
-<p><strong>广播风暴</strong>：占用大量的带宽造成网络拥塞</p>
-<h2 id="tcp应用之-http传输"><a href="#tcp应用之-http传输" class="headerlink" title="tcp应用之 http传输"></a>tcp应用之 http传输</h2><p>HTTP协议 —&gt; 超文本传输协议</p>
-<p>用途 ： 编写基于http协议的数据传输程序，网站中浏览器端获取网页的过程<br>将想要获取的内容，以http协议的格式发送给服务端，服务端根据格式进行解析获取到真实需求，将结果以http协议的格式回复给客户端</p>
-<p><strong>特点 ：</strong> </p>
-<ol>
-<li>应用层协议 ，传输层使用tcp服务</li>
-<li>简单，灵活，和多中语言对接方便</li>
-<li>无状态的协议 即不记录用户使用过程中传递的内容</li>
-<li>http1.1 支持持久连接</li>
-</ol>
-<h3 id="http请求-（Request）"><a href="#http请求-（Request）" class="headerlink" title="http请求 （Request）"></a>http请求 （Request）</h3><p>请求格式：</p>
-<p>1 请求行    具体的请求类别<br>   GET           /         HTTP/1.1<br>   请求种类   请求内容    协议版本</p>
-<p>   请求头    对请求新的的具体描述<br>   Accept: text/html<br>   以键值对的格式对信息进行具体描述</p>
-<p>2 空行</p>
-<p>3 请求体    具体的请求参数或者提交内容</p>
-<p><strong>请求类型：</strong><br>GET        获取网络资源<br>POST       提交一定的附加数据，得到返回结果<br>HEAD       获取响应头<br>PUT        更新服务器资源<br>DELETE     删除服务器次元<br>CONNECT<br>TRACE      用于测试<br>OPTIONS    获取服务器性能</p>
-<h3 id="HTTP响应-（Response）"><a href="#HTTP响应-（Response）" class="headerlink" title="HTTP响应 （Response）"></a>HTTP响应 （Response）</h3><p>响应格式：</p>
-<p>1 响应行   反馈具体的响应情况<br> HTTP/1.1    200      OK<br> 版本       响应码   附加信息 </p>
-<p>2 响应头   对响应的具体描述<br> Accept-Ranges: bytes<br> 以键值对方式给出响应信息的具体描述</p>
-<p>3 空行<br> 响应体   将客户想要的内容进行返回</p>
-<p><strong>响应码种类</strong><br>1xx    提示信息，表示请求已经接受<br>2xx    响应成功<br>3xx    响应需要重定向<br>4xx    客户端错误<br>5xx    服务端错误</p>
-<p>200  成功<br>404  请求内容不存在<br>401  没有访问权限<br>500  服务器发生未知错误<br>503  服务器暂时不能执行</p>
-<p>思考 ：<br>什么是http协议<br>请求格式和每部分的功能<br>响应格式和每部分功能<br>http请求和响应的流程</p>
-<p>作业 ：<br>通过流式套接字完成一个文件的发送<br>将一个文件从客户端发送给服务端或者从服务端发送给客户端均可</p>
-<h2 id="基础的http服务器"><a href="#基础的http服务器" class="headerlink" title="基础的http服务器"></a>基础的http服务器</h2><p>1.接收HTTP请求<br>2.给出一定的响应</p>
-<p>IO  input   output</p>
-<p>在内存中存在数据交换的操作都可以认为是输入输出<br>比如：<br>内存和磁盘交互  读写操作<br>内存和网络交互  recv  send</p>
-<h3 id="IO密集型程序"><a href="#IO密集型程序" class="headerlink" title="IO密集型程序"></a>IO密集型程序</h3><p>程序执行中大量的IO操作，而较少的cpu运算。消耗cpu较少，运行时间长</p>
-<p><strong>CPU密集型程序（计算密集型）</strong>：程序中大量的操作都需要cpu运算，IO操作较少。消耗cpu大，运行速度快</p>
-<h4 id="IO-分类"><a href="#IO-分类" class="headerlink" title="IO 分类"></a>IO 分类</h4><p>阻塞IO  非阻塞IO  IO多路复用  事件IO   异步IO。。</p>
-<p>1 阻塞IO ： 默认形态 效率很低的一种IO情形</p>
-<p>阻塞情况 ：因为某种条件没有达成造成的阻塞<br>e.g.   accept   recv   input</p>
-<p>处理IO事件的时候耗时比较长形成阻塞<br>e.g.  文件的读写过程，网络数据发送过程</p>
-<p>2 非阻塞IO ： 通过修改IO事件的属性，使其变为非阻塞的状态。（改变了第一种阻塞的状况）</p>
-<p>通常和循环搭配使用，不断检测阻塞条件是否已经满足。</p>
-<p>s.setblocking()<br>功能： 将套接字设置为非阻塞状态<br>参数： bool   设置为False则表示设置为非阻塞</p>
-<h3 id="超时检测"><a href="#超时检测" class="headerlink" title="超时检测"></a>超时检测</h3><p>将原本阻塞的函数，设置一个阻塞的最长时间，在规定时间内如果条件达到则正常执行，如果仍然阻塞则抛出异常</p>
-<p>s.settimeout(sec)<br>功能 ： 设置套接字超时时间<br>参数 ： 设置的时间</p>
-<h3 id="IO多路复用"><a href="#IO多路复用" class="headerlink" title="IO多路复用"></a>IO多路复用</h3><p>定义 ： 同时监控多个IO事件，当哪个IO事件准备就绪就执行哪个IO事件。以此形成，多个IO事件都可以操作，不必诸个等待执行的效果。</p>
-<p>准备就绪：IO事件即将发生的临界状态</p>
-<h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p>import select</p>
-<p>select —-&gt; windows  linux  unix<br>poll —&gt; linux unix<br>epoll –&gt; linux  unix</p>
-<p> r, w, x = select(rlist, wlist, xlist[, timeout])<br> 功能：监控IO事件，阻塞等待IO事件的发生<br> 参数：<br>   rlist  列表  存放我们监控等待处理的IO事件<br>   wlist  列表  存放我们要主动处理的IO事件<br>   xlist  列表  存放如果发生异常需要我们处理的<br>   timeout 数字  超时时间<br>   返回值：r  列表   rlist当中准备就绪的IO<br>   w  列表   wlist当中准备就绪的IO<br>   x  列表   xlist当中准备就绪的IO</p>
-<p><em>注意事项 ： </em><br>1.在处理IO过程中不应该发生死循环（某个IO单独占有服务器）<br>2.IO多路复用行了一种并发的效果，效率较高</p>
-<p>练习 ： 写一个select服务端  同时关注客户端端的连接，客户端的发送和终端的输入。将客户端发送的内容和终端输入的内容均写入到一个文件中</p>
-<h4 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h4><p>按照二进制位进行操作运算</p>
-<p>&amp;(按位与)    |（按位或）    ^（按位异或）<br>&lt;&lt;（左移）    &gt;&gt;（右移） </p>
-<p>11  1011<br>14  1110</p>
-<p>&amp;   1010  一0则0<br>|   1111  一1则1<br>^   0101  相同为0不同为1<br>11 &lt;&lt; 2  ==&gt; 44   右侧补0<br>14 &gt;&gt; 2  ==&gt; 3    挤掉低位的数字</p>
-<p>使用 ： </p>
-<ol>
-<li>在做底层硬件的寄存器操作</li>
-<li>在做标志位过滤时</li>
-</ol>
-<h4 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h4><ul>
-<li><p>创建poll对象<br>p = select.poll()</p>
-</li>
-<li><p>添加关注对象<br>p.register(s，POLLIN | POLLERR)<br>p.unregister(s)<br>poll IO事件类型分类<br>POLLIN POLLOUT  POLLERR POLLHUP  POLLPRI  POLLVAL<br>rlist   wlist   xlist    断开   紧急处理  无效数据</p>
-</li>
-<li><p>进行监控<br>events = p.poll()<br>功能： 阻塞等待register的事件发生<br>返回值 ： events 是一个列表，列表中每个元素表示准备就绪需要处理的IO<br>[(fileno,event),          (),()]<br>  描述符 具体什么就绪了<br>描述符地图｛s.fileno(): s｝</p>
-</li>
-<li><p>处理IO事件</p>
-</li>
-</ul>
-<p>作业 ： </p>
-<ol>
-<li>熟练 写出 select server代码</li>
-<li>能够描述IO多路复用的执行原理和内部机制</li>
-<li>巩固HTTPserver的代码—》理解HTTP服务器执行流程</li>
-</ol>
-<h4 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h4><p>使用方法 ： 代码基本与poll相同</p>
-<ul>
-<li>将生成对象的 poll() 函数 变为 epoll()</li>
-<li>将register注册IO事件时 关注的事件类别改为epoll类别</li>
-</ul>
-<p>区别：<br>epoll 效率要高于 poll和select<br>epoll 的关注触发方式多一些</p>
-<h2 id="本地套接字"><a href="#本地套接字" class="headerlink" title="本地套接字"></a>本地套接字</h2><p>linux下文件类型：<br>b（块设备文件） c（字符设备文件）   d（目录）<br>-（普通文件） l（链接文件） s（套接字文件） p（管道文件）</p>
-<p>作用 ： 用于本地不同的程序间进行通信</p>
-<p>本地套接字创建流程：</p>
-<ul>
-<li>创建套接字对象<br>sockfd = socket（AF_UNIX,SOCK_STREAM）</li>
-<li>建立套接字文件<br>sockfd.bind(path) 绑定一个文件</li>
-<li>监听</li>
-<li>接收发送消息</li>
-</ul>
-<p>*小贴士<br>os.path.exists(path)<br>功能： 判断一个文件是否存在<br>参数： 文件位置<br>返回值： 存在返回True  否则返回False</p>
-<p>os.unlink()   os.remove()<br>功能：删除一个文件<br>参数：要删除的文件</p>
-<p>In [2]: os.path.exists(“./re”)<br>Out[2]: True</p>
-<p>In [3]: os.unlink(“./re”)*</p>
-<h1 id="多任务编程"><a href="#多任务编程" class="headerlink" title="多任务编程"></a>多任务编程</h1><p>意义 ： 充分的利用计算机资源提高程序的运行效率</p>
-<p>定义 ： 通过应用程序利用计算机的多个核心达到同时执行多个任务的目的，以此来提升程序的执行效率</p>
-<p>实施方案 ： 多进程    多线程</p>
-<p>并行： 多个计算机核心在同时处理多个任务，这多个任务间是并行关系</p>
-<p>并发：同时处理多个任务，内核在任务间不断的切换，达到好像都在处理运行的效果</p>
-<p>进程：程序在计算机中的一次执行过程 </p>
-<p>程序 ： 是一个可执行文件，是静态的，占有磁盘，不占计算机的运行资源<br>进程 ： 进程是一个动态的过程描述，占有计算机的资源，有一定的生命周期</p>
-<ul>
-<li>同一个程序的不同运行过程是不同的进程。因为分配的计算机资源不同，生命周期也不同</li>
-</ul>
-<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><h3 id="进程的创建流程"><a href="#进程的创建流程" class="headerlink" title="进程的创建流程"></a>进程的创建流程</h3><ul>
-<li>1.用户空间运行一个程序，发起进程的创建</li>
-<li>2.操作系统接受用户申请开启进行创建</li>
-<li>3.操作系统分配计算机资源，确定进程状态</li>
-<li>4.将新创建的进程交给用户使用</li>
-</ul>
-<p><strong>cpu时间片</strong><br>如果一个进程占有计算机核心，我们称为该进程占有cpu时间片。多个任务实际会对cpu内核进行争夺，由操作系统分配cpu资源</p>
-<p>进程信息<br><strong>PCB（进程控制块）</strong>：在*nix操作系统中，进程创建后会自动在内存中产生一个空间存放进程信息，称为PCB</p>
-<p>进程信息：进程的ID 进程占有内存位置 创建时间  创建用户..</p>
-<p><strong>查看命令：ps  -aux</strong></p>
-<p><strong>PID</strong>(process ID) : 在操作系统中进程的唯一标志，大于0的整数，由系统自动分配</p>
-<h3 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a>进程的特征</h3><ul>
-<li>进程是操作系统分配计算机资源的最小单位</li>
-<li>每个进程有自己单独的虚拟内存空间</li>
-<li>进程之间的执行上相互独立，互不影响</li>
-</ul>
-<h3 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h3><p>  <strong>三态</strong></p>
-<pre><code>* 就绪态：进程具备执行条件，等待系统分配处理器资源
-* 运行态：进程占有cpu处于运行的状态
-* 等待态：进程暂时不具备运行条件，需要阻塞等待
-</code></pre><p>  <strong>五态</strong> （在三态基础上增加新建态和终止态）</p>
-<pre><code>* 新建态 ：创建一个新的进程，获取资源的过程
-* 终止态 ：进程执行结束，资源释放回收的过程
-</code></pre><p>ps -aux  —-&gt; STAT 表示进程状态</p>
-<pre><code>D  等待态  （不可终端等待）
-S  等待态   （可终端等待）
-T  等待态   （暂停状态）
-R  运行态   （包含就绪态）
-Z  僵尸态  
-
-\+  前台进程 在终端运行
-&lt;  高优先级
-N  低优先级
-l  有进程链接
-s  会话组
-</code></pre><h3 id="进程优先级"><a href="#进程优先级" class="headerlink" title="进程优先级"></a>进程优先级</h3><p>优先级决定了一个进程的执行权限和占有资源的优先程度</p>
-<p><strong>查看优先级</strong> ：<br>    top ： 动态查看进程优先级    摁 &lt;  &gt; 翻页</p>
-<p><strong>优先级取值范围</strong>  -20 — 19   -20最高</p>
-<pre><code>nice ： 以指定的优先级运行一个程序
-    e.g.  nice  -9   ./while.py
-          nice  --9  ./while.py   -9的优先级运行
-</code></pre><h3 id="父子进程"><a href="#父子进程" class="headerlink" title="父子进程"></a>父子进程</h3><p>在系统中除了初始化进程每个进程都有一个父进程，可能有0个或者多个子进程。由此形成进程的父子关系。我们认为每个进程都是父进程创造的。</p>
-<p>查看进程树 : pstree<br>查看父进程PID ： ps  -ajx</p>
-<p>思考 ：<br>什么是进程，进程和程序的区别<br>了解进程的特征<br>清楚进程每种状态，及状态转换</p>
-<p>需求 ： 编写一个程序能够同时做多件任务</p>
-<p>方案 ： 写一个程序，根据需要在程序内不可以创建多个进程完成任务</p>
-<p><strong>使用os.fork()方法实现</strong></p>
-<p>import os </p>
-<p>pid = os.fork()<br>功能 ： 创建一个新的进程<br>参数 ： 无<br>返回值 ：<br>失败返回一个负数   -1<br>成功 ： 在原有进程中返回新进程的PID号，在新进程中返回0</p>
-<ul>
-<li>子进程会复制父进程全部代码段，包括fork之前产生的内存空间</li>
-<li>子进程从fork的下一句开始执行</li>
-<li>父子进程通常会根据fork返回值的差异选择执行不同的代码</li>
-<li>子进程虽然复制父进程的代码空间，但是有自己的特有属性 比如 PID号 PCB等</li>
-<li>父子进程在执行上互补干扰，执行顺序不确定</li>
-<li>父子进程空间独立，在本进程中对空间的操作不会影响到其他进程</li>
-<li><strong>os.fork函数不能在Windows操作系统上面运行</strong></li>
-</ul>
-<p>进程相关函数使用</p>
-<p>获取进程号<br>os.getpid()<br>功能 ：获取当前进程的进程号<br>返回值 ： 返回进程号</p>
-<p>os.getppid()<br>功能：获取父进程的进程号<br>返回值 ： 返回进程号</p>
-<p>进程的退出<br>os._exit(status)<br>功能 ： 退出进程<br>参数 ： 进程的退出状态 整数</p>
-<p>sys.exit([status])<br>功能： 退出进程<br>参数： 不写默认为0<br>       传入一个整数表示退出状态<br>             传入一个字符串，则在进程退出时会打印该字符串</p>
-<ul>
-<li>sys.exit 可以通过捕获 SystemExit 异常阻止其退出</li>
-</ul>
-<p>代码示例：<br>    “””１，创建套接字<br>            ２，绑定<br>            ３，监听<br>            ４，接收客户端请求accept<br>            ５，创建子进程处理客户端请求，父进程继续接收其他客户端连接<br>            ６，客户端退出则子进程结束”””</p>
-<pre><code>import socket
-import os
-import sys
-import signal
-
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-s.bind((&quot;127.0.0.1&quot;,9527))
-s.listen(100)
-
-def client_handler(c):
-    print(&quot;asfagg&quot;)
-    print(&quot;cpid deal with client&quot;,c.getpeername())
-    while True:
-        data = c.recv(1024).decode()
-        if not data:
-            break
-        print(data)
-        c.send(b&quot;receive your msg&quot;)
-
-
-signal.signal(signal.SIGCHLD,signal.SIG_IGN)
-while True:
-    try:
-        conn,addr = s.accept()
-    except KeyboardInterrupt:
-        s.close()
-        sys.exit(&quot;exit&quot;)
-    except Exception as e:
-        print(e)
-        continue
-    pid = os.fork()
-    if pid &lt; 0:
-        print(&quot;create failed&quot;)
-    elif pid == 0:     
-        s.close()#子进程不需要监听套接字
-        print(os.getpid(),&quot;hello&quot;)
-        client_handler(conn)
-        # data = conn.recv(1024)
-        # print(data.decode())
-        #子进程处理完客户端请求一定要退出
-        conn.close()
-        sys.exit(0)
-    else:
-        conn.close() #关闭冗余的套接字
-</code></pre><p>作业 ： </p>
-<p>写一个聊天室</p>
-<p>功能 ： 类似QQ群聊</p>
-<ol>
-<li>进入聊天室前需要输入用户名</li>
-<li>有人进入聊天室会向其他用户发起通知<br>xxx  进入了聊天室</li>
-<li>一个人发消息，其他人都能收到<br>xxx 说：xxxxxxxx</li>
-<li>某个人退出聊天室 其他人也会收到通知<br>xxx 退出了聊天室</li>
-</ol>
-<p>思考 服务端    客户端</p>
-<ul>
-<li>使用什么技术</li>
-<li>每个功能的实现方案</li>
-</ul>
-<h3 id="孤儿进程"><a href="#孤儿进程" class="headerlink" title="孤儿进程"></a>孤儿进程</h3><p>父进程先于子进程退出，此时子进程就会成为孤儿进程。</p>
-<ul>
-<li>孤儿进程会被系统指定的进程收养，即系统进程会成为孤儿进程新的父进程。当孤儿进程退出时“继父”，会处理孤儿进程退出状态，使其不会成为僵尸。</li>
-</ul>
-<h3 id="僵尸进程"><a href="#僵尸进程" class="headerlink" title="僵尸进程"></a>僵尸进程</h3><p>子进程先于父进程退出，父进程没有处理子进程的退出状态，此时子进程就会成为僵尸进程 </p>
-<ul>
-<li>僵尸进程会滞留部分PCB信息在内存中，大量的僵尸进程会消耗系统资源，应该尽量避免僵尸进程的产生</li>
-</ul>
-<p><strong>如何避免僵尸进程</strong></p>
-<ul>
-<li>父进程先退出（不佳，因为不好控制）</li>
-<li>父进程处理子进程的退出状态</li>
-</ul>
-<p>pid,status = <strong>os.wait()</strong><br>功能： 在父进程中阻塞等待子进程的退出<br>返回值 ：<br>一个两个元素的元组<br>pid : 退出的子进程的PID号<br>status ： 退出的子进程的退出状态</p>
-<p>pid,status = <strong>os.waitpid(pid，option) </strong><br>功能 ： 处理子进程的退出状态<br>参数 ：<br>pid  -1 表示等待任意子进程退出</p>
-<blockquote>
-<p>0 整数 表示等待对应PID号的子进程退出<br>option ：  0 表示阻塞等待  WNOHONG  表示非阻塞<br>返回值  ： 同wait()</p>
-</blockquote>
-<p>waitpid（-1,0） ====  wait()</p>
-<p><strong>创建二级子进程</strong></p>
-<ul>
-<li>父进程创建子进程等待子进程的退出</li>
-<li>子进程创建二级子进程后马上退出</li>
-<li>二级子进程成为孤儿，处理具体事件</li>
-</ul>
-<h3 id="聊天室项目"><a href="#聊天室项目" class="headerlink" title="聊天室项目"></a>聊天室项目</h3><p>功能 ： 类似QQ群聊</p>
-<ol>
-<li>进入聊天室前需要输入用户名</li>
-<li>有人进入聊天室会向其他用户发起通知<br>xxx  进入了聊天室</li>
-<li>一个人发消息，其他人都能收到<br>xxx 说：xxxxxxxx</li>
-<li>某个人退出聊天室 其他人也会收到通知<br>xxx 退出了聊天室</li>
-<li>管理员喊话功能 ：管理员发言所有客户端都能收到<br>管理员 说：xxxxxxx </li>
-</ol>
-<p>需要什么技术：</p>
-<p>socket 通信</p>
-<p>存储用户 ： 字典或列表 姓名 和 地址</p>
-<p>用什么类型套接字 ： udp套接字</p>
-<p>怎么发消息：</p>
-<ul>
-<li>转发  即客户端发给服务器然后服务器在发送给其他人</li>
-<li>在客户端让发送和接收需要相互独立，各使用一个进程</li>
-<li>服务端，管理员喊话和请求的接收需要独立，各使用一个进程</li>
-</ul>
-<p>注意点</p>
-<ol>
-<li>功能封装  将每个功能模块化</li>
-<li>测试，每个功能进行测试</li>
-</ol>
-<p>代码编写流程</p>
-<p>搭建网络连接—-&gt;多进程的创建—&gt;每个进程功能的编写—&gt;项目功能的诸个编写</p>
-<p>客户端可能发送的请求</p>
-<p>进入聊天室：  “L name”<br>服务端 ： 识别请求  判定是否可以进入<br>  回复客户端  保留用户<br>  告知其他人谁进入</p>
-<p>聊天请求 ： “C name message”<br>服务端 ： 识别请求  转发给其他人</p>
-<p>退出聊天室： “Q name”<br>服务端 ： 识别请求  告知其他人谁退出<br>   将其从用户中删除</p>
-<p><strong> 这里只是写的一种最容易理解的编码方式，在udp协议中是需要在应用层进行加密处理，这里的加密处理明显不够，而且空格并不是很好的分割符，比如人名为Jason smith，发送了一条消息’hello’，在服务器会转发为’jason’说’smith hello’，而本身应该表示’jason smith’说’hello’，但是这里暂且先不处理，简化一下发送格式 </strong></p>
-<h2 id="multiprocessing-模块创建进程"><a href="#multiprocessing-模块创建进程" class="headerlink" title="multiprocessing 模块创建进程"></a>multiprocessing 模块创建进程</h2><ul>
-<li>1.需要将要做的事件进行封装成函数</li>
-<li>2.使用multiprocessing提供的类Process创建进程对象</li>
-<li>3.通过对象和Process的初始化函数对进程进行设置以    及绑定要执行的事件</li>
-<li>4.启动进程，会自动的执行函数代表的事件</li>
-<li>5.完成进程的回收</li>
-</ul>
-<h3 id="创建进程对象"><a href="#创建进程对象" class="headerlink" title="创建进程对象"></a>创建进程对象</h3><p>Process()<br>功能：创建进程对象<br>参数：name ： 给创建的进程对象起一个名字<br>              默认为Process-1<br>            target :  绑定的函数<br>            args ：元组 用来给 target函数传参按位置传参<br>      kwargs ： 字典  按照键值传参</p>
-<p>p.start()<br>功能：启动进程 进程被创建，自动运行对应函数</p>
-<p>p.join([timeout])<br>功能 ： 阻塞等待对应子进程的退出，回收子进程<br>参数 ： 超时时间</p>
-<ul>
-<li>如果不使用join 则子进程会成为僵尸进程</li>
-<li>在使用multiprocessing创建进程中，一般父进程功能   就是创建子进程等待回收，不做过多其他事情</li>
-<li>使用multiprocessing创建子进程，同样子进程复制父   进程空间，之后有自己独立的执行空间，互不干扰</li>
-</ul>
-<p>作业： 1. 将聊天室代码进行梳理</p>
-<pre><code>  2.  复习fork创建进程的内容进行整理
-3. multiprocessing 函数巩固
-</code></pre><h3 id="进程对象属性"><a href="#进程对象属性" class="headerlink" title="进程对象属性"></a>进程对象属性</h3><p>p.join()  回收进程<br>p.start() 启动进程<br>p.is_alive()  判断进程是否在生命周期状态，在生命周期中返回True 否则返回False</p>
-<p>p.name  进程名称 默认为Process-1 如果起名字则为自己取的名称</p>
-<p>p.pid   进程的PID号</p>
-<p>代码示例</p>
-<pre><code>import multiprocessing as mp
-import time
-
-def worker(a,b,c,name):
-    for i in range(3):
-        # time.sleep(sec)
-        print(a,b,c)
-        print(&quot;I&apos;m &quot;,name)
-        print(&quot;I&apos;m working ...&quot;)
-
-p = mp.Process(&apos;k&apos;,worker,(2,3,4),{&quot;name&quot;:&quot;Jason&quot;})
-p.start()
-p.join(4)
-print(&quot;after join&quot;)
-</code></pre><p><strong>p.daemon</strong><br>默认为False  主进程退出不会影响子进程<br><strong>如果设置为 True 则主进程退出时会让所有子进程都退出</strong></p>
-<p><strong> * 该属性的设置必须在start() 前</strong><br><strong> * 该属性一般不用和join同时出现</strong></p>
-<h3 id="创建自定义进程类"><a href="#创建自定义进程类" class="headerlink" title="创建自定义进程类"></a>创建自定义进程类</h3><ul>
-<li>1.继承Process类</li>
-<li>2.运行Process类的<strong>init</strong> 以获取父类属性</li>
-<li>3.<strong>重写run方法</strong>，在通过自定类生成对象后，调用start()会自动执行这个方法</li>
-</ul>
-<p>代码示例：</p>
-<pre><code>import multiprocessing as mp
-import time
-
-class myProcess(mp.Process):
-    def __init__(self,value):
-        super().__init__()
-        self.value = value
-
-    #重写父类的run方法
-    def run(self):
-        print(time.ctime())
-        time.sleep(self.value)
-        print(time.ctime())
-
-    def start(self):
-        pass
-
-
-myP = myProcess(2)
-print(&quot;========&quot;)
-#在启动的时候才会启动run方法，本质是在Process的start中调用的run 方法
-myP.start()
-time.sleep(1)
-print(&quot;-------------&quot;)
-&quot;&quot;&quot;
-Tue Jun 12 10:15:55 2018
-Tue Jun 12 10:15:57 2018
-&quot;&quot;&quot;
-</code></pre><h3 id="多进程优缺点"><a href="#多进程优缺点" class="headerlink" title="多进程优缺点"></a>多进程优缺点</h3><p><strong>优点 ： </strong><br>并行执行多个任务，提高效率<br>创建方便<br>运行独立，不受其他进程影响<br>数据安全<br><strong>缺点 ：</strong>在进程的创建和删除过程中消耗计算机资源较多</p>
-<h3 id="进程池技术"><a href="#进程池技术" class="headerlink" title="进程池技术"></a>进程池技术</h3><p>产生原因 ：如果有大量的任务需要多进程完成，则可能需要频繁的创建和删除进程，给计算机带来较多的消耗。</p>
-<p><strong>使用 ：大量可以短时间完成的任务需要多进程操作的时候比较适用于进程池</strong></p>
-<p>使用方法：</p>
-<ul>
-<li><ol>
-<li>创建进程池，在池内放入适当的进程</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>将事件加入进程池队列</li>
-</ol>
-</li>
-<li><ol start="3">
-<li>事件不断运行，所有事件运行完成</li>
-</ol>
-</li>
-<li><ol start="4">
-<li>关闭进程池，回收进程</li>
-</ol>
-</li>
-</ul>
-<p>from multiprocessing import Pool </p>
-<p>Pool(processes)<br>功能 ： 创建进程池对象<br>参数 ： processes  表示进程池中有多少进程<br>对象 ： 进程池对象</p>
-<p>pool.apply_async(func,args,kwds)<br>功能 ： 将事件放入进程池等待执行<br>参数 ：<br>func   要放入进程池的事件函数<br>args   给func函数以元组传参<br>kwds   给func函数以字典传参<br>返回值 ：<br>返回一个事件对象<br>通过get()方法可以获取事件函数的返回值</p>
-<p>pool.apply(func,args,kwds)<br>功能 ： 将事件放入进程池等待执行<br>参数 ：<br>func   要放入进程池的事件函数<br>args   给func函数以元组传参<br>kwds   给func函数以字典传参</p>
-<p>pool.close()<br>功能 ： 关闭进程池 不能再添加新的事件</p>
-<p>pool.join()<br>功能 ： 回收进程池</p>
-<p>代码示例：</p>
-<pre><code>from multiprocessing import Pool
-import time
-
-def fun(msg):
-    time.sleep(2)
-    print(&quot;msg is &quot;,msg)
-    return time.ctime()
-
-pool = Pool(processes = 5)
-result = []
-for i in range(5):
-    msg = i
-    # r = pool.apply_async(fun,args = (msg,))
-    pool.apply(fun,args = (msg,))
-    # result.append(r)
-
-pool.close()
-
-pool.join()
-# for i in result:
-#     print(i.get())
-</code></pre><p><strong>这里的apply_async 和 apply的区别在于apply是阻塞的，所以进入子进程执行后，等待当前子进程执行完毕，在继续执行下一个进程。<br>apply_async 是异步非阻塞的，不用等待当前进程执行完毕，随时根据系统调度来进行进程切换</strong></p>
-<p>pool.map(func,iter)<br>功能 ： 将要完成的事件放入到进程池<br>参数 ： func 要完成的事件函数，iter 要给func传递的参数的迭代器<br>返回值 ： 返回事件函数的返回值列表</p>
-<p>练习 ： 使用multiprocessing 创建两个进程，分别复制一个文件的上半部分和下半部分到另外一个新的文件中<br><em>小贴士 :  os.path.getsize(path) 获取文件大小</em></p>
-<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><p>进程间由于空间独立，资源互相无法直接获取，此时在不同的进程间传递数据就需要专门的进程间通信方法。</p>
-<p>和磁盘交互 ： 使用中间文件 但是不安全，速度慢</p>
-<p><strong>进程间通信方法 （IPC）</strong><br>管道   消息队列  共享内存   信号  信号量  套接字</p>
-<h3 id="管道通信-Pipe"><a href="#管道通信-Pipe" class="headerlink" title="管道通信 Pipe"></a>管道通信 Pipe</h3><p>在内存中开辟一块空间，形成管道结构，管道对多个进程可见，进程可以通过对管道的读写操作进行通信</p>
-<p>multiprocessing —》 Pipe </p>
-<p>fd1,fd2 = Pipe(duplex = True)<br>功能 ： 创建一个管道<br>参数 ： 默认表示管道为双向管道<br>        如果设置为False 则表示单向管道<br>返回值 : 返回两个管道流对象，表示管道两端<br>         如果是双向管道，则都可以读写<br>                 如果是单向管道，则fd1只读  fd2只写</p>
-<p>fd1.recv()<br>功能 ： 从管道内读信息<br>返回值：读到的内容</p>
-<ul>
-<li>当管道内无内容时会阻塞</li>
-</ul>
-<p>fd2.send(data)<br>功能 ： 向管道写入内容<br>参数 ： 要写的内容</p>
-<ul>
-<li>可以发送几乎Python的任意数据类型</li>
-</ul>
-<p>示例代码：</p>
-<pre><code>from multiprocessing import Process,Pipe
-import os,time
-
-fd1,fd2 = Pipe(duplex=False)
-ps = [] 
-
-def fun(msg):
-    time.sleep(2)
-    print(&quot;msg is&quot;,msg)
-    fd2.send(str(msg))
-
-# ps = []
-for i in range(5):
-    p = Process(target=fun,args=(i,))
-    p.start()
-    ps.append(p)
-
-for i in range(5):
-    data = fd1.recv()
-    print(&quot;data is &quot;,data)
-
-for p in ps:
-    p.join()
-</code></pre><p>运行结果：</p>
-<pre><code>msg is 0
-data is  0
-msg is 1
-data is  1
-msg is 2
-data is  2
-msg is 3
-data is  3
-msg is 4
-data is  4
-</code></pre><h3 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h3><p>队列 ： 先进先出<br>在内存中开辟队列结构空间，对多个进程可见。多个进程向队列中存入消息，取出消息，完成进程间通信。</p>
-<p>创建队列<br>q = Queue(maxsize = 0)<br>功能 ： 创建队列<br>参数 ： maxsize 默认表示根据系统分配空间存储消息<br>        如果传入一个正整数则表示最多存入消息数量<br>返回值 ： 队列对象</p>
-<p>q.put(data,[block,timeout])<br>功能 ： 向队列中存入消息<br>参数 ： data  存入的数据 （支持Python数据类型）<br>        block  默认为True表示 当队列满时阻塞<br>                       设置为False 表示非阻塞<br>                timeout  当block为Ture时表示超时时间</p>
-<p>data = q.get([block,timeout])<br>功能 ： 从队列获取消息<br>参数 ： block  默认为True表示 当队列空时阻塞<br>                       设置为False 表示非阻塞<br>                timeout  当block为Ture时表示超时时间<br>返回值：返回获取到的消息</p>
-<p>q.full()  判断队列是否为满<br>q.empty() 判断队列是否为空<br>q.qsize() 获取队列中消息数量<br>q.close() 关闭队列</p>
-<p>示例代码：</p>
-<pre><code>from multiprocessing import Process,Queue
-q = Queue()
-
-def fun1():
-    for x in range(10):
-        q.put(x)
-    q.put(&quot;fasfgsd&quot;)
-    pass
-
-def fun2():
-    data = q.get()
-    while True:
-        if data is not None:
-            print(data)
-            data = q.get()
-        else:
-            break
-        pass
-
-def fun3():
-    while q.qsize():
-        try:
-            data = q.get()
-            print(&apos;queue data: &apos;,data)
-        except Queue.Empty:
-            pass
-        except :
-            pass
-p1 = Process(target=fun1)
-p2 = Process(target=fun3)
-p1.start()
-p2.start()
-p1.join()
-p2.join()
-</code></pre><p>运行结果：<br>        queue data:  0<br>        queue data:  1<br>        queue data:  2<br>        queue data:  3<br>        queue data:  4<br>        queue data:  5<br>        queue data:  6<br>        queue data:  7<br>        queue data:  8<br>        queue data:  9<br>        queue data:  fasfgsd</p>
-<h3 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h3><p>在内存中开辟一段空间，存储数据，对多个进程可见。每次写入共享内存的数据会覆盖之前的内容</p>
-<p>from multiprocessing import  Value，Array</p>
-<p>obj = Value(ctype,obj)<br>功能 ： 开辟共享内存空间<br>参数 ： ctype  字符串 要转变的c的类型code（对照ctype表）<br>        obj  共享内存初始值<br>返回共享内存对象</p>
-<p>obj.value  表示共享内存中的值。对其修改或者使用即为使用共享内存中的值</p>
-<p>obj = Array(ctype,obj)<br>功能 ： 开辟共享内存空间<br>参数 ：<br>ctype  要转换的类型<br>obj 要存入共享内存的数据<br>列表  将列表存入共享内存 要求类型一致<br>整数  在共享内存中开辟几个单元的空间<br>返回值：共享内存对象</p>
-<p>示例代码：</p>
-<pre><code>from multiprocessing import Process,Array
-import time
-
-# shm = Array(&apos;i&apos;,[1,2,3,4,5,6])
-#这里的i 指的是整型数据，C语言中整型数据默认值为0
-shm = Array(&apos;i&apos;,6)
-
-def fun1():
-    for i in shm:
-        print(i)
-    shm[3] = 1000
-
-def fun2():
-    for i in shm:
-        print(i)
-
-p = Process(target= fun1)
-p2 = Process(target= fun2)
-p.start()
-
-p.join()
-p2.start()
-p2.join()
-</code></pre><p>运行结果：在fun1中修改的内容，func取出来是修改过的，通信成功<br>        0<br>        0<br>        0<br>        0<br>        0<br>        0<br>        0<br>        0<br>        0<br>        1000<br>        0<br>        0</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>管道</th>
-<th>消息队列</th>
-<th>共享内存</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>开辟空间</td>
-<td>内存</td>
-<td>内存</td>
-<td>内存</td>
-</tr>
-<tr>
-<td>读写方式</td>
-<td>两端读写（双向/单向）</td>
-<td>先进先出</td>
-<td>操作覆盖内存            </td>
-</tr>
-<tr>
-<td>效率</td>
-<td>一般</td>
-<td>一般</td>
-<td>较快</td>
-</tr>
-<tr>
-<td>应用</td>
-<td>多用于父子进程</td>
-<td>广泛灵活</td>
-<td>复杂<br>需要互斥机制</td>
-</tr>
-</tbody>
-</table>
-<p>作业 ：<br>熟练掌握进程间通信方法<br>自己实现进程池的使用，知道进程池特性</p>
-<h3 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h3><p>一个进程向另一个进程通过信号传递某种讯息。接收方在接受到信号时进行相应的处理</p>
-<p>kill  -l   查看信号<br>kill  -signame  PID   给PID的进程发送一个信号 </p>
-<p>关于信号 </p>
-<p>信号名称 ： 系统定义，  名字或者数字<br>信号含义 ： 系统定义，  信号的作用<br>默认处理方法：当一个进程接收到信号时默认产生的效果<br>               终止进程   暂停进程   忽略<br>e.g.<br>SIGHUP   连接断开<br>SIGINT   CTRL + C<br>SIGQUIT  CTRL + \<br>SIGTSTP  CTRL + Z<br>SIGKILL  终止进程且不能被处理<br>SIGSTOP  暂停进程且不能被处理<br>SIGALRM  时钟信号<br>SIGCHLD  子进程状态改变给父进程发送</p>
-<p>Python进行信号处理</p>
-<p>os.kill(pid,sig)<br>功能 ： 发送信号给某个进程<br>参数 ： pid   给哪个进程发送信号<br>        sig   要发送什么信号</p>
-<p>signal.alarm(sec)<br>功能 ： 一定时间后向自身发送 一个SIGALRM信号<br>参数 ： 定时时间</p>
-<ul>
-<li>在一个进程中只允许有一个时钟，设置第二个的时候时   间就会重置</li>
-</ul>
-<p>程序执行的异步和同步</p>
-<p>同步：按照步骤一步一步往下顺序执行<br>异步：在程序执行中利用内核，不想应用层的持续执行</p>
-<ul>
-<li>信号是唯一的异步通信方式</li>
-</ul>
-<p>signal.pause()<br>功能 ： 阻塞等待进程收到一个信号</p>
-<p>signal.signal(signum，handler)<br>功能 ： 处理信号<br>参数 ： signum  ： 要处理的信号<br>handler ： 信号的处理方法<br><strong>可选值 ：<br>SIG_DFL  表示使用默认方法处理<br>SIG_IGN  表示忽略这个信号<br>func     自定义函数</strong></p>
-<p>自定义函数格式：<br>def func(sig,frame)<br>sig：接收到的信号<br>frame：信号结构对象</p>
-<ul>
-<li>signal函数是一个异步处理函数</li>
-<li>signal函数不能处理SIGKILL，SIGSTOP信号</li>
-<li>在父进程中加上signal(SIGCHLD,SIG_IGN)，当子进程退   出时会自动交由系统处理</li>
-</ul>
-<p>示例代码：<br>        from signal import *<br>        import time<br>        import os</p>
-<pre><code>#信号处理函数
-def handler(sig,frame):
-    if sig == SIGALRM:
-        print(&quot;接收到时钟信号&quot;)
-        exit()
-    elif sig == SIGINT:
-        print(&quot;就不结束&quot;)
-
-alarm(5)
-
-#当接收到SIGALRM信号 用handler函数处理
-signal(SIGALRM,handler)
-signal(SIGINT,handler)
-
-while True:
-    print(&quot;Waiting for a signal&quot;)
-    time.sleep(2)
-</code></pre><p>运行结果：<br>        Waiting for a signal<br>        ^C就不结束<br>        Waiting for a signal<br>        ^C就不结束<br>        ^C就不结束<br>        Waiting for a signal<br>        接收到时钟信号</p>
-<h3 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h3><p>给定一定的数量，对多个进程可见，并且多个进程根据信号的数量多少确定不同的行为</p>
-<p>multiprocessing —》 Semaphore() </p>
-<p>sem = Semaphore(num)<br>功能 ： 生成信号量对象<br>参数 ： 信号量的初始值<br>返回值 ： 信号量对象</p>
-<p>sem.acquire()  将信号量数量减一  信号量为0会阻塞<br>sem.release()  将信号量数量加一<br>sem.get_value() 获取当前信号量的值</p>
-<p>示例代码：</p>
-<pre><code>import multiprocessing as mp
-import time
-import os
-sem = mp.Semaphore(3)
-
-def fun():
-    print(&quot;process %d wait semaphore&quot;%os.getpid())
-    sem.acquire()
-    print(&quot;process %d use semaphore&quot;%os.getpid())
-    time.sleep(1)
-    sem.release()
-    print(&quot;process %d add semaphore&quot;%os.getpid())
-
-jobs = []
-for i in range(4):
-    p = mp.Process(target=fun)
-    jobs.append(p)
-    p.start()
-for i in jobs:
-    i.join()
-</code></pre><p>运行结果：</p>
-<pre><code>process 8441 wait semaphore
-process 8441 use semaphore
-process 8442 wait semaphore
-process 8442 use semaphore
-process 8443 wait semaphore
-process 8443 use semaphore
-process 8444 wait semaphore
-process 8441 add semaphore
-process 8444 use semaphore
-process 8442 add semaphore
-process 8443 add semaphore
-process 8444 add semaphore
-</code></pre><h2 id="同步互斥机制"><a href="#同步互斥机制" class="headerlink" title="同步互斥机制"></a>同步互斥机制</h2><p>目的 ： 解决对共有资源操作产生的争夺</p>
-<p>临界资源 ： 多个进程或者线程都能够操作的资源<br>临界区   ： 操作临界资源的代码段</p>
-<p>同步 ： 同步是一种合作关系，为完成某个任务多进程或者多线程之间形成一种协调，按照约定或条件一次执行操作临界资源，相互告知资源使用         情况。</p>
-<p>互斥 ： 互斥是一种制约关系，当一个进程或者线程进入临界区会进行加锁的操作。此时其他进程（线程）再企图使用临界资源时就会阻塞，直到         资源被释放才能使用</p>
-<h3 id="Event-事件"><a href="#Event-事件" class="headerlink" title="Event  事件"></a>Event  事件</h3><p>multiprocessing Event<br>创建事件对象<br>e = Event()</p>
-<p>事件阻塞<br>e.wait([timeout])</p>
-<p>事件设置  e处于设置状态，e.wait()不再阻塞<br>e.set()</p>
-<p>事件清除  e处于未设置状态，e.wait()阻塞<br>e.clear() </p>
-<p>事件判断  判断e的当前状态<br>e.is_set()</p>
-<p>示例代码：</p>
-<pre><code>from multiprocessing import Process,Event
-import time
-
-e = Event()
-def wait_event():
-    print(&quot;waiting for event set&quot;)
-    e.wait()
-    print(&quot;it&apos;s my turn&quot;,e.is_set())
-
-def wait_event_timeout():
-    print(&quot;I just wait for 2s &quot;)
-    e.wait(2)
-    print(&quot;after 2s,it&apos;s my turn&quot;)
-
-p1 = Process(target = wait_event)
-p2 = Process(target = wait_event_timeout)
-
-p1.start()
-p2.start()
-
-print(&quot;main process is operating resource&quot;)
-time.sleep(3)
-e.set()
-print(&quot;open resoure&quot;)
-
-p1.join()
-p2.join()
-</code></pre><p>运行结果：</p>
-<pre><code>main process is operating resource
-waiting for event set
-I just wait for 2s 
-after 2s,it&apos;s my turn
-open resoure
-it&apos;s my turn True
-</code></pre><h3 id="锁-Lock"><a href="#锁-Lock" class="headerlink" title="锁  Lock"></a>锁  Lock</h3><p>multiprocessing —&gt; Lock</p>
-<p>创建对象<br>lock = Lock()</p>
-<p>lock.acquire()  上锁<br>lock.release()  解锁</p>
-<p>上锁状态 ： 此时执行acquire（）操作会阻塞<br>解锁状态 ： 执行acquire（）操作为非阻塞</p>
-<p>with  lock：  —-》 上锁<br>….<br>….<br>—-&gt; with代码段结束后自动解锁 </p>
-<p>示例代码：</p>
-<pre><code>from multiprocessing import Process,Lock 
-import sys 
-from time import sleep 
-
-#sys.stdout标准输出流作为所有进程的临界资源
-
-def writer1():
-    lock.acquire()  #上锁
-    for i in range(5):
-        sleep(1)
-        sys.stdout.write(&quot;writer1输出\n&quot;)
-    lock.release()  #解锁
-
-def writer2():
-    #with方式上锁
-    with lock:
-        for i in range(5):
-            sleep(1)
-            sys.stdout.write(&quot;writer2输出\n&quot;)
-
-#创建锁
-lock = Lock()
-
-w1 = Process(target = writer1)
-w2 = Process(target = writer2)
-
-w1.start()
-w2.start()
-
-w1.join()
-w2.join()
-</code></pre><p>运行结果：</p>
-<pre><code>writer1输出
-writer1输出
-writer1输出
-writer1输出
-writer1输出
-writer2输出
-writer2输出
-writer2输出
-writer2输出
-writer2输出
-</code></pre><h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>这里不得不说死锁的概念<br>出自： <a href="https://www.cnblogs.com/Simon-xm/p/4072986.html" target="_blank" rel="noopener">https://www.cnblogs.com/Simon-xm/p/4072986.html</a><br>Python——网络编程，如何避免死锁？<br>问题描述：什么是死锁？</p>
-<p>死锁发生在当一个服务器和客户端同时试图往一个连接上写东西或同时从一个连接上读的时候。在这种情况下，没有进程可以得到任何数据（如果它们都正在读），因此，如果它们正在写，向外的buffer会被充满，结果他们就好象被骗了，什么都做不了。</p>
-<p>示例服务器代码：</p>
-<pre><code>import socket,traceback
-
-host=&quot;&quot;
-port=51423
-
-sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-sock.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-sock.bind((host,port))
-sock.listen(1)
-
-while True:
-    try:
-        clientsock,clientaddr= sock.accept()
-    except KeyboardInterrupt:
-        raise
-    except:
-        traceback.print_exc()
-        continue
-
-    try:
-        print(&quot;Got connection from &quot;,clientsock.getpeername)
-        while True:
-            data = clientsock.recv(4096)
-            if not len(data):
-                break
-            clientsock.sendall(data)
-    except (KeyboardInterrupt,SystemExit):
-            raise
-    except:
-            traceback.print_exc()
-
-    try:
-        clientsock.close()
-    except KeyboardInterrupt:
-        raise
-    except:
-        traceback.print_exc()
-</code></pre><p>示例客户端代码：</p>
-<pre><code>import socket
-import sys
-
-port=51423
-host=&quot;localhost&quot;
-
-data=b&quot;x&quot;*10485760
-sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-sock.connect((host,port))
-
-byteswritten=0
-while byteswritten&lt;len(data):
-    startpos = byteswritten
-    endpos = min(byteswritten+1024,len(data))
-    byteswritten+=sock.send(data[startpos:endpos])
-    sys.stdout.write(&quot;wrote %d bytes\r&quot;% byteswritten)
-    sys.stdout.flush()
-
-sock.shutdown(1)
-
-print(&quot;All data sent.&quot;)
-while True:
-    buf = sock.recv(1024).decode()
-    if not len(buf):
-        break
-    sys.stdout.write(buf)
-</code></pre><p>在运行上述服务器代码的情况下运行客户端代码，得到如下结果：</p>
-<p>服务器：<br>(ev1)[root@Simonxu bin]# python testserver.py<br>Got connection from  <built-in method="" getpeername="" of="" socket="" object="" at="" 0x7f5e18d2b460=""><br>客户端：<br>(ev1)[root@Simonxu bin]# python test.py<br>wrote 164864 bytes<br>可以看出，上述服务器和客户端卡在的wrote 164864 bytes。</built-in></p>
-<p><strong>分析：</strong></p>
-<p>已知客户端程序试图发送一个10MB的数据，每次传输1KB，同时显示发送数据动态，并在所有数据发送完成后，从服务器每次1KB读取并写数据。</p>
-<p>而服务器在建立套接口连接后，从客户端每次读取4KB数据，在接收到数据后，直接把数据发回客户端。</p>
-<p>而矛盾的是，由于客户端在发送一个10MB大小的数据，这要发送较长时间，在发送的过程中没有办法读取数据，因此服务器返回的数据就堆积在客户端的接收缓冲区。</p>
-<p>当接收缓冲区满了之后，服务器的sendall（）函数发生错误，循环死锁，服务器不再接收客户端发来的数据。客户端也无法继续发送数据。就形成了上面的情况。</p>
-<p><strong>如何避免死锁？</strong></p>
-<ul>
-<li><p>1、可以在客户端每次执行完send（）后，进行一次recv（）以接收服务器发来的数据，避免buffer充满。</p>
-</li>
-<li><p>2、可以让客户端发送的数据较少，这样在buffer充满之前就可以从缓冲区读取服务器发回的数据。</p>
-</li>
-<li><p>3、采用多线程或其他一些方法，使客户端可以同时发送和接收。</p>
-</li>
-</ul>
-<p><strong>知识补充</strong></p>
-<p>缓冲区：</p>
-<ol>
-<li><p>tcp 收发缓冲区默认值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/ipv4/tcp_rmem<br>　　4096    87380   4161536<br>　　87380  ：tcp接收缓冲区的默认值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/ipv4/tcp_wmem<br>　　4096    16384   4161536<br>　　16384  ： tcp 发送缓冲区的默认值</p>
-</li>
-<li><p>tcp 或udp收发缓冲区最大值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/core/rmem_max<br>　　131071<br>　　131071：tcp 或 udp 接收缓冲区最大可设置值的一半。<br>　　也就是说调用 setsockopt(s, SOL_SOCKET, SO_RCVBUF, &amp;rcv_size, &amp;optlen);  时rcv_size 如果超过 131071，那么<br>　　getsockopt(s, SOL_SOCKET, SO_RCVBUF, &amp;rcv_size, &amp;optlen); 去到的值就等于 131071 * 2 = 262142<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/core/wmem_max<br>　　131071<br>　　131071：tcp 或 udp 发送缓冲区最大可设置值得一半。<br>　　跟上面同一个道理</p>
-</li>
-<li><p>udp收发缓冲区默认值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/core/rmem_default<br>　　111616：udp接收缓冲区的默认值<br>　　[root@ <a href="http://www.linuxidc.com]#" target="_blank" rel="noopener">www.linuxidc.com]#</a> cat /proc/sys/net/core/wmem_default<br>　　111616<br>　　111616：udp发送缓冲区的默认值</p>
-</li>
-<li><p>tcp 或udp收发缓冲区最小值<br>　　tcp 或udp接收缓冲区的最小值为 256 bytes，由内核的宏决定；<br>　　tcp 或udp发送缓冲区的最小值为 2048 bytes，由内核的宏决定</p>
-</li>
-</ol>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>什么是线程 </p>
-<p>线程也是一种多任务编程方式，可以使用计算机的多核资源。线程被称为轻量级的进程。</p>
-<h3 id="线程的特征"><a href="#线程的特征" class="headerlink" title="线程的特征"></a>线程的特征</h3><ul>
-<li>线程是计算机多核分配的最小单位</li>
-<li>一个进程可以包含多个线程</li>
-<li>线程也是一个运行过程，也要消耗计算机资源。多个   线程共享进程的资源和空间</li>
-<li>线程也拥有自己特有的资源属性，比如指令集，TID等</li>
-<li>线程无论是创建删除还是运行消耗的资源都小于进程</li>
-<li>多个线程之间并行执行，执行上互不干扰</li>
-</ul>
-<h3 id="threading-模块创建线程"><a href="#threading-模块创建线程" class="headerlink" title="threading 模块创建线程"></a>threading 模块创建线程</h3><p>threading.Thread()<br>功能 : 创建线程对象<br>参数 ：name  线程名称  默认为Thread-1<br>       target  线程函数<br>             args   元组  给线程函数位置传参<br>             kwargs 字典  给线程函数键值传参<br>返回 ： 线程对象</p>
-<p>t.start()   启动线程<br>t.join([timeout])   回收线程</p>
-<p>线程对象的属性<br>t.is_alive() 查看线程的状态<br>t.name  线程名称<br>t.setName()  设置线程名称<br>threading.currentThread()  获取当前线程对象</p>
-<p><strong>t.daemon 属性<br>默认情况下主线的结束不会影响到分支线程的执行<br>如果设置为True 则主线程退出分支线程也会退出</strong></p>
-<p>设置方法：<br>t.daemon = True<br>t.setDaemon(True)</p>
-<p>判断daemon属性:<br>t.isDaemon()</p>
-<ul>
-<li>线程daemon属性的设置在start前</li>
-<li>一般设置daemon后不会再使用join</li>
-</ul>
-<p>示例代码：</p>
-<pre><code>import threading
-import time
-import os
-
-a = 1
-def music():
-    # while True:
-    global a
-    a = 100
-    for i in range(3):
-        time.sleep(2)
-        print(&quot;play music&quot;,os.getpid())
-
-# for i in range(3):
-#     time.sleep(2)
-#     print(&quot;play game&quot;) 
-
-t = threading.Thread(target = music)
-t.start()
-for i in range(5):
-    time.sleep(2)
-    print(&quot;play game&quot;,os.getpid()) 
-t.join()
-
-print(a)
-</code></pre><p>运行结果:</p>
-<pre><code>play game 8687
-play music 8687
-play game 8687
-play music 8687
-play game 8687
-play music 8687
-play game 8687
-play game 8687
-100
-</code></pre><h3 id="创建自己的线程类"><a href="#创建自己的线程类" class="headerlink" title="创建自己的线程类"></a>创建自己的线程类</h3><p>步骤：<br>1.继承 Thread类<br>2.运行Thread类中的<strong>init</strong>方法以获取父类原有属性<br>3.重写run方法</p>
-<p>示例代码：</p>
-<pre><code>from threading import Thread
-from time import ctime,sleep
-
-class Mythread(Thread):
-    def __init__(self,name=&quot;HMoon&quot;,target=None,args=(),kwargs={}):
-        super().__init__()
-        self.name = name
-        self.target = target
-        self.args = args
-        self.kwargs = kwargs
-
-    def fun(self):
-        print(&quot;fdsggsdggh&quot;)
-        self.target(*self.args)
-
-def aaa(msg):
-    print(&quot;aaaaa&quot;)
-    print(msg)
-
-t = Mythread(name= &quot;aaa&quot;,target=aaa,args=(&quot;fsaff&quot;,))
-t.start()
-t.join()
-</code></pre><p>运行结果：</p>
-<pre><code>fdsggsdggh
-aaaaa
-fsaff
-</code></pre><p>作业 ： </p>
-<ol>
-<li>复习网络编程</li>
-<li>司机和售票员<ul>
-<li>创建父子进程 分别表示司机和售票员</li>
-<li>当售票员捕捉到SIGINT信号，给司机发送SIGUSER1信   号，此时司机打印“老司机开车了”<br>当售票员捕捉到SIGQUIT信号，给司机发送SIGUSER2信号，此时司机打印：”车速有点快，系好安全带”<br>当司机捕捉到SIGTSTP信号，给售票员发送SIGUSER1,此时售票员打印“到站了请下车”</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>到站后，售票员先下车（子进程先退出），然后司机   下车</li>
-</ul>
-<p>作业代码：<br>        import multiprocessing as mp<br>        from signal import *<br>        import sys,os<br>        import time</p>
-<pre><code>def driver_handle(sig,frame):
-    if sig == SIGUSR1:
-        print(&quot;老司机开车了&quot;)
-    elif sig  == SIGUSR2:
-        print(&quot;车速有点快，系好安全带&quot;)
-    elif sig == SIGTSTP:
-        os.kill(p.pid,SIGUSR1)
-
-def saler_handle(sig,frame):
-    if sig == SIGINT:
-        os.kill(os.getppid(),SIGUSR1)
-    elif sig == SIGQUIT:
-        os.kill(os.getppid(),SIGUSR2)
-    elif sig == SIGUSR1:
-        print(&quot;到站了,请下车&quot;)
-        sys.exit(&quot;售票员下车&quot;)
-
-def saler():
-    signal(SIGINT,saler_handle)
-    signal(SIGQUIT,saler_handle)
-    signal(SIGUSR1,saler_handle)
-    signal(SIGTSTP,SIG_IGN)
-    while True:
-        time.sleep(3)
-        print(&quot;Python带你去远方&quot;)
-
-p = mp.Process(target = saler)
-p.start()
-
-signal(SIGUSR1,driver_handle)
-signal(SIGUSR2,driver_handle)
-signal(SIGTSTP,driver_handle)
-signal(SIGINT,SIG_IGN)
-signal(SIGQUIT,SIG_IGN)
-
-p.join()
-</code></pre><h2 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h2><p>  通信方法 : 多个线程共用进程空间，所以进程的全局量对进程内的线程均可见。因此线程间没有特有的通信方式往往使用全局变量通信</p>
-<p>  注意事项 ：线程间使用全局变量通信往往需要同步互斥机制做为通信的安全保证</p>
-<p>线程的同步互斥</p>
-<h3 id="线程event对象"><a href="#线程event对象" class="headerlink" title="线程event对象"></a>线程event对象</h3><p>创建对象 ：<br>  e = threading.Event()<br>  e.wait([timeout])  如果e为设置状态则不会阻塞，未设置则阻塞<br>  e.set()   将e变为设置状态<br>  e.clear() 将e的设置去除</p>
-<p>示例代码：</p>
-<pre><code>import threading 
-from time import sleep 
-
-msg = None 
-
-#创建事件对象
-e = threading.Event()
-
-def bar():
-    print(&quot;呼叫foo&quot;)
-    global msg 
-    msg = &quot;天王盖地虎&quot;
-
-def foo():
-    print(&quot;等待口令&quot;)
-    sleep(2)
-    if msg == &quot;天王盖地虎&quot;:
-        print(&quot;宝塔镇河妖,自己人,哈哈哈&quot;)
-    else:
-        print(&quot;口令错误,打死他&quot;)
-    e.set()
-
-def fun(): 
-    print(&quot;呵呵....内奸出现&quot;)
-    sleep(1)
-    e.wait()
-    global msg
-    msg = &quot;小鸡炖蘑菇&quot; 
-
-t1 = threading.Thread(target = bar)
-t2 = threading.Thread(target = foo)
-t3 = threading.Thread(target = fun)
-t1.start()
-t2.start()
-t3.start()
-t1.join()
-t2.join()
-t3.join()
-</code></pre><p>运行结果：</p>
-<pre><code>call foo
-wait keyword
-hehe...内奸出现
-宝塔镇河妖，自己人，哈哈哈
-</code></pre><h3 id="线程锁"><a href="#线程锁" class="headerlink" title="线程锁"></a>线程锁</h3><p>  lock = threading.Lock() 创建锁对象<br>  lock.acquire()  上锁<br>  lock.release()  解锁</p>
-<pre><code>**在一个进程中对一个线程锁重复上锁则会阻塞
-</code></pre><p>示例代码：</p>
-<pre><code>import threading as th
-import time
-a = b = 0
-
-lock = th.Lock()
-def value():
-    while True:
-        lock.acquire()
-        if a != b:
-            print(&quot;a = %d  b = %d&quot;%(a,b))
-        else:
-            print(a,b)
-        lock.release()
-
-t = th.Thread(target= value)
-t.start()
-
-while True:
-    lock.acquire()
-    a += 1
-    b += 1
-    lock.release()
-t.join()
-</code></pre><p>运行结果片段：（需要ctrl+c结束死循环运行）<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937<br>        390937 390937</p>
-<h3 id="Python线程的GIL问题-（全局解释器锁）"><a href="#Python线程的GIL问题-（全局解释器锁）" class="headerlink" title="Python线程的GIL问题 （全局解释器锁）"></a>Python线程的GIL问题 （全局解释器锁）</h3><p>python —》 支持多线程 –》同步互斥 –》加锁 —》超级锁，给解释器加锁</p>
-<p>后果 ： 一个解释器，同一时刻只能解释一个线程。因此大大降低了Python线程的执行效率</p>
-<p><strong>Python 的GIL问题 解决方法</strong></p>
-<ul>
-<li>尽量使用进程方式并行</li>
-<li>不适用c作为解释器，可以采用 c# java</li>
-<li>Python线程适用于高延迟的IO操作，网络操作。不适合用cpu密集型程序。线程在遇到IO阻塞时会让出解释器和cpu</li>
-</ul>
-<p>效率测试 </p>
-<p>分别测试 在 IO密集型程序和CPU密集型程序下，多进程，多线程，单进程执行效率</p>
-<p>Line cpu: 8.061699390411377<br>Line IO: 5.261598348617554</p>
-<p>Thread cpu: 8.920610427856445<br>Thread io: 5.60230565071106</p>
-<p>process cpu: 4.07219386100769<br>Process io: 3.383375406265259</p>
-<p>测试代码：</p>
-<pre><code>import threading as th
-import multiprocessing as mp
-from time import ctime,sleep,time
-&quot;&quot;&quot;
-效率测试
-分别测试在ＩＯ密集型和ＣＰＵ密集型下，多进程　多线程　单线程执行效率
-&quot;&quot;&quot;
-
-def count(x,y):
-    # print(time())
-    c = 0 
-    while c &lt; 7000000:
-        c += 1
-        x += 1
-        y += 1
-    # print(time())
-
-def mywrite():
-    # print(ctime())
-    f = open(&quot;test.txt&quot;,&quot;w&quot;)
-    for x in range(1000000):
-        f.write(&quot;hehehehehehehe&quot;)
-    f.close()
-    # print(ctime())
-
-def myread():
-    # print(ctime())
-    f = open(&quot;test.txt&quot;,&quot;r&quot;)
-    lines = f.readlines()
-    # print(ctime())
-
-def myio():
-    mywrite()
-    myread()
-start = time()
-jobs = []
-for i in range(10):
-    t = th.Thread(target = myio)
-    jobs.append(t)
-    t.start()
-for i in jobs:
-    i.join()
-end = time()
-print(end - start)
-</code></pre><p><strong>进程和线程的区别和联系</strong></p>
-<ul>
-<li>1.两者都是多任务编程的方式，都能够使用计算机多核</li>
-<li>2.进程的创建和删除要比线程消耗更多计算机资源</li>
-<li>3.进程空间独立，数据安全性好，有专门的进程间通信方法</li>
-<li>4.线程使用全局变量通信，更加简单，但是往往要与同步互斥机制公用</li>
-<li>5.一个进程可以包含多个线程，线程共享进程的资源空间</li>
-<li>6.进线程都有自己特有的资源，如命令，属性 id等</li>
-</ul>
-<p><strong>使用场景 : </strong></p>
-<ul>
-<li>需要创建较多的并发，任务比较简单时，线程比较合适</li>
-<li>如果程序数据资源比较复杂，特别是共享资源较多时，   需要考虑到线程锁的复杂性</li>
-<li>如果多个任务无必要的关联性，不易将其强行融入到一   个进程中</li>
-<li>Python线程不适合cpu密集型程序</li>
-</ul>
-<p><strong>总结 ： </strong></p>
-<ol>
-<li>进程线程的区别和关系</li>
-<li>进程间以什么方式通信，有什么特点</li>
-<li>同步互斥的意义，有什么方法实现同步互斥</li>
-<li>僵尸进程，进程状态，线程GIL的概念</li>
-<li>给一个情景，问选择进程还是线程，怎么做为什么</li>
-</ol>
-<h1 id="服务器模型"><a href="#服务器模型" class="headerlink" title="服务器模型"></a>服务器模型</h1><p>硬件服务器 ： 主机  集群<br>厂商 ： IBM  HP  联想  浪潮</p>
-<p>软件服务器 ： 编写的服务端程序，依托于硬件服务器运行，提供给用户一定的软件服务</p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>webserver   —-》 网络后端程序提供网络请 求的后端处理和数据交互<br>httpserver  —-》 处理HTTP请求，回复http响应<br>邮箱服务器 —–》 提供邮箱服务<br>文件服务器 —–》 提供文件的上传下载</p>
-<p>功能： 网络连接，逻辑处理，数据的交互，数据的传输 协议的实现</p>
-<h2 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h2><p> c/s  (客户端服务器模型)<br> b/s  (浏览器服务器模型)</p>
-<p>服务器目标：处理速度快，数据更安全，并发量大 </p>
-<p>硬件 ： 更高的配置，集成分布的技术，更好的网络速度，更多的主机，网络安全</p>
-<p>软件 ： 程序占有更少的计算机资源，更稳定的运行效果，更流畅的运行速度，采用更合理的技术。处理更高的并发</p>
-<h2 id="服务器模型-1"><a href="#服务器模型-1" class="headerlink" title="服务器模型"></a>服务器模型</h2><ul>
-<li><p>循环服务器 ：单进程程序，循环的接收客户端的请求，处理请求，每处理完一个请求后再去接收处理下一个请求 </p>
-<p> 优点 ： 实现简单，占用系统资源少<br> 缺点 ： 无法同时连接多个客户端，当一个客户端长期占有服务器时会形成其他客户端无法访问的情况<br> 使用情况：任务比较短暂，udp套接字更适合循环</p>
-</li>
-</ul>
-<ul>
-<li><p>并发服务器 ： 同时能够处理多个客户端的任务请求。并发可分为IO并发或者多进程多线程并发。</p>
-<p>  IO并发 ： IO多路复用    协程</p>
-<p>  优点：资源消耗少，适用于IO类型服务器<br>  缺点：不能监控CPU密集的情况，单线程，不能长期阻塞的消息的收发</p>
-<p>  进程/线程并发：为每个客户端单独提供一个进程线程，处理客户端请求</p>
-<p>  优点： 客户端可以长期占用服务器<br>  缺点： 消耗系统资源较多</p>
-</li>
-</ul>
-<h2 id="多进程并发模型"><a href="#多进程并发模型" class="headerlink" title="多进程并发模型"></a>多进程并发模型</h2><p>使用fork完成并发</p>
-<ul>
-<li>1.创建套接字  绑定  监听</li>
-<li>2.等待接收客户端请求 accept</li>
-<li>3.创建子进程处理客户端请求，<br>父进程继续准备接收其他客户端连接</li>
-<li>4.客户端退出则子进程结束</li>
-</ul>
-<h2 id="tftp文件服务器"><a href="#tftp文件服务器" class="headerlink" title="tftp文件服务器"></a>tftp文件服务器</h2><p>项目功能 ： </p>
-<ul>
-<li>客户端有简单的页面命令提示</li>
-<li><p>功能包含</p>
-<ol>
-<li>查看服务端文件库文件列表</li>
-<li>下载其中的某个文件到本地</li>
-<li>将本地文件上传到服务器文件库中</li>
-<li>退出</li>
-</ol>
-</li>
-<li><p>服务端需要：<br> 1.处理客户端的各种请求<br> 2.允许多个客户端同时进行操作</p>
-</li>
-</ul>
-<p>技术分析 ：<br>        tcp套接字<br>        并发 —》 多进程<br>        对文件的读写发送操作<br>        查看文件列表时需要考虑到粘包问题</p>
-<p>整体结构 ：功能封装在类中（上传，下载，查看列表）</p>
-<pre><code>流程控制使用main（）
-          创建套接字，创建连接创建进程，接收请求
-</code></pre><p>作业 ： 完成 get  和 put功能</p>
-<p>服务器端代码：</p>
-<pre><code>&apos;&apos;&apos;
-tftp 文件服务器程序
-&apos;&apos;&apos;
-from socket import * 
-import os 
-import signal 
-import sys 
-import time 
-
-#文件库路径
-FILE_PATH = &quot;/home/qixinyue/&quot;
-
-#实现服务器功能模块
-class TftpServer(object):
-    def __init__(self,connfd):
-        self.connfd = connfd
-    def do_list(self):
-        #获取列表
-        file_list = os.listdir(FILE_PATH)
-        if not file_list:
-            self.connfd.send(&apos;文件库为空&apos;.encode())
-            return 
-        else:
-            self.connfd.send(b&apos;OK&apos;)
-            time.sleep(0.1)
-
-        files = &quot;&quot;
-        for file in file_list:
-            if file[0] != &apos;.&apos; and \
-            os.path.isfile(FILE_PATH + file):
-                files = files + file + &apos;#&apos;
-        self.connfd.send(files.encode())     
-
-
-    def do_get(self,filename):
-        try:
-            fd = open(FILE_PATH + filename,&apos;rb&apos;)
-        except:
-            self.connfd.send(&quot;文件不存在&quot;.encode())
-            return
-        self.connfd.send(b&quot;OK&quot;)
-        time.sleep(0.1) 
-        #发送文件
-        try:
-            for line in fd:
-                self.connfd.send(line)
-            fd.close()
-        except Exception as e:
-            print(e)
-        time.sleep(0.1)
-        self.connfd.send(b&apos;##&apos;)
-        print(&quot;文件发送完毕&quot;)
-
-
-    def do_put(self,filename):
-        try:
-            fd = open(FILE_PATH + filename,&apos;w&apos;)
-        except:
-            self.connfd.send(&quot;无法完成上传&quot;)
-        self.connfd.send(b&apos;OK&apos;)
-        while True:
-            data = self.connfd.recv(1024).decode()
-            if data == &quot;##&quot;:
-                break
-            fd.write(data)
-        fd.close()
-        print(&quot;上传完毕&quot;)
-
-#流程控制,创建套接字连接,接收请求
-def main():
-    HOST = &apos;0.0.0.0&apos;
-    PORT = 8888
-    ADDR = (HOST,PORT)
-
-    sockfd = socket()
-    sockfd.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)
-    sockfd.bind(ADDR)
-    sockfd.listen(5)
-
-    signal.signal(signal.SIGCHLD,signal.SIG_IGN)
-    print(&quot;Listen to port 8888....&quot;)
-
-    while True:
-        try: 
-            connfd,addr = sockfd.accept()
-        except KeyboardInterrupt:
-            sockfd.close()
-            sys.exit(&quot;服务器退出&quot;)
-        except Exception as e:
-            print(e)
-            continue
-        print(&quot;客户端登录:&quot;,addr)
-        #创建父子进程
-        pid = os.fork()
-        if pid &lt; 0:
-            print(&quot;创建子进程失败&quot;)
-            continue
-        elif pid == 0:
-            sockfd.close()
-            tftp = TftpServer(connfd)
-            #接收客户端请求
-            while True:
-                data = connfd.recv(1024).decode()
-                if not data:
-                    continue
-                elif data[0] == &apos;L&apos;:
-                    tftp.do_list()
-                #data ==&gt; G filename
-                elif data[0] == &apos;G&apos;:
-                    filename = data.split(&apos; &apos;)[-1]
-                    tftp.do_get(filename)
-                elif data[0] == &apos;P&apos;:
-                    filename = data.split(&apos; &apos;)[-1]
-                    tftp.do_put(filename)
-                elif data[0] == &apos;Q&apos;:
-                    print(&quot;客户端退出&quot;)
-                    sys.exit(0)
-
-        else:
-            connfd.close()
-            continue
-
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre><p>客户端代码：</p>
-<pre><code>from socket import * 
-import sys 
-import time 
-
-#实现基本的请求功能
-class TftpServer(object):
-    def __init__(self,sockfd):
-        self.sockfd = sockfd
-
-    def do_list(self):
-        self.sockfd.send(b&quot;L&quot;) #发送请求类型
-        #等待接收服务器端确认
-        data = self.sockfd.recv(1024).decode()
-        if data == &apos;OK&apos;:
-            data = self.sockfd.recv(4096).decode()
-            files = data.split(&apos;#&apos;)
-            for file in files:
-                print(file)
-            print(&quot;%%%%%文件列表展示完毕%%%%%\n&quot;)
-        else:
-            #失败的原因由服务器发送过来
-            print(data)
-
-
-    def do_get(self,filename):
-        self.sockfd.send((&apos;G &apos;+filename).encode())
-        data = self.sockfd.recv(1024).decode()
-        if data == &apos;OK&apos;:
-            fd = open(filename,&apos;w&apos;)
-            while True:
-                data = self.sockfd.recv(1024).decode()
-                if data == &quot;##&quot;:
-                    break
-                fd.write(data)
-            fd.close()
-            print(&quot;%s 下载完成\n&quot;%filename)
-        else:
-            print(data)
-
-    def do_put(self,filename):
-        try:
-            fd = open(filename,&apos;rb&apos;)
-        except:
-            print(&quot;上传的文件不存在&quot;)
-            return
-        self.sockfd.send((&quot;P &quot; + filename).encode())
-        data = self.sockfd.recv(1024).decode()
-        if data == &apos;OK&apos;:
-            for line in fd:
-                self.sockfd.send(line)
-            fd.close()
-            time.sleep(0.1)
-            self.sockfd.send(b&apos;##&apos;)
-            print(&quot;%s 文件上传完毕&quot;%filename)
-        else:
-            print(data)
-
-
-    def do_quit(self):
-        self.sockfd.send(b&apos;Q&apos;)
-
-
-#套接字连接
-def main():
-    if len(sys.argv) &lt; 3:
-        print(&quot;argv is error&quot;)
-        return 
-    HOST = sys.argv[1]
-    PORT = int(sys.argv[2])
-    ADDR = (HOST,PORT)
-
-    sockfd = socket()
-    sockfd.connect(ADDR)
-
-    tftp = TftpServer(sockfd) #tftp对象调用请求方法
-
-    while True:
-        print(&quot;=======命令选项========&quot;)
-        print(&quot;******* list *********&quot;)
-        print(&quot;*******get file ******&quot;)
-        print(&quot;*******put file ******&quot;)
-        print(&quot;******* quit *********&quot;)
-        print(&quot;======================&quot;)
-
-        cmd = input(&quot;请输入命令&gt;&gt;&quot;)
-
-        if cmd.strip() == &apos;list&apos;:
-            tftp.do_list()
-        elif cmd[:3] == &quot;get&quot;:
-            filename = cmd.split(&apos; &apos;)[-1]
-            tftp.do_get(filename)
-        elif cmd[:3] == &quot;put&quot;:
-            filename = cmd.split(&apos; &apos;)[-1]
-            tftp.do_put(filename)
-        elif cmd.strip() == &quot;quit&quot;:
-            tftp.do_quit()
-            sockfd.close()
-            sys.exit(&quot;欢迎使用&quot;) 
-        else:
-            print(&quot;请输入正确的命令!!!&quot;)
-            continue
-
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre><hr>
-<p>*小贴士：</p>
-<p>文件处理函数</p>
-<p>os.listdir(PATH) : 获取一个目录内文件列表<br>os.path.isfile() :判断一个文件的类型是否为普通文件<br>os.path.isdir() ：判断一个文件的类型是否为目录*</p>
-<hr>
-<h2 id="threading-的多线程并发"><a href="#threading-的多线程并发" class="headerlink" title="threading 的多线程并发"></a>threading 的多线程并发</h2><p>对比多进程并发：<br>优点 ： 资源消耗少<br>缺点 ： 需要注意共享资源的争夺<br>        Python多线程收到GIL的影响</p>
-<p>实现步骤：</p>
-<ul>
-<li>1 创建套接字，绑定，监听</li>
-<li>2 接收客户端连接请求，创建新的线程</li>
-<li>3 主线程继续等待其他客户端连接，分支线程执行客户    端请求</li>
-<li>4 处理完客户端请求后，分支线程退出，关闭客户端套    接字</li>
-</ul>
-<p>socket服务器集成模块</p>
-<p>python2  SocketServer<br>python3  socketserver</p>
-<p>功能 ： 通过模块的接口完成基于多进程/多线程的tcp/udp 的socket并发程序</p>
-<p>模块类</p>
-<p>DatagramRequestHandler  处理udp请求<br>StreamRequestHandler    处理tcp请求</p>
-<p>UDPServer   提供udp服务端类<br>TCPServer   提供tcp服务端类</p>
-<p>ForkingMixIn   提供进程创建<br>ForkingTCPServer   ==》ForkingMixIn + TCPServer<br>ForkingUDPServer   ==》ForkingMixIn + UDPServer</p>
-<p>ThreadingMixIn  提供线程创建<br>ThreadingTCPServer  ==》ThreadingMixIn + TCPServer<br>ThreadingUDPServer  ==》ThreadingMixIn + TCPServer</p>
-<p>基于多线程并发的 HTTPServer</p>
-<p>HTTPServer的作用 </p>
-<ul>
-<li>1.就收浏览器发送的http请求</li>
-<li>2.对http请求进行解析</li>
-<li>3.组织响应内容进行回发</li>
-</ul>
-<p>升级</p>
-<ul>
-<li>使用多线程的并发可以同时处理多个客户端请求</li>
-<li>增加简单的应用程序，使浏览器不仅可以访问静态网页也可以访问后台程序</li>
-<li>使用类对服务器功能模块进行封装</li>
-</ul>
-<p>技术点 ： threading 并发<br>          tcp socket 套接字<br>                    http协议响应内容进行字符串拼接</p>
-<p>代码示例：<br>        ‘’’<br>        http server 第二版<br>        ‘’’<br>        from socket import *<br>        from threading import Thread<br>        import time </p>
-<pre><code>ADDR = (&apos;0.0.0.0&apos;,8000)
-#存放静态页面的目录
-STATIC_DIR = &quot;./static&quot;
-
-#httpserver类 封装服务器功能
-class HTTPServer(object):
-    def __init__(self,addr): 
-        #套接字创建
-        self.sockfd = socket()
-        self.sockfd.setsockopt(SOL_SOCKET,SO_REUSEADDR,1)
-        self.sockfd.bind(addr)
-        self.sockfd.listen(5)
-        #为对象添加一些属性
-        self.name = &quot;HttpServer&quot;
-        self.port = 8000
-        self.address = addr
-
-    # 监听客户端的链接请求,创建新的线程处理
-    def serve_forever(self):
-        print(&quot;Listen to port 8000.....&quot;)
-        while True:
-            connfd,addr = self.sockfd.accept()
-            #创建新的线程处理具体请求
-            clientThread = Thread(target = self.handleRequest,args = (connfd,))
-
-            clientThread.setDaemon(True)
-            clientThread.start()
-
-    def handleRequest(self,connfd):
-        #接收客户端请求
-        request = connfd.recv(4096)
-        requestHeadlers = request.splitlines()
-        #请求行
-        print(connfd.getpeername(),&quot;:&quot;,requestHeadlers[0])
-        #获取具体请求
-        getRequest = str(requestHeadlers[0]).split(&apos; &apos;)[1]
-
-        #访问静态网页
-        if getRequest[-3:] != &quot;.py&quot;:
-            if getRequest == &apos;/&apos;:
-                getFilename = STATIC_DIR + &quot;/index.html&quot;
-            else:
-                getFilename = STATIC_DIR + getRequest
-
-            try:
-                f = open(getFilename)
-            except Exception:
-                #没有找到页面
-                responseHeaders = &quot;HTTP/1.1 404 not found\r\n&quot;
-                responseHeaders += &quot;\r\n&quot;
-                responseBody = &quot;===Sorry,the page not found===&quot;
-            else:
-                responseHeaders = &quot;HTTP/1.1 200 OK\r\n&quot;
-                responseHeaders += &quot;\r\n&quot;
-                responseBody = f.read()
-            finally:
-                response = responseHeaders + responseBody
-                connfd.send(response.encode())
-        #访问后台程序
-        else:
-            #通过函数得到响应体
-            responseBody = self.application()
-
-            responseHeaders = &quot;HTTP/1.1 200 OK\r\n&quot;
-            responseHeaders += &quot;\r\n&quot;
-            response = responseHeaders + responseBody
-
-            connfd.send(response.encode())
-
-        connfd.close()
-
-    #获取去你要使用的外部函数,变为属性
-    def setApp(self,application):
-        self.application = application 
-
-
-#后台程序
-def app():
-    return &quot;\n===假设这是一个很复杂的程序,你得到了一个很牛逼的内容===\n%s&quot;%time.ctime()
-
-
-if __name__ == &quot;__main__&quot;:
-    httpd = HTTPServer(ADDR)
-    httpd.setApp(app)
-    #启动服务器
-    httpd.serve_forever()
-</code></pre><h2 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h2><p>定义： 纤程 微线程 ，协程本质只有一个线程在运行</p>
-<p>功能原理 ： 通过应用层程序，记录上下文栈区，实现在程序执行过程中的跳跃，选择可以不阻塞的部分执行，从而提高IO的执行效率</p>
-<p><strong>优点 ： </strong><br>资源消耗很少<br>无需多线程那样来回切换的开销<br>无需进行同步互斥操作<br>IO并发性好</p>
-<p><strong>缺点 ： </strong><br>无法利用计算机的多核资源<br>程序不能够一个客户端单独长时间占有服务端</p>
-<p>yield–&gt; 协程的基本实现关键字</p>
-<pre><code>sudo pip3 install  greenlet
-sudo pip3 install  gevent
-
-greenlet 
-greenlet.greenlet()
-gr.switch()
-</code></pre><p>示例代码：</p>
-<pre><code>from greenlet import greenlet
-
-def test1():
-    print(12)
-    gr2.switch()
-    s =  input(&quot;t1 input: &quot;)
-    print(&quot;s= &quot;,s)
-    print(34)
-    gr2.switch()
-
-def test2():
-    print(56)
-    gr1.switch()
-    print(78)
-
-gr1 = greenlet(test1)
-gr2 = greenlet(test2)
-
-gr1.switch()
-</code></pre><p>gevent</p>
-<ul>
-<li>将协程事件封装为函数</li>
-</ul>
-<p>gevent.spawn(func,argv)<br>功能 ： 将事件变为协程事件并启动<br>参数 ： func  传入一个函数变为协程<br>        argv  给func函数传参<br>返回值 ： 协程对象</p>
-<p>gevent.joinall()<br>功能：回收协程</p>
-<p>gevent.sleep(n)<br>功能 ； 模拟IO阻塞的情况</p>
-<pre><code>from gevent import  monkey
-monkey.patch_all()
-</code></pre><p>功能 ： 在导入socket模块之前使用，修改socket的IO设置行为</p>
-<p>示例代码：</p>
-<pre><code>import gevent
-from gevent import monkey
-
-def foo():
-    print(&quot;run in foo&quot;)
-    gevent.sleep(2)
-    print(&quot;switch to foo again&quot;)
-
-def bar():
-    print(&quot;run in bar&quot;)
-    gevent.sleep(3)
-    print(&quot;switch to bar again&quot;)
-
-f = gevent.spawn(foo)
-b = gevent.spawn(bar)
-
-gevent.joinall([b,f])
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -16323,7 +15859,7 @@ gevent.joinall([b,f])
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -16345,7 +15881,7 @@ gevent.joinall([b,f])
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -16410,7 +15946,7 @@ gevent.joinall([b,f])
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">152.0k</span>
+    <span title="Site words total count">164.7k</span>
   
 </div>
 
