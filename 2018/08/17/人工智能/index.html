@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="数据分析常用工具matlab matfor pythonnumpy数据分析+scipy建模+matplotlib可视化+pandas数据清洗scikit-learn机器学习工具包+tensorflow深度学习（google） numpy的特点1 擅长数字计算2 足够高的运算性能3 支持矢量化运算4 完全免费的 开源的 代码： vector.py import time  n = 100000  s">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-21T13:53:59.700Z">
+<meta property="og:updated_time" content="2018-08-22T00:51:20.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据分析">
 <meta name="twitter:description" content="数据分析常用工具matlab matfor pythonnumpy数据分析+scipy建模+matplotlib可视化+pandas数据清洗scikit-learn机器学习工具包+tensorflow深度学习（google） numpy的特点1 擅长数字计算2 足够高的运算性能3 支持矢量化运算4 完全免费的 开源的 代码： vector.py import time  n = 100000  s">
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  9,800 字
+                  9,971 字
                 </span>
               
 
@@ -871,6 +871,54 @@ complex128
 <td>点阵水平坐标，点阵垂直坐标，点阵直立坐标，高差份数，colors=颜色，linewidths=线宽</td>
 <td></td>
 </tr>
+<tr>
+<td>热成像图</td>
+<td>imshow</td>
+<td>矩阵，cmap=颜色映射，origin=纵轴方向</td>
+<td></td>
+</tr>
+<tr>
+<td>饼图</td>
+<td>pie</td>
+<td>值，间隙，标签，颜色，格式，shadow=阴影，startangle=起始角度</td>
+<td></td>
+</tr>
+<tr>
+<td>坐标线</td>
+<td>grid</td>
+<td>which=’major/minor’,axis=’x,y,both’,linewidths=线宽,linestyle=线型,color=颜色</td>
+<td></td>
+</tr>
+<tr>
+<td>极坐标</td>
+<td>gca(projection=’polar’),plot/scatter</td>
+<td>极角，极径</td>
+<td></td>
+</tr>
+<tr>
+<td>三维曲面</td>
+<td>plot_surface&amp;plot_wireframe</td>
+<td>水平坐标 垂直坐标，直立坐标，rstride=行距，cstride=列距,[cnap=颜色映射/linewidth=线宽,color=颜色]</td>
+<td></td>
+</tr>
+<tr>
+<td>三维散点图</td>
+<td>scatter(x, y, z, s=60, c=d, cmap=’jet’)</td>
+<td>cmap=’jet’</td>
+<td></td>
+</tr>
+<tr>
+<td>半对数坐标</td>
+<td>semilogy</td>
+<td>水平坐标数组，垂直坐标数组,linestyle=线型,linewidth=线宽,color=颜色</td>
+<td></td>
+</tr>
+<tr>
+<td>简单动画</td>
+<td>animation.FuncAnimation</td>
+<td>图形对象，更新函数，[生成器函数，]interval=间隔毫秒</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <p>坐标刻度</p>
@@ -1263,7 +1311,7 @@ mp.grid(linestyle=&apos;:&apos;)  # 只在y方向画线
 mp.imshow(z, cmap=&apos;jet&apos;, origin=&apos;low&apos;)
 mp.legend()
 mp.show()
-</code></pre><h2 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h2><p>pie(值，间隙，标签，颜色，格式，shadow=阴影，startangle=起始角度<br>代码如下：</p>
+</code></pre><h2 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h2><p>pie(值，间隙，标签，颜色，格式，shadow=阴影，startangle=起始角度）<br>代码如下：</p>
 <pre><code>import numpy as np
 import matplotlib.pyplot as mp
 
@@ -2211,7 +2259,7 @@ print(np.convolve(a, b,&apos;full/same/valid&apos;))，默认是full
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">149.1k</span>
+    <span title="Site words total count">149.3k</span>
   
 </div>
 
