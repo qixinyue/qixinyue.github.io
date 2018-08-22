@@ -3922,7 +3922,7 @@ ex:
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  9,971 字
+                  10,581 字
                 </span>
               
 
@@ -3938,7 +3938,7 @@ ex:
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  50 分钟
+                  54 分钟
                 </span>
               
             </div>
@@ -5582,7 +5582,118 @@ print(np.convolve(a, b))
 
 print(np.convolve(a, b,&apos;full/same/valid&apos;))，默认是full
 &quot;&quot;&quot;
-</code></pre>
+</code></pre><p>简单移动平均线和指数移动平均线</p>
+<pre><code>import numpy as np
+import datetime as dt
+import matplotlib.pyplot as mp
+import matplotlib.dates as md
+
+
+def dmy2ymd(dmy):
+    dmy = str(dmy, encoding=&apos;utf-8&apos;)
+    date = dt.datetime.strptime(dmy, &apos;%d-%m-%Y&apos;).date()
+    ymd = date.strftime(&apos;%Y-%m-%d&apos;)
+    return ymd
+
+dates, closing_prices = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(1, 6),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;M8[D],f8&apos;),  # 运行后类型为datetime64[D]
+    converters={1: dmy2ymd}  # 对第一列进行转换显示
+
+)
+
+sma51 = np.zeros(closing_prices.size - 4)  # 简单移动平均，5天取一个值
+for i in range(sma51.size):
+    sma51[i] = closing_prices[i:i + 5].mean()
+
+sma52 = np.convolve(closing_prices, np.ones(5) / 5, &apos;valid&apos;)  # 5日均线
+sma10 = np.convolve(closing_prices, np.ones(10) / 10, &apos;valid&apos;)  # 10日均线
+# 加权平均值进行卷积
+weights = np.exp(np.linspace(-1, 0, 5))
+print(weights)
+ema5 = np.convolve(closing_prices, weights[::-1] / weights.sum(), &apos;valid&apos;)
+
+mp.figure(&apos;Moving Average&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;Moving Average&apos;, fontsize=20)
+mp.xlabel(&apos;Date&apos;, fontsize=12)
+mp.ylabel(&apos;Price&apos;, fontsize=12)
+ax = mp.gca()
+ax.xaxis.set_major_locator(md.WeekdayLocator(byweekday=md.MO))
+ax.xaxis.set_minor_locator(md.DayLocator())
+ax.xaxis.set_major_formatter(md.DateFormatter(&apos;%d:%b:%Y&apos;))
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=&apos;:&apos;)
+dates = dates.astype(md.datetime.datetime)
+mp.plot(dates, closing_prices, c=&apos;lightgray&apos;, label=&apos;Closing price&apos;)
+mp.plot(dates[4:], sma51, c=&apos;orangered&apos;, label=&apos;SMA5 price&apos;)
+mp.plot(dates[4:], sma52, c=&apos;dodgerblue&apos;,
+        linewidth=6, label=&apos;SMA5 price&apos;, alpha=0.5)
+mp.plot(dates[9:], sma10, c=&apos;dodgerblue&apos;,
+        label=&apos;SMA10 price&apos;)
+
+mp.plot(dates[4:], ema5, c=&apos;yellow&apos;,
+        label=&apos;EMA5 price&apos;, alpha=0.5)
+mp.legend()
+mp.gcf().autofmt_xdate()
+mp.show()
+</code></pre><h2 id="布林带-bolinger-bands"><a href="#布林带-bolinger-bands" class="headerlink" title="布林带 bolinger bands"></a>布林带 bolinger bands</h2><p>中轨：移动平均线  -趋势-策略<br>上轨：中轨基础上+标准差<em>2  -压力-买卖点<br>下轨：中轨基础上-标准差</em>2 -支撑</p>
+<pre><code>import numpy as np
+import datetime as dt
+import matplotlib.pyplot as mp
+import matplotlib.dates as md
+
+
+def dmy2ymd(dmy):
+    dmy = str(dmy, encoding=&apos;utf-8&apos;)
+    date = dt.datetime.strptime(dmy, &apos;%d-%m-%Y&apos;).date()
+    ymd = date.strftime(&apos;%Y-%m-%d&apos;)
+    return ymd
+
+dates, closing_prices = np.loadtxt(
+    &apos;./data/aapl.csv&apos;,
+    delimiter=&apos;,&apos;,
+    usecols=(1, 6),
+    unpack=True,  # 对列进行展开
+    dtype=np.dtype(&apos;M8[D],f8&apos;),  # 运行后类型为datetime64[D]
+    converters={1: dmy2ymd}  # 对第一列进行转换显示
+
+)
+
+
+n = 5  # 5日均线
+medios = np.convolve(closing_prices, np.ones(n) / n, &apos;valid&apos;)  # 5日均线
+
+stds = np.zeros(medios.size)
+for i in range(stds.size):
+    stds[i] = closing_prices[i:i + n].std()
+stds *= 2  # 2倍标准差
+lowers = medios - stds
+uppers = medios + stds
+
+mp.figure(&apos;bolinger bands&apos;, facecolor=&apos;lightgray&apos;)
+mp.title(&apos;bolinger bands&apos;, fontsize=20)
+mp.xlabel(&apos;Date&apos;, fontsize=12)
+mp.ylabel(&apos;Price&apos;, fontsize=12)
+ax = mp.gca()
+ax.xaxis.set_major_locator(md.WeekdayLocator(byweekday=md.MO))
+ax.xaxis.set_minor_locator(md.DayLocator())
+ax.xaxis.set_major_formatter(md.DateFormatter(&apos;%d:%b:%Y&apos;))
+mp.tick_params(labelsize=10)
+mp.grid(linestyle=&apos;:&apos;)
+dates = dates.astype(md.datetime.datetime)
+mp.plot(dates, closing_prices, c=&apos;lightgray&apos;, label=&apos;Closing price&apos;)
+
+mp.plot(dates[n - 1:], medios, c=&apos;dodgerblue&apos;, label=&apos;medios price&apos;)
+mp.plot(dates[n - 1:], lowers, c=&apos;orangered&apos;, label=&apos;lowers price&apos;)
+mp.plot(dates[n - 1:], uppers, c=&apos;yellow&apos;, label=&apos;uppers price&apos;)
+
+mp.legend()
+mp.gcf().autofmt_xdate()
+mp.show()
+</code></pre><h2 id="线性模型"><a href="#线性模型" class="headerlink" title="线性模型"></a>线性模型</h2>
           
         
       
@@ -16190,7 +16301,7 @@ inf
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">149.3k</span>
+    <span title="Site words total count">149.9k</span>
   
 </div>
 
