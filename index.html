@@ -233,6 +233,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/09/01/django-user/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Godshion">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="响神的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/01/django-user/" itemprop="url">Django-user</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-01T16:25:42+08:00">
+                2018-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Django/" itemprop="url" rel="index">
+                    <span itemprop="name">Django</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  98 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>登录注册重置密码模块是面试会被问到的，以下是相关知识点：<br>重置密码模块：django-password-reset<br>邮箱接收邮件重置密码用到的模块 from django.core.mail import send_mail<br>调用方法为： send_mail(u’Reset Passord’, message, <a href="mailto:&#39;blast4onekp@163.com" target="_blank" rel="noopener">&#39;blast4onekp@163.com</a>‘,[email], fail_silently=False)<br>原文链接： <a href="http://blog.51cto.com/likunheng/1569904" target="_blank" rel="noopener">http://blog.51cto.com/likunheng/1569904</a><br>短信验证码的实现： <a href="https://www.cnblogs.com/xuepangzi/p/8932294.html" target="_blank" rel="noopener">https://www.cnblogs.com/xuepangzi/p/8932294.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/22/Tornado/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -360,7 +533,7 @@
             <p>Tornado项目简单创建</p>
 <p>Tornado是使用Python编写的一个强大的、可扩展的Web服务器。它在处理严峻的网络流量时表现得足够强健，但却在创建和编写时有着足够的轻量级，并能够被用在大量的应用和工具中。</p>
 <p>tornado技术文档：Tornado文档中文翻译版</p>
-<p>ubuntu下安装tornado： pip install tarnado  (其他安装方式自行百度)</p>
+<p>ubuntu下安装tornado： pip install tornado  (其他安装方式自行百度)</p>
 <p>Tornado 主要服务分为  服务器模块（httpserver）    IO接口模块（ioloop）    web模块（web）</p>
 <p>TORNADO 项目的简单创建<br>初步使用这三大模块来建立一个简易的 web 服务</p>
 <pre><code> 1 #导入相关服务模块
@@ -4249,7 +4422,7 @@ You&apos;re seeing this message because you have DEBUG = True in your Django set
 | | |- - urls.py
 | | |- - wsgi.py
 | +- - manage.py
-</code></pre><p>具体功能请参照我的另外一篇文章的4.2.3章节 <a href="https://qixinyue.github.io/2018/08/17/Django%E6%A1%86%E6%9E%B6/" target="_blank" rel="noopener">应用的结构组成</a> </p>
+</code></pre><p>具体功能请参照我的另外一篇文章的4.2.3章节 <a href="https://qixinyue.github.io/2018/08/17/Django%E6%A1%86%E6%9E%B6/">应用的结构组成</a> </p>
 <h2 id="如何让应用生效"><a href="#如何让应用生效" class="headerlink" title="如何让应用生效"></a>如何让应用生效</h2><p>1 打开settings.py，ctrl+f搜索找到INSTALLED_APPS，在列表里面添加刚刚添加的应用的名称，我们刚刚的应用名为boards,那么在下面添加即可</p>
 <p>INSTALLED_APPS = [<br>    ‘django.contrib.admin’,<br>    ‘django.contrib.auth’,<br>    ‘django.contrib.contenttypes’,<br>    ‘django.contrib.sessions’,<br>    ‘django.contrib.messages’,<br>    ‘django.contrib.staticfiles’,</p>
 <pre><code>&apos;boards&apos;,  #加上逗号&apos;,&apos;吧，避免后面添加，忘了这里，造成错误的情况
@@ -5595,7 +5768,7 @@ ex:
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  12,652 字
+                  12,867 字
                 </span>
               
 
@@ -5611,7 +5784,7 @@ ex:
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  65 分钟
+                  66 分钟
                 </span>
               
             </div>
@@ -7680,7 +7853,11 @@ mp.bar(dates, obvs, 1.0, 0, color=fc, edgecolor=ec)
 
 mp.gcf().autofmt_xdate()
 mp.show()
-</code></pre>
+</code></pre><h2 id="矢量化"><a href="#矢量化" class="headerlink" title="矢量化"></a>矢量化</h2><p>def 标量函数<br>    return 矢量<br>矢量返回值=numpy.vectorize(标量函数)(矢量函数)</p>
+<h2 id="数据平滑"><a href="#数据平滑" class="headerlink" title="数据平滑"></a>数据平滑</h2><p>卷积降噪 -&gt;  曲线拟合 -&gt; 计算特征 -&gt; 指导业务</p>
+<h1 id="矩阵和ufunc"><a href="#矩阵和ufunc" class="headerlink" title="矩阵和ufunc"></a>矩阵和ufunc</h1><h1 id="创建矩阵"><a href="#创建矩阵" class="headerlink" title="创建矩阵"></a>创建矩阵</h1><p>numpy中的矩阵是martix类类型的对象，matrix类是ndarray类的子类，对某些专门针对矩阵的运算做了重载，增加了部分新的属性和方法。<br>numpy.matrix(可被解释为矩阵的二维容器，copy=True/False是否复制数据默认复制） -&gt; 矩阵对象<br>numpy.mat(可被解释为矩阵的二维容器) -&gt;矩阵对象 数据共享的<br>可被解释为矩阵的二维容器也可以用字符串表示，如：<br>‘1 2 3;4 5 6;7 8 9’<br>numpy.bmat(子矩阵的块组合字符串) -&gt; 组合矩阵<br>‘A B;C D’</p>
+<p>ufunc<br>通用函数 统一函数</p>
+
           
         
       
@@ -14563,1248 +14740,6 @@ julia&gt; m.offsets
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://qixinyue.github.io/2018/08/11/web前端/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Godshion">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="响神的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/11/web前端/" itemprop="url">web前端</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-11T11:11:31+08:00">
-                2018-08-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  8,356 字
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  33 分钟
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="前端学习体系"><a href="#前端学习体系" class="headerlink" title="前端学习体系"></a>前端学习体系</h2><pre><code>1.HTML-用来勾勒出网页的结构和内容-骨架
-2.CSS-用来美化网页-皮肤-化妆
-3.JavaScript-让网页呈现出动态的数据和效果
-4.jQuery-js框架，提高JavaScript开发效率
-</code></pre><h2 id="浏览器介绍"><a href="#浏览器介绍" class="headerlink" title="浏览器介绍"></a>浏览器介绍</h2><pre><code>chrome safari  ---&gt; webkit
-firefox ---&gt; mozilla
-</code></pre><h2 id="HTML-1"><a href="#HTML-1" class="headerlink" title="HTML"></a>HTML</h2><pre><code>html保存在服务器，html运行在浏览器
-html--超文本标记语言
-</code></pre><h2 id="HTMl-语法"><a href="#HTMl-语法" class="headerlink" title="HTMl 语法"></a>HTMl 语法</h2><h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><pre><code>&lt;标签&gt;&lt;/标签&gt;
-ex:&lt;div&gt;&lt;/div&gt;
-</code></pre><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><pre><code>&lt;标签 属性1=&quot;值1&quot; 属性2=&quot;值2&quot; ..&gt;&lt;/标签&gt;
-ex:&lt;span id=&quot;s1&quot; style=&quot;..&quot;&gt;&lt;/span&gt;
-</code></pre><h3 id="标签与标签之间的嵌套关系"><a href="#标签与标签之间的嵌套关系" class="headerlink" title="标签与标签之间的嵌套关系"></a>标签与标签之间的嵌套关系</h3><pre><code>&lt;div&gt;
-    &lt;span id=&quot;s1&quot;&gt;&lt;/span&gt;
-&lt;/div&gt;
-</code></pre><h3 id="标签的分类"><a href="#标签的分类" class="headerlink" title="标签的分类"></a>标签的分类</h3><pre><code>    1.闭合标签/双标签
-        &lt;body&gt;内容&lt;/body&gt;
-    2.非闭合标签/单标签
-        &lt;标签&gt;
-        &lt;标签/&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
-        单标签没有内容这个概念
-
-总结：学习html，就是学习固定标签，固定属性
-            以及标签间的嵌套关系
-</code></pre><h2 id="HTML用法"><a href="#HTML用法" class="headerlink" title="HTML用法"></a>HTML用法</h2><pre><code>HTML  经历了5个版本
-HTML4 之前版本很宽泛，宽松
-HTML4 非常严谨
-HTML5 是最新也是最流行的版本。比HTML4宽泛
-
-&lt;!doctype html&gt;&lt;!--文档定义标签--&gt;
-&lt;html&gt;&lt;!--根元素--&gt;
-    &lt;head&gt;
-        &lt;!--本网页相关信息--&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;!--网页的主体，
-        在页面中显示的所有内容
-        都写在body里面--&gt;
-        hello world!My first page!!
-    &lt;/body&gt;
-&lt;/html&gt;
-
-总结：doctype用于约束HTML文档内部的
-      标签，属性和嵌套关系
-            不写doctype,同一篇代码，会在不同浏览器
-            中，有巨大显示差异。
-</code></pre><h2 id="HTML常见标签"><a href="#HTML常见标签" class="headerlink" title="HTML常见标签"></a>HTML常见标签</h2><h3 id="文本标签–跟论文格式非常相似"><a href="#文本标签–跟论文格式非常相似" class="headerlink" title="文本标签–跟论文格式非常相似"></a>文本标签–跟论文格式非常相似</h3><pre><code>标题  &lt;hn&gt;&lt;/hn&gt;  n=1~6
-ex:   &lt;h1&gt;&lt;/h1&gt;
-            ...
-            &lt;h6&gt;&lt;/h6&gt;
-总结：h1最大，h6最小
-            字体加粗
-            垂直方向，上下都有空间
-
-段落 paragraph
-    &lt;p&gt;&lt;/p&gt;
-            垂直方向，上下都有空间
-</code></pre><h3 id="课堂案例："><a href="#课堂案例：" class="headerlink" title="课堂案例："></a>课堂案例：</h3><pre><code>使用hn标签和p标签，写自己的简易的简历
-属性 align=&quot;center&quot; 可以使用在标题标签中
-</code></pre><h3 id="列表标签-显得有条理"><a href="#列表标签-显得有条理" class="headerlink" title="列表标签 显得有条理"></a>列表标签 显得有条理</h3><pre><code>3.1无序列表    
-    u--unordered
-    l--list
-    i--item
-&lt;ul&gt;
-    &lt;li&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;/li&gt;
-    ...
-&lt;/ul&gt;
-3.2有序列表
-&lt;ol&gt;
-    &lt;li&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;/li&gt;
-    ...
-&lt;/ol&gt;
-</code></pre><h3 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h3><pre><code>&lt;div&gt;&lt;/div&gt;
-div看不见，功能是为了逻辑分区
-&lt;div id=&quot;header&quot;&gt;&lt;/div&gt; 头
-&lt;div id=&quot;nav&quot;&gt;&lt;/div&gt; 导航栏
-&lt;div id=&quot;contents&quot;&gt;&lt;/div&gt; 内容
-&lt;div id=&quot;footer&quot;&gt;&lt;/div&gt; 脚
-
-H5添加了很多和div一样，
-但是更容易读容易理解的标签
-&lt;header&gt;&lt;/header&gt;
-&lt;nav&gt;&lt;/nav&gt;
-&lt;footer&gt;&lt;/footer&gt;
-
-块级分区    div在这个区域独占一行
-
-行级(行内)分区
-    &lt;span&gt;&lt;/span&gt;
-    如果只是一行文字内部的区域
-    进行分区设置属性、修改样式
-    这种时候使用行内分区
-
-    行内分区不会换行，会和其他文字混合
-    在同一行上span
-</code></pre><h3 id="元素-标签-的显示方式"><a href="#元素-标签-的显示方式" class="headerlink" title="元素(标签)的显示方式"></a>元素(标签)的显示方式</h3><pre><code>1.行级元素(行内)
-    可以和其他行级元素位于同一行显示
-    span
-2.块级元素
-    自己独占一行
-    hn p div ul li ol
-</code></pre><h3 id="其他的行内元素"><a href="#其他的行内元素" class="headerlink" title="其他的行内元素"></a>其他的行内元素</h3><pre><code>i/em      斜体
-b/strong  粗体
-u         下划线
-del/s            删除线
-</code></pre><h3 id="实体引用，实体替换符号"><a href="#实体引用，实体替换符号" class="headerlink" title="实体引用，实体替换符号"></a>实体引用，实体替换符号</h3><pre><code>行内元素的空格折叠现象
-写代码的时候，不管连写多少个空格和
-回车，显示成一个空格
-
-&lt;br&gt;
-&lt;br/&gt;回车
-
-&amp;nbsp; 空格
-&amp;lt;  &lt;  
-&amp;gt;  &gt;
-</code></pre><p>复习：</p>
-<p>1.网站运行的流程<br>    .html存储在服务器，运行在浏览器<br>2.h5 html的标准框架</p>
-<pre><code>&lt;!doctype html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset=&quot;utf-8&quot;&gt;
-        &lt;title&gt;&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>3.文本标签<br>    hn p ul li ol<br>4.分区标签<br>    块级分区 div  header footer nav<br>    行级分区 span i em s del u strong b<br>5.块级元素与行级元素的区别<br>    块级元素，自己独占一行<br>    行级元素，可以与其他行级元素位于同一行<br>6.实体替代符号<br>    &nbsp;&lt;&gt;</p>
-<p>作业：<br>1.网站的运行流程<br>2.行级元素与块级元素的区别<br>3.今天所有的demo重新敲一遍<br>4.详细的完善个人简历要使用div分区<br>    建议使用i b u等标签给关键内容修改样式</p>
-<h2 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h2><p>是一个单标签，最重要的属性src<br><img src="/2018/08/11/web前端/图片路径"></p>
-<p>图片路径的写法<br>主机、路径、文件名都写清晰了<br>绝对路径<br>在一个显示其他网站中的图片，<br>这种行为图片盗链<br>通常使用绝对路径，称提供网页图片的网站为图床</p>
-<p>好处就是，节省了自己服务器的存储空间<br>坏处，图床网站把图片路径改变，<br>            自己的网站就显示不出来了</p>
-<p>相对路径–参照物–&gt;当前.html文件</p>
-<pre><code>&lt;img src=&quot;08.png&quot;&gt;
-&lt;img src=&quot;img/07.png&quot;&gt;
-&lt;img src=&quot;../img/06.png&quot;&gt;
-</code></pre><p>img的其他属性<br>img行级元素，自带了width和height<br>图片的失真<br>为了解决图片失真的问题<br>通常width和height只写一个<br>让另外一个去自适应</p>
-<p>alt：找不到图片时，显示的文本<br>title：鼠标悬停在元素上，弹出的文本</p>
-<p>img标签支持下面几种图片格式<br>png 支持透明色<br>jpg 不支持透明色<br>gif 支持动态图   256色</p>
-<h2 id="超链接-用于跳转页面"><a href="#超链接-用于跳转页面" class="headerlink" title="超链接 用于跳转页面"></a>超链接 用于跳转页面</h2><p>作用：链接到网页，图片，下载<br>    <a href="http://www.baidu.cn/" target="_blank" rel="noopener">文本链接</a><br>    <a href="img/08.png">点我出图片</a><br>    <a href="01_img.html">跳转到01_img.html</a></p>
-<p>a标签的属性<br>target    _self 链接页面在当前选项卡打开 默认值<br>                    _blank 链接页面在新的选项卡打开</p>
-<p>两个页面之间的跳转，是超链接<br>一个页面内部的位置跳转，是锚点</p>
-<p>H5锚点的用法:<br>在需要跳转的位置<br>标签内添加id属性<br>比如id=”abc”<br>在a标签中的href属性中<br>添加值 href=”#abc”<br>这样点击a标签，页面就会跳转到锚点的位置<br>另：href=”#”会让页面直接跳转到顶部</p>
-<pre><code>&lt;h3 id=&quot;a&quot;&gt;charAt&lt;/h3&gt;
-&lt;a href=&quot;#a&quot;&gt;charAt()方法&lt;/a&gt;
-</code></pre><h2 id="网页中表格标签"><a href="#网页中表格标签" class="headerlink" title="网页中表格标签"></a>网页中表格标签</h2><pre><code>&lt;table border=&quot;2px&quot;&gt;
-    &lt;tr&gt;
-        &lt;td&gt;aaaa&lt;/td&gt;
-        &lt;td&gt;bbbb&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td&gt;cccc&lt;/td&gt;
-        &lt;td&gt;dddd&lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-</code></pre><p>table是表格<br>tr  table row 行<br>td  table data 列</p>
-<p>table的常用属性<br>width     宽<br>height    高<br>border    边框宽度<br>align     表格对其<br>cellpadding  边框与内容的距离<br>cellspacing  边框之间的距离</p>
-<p>跨列，一个单元格占据多列</p>
-<td colspan="n"></td><br>从左向右跨n列<br><br>跨行，一个单元格占据多行<br><br>    <td rowspan="n"></td>
-
-<p>从上到下占n行<br>由于占据了下面几个单元格的位置<br>下面n-1行，都减少一个td</p>
-<p>表分组<br>    <thead></thead><br>    <tbody></tbody><br>    <tfoot></tfoot></p>
-<h2 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h2><p>用于在页面中显示一个可以收集用户<br>填写的数据的控件</p>
-<p>总结：<br>想通过网页把用户填入的信息发送给服务器处理<br>1.所有的标签必须在form表单中<br>2.form表单中的标签，必须有name属性<br>3.使用submit把数据提交给服务器</p>
-<p>form表单的主要属性，以下了解即可<br>action:表单提交的url<br>method:表单提交数据的方法<br>enctype:表单数据的编码格式</p>
-<p><strong>input 9种类型</strong></p>
-<h3 id="文本框和密码框"><a href="#文本框和密码框" class="headerlink" title="文本框和密码框"></a>文本框和密码框</h3><pre><code>&lt;input type=&quot;text&quot; name=&quot;...&quot;&gt;
-&lt;input type=&quot;password&quot; name=&quot;...&quot;&gt;
-</code></pre><p>value属性 值<br>placeholder 文本提示<br>maxlength:限制输入的字符数<br>readonly:只读。自能看，不能改</p>
-<h3 id="label标签"><a href="#label标签" class="headerlink" title="label标签"></a>label标签</h3><p>我们学习过span，span可用在任何地方<br>lable的作用跟span类似，但是只用在表单中</p>
-<h3 id="radio-单选框"><a href="#radio-单选框" class="headerlink" title="radio 单选框"></a>radio 单选框</h3><pre><code>&lt;input type=&quot;radio&quot; name=&quot;gender&quot;&gt;
-&lt;input type=&quot;radio&quot; name=&quot;gender&quot;&gt;
-</code></pre><p>name属性，决定了一组单选<br>value属性，才能提交值！<br>checked=”checked” 默认选中</p>
-<h3 id="checkbox-多选框"><a href="#checkbox-多选框" class="headerlink" title="checkbox 多选框"></a>checkbox 多选框</h3><p>name属性，决定了一组多选<br>value属性，才能提交值！<br>checked=”checked” 默认选中</p>
-<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><p>submit 提交</p>
-<pre><code>&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;
-</code></pre><h3 id="button-按钮"><a href="#button-按钮" class="headerlink" title="button 按钮"></a>button 按钮</h3><pre><code>&lt;input type=&quot;button&quot; value=&quot;点点我&quot;
-onclick=&quot;alert(&apos;111111111111&apos;)&quot;&gt;
-</code></pre><h3 id="reset-重置-基本不用"><a href="#reset-重置-基本不用" class="headerlink" title="reset 重置 基本不用"></a>reset 重置 基本不用</h3><h3 id="隐藏域-hidden"><a href="#隐藏域-hidden" class="headerlink" title="隐藏域 hidden"></a>隐藏域 hidden</h3><p>在form中存在，但是用户看不到<br>隐藏域包含着不给用户看的信息<br>隐藏域的信息，可以提交给服务器</p>
-<p><strong>其他类型</strong><br>文件选择器-上传文件用的</p>
-<h3 id="file"><a href="#file" class="headerlink" title="file"></a>file</h3><p>有name属性才能提交</p>
-<h3 id="multiple"><a href="#multiple" class="headerlink" title="multiple"></a>multiple</h3><p>多重的，可以选择多个文件</p>
-<h3 id="文本域"><a href="#文本域" class="headerlink" title="文本域"></a>文本域</h3><pre><code>&lt;textarea&gt;大量的文本&lt;/textarea&gt;    
-</code></pre><p>rows cols描述的是文本区域内<br>可见的宽度和高度<br>原本的意思，每一行显示多少个字符，<br>显示多少行字符。<br>但是由于系统编码不同，浏览器解析不同<br>导致显示字符数差异很大。</p>
-<h3 id="下拉列表-下拉选"><a href="#下拉列表-下拉选" class="headerlink" title="下拉列表(下拉选)"></a>下拉列表(下拉选)</h3><pre><code>&lt;select&gt;
-    &lt;option&gt;&lt;/option&gt;
-    ...
-    &lt;option&gt;&lt;/option&gt;
-&lt;/select&gt;
-</code></pre><p>总结：<br>1.当option没有value属性<br>    select标签的value值是<br>    选中的那个option标签的内容<br>2.当option有value属性<br>    select标签的value值是<br>    选中的那个option标签的value值</p>
-<p>表单标签总结:</p>
-<ul>
-<li>1.只有含有name属性的表单标签才可以提交数据</li>
-<li>2.radio和checkbox必须<br>设置value属性才可以提交数据</li>
-<li>3.text的value是直接设置值<br>placeholder是设置提示</li>
-<li>4.radio和checkbox默认选中checked</li>
-<li>5.select默认选中是selected</li>
-</ul>
-<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="CSS层叠样式表"><a href="#CSS层叠样式表" class="headerlink" title="CSS层叠样式表"></a>CSS层叠样式表</h2><h3 id="内联样式"><a href="#内联样式" class="headerlink" title="内联样式"></a>内联样式</h3><pre><code>&lt;span style=&quot;color:#f00;font-size:30px&quot;&gt;内联样式的使用&lt;/span&gt;
-在标签的style属性中写样式
-特点
-内联样式使用不多
-1.不能重用
-2.内联样式优先级最高
-项目代码完全不使用内联
-只有在学习和调试过程中
-</code></pre><h3 id="内部样式"><a href="#内部样式" class="headerlink" title="内部样式"></a>内部样式</h3><pre><code>在head标签中，写style标签
-在style标签内部写样式
-选择器{
-    属性：值;
-}
-样式代码可以重用,但只能在本html中重用
-在项目使用不多
-</code></pre><h3 id="外部样式"><a href="#外部样式" class="headerlink" title="外部样式"></a>外部样式</h3><pre><code>创建一个.css文件
-在html文件中，head标签中引用这个css文件
-&lt;link href=&quot;03.css&quot; rel=&quot;stylesheet&quot;&gt;
-</code></pre><h2 id="层叠样式表的规则特性"><a href="#层叠样式表的规则特性" class="headerlink" title="层叠样式表的规则特性"></a>层叠样式表的规则特性</h2><pre><code>1.层叠效果
-    多个样式作用在同一个标签上
-    如果样式属性不重复
-    那么这些样式都会产生效果
-2.继承
-    父级元素的样式会继承给子元素
-    子元素可以重新写样式，
-    不使用父级元素的样式
-3.优先级
-    优先级最低的 浏览器默认样式
-    优先级最高的 内联样式
-
-    内部样式和外部样式--就近优先
-    以被影响标签为基准，哪个样式离这个标签近
-    就使用哪个样式的效果
-</code></pre><h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><pre><code>选择器的作用，为了选出当前页面中
-符合要求的一个或者多个标签
-
-样式属性的作用，给选出来的标签设置样式
-
-选择器{样式属性:值;}
-</code></pre><h3 id="通用选择器"><a href="#通用选择器" class="headerlink" title="通用选择器"></a>通用选择器</h3><pre><code>*{color:#f00;}
-少用，写通用样式的时候使用
-</code></pre><h3 id="标签选择器"><a href="#标签选择器" class="headerlink" title="标签选择器"></a>标签选择器</h3><pre><code>选出当前页面中，标签名称符合要求的标签
-ex:div{} span{} p{} body{}
-使用范围：设置某个标签的通用样式
-
-body{
-    maring:0px;
-    padding:0px;
-}
-</code></pre><h3 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h3><pre><code>唯一不重复
-&lt;p id=&quot;p1&quot;&gt;id选择器1&lt;/p&gt;
-#p1{
-    color:#f00;
-    font-size:25px;
-    width:150px;        
-}
-
-id选择器 #id值
-注意，同一个html中，ID值是唯一不可重复
-在同一个html，使用id选择器，
-只能找到一个标签
-</code></pre><h3 id="类选择器-class选择器"><a href="#类选择器-class选择器" class="headerlink" title="类选择器 class选择器"></a>类选择器 class选择器</h3><pre><code>如果编写html标签时，需要让某些标签应用一类样式，就使用类选择器标签的属性,class为类名
-
-&lt;div class=&quot;d1&quot;&gt;&lt;/div&gt;
-.d1{
-        width:200px;
-        height:100px;
-        background-color:#006699;
-        border:1px solid #f00;
-}
-
-多类选择器
-
-    .w200{
-        width:200px;
-    }
-    .h50{
-        height:50px;
-    }
-    .bgc_red{
-        background-color:#f00;
-    }        
-    &lt;div class=&quot;w200 h50 bgc_red&quot;&gt;&lt;/div&gt;
-
-    当一个标签，想匹配多个样式的时候，使用多类选择器
-</code></pre><h3 id="分组选择器"><a href="#分组选择器" class="headerlink" title="分组选择器"></a>分组选择器</h3><pre><code>把一系列选择器当成一组，设置共有样式。
-#p1,.d1,h1,ul,li{
-        border:2px solid #000;
-}
-逗号分隔，可以使用标签选择器，
-id选择器，class选择器，混合编写
-一般用于设置公共样式
-一般项目中分组选择器，写在最开始的部分
-</code></pre><h3 id="后代选择器-派生"><a href="#后代选择器-派生" class="headerlink" title="后代选择器(派生)"></a>后代选择器(派生)</h3><pre><code>div h1{
-        color:#f00;
-}
-
-div内部只要存在h1，就可以定位h1
-</code></pre><h3 id="子代选择器"><a href="#子代选择器" class="headerlink" title="子代选择器"></a>子代选择器</h3><pre><code>div&gt;h1{
-    background-color:pink;
-}
-h1必须是div的儿子才可以被匹配
-</code></pre><h2 id="css常用样式属性"><a href="#css常用样式属性" class="headerlink" title="css常用样式属性"></a>css常用样式属性</h2><h3 id="布局-相关属性"><a href="#布局-相关属性" class="headerlink" title="布局 相关属性"></a>布局 相关属性</h3><pre><code>width: 宽
-height:高
-单位：px cm 100%
-</code></pre><h4 id="外边距"><a href="#外边距" class="headerlink" title="外边距"></a>外边距</h4><pre><code>margin:设置外边距
-margin:10px;   同时设置4个方向的外边距
-margin:10px 20px; 上下为10 左右为20
-margin:0px auto;  块级元素水平居中
-margin:10px 20px 30px 40px;
-                上   右   下   左
-margin-top:10px;  上边距
-margin-right:
-margin-bottom:
-margin-left:
-
-设置外边距，视觉效果，块级元素在位移
-</code></pre><h4 id="内边距padding"><a href="#内边距padding" class="headerlink" title="内边距padding"></a>内边距padding</h4><pre><code>padding:10px;    设置4个方向的内边距
-padding:10px 20px; 上下10px  左右20px
-padding:10px 20px 30px 40px
-                上    右   下   左
-padding-top
-padding-right
-padding-bottom
-padding-left
-
-改变内边距，视觉效果，元素大小改变
-</code></pre><h4 id="盒子模型-框结构"><a href="#盒子模型-框结构" class="headerlink" title="盒子模型(框结构)"></a><strong>盒子模型(框结构)</strong></h4><pre><code>css渲染页面时，使用盒子模型
-元素之间的留白，元素背景填充范围，
-元素大小。对这些属性的控制规则，
-就是盒子模型
-
-我们写的元素，
-在浏览器中占据的空间是多少(宽度)
-
-左外边距+左边框+左内边距
-+内容区域(我们设置的宽高)
-+右内边距+右边框+右外边距
-
-总结：
-div默认占据宽度，
-是父容器的内容区域宽度的100%
-div默认的高，是内部内容的高
-如果内部没有内容或者没有高
-高度为0
-</code></pre><h3 id="背景属性background"><a href="#背景属性background" class="headerlink" title="背景属性background"></a>背景属性background</h3><pre><code>1.背景颜色
-    background-color:合法的颜色值
-    background:合法的颜色值
-
-    合法的颜色值：
-    1.颜色的单词 red pink
-    2.#ffffff 6位16进制字符串
-    3.#aabbcc ---&gt; #abc  #f00 #ff0000
-    4.rgb(255,255,255);
-    5.rgba(255,255,255,0~1)
-
-2.背景图片 
-    background-image:url(&quot;图片路径&quot;)
-    background-repeat:no-repeat;平铺方式        
-                    repeat
-                    repeat-x;
-                    repeat-y;
-    background-position:center center;背景图片定位
-                        center top bottom left right
-                        可以直接写数值100px 200px
-    background-size:500px 500px;设置背景图片的大小
-</code></pre><p><strong>注意点：</strong></p>
-<pre><code>块级元素和行级元素区别
-块级元素可以设置宽高
-行级元素，除了自代宽高属性的标签，
-其他行级元素，设置宽高无效
-margin-top,margin-bottom对行级元素无效
-</code></pre><p><strong><br>选择器补充</strong></p>
-<pre><code>伪类选择器
-:hover
-当鼠标悬浮在标签上，使用此样式
-</code></pre><h1 id="JavaScript基础"><a href="#JavaScript基础" class="headerlink" title="JavaScript基础"></a>JavaScript基础</h1><h2 id="什么是JavaScript"><a href="#什么是JavaScript" class="headerlink" title="什么是JavaScript?"></a>什么是JavaScript?</h2><p>JavaScript是运行的客户端的解释性脚本语言。</p>
-<p>客户端是浏览器(包括:IE、Firefox、Chrome、Safari、Opera)</p>
-<p>解释性脚本是指程序语言的一种执行方式;</p>
-<p>JavaScript与Java之间不存在任何关系;</p>
-<p>JavaScript最早由网景公司在 1995 年发行的 Netscape Navigator 2.0 即将正式发布前，Netscape 将其更名为 JavaScript.</p>
-<p>Microsoft在其IE浏览器推出JScript与其抗衡.</p>
-<p>欧洲计算机制造商协会(ECMA)在借鉴JavaScript1.5的基础上推出</p>
-<p>ECMAScript,从而成为所有脚本语言的标准.</p>
-<p>ECMAScript(ES)最新的版本为ECMAScript-6(简称ES6)</p>
-<h2 id="JavaScript的语法结构"><a href="#JavaScript的语法结构" class="headerlink" title="JavaScript的语法结构"></a>JavaScript的语法结构</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-   ...
-   ...
-&lt;/script&gt;
-
-&lt;script type=&quot;text/javascript&quot; src=&quot;JS文件路径及名称&quot;&gt;&lt;/script&gt;
-</code></pre><p>第一步:创建JS文件并且写入相关的代码;</p>
-<p>第二步:在网页文件内调用相关的JS文件;</p>
-<p>说明:</p>
-<pre><code>A.JS严格区分大小写;
-
-B.每行JS代码必须以分号结尾;
-
-C.JavaScript文件的扩展名为.js
-</code></pre><h2 id="变量-Varaible"><a href="#变量-Varaible" class="headerlink" title="变量(Varaible)"></a>变量(Varaible)</h2><p>变量是指存储在计算机内存中有名称的信息,其值在程序运行期间可以发生变化;</p>
-<p>声明变量</p>
-<p>var 变量名称;</p>
-<p>var 变量名称 = 值;</p>
-<h3 id="变量名称的命名规范"><a href="#变量名称的命名规范" class="headerlink" title="变量名称的命名规范"></a>变量名称的命名规范</h3><pre><code>A.变量名称必须以字母或下划线开头,包含字母、数字及下划线;
-
-B.变量名称禁止与系统关键字相同;
-
-C.变量名称必须遵守&quot;驼峰标记法&quot;;
-
-D.变量名称必须含义明确;
-</code></pre><h3 id="JavaScript关键字"><a href="#JavaScript关键字" class="headerlink" title="JavaScript关键字:"></a>JavaScript关键字:</h3><p>var、if、else、switch、case、break、default、for、while、function</p>
-<p>ECMAScript关键字:</p>
-<p>class、float、boolean、object、extends、public、protected、private、interface、abstract、implements</p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="字符型-string"><a href="#字符型-string" class="headerlink" title="字符型(string):"></a>字符型(string):</h3><p>必须括在双引号或单引号之间;</p>
-<pre><code>转义符:
-\n,换行
-\r,回车
-\t,水平制表符
-\v,垂直制表符
-\f,换页(走纸)
-\\,反斜线
-\&apos;,单引号
-\&quot;,双引号
-</code></pre><h3 id="数值型-number"><a href="#数值型-number" class="headerlink" title="数值型(number)"></a>数值型(number)</h3><p>包括整型和浮点型,可以带有符号位,可存储八进制、十进制、十六进制的数字;</p>
-<p>八进制的表示方法为0[0-7]+</p>
-<p>十六进制的表示方法0[x|X][0-9a-fA-F]+</p>
-<h3 id="布尔型-boolean"><a href="#布尔型-boolean" class="headerlink" title="布尔型(boolean)"></a>布尔型(boolean)</h3><p>只能存储true或false</p>
-<h3 id="未定义-undefined"><a href="#未定义-undefined" class="headerlink" title="未定义(undefined)"></a>未定义(undefined)</h3><p>值只能为undefined</p>
-<pre><code>以下变量的值为undefined
-
-A.声明但没有赋值的变量;
-
-B.声明但赋值为undefined的变量;
-
-C.引用对象不存在的属性;
-</code></pre><h3 id="对象-object"><a href="#对象-object" class="headerlink" title="对象(object)"></a>对象(object)</h3><p>属性与方法的集合体;</p>
-<pre><code>{
-    propert:value,
-    ....,
-    method:function([parameter,...]){
-        ...
-        ...
-    }
-}
-</code></pre><h3 id="null-空对象"><a href="#null-空对象" class="headerlink" title="null(空对象)"></a>null(空对象)</h3><p>其作用是为断开继承链(原型链);</p>
-<h3 id="function-自定义函数"><a href="#function-自定义函数" class="headerlink" title="function(自定义函数)"></a>function(自定义函数)</h3><p>可以重复执行的代码段;</p>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="按作用划分"><a href="#按作用划分" class="headerlink" title="按作用划分"></a>按作用划分</h3><p>1 字符运算符: + </p>
-<p>2 数学运算符:+(正号)、-(负号)、*、/、%、+、-</p>
-<p>3 比较运算符:&gt;、&gt;=、==(等于)、!=(不等于)、===、!==(不全等)、&lt;=、&lt;</p>
-<p>  全等:(1)值相同(2)数据类型相同</p>
-<p>4 逻辑运算符:!、&amp;&amp;、||  </p>
-<p>  短路现象:在进行&amp;&amp;或||运算时,只有第一个表达式的值可以</p>
-<p>  确定整个表达式结果时,后续表达式将忽略执行;</p>
-<p>5 自增/自减运算符</p>
-<p>  i++、i–,后缀形式:先使用,后加减</p>
-<p>  ++i、–i,前缀形式:先加减,后使用</p>
-<p>6 赋值运算符:=、+=、-=、*=、/=、%=</p>
-<h3 id="按参加运算的操作数的数量"><a href="#按参加运算的操作数的数量" class="headerlink" title="按参加运算的操作数的数量"></a>按参加运算的操作数的数量</h3><ul>
-<li><p>单目运算符:只有一个操作数,如负数(-)、逻辑非(!)</p>
-</li>
-<li><p>双目运算符:有两个操作数,如加号(+)、大于(&gt;)等</p>
-</li>
-<li><p>三目运算符:expression ? value1 : value2</p>
-</li>
-</ul>
-<p><strong>运算符优先级</strong></p>
-<p>一、二、三、赋值</p>
-<p>算术、比较、逻辑</p>
-<p>案例:</p>
-<pre><code>var p = !true || 3 + 2 - 5 &lt;= 7
-        false || 3 + 2 - 5 &lt;= 7
-        false || 0 &lt;= 7
-        false || true
-        true
-</code></pre><h2 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h2><h3 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h3><pre><code>if(condition){
-   ...
-   ...
-}
-
-if(condition){
-    ...
-    ...
-} else {
-    ...
-    ...
-}
-
-if(condition){
-    ...
-} else if(condition){
-    ... 
-} else if(condition){
-    ...
-} ... else{
-    ...
-}
-</code></pre><h3 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h3><pre><code>switch(expression){
-    case 值1:
-       ...
-       break;
-    case 值2:
-       ...
-       break;
-    case N
-       break;
-    default:
-       ...
-       break;
-}
-</code></pre><p>说明:</p>
-<p>A. if语句的条件表达式只能为布尔型(可能存在数据类型的自动转换)</p>
-<p>   switch语句的表达式可以为任意数据类型(布尔除外)</p>
-<p>B. if语句每次执行时都将对变量进行取值操作;而switch只进行一次取值操作;</p>
-<p>C. switch语句进行全等运算;</p>
-<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>1 for语句</p>
-<pre><code>for(expr1;expr2;expr3){
-    ...
-}
-</code></pre><p>  说明:</p>
-<p>  expr1,在循环之前无条件执行一次,一般于变量初始化;</p>
-<p>  expr2,在循环前执行一次,以判断能否进入循环体;</p>
-<p>  expr3,在循环后执行一次,一般用于步长的计算;</p>
-<p>  for语句的表达式可以省略其中任何一个或全部;</p>
-<p>2 while语句</p>
-<pre><code>while(条件表达式){
-   ...
-   ...
-}
-</code></pre><p>  说明:</p>
-<p>  A.死循环:指条件永远为真的循环语句.</p>
-<p>  B.for语句和while语句同属”当型循环(先判断,后执行)”,所以可以互换;</p>
-<p>3 do…while循环</p>
-<pre><code>do{
-  ...
-  ...
-} while(条件表达式);
-</code></pre><p>  说明:</p>
-<p>  A.do…while是先执行,后判断;</p>
-<p>  B.do…while语句至少执行一次;而当型循环(for、while)至少执行零次;</p>
-<p>4 for…in语句</p>
-<pre><code>for(key in array){
-    ...
-    ...
-}
-</code></pre><p>5 break语句:结束switch及循环语句 </p>
-<p>6 continue语句:跳过当前的循环而进行下一次的循环</p>
-<h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><h3 id="String对象"><a href="#String对象" class="headerlink" title="String对象"></a>String对象</h3><h4 id="构建String对象"><a href="#构建String对象" class="headerlink" title="构建String对象"></a>构建String对象</h4><p>   直接量方式 </p>
-<p>   ‘string’或”string”</p>
-<p>   构造函数方式</p>
-<pre><code>new String(&apos;string&apos;)
-</code></pre><h4 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h4><p>   length</p>
-<p>   描述:返回字符串的长度</p>
-<p>   语法:int object.length</p>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>   toLowerCase()</p>
-<p>   描述:将字符转换小写字母</p>
-<p>   语法:</p>
-<pre><code>string object.toLowerCase(void)
-</code></pre><hr>
-<p>   toUpperCase()</p>
-<p>   描述:将字符转换大写字母</p>
-<p>   语法：</p>
-<pre><code>string object.toUpperCase(void)
-</code></pre><hr>
-<p>   substr()</p>
-<p>   描述:截取字符串</p>
-<p>   语法:</p>
-<pre><code>string object.substr(int start[,int length])
-</code></pre><p>   说明:</p>
-<p>   A.字符串从0开始编号;</p>
-<p>   B.如果省略length参数,则返回到字符串结尾之间的字符</p>
-<p>   C.如果start参数为负数,则倒数;</p>
-<hr>
-<p>   substring</p>
-<p>   描述:截取字符串</p>
-<p>   语法:string object.substring(int start[,int end])</p>
-<p>   说明:</p>
-<p>   A.返回的字符串包含起始位,不包含结束位;</p>
-<p>   B.如果省略end参数,则返回到字符串结尾之间的字符;</p>
-<hr>
-<p>   indexOf()</p>
-<p>   描述:返回字符串第一次出现的位置,如果没有出现,则返回-1</p>
-<p>   语法:int object.indexOf(string)</p>
-<hr>
-<p>   lastIndexOf()</p>
-<p>   描述:返回字符串最后一次出现的位置,如果没有出现,则返回-1</p>
-<p>   语法:int object.lastIndexOf(string)</p>
-<hr>
-<p>   replace()方法</p>
-<p>   描述:字符串替换</p>
-<p>   语法:</p>
-<p>   string object.replace(string search,string replacement)</p>
-<p>   string object.replace(object RegExp,string replacement)</p>
-<hr>
-<p>   split()</p>
-<p>   描述:使用分隔符拆分字符串</p>
-<p>   语法:</p>
-<p>   array object.split(delimiter)</p>
-<p>   array object.split(RegExp)   </p>
-<h4 id="ES6新增方法"><a href="#ES6新增方法" class="headerlink" title="ES6新增方法"></a>ES6新增方法</h4><p>   trim()</p>
-<p>   描述:删除第一个之前及最后一个字符之后的空白</p>
-<p>   语法:string object.trim(void)</p>
-<hr>
-<p>   startsWith()</p>
-<p>   描述:检测字符是否以指字符开头</p>
-<p>   语法:bool object.startsWith(string)</p>
-<hr>
-<p>   endsWith()</p>
-<p>   描述:检测字符是否以指字符结尾</p>
-<p>   语法:bool object.endsWith(string)</p>
-<h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3><p>  Math对象是一个静态对象.</p>
-<h4 id="属性-2"><a href="#属性-2" class="headerlink" title="属性"></a>属性</h4><p>  Math.PI,圆周率</p>
-<p>  Math.SQRT2,2的平方根</p>
-<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h4><p>  Math.ceil()</p>
-<p>  描述:进一取整</p>
-<p>  语法:number Math.ceil(number)</p>
-<hr>
-<p>  Math.floor()</p>
-<p>  描述:舍一取整</p>
-<p>  语法:number Math.floor(number)</p>
-<hr>
-<p>  Math.pow()</p>
-<p>  描述:幂运算</p>
-<p>  语法:number Math.pow(base,exp)</p>
-<hr>
-<p>  Math.sqrt()</p>
-<p>  描述:平方根</p>
-<p>  语法:number Math.sqrt(number)</p>
-<hr>
-<p>  Math.min()</p>
-<p>  描述:最小值</p>
-<p>  语法:number Math.min(num1,num2,…)</p>
-<hr>
-<p>  Math.max()</p>
-<p>  描述:最大值</p>
-<p>  语法:number Math.max(num1,num2,…)</p>
-<hr>
-<p>  Math.random()</p>
-<p>  描述:产生介于0~1之间的随机数(0&lt;=X&lt;1)</p>
-<p>  语法:number Math.random(void)</p>
-<hr>
-<p>  Math.round()</p>
-<p>  描述:四舍五入(仅保留到整数位置)</p>
-<p>  语法:number Math.round(number)</p>
-<h3 id="Date对象"><a href="#Date对象" class="headerlink" title="Date对象"></a>Date对象</h3><h4 id="构建Date对象"><a href="#构建Date对象" class="headerlink" title="构建Date对象"></a>构建Date对象</h4><p>   new Date()</p>
-<h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法"></a>方法</h4><p>   getYear()</p>
-<p>   描述:获取年份(从公元1900到现在经历的年份)</p>
-<p>   语法:int object.getYear(void)</p>
-<hr>
-<p>   getFullYear()</p>
-<p>   描述:获取年份</p>
-<p>   语法:int object.getFullYear(void)</p>
-<hr>
-<p>   getMonth()</p>
-<p>   描述:获取月份(取值范围为0~11)</p>
-<p>   语法:int object.getMonth(void)</p>
-<hr>
-<p>   getDate()</p>
-<p>   描述:获取日期(xx号)</p>
-<p>   语法:int object.getDate(void)</p>
-<hr>
-<p>   getDay()</p>
-<p>   描述:获取星期的第几天(0为星期日,依次类推)</p>
-<p>   语法:int object.getDay(void)</p>
-<hr>
-<p>   getHours()</p>
-<p>   描述:获取小数</p>
-<p>   语法:int object.getHours(void)</p>
-<hr>
-<p>   getMinutes()</p>
-<p>   描述:获取分钟数</p>
-<p>   语法:int object.getMinutes(void)</p>
-<hr>
-<p>   getSeconds()</p>
-<p>   描述:获取秒数</p>
-<p>   语法:int object.getSeconds(void)</p>
-<hr>
-<p>   getMilliseconds()</p>
-<p>   描述:获取毫秒</p>
-<p>   语法:int object.getMilliseconds(void)</p>
-<hr>
-<p>   getTime()</p>
-<p>   描述:返回从公元1970年到现在的毫秒数</p>
-<p>   语法:int object.getTime(void)</p>
-<hr>
-<p>   toUTCString()/toGMTString()</p>
-<p>   描述:将日期转换成UTC/GMT格式</p>
-<p>   语法:string object.toUTCString(void)</p>
-<pre><code>string object.toGMTString(void)
-</code></pre><h4 id="ES6新增的方法"><a href="#ES6新增的方法" class="headerlink" title="ES6新增的方法"></a>ES6新增的方法</h4><pre><code>Date.now() 静态方法
-
-描述:返回从公元1970年到现在的毫秒数
-
-语法:int Date.now(void)
-
-说明:该方法为静态方法
-</code></pre><h3 id="Array对象"><a href="#Array对象" class="headerlink" title="Array对象"></a>Array对象</h3><h4 id="构建Array对象"><a href="#构建Array对象" class="headerlink" title="构建Array对象"></a>构建Array对象</h4><p>   直接量方式</p>
-<p>   [value,…]</p>
-<p>   构造函数方式</p>
-<p>   new Array(length)</p>
-<p>   new Array(value,…)</p>
-<h4 id="属性-3"><a href="#属性-3" class="headerlink" title="属性"></a>属性</h4><p>   length</p>
-<p>   描述:获取数组成员的数量</p>
-<p>   语法:int object.length</p>
-<h4 id="方法-3"><a href="#方法-3" class="headerlink" title="方法"></a>方法</h4><p>   unshift()</p>
-<p>   描述:在数组的开头添加一个或多个成员,并返回数组的新长度</p>
-<p>   语法:int object.unshift(value,…)</p>
-<hr>
-<p>   push()</p>
-<p>   描述:在数组的未尾添加一个或多个成员,并返回数组的新长度</p>
-<p>   语法:int object.push(value,…)</p>
-<hr>
-<p>   shift() </p>
-<p>   描述:删除数组的第一个成员,并且返回该成员</p>
-<p>   语法:mixed object.shift(void)  </p>
-<hr>
-<p>   pop()</p>
-<p>   描述:删除数组的最后一个成员,并且返回该成员</p>
-<p>   语法:mixed object.pop(void)     </p>
-<hr>
-<p>   join()</p>
-<p>   描述:    将数组成员使用指定分隔符连接成字符串</p>
-<p>   语法:string object.join(delimiter)</p>
-<hr>
-<p>   isArray()</p>
-<p>   描述:判断是否为数组(静态方法) </p>
-<p>   语法:bool Array.isArray(obj)</p>
-<h4 id="数组遍历-–-forEach-语句"><a href="#数组遍历-–-forEach-语句" class="headerlink" title="数组遍历 – forEach()语句"></a>数组遍历 – forEach()语句</h4><pre><code>object.forEach(function(value[,index]){
-        ...
-        ...
-});
-</code></pre><h3 id="Regular-Expression对象-正则表达式对象"><a href="#Regular-Expression对象-正则表达式对象" class="headerlink" title="Regular Expression对象(正则表达式对象)"></a>Regular Expression对象(正则表达式对象)</h3><p>构建正则表达式对象</p>
-<p>  直接量方式</p>
-<p>  /正则表达式/修正符</p>
-<p>  构造函数方式</p>
-<p>  new RegExp(‘正则表达式’,’修正符’)</p>
-<p>正则表达式</p>
-<h4 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h4><p>   \d,匹配数字,等价于[0-9]</p>
-<p>   \D,匹配非数字,等价于[^0-9]</p>
-<p>   \s,匹配任意的空白字符,等价于[\n\r\t\v\f]</p>
-<p>   \S,匹配任意的非空白字符,等价于[^\n\r\t\v\f]</p>
-<p>   \w,匹配任意的字母、数字及下划线,等价于[0-9a-zA-Z_]</p>
-<p>   \W,匹配任意的非字母、数字及下划线,等价于[^0-9a-zA-Z_]</p>
-<p>   ., 匹配除换行外的任意字符</p>
-<h4 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h4><p>   ?,出现零次或一次,等价于{0,1}</p>
-<p>   *,至少出现零次,等价于{0,}</p>
-<p>   +,至少出现一次,等价于{1,}</p>
-<p>   {m},出现m次</p>
-<p>   {m,},至少出现m次</p>
-<p>   {m,n},至少出现m次,至多n次(m&lt;=x&lt;=n)</p>
-<h4 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h4><p>   |,或者</p>
-<p>   ^,以指定字符开头</p>
-<p>   $,以指定字符结尾</p>
-<p>   […],表示在范围之内,如[0-9]</p>
-<p>   [^…],表示不在范围之内,如[^3-5]</p>
-<h4 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h4><p>   \n,换行</p>
-<p>   \r,回车</p>
-<p>   \t,水平制表符</p>
-<p>   \v,垂直制表符</p>
-<p>   \f,换页(走纸)</p>
-<p>   \,反斜线</p>
-<p>   .,点</p>
-<p>   |,竖线</p>
-<p>   *,星号</p>
-<p>   \?,问号</p>
-<h4 id="捕获组与非捕获组"><a href="#捕获组与非捕获组" class="headerlink" title="捕获组与非捕获组"></a>捕获组与非捕获组</h4><p>   (…)</p>
-<p>   (?:…)</p>
-<h4 id="修正符"><a href="#修正符" class="headerlink" title="修正符"></a>修正符</h4><p>   g(global),全局</p>
-<p>   i(ignore),忽略大小写</p>
-<p><strong>方法</strong></p>
-<p>  test()</p>
-<p>  描述:检测字符串是否符合正则表达式规范</p>
-<p>  语法:bool object.test(string)</p>
-<h1 id="前端编程"><a href="#前端编程" class="headerlink" title="前端编程"></a>前端编程</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><pre><code>DOM(Document Object Model),文档对象模型
-
-JavaScript由ECMAScript(简称ES)、DOM和BOM组成;
-
-ECMAScript:关键字、保留关键字、流程语句、数据类型、内置对象;
-
-DOM:提供操作HTML/XML文档相关的API;
-
-DOM由DOM Core、HTML DOM和XML DOM组成;
-
-DOM Core:提供处理HTML和XML文档的API;
-
-HTML DOM:提供处理HTML文档的API;
-
-XML DOM:提供处理XML文档的API;
-</code></pre><p><strong>在DOM树中一切皆节点;</strong></p>
-<h2 id="DOM节点"><a href="#DOM节点" class="headerlink" title="DOM节点"></a>DOM节点</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><pre><code>1,代表元素节点(指HTML标记)
-
-2,代表属性节点(指HTML标记的属性)
-
-3,代表文本节点(指纯文本)
-
-8,代表注释节点(指HTML注释)
-
-9,代表文档节点(指整个HTML文档)
-</code></pre><h3 id="节点的关系"><a href="#节点的关系" class="headerlink" title="节点的关系"></a>节点的关系</h3><p>子节点:一个节点是另一个节点的直接下一级节点;</p>
-<p>如</p>
-<pre><code>&lt;i&gt;&lt;b&gt;...&lt;/b&gt;&lt;/i&gt;
-</code></pre><p>父节点:一个节点是另一个节点的直接上一级节点;</p>
-<p>兄弟节点:同一个父节点的所有子节点</p>
-<h3 id="属性-4"><a href="#属性-4" class="headerlink" title="属性"></a>属性</h3><p>  <strong>nodeName</strong></p>
-<p>  描述:获取节点的名称</p>
-<p>  语法:string node.nodeName<br><strong><br>  nodeValue</strong></p>
-<p>  描述:获取节点值</p>
-<p>  语法:string node.nodeValue</p>
-<p>  <strong>nodeType</strong></p>
-<p>  描述:获取节点的类型</p>
-<p>  语法:int node.nodeType</p>
-<p>  <strong>childNodes</strong></p>
-<p>  描述:返回节点内所有的子节点形成的集合(数组)</p>
-<p>  语法:NodeList node.childNodes</p>
-<h3 id="方法-4"><a href="#方法-4" class="headerlink" title="方法"></a>方法</h3><p>  appendChild()</p>
-<p>  描述:追加子节点</p>
-<p>  语法:Node node.appendChild(node)                </p>
-<p>  说明:返回的是新插入的子节点</p>
-<hr>
-<p>  removeChild()</p>
-<p>  描述:删除子节点</p>
-<p>  语法:Node node.removeChild(node)</p>
-<h2 id="document对象-继承自Node"><a href="#document对象-继承自Node" class="headerlink" title="document对象(继承自Node)"></a>document对象(继承自Node)</h2><h3 id="属性-5"><a href="#属性-5" class="headerlink" title="属性"></a>属性</h3><p>  documentElement</p>
-<p>  描述:返回文档的根元素</p>
-<p>  语法:Element document.documentElement</p>
-<h3 id="方法-5"><a href="#方法-5" class="headerlink" title="方法"></a>方法</h3><p>  getElementById()</p>
-<p>  描述:根据对象ID来获取元素</p>
-<p>  语法:Element document.getElementById(string id)</p>
-<hr>
-<p>  createElement()</p>
-<p>  描述:创建元素节点</p>
-<p>  语法:Element document.createElement(string tagName)</p>
-<h2 id="Element对象-继承自Node"><a href="#Element对象-继承自Node" class="headerlink" title="Element对象(继承自Node)"></a>Element对象(继承自Node)</h2><h3 id="方法-6"><a href="#方法-6" class="headerlink" title="方法"></a>方法</h3><p>  getAttribute()</p>
-<p>  描述:获取属性值</p>
-<p>  语法:string Element.getAttribute(string name)</p>
-<hr>
-<p>  setAttribute()</p>
-<p>  描述:设置属性</p>
-<p>  语法:void Element.setAttribute(string name,string value)</p>
-<hr>
-<p>  removeAttribute()</p>
-<p>  描述:删除属性</p>
-<p>  语法:void Element.removeAttribute(string name)</p>
-<hr>
-<p>  hasAttribute()</p>
-<p>  描述:返回是否存在指定属性</p>
-<p>  语法:bool Element.hasAttribute(string name)</p>
-<h2 id="HTML-与-DOM"><a href="#HTML-与-DOM" class="headerlink" title="HTML 与 DOM"></a>HTML 与 DOM</h2><p> HTML DOM提供针对处理HTML文档的API.</p>
-<p><strong>1 选取对象</strong></p>
-<pre><code>Element document.getElementById(string id)
-
-NodeList document.getElementsByTagName(string tagName)
-
-NodeList Element.getElementsByTagName(string tagName)
-</code></pre><p><strong>2 属性控制</strong></p>
-<pre><code>A.对于单个单词的HTML标记属性即HTML DOM对象属性;
-
-B.对于合成词的HTML标记属性(如table标记的cellpading、cellspacing属性)在HTML DOM编程时,采用&quot;驼峰标记法&quot;命名(如cellPadding、cellSpacing)
-
-C.对于HTML标记的class属性,在HTML DOM编程时使用className取代;
-  (因为class是ECMAScript中的关键字)
-
-D.对于HTML标记的布尔属性(如单/复选框的checked、列表项的selected属性)在HTML DOM编程时采用boolean类型表示;
-
-E.在HTML DOM编程时,某些HTMLDOM对象有自己特有的属性/方法;
-
-F.HTML标记的style属性在HTML DOM编程时形成CSSStyleDeclaration/CSS2Properties对象;
-</code></pre><p><strong>3 HTMLDocument对象</strong></p>
-<p>  getElementsByName()方法</p>
-<p>  描述:获取文档中name属性相同的对象的组成的集合(数组)</p>
-<p>  语法:NodeList document.getElementsByName(string name)</p>
-<h3 id="Document对象"><a href="#Document对象" class="headerlink" title="Document对象"></a>Document对象</h3><h4 id="属性-6"><a href="#属性-6" class="headerlink" title="属性"></a>属性</h4><p><strong>title</strong></p>
-<p>描述:获取/设置标题栏信息</p>
-<p>语法: document.title = value 或 var 变量名称 = document.title</p>
-<p><strong>head</strong></p>
-<p>描述:获取文档的head对象</p>
-<p>语法:Element document.head</p>
-<p><strong>body</strong></p>
-<p>描述:获取文档的body对象</p>
-<p>语法:Element document.body</p>
-<p><strong>images</strong></p>
-<p>描述:返回文档中所有的图像组成的集合(数组)</p>
-<p>语法:NodeList document.images</p>
-<p><strong>forms</strong></p>
-<p>描述:返回文档中所有的表单组成的集合(数组)</p>
-<p>语法:NodeList document.forms</p>
-<p><strong>links</strong></p>
-<p>描述:返回文档中所有的<link>标记组成的集合(数组)</p>
-<p>语法:NodeList document.links</p>
-<p><strong>anchors</strong></p>
-<pre><code>描述:返回文档中所有的&lt;a&gt;标记组成的集合(数组)
-
-语法:NodeList document.anchors
-</code></pre><hr>
-<h4 id="方法-7"><a href="#方法-7" class="headerlink" title="方法"></a>方法</h4><p><strong>querySelectorAll()</strong></p>
-<p>描述:返回由使用指定的CSS选择器的对象组成的集合(数组)</p>
-<p>语法:NodeList document.querySelectorAll(selector)</p>
-<p>说明:该方法支持所有CSS3选择器</p>
-<p><strong>querySelector()</strong></p>
-<p>描述:返回由使用指定的CSS选择器的对象的第一个元素</p>
-<p>语法:Element document.querySelector(selector)</p>
-<h3 id="Element对象"><a href="#Element对象" class="headerlink" title="Element对象"></a>Element对象</h3><p><strong>属性</strong></p>
-<p>tagName</p>
-<p>描述:获取元素的标记名称</p>
-<p>语法:string Element.tagName</p>
-<p><strong>方法</strong></p>
-<p>querySelector()</p>
-<p>描述:返回由使用指定的CSS选择器的对象的第一个元素</p>
-<p>语法:Element  Element.querySelector(selector)</p>
-<p>querySelectorAll()</p>
-<p>描述:返回由使用指定的CSS选择器的对象组成的集合(数组)</p>
-<p>语法:NodeList Element.querySelectorAll(selector)</p>
-<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><h3 id="BOM定义"><a href="#BOM定义" class="headerlink" title="BOM定义"></a>BOM定义</h3><p>BOM(Browser Object Model),浏览器对象模型,提供与浏览器相关的API.</p>
-<p>  window对象是BOM的顶级对象,代表浏览器窗口或iframe或frame.</p>
-<h3 id="属性-7"><a href="#属性-7" class="headerlink" title="属性"></a>属性</h3><p>  document 描述:返回HTMLDocument对象</p>
-<p>  history  描述:返回History对象</p>
-<p>  screen 描述:返回Screen对象</p>
-<p>  navigator 描述:返回Navigator对象</p>
-<p>  location 描述:返回Location对象</p>
-<p>  Math 描述:返回Math对象</p>
-<h3 id="方法-8"><a href="#方法-8" class="headerlink" title="方法"></a>方法</h3><p>  alert()方法</p>
-<p>  描述:弹出警示对话框(只有一个确定按钮)</p>
-<p>  语法:window.alert(string)</p>
-<hr>
-<p>  confirm()方法</p>
-<p>  描述:弹出询问对话框(有确定和取消两个按钮)</p>
-<p>  语法:bool window.confirm(string)</p>
-<hr>
-<p>  setInterval()</p>
-<p>  描述:每间隔指定的时间执行相关的代码(重复执行)</p>
-<p>  语法:int window.setInterval(function,milliseconds)</p>
-<hr>
-<p>  clearInterval()</p>
-<p>  描述:清除由setInterval()设置的timeId</p>
-<p>  语法:window.clearInterval(int timeId)</p>
-<hr>
-<p>  setTimeout()  </p>
-<p>  描述:间隔指定的时间后执行相关的代码(执行一次)</p>
-<p>  语法:int window.setTimeout(function,milliseconds)</p>
-<hr>
-<p>  clearTimeout()</p>
-<p>  描述:清除由setTimeout()设置的timeId</p>
-<p>  语法:window.clearTimeout(int timeId)</p>
-<hr>
-<p>  parseInt()</p>
-<p>  描述:转换成整数</p>
-<p>  语法:int parseInt(value)</p>
-<hr>
-<p>  parseFloat()</p>
-<p>  描述:转换成浮点数</p>
-<p>  语法:int parseFloat(value)</p>
-<hr>
-<p>  isNaN()</p>
-<p>  描述:检测值是否为NaN(Not a Number)</p>
-<p>  语法:bool isNaN(value)</p>
-<h3 id="Location对象"><a href="#Location对象" class="headerlink" title="Location对象"></a>Location对象</h3><p>  href属性</p>
-<p>  描述:获取/设置地址栏中的地址信息</p>
-<p>  语法:</p>
-<p>  location.href = string</p>
-<p>  var 变量名称 = location.href</p>
-<p>  search属性</p>
-<p>  描述:获取地址栏”?”以后所有的参数</p>
-<p>  语法:string location.search</p>
-<p>  reload()</p>
-<p>  描述:重新加载文档</p>
-<p>  语法:location.reload(void)</p>
-<h3 id="Screen对象"><a href="#Screen对象" class="headerlink" title="Screen对象"></a>Screen对象</h3><p>  width属性</p>
-<p>  描述:获取显示分辨率宽度</p>
-<p>  语法:number screen.width</p>
-<p>  height</p>
-<p>  描述:获取显示分辨率高度</p>
-<p>  语法:number screen.height</p>
-<h3 id="History对象"><a href="#History对象" class="headerlink" title="History对象"></a>History对象</h3><p>  back()</p>
-<p>  描述:后退一步</p>
-<p>  语法:history.back(void)</p>
-<p>  forward()</p>
-<p>  描述:前进一步</p>
-<p>  语法:history.forward(void)</p>
-<p>  go()</p>
-<p>  描述:前进/后退</p>
-<p>  语法:history.go(number)</p>
-<p>  说明:如果为负数,则后退;否则前进;</p>
-<p>  history.back() 等价于 history.go(-1)</p>
-<p>  history.forward() 等价于 history.go(1)  </p>
-<h3 id="Navigator对象"><a href="#Navigator对象" class="headerlink" title="Navigator对象"></a>Navigator对象</h3><p>  userAgent属性(简称UA)</p>
-<p>  描述:返回代理器信息</p>
-<p>  语法:string navigator.userAgent</p>
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>JSON基础</p>
-<p>  JSON(JavaScript Object Notation),是一种轻量级的数据交换格式;</p>
-<p>  JSON的官网  <a href="http://www.json.org" target="_blank" rel="noopener">http://www.json.org</a></p>
-<p>JSON支持的数据格式</p>
-<p>  数组:[value,….]</p>
-<p>  对象:{property:value,….}</p>
-<h2 id="jQuery操作DOM"><a href="#jQuery操作DOM" class="headerlink" title="jQuery操作DOM"></a>jQuery操作DOM</h2><h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><pre><code>语法：$(&quot;创建的完整标记&quot;);
-ex:
-    1、创建一对div元素
-        var $div = $(&quot;&lt;div&gt;&lt;/div&gt;&quot;);
-        $div.html(&quot;&lt;h1&gt;...&lt;/h1&gt;&quot;);
-        $div.attr(&quot;id&quot;,&quot;container&quot;);
-    2、创建一个图像标记
-        var $img = $(&quot;&lt;img&gt;&quot;);
-        $img.attr(&quot;src&quot;,&quot;img/a.jpg&quot;);
-</code></pre><h3 id="插入元素"><a href="#插入元素" class="headerlink" title="插入元素"></a>插入元素</h3><pre><code>1、内部插入
-    作为子元素插入到网页中
-    1、$obj.append($new);
-        将$new元素追加到$obj元素的尾部(最后一个子元素)
-    2、$obj.prepend($new);
-        将$new元素添加到$obj元素的头部(第一个子元素)
-2、外部插入
-    作为兄弟元素插入到网页中
-    1、$obj.before($new)
-        将$new作为$obj的上一个兄弟元素插入进来
-    2、$obj.after($new)
-        将$new作为$obj的下一个兄弟元素插入进来
-</code></pre><h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><pre><code>1、remove()
-    语法：$obj.remove();
-    作用：删除 $obj 元素
-2、remove(&quot;selector&quot;)
-    语法：$obj.remove(&quot;selector&quot;);
-    作用：将满足 selector 选择器的元素删除出去
-3、empty()
-    语法：$obj.empty()
-    作用：清空$obj内的内容
-</code></pre><h3 id="遍历节点"><a href="#遍历节点" class="headerlink" title="遍历节点"></a>遍历节点</h3><pre><code>1、children() / children(selector)
-    作用：获取某对象中的子元素(只考虑元素节点)或满足selector选择器的子元素(只考虑元素节点)。
-    注意：只能获取子元素，不能获取后代元素
-2、next() / next(selector)
-    作用：获取某对象的下一个兄弟元素 / 满足selector的下一个兄弟元素
-3、prev() / prev(selector)
-    作用：获取某对象的上一个兄弟元素 / 满足selector的上一个兄弟元素
-4、siblings() / siblings(selector)
-    作用：获取某对象的所有兄弟元素 / 满足selector的兄弟元素
-5、find(selector)
-    查找满足selector选择器的所有后代元素
-6、parent()
-    作用：获取某对象的父元素
-</code></pre><h3 id="jQuery事件处理"><a href="#jQuery事件处理" class="headerlink" title="jQuery事件处理"></a>jQuery事件处理</h3><h4 id="页面加载后的执行"><a href="#页面加载后的执行" class="headerlink" title="页面加载后的执行"></a>页面加载后的执行</h4><pre><code>在DOM树加载完成后就要执行的操作
-1、
-    $(document).ready( function(){
-        //页面的初始化操作
-        //DOM树加载完毕后就开始运行
-    } );
-
-2、
-    $().ready( function(){
-
-    } );
-3、
-    $( function(){
-
-    });
-</code></pre><h4 id="jQuery的事件绑定"><a href="#jQuery的事件绑定" class="headerlink" title="jQuery的事件绑定"></a>jQuery的事件绑定</h4><pre><code>1、方式1
-    $obj.bind(&quot;事件名称&quot;,事件处理函数);
-
-    ex:
-        $obj.bind(&quot;click&quot;,function(){
-            alert(&quot;单击事件&quot;);
-        });
-
-2、方式2
-    $obj.事件名称(事件处理函数);
-
-    ex:
-        $obj.click(function(){
-
-        });
-
-注意：
-    在事件处理函数中，允许使用 this 来表示触发当前事件的DOM对象
-</code></pre><h4 id="事件参数对象-事件对象"><a href="#事件参数对象-事件对象" class="headerlink" title="事件参数对象(事件对象):"></a>事件参数对象(事件对象):</h4><pre><code>1、获取事件对象
-    1、
-        &lt;button onclick=&quot;btnClick(event)&quot;&gt;&lt;/button&gt;
-
-        function btnClick(event){
-
-        }
-    2、
-        &lt;button id=&quot;btnTest&quot;&gt;&lt;/button&gt;
-
-        var btn = document.getElementById(&quot;btnTest&quot;);
-        btn.onclick = function(event){
-            event : 表示当前事件的事件对象
-        }
-
-
-2、事件对象的属性
-    1、offsetX
-        获取鼠标所操作的点的 横坐标值
-    2、offsetY
-        获取鼠标所操作的点的 纵坐标值
-    3、target
-        获取事件源(事件所在的元素)
-</code></pre><p><strong>this:</strong><br>1、this 在全局函数中，永远都表示的是 window 对象<br>2、this 在局部函数中，表示都是函数的所有者<br>    btn.onclick = function(){<br>        this:表示的就是函数的所有者 -&gt; btn </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -15859,7 +14794,7 @@ ex:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -15870,7 +14805,7 @@ ex:
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -15881,7 +14816,7 @@ ex:
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -15946,7 +14881,7 @@ ex:
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">164.7k</span>
+    <span title="Site words total count">165.0k</span>
   
 </div>
 
