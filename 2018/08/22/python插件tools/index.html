@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="hexo搭建个人博客系统搭建个人博客系统请移步：https://www.jianshu.com/p/189fd945f38f 创建后设置next主题的方法：（可省）https://blog.csdn.net/qq_32454537/article/details/79482896 里面的内容讲述的还是相当详细的。 Hexo添加字数统计、阅读时长、友情链接https://blog.csdn.net/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-22T11:06:44.884Z">
+<meta property="og:updated_time" content="2018-09-03T09:30:41.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python插件tools">
 <meta name="twitter:description" content="hexo搭建个人博客系统搭建个人博客系统请移步：https://www.jianshu.com/p/189fd945f38f 创建后设置next主题的方法：（可省）https://blog.csdn.net/qq_32454537/article/details/79482896 里面的内容讲述的还是相当详细的。 Hexo添加字数统计、阅读时长、友情链接https://blog.csdn.net/">
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  693 字
+                  4,128 字
                 </span>
               
 
@@ -347,7 +347,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  16 分钟
                 </span>
               
             </div>
@@ -374,18 +374,964 @@
 <p>Hexo添加字数统计、阅读时长、友情链接<br><a href="https://blog.csdn.net/wangxw725/article/details/71602256?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="noopener">https://blog.csdn.net/wangxw725/article/details/71602256?utm_source=itdadao&amp;utm_medium=referral</a></p>
 <p>添加访问统计<br><a href="https://www.jianshu.com/p/8a8f880f40c0" target="_blank" rel="noopener">https://www.jianshu.com/p/8a8f880f40c0</a></p>
 <p>评论功能： 评论功能采用的是韩国的来比力，但是好像这个插件出现问题导致无法评论。<br>分享功能： 我采用的是百度分享，但是百度分享不支持https类型的链接，所以当前没有分享功能。</p>
-<h1 id="tkinter"><a href="#tkinter" class="headerlink" title="tkinter"></a>tkinter</h1><p>pass</p>
-<h1 id="pygame"><a href="#pygame" class="headerlink" title="pygame"></a>pygame</h1><p>pass</p>
-<h1 id="pyqt5"><a href="#pyqt5" class="headerlink" title="pyqt5"></a>pyqt5</h1><p>pass</p>
-<h1 id="echarts"><a href="#echarts" class="headerlink" title="echarts"></a>echarts</h1><p>pass</p>
-<h1 id="openGL"><a href="#openGL" class="headerlink" title="openGL"></a>openGL</h1><p>pass</p>
-<h1 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h1><p>pass</p>
-<h1 id="Py2exe"><a href="#Py2exe" class="headerlink" title="Py2exe"></a>Py2exe</h1><p>pass</p>
-<h1 id="webpy"><a href="#webpy" class="headerlink" title="webpy"></a>webpy</h1><p>pass</p>
+<h1 id="tkinter"><a href="#tkinter" class="headerlink" title="tkinter"></a>tkinter</h1><h2 id="1、使用tkinter-Tk-生成主窗口（root-tkinter-Tk-）"><a href="#1、使用tkinter-Tk-生成主窗口（root-tkinter-Tk-）" class="headerlink" title="1、使用tkinter.Tk() 生成主窗口（root=tkinter.Tk()）"></a>1、使用tkinter.Tk() 生成主窗口（root=tkinter.Tk()）</h2><p>root.title(‘标题名’)    　　 　　修改框体的名字,也可在创建时使用className参数来命名；<br>root.resizable(0,0)   　　 　　框体大小可调性，分别表示x,y方向的可变性；<br>root.geometry(‘250x150’)　　指定主框体大小；<br>root.quit()        　　　　 　　 退出；<br>root.update_idletasks()<br>root.update()        　　　　　刷新页面；</p>
+<h2 id="2、初级样例"><a href="#2、初级样例" class="headerlink" title="2、初级样例"></a>2、初级样例</h2><p>import tkinter<br>root=tkinter.Tk() #生成root主窗口<br>label=tkinter.Label(root,text=’Hello,GUI’) #生成标签<br>label.pack()        #将标签添加到主窗口<br>button1=tkinter.Button(root,text=’Button1’) #生成button1<br>button1.pack(side=tkinter.LEFT)         #将button1添加到root主窗口<br>button2=tkinter.Button(root,text=’Button2’)<br>button2.pack(side=tkinter.RIGHT)<br>root.mainloop()             #进入消息循环（必需组件）</p>
+<h2 id="3、tkinter中的15种核心组件"><a href="#3、tkinter中的15种核心组件" class="headerlink" title="3、tkinter中的15种核心组件"></a>3、tkinter中的15种核心组件</h2><table>
+<thead>
+<tr>
+<th>组件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Button        　</td>
+<td>　按钮；</td>
+</tr>
+<tr>
+<td>Canvas        　</td>
+<td>　绘图形组件，可以在其中绘制图形；</td>
+</tr>
+<tr>
+<td>Checkbutton</td>
+<td>复选框；</td>
+</tr>
+<tr>
+<td>Entry        　　</td>
+<td>文本框（单行）；</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>文本框（多行）；</td>
+</tr>
+<tr>
+<td>Frame         　</td>
+<td>　框架，将几个组件组成一组</td>
+</tr>
+<tr>
+<td>Label        　</td>
+<td>　 标签，可以显示文字或图片；</td>
+</tr>
+<tr>
+<td>Listbox      　　</td>
+<td>列表框；</td>
+</tr>
+<tr>
+<td>Menu     　　</td>
+<td>菜单；</td>
+</tr>
+<tr>
+<td>Menubutton</td>
+<td>它的功能完全可以使用Menu替代；</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>与Label组件类似，但是可以根据自身大小将文本换行；</td>
+</tr>
+<tr>
+<td>Radiobutton</td>
+<td>单选框；</td>
+</tr>
+<tr>
+<td>Scale      　　</td>
+<td>滑块；允许通过滑块来设置一数字值</td>
+</tr>
+<tr>
+<td>Scrollbar</td>
+<td>滚动条；配合使用canvas, entry, listbox, and text窗口部件的标准滚动条；</td>
+</tr>
+<tr>
+<td>Toplevel</td>
+<td>用来创建子窗口窗口组件。</td>
+</tr>
+</tbody>
+</table>
+<p>（在Tkinter中窗口部件类没有分级；所有的窗口部件类在树中都是兄弟。）<br>复制代码</p>
+<h2 id="4、组件的放置和排版（pack-grid-place"><a href="#4、组件的放置和排版（pack-grid-place" class="headerlink" title="4、组件的放置和排版（pack,grid,place)"></a>4、组件的放置和排版（pack,grid,place)</h2><p><strong>pack组件设置位置属性参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>after:    　　　</td>
+<td>将组件置于其他组件之后；</td>
+</tr>
+<tr>
+<td>before:    　　　</td>
+<td>将组件置于其他组件之前；</td>
+</tr>
+<tr>
+<td>anchor:    　　</td>
+<td>组件的对齐方式，顶对齐’n’,底对齐’s’,左’w’,右’e’</td>
+</tr>
+<tr>
+<td>side:    　　　　</td>
+<td>组件在主窗口的位置，可以为’top’,’bottom’,’left’,’right’（使用时tkinter.TOP,tkinter.E）；</td>
+</tr>
+<tr>
+<td>fill</td>
+<td>填充方式 (Y,垂直，X，水平）</td>
+</tr>
+<tr>
+<td>expand</td>
+<td>1可扩展，0不可扩展</td>
+</tr>
+</tbody>
+</table>
+<p><strong>grid组件使用行列的方法放置组件的位置，参数有：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>column:</td>
+<td>组件所在的列起始位置；</td>
+</tr>
+<tr>
+<td>columnspam:</td>
+<td>组件的列宽；</td>
+</tr>
+<tr>
+<td>row：      　　　</td>
+<td>组件所在的行起始位置；</td>
+</tr>
+<tr>
+<td>rowspam：    　　</td>
+<td>组件的行宽；</td>
+</tr>
+</tbody>
+</table>
+<p><strong>place组件可以直接使用坐标来放置组件，参数有：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>anchor:    　　</td>
+<td>　组件对齐方式；</td>
+</tr>
+<tr>
+<td>x:        　　　</td>
+<td>组件左上角的x坐标；</td>
+</tr>
+<tr>
+<td>y:        　　</td>
+<td>组件右上角的y坐标；</td>
+</tr>
+<tr>
+<td>relx:         　</td>
+<td>组件相对于窗口的x坐标，应为0-1之间的小数；</td>
+</tr>
+<tr>
+<td>rely:</td>
+<td>组件相对于窗口的y坐标，应为0-1之间的小数；</td>
+</tr>
+<tr>
+<td>width:</td>
+<td>组件的宽度；</td>
+</tr>
+<tr>
+<td>heitht:    　</td>
+<td>组件的高度；</td>
+</tr>
+<tr>
+<td>relwidth:</td>
+<td>组件相对于窗口的宽度，0-1；</td>
+</tr>
+<tr>
+<td>relheight:　</td>
+<td>组件相对于窗口的高度，0-1；</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5、使用tkinter-Button时控制按钮的参数"><a href="#5、使用tkinter-Button时控制按钮的参数" class="headerlink" title="5、使用tkinter.Button时控制按钮的参数"></a>5、使用tkinter.Button时控制按钮的参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>anchor:      　　　　</td>
+<td>指定按钮上文本的位置；</td>
+</tr>
+<tr>
+<td>background(bg)    　</td>
+<td>指定按钮的背景色；</td>
+</tr>
+<tr>
+<td>bitmap:       　　　　</td>
+<td>指定按钮上显示的位图；</td>
+</tr>
+<tr>
+<td>borderwidth(bd)　　　　</td>
+<td>指定按钮边框的宽度；</td>
+</tr>
+<tr>
+<td>command:   　　　　　</td>
+<td>指定按钮消息的回调函数；</td>
+</tr>
+<tr>
+<td>cursor:        　　　　</td>
+<td>指定鼠标移动到按钮上的指针样式；</td>
+</tr>
+<tr>
+<td>font:           　　</td>
+<td>指定按钮上文本的字体；</td>
+</tr>
+<tr>
+<td>foreground(fg)　　　　</td>
+<td>指定按钮的前景色；</td>
+</tr>
+<tr>
+<td>height:        　　　　</td>
+<td>指定按钮的高度；</td>
+</tr>
+<tr>
+<td>image:        　　　　</td>
+<td>指定按钮上显示的图片；</td>
+</tr>
+<tr>
+<td>state:          　　　</td>
+<td>指定按钮的状态（disabled）；</td>
+</tr>
+<tr>
+<td>text:           　　　</td>
+<td>指定按钮上显示的文本；</td>
+</tr>
+<tr>
+<td>width:       　　　　</td>
+<td>指定按钮的宽度</td>
+</tr>
+<tr>
+<td>padx          　　　　</td>
+<td>设置文本与按钮边框x的距离，还有pady;</td>
+</tr>
+<tr>
+<td>activeforeground　　　</td>
+<td>按下时前景色</td>
+</tr>
+<tr>
+<td>textvariable    　　</td>
+<td>可变文本，与StringVar等配合着用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6、文本框tkinter-Entry-tkinter-Text控制参数"><a href="#6、文本框tkinter-Entry-tkinter-Text控制参数" class="headerlink" title="6、文本框tkinter.Entry,tkinter.Text控制参数"></a>6、文本框tkinter.Entry,tkinter.Text控制参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>background(bg)   　　</td>
+<td>文本框背景色；</td>
+</tr>
+<tr>
+<td>foreground(fg)</td>
+<td>前景色；</td>
+</tr>
+<tr>
+<td>selectbackground　　</td>
+<td>选定文本背景色；</td>
+</tr>
+<tr>
+<td>selectforeground　　</td>
+<td>选定文本前景色；</td>
+</tr>
+<tr>
+<td>borderwidth(bd)    　</td>
+<td>文本框边框宽度；</td>
+</tr>
+<tr>
+<td>font</td>
+<td>　字体；</td>
+</tr>
+<tr>
+<td>show          　　</td>
+<td>文本框显示的字符，若为*，表示文本框为密码框；</td>
+</tr>
+<tr>
+<td>state            　　</td>
+<td>状态；</td>
+</tr>
+<tr>
+<td>width        　　　　</td>
+<td>文本框宽度</td>
+</tr>
+<tr>
+<td>textvariable    　　</td>
+<td>可变文本，与StringVar等配合着用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7、标签tkinter-Label组件控制参数"><a href="#7、标签tkinter-Label组件控制参数" class="headerlink" title="7、标签tkinter.Label组件控制参数"></a>7、标签tkinter.Label组件控制参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anchor        　　</td>
+<td>　　标签中文本的位置；</td>
+</tr>
+<tr>
+<td>background(bg)　　　</td>
+<td>　背景色；</td>
+</tr>
+<tr>
+<td>foreground(fg)　　</td>
+<td>前景色；</td>
+</tr>
+<tr>
+<td>borderwidth(bd)　　</td>
+<td>边框宽度；</td>
+</tr>
+<tr>
+<td>width        　　　</td>
+<td>　 标签宽度；</td>
+</tr>
+<tr>
+<td>height        　　　</td>
+<td>　标签高度；</td>
+</tr>
+<tr>
+<td>bitmap        　　　</td>
+<td>标签中的位图；</td>
+</tr>
+<tr>
+<td>font            　　</td>
+<td>　字体；</td>
+</tr>
+<tr>
+<td>image        　　 　</td>
+<td>　标签中的图片；</td>
+</tr>
+<tr>
+<td>justify        　　　</td>
+<td>多行文本的对齐方式；</td>
+</tr>
+<tr>
+<td>text    　　　　　　</td>
+<td>标签中的文本，可以使用’\n’表示换行</td>
+</tr>
+<tr>
+<td>textvariable  　　　</td>
+<td>显示文本自动更新，与StringVar等配合着用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8、单选框和复选框Radiobutton-Checkbutton控制参数"><a href="#8、单选框和复选框Radiobutton-Checkbutton控制参数" class="headerlink" title="8、单选框和复选框Radiobutton,Checkbutton控制参数"></a>8、单选框和复选框Radiobutton,Checkbutton控制参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>anchor         　</td>
+<td>　文本位置；</td>
+</tr>
+<tr>
+<td>background(bg) 　</td>
+<td>　背景色；</td>
+</tr>
+<tr>
+<td>foreground(fg)</td>
+<td>前景色；</td>
+</tr>
+<tr>
+<td>borderwidth</td>
+<td>边框宽度；</td>
+</tr>
+<tr>
+<td>width        　　</td>
+<td>组件的宽度；</td>
+</tr>
+<tr>
+<td>height     　　</td>
+<td>组件高度；</td>
+</tr>
+<tr>
+<td>bitmap    　　</td>
+<td>组件中的位图；</td>
+</tr>
+<tr>
+<td>image    　　</td>
+<td>组件中的图片；</td>
+</tr>
+<tr>
+<td>font       　　</td>
+<td>字体；</td>
+</tr>
+<tr>
+<td>justify       　　</td>
+<td>组件中多行文本的对齐方式；</td>
+</tr>
+<tr>
+<td>text         　　</td>
+<td>指定组件的文本；</td>
+</tr>
+<tr>
+<td>value      　　</td>
+<td>指定组件被选中中关联变量的值；</td>
+</tr>
+<tr>
+<td>variable     　</td>
+<td>指定组件所关联的变量；</td>
+</tr>
+<tr>
+<td>indicatoron</td>
+<td>特殊控制参数，当为0时，组件会被绘制成按钮形式;</td>
+</tr>
+<tr>
+<td>textvariable</td>
+<td>可变文本显示，与StringVar等配合着用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="9、组图组件Canvas控制参数"><a href="#9、组图组件Canvas控制参数" class="headerlink" title="9、组图组件Canvas控制参数"></a>9、组图组件Canvas控制参数</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>background(bg)  　　</td>
+<td>背景色;</td>
+</tr>
+<tr>
+<td>foreground(fg)</td>
+<td>前景色;</td>
+</tr>
+<tr>
+<td>borderwidth   　　　</td>
+<td>　组件边框宽度；</td>
+</tr>
+<tr>
+<td>width     　　　　</td>
+<td>组件宽度；</td>
+</tr>
+<tr>
+<td>height     　　</td>
+<td>高度;</td>
+</tr>
+<tr>
+<td>bitmap 　　</td>
+<td>位图;</td>
+</tr>
+<tr>
+<td>image 　　　　</td>
+<td>图片;</td>
+</tr>
+</tbody>
+</table>
+<p>绘图的方法主要以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>create_arc</td>
+<td>圆弧;</td>
+</tr>
+<tr>
+<td>create_bitmap  　　</td>
+<td>绘制位图，支持XBM;</td>
+</tr>
+<tr>
+<td>create_image    　</td>
+<td>　 绘制图片，支持GIF(x,y,image,anchor);</td>
+</tr>
+<tr>
+<td>create_line</td>
+<td>绘制支线；</td>
+</tr>
+<tr>
+<td>create_oval;</td>
+<td>绘制椭圆；</td>
+</tr>
+<tr>
+<td>create_polygon   　</td>
+<td>　绘制多边形(坐标依次罗列，不用加括号，还有参数，fill,outline)；</td>
+</tr>
+<tr>
+<td>create_rectangle　　</td>
+<td>绘制矩形((a,b,c,d),值为左上角和右下角的坐标)；</td>
+</tr>
+<tr>
+<td>create_text</td>
+<td>绘制文字(字体参数font,)；</td>
+</tr>
+<tr>
+<td>create_window    　　</td>
+<td>绘制窗口；</td>
+</tr>
+<tr>
+<td>delete            　</td>
+<td>删除绘制的图形；</td>
+</tr>
+<tr>
+<td>itemconfig</td>
+<td>修改图形属性，第一个参数为图形的ID，后边为想修改的参数；</td>
+</tr>
+<tr>
+<td>move          　　</td>
+<td>移动图像（1，4，0），1为图像对象，4为横移4像素，0为纵移像素，然后用root.update()刷新即可看到图像的移动，为了使多次移动变得可视，最好加上time.sleep()函数；只要用create_方法画了一个图形，就会自动返回一个ID,创建一个图形时将它赋值给一个变量，需要ID时就可以使用这个变量名。</td>
+</tr>
+<tr>
+<td>coords(ID)</td>
+<td>返回对象的位置的两个坐标（4个数字元组）；</td>
+</tr>
+</tbody>
+</table>
+<p>对于按钮组件、菜单组件等可以在创建组件时通过command参数指定其事件处理函数。方法为bind;或者用bind_class方法进行类绑定，bind_all方法将所有组件事件绑定到事件响应函数上。</p>
+<h2 id="10、菜单Menu"><a href="#10、菜单Menu" class="headerlink" title="10、菜单Menu"></a>10、菜单Menu</h2><p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tearoff      　</td>
+<td>分窗，0为在原窗，1为点击分为两个窗口</td>
+</tr>
+<tr>
+<td>bg,fg       　　</td>
+<td>背景，前景</td>
+</tr>
+<tr>
+<td>borderwidth    　</td>
+<td>边框宽度</td>
+</tr>
+<tr>
+<td>font</td>
+<td>字体</td>
+</tr>
+<tr>
+<td>activebackgound</td>
+<td>点击时背景，同样有activeforeground，activeborderwidth，disabledforeground</td>
+</tr>
+<tr>
+<td>cursor</td>
+<td></td>
+</tr>
+<tr>
+<td>postcommand</td>
+<td></td>
+</tr>
+<tr>
+<td>selectcolor    　</td>
+<td>选中时背景</td>
+</tr>
+<tr>
+<td>takefocus</td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td></td>
+</tr>
+<tr>
+<td>relief</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>方法：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>menu.add_cascade</td>
+<td>添加子选项</td>
+</tr>
+<tr>
+<td>menu.add_command</td>
+<td>添加命令（label参数为显示内容）</td>
+</tr>
+<tr>
+<td>menu.add_separator</td>
+<td>添加分隔线</td>
+</tr>
+<tr>
+<td>menu.add_checkbutton</td>
+<td>添加确认按钮</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>删除</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11、事件关联"><a href="#11、事件关联" class="headerlink" title="11、事件关联"></a>11、事件关联</h2><p>bind(sequence,func,add)——<br>bind_class(className,sequence,func,add)<br>bind_all(sequence,func,add)<br>事件参数：　　<br>sequence      　　　　　　　　所绑定的事件；<br>func            　　　　　　 所绑定的事件处理函数；<br>add             　　　　　　 可选参数，为空字符或‘+’；<br>className    　　　　　　　 　所绑定的类；</p>
+<p><strong>鼠标键盘事件</strong></p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><button-1>        　</button-1></td>
+<td>　鼠标左键按下，2表示中键，3表示右键；</td>
+</tr>
+<tr>
+<td><buttonpress-1>    　</buttonpress-1></td>
+<td>同上；</td>
+</tr>
+<tr>
+<td><buttonrelease-1>　　　</buttonrelease-1></td>
+<td>鼠标左键释放；</td>
+</tr>
+<tr>
+<td><b1-motion>  　　</b1-motion></td>
+<td>按住鼠标左键移动；</td>
+</tr>
+<tr>
+<td><double-button-1>  　</double-button-1></td>
+<td>　 双击左键；</td>
+</tr>
+<tr>
+<td><enter>       　　</enter></td>
+<td>鼠标指针进入某一组件区域；</td>
+</tr>
+<tr>
+<td><leave>    　　</leave></td>
+<td>鼠标指针离开某一组件区域；</td>
+</tr>
+<tr>
+<td><mousewheel>  　   　</mousewheel></td>
+<td>　 滚动滚轮；</td>
+</tr>
+<tr>
+<td><keypress-a> 　　  　　</keypress-a></td>
+<td>按下A键，A可用其他键替代；</td>
+</tr>
+<tr>
+<td><alt-keypress-a>　　　</alt-keypress-a></td>
+<td>同时按下alt和A；alt可用ctrl和shift替代；</td>
+</tr>
+<tr>
+<td><double-keypress-a>　</double-keypress-a></td>
+<td>　  快速按两下A；</td>
+</tr>
+<tr>
+<td><lock-keypress-a>　　</lock-keypress-a></td>
+<td>　  大写状态下按A；</td>
+</tr>
+</tbody>
+</table>
+<p><strong>窗口事件</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activate        　　　</td>
+<td>　 当组件由不可用转为可用时触发；</td>
+</tr>
+<tr>
+<td>Configure      　　　</td>
+<td>　  当组件大小改变时触发；</td>
+</tr>
+<tr>
+<td>Deactivate    　　　　</td>
+<td>　 当组件由可用转变为不可用时触发；</td>
+</tr>
+<tr>
+<td>Destroy        　　　</td>
+<td>　  当组件被销毁时触发；</td>
+</tr>
+<tr>
+<td>Expose         　　　</td>
+<td>　　当组件从被遮挡状态中暴露出来时触发；</td>
+</tr>
+<tr>
+<td>Unmap        　　　　</td>
+<td>　　当组件由显示状态变为隐藏状态时触发；</td>
+</tr>
+<tr>
+<td>Map         　　　　</td>
+<td>当组件由隐藏状态变为显示状态时触发；</td>
+</tr>
+<tr>
+<td>FocusIn       　　　</td>
+<td>　  当组件获得焦点时触发；</td>
+</tr>
+<tr>
+<td>FocusOut      　　　</td>
+<td>　　 当组件失去焦点时触发；</td>
+</tr>
+<tr>
+<td>Property     　　　　</td>
+<td>当窗体的属性被删除或改变时触发；</td>
+</tr>
+<tr>
+<td>Visibility       　</td>
+<td>　　　当组件变为可视状态时触发；</td>
+</tr>
+</tbody>
+</table>
+<p><strong>响应事件</strong><br>event对象（def function(event)）：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char        　　　　　</td>
+<td>　  按键字符，仅对键盘事件有效；</td>
+</tr>
+<tr>
+<td>keycode   　　　　　　</td>
+<td>　按键名，仅对键盘事件有效；</td>
+</tr>
+<tr>
+<td>keysym     　　　　　　</td>
+<td>　 按键编码，仅对键盘事件有效；</td>
+</tr>
+<tr>
+<td>num          　　　　</td>
+<td>　　鼠标按键，仅对鼠标事件有效；</td>
+</tr>
+<tr>
+<td>type         　　　　</td>
+<td>所触发的事件类型；</td>
+</tr>
+<tr>
+<td>widget      　　　　</td>
+<td>引起事件的组件；</td>
+</tr>
+<tr>
+<td>width,heigh　　　　　</td>
+<td>　  组件改变后的大小，仅Configure有效；</td>
+</tr>
+<tr>
+<td>x,y       　  　　　</td>
+<td>　　　鼠标当前位置，相对于窗口；</td>
+</tr>
+<tr>
+<td>x_root,y_root　　　　</td>
+<td>　　 鼠标当前位置，相对于整个屏幕</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12、弹窗"><a href="#12、弹窗" class="headerlink" title="12、弹窗"></a>12、弹窗</h2><p><strong>messagebox._show函数的控制参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>指定消息框按钮；</td>
+</tr>
+<tr>
+<td>icon</td>
+<td>指定消息框图标；</td>
+</tr>
+<tr>
+<td>message     　</td>
+<td>　指定消息框所显示的消息；</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>指定消息框的父组件；</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题；</td>
+</tr>
+<tr>
+<td>type</td>
+<td>类型；</td>
+</tr>
+</tbody>
+</table>
+<p><strong>simpledialog模块参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>指定对话框的标题；</td>
+</tr>
+<tr>
+<td>prompt        　</td>
+<td>显示的文字；</td>
+</tr>
+<tr>
+<td>initialvalue</td>
+<td>指定输入框的初始值；</td>
+</tr>
+</tbody>
+</table>
+<p><strong>filedialog　　　　模块参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filetype   　</td>
+<td>　  指定文件类型；</td>
+</tr>
+<tr>
+<td>initialdir 　</td>
+<td>　  指定默认目录；</td>
+</tr>
+<tr>
+<td>initialfile</td>
+<td>　　 指定默认文件；</td>
+</tr>
+<tr>
+<td>title    　　</td>
+<td>　  指定对话框标题</td>
+</tr>
+</tbody>
+</table>
+<p><strong>colorchooser模块参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initialcolor  　</td>
+<td>指定初始化颜色；</td>
+</tr>
+<tr>
+<td>title</td>
+<td>　指定对话框标题；</td>
+</tr>
+</tbody>
+</table>
+<h2 id="13、字体（font"><a href="#13、字体（font" class="headerlink" title="13、字体（font)"></a>13、字体（font)</h2><p>一般格式：<br>（’Times -10 bold’)<br>(‘Times’,10,’bold’,’italic’)    依次表示字体、字号、加粗、倾斜</p>
+<p>补充：<br>config            重新配置<br>label.config(font=’Arial -%d bold’ % scale.get())<br>依次为字体，大小（大小可为字号大小），加粗<br>tkinter.StringVar    能自动刷新的字符串变量，可用set和get方法进行传值和取值，类似的还有IntVar,DoubleVar…</p>
+<p>sys.stdout.flush()　　刷新输出</p>
+<h1 id="pygame"><a href="#pygame" class="headerlink" title="pygame"></a>pygame</h1><p>具体用法参考<br><a href="https://blog.csdn.net/fengf2017/article/details/79300801" target="_blank" rel="noopener">https://blog.csdn.net/fengf2017/article/details/79300801</a></p>
+<p>一些基本用法代码：<br><a href="https://blog.csdn.net/JayWRZZ/article/details/55836167" target="_blank" rel="noopener">https://blog.csdn.net/JayWRZZ/article/details/55836167</a></p>
+<h1 id="pyqt5"><a href="#pyqt5" class="headerlink" title="pyqt5"></a>pyqt5</h1><p>具体用法参考<br><a href="https://blog.csdn.net/dragon101788/article/details/77803901" target="_blank" rel="noopener">https://blog.csdn.net/dragon101788/article/details/77803901</a><br><a href="https://github.com/maicss/PyQt5-Chinese-tutoral" target="_blank" rel="noopener">https://github.com/maicss/PyQt5-Chinese-tutoral</a></p>
+<h1 id="echarts"><a href="#echarts" class="headerlink" title="echarts"></a>echarts</h1><p>具体用法参考<br><a href="http://echarts.baidu.com/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts" target="_blank" rel="noopener">http://echarts.baidu.com/tutorial.html#5%20%E5%88%86%E9%92%9F%E4%B8%8A%E6%89%8B%20ECharts</a></p>
+<h1 id="openGL"><a href="#openGL" class="headerlink" title="openGL"></a>openGL</h1><p>具体用法参考<br><a href="https://blog.csdn.net/column/details/13062.html?&amp;page=1" target="_blank" rel="noopener">https://blog.csdn.net/column/details/13062.html?&amp;page=1</a></p>
+<h1 id="PIL"><a href="#PIL" class="headerlink" title="PIL"></a>PIL</h1><p>图形处理的库<br>基本功能的介绍：<br><a href="https://blog.csdn.net/mp624183768/article/details/81023819" target="_blank" rel="noopener">https://blog.csdn.net/mp624183768/article/details/81023819</a><br>图形处理方面介绍：<br><a href="https://blog.csdn.net/u010159842/article/details/52860470" target="_blank" rel="noopener">https://blog.csdn.net/u010159842/article/details/52860470</a></p>
+<h1 id="Py2exe"><a href="#Py2exe" class="headerlink" title="Py2exe"></a>Py2exe</h1><p>pyexe是一个将py文件打包为exe可执行文件的工具，可以用于在没有python环境的电脑上面运行python写的程序，其实质是将py文件运行需要的最少文件打包起来，然后将运行结果生成一个可执行文件，因此这个转换会产生比较多的资源浪费，每个打包动作都会添加python文件运行的基本配置文件。<br><a href="https://blog.csdn.net/qiqiyingse/article/details/55259304" target="_blank" rel="noopener">https://blog.csdn.net/qiqiyingse/article/details/55259304</a></p>
+<h1 id="webpy"><a href="#webpy" class="headerlink" title="webpy"></a>webpy</h1><p>web.py 是一个Python 的web 框架，它简单而且功能强大。web.py 是公开的，无论用于什么用途都是没有限制的。而且相当的小巧，应当归属于轻量级的web 框架。但这并不影响web.py 的强大，而且使用起来很简单、很直接。<br>具体用法参考：<br><a href="https://blog.csdn.net/freeking101/article/details/53020865" target="_blank" rel="noopener">https://blog.csdn.net/freeking101/article/details/53020865</a></p>
 <h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><p>提交代码的工具</p>
-<h1 id="SVN"><a href="#SVN" class="headerlink" title="SVN"></a>SVN</h1><p>版本控制工具</p>
-<h1 id="nltk"><a href="#nltk" class="headerlink" title="nltk"></a>nltk</h1><p>自然语言工具包</p>
-<h1 id="jieba"><a href="#jieba" class="headerlink" title="jieba"></a>jieba</h1><p>中文分词工具</p>
+<ol>
+<li>开源的代码管理工具</li>
+<li>分布式管理工具（更安全，可以脱网操作）</li>
+<li>git的分支处理更加便捷。</li>
+<li>代码的传输更新速度更快</li>
+</ol>
+<p>利用git可以进行多人配合代码开发。有备份，协同开发，版本设定，版本选择等功能。</p>
+<p>安装：<br>sudo  apt-get install git</p>
+<p>git配置</p>
+<ol>
+<li>系统中所有用户都是用的配置<br> git  config  –system<br>/etc/gitconfig</li>
+<li>用于当前用户的配置<br> git  config  –global<br>~/.gitconfig</li>
+<li>用于当前项目的配置<br> git config<br> .git/config</li>
+</ol>
+<p>email<br>sudo git config –system  user.email <a href="mailto:z3@163.cn" target="_blank" rel="noopener">z3@163.cn</a></p>
+<p>name<br>git config –global  user.name  z3</p>
+<p>editor<br>git config core.editor vim</p>
+<p>创建本地仓库<br>git  init</p>
+<p>查看分支状态<br>git  status</p>
+<p>提交到暂存区<br>git  add   file</p>
+<p>同步到仓库<br>git  commit  file   -m   ‘some message’ </p>
+<p>查看commit 日志<br>git   log</p>
+<p>丢弃工作区改动<br>git checkout  –  readme.txt</p>
+<p>移动文件<br>git  mv  git_test  test/<br>git  rm  git_test </p>
+<p>退回到上个commit位置<br>git reset  –hard  HEAD^<br>退回到指定的commit位置<br>git reset  –hard  a75630b</p>
+<p>去往更新的版本</p>
+<p>git reflog  获取所有 commit_id<br>git reset  –head  commit_id</p>
+<p>临时保存工作区</p>
+<p>保存现有工作区内容，回到上一个commit状态<br>git  stash   </p>
+<p>查看现在保存的工作区 0是最近保存的工作区<br>git  stash  list</p>
+<p>让工作区退回到上一个保存的状态，并删除上一个保存工作区<br>git  stash  pop</p>
+<p>让工作区退回到指定的保存状态<br>git  stash  apply   stash@{2}</p>
+<p>删除所有的工作区<br>git  stash  clear</p>
+<p>分支管理</p>
+<p>git  branch  查看分支 （*为当前正在工作的分支）</p>
+<p>git  branch   dev   创建一个dev分支</p>
+<p>git  checkout   dev  切换到dev分支工作</p>
+<p>git  checkout  -b  dev   创建dev分支并切换到dev</p>
+<p>git merge dev_Tom   合并指定分支</p>
+<p>git branch -d  dev_Tom   删除分支  （如果分支没有合并则用-D删除）</p>
+<p>标签管理</p>
+<p>在commit上打标签<br>git tag  v0.9  a3e6cd4     打在指定commit上<br>git tag  v1.0                      打在最近一个版本上<br>git reset –hard   v1.0    退回到某一个标签<br>git  tag  -d  v1.0   删除标签</p>
+<p>github</p>
+<ol>
+<li>链接远程仓库<br>git remote add origin <a href="https://github.com/z3/aaa.git" target="_blank" rel="noopener">https://github.com/z3/aaa.git</a><br>这里换成自己的github账号地址</li>
+</ol>
+<ol start="2">
+<li>推送代码<br>git  push  -u  origin  master</li>
+</ol>
+<p>从远程获取代码</p>
+<p> git clone <a href="mailto:z3@172.40.72.191" target="_blank" rel="noopener">z3@172.40.72.191</a>:/home/qixinyue/project<br>这里的账号和ip都需要替换</p>
+<h1 id="SVN"><a href="#SVN" class="headerlink" title="SVN"></a>SVN</h1><p>版本控制工具<br>具体用法参考：<br><a href="https://www.cnblogs.com/zhoumiao/p/5459552.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhoumiao/p/5459552.html</a><br>注意点：先更新到最新，然后获取锁，获取到之后才能修改，修改完了提交修改，然后释放锁（小心大半夜要去公司释放锁）</p>
+<h1 id="nltk"><a href="#nltk" class="headerlink" title="nltk"></a>nltk</h1><p>自然语言工具包<br>用法参考：<br><a href="https://blog.csdn.net/zzulp/article/details/77150129" target="_blank" rel="noopener">https://blog.csdn.net/zzulp/article/details/77150129</a><br>更多示例移步本站 人工智能 篇<br><a href="人工智能" title="https://qixinyue.github.io/2018/08/17/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></p>
+<h1 id="jieba"><a href="#jieba" class="headerlink" title="jieba"></a>jieba</h1><p>中文分词工具<br>用法参考：<br><a href="https://blog.csdn.net/ch1209498273/article/details/78401637" target="_blank" rel="noopener">https://blog.csdn.net/ch1209498273/article/details/78401637</a></p>
 <h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><p>项目部署</p>
 <h1 id="BeautifulSoup"><a href="#BeautifulSoup" class="headerlink" title="BeautifulSoup"></a>BeautifulSoup</h1><p>爬虫有介绍，请移步：</p>
 <p><a href="https://qixinyue.github.io/2018/08/09/%E7%88%AC%E8%99%AB/">https://qixinyue.github.io/2018/08/09/%E7%88%AC%E8%99%AB/</a></p>
@@ -653,7 +1599,7 @@ pefile  Windows PE文件解析器
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo搭建个人博客系统"><span class="nav-number">1.</span> <span class="nav-text">hexo搭建个人博客系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tkinter"><span class="nav-number">2.</span> <span class="nav-text">tkinter</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pygame"><span class="nav-number">3.</span> <span class="nav-text">pygame</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyqt5"><span class="nav-number">4.</span> <span class="nav-text">pyqt5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#echarts"><span class="nav-number">5.</span> <span class="nav-text">echarts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openGL"><span class="nav-number">6.</span> <span class="nav-text">openGL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PIL"><span class="nav-number">7.</span> <span class="nav-text">PIL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Py2exe"><span class="nav-number">8.</span> <span class="nav-text">Py2exe</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webpy"><span class="nav-number">9.</span> <span class="nav-text">webpy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git"><span class="nav-number">10.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN"><span class="nav-number">11.</span> <span class="nav-text">SVN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nltk"><span class="nav-number">12.</span> <span class="nav-text">nltk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jieba"><span class="nav-number">13.</span> <span class="nav-text">jieba</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx"><span class="nav-number">14.</span> <span class="nav-text">nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BeautifulSoup"><span class="nav-number">15.</span> <span class="nav-text">BeautifulSoup</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo搭建个人博客系统"><span class="nav-number">1.</span> <span class="nav-text">hexo搭建个人博客系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tkinter"><span class="nav-number">2.</span> <span class="nav-text">tkinter</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、使用tkinter-Tk-生成主窗口（root-tkinter-Tk-）"><span class="nav-number">2.1.</span> <span class="nav-text">1、使用tkinter.Tk() 生成主窗口（root=tkinter.Tk()）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、初级样例"><span class="nav-number">2.2.</span> <span class="nav-text">2、初级样例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、tkinter中的15种核心组件"><span class="nav-number">2.3.</span> <span class="nav-text">3、tkinter中的15种核心组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、组件的放置和排版（pack-grid-place"><span class="nav-number">2.4.</span> <span class="nav-text">4、组件的放置和排版（pack,grid,place)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、使用tkinter-Button时控制按钮的参数"><span class="nav-number">2.5.</span> <span class="nav-text">5、使用tkinter.Button时控制按钮的参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、文本框tkinter-Entry-tkinter-Text控制参数"><span class="nav-number">2.6.</span> <span class="nav-text">6、文本框tkinter.Entry,tkinter.Text控制参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、标签tkinter-Label组件控制参数"><span class="nav-number">2.7.</span> <span class="nav-text">7、标签tkinter.Label组件控制参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、单选框和复选框Radiobutton-Checkbutton控制参数"><span class="nav-number">2.8.</span> <span class="nav-text">8、单选框和复选框Radiobutton,Checkbutton控制参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、组图组件Canvas控制参数"><span class="nav-number">2.9.</span> <span class="nav-text">9、组图组件Canvas控制参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、菜单Menu"><span class="nav-number">2.10.</span> <span class="nav-text">10、菜单Menu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11、事件关联"><span class="nav-number">2.11.</span> <span class="nav-text">11、事件关联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、弹窗"><span class="nav-number">2.12.</span> <span class="nav-text">12、弹窗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13、字体（font"><span class="nav-number">2.13.</span> <span class="nav-text">13、字体（font)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pygame"><span class="nav-number">3.</span> <span class="nav-text">pygame</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyqt5"><span class="nav-number">4.</span> <span class="nav-text">pyqt5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#echarts"><span class="nav-number">5.</span> <span class="nav-text">echarts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openGL"><span class="nav-number">6.</span> <span class="nav-text">openGL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PIL"><span class="nav-number">7.</span> <span class="nav-text">PIL</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Py2exe"><span class="nav-number">8.</span> <span class="nav-text">Py2exe</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webpy"><span class="nav-number">9.</span> <span class="nav-text">webpy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git"><span class="nav-number">10.</span> <span class="nav-text">git</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN"><span class="nav-number">11.</span> <span class="nav-text">SVN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nltk"><span class="nav-number">12.</span> <span class="nav-text">nltk</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jieba"><span class="nav-number">13.</span> <span class="nav-text">jieba</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx"><span class="nav-number">14.</span> <span class="nav-text">nginx</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BeautifulSoup"><span class="nav-number">15.</span> <span class="nav-text">BeautifulSoup</span></a></li></ol></div>
             
 
           </div>
@@ -687,7 +1633,7 @@ pefile  Windows PE文件解析器
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">165.0k</span>
+    <span title="Site words total count">168.6k</span>
   
 </div>
 

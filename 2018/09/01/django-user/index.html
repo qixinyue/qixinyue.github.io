@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="响神的博客">
 <meta property="og:description" content="登录注册重置密码模块是面试会被问到的，以下是相关知识点：重置密码模块：django-password-reset邮箱接收邮件重置密码用到的模块 from django.core.mail import send_mail调用方法为： send_mail(u’Reset Passord’, message, &amp;#39;blast4onekp@163.com‘,[email], fail_silent">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-01T08:26:33.848Z">
+<meta property="og:updated_time" content="2018-09-01T09:04:37.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django-user">
 <meta name="twitter:description" content="登录注册重置密码模块是面试会被问到的，以下是相关知识点：重置密码模块：django-password-reset邮箱接收邮件重置密码用到的模块 from django.core.mail import send_mail调用方法为： send_mail(u’Reset Passord’, message, &amp;#39;blast4onekp@163.com‘,[email], fail_silent">
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  98 字
+                  241 字
                 </span>
               
 
@@ -369,7 +369,34 @@
 
       
         <p>登录注册重置密码模块是面试会被问到的，以下是相关知识点：<br>重置密码模块：django-password-reset<br>邮箱接收邮件重置密码用到的模块 from django.core.mail import send_mail<br>调用方法为： send_mail(u’Reset Passord’, message, <a href="mailto:&#39;blast4onekp@163.com" target="_blank" rel="noopener">&#39;blast4onekp@163.com</a>‘,[email], fail_silently=False)<br>原文链接： <a href="http://blog.51cto.com/likunheng/1569904" target="_blank" rel="noopener">http://blog.51cto.com/likunheng/1569904</a><br>短信验证码的实现： <a href="https://www.cnblogs.com/xuepangzi/p/8932294.html" target="_blank" rel="noopener">https://www.cnblogs.com/xuepangzi/p/8932294.html</a></p>
+<h1 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h1><h2 id="创建注册表单"><a href="#创建注册表单" class="headerlink" title="创建注册表单"></a>创建注册表单</h2><p>Django有一个名为 UserCreationForm的内置表单，我们就使用它吧：</p>
+<p>accounts/views.py</p>
+<pre><code>from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render
 
+def signup(request):
+    form = UserCreationForm()
+    return render(request, &apos;signup.html&apos;, {&apos;form&apos;: form})
+</code></pre><p>templates/signup.html</p>
+<pre><code>{% extends 'base.html' %}
+
+{% block body %}
+
+			&lt; div class="container" &gt;
+			&lt; h2 &gt; Sign up &lt; /h2 &gt;
+			&lt; form method="post" novalidate &gt;
+			  {% csrf_token %}
+			  {{ form.as_p }}
+			  &lt; button type="submit" class="btn btn-primary" &gt; Create an account &lt; /button &gt;
+			&lt; /form &gt;
+			&lt; /div &gt;
+			{% endblock %}
+</code></pre><p>这里实在是对不齐，没有办法<sub>-</sub><sup>-</sup><sub>-</sub>,将就着看。</p>
+<p>这个页面看起来乱糟糟的，那么可以通过引用form.html来实现，将上面的</p>
+<pre><code>{{ form.as_p }}
+</code></pre><p>修改为：</p>
+<pre><code>{% include 'includes/form.html' %}
+</code></pre>
       
     </div>
     
@@ -507,8 +534,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -583,6 +619,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#注册"><span class="nav-number">1.</span> <span class="nav-text">注册</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建注册表单"><span class="nav-number">1.1.</span> <span class="nav-text">创建注册表单</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -610,7 +662,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">165.0k</span>
+    <span title="Site words total count">168.6k</span>
   
 </div>
 
